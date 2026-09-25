@@ -1,0 +1,233 @@
+{
+  "tutorial": {
+    "id": 1957,
+    "version": 12,
+    "type": "guidedProjectOptional",
+    "isNew": false,
+    "codeLanguage": "javascript",
+    "title": "Penganalisis Teks",
+    "descriptionContent": "Gunakan Pengetahuanmu tentang fungsi JavaScript untuk memprogram penganalisis teks",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": "tutorial-1957-icon-banner.svg",
+    "chapters": [
+      {
+        "id": 12606,
+        "title": "Penganalisis Teks",
+        "type": "practiceLevel3",
+        "lessons": [
+          {
+            "title": "Creating the function",
+            "id": 114261,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Mari buat program menggunakan fungsi JavaScript untuk menganalisis potongan teks dan merangkum data seperti jumlah kata atau kata terpanjang.\n\nPertama-tama, kita perlu membuat fungsi analisis teks. Kita akan mulai dengan fungsi kosong.\n\n1. Tulis fungsi kosong bernama `textAnalyzer` dengan satu parameter bernama `text`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "",
+                  "solvedContent": "function textAnalyzer(text) {}"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Checking Validity of Input",
+            "id": 114262,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Karena kita akan menganalisis teks, kita perlu memastikan bahwa input yang kita terima untuk fungsi tersebut benar-benar berupa `string`. Untuk melakukannya, kita perlu mengembalikan error jika yang diteruskan bukan string.\n\n1. Tulis pernyataan `if` yang memeriksa apakah input bukan `string`. Gunakan operator `typeof` untuk melakukannya. Jika kamu tidak tahu caranya, lihat bagian Hint.\n2. Jika input yang diteruskan bukan string, cetak pesan error di console dan tambahkan `return` untuk keluar dari fungsi. Salin dan tempel kode berikut:\n```js\n{\n    console.log(\n      \"Cannot analyze text. Provided input is not valid. Please pass a string.\"\n      );\n    return \"An error occurred\";\n  }\n```",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "function textAnalyzer(text) {}",
+                  "solvedContent": "function textAnalyzer(text) {\n  if (typeof text !== 'string') {\n    console.log(\n      \"Cannot analyze text. Provided input is not valid. Please pass a string.\"\n      );\n    return \"An error occurred\";\n  }\n}"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "1. To use the `typeof` operator to check if the input is not a string, write the following conditional statement:\n```js\n if (typeof text !== 'string') {\n   ...\n }\n```"
+                }
+              ]
+            }
+          },
+          {
+            "title": "Dealing with Empty Strings",
+            "id": 114263,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Sekarang, kita tahu bahwa kita hanya akan melanjutkan dengan string, tetapi bagaimana dengan string kosong seperti `\" \"` atau `\"         \"`. Untungnya, JavaScript menyediakan metode yang bisa kita gunakan di sini. \n\n1. Di dalam fungsi `textAnalyzer`, tulis pernyataan kondisional untuk memeriksa apakah string kosong diteruskan. Gunakan metode bawaan `trim()` untuk menghapus whitespace apa pun sebelum dan sesudah input string yang diberikan. Kamu bisa memeriksa Hint untuk informasi selengkapnya.\n2. Jika input yang diteruskan adalah string kosong (tidak berisi karakter apa pun), cetak pesan error di console dan tambahkan `return` untuk keluar dari fungsi. Salin dan tempel kode berikut:\n```js\n{\n    console.log(\n      \"Cannot analyze text. Your text must include at least one character.\");\n    return \"An error occurred\";\n  }\n```",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "function textAnalyzer(text) {\n  if (typeof text !== 'string') {\n    console.log(\n      \"Cannot analyze text. Provided input is not valid. Please pass a string.\"\n      );\n    return;\n  }\n}",
+                  "solvedContent": "function textAnalyzer(text) {\n  if (typeof text !== 'string') {\n    console.log(\n      \"Cannot analyze text. Provided input is not valid. Please pass a string.\"\n      );\n    return;\n  }\n  if (text.trim().length < 1) {\n    console.log(\n      \"Cannot analyze text. Your text must include at least one character.\");\n    return \"An error occurred\";\n  }\n}"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "`trim()` removes whitespace before and after a given string of characters. If we apply `trim()` to a string with only white space such as `\"       \"`, the result will be an empty string, `\"\"`, which has a length of `0`. \n\nTo check if a string is empty (has only whitespace), we can write the following condition.\n\n```js\n  if (text.trim().length < 1) {\n   ...\n  }\n```"
+                }
+              ]
+            }
+          },
+          {
+            "title": "Storing the Analyzed Text Data",
+            "id": 114264,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Sekarang, kita perlu membuat beberapa variabel untuk menyimpan data yang akan kita ekstrak.\n\nDi dalam fungsi `textAnalyzer`, lakukan hal berikut:\n1. Buat variabel `shortestWord` dan beri nilai berupa string kosong.\n2. Buat variabel `longestWord` dan beri nilai berupa string kosong.\n3. Kembalikan `longestWord+shortestWord`",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "function textAnalyzer(text) {\n  if (typeof text !== 'string') {\n    console.log(\n      \"Cannot analyze text. Provided input is not valid. Please pass a string.\"\n      );\n    return;\n  }\n  if (text.trim().length < 1) {\n    console.log(\n      \"Cannot analyze text. Your text must include at least one character.\");\n    return;\n  }\n}",
+                  "solvedContent": "function textAnalyzer(text) {\n  if (typeof text !== 'string') {\n    console.log(\n      \"Cannot analyze text. Provided input is not valid. Please pass a string.\"\n      );\n    return;\n  }\n  if (text.trim().length < 1) {\n    console.log(\n      \"Cannot analyze text. Your text must include at least one character.\");\n    return;\n  }\n  let shortestWord = '';\n  let longestWord = '';\n  return longestWord + shortestWord;\n}"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "Literal object notation is just creating a variable and assigning it an object that has key-value pairs surrounded in curly braces. For this example, you only need to add the following.\n```js\n let <variable name> = {};\n```"
+                }
+              ]
+            }
+          },
+          {
+            "title": "Creating an Array from Given Input",
+            "id": 114265,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Mari lanjut dengan menulis kode fungsi yang memecah parameter kalimat yang diberikan menjadi array berisi kata-kata. Kami sudah menyediakan fungsi tersebut di editor teks. Di dalam fungsi ini, kita juga akan menggunakan fungsi bawaan JavaScript yang berguna bernama `split()`.\n\n```js\nfunction convertTextToWords(text) {\n  // Karena JavaScript peka huruf besar-kecil, kita perlu memastikan semua input yang diterima ditulis dalam huruf kecil.\n  const lowerCaseText = text.toLowerCase();\n  // tulis kode kamu di sini.\n}\n```\n1. Salin fungsi `convertTextToWords` dan tambahkan ke editor. Pastikan fungsi tersebut berada di luar fungsi `textAnalyzer`.\n2. Di dalam fungsi `convertTextToWords`, buat konstanta bernama `words`.\n3. Pecah string `lowerCaseText` yang diberikan menjadi kata-kata dengan menggunakan metode bawaan JavaScript `split()`. Tetapkan konstanta `words` dengan nilai hasil pemisahan tersebut. Lihat Petunjuk untuk informasi selengkapnya.\n4. Kembalikan konstanta `words`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "function textAnalyzer(text) {\n  if (typeof text !== 'string') {\n    console.log(\n      \"Cannot analyze text. Provided input is not valid. Please pass a string.\"\n      );\n    return;\n  }\n  if (text.trim().length < 1) {\n    console.log(\n      \"Cannot analyze text. Your text must include at least one character.\");\n    return;\n  }\n  let shortestWord = '';\n  let longestWord = '';\n}",
+                  "solvedContent": "function textAnalyzer(text) {\n  if (typeof text !== 'string') {\n    console.log(\n      \"Cannot analyze text. Provided input is not valid. Please pass a string.\"\n      );\n    return;\n  }\n  if (text.trim().length < 1) {\n    console.log(\n      \"Cannot analyze text. Your text must include at least one character.\");\n    return;\n  }\n  let shortestWord = '';\n  let longestWord = '';\n}\n\nfunction convertTextToWords(text) {\n  // As JavaScript is case-sensitive., we need to ensure that all the input we receive is lowercase. \n  const lowerCaseText = text.toLowerCase();\n  // write your code here.\n  const words = lowerCaseText.split(' ');\n  return words;\n}"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "You can create constants using the `const` keyword.\n\n`split()` breaks a given string into an array of strings, based on the parameter provided. If we passed a sentence to split with `split(' ')`, it will break the string at each whitespace, hence creating an array of words from that string. Note the space between the two quotes in the `split` parameter.\n\nFor example:\n\n```js\nHello World\".split(' ') // will output ['Hello', 'World'];\nHello World\".split('') // will output ['H', 'e', 'l' ,'l ','o' ,'' , 'w' ,'o', 'r', 'l', 'd'];\n/* Note the difference in the space between the two quote marks\npassed in the split function */\n\n```\n\n\n"
+                }
+              ]
+            }
+          },
+          {
+            "title": "Finding the Longest Word",
+            "id": 115246,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Mari kita coba menemukan kata terpanjang dan terpendek dalam array ini.\n\nKami sudah menyediakan kode untuk menemukan kata terpanjang untukmu. \n```js\nfunction findLongestWord(words) {\n  let longestWord = '';\n  for (let i = 0; i < words.length; i++) {\n    let currentWord = words[i];\n    if (currentWord.length >= longestWord.length) {\n      longestWord = currentWord;\n    }\n  }\n  return longestWord;\n}\n```\n1. Salin fungsi `findLongestWord` ke dalam kodenya.\n2. Di dalam fungsi `textAnalyzer`, buat konstanta bernama `wordsArray` dan atur nilainya agar sama dengan nilai pemanggilan `convertTextToWords()` dengan `text` sebagai argumen.\n3. Di dalam fungsi `textAnalyzer`, perbarui variabel `longestWord` agar menyimpan nilai yang dikembalikan dari fungsi `findLongestWord`. Agar fungsi ini berfungsi, kamu perlu meneruskan `wordsArray` sebagai argumen.\n4. Cetak `\"Longest Word: \"+ longestWord`",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "function textAnalyzer(text) {\n  if (typeof text !== 'string') {\n    console.log(\n      \"Cannot analyze text. Provided input is not valid. Please pass a string.\"\n      );\n    return;\n  }\n  if (text.trim().length < 1) {\n    console.log(\n      \"Cannot analyze text. Your text must include at least one character.\");\n    return;\n  }\n  let shortestWord = '';\n  let longestWord = '';\n}\n\nfunction convertTextToWords(text) {\n  const lowerCaseText = text.toLowerCase();\n  const words = lowerCaseText.split(' ');\n  return words;\n}\n\nfunction findLongestWord(words) {\n  let longestWord = '';\n  for (let i = 0; i < words.length; i++) {\n    let currentWord = words[i];\n    if (currentWord.length >= longestWord.length) {\n      longestWord = currentWord;\n    }\n  }\n  return longestWord;\n}",
+                  "solvedContent": "function textAnalyzer(text) {\n  if (typeof text !== 'string') {\n    console.log(\n      \"Cannot analyze text. Provided input is not valid. Please pass a string.\"\n      );\n    return;\n  }\n  if (text.trim().length < 1) {\n    console.log(\n      \"Cannot analyze text. Your text must include at least one character.\");\n    return;\n  }\n  let shortestWord = '';\n  let longestWord = '';\n  const wordsArray = convertTextToWords(text);\n  longestWord = findLongestWord(wordsArray);\n  console.log(\"Longest Word: \" + longestWord);\n}\n\nfunction convertTextToWords(text) {\n  const lowerCaseText = text.toLowerCase();\n  const words = lowerCaseText.split(' ');\n  return words;\n}\n\nfunction findLongestWord(words) {\n  let longestWord = '';\n  for (let i = 0; i < words.length; i++) {\n    let currentWord = words[i];\n    if (currentWord.length >= longestWord.length) {\n      longestWord = currentWord;\n    }\n  }\n  return longestWord;\n}"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "You can print using `console.log(\"example\")` "
+                }
+              ]
+            }
+          },
+          {
+            "title": "Finding the Shortest Word",
+            "id": 114266,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Mari cari kata terpendek.\n\nKode sebagian untuk fungsi yang menemukan kata terpendek telah disediakan untukmu. Kamu perlu melakukan beberapa hal agar kode ini dapat digunakan.\n```js\nfunction findShortestWord() {\n  let shortestWord = longestWord;\n  for (let i = 0; i < words.length; i++) {\n    let currentWord = words[i];\n    if (currentWord.length < shortestWord.length) {\n      shortestWord = currentWord;\n    }\n  }\n\n}\n```\n\n1. Salin fungsi `findShortestWord` dan tempelkan ke dalam kodemu.\n2. Beri nama fungsi yang disediakan, `findShortestWord`, dengan dua parameter `words` dan `longestWord`.\n3. Kembalikan variabel `shortestWord`. Pastikan kamu menambahkan pernyataan `return` di luar perulangan `for`.\n4. Di dalam fungsi `textAnalyzer`, perbarui variabel `shortestWord` agar menyimpan nilai yang dikembalikan dari fungsi `findShortestWord`. Periksa bagian petunjuk jika kamu mengalami kesulitan.\n5. Cetak `\"Shortest Word: \"+ shortestWord`",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "function textAnalyzer(text) {\n  if (typeof text !== 'string') {\n    console.log(\n      \"Cannot analyze text. Provided input is not valid. Please pass a string.\"\n      );\n    return;\n  }\n  if (text.trim().length < 1) {\n    console.log(\n      \"Cannot analyze text. Your text must include at least one character.\");\n    return;\n  }\n  let shortestWord = '';\n  let longestWord = '';\n  const wordsArray = convertTextToWords(text);\n  longestWord = findLongestWord(wordsArray);\n  console.log(\"Longest Word: \" + longestWord);\n}\n\nfunction convertTextToWords(text) {\n  const lowerCaseText = text.toLowerCase();\n  const words = lowerCaseText.split(' ');\n  return words;\n}\n\nfunction findLongestWord(words) {\n  let longestWord = '';\n  for (let i = 0; i < words.length; i++) {\n    let currentWord = words[i];\n    if (currentWord.length >= longestWord.length) {\n      longestWord = currentWord;\n    }\n  }\n  return longestWord;\n}\n\nfunction findShortestWord(words, longestWord) {\n  let shortestWord = longestWord;\n  for (let i = 0; i < words.length; i++) {\n    let currentWord = words[i];\n    if (currentWord.length < shortestWord.length) {\n      shortestWord = currentWord;\n    }\n  }\n  return shortestWord;\n}",
+                  "solvedContent": "function textAnalyzer(text) {\n  if (typeof text !== 'string') {\n    console.log(\n      \"Cannot analyze text. Provided input is not valid. Please pass a string.\"\n      );\n    return;\n  }\n  if (text.trim().length < 1) {\n    console.log(\n      \"Cannot analyze text. Your text must include at least one character.\");\n    return;\n  }\n  let shortestWord = '';\n  let longestWord = '';\n  const wordsArray = convertTextToWords(text);\n  longestWord = findLongestWord(wordsArray);\n  console.log(\"Longest Word: \" + longestWord);\n  shortestWord = findShortestWord(wordsArray, longestWord);\n  console.log(\"Shortest Word: \" + shortestWord);\n}\n\nfunction convertTextToWords(text) {\n  const lowerCaseText = text.toLowerCase();\n  const words = lowerCaseText.split(' ');\n  return words;\n}\n\nfunction findLongestWord(words) {\n  let longestWord = '';\n  for (let i = 0; i < words.length; i++) {\n    let currentWord = words[i];\n    if (currentWord.length >= longestWord.length) {\n      longestWord = currentWord;\n    }\n  }\n  return longestWord;\n}\n\nfunction findShortestWord(words, longestWord) {\n  let shortestWord = longestWord;\n  for (let i = 0; i < words.length; i++) {\n    let currentWord = words[i];\n    if (currentWord.length < shortestWord.length) {\n      shortestWord = currentWord;\n    }\n  }\n  return shortestWord;\n}"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "Make sure to pass `wordsArray` and `longestWord` as parameters when calling the `findShortestWord` function."
+                }
+              ]
+            }
+          },
+          {
+            "title": "Find Words starting with a Vowel",
+            "id": 114267,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Tinggal beberapa langkah lagi. Kita perlu menemukan semua kata yang diawali dengan vokal. Vokal dalam bahasa Inggris adalah huruf \"a\", \"e\", \"i\", \"o\", dan \"u\".\n\nSekali lagi, kita akan melakukan ini dengan fungsi yang sepenuhnya berbeda yang akan kita hubungkan ke fungsi utama. Kami telah menyediakan kode sebagian untuk fungsi yang menemukan kata-kata yang diawali dengan vokal. Kamu perlu melakukan beberapa hal agar kode ini dapat digunakan.\n```js\nfunction findVowelWords() {\n  const vowels = ['a', 'i', 'e', 'o', 'u'];\n  let vowelWords = [];\n  for (let i = 0; i < words.length; i++) {\n    let word = words[i];\n    for (let j = 0; j < vowels.length; j++) {\n      let vowel = vowels[j];\n      if (word.startsWith(vowel)) {\n        vowelWords.push(word);\n      }\n    }\n  }\n}\n```\n\n1. Salin dan tempel fungsi `findVowelWords` yang disediakan, lalu tambahkan parameter bernama `words`.\n2. Kembalikan variabel `vowelWords`. Pastikan kamu menambahkan pernyataan `return` di luar perulangan `for`.\n3. Di dalam fungsi `textAnalyzer`, buat array kosong bernama `vowelWords`.\n4. Kemudian panggil fungsi `findVowelWords` dengan meneruskan `wordsArray` sebagai parameter, lalu simpan hasilnya di array `vowelWords`.\n5. Terakhir, tampilkan `\"Vowel Words: \"+ vowelWords` ke console.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "function textAnalyzer(text) {\n  if (typeof text !== 'string') {\n    console.log(\n      \"Cannot analyze text. Provided input is not valid. Please pass a string.\"\n      );\n    return;\n  }\n  if (text.trim().length < 1) {\n    console.log(\n      \"Cannot analyze text. Your text must include at least one character.\");\n    return;\n  }\n  let shortestWord = '';\n  let longestWord = '';\n  const wordsArray = convertTextToWords(text);\n  longestWord = findLongestWord(wordsArray);\n  console.log(\"Longest Word: \" + longestWord);\n  shortestWord = findShortestWord(wordsArray, longestWord);\n  console.log(\"Shortest Word: \" + shortestWord);\n}\n\nfunction convertTextToWords(text) {\n  const lowerCaseText = text.toLowerCase();\n  const words = lowerCaseText.split(' ');\n  return words;\n}\n\nfunction findLongestWord(words) {\n  let longestWord = '';\n  for (let i = 0; i < words.length; i++) {\n    let currentWord = words[i];\n    if (currentWord.length >= longestWord.length) {\n      longestWord = currentWord;\n    }\n  }\n  return longestWord;\n}\n\nfunction findShortestWord(words, longestWord) {\n  let shortestWord = longestWord;\n  for (let i = 0; i < words.length; i++) {\n    let currentWord = words[i];\n    if (currentWord.length < shortestWord.length) {\n      shortestWord = currentWord;\n    }\n  }\n  return shortestWord;\n}",
+                  "solvedContent": "function textAnalyzer(text) {\n  if (typeof text !== 'string') {\n    console.log(\n      \"Cannot analyze text. Provided input is not valid. Please pass a string.\"\n      );\n    return;\n  }\n  if (text.trim().length < 1) {\n    console.log(\n      \"Cannot analyze text. Your text must include at least one character.\");\n    return;\n  }\n  let shortestWord = '';\n  let longestWord = '';\n  const wordsArray = convertTextToWords(text);\n  longestWord = findLongestWord(wordsArray);\n  console.log(\"Longest Word: \" + longestWord);\n  shortestWord = findShortestWord(wordsArray, longestWord);\n  console.log(\"Shortest Word: \" + shortestWord);\n  let vowelWords = [];\n  vowelWords = findVowelWords(wordsArray);\n  console.log(\"Vowel Words: \" + vowelWords);\n}\n\nfunction convertTextToWords(text) {\n  const lowerCaseText = text.toLowerCase();\n  const words = lowerCaseText.split(' ');\n  return words;\n}\n\nfunction findLongestWord(words) {\n  let longestWord = '';\n  for (let i = 0; i < words.length; i++) {\n    let currentWord = words[i];\n    if (currentWord.length >= longestWord.length) {\n      longestWord = currentWord;\n    }\n  }\n  return longestWord;\n}\n\nfunction findShortestWord(words, longestWord) {\n  let shortestWord = longestWord;\n  for (let i = 0; i < words.length; i++) {\n    let currentWord = words[i];\n    if (currentWord.length < shortestWord.length) {\n      shortestWord = currentWord;\n    }\n  }\n  return shortestWord;\n}\n\nfunction findVowelWords(words) {\n  const vowels = ['a', 'i', 'e', 'o', 'u'];\n  let vowelWords = [];\n  for (let i = 0; i < words.length; i++) {\n    let word = words[i];\n    for (let j = 0; j < vowels.length; j++) {\n      let vowel = vowels[j];\n      if (word.startsWith(vowel)) {\n        vowelWords.push(word);\n      }\n    }\n  }\n  return vowelWords;\n}"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Wrapping Everything Up!",
+            "id": 114268,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Terakhir, mari cetak beberapa informasi lagi dan coba fungsi tersebut.\n\n1. Di dalam fungsi `textAnalyzer`, sertakan console.log untuk mencetak `\"Words List: \" + wordsArray`\n2. Cetak`\"Total Words Count: \" + wordsArray.length` di dalam fungsi `textAnalyzer`.\n3. Di akhir file skrip, panggil fungsi `textAnalyzer` dengan parameter `\"You are an awesome developer\"`",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "function textAnalyzer(text) {\n  if (typeof text !== 'string') {\n    console.log(\n      \"Cannot analyze text. Provided input is not valid. Please pass a string.\"\n      );\n    return;\n  }\n  if (text.trim().length < 1) {\n    console.log(\n      \"Cannot analyze text. Your text must include at least one character.\");\n    return;\n  }\n  let shortestWord = '';\n  let longestWord = '';\n  const wordsArray = convertTextToWords(text);\n  longestWord = findLongestWord(wordsArray);\n  console.log(\"Longest Word: \" + longestWord);\n  shortestWord = findShortestWord(wordsArray, longestWord);\n  console.log(\"Shortest Word: \" + shortestWord);\n  let vowelWords = [];\n  vowelWords = findVowelWords(wordsArray);\n  console.log(\"Vowel Words: \" + vowelWords);\n}\n\nfunction convertTextToWords(text) {\n  const lowerCaseText = text.toLowerCase();\n  const words = lowerCaseText.split(' ');\n  return words;\n}\n\nfunction findLongestWord(words) {\n  let longestWord = '';\n  for (let i = 0; i < words.length; i++) {\n    let currentWord = words[i];\n    if (currentWord.length >= longestWord.length) {\n      longestWord = currentWord;\n    }\n  }\n  return longestWord;\n}\n\nfunction findShortestWord(words, longestWord) {\n  let shortestWord = longestWord;\n  for (let i = 0; i < words.length; i++) {\n    let currentWord = words[i];\n    if (currentWord.length < shortestWord.length) {\n      shortestWord = currentWord;\n    }\n  }\n  return shortestWord;\n}\n\nfunction findVowelWords(words) {\n  const vowels = ['a', 'i', 'e', 'o', 'u'];\n  let vowelWords = [];\n  for (let i = 0; i < words.length; i++) {\n    let word = words[i];\n    for (let j = 0; j < vowels.length; j++) {\n      let vowel = vowels[j];\n      if (word.startsWith(vowel)) {\n        vowelWords.push(word);\n      }\n    }\n  }\n  return vowelWords;\n}\ntextAnalyzer(\"You are an awesome developer\");",
+                  "solvedContent": "function textAnalyzer(text) {\n  if (typeof text !== 'string') {\n    console.log(\n      \"Cannot analyze text. Provided input is not valid. Please pass a string.\"\n      );\n    return;\n  }\n  if (text.trim().length < 1) {\n    console.log(\n      \"Cannot analyze text. Your text must include at least one character.\");\n    return;\n  }\n  let shortestWord = '';\n  let longestWord = '';\n  const wordsArray = convertTextToWords(text);\n  longestWord = findLongestWord(wordsArray);\n  console.log(\"Longest Word: \" + longestWord);\n  shortestWord = findShortestWord(wordsArray, longestWord);\n  console.log(\"Shortest Word: \" + shortestWord);\n  let vowelWords = [];\n  vowelWords = findVowelWords(wordsArray);\n  console.log(\"Vowel Words: \" + vowelWords);\n  console.log(\"Words List: \" + wordsArray);\n  console.log(\"Total Words Count: \" + wordsArray.length);\n}\n\nfunction convertTextToWords(text) {\n  const lowerCaseText = text.toLowerCase();\n  const words = lowerCaseText.split(' ');\n  return words;\n}\n\nfunction findLongestWord(words) {\n  let longestWord = '';\n  for (let i = 0; i < words.length; i++) {\n    let currentWord = words[i];\n    if (currentWord.length >= longestWord.length) {\n      longestWord = currentWord;\n    }\n  }\n  return longestWord;\n}\n\nfunction findShortestWord(words, longestWord) {\n  let shortestWord = longestWord;\n  for (let i = 0; i < words.length; i++) {\n    let currentWord = words[i];\n    if (currentWord.length < shortestWord.length) {\n      shortestWord = currentWord;\n    }\n  }\n  return shortestWord;\n}\n\nfunction findVowelWords(words) {\n  const vowels = ['a', 'i', 'e', 'o', 'u'];\n  let vowelWords = [];\n  for (let i = 0; i < words.length; i++) {\n    let word = words[i];\n    for (let j = 0; j < vowels.length; j++) {\n      let vowel = vowels[j];\n      if (word.startsWith(vowel)) {\n        vowelWords.push(word);\n      }\n    }\n  }\n  return vowelWords;\n}\ntextAnalyzer(\"You are an awesome developer\");"
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

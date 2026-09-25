@@ -1,0 +1,271 @@
+{
+  "tutorial": {
+    "id": 2892,
+    "version": 4,
+    "type": "guidedProject",
+    "isNew": false,
+    "codeLanguage": "node",
+    "title": "Biblioteka multimediów - część 1",
+    "descriptionContent": "Utwórz serwer, który pomoże znaleźć idealny film na daną okazję",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": "tutorial-2892-icon-banner.svg",
+    "chapters": [
+      {
+        "id": 14983,
+        "title": "Biblioteka multimediów - część 1",
+        "type": "practiceLevel3",
+        "lessons": [
+          {
+            "title": "Lesson #6",
+            "id": 132106,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Witaj w projekcie **Library**, w którym zbudujemy prosty interfejs API **Movie** za pomocą Express.\n\nZaczniemy od skonfigurowania serwera Express.\n\n1. Zadeklaruj zmienną `express` i zaimportuj moduł `express` za pomocą `require`.\n2. Zadeklaruj zmienną `app` i zainicjalizuj ją, wywołując funkcję `express`.\n3. Zadeklaruj zmienną `port` i przypisz jej wartość `3000`.\n4. Użyj funkcji `listen` na zmiennej `app`, aby aplikacja nasłuchiwała na porcie określonym przez zmienną `port`.\n5. Zaloguj komunikat w konsoli wewnątrz funkcji zwrotnej funkcji `listen`, aby wiedzieć, że serwer działa poprawnie.\n6. Zaimplementuj punkt końcowy `GET` dla trasy głównej `\"/\"`. Zwróć kod `200` i wyślij komunikat powitalny jako prosty ciąg znaków.",
+              "preselectedFileIndex": 1,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "Library.js",
+                  "codeLanguage": "javascript",
+                  "content": "",
+                  "solvedContent": null
+                },
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "",
+                  "solvedContent": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.get('/', (req, res) => {\n  res.status(200).send(\"Welcome to the mdeia library!\");\n});\n\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});"
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/",
+                "body": null
+              }
+            }
+          },
+          {
+            "title": "Lesson #1",
+            "id": 132101,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Aby uporządkować dane, utworzymy klasę `Library`, która będzie reprezentować naszą bibliotekę filmów.\n\n1. W pliku `Library.js` zdefiniuj klasę `Library`.\n2. Dodaj w tej klasie konstruktor, który inicjalizuje tablicę obiektów reprezentujących poszczególne filmy. Każdy obiekt filmu powinien mieć właściwości `id`, `title` i `director`. Na początek dodaj co najmniej trzy filmy.\n\nJeśli nie chcesz używać własnych filmów, możesz skorzystać z poniższych:\n``` JavaScript\n[\n  { id: 1, title: 'Pulp Fiction', director: 'Quentin Tarantino' },\n  { id: 2, title: 'Inception', director: 'Christopher Nolan' },\n  { id: 3, title: 'The Matrix', director: 'The Wachowskis' }\n];\n```",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "Library.js",
+                  "codeLanguage": "javascript",
+                  "content": "",
+                  "solvedContent": "class Library {\n  constructor() {\n    this.movies = [{\n      id: 1,\n      title: 'Pulp Fiction',\n      director: 'Quentin Tarantino'\n    }, {\n      id: 2,\n      title: 'Inception',\n      director: 'Christopher Nolan'\n    }, {\n      id: 3,\n      title: 'The Matrix',\n      director: 'The Wachowskis'\n    }];\n  }\n}"
+                },
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});",
+                  "solvedContent": null
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/",
+                "body": null
+              }
+            }
+          },
+          {
+            "title": "Lesson #2",
+            "id": 132102,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Utwórzmy metodę zwracającą wszystkie filmy w bibliotece.\n\n1. Dodaj nową metodę `getAllMovies`, która zwraca wszystkie filmy.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "Library.js",
+                  "codeLanguage": "javascript",
+                  "content": "class Library {\n  constructor() {\n    this.movies = [{\n      id: 1,\n      title: 'Pulp Fiction',\n      director: 'Quentin Tarantino'\n    }, {\n      id: 2,\n      title: 'Inception',\n      director: 'Christopher Nolan'\n    }, {\n      id: 3,\n      title: 'The Matrix',\n      director: 'The Wachowskis'\n    }];\n  }\n}",
+                  "solvedContent": "class Library {\n  constructor() {\n    this.movies = [{\n      id: 1,\n      title: 'Pulp Fiction',\n      director: 'Quentin Tarantino'\n    }, {\n      id: 2,\n      title: 'Inception',\n      director: 'Christopher Nolan'\n    }, {\n      id: 3,\n      title: 'The Matrix',\n      director: 'The Wachowskis'\n    }];\n  }\n  getAllMovies() {\n    return this.movies;\n  }\n}"
+                },
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});",
+                  "solvedContent": null
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/",
+                "body": null
+              }
+            }
+          },
+          {
+            "title": "Lesson #3",
+            "id": 132103,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Chcemy utworzyć kolejną metodę, która zwróci konkretny film na podstawie jego identyfikatora.\n\n1. Dodaj nową metodę `getMovieById`, która zwraca film o określonym identyfikatorze przekazanym jako parametr.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "Library.js",
+                  "codeLanguage": "javascript",
+                  "content": "class Library {\n  constructor() {\n    this.movies = [{\n      id: 1,\n      title: 'Pulp Fiction',\n      director: 'Quentin Tarantino'\n    }, {\n      id: 2,\n      title: 'Inception',\n      director: 'Christopher Nolan'\n    }, {\n      id: 3,\n      title: 'The Matrix',\n      director: 'The Wachowskis'\n    }];\n  }\n  getAllMovies() {\n    return this.movies;\n  }\n}",
+                  "solvedContent": "class Library {\n  constructor() {\n    this.movies = [{\n      id: 1,\n      title: 'Pulp Fiction',\n      director: 'Quentin Tarantino'\n    }, {\n      id: 2,\n      title: 'Inception',\n      director: 'Christopher Nolan'\n    }, {\n      id: 3,\n      title: 'The Matrix',\n      director: 'The Wachowskis'\n    }];\n  }\n  getAllMovies() {\n    return this.movies;\n  }\n  getMovieById(id) {\n    return this.movies.find(movie => movie.id === parseInt(id));\n  }\n}"
+                },
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});",
+                  "solvedContent": null
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/",
+                "body": null
+              }
+            }
+          },
+          {
+            "title": "Lesson #4",
+            "id": 132104,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Gdy klasa `Library` będzie gotowa, musimy zapewnić sposób uzyskiwania do niej dostępu.\n\n1. Utwórz nową instancję klasy `Library` i wyeksportuj ją za pomocą `module.exports`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "Library.js",
+                  "codeLanguage": "javascript",
+                  "content": "class Library {\n  constructor() {\n    this.movies = [{\n      id: 1,\n      title: 'Pulp Fiction',\n      director: 'Quentin Tarantino'\n    }, {\n      id: 2,\n      title: 'Inception',\n      director: 'Christopher Nolan'\n    }, {\n      id: 3,\n      title: 'The Matrix',\n      director: 'The Wachowskis'\n    }];\n  }\n  getAllMovies() {\n    return this.movies;\n  }\n  getMovieById(id) {\n    return this.movies.find(movie => movie.id === parseInt(id));\n  }\n}",
+                  "solvedContent": "class Library {\n  constructor() {\n    this.movies = [{\n      id: 1,\n      title: 'Pulp Fiction',\n      director: 'Quentin Tarantino'\n    }, {\n      id: 2,\n      title: 'Inception',\n      director: 'Christopher Nolan'\n    }, {\n      id: 3,\n      title: 'The Matrix',\n      director: 'The Wachowskis'\n    }];\n  }\n  getAllMovies() {\n    return this.movies;\n  }\n  getMovieById(id) {\n    return this.movies.find(movie => movie.id === parseInt(id));\n  }\n}\nmodule.exports = new Library();"
+                },
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});",
+                  "solvedContent": null
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/",
+                "body": null
+              }
+            }
+          },
+          {
+            "title": "Lesson #5",
+            "id": 132105,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Teraz pora zaimportować bibliotekę, aby użyć jej w naszym pliku `app.js`.\n\n1. Utwórz nową zmienną `library`, która powinna przechowywać wartość zaimportowanego modułu `Library` utworzonego wcześniej.\n   ```JavaScript\n   const library = require(\"./Library\")\n   ```",
+              "preselectedFileIndex": 1,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "Library.js",
+                  "codeLanguage": "javascript",
+                  "content": "class Library {\n  constructor() {\n    this.movies = [{\n      id: 1,\n      title: 'Pulp Fiction',\n      director: 'Quentin Tarantino'\n    }, {\n      id: 2,\n      title: 'Inception',\n      director: 'Christopher Nolan'\n    }, {\n      id: 3,\n      title: 'The Matrix',\n      director: 'The Wachowskis'\n    }];\n  }\n  getAllMovies() {\n    return this.movies;\n  }\n  getMovieById(id) {\n    return this.movies.find(movie => movie.id === parseInt(id));\n  }\n}\nmodule.exports = new Library();",
+                  "solvedContent": null
+                },
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});",
+                  "solvedContent": "const express = require('express');\nconst library = require('./Library');\n\nconst app = express();\nconst port = 3000;\n\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});"
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/",
+                "body": null
+              }
+            }
+          },
+          {
+            "title": "Lesson #7",
+            "id": 132107,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Utwórzmy endpoint do obsługi żądań GET kierowanych pod adres `/movies`, który zwróci wszystkie filmy z biblioteki.\n\n1. Użyj `app.get`, aby utworzyć trasę dla `/movies`.\n2. W funkcji przekazanej do `app.get` wywołaj funkcję `getAllMovies` na zmiennej `library` i zwróć odpowiedź. Upewnij się, że kluczem zwracanego obiektu JSON jest `movies`.\n3. Ustaw kod statusu na 200.",
+              "preselectedFileIndex": 1,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "Library.js",
+                  "codeLanguage": "javascript",
+                  "content": "class Library {\n  constructor() {\n    this.movies = [{\n      id: 1,\n      title: 'Pulp Fiction',\n      director: 'Quentin Tarantino'\n    }, {\n      id: 2,\n      title: 'Inception',\n      director: 'Christopher Nolan'\n    }, {\n      id: 3,\n      title: 'The Matrix',\n      director: 'The Wachowskis'\n    }];\n  }\n  getAllMovies() {\n    return this.movies;\n  }\n  getMovieById(id) {\n    return this.movies.find(movie => movie.id === parseInt(id));\n  }\n}\nmodule.exports = new Library();",
+                  "solvedContent": null
+                },
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require('express');\nconst library = require('./Library');\n\nconst app = express();\nconst port = 3000;\n\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});",
+                  "solvedContent": "const express = require('express');\nconst library = require('./Library');\n\nconst app = express();\nconst port = 3000;\n\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});\n\napp.get('/movies', (req, res) => {\n  res.status(200).json({\n   movies: library.getAllMovies()\n  });\n});"
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/movies",
+                "body": null
+              }
+            }
+          },
+          {
+            "title": "Lesson #8",
+            "id": 132108,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Na koniec utwórzmy kolejną trasę do pobierania konkretnego filmu na podstawie jego identyfikatora.\n\n1. Utwórz trasę dla `/movies/:id` i zwróć ten film, jeśli istnieje.\n2. Utwórz nową zmienną `id`, która przechowuje wartość z przeanalizowanego parametru `id`.\n3. Użyj otrzymanego identyfikatora, aby pobrać właściwy film.\n4. Zwróć obiekt zwracany przez funkcję `getMovieById` i ustaw kod statusu HTTP na `200`.\n5. Zwróć odpowiedź z kodem statusu HTTP `404`, jeśli nie można znaleźć filmu. W takim przypadku dołącz również komunikat o błędzie jako wartość klucza `error` w wysyłanym przez ciebie JSON-ie.",
+              "preselectedFileIndex": 1,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "Library.js",
+                  "codeLanguage": "javascript",
+                  "content": "class Library {\n  constructor() {\n    this.movies = [{\n      id: 1,\n      title: 'Pulp Fiction',\n      director: 'Quentin Tarantino'\n    }, {\n      id: 2,\n      title: 'Inception',\n      director: 'Christopher Nolan'\n    }, {\n      id: 3,\n      title: 'The Matrix',\n      director: 'The Wachowskis'\n    }];\n  }\n  getAllMovies() {\n    return this.movies;\n  }\n  getMovieById(id) {\n    return this.movies.find(movie => movie.id === parseInt(id));\n  }\n}\nmodule.exports = new Library();",
+                  "solvedContent": null
+                },
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require('express');\nconst library = require('./Library');\n\nconst app = express();\nconst port = 3000;\n\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});\n\napp.get('/movies', (req, res) => {\n  res.status(200).json({\n   movies: library.getAllMovies()\n  });\n});",
+                  "solvedContent": "const express = require('express');\nconst library = require('./Library');\n\nconst app = express();\nconst port = 3000;\n\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});\n\napp.get('/movies', (req, res) => {\n  res.status(200).json({\n   movies: library.getAllMovies()\n  });\n});\n\napp.get('/movies/:id', (req, res) => {\n  const id = req.params.id;\n  const movie = library.getMovieById(id);\n  if (movie) {\n    res.status(200).json(movie);\n  } else {\n    res.status(404).json({error: 'Movie not found'});\n  }\n});"
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/movies/1",
+                "body": null
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

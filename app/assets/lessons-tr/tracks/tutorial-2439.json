@@ -1,0 +1,183 @@
+{
+  "tutorial": {
+    "id": 2439,
+    "version": 5,
+    "type": "guidedProjectOptional",
+    "isNew": false,
+    "codeLanguage": "python",
+    "title": "Elektronik Mağazası",
+    "descriptionContent": "Elektronik mağazasındaki verileri temizlemeye yardımcı olmak için biraz dize biçimlendirmesi yapalım",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": "tutorial-2439-icon-banner.svg",
+    "chapters": [
+      {
+        "id": 14019,
+        "title": "Elektronik Mağazası",
+        "type": "practiceLevel1",
+        "lessons": [
+          {
+            "title": "Extracting the Data Pieces",
+            "id": 124361,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Bir elektronik mağazasında çalışıyorsun. Görevin, bazı cihazlar hakkında bilgiler içeren verileri temizleyip biçimlendirmek.\n\nMağaza sahibi tüm verileri `data` adlı bir değişkende dize olarak sakladı. Bu dize, farklı cihazlardan oluşan bir küme hakkında bilgiler içeriyor. Her bilgi parçası, cihaz türünü ve cihaz fiyatını içeriyor. Her cihazla ilgili veriler bir `|` işaretiyle ayrılıyor. Tüm bu bilgiler kullanışlı, ancak okunması pek kolay değil; bu yüzden bunları farklı öğeler içeren bir liste biçiminde çıkarıp saklayalım.\n\n1. `device_list` adlı bir değişken oluştur ve `data` dizesini böldükten sonra elde edilen değeri bu değişkene ata.\n2. `formatted_list` adlı bir değişken oluştur ve bu değişkene boş bir liste kaydet.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "data = \"14inch l@ptop,699|16inch l@ptop,999|sm@rtphone,1099|t@blet,499|g@ming pc,1999\"",
+                  "solvedContent": "data = \"14inch l@ptop,699|16inch l@ptop,999|sm@rtphone,1099|t@blet,499|g@ming pc,1999\"\ndevice_list = data.split(\"|\")\nformatted_list = []"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Split Device Information",
+            "id": 124362,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Artık `device_list` içinde depolanan dize listesine sahip olduğumuza göre cihaz verilerini, cihaz türüyle fiyatı ayıran virgüle göre daha da bölerek türü ve cihaz fiyatını ayıralım.\n\n1. `device_list` üzerinde yinelemek için bir `for` döngüsü oluştur. Yineleme değişkeni olarak `device` kullan.\n2. `device_info_list` adında bir değişken oluştur ve `device` değişkenini `,` ile bölerek elde edilen değeri bu değişkene ata.\n3. `name` adında bir değişken oluştur ve `device_info_list` içindeki ilk değeri bu değişkenin değeri olarak ayarla.\n4. `price` adında bir değişken oluştur. `device_info_list` içindeki ikinci değeri tamsayıya dönüştür, ardından bu değeri `price` değişkeninin değeri olarak ayarla.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "data = \"14inch l@ptop,699|16inch l@ptop,999|sm@rtphone,1099|t@blet,499|g@ming pc,1999\"\ndevice_list = data.split(\"|\")\nformatted_list = []",
+                  "solvedContent": "data = \"14inch l@ptop,699|16inch l@ptop,999|sm@rtphone,1099|t@blet,499|g@ming pc,1999\"\ndevice_list = data.split(\"|\")\nformatted_list = []\nfor device in device_list:\n device_info_list = device.split(\",\")\n name = device_info_list[0]\n price = int(device_info_list[1])"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "Remember that you can access the values in a list using the index. Index starts from 0.\n\nRemember that you can convert a string to an integer using `int()`. The syntax is `int(<string>)`."
+                }
+              ]
+            }
+          },
+          {
+            "title": "Adjust Prices",
+            "id": 124664,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Enflasyon nedeniyle mağaza sahibi, fiyatları güncellememizi ve her cihazın fiyatına %10 artış eklememizi istiyor. Muhasebeyi kolaylaştırmak için sahibi, yeni fiyatı en yakın dolara **aşağı doğru** yuvarlamaya karar veriyor. Cihaz türünü ve fiyatını zaten ayrı ayrı çıkardığımıza göre, verileri biçimlendirmeden önce artışı uygulayalım.\n\n1. Döngünün içinde bir `new_price` değişkeni oluştur.\n2. `price` değerini %10 artır ve `new_price` değişkeninin değeri olarak ayarlamadan önce tam sayıya dönüştür.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "data = \"14inch l@ptop,699|16inch l@ptop,999|sm@rtphone,1099|t@blet,499|g@ming pc,1999\"\r\ndevice_list = data.split(\"|\")\r\nformatted_list = []\r\nfor device in device_list:\r\n device_info_list = device.split(\",\")\r\n name = device_info_list[0]\r\n price = int(device_info_list[1])",
+                  "solvedContent": "data = \"14inch l@ptop,699|16inch l@ptop,999|sm@rtphone,1099|t@blet,499|g@ming pc,1999\"\r\ndevice_list = data.split(\"|\")\r\nformatted_list = []\r\nfor device in device_list:\r\n device_info_list = device.split(\",\")\r\n name = device_info_list[0]\r\n price = int(device_info_list[1])\r\n new_price = int(price * 1.1);"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "You can increase a float by 10% by multiplying it by `1.1`."
+                }
+              ]
+            }
+          },
+          {
+            "title": "Format Information",
+            "id": 124665,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Harika! Dizeyi ihtiyacımız olan ayrı parçalara ayırdık. Bilgileri `formatted_list` değişkenine eklemeden önce biçimlendirelim.\n\n1. Döngünün içinde bir `formatted_device` değişkeni oluştur ve aşağıdaki f-string'i değeri olarak ata.\n```\nf\"Device Name: {name}, Device Price: ${price}\"\n```",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "data = \"14inch l@ptop,699|16inch l@ptop,999|sm@rtphone,1099|t@blet,499|g@ming pc,1999\"\r\ndevice_list = data.split(\"|\")\r\nformatted_list = []\r\nfor device in device_list:\r\n device_info_list = device.split(\",\")\r\n name = device_info_list[0]\r\n price = int(device_info_list[1])\r\n new_price = int(price * 1.1);",
+                  "solvedContent": "data = \"14inch l@ptop,699|16inch l@ptop,999|sm@rtphone,1099|t@blet,499|g@ming pc,1999\"\r\ndevice_list = data.split(\"|\")\r\nformatted_list = []\r\nfor device in device_list:\r\n device_info_list = device.split(\",\")\r\n name = device_info_list[0]\r\n price = int(device_info_list[1])\r\n new_price = int(price * 1.1);\r\n formatted_device = f\"Device Name: {name}, Device Price: ${price}\""
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Fix Typo",
+            "id": 124667,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Mağaza sahibi, verileri tabloya dökerken klavyesinin bozulduğunu az önce bildirdi. Mağaza sahibi, `data` değişkenindeki tüm dizelerde `a` yerine `@` yazmış.\n\n1. Döngünün içinde `corrected_formatted_device` değişkenini oluştur. `formatted_device` üzerinde `replace()` metodunu kullanarak `@` işaretini `a` ile değiştir ve sonucu `corrected_formatted_device` değişkeninin değeri olarak ayarla.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "data = \"14inch l@ptop,699|16inch l@ptop,999|sm@rtphone,1099|t@blet,499|g@ming pc,1999\"\r\ndevice_list = data.split(\"|\")\r\nformatted_list = []\r\nfor device in device_list:\r\n device_info_list = device.split(\",\")\r\n name = device_info_list[0]\r\n price = int(device_info_list[1])\r\n new_price = int(price * 1.1);\r\n formatted_device = f\"Device Name: {name}, Device Price: ${price}\"",
+                  "solvedContent": "data = \"14inch l@ptop,699|16inch l@ptop,999|sm@rtphone,1099|t@blet,499|g@ming pc,1999\"\r\ndevice_list = data.split(\"|\")\r\nformatted_list = []\r\nfor device in device_list:\r\n device_info_list = device.split(\",\")\r\n name = device_info_list[0]\r\n price = int(device_info_list[1])\r\n new_price = int(price * 1.1);\r\n formatted_device = f\"Device Name: {name}, Device Price: ${price}\"\r\n corrected_formatted_device = formatted_device.replace(\"@\",\"a\")"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "Remember that we can use `replace()` to replace all occurrences of a specific text within the string. The syntax is <string>.replace(<text to be replaced>, <replacement text>)`."
+                }
+              ]
+            }
+          },
+          {
+            "title": "Append to List",
+            "id": 124666,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Harika iş! Artık düzeltilmiş veriler hazır ve `formatted_list` değişkenini bu verilerle doldurabiliriz.\n\n1. `for` döngüsünün içinde `corrected_formatted_device` değerini `formatted_list` değişkenine ekle.\n2. `for` döngüsünün dışında `formatted_list` değişkenini yazdır.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "data = \"14inch l@ptop,699|16inch l@ptop,999|sm@rtphone,1099|t@blet,499|g@ming pc,1999\"\r\ndevice_list = data.split(\"|\")\r\nformatted_list = []\r\nfor device in device_list:\r\n device_info_list = device.split(\",\")\r\n name = device_info_list[0]\r\n price = int(device_info_list[1])\r\n new_price = int(price * 1.1);\r\n formatted_device = f\"Device Name: {name}, Device Price: ${price}\"\r\n corrected_formatted_device = formatted_device.replace(\"@\",\"a\")",
+                  "solvedContent": "data = \"14inch l@ptop,699|16inch l@ptop,999|sm@rtphone,1099|t@blet,499|g@ming pc,1999\"\r\ndevice_list = data.split(\"|\")\r\nformatted_list = []\r\nfor device in device_list:\r\n device_info_list = device.split(\",\")\r\n name = device_info_list[0]\r\n price = int(device_info_list[1])\r\n new_price = int(price * 1.1);\r\n formatted_device = f\"Device Name: {name}, Device Price: ${price}\"\r\n corrected_formatted_device = formatted_device.replace(\"@\",\"a\")\r\n formatted_list.append(corrected_formatted_device)\r\nprint(formatted_list)"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "Remember you can append values to a list using `append()`. The syntax is `<list>.append(<value>)`."
+                }
+              ]
+            }
+          },
+          {
+            "title": "Overview",
+            "id": 124368,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Tebrikler! `|` ile ayrılmış ve okunması çok zor olan bir bilgi dizesini, anlamlı bilgilerden oluşan çok daha düzenli bir listeye dönüştürdün.\n\nBurada herhangi bir test çalıştırmıyoruz; bu yüzden kodu keşfetmekten ve kodla oynamaktan çekinme!\n\nBelki `data` değişkenine garanti süresi veya boyut gibi daha fazla bilgi ekleyebilir ve programı, bu yeni bilgileri de cihazın bir parçası olarak biçimlendirip yazdıracak şekilde değiştirebilirsin.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "data = \"14inch l@ptop,699|16inch l@ptop,999|sm@rtphone,1099|t@blet,499|g@ming pc,1999\"\ndevice_list = data.split(\"|\")\nformatted_list = []\nfor device in device_list:\n device_info_list = device.split(\",\")\n name = device_info_list[0]\n price = int(device_info_list[1])\n new_price = int(price * 1.1);\n formatted_device = f\"Device Name: {name}, Device Price: ${price}\"\n corrected_formatted_device = formatted_device.replace(\"@\",\"a\")\n formatted_list.append(corrected_formatted_device)\nprint(formatted_list)",
+                  "solvedContent": null
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

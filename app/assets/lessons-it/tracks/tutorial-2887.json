@@ -1,0 +1,333 @@
+{
+  "tutorial": {
+    "id": 2887,
+    "version": 4,
+    "type": "guidedProject",
+    "isNew": false,
+    "codeLanguage": "node",
+    "title": "Gestore di libri - Parte 1",
+    "descriptionContent": "Crea un backend che tenga traccia di tutti i libri che leggi. Con l'aiuto di un database, creerai la libreria digitale perfetta.",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": "tutorial-2887-icon-banner.svg",
+    "chapters": [
+      {
+        "id": 14978,
+        "title": "Gestore di libri - Parte 1",
+        "type": "practiceLevel3",
+        "lessons": [
+          {
+            "title": "Lesson #7",
+            "id": 132068,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Benvenuto nel progetto **Book Keeper**. Costruiremo un'app per salvare i libri che leggiamo e permetterci di aggiungere note.\n\nInizieremo configurando il server Express.\n\n1. Dichiara una variabile `express` e richiedi il modulo `express`.\n2. Dichiara una variabile `app` e inizializzala chiamando la funzione `express`.\n3. Dichiara una variabile `port` e assegnale il valore `3000`.\n4. Usa la funzione `listen` su `app` per fare in modo che l'app ascolti sulla porta specificata dalla variabile `port`.\n5. Registra un messaggio nella console all'interno della callback della funzione `listen`, così sapremo che il nostro server è in esecuzione correttamente.",
+              "preselectedFileIndex": 1,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "database.js",
+                  "codeLanguage": "javascript",
+                  "content": "",
+                  "solvedContent": null
+                },
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "",
+                  "solvedContent": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});"
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/books",
+                "body": null
+              }
+            }
+          },
+          {
+            "title": "Lesson #6",
+            "id": 132067,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Ora aggiungeremo del middleware per analizzare i body JSON nelle richieste in arrivo.\n\n1. Chiama `app.use` e passa `express.json()` per analizzare i body di tutte le richieste in arrivo e inserire i dati analizzati in `req.body`.",
+              "preselectedFileIndex": 1,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "database.js",
+                  "codeLanguage": "javascript",
+                  "content": "",
+                  "solvedContent": null
+                },
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});",
+                  "solvedContent": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.use(express.json());\n\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});"
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/books",
+                "body": null
+              }
+            }
+          },
+          {
+            "title": "Lesson #1",
+            "id": 132062,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Per lavorare con i dati, configureremo il nostro database SQLite.\n\n1. In `database.js`, importa il modulo `better-sqlite3` usando `require(\"better-sqlite3'\")`. Assegna l'oggetto risultante a una costante denominata `Database`.\n2. Crea un nuovo database SQLite denominato `/tmp/quiz.db` invocando `new Database(\"/tmp/books.db\")`. Salva l'oggetto del database in una costante denominata `db`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "database.js",
+                  "codeLanguage": "javascript",
+                  "content": "",
+                  "solvedContent": "const Database = require('better-sqlite3');\nconst db = new Database('/tmp/books.db');"
+                },
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.use(express.json());\n\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});",
+                  "solvedContent": null
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/books",
+                "body": null
+              }
+            }
+          },
+          {
+            "title": "Lesson #2",
+            "id": 132063,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Ora creiamo una tabella in cui memorizzare i nostri libri.\n\n1. Usa il metodo `db.exec` per eseguire il comando SQL di creazione della tabella.\n2. Crea una tabella `questions` solo se non esiste già. La tabella `books` dovrebbe avere le seguenti colonne:\n- `id`: un intero, chiave primaria, incrementato automaticamente\n- `title`: una stringa, non nullo\n- `author`: una stringa, non nullo\n- `year`: un intero",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "database.js",
+                  "codeLanguage": "javascript",
+                  "content": "const Database = require('better-sqlite3');\nconst db = new Database('/tmp/books.db');",
+                  "solvedContent": "const Database = require('better-sqlite3');\nconst db = new Database('/tmp/books.db');\n\ndb.exec(`\n    CREATE TABLE IF NOT EXISTS books (\n      id INTEGER PRIMARY KEY AUTOINCREMENT,\n      title TEXT NOT NULL,\n      author TEXT NOT NULL,\n      year INTEGER\n    )\n`);"
+                },
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.use(express.json());\n\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});",
+                  "solvedContent": null
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/books",
+                "body": null
+              }
+            }
+          },
+          {
+            "title": "Lesson #3",
+            "id": 132064,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Aggiungiamo alcune voci di esempio alla tabella dei libri.\n\n1. Usando `db.exec`, aggiungi almeno tre libri al database.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "database.js",
+                  "codeLanguage": "javascript",
+                  "content": "const Database = require('better-sqlite3');\nconst db = new Database('/tmp/books.db');\n\ndb.exec(`\n    CREATE TABLE IF NOT EXISTS books (\n      id INTEGER PRIMARY KEY AUTOINCREMENT,\n      title TEXT NOT NULL,\n      author TEXT NOT NULL,\n      year INTEGER\n    )\n`);\n",
+                  "solvedContent": "const Database = require('better-sqlite3');\nconst db = new Database('/tmp/books.db');\n\ndb.exec(`\n    CREATE TABLE IF NOT EXISTS books (\n      id INTEGER PRIMARY KEY AUTOINCREMENT,\n      title TEXT NOT NULL,\n      author TEXT NOT NULL,\n      year INTEGER\n    )\n`);\n\ndb.exec(`\n  INSERT INTO books (title, author, year)\n    VALUES \n    ('1984', 'George Orwell', 1949),\n    ('Brave New World', 'Aldous Huxley', 1932),\n    ('Fahrenheit 451', 'Ray Bradbury', 1953)\n`);"
+                },
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.use(express.json());\n\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});",
+                  "solvedContent": null
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/books",
+                "body": null
+              }
+            }
+          },
+          {
+            "title": "Lesson #4",
+            "id": 132065,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Infine, assicuriamoci di poter usare la connessione al database in altri file.\n\n1. Usa `module.exports` per esportare `db` alla fine del file.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "database.js",
+                  "codeLanguage": "javascript",
+                  "content": "const Database = require('better-sqlite3');\nconst db = new Database('/tmp/books.db');\n\ndb.exec(`\n    CREATE TABLE IF NOT EXISTS books (\n      id INTEGER PRIMARY KEY AUTOINCREMENT,\n      title TEXT NOT NULL,\n      author TEXT NOT NULL,\n      year INTEGER\n    )\n`);\n\ndb.exec(`\n  INSERT INTO books (title, author, year)\n    VALUES \n    ('1984', 'George Orwell', 1949),\n    ('Brave New World', 'Aldous Huxley', 1932),\n    ('Fahrenheit 451', 'Ray Bradbury', 1953)\n`);",
+                  "solvedContent": "const Database = require('better-sqlite3');\nconst db = new Database('/tmp/books.db');\n\ndb.exec(`\n    CREATE TABLE IF NOT EXISTS books (\n      id INTEGER PRIMARY KEY AUTOINCREMENT,\n      title TEXT NOT NULL,\n      author TEXT NOT NULL,\n      year INTEGER\n    )\n`);\n\ndb.exec(`\n  INSERT INTO books (title, author, year)\n    VALUES \n    ('1984', 'George Orwell', 1949),\n    ('Brave New World', 'Aldous Huxley', 1932),\n    ('Fahrenheit 451', 'Ray Bradbury', 1953)\n`);\n\nmodule.exports = db;"
+                },
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.use(express.json());\n\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});",
+                  "solvedContent": null
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/books",
+                "body": null
+              }
+            }
+          },
+          {
+            "title": "Lesson #5",
+            "id": 132066,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Usiamo il database che abbiamo creato nella nostra app.\n\n1. Importa l'oggetto `db` che abbiamo esportato in `database.js` all'inizio del file `app.js`. Salva il database importato in una variabile chiamata `db`.",
+              "preselectedFileIndex": 1,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "database.js",
+                  "codeLanguage": "javascript",
+                  "content": "const Database = require('better-sqlite3');\nconst db = new Database('/tmp/books.db');\n\ndb.exec(`\n    CREATE TABLE IF NOT EXISTS books (\n      id INTEGER PRIMARY KEY AUTOINCREMENT,\n      title TEXT NOT NULL,\n      author TEXT NOT NULL,\n      year INTEGER\n    )\n`);\n\ndb.exec(`\n  INSERT INTO books (title, author, year)\n    VALUES \n    ('1984', 'George Orwell', 1949),\n    ('Brave New World', 'Aldous Huxley', 1932),\n    ('Fahrenheit 451', 'Ray Bradbury', 1953)\n`);\n\nmodule.exports = db;",
+                  "solvedContent": null
+                },
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.use(express.json());\n\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});",
+                  "solvedContent": "const express = require('express');\nconst db = require('./database');\n\nconst app = express();\nconst port = 3000;\n\napp.use(express.json());\n\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});"
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/books",
+                "body": null
+              }
+            }
+          },
+          {
+            "title": "Lesson #8",
+            "id": 132069,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Ora creiamo un endpoint per ottenere tutti i libri.\n\n1. Usa `app.get` per creare una nuova route GET per il percorso `/books`.\n2. All'interno del gestore della route, usa `db`, che hai importato, per selezionare tutti i record dalla tabella `books`.\n3. Rispondi con un oggetto JSON contenente i libri e imposta il codice di stato su 200.",
+              "preselectedFileIndex": 1,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "database.js",
+                  "codeLanguage": "javascript",
+                  "content": "const Database = require('better-sqlite3');\nconst db = new Database('/tmp/books.db');\n\ndb.exec(`\n    CREATE TABLE IF NOT EXISTS books (\n      id INTEGER PRIMARY KEY AUTOINCREMENT,\n      title TEXT NOT NULL,\n      author TEXT NOT NULL,\n      year INTEGER\n    )\n`);\n\ndb.exec(`\n  INSERT INTO books (title, author, year)\n    VALUES \n    ('1984', 'George Orwell', 1949),\n    ('Brave New World', 'Aldous Huxley', 1932),\n    ('Fahrenheit 451', 'Ray Bradbury', 1953)\n`);\n\nmodule.exports = db;",
+                  "solvedContent": null
+                },
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require('express');\nconst db = require('./database');\n\nconst app = express();\nconst port = 3000;\n\napp.use(express.json());\n\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});",
+                  "solvedContent": "const express = require('express');\nconst db = require('./database');\n\nconst app = express();\nconst port = 3000;\n\napp.use(express.json());\n\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});\n\napp.get('/books', (req, res) => {\n  const rows = db.prepare('SELECT * FROM books').all();\n  res.status(200).json({\n    books: rows\n  });\n});"
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/books",
+                "body": null
+              }
+            }
+          },
+          {
+            "title": "Lesson #9",
+            "id": 132070,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Ora creiamo un endpoint per ottenere un singolo libro.\n\n1. Usa `app.get` per creare una nuova route GET per il percorso `/books/:id`.\n2. All'interno del gestore della route, destruttura `id` da `req.params`.\n3. Usa `db` importato per selezionare un record dalla tabella `books` con un `id` corrispondente.\n4. Rispondi con un oggetto JSON contenente il libro e imposta il codice di stato su 200.",
+              "preselectedFileIndex": 1,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "database.js",
+                  "codeLanguage": "javascript",
+                  "content": "const Database = require('better-sqlite3');\nconst db = new Database('/tmp/books.db');\n\ndb.exec(`\n    CREATE TABLE IF NOT EXISTS books (\n      id INTEGER PRIMARY KEY AUTOINCREMENT,\n      title TEXT NOT NULL,\n      author TEXT NOT NULL,\n      year INTEGER\n    )\n`);\n\ndb.exec(`\n  INSERT INTO books (title, author, year)\n    VALUES \n    ('1984', 'George Orwell', 1949),\n    ('Brave New World', 'Aldous Huxley', 1932),\n    ('Fahrenheit 451', 'Ray Bradbury', 1953)\n`);\n\nmodule.exports = db;",
+                  "solvedContent": null
+                },
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require('express');\nconst db = require('./database');\n\nconst app = express();\nconst port = 3000;\n\napp.use(express.json());\n\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});\n\napp.get('/books', (req, res) => {\n  const rows = db.prepare('SELECT * FROM books').all();\n  res.status(200).json({\n    books: rows\n  });\n});",
+                  "solvedContent": "const express = require('express');\nconst db = require('./database');\n\nconst app = express();\nconst port = 3000;\n\napp.use(express.json());\n\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});\n\napp.get('/books', (req, res) => {\n  const rows = db.prepare('SELECT * FROM books').all();\n  res.status(200).json({\n    books: rows\n  });\n});\n\napp.get('/books/:id', (req, res) => {\n  const { id } = req.params;\n  const book = db.prepare('SELECT * FROM books WHERE id = ?').get(id);\n  \n  res.status(200).json({\n    book: book\n  });\n});\n"
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/books/1",
+                "body": null
+              }
+            }
+          },
+          {
+            "title": "Lesson #10",
+            "id": 132071,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Ora creiamo un endpoint per aggiungere un nuovo libro.\n\n1. Usa `app.post` per creare una nuova route POST per il percorso `/books`.\n2. All'interno del gestore della route, destruttura `title`, `author` e `year` da `req.body`.\n3. Inserisci una nuova riga nella tabella books usando `title`, `author` e `year` forniti.\n4. Rispondi con lo stato 201 e un oggetto JSON contenente la chiave `\"bookId\"`, che contiene l'id del nuovo libro.",
+              "preselectedFileIndex": 1,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "database.js",
+                  "codeLanguage": "javascript",
+                  "content": "const Database = require('better-sqlite3');\nconst db = new Database('/tmp/books.db');\n\ndb.exec(`\n    CREATE TABLE IF NOT EXISTS books (\n      id INTEGER PRIMARY KEY AUTOINCREMENT,\n      title TEXT NOT NULL,\n      author TEXT NOT NULL,\n      year INTEGER\n    )\n`);\n\ndb.exec(`\n  INSERT INTO books (title, author, year)\n    VALUES \n    ('1984', 'George Orwell', 1949),\n    ('Brave New World', 'Aldous Huxley', 1932),\n    ('Fahrenheit 451', 'Ray Bradbury', 1953)\n`);\n\nmodule.exports = db;",
+                  "solvedContent": null
+                },
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require('express');\nconst db = require('./database');\n\nconst app = express();\nconst port = 3000;\n\napp.use(express.json());\n\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});\n\napp.get('/books', (req, res) => {\n  const rows = db.prepare('SELECT * FROM books').all();\n  res.status(200).json({\n    books: rows\n  });\n});\n\napp.get('/books/:id', (req, res) => {\n  const { id } = req.params;\n  const book = db.prepare('SELECT * FROM books WHERE id = ?').get(id);\n  \n  res.status(200).json({\n    book: book\n  });\n});\n",
+                  "solvedContent": "const express = require('express');\nconst db = require('./database');\n\nconst app = express();\nconst port = 3000;\n\napp.use(express.json());\n\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});\n\napp.get('/books', (req, res) => {\n  const rows = db.prepare('SELECT * FROM books').all();\n  res.status(200).json({\n    books: rows\n  });\n});\n\napp.get('/books/:id', (req, res) => {\n  const { id } = req.params;\n  const book = db.prepare('SELECT * FROM books WHERE id = ?').get(id);\n  \n  res.status(200).json({\n    book: book\n  });\n});\n\napp.post('/books', (req, res) => {\n  const { title, author, year } = req.body;\n\n  const insert = db.prepare('INSERT INTO books (title, author, year) VALUES (?, ?, ?)');\n  const result = insert.run(title, author, year);\n\n  res.status(201).json({\n    bookId: result.lastInsertRowid\n  });\n});"
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "POST",
+                "path": "/books",
+                "body": "{\n  \"title\": \"My Book\",\n  \"author\": \"Me\",\n  \"year\": 2024\n}"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

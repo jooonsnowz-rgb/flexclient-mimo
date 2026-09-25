@@ -1,0 +1,198 @@
+{
+  "tutorial": {
+    "id": 2616,
+    "version": 6,
+    "type": "guidedProject",
+    "isNew": false,
+    "codeLanguage": "html",
+    "title": "Rick i Morty - część 2",
+    "descriptionContent": "Czas połączyć się z kosmosem! Teraz przechodzimy od lokalnego pliku JSON do pobierania danych w czasie rzeczywistym za pośrednictwem interfejsu API. Wykorzystaj moc łączności internetowej, aby pobierać i prezentować dynamiczne informacje ze świata Ricka i Morty'ego.",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": "tutorial-2616-icon-banner.svg",
+    "chapters": [
+      {
+        "id": 14467,
+        "title": "Ucz się",
+        "type": "practiceLevel3",
+        "lessons": [
+          {
+            "title": "Lesson #1",
+            "id": 128998,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Witaj ponownie w projekcie **Rick and Morty**. W drugiej części pobierzemy dane z serwera zamiast tworzyć je samodzielnie.\n\n1. Aby przejść do pobierania danych z API, zacznijmy od usunięcia statycznego obiektu danych z pliku script.js.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n\n<head>\n\t<title>Rick and Morty Character Compass</title>\n\t<link rel=\"stylesheet\" href=\"style.css\">\n</head>\n\n<body>\n\n\t<h1>Rick and Morty Character Compass</h1>\n\t<div id=\"characters-container\"></div>\n\n\t<script src=\"script.js\"></script>\n</body>\n\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n    font-family: Arial, sans-serif;\n    background-color: #f4f4f4;\n    padding: 20px;\n    text-align: center;\n}\n\n#characters-container {\n    display: flex;\n    justify-content: space-around;\n    flex-wrap: wrap;\n}\n\n.card {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: center;\n    padding: 20px;\n    margin: 12px;\n    border-radius: 4px;\n    background-color: white;\n    width: 240px;\n    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);\n}\n\nimg.character-image {\n    width: 100px;\n    height: 100px;\n    border-radius: 50%;\n    margin-bottom: 15px;\n}\n\n.attribute {\n    font-weight: bold;\n    margin-right: 5px;\n}\n\n.character-detail {\n    margin: 4px;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "const data = {\n  \"characters\": [\n    {\n      \"name\": \"Rick Sanchez\",\n      \"status\": \"Alive\",\n      \"species\": \"Human\",\n      \"image\": \"https://rickandmortyapi.com/api/character/avatar/1.jpeg\"\n    },\n    {\n      \"name\": \"Morty Smith\",\n      \"status\": \"Alive\",\n      \"species\": \"Human\",\n      \"image\": \"https://rickandmortyapi.com/api/character/avatar/2.jpeg\"\n    },\n    {\n      \"name\": \"Summer Smith\",\n      \"status\": \"Alive\",\n      \"species\": \"Human\",\n      \"image\": \"https://rickandmortyapi.com/api/character/avatar/3.jpeg\"\n    }\n  ]\n};\n\nconst charactersContainer = document.getElementById(\"characters-container\");\n\ndata.characters.forEach(character => {\n  const card = document.createElement(\"div\");\n  card.className = \"card\";\n  card.innerHTML = `\n            <img src=\"${character.image}\" alt=\"${character.name}\" class=\"character-image\">\n            <p class=\"character-detail\"><span class=\"attribute\">Name:</span> ${character.name}</p>\n            <p class=\"character-detail\"><span class=\"attribute\">Status:</span> ${character.status}</p>\n            <p class=\"character-detail\"><span class=\"attribute\">Species:</span> ${character.species}</p>\n        `;\n  charactersContainer.appendChild(card);\n});",
+                  "solvedContent": "\nconst charactersContainer = document.getElementById(\"characters-container\");\n\ndata.characters.forEach(character => {\n  const card = document.createElement(\"div\");\n  card.className = \"card\";\n  card.innerHTML = `\n            <img src=\"${character.image}\" alt=\"${character.name}\" class=\"character-image\">\n            <p class=\"character-detail\"><span class=\"attribute\">Name:</span> ${character.name}</p>\n            <p class=\"character-detail\"><span class=\"attribute\">Status:</span> ${character.status}</p>\n            <p class=\"character-detail\"><span class=\"attribute\">Species:</span> ${character.species}</p>\n        `;\n  charactersContainer.appendChild(card);\n});"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #2",
+            "id": 128999,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Następnie użyjesz funkcji `fetch`, aby pobrać dane postaci z interfejsu API Rick and Morty. `fetch` to wbudowana funkcja, która pozwala wczytywać dane z serwera.\n\n1. Poniżej definicji zmiennej `charactersContainer` wywołaj funkcję `fetch` i przekaż jej adres URL `\"https://rickandmortyapi.com/api/character\"`.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n\n<head>\n\t<title>Rick and Morty Character Compass</title>\n\t<link rel=\"stylesheet\" href=\"style.css\">\n</head>\n\n<body>\n\n\t<h1>Rick and Morty Character Compass</h1>\n\t<div id=\"characters-container\"></div>\n\n\t<script src=\"script.js\"></script>\n</body>\n\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n    font-family: Arial, sans-serif;\n    background-color: #f4f4f4;\n    padding: 20px;\n    text-align: center;\n}\n\n#characters-container {\n    display: flex;\n    justify-content: space-around;\n    flex-wrap: wrap;\n}\n\n.card {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: center;\n    padding: 20px;\n    margin: 12px;\n    border-radius: 4px;\n    background-color: white;\n    width: 240px;\n    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);\n}\n\nimg.character-image {\n    width: 100px;\n    height: 100px;\n    border-radius: 50%;\n    margin-bottom: 15px;\n}\n\n.attribute {\n    font-weight: bold;\n    margin-right: 5px;\n}\n\n.character-detail {\n    margin: 4px;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "const charactersContainer = document.getElementById(\"characters-container\");\n\ndata.characters.forEach(character => {\n  const card = document.createElement(\"div\");\n  card.className = \"card\";\n  card.innerHTML = `\n            <img src=\"${character.image}\" alt=\"${character.name}\" class=\"character-image\">\n            <p class=\"character-detail\"><span class=\"attribute\">Name:</span> ${character.name}</p>\n            <p class=\"character-detail\"><span class=\"attribute\">Status:</span> ${character.status}</p>\n            <p class=\"character-detail\"><span class=\"attribute\">Species:</span> ${character.species}</p>\n        `;\n  charactersContainer.appendChild(card);\n});",
+                  "solvedContent": "const charactersContainer = document.getElementById(\"characters-container\");\n\nfetch('https://rickandmortyapi.com/api/character')\n\ndata.characters.forEach(character => {\n  const card = document.createElement(\"div\");\n  card.className = \"card\";\n  card.innerHTML = `\n            <img src=\"${character.image}\" alt=\"${character.name}\" class=\"character-image\">\n            <p class=\"character-detail\"><span class=\"attribute\">Name:</span> ${character.name}</p>\n            <p class=\"character-detail\"><span class=\"attribute\">Status:</span> ${character.status}</p>\n            <p class=\"character-detail\"><span class=\"attribute\">Species:</span> ${character.species}</p>\n        `;\n  charactersContainer.appendChild(card);\n});"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #3",
+            "id": 129000,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Po wysłaniu żądania za pomocą fetch otrzymasz odpowiedź. Ponieważ chcemy uzyskać z odpowiedzi dane JSON, używamy `.json()`, które odczytuje treść odpowiedzi i zwraca obietnicę rozwiązującą się sparsowaną zawartością JSON.\n\n1. Dodaj `.then(response => response.json())` bezpośrednio po funkcji `fetch`.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n\n<head>\n\t<title>Rick and Morty Character Compass</title>\n\t<link rel=\"stylesheet\" href=\"style.css\">\n</head>\n\n<body>\n\n\t<h1>Rick and Morty Character Compass</h1>\n\t<div id=\"characters-container\"></div>\n\n\t<script src=\"script.js\"></script>\n</body>\n\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n    font-family: Arial, sans-serif;\n    background-color: #f4f4f4;\n    padding: 20px;\n    text-align: center;\n}\n\n#characters-container {\n    display: flex;\n    justify-content: space-around;\n    flex-wrap: wrap;\n}\n\n.card {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: center;\n    padding: 20px;\n    margin: 12px;\n    border-radius: 4px;\n    background-color: white;\n    width: 240px;\n    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);\n}\n\nimg.character-image {\n    width: 100px;\n    height: 100px;\n    border-radius: 50%;\n    margin-bottom: 15px;\n}\n\n.attribute {\n    font-weight: bold;\n    margin-right: 5px;\n}\n\n.character-detail {\n    margin: 4px;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "const charactersContainer = document.getElementById(\"characters-container\");\n\nfetch('https://rickandmortyapi.com/api/character')\n\ndata.characters.forEach(character => {\n  const card = document.createElement(\"div\");\n  card.className = \"card\";\n  card.innerHTML = `\n            <img src=\"${character.image}\" alt=\"${character.name}\" class=\"character-image\">\n            <p class=\"character-detail\"><span class=\"attribute\">Name:</span> ${character.name}</p>\n            <p class=\"character-detail\"><span class=\"attribute\">Status:</span> ${character.status}</p>\n            <p class=\"character-detail\"><span class=\"attribute\">Species:</span> ${character.species}</p>\n        `;\n  charactersContainer.appendChild(card);\n});",
+                  "solvedContent": "const charactersContainer = document.getElementById(\"characters-container\");\n\nfetch('https://rickandmortyapi.com/api/character')\n.then(response => response.json())\n\ndata.characters.forEach(character => {\n  const card = document.createElement(\"div\");\n  card.className = \"card\";\n  card.innerHTML = `\n            <img src=\"${character.image}\" alt=\"${character.name}\" class=\"character-image\">\n            <p class=\"character-detail\"><span class=\"attribute\">Name:</span> ${character.name}</p>\n            <p class=\"character-detail\"><span class=\"attribute\">Status:</span> ${character.status}</p>\n            <p class=\"character-detail\"><span class=\"attribute\">Species:</span> ${character.species}</p>\n        `;\n  charactersContainer.appendChild(card);\n});"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "What am I supposed to do?",
+                  "content": "This is how your code should look:\n\n```JavaScript\nfetch('https://rickandmortyapi.com/api/character')\n.then(response => response.json())\n```"
+                }
+              ]
+            }
+          },
+          {
+            "title": "Lesson #4",
+            "id": 129001,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Po przekonwertowaniu odpowiedzi `fetch` do formatu `JSON` następnym krokiem jest przygotowanie się do obsługi tych danych. Możesz pracować bezpośrednio z przeanalizowanymi danymi, łącząc kolejną metodę `.then() `. W kolejnym kroku skonfigurujesz strukturę do obsługi tych danych.\n\n1. Dodaj `.then(data => { });` bezpośrednio po ostatnim wierszu dodanego kodu.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n\n<head>\n\t<title>Rick and Morty Character Compass</title>\n\t<link rel=\"stylesheet\" href=\"style.css\">\n</head>\n\n<body>\n\n\t<h1>Rick and Morty Character Compass</h1>\n\t<div id=\"characters-container\"></div>\n\n\t<script src=\"script.js\"></script>\n</body>\n\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n    font-family: Arial, sans-serif;\n    background-color: #f4f4f4;\n    padding: 20px;\n    text-align: center;\n}\n\n#characters-container {\n    display: flex;\n    justify-content: space-around;\n    flex-wrap: wrap;\n}\n\n.card {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: center;\n    padding: 20px;\n    margin: 12px;\n    border-radius: 4px;\n    background-color: white;\n    width: 240px;\n    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);\n}\n\nimg.character-image {\n    width: 100px;\n    height: 100px;\n    border-radius: 50%;\n    margin-bottom: 15px;\n}\n\n.attribute {\n    font-weight: bold;\n    margin-right: 5px;\n}\n\n.character-detail {\n    margin: 4px;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "const charactersContainer = document.getElementById(\"characters-container\");\n\nfetch('https://rickandmortyapi.com/api/character')\n.then(response => response.json())\ndata.characters.forEach(character => {\n  const card = document.createElement(\"div\");\n  card.className = \"card\";\n  card.innerHTML = `\n            <img src=\"${character.image}\" alt=\"${character.name}\" class=\"character-image\">\n            <p class=\"character-detail\"><span class=\"attribute\">Name:</span> ${character.name}</p>\n            <p class=\"character-detail\"><span class=\"attribute\">Status:</span> ${character.status}</p>\n            <p class=\"character-detail\"><span class=\"attribute\">Species:</span> ${character.species}</p>\n        `;\n  charactersContainer.appendChild(card);\n});",
+                  "solvedContent": "const charactersContainer = document.getElementById(\"characters-container\");\n\nfetch('https://rickandmortyapi.com/api/character')\n.then(response => response.json())\n.then(data => {\n\n});\n\ndata.characters.forEach(character => {\n  const card = document.createElement(\"div\");\n  card.className = \"card\";\n  card.innerHTML = `\n            <img src=\"${character.image}\" alt=\"${character.name}\" class=\"character-image\">\n            <p class=\"character-detail\"><span class=\"attribute\">Name:</span> ${character.name}</p>\n            <p class=\"character-detail\"><span class=\"attribute\">Status:</span> ${character.status}</p>\n            <p class=\"character-detail\"><span class=\"attribute\">Species:</span> ${character.species}</p>\n        `;\n  charactersContainer.appendChild(card);\n});"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "What am I supposed to do?",
+                  "content": "This is how your code should look:\n\n```JavaScript\nfetch('https://rickandmortyapi.com/api/character')\n.then(response => response.json())\n.then(data => { });\n```"
+                }
+              ]
+            }
+          },
+          {
+            "title": "Lesson #5",
+            "id": 129002,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Mając pobrane dane w użytecznym formacie, przeiteruj po wynikach. Nie musimy jednak pisać tego kodu ponownie. Kod już istnieje, musimy go tylko przenieść.\n\n1. Przenieś kod, w którym iterujesz po `data`, do ostatnio dodanej funkcji strzałkowej, aby wyświetlić wczytane dane.\n2. Po przeniesieniu kodu zmień `data.characters.forEach` na `data.results.forEach`, ponieważ dane zwracane przez serwer używają `results` zamiast `characters`.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n\n<head>\n\t<title>Rick and Morty Character Compass</title>\n\t<link rel=\"stylesheet\" href=\"style.css\">\n</head>\n\n<body>\n\n\t<h1>Rick and Morty Character Compass</h1>\n\t<div id=\"characters-container\"></div>\n\n\t<script src=\"script.js\"></script>\n</body>\n\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n    font-family: Arial, sans-serif;\n    background-color: #f4f4f4;\n    padding: 20px;\n    text-align: center;\n}\n\n#characters-container {\n    display: flex;\n    justify-content: space-around;\n    flex-wrap: wrap;\n}\n\n.card {\n    display: flex;\n    flex-direction: column;\n    align-items: center;\n    justify-content: center;\n    padding: 20px;\n    margin: 12px;\n    border-radius: 4px;\n    background-color: white;\n    width: 240px;\n    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);\n}\n\nimg.character-image {\n    width: 100px;\n    height: 100px;\n    border-radius: 50%;\n    margin-bottom: 15px;\n}\n\n.attribute {\n    font-weight: bold;\n    margin-right: 5px;\n}\n\n.character-detail {\n    margin: 4px;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "const charactersContainer = document.getElementById(\"characters-container\");\n\nfetch('https://rickandmortyapi.com/api/character')\n.then(response => response.json())\n.then(data => {\n\n});\n\ndata.characters.forEach(character => {\n  const card = document.createElement(\"div\");\n  card.className = \"card\";\n  card.innerHTML = `\n            <img src=\"${character.image}\" alt=\"${character.name}\" class=\"character-image\">\n            <p class=\"character-detail\"><span class=\"attribute\">Name:</span> ${character.name}</p>\n            <p class=\"character-detail\"><span class=\"attribute\">Status:</span> ${character.status}</p>\n            <p class=\"character-detail\"><span class=\"attribute\">Species:</span> ${character.species}</p>\n        `;\n  charactersContainer.appendChild(card);\n});",
+                  "solvedContent": "const charactersContainer = document.getElementById(\"characters-container\");\n\nfetch('https://rickandmortyapi.com/api/character')\n.then(response => response.json())\n.then(data => {\n        data.results.forEach(character => {\n            const card = document.createElement(\"div\");\n            card.className = \"card\";\n            card.innerHTML = `\n                <img src=\"${character.image}\" alt=\"${character.name}\" class=\"character-image\">\n                <p class=\"character-detail\"><span class=\"attribute\">Name:</span> ${character.name}</p>\n                <p class=\"character-detail\"><span class=\"attribute\">Status:</span> ${character.status}</p>\n                <p class=\"character-detail\"><span class=\"attribute\">Species:</span> ${character.species}</p>\n            `;\n            charactersContainer.appendChild(card);\n        })\n});"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "What am I supposed to do?",
+                  "content": "This is how your code should look:\n\n```JavaScript\nfetch('https://rickandmortyapi.com/api/character')\n.then(response => response.json())\n.then(data => {\n  data.results.forEach(character => {\n    const card = document.createElement(\"div\");\n    card.innerHTML = `...`\n    charactersContainer.appendChild(card);\n  })\n});\n```"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

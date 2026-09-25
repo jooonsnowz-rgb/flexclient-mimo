@@ -1,0 +1,271 @@
+{
+  "tutorial": {
+    "id": 2889,
+    "version": 4,
+    "type": "guidedProject",
+    "isNew": false,
+    "codeLanguage": "node",
+    "title": "Menedżer zadań - część 1",
+    "descriptionContent": "W tym projekcie ponownie zajmiemy się zarządzaniem zadaniami. Tym razem utworzymy serwer z bazą danych do śledzenia naszych zadań.",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": "tutorial-2889-icon-banner.svg",
+    "chapters": [
+      {
+        "id": 14980,
+        "title": "Menedżer zadań - część 1",
+        "type": "practiceLevel3",
+        "lessons": [
+          {
+            "title": "Lesson #4",
+            "id": 132081,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Witaj w projekcie **Task Manager**. Zbudujemy backend Express, który pomoże nam zarządzać wszystkimi zadaniami.\n\nZaczniemy od skonfigurowania serwera Express.\n\n1. Zadeklaruj zmienną `express` i zaimportuj moduł `express` za pomocą `require`.\n2. Zadeklaruj zmienną `app` i zainicjalizuj ją, wywołując funkcję `express`.\n3. Zadeklaruj zmienną `port` i przypisz jej wartość `3000`.\n4. Użyj funkcji `listen` na obiekcie `app`, aby aplikacja nasłuchiwała na porcie określonym przez zmienną `port`.\n5. Zaloguj komunikat w konsoli wewnątrz funkcji zwrotnej `listen`, aby wiedzieć, że serwer działa prawidłowo.",
+              "preselectedFileIndex": 1,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "database.js",
+                  "codeLanguage": "javascript",
+                  "content": "",
+                  "solvedContent": null
+                },
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "",
+                  "solvedContent": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.listen(port, () => {\n console.log(`App is running on port ${port}`);\n});"
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/tasks",
+                "body": null
+              }
+            }
+          },
+          {
+            "title": "Lesson #5",
+            "id": 132082,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Następnie dodasz oprogramowanie pośredniczące do analizowania treści JSON w przychodzących żądaniach.\n\n1. Użyj wbudowanego oprogramowania pośredniczącego JSON, kodując `app.use` i przekazując `express.json()` jako argument, aby analizować treści wszystkich przychodzących żądań i udostępnić `req.body` w punktach końcowych.",
+              "preselectedFileIndex": 1,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "database.js",
+                  "codeLanguage": "javascript",
+                  "content": "",
+                  "solvedContent": null
+                },
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.listen(port, () => {\n console.log(`App is running on port ${port}`);\n});",
+                  "solvedContent": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.use(express.json());\n\napp.listen(port, () => {\n console.log(`App is running on port ${port}`);\n});"
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/tasks",
+                "body": null
+              }
+            }
+          },
+          {
+            "title": "Lesson #1",
+            "id": 132078,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Aby pracować z danymi, skonfigurujemy naszą bazę danych SQLite.\n\n1. W pliku `database.js` zaimportuj moduł `better-sqlite3`, używając `require(\"better-sqlite3'\")`. Przypisz wynikowy obiekt do stałej o nazwie `Database`.\n2. Utwórz nową bazę danych SQLite o nazwie `/tmp/tasks.db`, wywołując `new Database(\"/tmp/books.db\")`. Zapisz obiekt bazy danych do stałej o nazwie `db`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "database.js",
+                  "codeLanguage": "javascript",
+                  "content": "",
+                  "solvedContent": "const Database = require('better-sqlite3');\nconst db = new Database('/tmp/tasks.db');"
+                },
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.use(express.json());\n\napp.listen(port, () => {\n console.log(`App is running on port ${port}`);\n});",
+                  "solvedContent": null
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/tasks",
+                "body": null
+              }
+            }
+          },
+          {
+            "title": "Lesson #2",
+            "id": 132079,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Teraz utwórzmy tabelę do przechowywania naszych zadań.\n\n1. Użyj metody `db.exec`, aby wykonać polecenie SQL tworzące tabelę.\n2. Utwórz tabelę `tasks` tylko wtedy, gdy jeszcze nie istnieje. Tabela `tasks` powinna mieć kolumny:\n- `id`: liczba całkowita, klucz główny, z automatycznym zwiększaniem\n- `title`: ciąg znaków, nie może mieć wartości null\n- `description`: ciąg znaków\n- `status`: ciąg znaków, nie może mieć wartości null, domyślnie \"pending\"",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "database.js",
+                  "codeLanguage": "javascript",
+                  "content": "const Database = require('better-sqlite3');\nconst db = new Database('/tmp/tasks.db');",
+                  "solvedContent": "const Database = require('better-sqlite3');\nconst db = new Database('/tmp/tasks.db');\n\ndb.exec(`\n    CREATE TABLE IF NOT EXISTS tasks (\n      id INTEGER PRIMARY KEY AUTOINCREMENT,\n      title TEXT NOT NULL,\n      description TEXT,\n      status TEXT NOT NULL DEFAULT 'pending' CHECK(status IN ('pending', 'completed'))\n    )\n`);"
+                },
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.use(express.json());\n\napp.listen(port, () => {\n console.log(`App is running on port ${port}`);\n});",
+                  "solvedContent": null
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/tasks",
+                "body": null
+              }
+            }
+          },
+          {
+            "title": "Lesson #3",
+            "id": 132080,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Mając już strukturę tabeli, dodajmy do niej kilka zadań.\n\n1. Wstaw co najmniej trzy zadania do tabeli z zadaniami, tworząc instrukcję SQL `INSERT INTO`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "database.js",
+                  "codeLanguage": "javascript",
+                  "content": "const Database = require('better-sqlite3');\nconst db = new Database('/tmp/tasks.db');\n\ndb.exec(`\n    CREATE TABLE IF NOT EXISTS tasks (\n      id INTEGER PRIMARY KEY AUTOINCREMENT,\n      title TEXT NOT NULL,\n      description TEXT,\n      status TEXT NOT NULL DEFAULT 'pending' CHECK(status IN ('pending', 'completed'))\n    )\n`);",
+                  "solvedContent": "const Database = require('better-sqlite3');\nconst db = new Database('/tmp/tasks.db');\n\ndb.exec(`\n    CREATE TABLE IF NOT EXISTS tasks (\n      id INTEGER PRIMARY KEY AUTOINCREMENT,\n      title TEXT NOT NULL,\n      description TEXT,\n      status TEXT NOT NULL DEFAULT 'pending' CHECK(status IN ('pending', 'completed'))\n    )\n`);\n\ndb.exec(`\n    INSERT INTO tasks (title, description, status)\n    VALUES \n    ('Buy groceries', 'Milk, Bread, Eggs', 'pending'),\n    ('Clean the house', 'Vacuum and dust the living room', 'completed'),\n    ('Finish the report', 'Complete the annual financial report', 'pending')\n`);"
+                },
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.use(express.json());\n\napp.listen(port, () => {\n console.log(`App is running on port ${port}`);\n});",
+                  "solvedContent": null
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/tasks",
+                "body": null
+              }
+            }
+          },
+          {
+            "title": "Lesson #3 - Copy",
+            "id": 132227,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Na koniec upewnijmy się, że możemy używać połączenia z bazą danych w innych plikach.\n\n1. Używając `module.exports`, wyeksportuj `db` na końcu pliku.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "database.js",
+                  "codeLanguage": "javascript",
+                  "content": "const Database = require('better-sqlite3');\nconst db = new Database('/tmp/tasks.db');\n\ndb.exec(`\n    CREATE TABLE IF NOT EXISTS tasks (\n      id INTEGER PRIMARY KEY AUTOINCREMENT,\n      title TEXT NOT NULL,\n      description TEXT,\n      status TEXT NOT NULL DEFAULT 'pending' CHECK(status IN ('pending', 'completed'))\n    )\n`);\n\ndb.exec(`\n    INSERT INTO tasks (title, description, status)\n    VALUES \n    ('Buy groceries', 'Milk, Bread, Eggs', 'pending'),\n    ('Clean the house', 'Vacuum and dust the living room', 'completed'),\n    ('Finish the report', 'Complete the annual financial report', 'pending')\n`);",
+                  "solvedContent": "const Database = require('better-sqlite3');\nconst db = new Database('/tmp/tasks.db');\n\ndb.exec(`\n    CREATE TABLE IF NOT EXISTS tasks (\n      id INTEGER PRIMARY KEY AUTOINCREMENT,\n      title TEXT NOT NULL,\n      description TEXT,\n      status TEXT NOT NULL DEFAULT 'pending' CHECK(status IN ('pending', 'completed'))\n    )\n`);\n\ndb.exec(`\n    INSERT INTO tasks (title, description, status)\n    VALUES \n    ('Buy groceries', 'Milk, Bread, Eggs', 'pending'),\n    ('Clean the house', 'Vacuum and dust the living room', 'completed'),\n    ('Finish the report', 'Complete the annual financial report', 'pending')\n`);\n\nmodule.exports = db;"
+                },
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.use(express.json());\n\napp.listen(port, () => {\n console.log(`App is running on port ${port}`);\n});",
+                  "solvedContent": null
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/tasks",
+                "body": null
+              }
+            }
+          },
+          {
+            "title": "Lesson #6",
+            "id": 132083,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Użyjmy bazy danych utworzonej w naszej aplikacji.\n\n1. Zaimportuj obiekt `db` wyeksportowany w pliku `database.js` na początku pliku `app.js`. Zapisz zaimportowaną bazę danych w zmiennej o nazwie `db`.",
+              "preselectedFileIndex": 1,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "database.js",
+                  "codeLanguage": "javascript",
+                  "content": "const Database = require('better-sqlite3');\nconst db = new Database('/tmp/tasks.db');\n\ndb.exec(`\n    CREATE TABLE IF NOT EXISTS tasks (\n      id INTEGER PRIMARY KEY AUTOINCREMENT,\n      title TEXT NOT NULL,\n      description TEXT,\n      status TEXT NOT NULL DEFAULT 'pending' CHECK(status IN ('pending', 'completed'))\n    )\n`);\n\ndb.exec(`\n    INSERT INTO tasks (title, description, status)\n    VALUES \n    ('Buy groceries', 'Milk, Bread, Eggs', 'pending'),\n    ('Clean the house', 'Vacuum and dust the living room', 'completed'),\n    ('Finish the report', 'Complete the annual financial report', 'pending')\n`);\n\nmodule.exports = db;",
+                  "solvedContent": null
+                },
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.use(express.json());\n\napp.listen(port, () => {\n console.log(`App is running on port ${port}`);\n});",
+                  "solvedContent": "const db = require('./database');\nconst express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.use(express.json());\n\napp.listen(port, () => {\n console.log(`App is running on port ${port}`);\n});"
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/tasks",
+                "body": null
+              }
+            }
+          },
+          {
+            "title": "Lesson #6 - Copy",
+            "id": 132228,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Następnie utwórzmy endpoint do pobierania wszystkich zadań.\n\n1. Użyj `app.get`, aby utworzyć nową trasę GET dla ścieżki `/tasks`.\n2. W module obsługi trasy użyj zaimportowanego `db`, aby wybrać wszystkie rekordy z tabeli `tasks`.\n3. Odpowiedz obiektem JSON zawierającym zadania i ustaw kod statusu na 200. Upewnij się, że wysyłany JSON ma klucz `tasks`, którego wartością są zadania.",
+              "preselectedFileIndex": 1,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "database.js",
+                  "codeLanguage": "javascript",
+                  "content": "const Database = require('better-sqlite3');\nconst db = new Database('/tmp/tasks.db');\n\ndb.exec(`\n    CREATE TABLE IF NOT EXISTS tasks (\n      id INTEGER PRIMARY KEY AUTOINCREMENT,\n      title TEXT NOT NULL,\n      description TEXT,\n      status TEXT NOT NULL DEFAULT 'pending' CHECK(status IN ('pending', 'completed'))\n    )\n`);\n\ndb.exec(`\n    INSERT INTO tasks (title, description, status)\n    VALUES \n    ('Buy groceries', 'Milk, Bread, Eggs', 'pending'),\n    ('Clean the house', 'Vacuum and dust the living room', 'completed'),\n    ('Finish the report', 'Complete the annual financial report', 'pending')\n`);\n\nmodule.exports = db;",
+                  "solvedContent": null
+                },
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const db = require('./database');\nconst express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.use(express.json());\n\napp.listen(port, () => {\n console.log(`App is running on port ${port}`);\n});",
+                  "solvedContent": "const db = require('./database');\nconst express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.use(express.json());\n\napp.listen(port, () => {\n console.log(`App is running on port ${port}`);\n});\n\napp.get('/tasks', (req, res) => {\n  const tasks = db.prepare('SELECT * FROM tasks').all();\n  res.status(200).json({\n    tasks: tasks\n  });\n});"
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/tasks",
+                "body": null
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

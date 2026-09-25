@@ -1,0 +1,123 @@
+{
+  "tutorial": {
+    "id": 4616,
+    "version": 1,
+    "type": "guidedProject",
+    "isNew": false,
+    "codeLanguage": "python",
+    "title": "Sensör Okuma Doğrulayıcısı",
+    "descriptionContent": "Sensör okumalarını ayrıştır, eksik veya geçersiz verileri istisnalarla ele al ve desteklenen değerleri doğrula",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": "tutorial-4616-icon-banner.svg",
+    "chapters": [
+      {
+        "id": 17824,
+        "title": "Bölüm #1",
+        "type": "practiceLevel3",
+        "lessons": [
+          {
+            "title": "Lesson #1",
+            "id": 152001,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "**Sensor Reading Validator** projesine hoş geldin. Sensör verilerini temizleyecek ve geçerli ölçümlerden bir ortalama hesaplayacağız.\n\n1. `script.py` dosyasında zaten verileri içeren bir sözlükler listesi var. Bu listeyi `readings` adlı bir değişkene ata.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "[\n    {\"sensor\": \"greenhouse\", \"value\": \"23.5\"},\n    {\"sensor\": \"freezer\", \"value\": \"not available\"},\n    {\"value\": \"18.0\"},\n    {\"sensor\": \"boiler\", \"value\": \"140\"},\n]",
+                  "solvedContent": "readings = [\n    {\"sensor\": \"greenhouse\", \"value\": \"23.5\"},\n    {\"sensor\": \"freezer\", \"value\": \"not available\"},\n    {\"value\": \"18.0\"},\n    {\"sensor\": \"boiler\", \"value\": \"140\"},\n]"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #2",
+            "id": 152002,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Şimdi, bir okumayı kullanışlı bir sonuca dönüştüren bir fonksiyon oluşturacağız.\n\n1. `reading` parametresine sahip `parse_reading` fonksiyonunu tanımla.\n2. `reading[\"sensor\"]` kullanarak sensör adını al ve `sensor` adlı bir değişkene kaydet.\n3. Saklanan değeri `float()` ile sayıya dönüştür ve `value` adlı bir değişkene kaydet.\n4. Sensörü ve değeri bir demet olarak döndür.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "readings = [\n    {\"sensor\": \"greenhouse\", \"value\": \"23.5\"},\n    {\"sensor\": \"freezer\", \"value\": \"not available\"},\n    {\"value\": \"18.0\"},\n    {\"sensor\": \"boiler\", \"value\": \"140\"},\n]",
+                  "solvedContent": "readings = [\n    {\"sensor\": \"greenhouse\", \"value\": \"23.5\"},\n    {\"sensor\": \"freezer\", \"value\": \"not available\"},\n    {\"value\": \"18.0\"},\n    {\"sensor\": \"boiler\", \"value\": \"140\"},\n]\n\ndef parse_reading(reading):\n    sensor = reading[\"sensor\"]\n    value = float(reading[\"value\"])\n\n    return sensor, value"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #3",
+            "id": 152003,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Bazı okumalar eksik veya kullanılamaz veriler içerir. Tek bir hatalı okumanın programı durdurmaması için istisna işleme kullan.\n\n1. `parse_reading()` fonksiyonunun dışında, boş bir liste tutan yeni bir `valid_readings` değişkeni oluştur.\n2. `readings` üzerinde döngü oluştur.\n   - `try` bloğunun içinde her okumayı ayrıştır ve `valid_readings` listesine ekle.\n   - `KeyError`, `TypeError` ve `ValueError` hatalarını birlikte yakala.\n   - Bir okuma atlandığında hatayı yazdır.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "readings = [\n    {\"sensor\": \"greenhouse\", \"value\": \"23.5\"},\n    {\"sensor\": \"freezer\", \"value\": \"not available\"},\n    {\"value\": \"18.0\"},\n    {\"sensor\": \"boiler\", \"value\": \"140\"},\n]\n\ndef parse_reading(reading):\n    sensor = reading[\"sensor\"]\n    value = float(reading[\"value\"])\n\n    return sensor, value",
+                  "solvedContent": "readings = [\n    {\"sensor\": \"greenhouse\", \"value\": \"23.5\"},\n    {\"sensor\": \"freezer\", \"value\": \"not available\"},\n    {\"value\": \"18.0\"},\n    {\"sensor\": \"boiler\", \"value\": \"140\"},\n]\n\ndef parse_reading(reading):\n    sensor = reading[\"sensor\"]\n    value = float(reading[\"value\"])\n\n    return sensor, value\n\nvalid_readings = []\n\nfor reading in readings:\n    try:\n        valid_readings.append(parse_reading(reading))\n    except (KeyError, TypeError, ValueError) as error:\n        print(f\"Skipped reading: {error}\")"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #4",
+            "id": 152004,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Sayısal bir değer yine de desteklenen aralığın dışında olabilir. Ayrıştırılmış okumayı döndürmeden önce doğrulama ekle.\n\n1. `parse_reading()` fonksiyonunda, sensör ve değer verilerine eriştikten sonra `value` değerinin `-50` değerinin altında veya `100` değerinin üstünde olup olmadığını kontrol et.\n2. Eğer öyleyse `raise ValueError(f\"{sensor} reported an unsupported value.\")` ile bir `ValueError` oluştur.\n3. Mevcut `except` bloğu bu hatayı yakalayıp bildirecek.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "readings = [\n    {\"sensor\": \"greenhouse\", \"value\": \"23.5\"},\n    {\"sensor\": \"freezer\", \"value\": \"not available\"},\n    {\"value\": \"18.0\"},\n    {\"sensor\": \"boiler\", \"value\": \"140\"},\n]\n\ndef parse_reading(reading):\n    sensor = reading[\"sensor\"]\n    value = float(reading[\"value\"])\n\n    return sensor, value\n\nvalid_readings = []\n\nfor reading in readings:\n    try:\n        valid_readings.append(parse_reading(reading))\n    except (KeyError, TypeError, ValueError) as error:\n        print(f\"Skipped reading: {error}\")",
+                  "solvedContent": "readings = [\n    {\"sensor\": \"greenhouse\", \"value\": \"23.5\"},\n    {\"sensor\": \"freezer\", \"value\": \"not available\"},\n    {\"value\": \"18.0\"},\n    {\"sensor\": \"boiler\", \"value\": \"140\"},\n]\n\ndef parse_reading(reading):\n    sensor = reading[\"sensor\"]\n    value = float(reading[\"value\"])\n\n    if value < -50 or value > 100:\n        raise ValueError(f\"{sensor} reported an unsupported value.\")\n\n    return sensor, value\n\nvalid_readings = []\n\nfor reading in readings:\n    try:\n        valid_readings.append(parse_reading(reading))\n    except (KeyError, TypeError, ValueError) as error:\n        print(f\"Skipped reading: {error}\")"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #5",
+            "id": 152005,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Ortalama değeri yalnızca geçerli ölçümler varsa hesaplayarak bitireceğiz.\n\n1. Betiğin sonunda, `valid_readings` değerini bir `if` ifadesiyle kontrol et.\n2. Geçerli değerlerin toplamını hesaplamak için `sum(value for _, value in valid_readings)` kullan.\n3. Toplamı `len(valid_readings)` değerine böl.\n4. Ortalamayı bir ondalık basamakla yazdır.\n5. Hiçbir ölçümün geçerli olmadığı durum için bir `else` mesajı ekle.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "readings = [\n    {\"sensor\": \"greenhouse\", \"value\": \"23.5\"},\n    {\"sensor\": \"freezer\", \"value\": \"not available\"},\n    {\"value\": \"18.0\"},\n    {\"sensor\": \"boiler\", \"value\": \"140\"},\n]\n\ndef parse_reading(reading):\n    sensor = reading[\"sensor\"]\n    value = float(reading[\"value\"])\n\n    if value < -50 or value > 100:\n        raise ValueError(f\"{sensor} reported an unsupported value.\")\n\n    return sensor, value\n\nvalid_readings = []\n\nfor reading in readings:\n    try:\n        valid_readings.append(parse_reading(reading))\n    except (KeyError, TypeError, ValueError) as error:\n        print(f\"Skipped reading: {error}\")",
+                  "solvedContent": "readings = [\n    {\"sensor\": \"greenhouse\", \"value\": \"23.5\"},\n    {\"sensor\": \"freezer\", \"value\": \"not available\"},\n    {\"value\": \"18.0\"},\n    {\"sensor\": \"boiler\", \"value\": \"140\"},\n]\n\ndef parse_reading(reading):\n    sensor = reading[\"sensor\"]\n    value = float(reading[\"value\"])\n\n    if value < -50 or value > 100:\n        raise ValueError(f\"{sensor} reported an unsupported value.\")\n\n    return sensor, value\n\nvalid_readings = []\n\nfor reading in readings:\n    try:\n        valid_readings.append(parse_reading(reading))\n    except (KeyError, TypeError, ValueError) as error:\n        print(f\"Skipped reading: {error}\")\n\nif valid_readings:\n    average = sum(value for _, value in valid_readings) / len(valid_readings)\n    print(f\"Average valid reading: {average:.1f}\")\nelse:\n    print(\"No valid readings available.\")"
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

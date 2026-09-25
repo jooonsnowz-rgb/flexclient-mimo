@@ -1,0 +1,321 @@
+{
+  "tutorial": {
+    "id": 1833,
+    "version": 9,
+    "type": "guidedProjectOptional",
+    "isNew": false,
+    "codeLanguage": "javascript",
+    "title": "Walidacja formularza zamówienia produktu",
+    "descriptionContent": "Użyj JavaScriptu, aby utworzyć przyciski głosowania w górę i w dół",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": "tutorial-1833-icon-banner.svg",
+    "chapters": [
+      {
+        "id": 12150,
+        "title": "Walidacja formularza zamówienia produktu",
+        "type": "practiceLevel3",
+        "lessons": [
+          {
+            "title": "Step 1",
+            "id": 110823,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Postanowiłeś zostać przedsiębiorcą i uruchomić własną witrynę dropshippingową. Wybrałeś nowoczesny skórzany plecak jako swój produkt i zaprojektowałeś wstępną stronę zamówienia.\n\nMusisz jednak dodać do formularza kilka kontroli, aby upewnić się, że użytkownicy przesyłają poprawne informacje dotyczące zamówienia.\n\nNajpierw przejrzyj dostarczony kod: plik `index.html` zawiera kod HTML formularza zamówienia produktu. Zwróć uwagę na wartości `id` pól formularza. Dostarczamy również stylowanie w pliku `style.css`.\n\nGdy pole jest niekompletne lub zawiera niepoprawne dane, dodamy do niego klasę CSS, aby widocznie oznaczyć je jako błąd (dodając czerwoną obwódkę wokół pola). Napiszmy funkcje pomocnicze do dodawania i usuwania stylowania błędu z elementów.\n\n1. Zadeklaruj funkcję `showError`, która przyjmuje parametr `id`.\n2. Następnie zadeklaruj funkcję `removeError`, która również przyjmuje parametr `id`.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <title></title>\n    <script type=\"text/javascript\" src=\"script.js\"></script>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <h2>The Backpack</h2>\n    <img id=\"backpack\" src=\"https://mimo.app/i/backpack.png\" />\n    <label for=\"quantity\">Quantity:</label>\n    <input type=\"number\" id=\"quantity\" value=\"0\" />\n    <label for=\"color\">Color:</label>\n    <select id=\"color\">\n      <option value=\"--\">--</option>\n      <option value=\"white\">White Leather</option>\n      <option value=\"black\">Brown Leather</option>\n      <option value=\"brown\">Black Leather</option>\n    </select>\n    <label for=\"address\">Address:</label>\n    <input type=\"text\" id=\"address\" />\n    <label for=\"city\">City:</label>\n    <input type=\"text\" id=\"city\" />\n    <label for=\"state\">State:</label>\n    <input type=\"text\" id=\"state\" />\n    <button onclick=\"checkForm()\" id=\"submit\">Submit Order</button>\n    <h2 class=\"hidden\" id=\"status\">Order Submitted!</h2>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  margin-left: 20%;\n  margin-right: 20%;\n  font-family: sans-serif;\n}\n\nbody input,\nselect {\n  width: 300px;\n}\n\nlabel {\n  font-size: 10px;\n  text-align: left;\n  width: 300px;\n}\n\n#backpack {\n  height: auto;\n  width: 200px;\n  margin-bottom: 30px;\n}\n\n.error {\n  border: 2px solid red;\n  border-radius: 5px;\n}\n\n.hidden {\n  display: none;\n}\n\n#status {\n  color: green;\n  font-size: 15px;\n}\n\nbutton {\n  border: 1px solid gray;\n  border-radius: 5%;\n  background-color: lavender;\n  width: 200px;\n  margin: 35px;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "function checkForm() {\n  if (!checkQuantity()) {\n    showError(\"#quantity\");\n  } else {\n    removeError(\"#quantity\");\n  }\n  if (!checkColor()) {\n    showError(\"#color\");\n  } else {\n    removeError(\"#color\");\n  }\n  if (!checkState()) {\n    showError(\"#state\");\n  } else {\n    removeError(\"#state\");\n  }\n}",
+                  "solvedContent": "function showError(id) {}\n\nfunction removeError(id) {}\n\nfunction checkForm() {\n  if (!checkQuantity()) {\n    showError(\"#quantity\");\n  } else {\n    removeError(\"#quantity\");\n  }\n  if (!checkColor()) {\n    showError(\"#color\");\n  } else {\n    removeError(\"#color\");\n  }\n  if (!checkState()) {\n    showError(\"#state\");\n  } else {\n    removeError(\"#state\");\n  }\n}"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Step 2",
+            "id": 110828,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Teraz zajmijmy się treścią funkcji `showError()`, która doda klasę CSS `.error` do elementu HTML z przekazanym `id`.\n\n1. W treści funkcji `showError()` wyszukaj w dokumencie HTML element z przekazanym `id`. Zapisz wynik w zmiennej o nazwie `input`.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <title></title>\n    <script type=\"text/javascript\" src=\"script.js\"></script>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <h2>The Backpack</h2>\n    <img id=\"backpack\" src=\"https://mimo.app/i/backpack.png\" />\n    <label for=\"quantity\">Quantity:</label>\n    <input type=\"number\" id=\"quantity\" value=\"0\" />\n    <label for=\"color\">Color:</label>\n    <select id=\"color\">\n      <option value=\"--\">--</option>\n      <option value=\"white\">White Leather</option>\n      <option value=\"black\">Brown Leather</option>\n      <option value=\"brown\">Black Leather</option>\n    </select>\n    <label for=\"address\">Address:</label>\n    <input type=\"text\" id=\"address\" />\n    <label for=\"city\">City:</label>\n    <input type=\"text\" id=\"city\" />\n    <label for=\"state\">State:</label>\n    <input type=\"text\" id=\"state\" />\n    <button onclick=\"checkForm()\" id=\"submit\">Submit Order</button>\n    <h2 class=\"hidden\" id=\"status\">Order Submitted!</h2>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  margin-left: 20%;\n  margin-right: 20%;\n  font-family: sans-serif;\n}\n\nbody input,\nselect {\n  width: 300px;\n}\n\nlabel {\n  font-size: 10px;\n  text-align: left;\n  width: 300px;\n}\n\n#backpack {\n  height: auto;\n  width: 200px;\n  margin-bottom: 30px;\n}\n\n.error {\n  border: 2px solid red;\n  border-radius: 5px;\n}\n\n.hidden {\n  display: none;\n}\n\n#status {\n  color: green;\n  font-size: 15px;\n}\n\nbutton {\n  border: 1px solid gray;\n  border-radius: 5%;\n  background-color: lavender;\n  width: 200px;\n  margin: 35px;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "function showError(id) {}\n\nfunction removeError(id) {}\n\nfunction checkForm() {\n  if (!checkQuantity()) {\n    showError(\"#quantity\");\n  } else {\n    removeError(\"#quantity\");\n  }\n  if (!checkColor()) {\n    showError(\"#color\");\n  } else {\n    removeError(\"#color\");\n  }\n  if (!checkState()) {\n    showError(\"#state\");\n  } else {\n    removeError(\"#state\");\n  }\n}",
+                  "solvedContent": "function showError(id) {\n  const input = document.querySelector(id);\n}\n\nfunction removeError(id) {}\n\nfunction checkForm() {\n  if (!checkQuantity()) {\n    showError(\"#quantity\");\n  } else {\n    removeError(\"#quantity\");\n  }\n  if (!checkColor()) {\n    showError(\"#color\");\n  } else {\n    removeError(\"#color\");\n  }\n  if (!checkState()) {\n    showError(\"#state\");\n  } else {\n    removeError(\"#state\");\n  }\n}"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Step 3",
+            "id": 110829,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Teraz, gdy nasza funkcja wskazuje odpowiedni element, sprawmy, aby funkcja dodała klasę CSS `error`.\n\n1. Zmodyfikuj treść funkcji `showError()`, aby dodać klasę CSS `error` do elementu HTML, który zapisaliśmy w zmiennej `input`.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <title></title>\n    <script type=\"text/javascript\" src=\"script.js\"></script>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <h2>The Backpack</h2>\n    <img id=\"backpack\" src=\"https://mimo.app/i/backpack.png\" />\n    <label for=\"quantity\">Quantity:</label>\n    <input type=\"number\" id=\"quantity\" value=\"0\" />\n    <label for=\"color\">Color:</label>\n    <select id=\"color\">\n      <option value=\"--\">--</option>\n      <option value=\"white\">White Leather</option>\n      <option value=\"black\">Brown Leather</option>\n      <option value=\"brown\">Black Leather</option>\n    </select>\n    <label for=\"address\">Address:</label>\n    <input type=\"text\" id=\"address\" />\n    <label for=\"city\">City:</label>\n    <input type=\"text\" id=\"city\" />\n    <label for=\"state\">State:</label>\n    <input type=\"text\" id=\"state\" />\n    <button onclick=\"checkForm()\" id=\"submit\">Submit Order</button>\n    <h2 class=\"hidden\" id=\"status\">Order Submitted!</h2>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  margin-left: 20%;\n  margin-right: 20%;\n  font-family: sans-serif;\n}\n\nbody input,\nselect {\n  width: 300px;\n}\n\nlabel {\n  font-size: 10px;\n  text-align: left;\n  width: 300px;\n}\n\n#backpack {\n  height: auto;\n  width: 200px;\n  margin-bottom: 30px;\n}\n\n.error {\n  border: 2px solid red;\n  border-radius: 5px;\n}\n\n.hidden {\n  display: none;\n}\n\n#status {\n  color: green;\n  font-size: 15px;\n}\n\nbutton {\n  border: 1px solid gray;\n  border-radius: 5%;\n  background-color: lavender;\n  width: 200px;\n  margin: 35px;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "function showError(id) {\n  const input = document.querySelector(id);\n}\n\nfunction removeError(id) {}\n\nfunction checkForm() {\n  if (!checkQuantity()) {\n    showError(\"#quantity\");\n  } else {\n    removeError(\"#quantity\");\n  }\n  if (!checkColor()) {\n    showError(\"#color\");\n  } else {\n    removeError(\"#color\");\n  }\n  if (!checkState()) {\n    showError(\"#state\");\n  } else {\n    removeError(\"#state\");\n  }\n}",
+                  "solvedContent": "function showError(id) {\n  const input = document.querySelector(id);\n  input.classList.add(\"error\");\n}\n\nfunction removeError(id) {}\n\nfunction checkForm() {\n  if (!checkQuantity()) {\n    showError(\"#quantity\");\n  } else {\n    removeError(\"#quantity\");\n  }\n  if (!checkColor()) {\n    showError(\"#color\");\n  } else {\n    removeError(\"#color\");\n  }\n  if (!checkState()) {\n    showError(\"#state\");\n  } else {\n    removeError(\"#state\");\n  }\n}"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Step 4",
+            "id": 110830,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Powtórzymy te same kroki dla funkcji `removeError()`. Jednak zamiast dodawać klasę CSS `error`, ta funkcja usunie ją z elementu o przekazanym `id`.\n\n1. W treści funkcji `removeError()` wybierz element HTML o przekazanym `id` i zapisz do niego odwołanie w zmiennej o nazwie `input`.\n2. Następnie uzupełnij treść funkcji tak, aby usuwała klasę CSS `error` z wcześniej wybranego elementu.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <title></title>\n    <script type=\"text/javascript\" src=\"script.js\"></script>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <h2>The Backpack</h2>\n    <img id=\"backpack\" src=\"https://mimo.app/i/backpack.png\" />\n    <label for=\"quantity\">Quantity:</label>\n    <input type=\"number\" id=\"quantity\" value=\"0\" />\n    <label for=\"color\">Color:</label>\n    <select id=\"color\">\n      <option value=\"--\">--</option>\n      <option value=\"white\">White Leather</option>\n      <option value=\"black\">Brown Leather</option>\n      <option value=\"brown\">Black Leather</option>\n    </select>\n    <label for=\"address\">Address:</label>\n    <input type=\"text\" id=\"address\" />\n    <label for=\"city\">City:</label>\n    <input type=\"text\" id=\"city\" />\n    <label for=\"state\">State:</label>\n    <input type=\"text\" id=\"state\" />\n    <button onclick=\"checkForm()\" id=\"submit\">Submit Order</button>\n    <h2 class=\"hidden\" id=\"status\">Order Submitted!</h2>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  margin-left: 20%;\n  margin-right: 20%;\n  font-family: sans-serif;\n}\n\nbody input,\nselect {\n  width: 300px;\n}\n\nlabel {\n  font-size: 10px;\n  text-align: left;\n  width: 300px;\n}\n\n#backpack {\n  height: auto;\n  width: 200px;\n  margin-bottom: 30px;\n}\n\n.error {\n  border: 2px solid red;\n  border-radius: 5px;\n}\n\n.hidden {\n  display: none;\n}\n\n#status {\n  color: green;\n  font-size: 15px;\n}\n\nbutton {\n  border: 1px solid gray;\n  border-radius: 5%;\n  background-color: lavender;\n  width: 200px;\n  margin: 35px;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "function showError(id) {\n  const input = document.querySelector(id);\n  input.classList.add(\"error\");\n}\n\nfunction removeError(id) {}\n\nfunction checkForm() {\n  if (!checkQuantity()) {\n    showError(\"#quantity\");\n  } else {\n    removeError(\"#quantity\");\n  }\n  if (!checkColor()) {\n    showError(\"#color\");\n  } else {\n    removeError(\"#color\");\n  }\n  if (!checkState()) {\n    showError(\"#state\");\n  } else {\n    removeError(\"#state\");\n  }\n}",
+                  "solvedContent": "function showError(id) {\n  const input = document.querySelector(id);\n  input.classList.add(\"error\");\n}\n\nfunction removeError(id) {\n  const input = document.querySelector(id);\n  input.classList.remove(\"error\");\n}\n\nfunction checkForm() {\n  if (!checkQuantity()) {\n    showError(\"#quantity\");\n  } else {\n    removeError(\"#quantity\");\n  }\n  if (!checkColor()) {\n    showError(\"#color\");\n  } else {\n    removeError(\"#color\");\n  }\n  if (!checkState()) {\n    showError(\"#state\");\n  } else {\n    removeError(\"#state\");\n  }\n}"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Step 5",
+            "id": 110831,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Teraz, gdy mamy już funkcje do dodawania i usuwania stylu błędu, napiszmy funkcje sprawdzające poszczególne pola. Będziemy potrzebować trzech: jednej dla ilości, jednej dla koloru torby i jednej dla pola \"State\". Zacznijmy od pola ilości.\n\n1. Zadeklaruj funkcję o nazwie `checkQuantity()`. Funkcja nie powinna przyjmować żadnych parametrów.\n2. W treści funkcji wyszukaj w dokumencie HTML element z `id` o wartości \"quantity\" i zapisz wynik w zmiennej o nazwie `input`.\n3. Na koniec funkcja powinna zwrócić wartość logiczną zależnie od tego, czy wartość `input` 's `value` jest większa niż `0` (`true`, jeśli tak, w przeciwnym razie `false`).",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <title></title>\n    <script type=\"text/javascript\" src=\"script.js\"></script>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <h2>The Backpack</h2>\n    <img id=\"backpack\" src=\"https://mimo.app/i/backpack.png\" />\n    <label for=\"quantity\">Quantity:</label>\n    <input type=\"number\" id=\"quantity\" value=\"0\" />\n    <label for=\"color\">Color:</label>\n    <select id=\"color\">\n      <option value=\"--\">--</option>\n      <option value=\"white\">White Leather</option>\n      <option value=\"black\">Brown Leather</option>\n      <option value=\"brown\">Black Leather</option>\n    </select>\n    <label for=\"address\">Address:</label>\n    <input type=\"text\" id=\"address\" />\n    <label for=\"city\">City:</label>\n    <input type=\"text\" id=\"city\" />\n    <label for=\"state\">State:</label>\n    <input type=\"text\" id=\"state\" />\n    <button onclick=\"checkForm()\" id=\"submit\">Submit Order</button>\n    <h2 class=\"hidden\" id=\"status\">Order Submitted!</h2>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  margin-left: 20%;\n  margin-right: 20%;\n  font-family: sans-serif;\n}\n\nbody input,\nselect {\n  width: 300px;\n}\n\nlabel {\n  font-size: 10px;\n  text-align: left;\n  width: 300px;\n}\n\n#backpack {\n  height: auto;\n  width: 200px;\n  margin-bottom: 30px;\n}\n\n.error {\n  border: 2px solid red;\n  border-radius: 5px;\n}\n\n.hidden {\n  display: none;\n}\n\n#status {\n  color: green;\n  font-size: 15px;\n}\n\nbutton {\n  border: 1px solid gray;\n  border-radius: 5%;\n  background-color: lavender;\n  width: 200px;\n  margin: 35px;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "function showError(id) {\n  const input = document.querySelector(id);\n  input.classList.add(\"error\");\n}\n\nfunction removeError(id) {\n  const input = document.querySelector(id);\n  input.classList.remove(\"error\");\n}\n\nfunction checkForm() {\n  if (!checkQuantity()) {\n    showError(\"#quantity\");\n  } else {\n    removeError(\"#quantity\");\n  }\n  if (!checkColor()) {\n    showError(\"#color\");\n  } else {\n    removeError(\"#color\");\n  }\n  if (!checkState()) {\n    showError(\"#state\");\n  } else {\n    removeError(\"#state\");\n  }\n}",
+                  "solvedContent": "function showError(id) {\n  const input = document.querySelector(id);\n  input.classList.add(\"error\");\n}\n\nfunction removeError(id) {\n  const input = document.querySelector(id);\n  input.classList.remove(\"error\");\n}\n\nfunction checkQuantity() {\n  const input = document.querySelector(\"#quantity\");\n  return (input.value > 0);\n}\n\nfunction checkForm() {\n  if (!checkQuantity()) {\n    showError(\"#quantity\");\n  } else {\n    removeError(\"#quantity\");\n  }\n  if (!checkColor()) {\n    showError(\"#color\");\n  } else {\n    removeError(\"#color\");\n  }\n  if (!checkState()) {\n    showError(\"#state\");\n  } else {\n    removeError(\"#state\");\n  }\n}"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Step 6",
+            "id": 110832,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Następnie zajmijmy się sprawdzaniem pola koloru torby. Twój kod powinien wyglądać bardzo podobnie do ostatniej napisanej przez ciebie funkcji. Jeśli wybrany jest domyślny element listy rozwijanej \"--\", funkcja powinna zwrócić `false`, a w przeciwnym razie `true`.\n\n1. Zadeklaruj funkcję o nazwie `checkColor()`. Funkcja nie powinna przyjmować żadnych parametrów.\n2. W treści funkcji wyszukaj w dokumencie HTML element o `id` równym \"color\" i zapisz wynik w zmiennej o nazwie `input`.\n3. Na koniec funkcja powinna zwrócić wartość logiczną. Jeśli wybrano \"--\", funkcja powinna zwrócić `false`. W przeciwnym razie, gdy wybrano kolor torby, funkcja powinna zwrócić `true`.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <title></title>\n    <script type=\"text/javascript\" src=\"script.js\"></script>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <h2>The Backpack</h2>\n    <img id=\"backpack\" src=\"https://mimo.app/i/backpack.png\" />\n    <label for=\"quantity\">Quantity:</label>\n    <input type=\"number\" id=\"quantity\" value=\"0\" />\n    <label for=\"color\">Color:</label>\n    <select id=\"color\">\n      <option value=\"--\">--</option>\n      <option value=\"white\">White Leather</option>\n      <option value=\"black\">Brown Leather</option>\n      <option value=\"brown\">Black Leather</option>\n    </select>\n    <label for=\"address\">Address:</label>\n    <input type=\"text\" id=\"address\" />\n    <label for=\"city\">City:</label>\n    <input type=\"text\" id=\"city\" />\n    <label for=\"state\">State:</label>\n    <input type=\"text\" id=\"state\" />\n    <button onclick=\"checkForm()\" id=\"submit\">Submit Order</button>\n    <h2 class=\"hidden\" id=\"status\">Order Submitted!</h2>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  margin-left: 20%;\n  margin-right: 20%;\n  font-family: sans-serif;\n}\n\nbody input,\nselect {\n  width: 300px;\n}\n\nlabel {\n  font-size: 10px;\n  text-align: left;\n  width: 300px;\n}\n\n#backpack {\n  height: auto;\n  width: 200px;\n  margin-bottom: 30px;\n}\n\n.error {\n  border: 2px solid red;\n  border-radius: 5px;\n}\n\n.hidden {\n  display: none;\n}\n\n#status {\n  color: green;\n  font-size: 15px;\n}\n\nbutton {\n  border: 1px solid gray;\n  border-radius: 5%;\n  background-color: lavender;\n  width: 200px;\n  margin: 35px;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "function showError(id) {\n  const input = document.querySelector(id);\n  input.classList.add(\"error\");\n}\n\nfunction removeError(id) {\n  const input = document.querySelector(id);\n  input.classList.remove(\"error\");\n}\n\nfunction checkQuantity() {\n  const input = document.querySelector(\"#quantity\");\n  return (input.value > 0);\n}\n\nfunction checkForm() {\n  if (!checkQuantity()) {\n    showError(\"#quantity\");\n  } else {\n    removeError(\"#quantity\");\n  }\n  if (!checkColor()) {\n    showError(\"#color\");\n  } else {\n    removeError(\"#color\");\n  }\n  if (!checkState()) {\n    showError(\"#state\");\n  } else {\n    removeError(\"#state\");\n  }\n}",
+                  "solvedContent": "function showError(id) {\n  const input = document.querySelector(id);\n  input.classList.add(\"error\");\n}\n\nfunction removeError(id) {\n  const input = document.querySelector(id);\n  input.classList.remove(\"error\");\n}\n\nfunction checkQuantity() {\n  const input = document.querySelector(\"#quantity\");\n  return (input.value > 0);\n}\n\nfunction checkColor() {\n  const input = document.querySelector(\"#color\");\n  return (input.value !== \"--\");\n}\n\nfunction checkForm() {\n  if (!checkQuantity()) {\n    showError(\"#quantity\");\n  } else {\n    removeError(\"#quantity\");\n  }\n  if (!checkColor()) {\n    showError(\"#color\");\n  } else {\n    removeError(\"#color\");\n  }\n  if (!checkState()) {\n    showError(\"#state\");\n  } else {\n    removeError(\"#state\");\n  }\n}"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Step 7",
+            "id": 110833,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Na koniec napiszmy funkcję sprawdzającą pole \"state\". Chcemy sprawdzić, czy użytkownicy wpisują skrócony kod stanu (np. CA dla Kalifornii), a nie pełną nazwę stanu. Funkcja powinna zwracać `true`, jeśli długość danych wejściowych wynosi 2, oraz `false` w przeciwnym razie.\n\n1. Zadeklaruj funkcję o nazwie `checkState()`. Funkcja nie powinna przyjmować żadnych parametrów.\n2. W ciele funkcji wyszukaj w dokumencie HTML element o `id` równym \"state\" i zapisz wynik w zmiennej o nazwie `input`.\n3. Na koniec funkcja powinna zwracać wartość logiczną zależną od długości danych wejściowych. Jeśli długość danych wejściowych jest równa 2, funkcja powinna zwrócić `true`. W przeciwnym razie funkcja powinna zwrócić `false`.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <title></title>\n    <script type=\"text/javascript\" src=\"script.js\"></script>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <h2>The Backpack</h2>\n    <img id=\"backpack\" src=\"https://mimo.app/i/backpack.png\" />\n    <label for=\"quantity\">Quantity:</label>\n    <input type=\"number\" id=\"quantity\" value=\"0\" />\n    <label for=\"color\">Color:</label>\n    <select id=\"color\">\n      <option value=\"--\">--</option>\n      <option value=\"white\">White Leather</option>\n      <option value=\"black\">Brown Leather</option>\n      <option value=\"brown\">Black Leather</option>\n    </select>\n    <label for=\"address\">Address:</label>\n    <input type=\"text\" id=\"address\" />\n    <label for=\"city\">City:</label>\n    <input type=\"text\" id=\"city\" />\n    <label for=\"state\">State:</label>\n    <input type=\"text\" id=\"state\" />\n    <button onclick=\"checkForm()\" id=\"submit\">Submit Order</button>\n    <h2 class=\"hidden\" id=\"status\">Order Submitted!</h2>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  margin-left: 20%;\n  margin-right: 20%;\n  font-family: sans-serif;\n}\n\nbody input,\nselect {\n  width: 300px;\n}\n\nlabel {\n  font-size: 10px;\n  text-align: left;\n  width: 300px;\n}\n\n#backpack {\n  height: auto;\n  width: 200px;\n  margin-bottom: 30px;\n}\n\n.error {\n  border: 2px solid red;\n  border-radius: 5px;\n}\n\n.hidden {\n  display: none;\n}\n\n#status {\n  color: green;\n  font-size: 15px;\n}\n\nbutton {\n  border: 1px solid gray;\n  border-radius: 5%;\n  background-color: lavender;\n  width: 200px;\n  margin: 35px;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "function showError(id) {\n  const input = document.querySelector(id);\n  input.classList.add(\"error\");\n}\n\nfunction removeError(id) {\n  const input = document.querySelector(id);\n  input.classList.remove(\"error\");\n}\n\nfunction checkQuantity() {\n  const input = document.querySelector(\"#quantity\");\n  return (input.value > 0);\n}\n\nfunction checkColor() {\n  const input = document.querySelector(\"#color\");\n  return (input.value !== \"--\");\n}\n\nfunction checkForm() {\n  if (!checkQuantity()) {\n    showError(\"#quantity\");\n  } else {\n    removeError(\"#quantity\");\n  }\n  if (!checkColor()) {\n    showError(\"#color\");\n  } else {\n    removeError(\"#color\");\n  }\n  if (!checkState()) {\n    showError(\"#state\");\n  } else {\n    removeError(\"#state\");\n  }\n}",
+                  "solvedContent": "function showError(id) {\n  const input = document.querySelector(id);\n  input.classList.add(\"error\");\n}\n\nfunction removeError(id) {\n  const input = document.querySelector(id);\n  input.classList.remove(\"error\");\n}\n\nfunction checkQuantity() {\n  const input = document.querySelector(\"#quantity\");\n  return (input.value > 0);\n}\n\nfunction checkColor() {\n  const input = document.querySelector(\"#color\");\n  return (input.value !== \"--\");\n}\n\nfunction checkState() {\n  const input = document.querySelector(\"#state\");\n  return (input.value.length == 2);\n}\n\nfunction checkForm() {\n  if (!checkQuantity()) {\n    showError(\"#quantity\");\n  } else {\n    removeError(\"#quantity\");\n  }\n  if (!checkColor()) {\n    showError(\"#color\");\n  } else {\n    removeError(\"#color\");\n  }\n  if (!checkState()) {\n    showError(\"#state\");\n  } else {\n    removeError(\"#state\");\n  }\n}"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Step 8",
+            "id": 110834,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Nasz kod wygląda dobrze, ale może być bardziej zwarty, szczególnie jeśli w przyszłości dodamy kolejne reguły sprawdzania pól.\n\n1. Przekształć istniejące funkcje `checkQuantity()`, `checkColor()` i `checkState()` w funkcje strzałkowe, używając skróconej składni.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <title></title>\n    <script type=\"text/javascript\" src=\"script.js\"></script>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <h2>The Backpack</h2>\n    <img id=\"backpack\" src=\"https://mimo.app/i/backpack.png\" />\n    <label for=\"quantity\">Quantity:</label>\n    <input type=\"number\" id=\"quantity\" value=\"0\" />\n    <label for=\"color\">Color:</label>\n    <select id=\"color\">\n      <option value=\"--\">--</option>\n      <option value=\"white\">White Leather</option>\n      <option value=\"black\">Brown Leather</option>\n      <option value=\"brown\">Black Leather</option>\n    </select>\n    <label for=\"address\">Address:</label>\n    <input type=\"text\" id=\"address\" />\n    <label for=\"city\">City:</label>\n    <input type=\"text\" id=\"city\" />\n    <label for=\"state\">State:</label>\n    <input type=\"text\" id=\"state\" />\n    <button onclick=\"checkForm()\" id=\"submit\">Submit Order</button>\n    <h2 class=\"hidden\" id=\"status\">Order Submitted!</h2>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  margin-left: 20%;\n  margin-right: 20%;\n  font-family: sans-serif;\n}\n\nbody input,\nselect {\n  width: 300px;\n}\n\nlabel {\n  font-size: 10px;\n  text-align: left;\n  width: 300px;\n}\n\n#backpack {\n  height: auto;\n  width: 200px;\n  margin-bottom: 30px;\n}\n\n.error {\n  border: 2px solid red;\n  border-radius: 5px;\n}\n\n.hidden {\n  display: none;\n}\n\n#status {\n  color: green;\n  font-size: 15px;\n}\n\nbutton {\n  border: 1px solid gray;\n  border-radius: 5%;\n  background-color: lavender;\n  width: 200px;\n  margin: 35px;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "function showError(id) {\n  const input = document.querySelector(id);\n  input.classList.add(\"error\");\n}\n\nfunction removeError(id) {\n  const input = document.querySelector(id);\n  input.classList.remove(\"error\");\n}\n\nfunction checkQuantity() {\n  const input = document.querySelector(\"#quantity\");\n  return (input.value > 0);\n}\n\nfunction checkColor() {\n  const input = document.querySelector(\"#color\");\n  return (input.value !== \"--\");\n}\n\nfunction checkState() {\n  const input = document.querySelector(\"#state\");\n  return (input.value.length == 2);\n}\n\nfunction checkForm() {\n  if (!checkQuantity()) {\n    showError(\"#quantity\");\n  } else {\n    removeError(\"#quantity\");\n  }\n  if (!checkColor()) {\n    showError(\"#color\");\n  } else {\n    removeError(\"#color\");\n  }\n  if (!checkState()) {\n    showError(\"#state\");\n  } else {\n    removeError(\"#state\");\n  }\n}",
+                  "solvedContent": "function showError(id) {\n  const input = document.querySelector(id);\n  input.classList.add(\"error\");\n}\n\nfunction removeError(id) {\n  const input = document.querySelector(id);\n  input.classList.remove(\"error\");\n}\nconst checkQuantity = () => document.querySelector(\"#quantity\").value > 0;\nconst checkColor = () => document.querySelector(\"#color\").value !== \"--\";\nconst checkState = () => document.querySelector(\"#state\").value.length == 2;\n\n\nfunction checkForm() {\n  if (!checkQuantity()) {\n    showError(\"#quantity\");\n  } else {\n    removeError(\"#quantity\");\n  }\n  if (!checkColor()) {\n    showError(\"#color\");\n  } else {\n    removeError(\"#color\");\n  }\n  if (!checkState()) {\n    showError(\"#state\");\n  } else {\n    removeError(\"#state\");\n  }\n}"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "Remember, you can chain dot (`.`) functions together!"
+                }
+              ]
+            }
+          },
+          {
+            "title": "Step 9",
+            "id": 110835,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Nasza logika sprawdzania formularza jest już gotowa, ale musimy wyświetlić użytkownikowi komunikat, gdy jego zamówienie zostanie pomyślnie przesłane. Zmodyfikujesz funkcję `checkForm()`, aby usunąć klasę CSS `hidden` z elementu `status`, gdy wszystkie testy zakończą się pomyślnie.\n\nGdy skończysz, spróbuj wypełnić formularz i przetestować swoją logikę!\n\n1. Napisz instrukcję `if` na końcu ciała funkcji `checkForm()`, tuż za logiką sprawdzającą pole \"state\". Instrukcja `if` powinna wywoływać wszystkie trzy funkcje sprawdzające pola (`checkQuantity()`, `checkColor()` i `checkState()`) i wykonywać się tylko wtedy, gdy wszystkie trzy funkcje zwrócą `true`.\n2. Ciało instrukcji `if` powinno wyszukać w dokumencie HTML element o identyfikatorze `#status` i usunąć klasę CSS `hidden`.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <title></title>\n    <script type=\"text/javascript\" src=\"script.js\"></script>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <h2>The Backpack</h2>\n    <img id=\"backpack\" src=\"https://mimo.app/i/backpack.png\" />\n    <label for=\"quantity\">Quantity:</label>\n    <input type=\"number\" id=\"quantity\" value=\"0\" />\n    <label for=\"color\">Color:</label>\n    <select id=\"color\">\n      <option value=\"--\">--</option>\n      <option value=\"white\">White Leather</option>\n      <option value=\"black\">Brown Leather</option>\n      <option value=\"brown\">Black Leather</option>\n    </select>\n    <label for=\"address\">Address:</label>\n    <input type=\"text\" id=\"address\" />\n    <label for=\"city\">City:</label>\n    <input type=\"text\" id=\"city\" />\n    <label for=\"state\">State:</label>\n    <input type=\"text\" id=\"state\" />\n    <button onclick=\"checkForm()\" id=\"submit\">Submit Order</button>\n    <h2 class=\"hidden\" id=\"status\">Order Submitted!</h2>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  margin-left: 20%;\n  margin-right: 20%;\n  font-family: sans-serif;\n}\n\nbody input,\nselect {\n  width: 300px;\n}\n\nlabel {\n  font-size: 10px;\n  text-align: left;\n  width: 300px;\n}\n\n#backpack {\n  height: auto;\n  width: 200px;\n  margin-bottom: 30px;\n}\n\n.error {\n  border: 2px solid red;\n  border-radius: 5px;\n}\n\n.hidden {\n  display: none;\n}\n\n#status {\n  color: green;\n  font-size: 15px;\n}\n\nbutton {\n  border: 1px solid gray;\n  border-radius: 5%;\n  background-color: lavender;\n  width: 200px;\n  margin: 35px;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "function showError(id) {\n  const input = document.querySelector(id);\n  input.classList.add(\"error\");\n}\n\nfunction removeError(id) {\n  const input = document.querySelector(id);\n  input.classList.remove(\"error\");\n}\nconst checkQuantity = () => document.querySelector(\"#quantity\").value > 0;\nconst checkColor = () => document.querySelector(\"#color\").value !== \"--\";\nconst checkState = () => document.querySelector(\"#state\").value.length == 2;\n\nfunction checkForm() {\n  if (!checkQuantity()) {\n    showError(\"#quantity\");\n  } else {\n    removeError(\"#quantity\");\n  }\n  if (!checkColor()) {\n    showError(\"#color\");\n  } else {\n    removeError(\"#color\");\n  }\n  if (!checkState()) {\n    showError(\"#state\");\n  } else {\n    removeError(\"#state\");\n  }\n}",
+                  "solvedContent": "function showError(id) {\n  const input = document.querySelector(id);\n  input.classList.add(\"error\");\n}\n\nfunction removeError(id) {\n  const input = document.querySelector(id);\n  input.classList.remove(\"error\");\n}\nconst checkQuantity = () => document.querySelector(\"#quantity\").value > 0;\nconst checkColor = () => document.querySelector(\"#color\").value !== \"--\";\nconst checkState = () => document.querySelector(\"#state\").value.length == 2;\n\nfunction checkForm() {\n  if (!checkQuantity()) {\n    showError(\"#quantity\");\n  } else {\n    removeError(\"#quantity\");\n  }\n  if (!checkColor()) {\n    showError(\"#color\");\n  } else {\n    removeError(\"#color\");\n  }\n  if (!checkState()) {\n    showError(\"#state\");\n  } else {\n    removeError(\"#state\");\n  }\n  if (checkQuantity() && checkColor() && checkState()) {\n    document.querySelector(\"#status\").classList.remove(\"hidden\");\n  }\n}"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "Remember, you can use the `&&` operator in an `if` statement condition to check multiple conditions together."
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

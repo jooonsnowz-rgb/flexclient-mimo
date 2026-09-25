@@ -1,0 +1,183 @@
+{
+  "tutorial": {
+    "id": 2439,
+    "version": 5,
+    "type": "guidedProjectOptional",
+    "isNew": false,
+    "codeLanguage": "python",
+    "title": "Magasin d’électronique",
+    "descriptionContent": "Faisons un peu de formatage de chaînes pour faciliter le nettoyage des données du magasin d’électronique.",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": "tutorial-2439-icon-banner.svg",
+    "chapters": [
+      {
+        "id": 14019,
+        "title": "Magasin d’électronique",
+        "type": "practiceLevel1",
+        "lessons": [
+          {
+            "title": "Extracting the Data Pieces",
+            "id": 124361,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Tu travailles dans un magasin d’électronique. Ta tâche consiste à nettoyer et formater des données contenant des informations sur certains appareils.\n\nLe propriétaire du magasin a stocké toutes les données sous forme de chaîne dans une variable appelée `data`. Cette chaîne contient des informations sur un ensemble de différents appareils. Chaque information comprend le type de l’appareil et son prix. Les données de chaque appareil sont séparées par un signe `|`. Toutes ces informations sont utiles, mais elles ne sont pas très faciles à lire. Extrayons-les et stockons-les dans une liste contenant différents éléments.\n\n1. Crée une variable `device_list` et attribue-lui la valeur obtenue en séparant la chaîne `data`.\n2. Crée une variable `formatted_list` et stocke-y une liste vide.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "data = \"14inch l@ptop,699|16inch l@ptop,999|sm@rtphone,1099|t@blet,499|g@ming pc,1999\"",
+                  "solvedContent": "data = \"14inch l@ptop,699|16inch l@ptop,999|sm@rtphone,1099|t@blet,499|g@ming pc,1999\"\ndevice_list = data.split(\"|\")\nformatted_list = []"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Split Device Information",
+            "id": 124362,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Maintenant que nous avons stocké la liste de chaînes dans `device_list`, séparons le type et le prix de l’appareil en divisant davantage les données de l’appareil au niveau de la virgule qui sépare le type et le prix.\n\n1. Crée une boucle `for` pour parcourir `device_list`. Utilise `device` comme variable d’itération.\n2. Crée une variable `device_info_list` et attribue-lui la valeur obtenue en divisant la variable `device` au niveau de `,`.\n3. Crée une variable `name` et donne-lui comme valeur le premier élément de `device_info_list`.\n4. Crée une variable `price`. Convertis le deuxième élément de `device_info_list` en entier, puis utilise-le comme valeur de `price`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "data = \"14inch l@ptop,699|16inch l@ptop,999|sm@rtphone,1099|t@blet,499|g@ming pc,1999\"\ndevice_list = data.split(\"|\")\nformatted_list = []",
+                  "solvedContent": "data = \"14inch l@ptop,699|16inch l@ptop,999|sm@rtphone,1099|t@blet,499|g@ming pc,1999\"\ndevice_list = data.split(\"|\")\nformatted_list = []\nfor device in device_list:\n device_info_list = device.split(\",\")\n name = device_info_list[0]\n price = int(device_info_list[1])"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "Remember that you can access the values in a list using the index. Index starts from 0.\n\nRemember that you can convert a string to an integer using `int()`. The syntax is `int(<string>)`."
+                }
+              ]
+            }
+          },
+          {
+            "title": "Adjust Prices",
+            "id": 124664,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "En raison de l’inflation, le propriétaire du magasin veut que nous mettions les prix à jour et que nous ajoutions une augmentation de 10 % au prix de chaque appareil. Pour simplifier la comptabilité, le propriétaire décide d’**arrondir vers le bas** le nouveau prix au dollar près. Comme nous avons déjà extrait séparément le type et le prix de l’appareil, appliquons l’augmentation avant de mettre les données en forme.\n\n1. Dans la boucle, crée une variable `new_price`.\n2. Augmente `price` de 10 % et convertis-la en entier avant de l’assigner à `new_price`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "data = \"14inch l@ptop,699|16inch l@ptop,999|sm@rtphone,1099|t@blet,499|g@ming pc,1999\"\r\ndevice_list = data.split(\"|\")\r\nformatted_list = []\r\nfor device in device_list:\r\n device_info_list = device.split(\",\")\r\n name = device_info_list[0]\r\n price = int(device_info_list[1])",
+                  "solvedContent": "data = \"14inch l@ptop,699|16inch l@ptop,999|sm@rtphone,1099|t@blet,499|g@ming pc,1999\"\r\ndevice_list = data.split(\"|\")\r\nformatted_list = []\r\nfor device in device_list:\r\n device_info_list = device.split(\",\")\r\n name = device_info_list[0]\r\n price = int(device_info_list[1])\r\n new_price = int(price * 1.1);"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "You can increase a float by 10% by multiplying it by `1.1`."
+                }
+              ]
+            }
+          },
+          {
+            "title": "Format Information",
+            "id": 124665,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Super ! Nous avons décomposé la chaîne en différentes parties dont nous avons besoin. Mettons les informations en forme avant de les inclure dans la variable `formatted_list`.\n\n1. Dans la boucle, crée une variable `formatted_device` et attribue-lui la f-string suivante.\n```\nf\"Device Name: {name}, Device Price: ${price}\"\n```",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "data = \"14inch l@ptop,699|16inch l@ptop,999|sm@rtphone,1099|t@blet,499|g@ming pc,1999\"\r\ndevice_list = data.split(\"|\")\r\nformatted_list = []\r\nfor device in device_list:\r\n device_info_list = device.split(\",\")\r\n name = device_info_list[0]\r\n price = int(device_info_list[1])\r\n new_price = int(price * 1.1);",
+                  "solvedContent": "data = \"14inch l@ptop,699|16inch l@ptop,999|sm@rtphone,1099|t@blet,499|g@ming pc,1999\"\r\ndevice_list = data.split(\"|\")\r\nformatted_list = []\r\nfor device in device_list:\r\n device_info_list = device.split(\",\")\r\n name = device_info_list[0]\r\n price = int(device_info_list[1])\r\n new_price = int(price * 1.1);\r\n formatted_device = f\"Device Name: {name}, Device Price: ${price}\""
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Fix Typo",
+            "id": 124667,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Le propriétaire du magasin vient de nous informer que, lorsqu’il saisissait les données, son clavier était cassé. Au lieu de `a`, le propriétaire du magasin a saisi `@` dans toutes les chaînes de la variable `data`.\n\n1. À l’intérieur de la boucle, crée une variable `corrected_formatted_device`. Utilise `replace()` sur `formatted_device` pour remplacer `@` par `a`, puis définis cette valeur comme valeur de `corrected_formatted_device`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "data = \"14inch l@ptop,699|16inch l@ptop,999|sm@rtphone,1099|t@blet,499|g@ming pc,1999\"\r\ndevice_list = data.split(\"|\")\r\nformatted_list = []\r\nfor device in device_list:\r\n device_info_list = device.split(\",\")\r\n name = device_info_list[0]\r\n price = int(device_info_list[1])\r\n new_price = int(price * 1.1);\r\n formatted_device = f\"Device Name: {name}, Device Price: ${price}\"",
+                  "solvedContent": "data = \"14inch l@ptop,699|16inch l@ptop,999|sm@rtphone,1099|t@blet,499|g@ming pc,1999\"\r\ndevice_list = data.split(\"|\")\r\nformatted_list = []\r\nfor device in device_list:\r\n device_info_list = device.split(\",\")\r\n name = device_info_list[0]\r\n price = int(device_info_list[1])\r\n new_price = int(price * 1.1);\r\n formatted_device = f\"Device Name: {name}, Device Price: ${price}\"\r\n corrected_formatted_device = formatted_device.replace(\"@\",\"a\")"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "Remember that we can use `replace()` to replace all occurrences of a specific text within the string. The syntax is <string>.replace(<text to be replaced>, <replacement text>)`."
+                }
+              ]
+            }
+          },
+          {
+            "title": "Append to List",
+            "id": 124666,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Excellent travail ! Maintenant, les données corrigées sont prêtes et nous pouvons remplir la variable `formatted_list` avec ces données.\n\n1. Dans la boucle `for`, ajoute `corrected_formatted_device` à `formatted_list`.\n2. En dehors de la boucle `for`, affiche la variable `formatted_list`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "data = \"14inch l@ptop,699|16inch l@ptop,999|sm@rtphone,1099|t@blet,499|g@ming pc,1999\"\r\ndevice_list = data.split(\"|\")\r\nformatted_list = []\r\nfor device in device_list:\r\n device_info_list = device.split(\",\")\r\n name = device_info_list[0]\r\n price = int(device_info_list[1])\r\n new_price = int(price * 1.1);\r\n formatted_device = f\"Device Name: {name}, Device Price: ${price}\"\r\n corrected_formatted_device = formatted_device.replace(\"@\",\"a\")",
+                  "solvedContent": "data = \"14inch l@ptop,699|16inch l@ptop,999|sm@rtphone,1099|t@blet,499|g@ming pc,1999\"\r\ndevice_list = data.split(\"|\")\r\nformatted_list = []\r\nfor device in device_list:\r\n device_info_list = device.split(\",\")\r\n name = device_info_list[0]\r\n price = int(device_info_list[1])\r\n new_price = int(price * 1.1);\r\n formatted_device = f\"Device Name: {name}, Device Price: ${price}\"\r\n corrected_formatted_device = formatted_device.replace(\"@\",\"a\")\r\n formatted_list.append(corrected_formatted_device)\r\nprint(formatted_list)"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "Remember you can append values to a list using `append()`. The syntax is `<list>.append(<value>)`."
+                }
+              ]
+            }
+          },
+          {
+            "title": "Overview",
+            "id": 124368,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Félicitations ! Tu as converti une chaîne d’informations séparées par `|`, très difficile à lire, en une liste bien plus organisée d’informations pertinentes.\n\nAucun test n’est exécuté ici, alors n’hésite pas à explorer le code et à faire des essais !\n\nTu pourrais peut-être ajouter d’autres informations, comme la durée de la garantie ou les dimensions, dans la variable `data`, puis modifier le programme afin de formater et d’afficher également ces nouvelles informations pour l’appareil.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "data = \"14inch l@ptop,699|16inch l@ptop,999|sm@rtphone,1099|t@blet,499|g@ming pc,1999\"\ndevice_list = data.split(\"|\")\nformatted_list = []\nfor device in device_list:\n device_info_list = device.split(\",\")\n name = device_info_list[0]\n price = int(device_info_list[1])\n new_price = int(price * 1.1);\n formatted_device = f\"Device Name: {name}, Device Price: ${price}\"\n corrected_formatted_device = formatted_device.replace(\"@\",\"a\")\n formatted_list.append(corrected_formatted_device)\nprint(formatted_list)",
+                  "solvedContent": null
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

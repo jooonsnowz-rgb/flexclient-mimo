@@ -1,0 +1,247 @@
+{
+  "tutorial": {
+    "id": 2614,
+    "version": 8,
+    "type": "guidedProject",
+    "isNew": false,
+    "codeLanguage": "html",
+    "title": "Pixel Paws - Bagian 2",
+    "descriptionContent": "Merasakan cinta untuk hewan peliharaan kita? Saatnya menyambut satu lagi! Namun, dengan dua kali lipat kaki berpiksel, tanggung jawabnya juga menjadi dua kali lipat. Dalam fase ini, kita tidak hanya akan memperkenalkan hewan peliharaan baru, tetapi juga menambahkan beberapa lapisan tantangan ke gameplay agar kemampuanmu dalam merawat hewan peliharaan benar-benar diuji.",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": "tutorial-2614-icon-banner.svg",
+    "chapters": [
+      {
+        "id": 14465,
+        "title": "Belajar",
+        "type": "practiceLevel3",
+        "lessons": [
+          {
+            "title": "Lesson #1",
+            "id": 129008,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Selamat datang kembali di game kita. Kita ingin menambahkan pet baru ke project **Pixel Paws** kita.\n\n1. Tambahkan pet lain ke dalam `pet-container`, di bawah pet pertama.\n2. Pastikan kamu menambahkan `div` baru dengan `class` yang sama. Berikan id `\"pet2\"`.\n3. Di dalam `div` tersebut, tambahkan `div` lain dengan `class` yang ditetapkan ke `\"emoji\"`. Lalu tambahkan emoji lain untuk merepresentasikan pet keduamu.\n4. Sama seperti pet pertama, tambahkan paragraf untuk level saturasi dan jangan lupa mengatur `span`.\n5. Terakhir, tambahkan juga paragraf lain untuk pesan.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <title></title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n  </head>\n  <body>\n    <h1>Pixel Paws</h1>\n    <div class=\"pet-container\">\n      <div class=\"pet\" id=\"pet1\">\n        <div class=\"emoji\">&#128049;</div>\n        <p>Saturation Level: <span id=\"hunger1\">100</span>%</p>\n        <p id=\"message1\"></p>\n      </div>\n    </div>\n    <div class=\"emoji treat\" onclick=\"feedPet(1)\" id=\"treat1\">&#127850;</div>\n    <script src=\"script.js\"></script>\n  </body>\n</html>\n",
+                  "solvedContent": "<!doctype html>\n<html>\n  <head>\n    <title></title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n  </head>\n  <body>\n    <h1>Pixel Paws</h1>\n    <div class=\"pet-container\">\n      <div class=\"pet\" id=\"pet1\">\n        <div class=\"emoji\">&#128049;</div>\n        <p>Saturation Level: <span id=\"hunger1\">100</span>%</p>\n        <p id=\"message1\"></p>\n      </div>\n      <div class=\"pet\" id=\"pet2\">\n        <div class=\"emoji\">&#128054;</div>\n        <p>Saturation Level: <span id=\"hunger2\">100</span>%</p>\n        <p id=\"message2\"></p>\n      </div>\n    </div>\n    <div class=\"emoji treat\" onclick=\"feedPet(1)\" id=\"treat1\">&#127850;</div>\n    <script src=\"script.js\"></script>\n  </body>\n</html>\n"
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  font-family: Arial, sans-serif;\n  text-align: center;\n  background-color: lightskyblue;\n}\n\n.pet-container {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: space-around;\n  margin-top: 50px;\n}\n\n.pet {\n  cursor: pointer;\n  background-color: white;\n  border-radius: 8px;\n  padding: 8px;\n  margin: 8px;\n  width: 240px;\n}\n\n.emoji {\n  font-size: 70px;\n  cursor: pointer;\n  margin-top: 10px;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "class Pet {\n  constructor(id) {\n    this.id = id;\n    this.fedLevel = 100;\n    this.fedElement = document.getElementById(`hunger${id}`);\n    this.messageElement = document.getElementById(`message${id}`);\n    this.displayElement = document.getElementById(`pet${id}`);\n  }\n\n  decreaseFedLevel() {\n    this.fedLevel -= 10;\n    if (this.fedLevel < 0) this.fedLevel = 0;\n    this.fedElement.innerHTML = this.fedLevel;\n    if (this.fedLevel === 0) {\n      this.messageElement.innerHTML = \"Pet ran away\";\n      this.displayElement.style.opacity = 0.5;\n    }\n  }\n\n  feed(amount) {\n    this.fedLevel += amount;\n    if (this.fedLevel > 100) this.fedLevel = 100;\n    this.fedElement.innerHTML = this.fedLevel;\n  }\n}\n\nlet pet1 = new Pet(1);\n\nfunction feedPet(amount) {\n  pet1.feed(amount);\n}\n\nsetInterval(() => {\n  pet1.decreaseFedLevel();\n}, 5000);\n",
+                  "solvedContent": null
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #2",
+            "id": 129009,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Karena sekarang kita memiliki dua hewan peliharaan, kita perlu mencari cara untuk memilihnya agar dapat menentukan hewan mana yang akan diberi makan.\n\n1. Gunakan atribut `onclick` dari dua div dengan class `\"pet\"` untuk memanggil fungsi `selectPet(x)` dengan mengganti `x` masing-masing menjadi `1` dan `2` untuk hewan peliharaan pertama dan kedua.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <title></title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n  </head>\n  <body>\n    <h1>Pixel Paws</h1>\n    <div class=\"pet-container\">\n      <div class=\"pet\" id=\"pet1\">\n        <div class=\"emoji\">&#128049;</div>\n        <p>Saturation Level: <span id=\"hunger1\">100</span>%</p>\n        <p id=\"message1\"></p>\n      </div>\n      <div class=\"pet\" id=\"pet2\">\n        <div class=\"emoji\">&#128054;</div>\n        <p>Saturation Level: <span id=\"hunger2\">100</span>%</p>\n        <p id=\"message2\"></p>\n      </div>\n    </div>\n    <div class=\"emoji treat\" onclick=\"feedPet(1)\" id=\"treat1\">&#127850;</div>\n    <script src=\"script.js\"></script>\n  </body>\n</html>\n",
+                  "solvedContent": "<!doctype html>\n<html>\n  <head>\n    <title></title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n  </head>\n  <body>\n    <h1>Pixel Paws</h1>\n    <div class=\"pet-container\">\n      <div class=\"pet\" id=\"pet1\" onclick=\"selectPet(1)\">\n        <div class=\"emoji\">&#128049;</div>\n        <p>Saturation Level: <span id=\"hunger1\">100</span>%</p>\n        <p id=\"message1\"></p>\n      </div>\n      <div class=\"pet\" id=\"pet2\" onclick=\"selectPet(2)\">\n        <div class=\"emoji\">&#128054;</div>\n        <p>Saturation Level: <span id=\"hunger2\">100</span>%</p>\n        <p id=\"message2\"></p>\n      </div>\n    </div>\n    <div class=\"emoji treat\" onclick=\"feedPet(1)\" id=\"treat1\">&#127850;</div>\n    <script src=\"script.js\"></script>\n  </body>\n</html>\n"
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  font-family: Arial, sans-serif;\n  text-align: center;\n  background-color: lightskyblue;\n}\n\n.pet-container {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: space-around;\n  margin-top: 50px;\n}\n\n.pet {\n  cursor: pointer;\n  background-color: white;\n  border-radius: 8px;\n  padding: 8px;\n  margin: 8px;\n  width: 240px;\n}\n\n.emoji {\n  font-size: 70px;\n  cursor: pointer;\n  margin-top: 10px;\n}\n",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "class Pet {\n  constructor(id) {\n    this.id = id;\n    this.fedLevel = 100;\n    this.fedElement = document.getElementById(`hunger${id}`);\n    this.messageElement = document.getElementById(`message${id}`);\n    this.displayElement = document.getElementById(`pet${id}`);\n  }\n\n  decreaseFedLevel() {\n    this.fedLevel -= 10;\n    if (this.fedLevel < 0) this.fedLevel = 0;\n    this.fedElement.innerHTML = this.fedLevel;\n    if (this.fedLevel === 0) {\n      this.messageElement.innerHTML = \"Pet ran away\";\n      this.displayElement.style.opacity = 0.5;\n    }\n  }\n\n  feed(amount) {\n    this.fedLevel += amount;\n    if (this.fedLevel > 100) this.fedLevel = 100;\n    this.fedElement.innerHTML = this.fedLevel;\n  }\n}\n\nlet pet1 = new Pet(1);\n\nfunction feedPet(amount) {\n  pet1.feed(amount);\n}\n\nsetInterval(() => {\n  pet1.decreaseFedLevel();\n}, 5000);\n",
+                  "solvedContent": null
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #3",
+            "id": 129011,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Saatnya mengimplementasikan fungsi baru kita. Agar fungsi ini berfungsi, kita harus menambahkan JavaScript dan CSS.\n\n1. Buat fungsi bernama `selectPet(id)`. Fungsi tersebut harus berada di luar class `Pet`.\n2. Di luar fungsi tersebut, kita perlu mendeklarasikan variabel `selectedPet` yang diatur ke `null` karena belum ada pet yang dipilih di awal.\n3. Di dalam fungsi, atur `selectedPet` ke `id` yang diteruskan.\n4. Di luar fungsi tersebut, kita perlu mengambil kedua elemen dengan `id` `\"pet1\"` dan `\"pet2\"`. Simpan elemen-elemen tersebut dalam variabel bernama `pet1Element` dan `pet2Element`.\n5. Di dalam fungsi, pertama-tama tambahkan `\"selected\"` ke `classList` pet yang baru dipilih dan hapus dari pet lainnya.\n6. Di file CSS, tambahkan aturan untuk `.pet.selected` dan atur `border` untuk menampilkan secara visual bahwa pet tersebut dipilih.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <title></title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n  </head>\n  <body>\n    <h1>Pixel Paws</h1>\n    <div class=\"pet-container\">\n      <div class=\"pet\" id=\"pet1\" onclick=\"selectPet(1)\">\n        <div class=\"emoji\">&#128049;</div>\n        <p>Saturation Level: <span id=\"hunger1\">100</span>%</p>\n        <p id=\"message1\"></p>\n      </div>\n      <div class=\"pet\" id=\"pet2\" onclick=\"selectPet(2)\">\n        <div class=\"emoji\">&#128054;</div>\n        <p>Saturation Level: <span id=\"hunger2\">100</span>%</p>\n        <p id=\"message2\"></p>\n      </div>\n    </div>\n    <div class=\"emoji treat\" onclick=\"feedPet(1)\" id=\"treat1\">&#127850;</div>\n    <script src=\"script.js\"></script>\n  </body>\n</html>\n",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  font-family: Arial, sans-serif;\n  text-align: center;\n  background-color: lightskyblue;\n}\n\n.pet-container {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: space-around;\n  margin-top: 50px;\n}\n\n.pet {\n  cursor: pointer;\n  background-color: white;\n  border-radius: 8px;\n  padding: 8px;\n  margin: 8px;\n  width: 240px;\n}\n\n.emoji {\n  font-size: 70px;\n  cursor: pointer;\n  margin-top: 10px;\n}\n",
+                  "solvedContent": "body {\n  font-family: Arial, sans-serif;\n  text-align: center;\n  background-color: lightskyblue;\n}\n\n.pet-container {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: space-around;\n  margin-top: 50px;\n}\n\n.pet {\n  cursor: pointer;\n  background-color: white;\n  border-radius: 8px;\n  padding: 8px;\n  margin: 8px;\n  width: 240px;\n}\n\n.pet.selected {\n  border: 2px solid red;\n}\n\n.emoji {\n  font-size: 70px;\n  cursor: pointer;\n  margin-top: 10px;\n}\n"
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "class Pet {\n  constructor(id) {\n    this.id = id;\n    this.fedLevel = 100;\n    this.fedElement = document.getElementById(`hunger${id}`);\n    this.messageElement = document.getElementById(`message${id}`);\n    this.displayElement = document.getElementById(`pet${id}`);\n  }\n\n  decreaseFedLevel() {\n    this.fedLevel -= 10;\n    if (this.fedLevel < 0) this.fedLevel = 0;\n    this.fedElement.innerHTML = this.fedLevel;\n    if (this.fedLevel === 0) {\n      this.messageElement.innerHTML = \"Pet ran away\";\n      this.displayElement.style.opacity = 0.5;\n    }\n  }\n\n  feed(amount) {\n    this.fedLevel += amount;\n    if (this.fedLevel > 100) this.fedLevel = 100;\n    this.fedElement.innerHTML = this.fedLevel;\n  }\n}\n\nlet pet1 = new Pet(1);\n\nfunction feedPet(amount) {\n  pet1.feed(amount);\n}\n\nsetInterval(() => {\n  pet1.decreaseFedLevel();\n}, 5000);\n",
+                  "solvedContent": "class Pet {\n  constructor(id) {\n    this.id = id;\n    this.fedLevel = 100;\n    this.fedElement = document.getElementById(`hunger${id}`);\n    this.messageElement = document.getElementById(`message${id}`);\n    this.displayElement = document.getElementById(`pet${id}`);\n  }\n\n  decreaseFedLevel() {\n    this.fedLevel -= 10;\n    if (this.fedLevel < 0) this.fedLevel = 0;\n    this.fedElement.innerHTML = this.fedLevel;\n    if (this.fedLevel === 0) {\n      this.messageElement.innerHTML = \"Pet ran away\";\n      this.displayElement.style.opacity = 0.5;\n    }\n  }\n\n  feed(amount) {\n    this.fedLevel += amount;\n    if (this.fedLevel > 100) this.fedLevel = 100;\n    this.fedElement.innerHTML = this.fedLevel;\n  }\n}\n\nlet pet1 = new Pet(1);\n\nfunction feedPet(amount) {\n  pet1.feed(amount);\n}\n\nlet selectedPet = null;\nconst pet1Element = document.getElementById(\"pet1\");\nconst pet2Element = document.getElementById(\"pet2\");\n\nfunction selectPet(id) {\n  pet1Element.classList.remove(\"selected\");\n  pet2Element.classList.remove(\"selected\");\n\n  selectedPet = id;\n  if (id == 1) {\n    pet1Element.classList.add(\"selected\");\n  } else {\n    pet2Element.classList.add(\"selected\");\n  }\n}\n\nsetInterval(() => {\n  pet1.decreaseFedLevel();\n}, 5000);\n"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #4",
+            "id": 129010,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Alih-alih hanya memiliki satu treat, kita akan memiliki container treat yang menampilkan dua treat.\n\n1. Buat `div` dengan class `treat-container` yang akan menampung semua treat.\n2. Di dalamnya, buat `div` dengan class `treat-wrapper` di sekeliling div yang menampung satu treat.\n3. Di bawah `treat-wrapper` untuk treat pertama, tambahkan treat kedua. Pastikan untuk menyiapkan semuanya persis seperti yang kamu lakukan untuk treat pertama, tetapi ubah id menjadi `2` di semua tempat.\n4. Pastikan juga untuk meneruskan `5` sebagai argumen ke fungsi `feedPet`, bukan `1` seperti yang kita lakukan untuk treat pertama.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <title></title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <h1>Pixel Paws</h1>\n    <div class=\"pet-container\">\n      <div class=\"pet\" id=\"pet1\" onclick=\"selectPet(1)\">\n        <div class=\"emoji\">&#128049;</div>\n        <p>Saturation Level: <span id=\"hunger1\">100</span>%</p>\n        <p id=\"message1\"></p>\n      </div>\n      <div class=\"pet\" id=\"pet2\" onclick=\"selectPet(2)\">\n        <div class=\"emoji\">&#128054;</div>\n        <p>Saturation Level: <span id=\"hunger2\">100</span>%</p>\n        <p id=\"message2\"></p>\n      </div>\n    </div>\n    <div class=\"emoji treat\" onclick=\"feedPet(1)\" id=\"treat1\">&#127850;</div>\n    <script src=\"script.js\"></script>\n  </body>\n</html>",
+                  "solvedContent": "<!doctype html>\n<html>\n  <head>\n    <title></title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <h1>Pixel Paws</h1>\n    <div class=\"pet-container\">\n      <div class=\"pet\" id=\"pet1\" onclick=\"selectPet(1)\">\n        <div class=\"emoji\">&#128049;</div>\n        <p>Saturation Level: <span id=\"hunger1\">100</span>%</p>\n        <p id=\"message1\"></p>\n      </div>\n      <div class=\"pet\" id=\"pet2\" onclick=\"selectPet(2)\">\n        <div class=\"emoji\">&#128054;</div>\n        <p>Saturation Level: <span id=\"hunger2\">100</span>%</p>\n        <p id=\"message2\"></p>\n      </div>\n    </div>\n    <div class=\"treat-container\">\n      <div class=\"treat-wrapper\">\n        <div class=\"emoji treat\" onclick=\"feedPet(1)\" id=\"treat1\">&#127850;\n        </div>\n      </div>\n      <div class=\"treat-wrapper\">\n        <div class=\"emoji treat\" onclick=\"feedPet(5)\" id=\"treat2\">&#127856;\n        </div>\n      </div>\n    </div>\n    <script src=\"script.js\"></script>\n  </body>\n</html>"
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  font-family: Arial, sans-serif;\n  text-align: center;\n  background-color: lightskyblue;\n}\n\n.pet-container {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: space-around;\n  margin-top: 50px;\n}\n\n.pet {\n  cursor: pointer;\n  background-color: white;\n  border-radius: 8px;\n  padding: 8px;\n  margin: 8px;\n  width: 240px;\n}\n\n.pet.selected {\n  border: 2px solid red;\n}\n\n.emoji {\n  font-size: 70px;\n  cursor: pointer;\n  margin-top: 10px;\n}\n",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "class Pet {\n  constructor(id) {\n    this.id = id;\n    this.fedLevel = 100;\n    this.fedElement = document.getElementById(`hunger${id}`);\n    this.messageElement = document.getElementById(`message${id}`);\n    this.displayElement = document.getElementById(`pet${id}`);\n  }\n\n  decreaseFedLevel() {\n    this.fedLevel -= 10;\n    if (this.fedLevel < 0) this.fedLevel = 0;\n    this.fedElement.innerHTML = this.fedLevel;\n    if (this.fedLevel === 0) {\n      this.messageElement.innerHTML = \"Pet ran away\";\n      this.displayElement.style.opacity = 0.5;\n    }\n  }\n\n  feed(amount) {\n    this.fedLevel += amount;\n    if (this.fedLevel > 100) this.fedLevel = 100;\n    this.fedElement.innerHTML = this.fedLevel;\n  }\n}\n\nlet pet1 = new Pet(1);\n\nfunction feedPet(amount) {\n  pet1.feed(amount);\n}\n\nlet selectedPet = null;\nconst pet1Element = document.getElementById(\"pet1\");\nconst pet2Element = document.getElementById(\"pet2\");\n\nfunction selectPet(id) {\n  pet1Element.classList.remove(\"selected\");\n  pet2Element.classList.remove(\"selected\");\n\n  selectedPet = id;\n  if (id == 1) {\n    pet1Element.classList.add(\"selected\");\n  } else {\n    pet2Element.classList.add(\"selected\");\n  }\n}\n\nsetInterval(() => {\n  pet1.decreaseFedLevel();\n}, 5000);\n",
+                  "solvedContent": null
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #5",
+            "id": 129012,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Saatnya memberi makan!\n\n1. Inisialisasikan pet kedua, `pet2`, dan beri id `2` saat kamu menginisialisasikannya.\n2. Perbarui fungsi `feedPet` agar memberi makan pet yang sedang dipilih.\n   - Periksa variabel `selectedPet` dengan pernyataan `if`.\n   - Panggil `feed(amount)` pada pet yang benar di dalam klausa `if` atau `else if`.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <title></title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n  </head>\n  <body>\n    <h1>Pixel Paws</h1>\n    <div class=\"pet-container\">\n      <div class=\"pet\" id=\"pet1\" onclick=\"selectPet(1)\">\n        <div class=\"emoji\">&#128049;</div>\n        <p>Saturation Level: <span id=\"hunger1\">100</span>%</p>\n        <p id=\"message1\"></p>\n      </div>\n      <div class=\"pet\" id=\"pet2\" onclick=\"selectPet(2)\">\n        <div class=\"emoji\">&#128054;</div>\n        <p>Saturation Level: <span id=\"hunger2\">100</span>%</p>\n        <p id=\"message2\"></p>\n      </div>\n    </div>\n    <div class=\"treat-container\">\n      <div class=\"treat-wrapper\">\n        <div class=\"emoji treat\" onclick=\"feedPet(1)\" id=\"treat1\">\n          &#127850;\n        </div>\n      </div>\n      <div class=\"treat-wrapper\">\n        <div class=\"emoji treat\" onclick=\"feedPet(5)\" id=\"treat2\">\n          &#127856;\n        </div>\n      </div>\n    </div>\n    <script src=\"script.js\"></script>\n  </body>\n</html>\n",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  font-family: Arial, sans-serif;\n  text-align: center;\n  background-color: lightskyblue;\n}\n\n.pet-container {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: space-around;\n  margin-top: 50px;\n}\n\n.pet {\n  cursor: pointer;\n  background-color: white;\n  border-radius: 8px;\n  padding: 8px;\n  margin: 8px;\n  width: 240px;\n}\n\n.pet.selected {\n  border: 2px solid red;\n}\n\n.emoji {\n  font-size: 70px;\n  cursor: pointer;\n  margin-top: 10px;\n}\n",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "class Pet {\n  constructor(id) {\n    this.id = id;\n    this.fedLevel = 100;\n    this.fedElement = document.getElementById(`hunger${id}`);\n    this.messageElement = document.getElementById(`message${id}`);\n    this.displayElement = document.getElementById(`pet${id}`);\n  }\n\n  decreaseFedLevel() {\n    this.fedLevel -= 10;\n    if (this.fedLevel < 0) this.fedLevel = 0;\n    this.fedElement.innerHTML = this.fedLevel;\n    if (this.fedLevel === 0) {\n      this.messageElement.innerHTML = \"Pet ran away\";\n      this.displayElement.style.opacity = 0.5;\n    }\n  }\n\n  feed(amount) {\n    this.fedLevel += amount;\n    if (this.fedLevel > 100) this.fedLevel = 100;\n    this.fedElement.innerHTML = this.fedLevel;\n  }\n}\n\nlet pet1 = new Pet(1);\n\nfunction feedPet(amount) {\n  pet1.feed(amount);\n}\n\nlet selectedPet = null;\nconst pet1Element = document.getElementById(\"pet1\");\nconst pet2Element = document.getElementById(\"pet2\");\n\nfunction selectPet(id) {\n  pet1Element.classList.remove(\"selected\");\n  pet2Element.classList.remove(\"selected\");\n\n  selectedPet = id;\n  if (id == 1) {\n    pet1Element.classList.add(\"selected\");\n  } else {\n    pet2Element.classList.add(\"selected\");\n  }\n}\n\nsetInterval(() => {\n  pet1.decreaseFedLevel();\n}, 5000);\n",
+                  "solvedContent": "class Pet {\n  constructor(id) {\n    this.id = id;\n    this.fedLevel = 100;\n    this.fedElement = document.getElementById(`hunger${id}`);\n    this.messageElement = document.getElementById(`message${id}`);\n    this.displayElement = document.getElementById(`pet${id}`);\n  }\n\n  decreaseFedLevel() {\n    this.fedLevel -= 10;\n    if (this.fedLevel < 0) this.fedLevel = 0;\n    this.fedElement.innerHTML = this.fedLevel;\n    if (this.fedLevel === 0) {\n      this.messageElement.innerHTML = \"Pet ran away\";\n      this.displayElement.style.opacity = 0.5;\n    }\n  }\n\n  feed(amount) {\n    this.fedLevel += amount;\n    if (this.fedLevel > 100) this.fedLevel = 100;\n    this.fedElement.innerHTML = this.fedLevel;\n  }\n}\n\nlet pet1 = new Pet(1);\nlet pet2 = new Pet(2);\n\nfunction feedPet(amount) {\n  if (selectedPet === 1) {\n    pet1.feed(amount);\n  } else if (selectedPet === 2) {\n    pet2.feed(amount);\n  }\n}\n\nlet selectedPet = null;\nconst pet1Element = document.getElementById(\"pet1\");\nconst pet2Element = document.getElementById(\"pet2\");\n\nfunction selectPet(id) {\n  pet1Element.classList.remove(\"selected\");\n  pet2Element.classList.remove(\"selected\");\n\n  selectedPet = id;\n  if (id == 1) {\n    pet1Element.classList.add(\"selected\");\n  } else {\n    pet2Element.classList.add(\"selected\");\n  }\n}\n\nsetInterval(() => {\n  pet1.decreaseFedLevel();\n}, 5000);\n"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #6",
+            "id": 129013,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Apakah kamu memperhatikan bahwa hanya hewan peliharaan pertama yang lapar? Itu karena kita belum mengurangi tingkat kekenyangan hewan peliharaan kedua.\n\n1. Di dalam fungsi `setInterval`, panggil juga `pet2.decreaseFedLevel();`.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <title></title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n  </head>\n  <body>\n    <h1>Pixel Paws</h1>\n    <div class=\"pet-container\">\n      <div class=\"pet\" id=\"pet1\" onclick=\"selectPet(1)\">\n        <div class=\"emoji\">&#128049;</div>\n        <p>Saturation Level: <span id=\"hunger1\">100</span>%</p>\n        <p id=\"message1\"></p>\n      </div>\n      <div class=\"pet\" id=\"pet2\" onclick=\"selectPet(2)\">\n        <div class=\"emoji\">&#128054;</div>\n        <p>Saturation Level: <span id=\"hunger2\">100</span>%</p>\n        <p id=\"message2\"></p>\n      </div>\n    </div>\n    <div class=\"treat-container\">\n      <div class=\"treat-wrapper\">\n        <div class=\"emoji treat\" onclick=\"feedPet(1)\" id=\"treat1\">\n          &#127850;\n        </div>\n      </div>\n      <div class=\"treat-wrapper\">\n        <div class=\"emoji treat\" onclick=\"feedPet(5)\" id=\"treat2\">\n          &#127856;\n        </div>\n      </div>\n    </div>\n    <script src=\"script.js\"></script>\n  </body>\n</html>\n",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  font-family: Arial, sans-serif;\n  text-align: center;\n  background-color: lightskyblue;\n}\n\n.pet-container {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: space-around;\n  margin-top: 50px;\n}\n\n.pet {\n  cursor: pointer;\n  background-color: white;\n  border-radius: 8px;\n  padding: 8px;\n  margin: 8px;\n  width: 240px;\n}\n\n.pet.selected {\n  border: 2px solid red;\n}\n\n.emoji {\n  font-size: 70px;\n  cursor: pointer;\n  margin-top: 10px;\n}\n",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "class Pet {\n  constructor(id) {\n    this.id = id;\n    this.fedLevel = 100;\n    this.fedElement = document.getElementById(`hunger${id}`);\n    this.messageElement = document.getElementById(`message${id}`);\n    this.displayElement = document.getElementById(`pet${id}`);\n  }\n\n  decreaseFedLevel() {\n    this.fedLevel -= 10;\n    if (this.fedLevel < 0) this.fedLevel = 0;\n    this.fedElement.innerHTML = this.fedLevel;\n    if (this.fedLevel === 0) {\n      this.messageElement.innerHTML = \"Pet ran away\";\n      this.displayElement.style.opacity = 0.5;\n    }\n  }\n\n  feed(amount) {\n    this.fedLevel += amount;\n    if (this.fedLevel > 100) this.fedLevel = 100;\n    this.fedElement.innerHTML = this.fedLevel;\n  }\n}\n\nlet pet1 = new Pet(1);\nlet pet2 = new Pet(2);\n\nfunction feedPet(amount) {\n  if (selectedPet === 1) {\n    pet1.feed(amount);\n  } else if (selectedPet === 2) {\n    pet2.feed(amount);\n  }\n}\n\nlet selectedPet = null;\nconst pet1Element = document.getElementById(\"pet1\");\nconst pet2Element = document.getElementById(\"pet2\");\n\nfunction selectPet(id) {\n  pet1Element.classList.remove(\"selected\");\n  pet2Element.classList.remove(\"selected\");\n\n  selectedPet = id;\n  if (id == 1) {\n    pet1Element.classList.add(\"selected\");\n  } else {\n    pet2Element.classList.add(\"selected\");\n  }\n}\n\nsetInterval(() => {\n  pet1.decreaseFedLevel();\n}, 5000);\n",
+                  "solvedContent": "class Pet {\n  constructor(id) {\n    this.id = id;\n    this.fedLevel = 100;\n    this.fedElement = document.getElementById(`hunger${id}`);\n    this.messageElement = document.getElementById(`message${id}`);\n    this.displayElement = document.getElementById(`pet${id}`);\n  }\n\n  decreaseFedLevel() {\n    this.fedLevel -= 10;\n    if (this.fedLevel < 0) this.fedLevel = 0;\n    this.fedElement.innerHTML = this.fedLevel;\n    if (this.fedLevel === 0) {\n      this.messageElement.innerHTML = \"Pet ran away\";\n      this.displayElement.style.opacity = 0.5;\n    }\n  }\n\n  feed(amount) {\n    this.fedLevel += amount;\n    if (this.fedLevel > 100) this.fedLevel = 100;\n    this.fedElement.innerHTML = this.fedLevel;\n  }\n}\n\nlet pet1 = new Pet(1);\nlet pet2 = new Pet(2);\n\nfunction feedPet(amount) {\n  if (selectedPet === 1) {\n    pet1.feed(amount);\n  } else if (selectedPet === 2) {\n    pet2.feed(amount);\n  }\n}\n\nlet selectedPet = null;\nconst pet1Element = document.getElementById(\"pet1\");\nconst pet2Element = document.getElementById(\"pet2\");\n\nfunction selectPet(id) {\n  pet1Element.classList.remove(\"selected\");\n  pet2Element.classList.remove(\"selected\");\n\n  selectedPet = id;\n  if (id == 1) {\n    pet1Element.classList.add(\"selected\");\n  } else {\n    pet2Element.classList.add(\"selected\");\n  }\n}\n\nsetInterval(() => {\n  pet1.decreaseFedLevel();\n  pet2.decreaseFedLevel();\n}, 5000);\n"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #6 - Copy",
+            "id": 129990,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Terakhir, pilih `pet1` dari awal agar selalu ada hewan peliharaan yang dipilih.\n\n1. Di bagian paling akhir kode kamu, panggil fungsi `selectPet` dan teruskan argumen `1`.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <title></title>\n    <link rel=\"stylesheet\" href=\"style.css\" />\n  </head>\n  <body>\n    <h1>Pixel Paws</h1>\n    <div class=\"pet-container\">\n      <div class=\"pet\" id=\"pet1\" onclick=\"selectPet(1)\">\n        <div class=\"emoji\">&#128049;</div>\n        <p>Saturation Level: <span id=\"hunger1\">100</span>%</p>\n        <p id=\"message1\"></p>\n      </div>\n      <div class=\"pet\" id=\"pet2\" onclick=\"selectPet(2)\">\n        <div class=\"emoji\">&#128054;</div>\n        <p>Saturation Level: <span id=\"hunger2\">100</span>%</p>\n        <p id=\"message2\"></p>\n      </div>\n    </div>\n    <div class=\"treat-container\">\n      <div class=\"treat-wrapper\">\n        <div class=\"emoji treat\" onclick=\"feedPet(1)\" id=\"treat1\">\n          &#127850;\n        </div>\n      </div>\n      <div class=\"treat-wrapper\">\n        <div class=\"emoji treat\" onclick=\"feedPet(5)\" id=\"treat2\">\n          &#127856;\n        </div>\n      </div>\n    </div>\n    <script src=\"script.js\"></script>\n  </body>\n</html>\n",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  font-family: Arial, sans-serif;\n  text-align: center;\n  background-color: lightskyblue;\n}\n\n.pet-container {\n  display: flex;\n  flex-wrap: wrap;\n  justify-content: space-around;\n  margin-top: 50px;\n}\n\n.pet {\n  cursor: pointer;\n  background-color: white;\n  border-radius: 8px;\n  padding: 8px;\n  margin: 8px;\n  width: 240px;\n}\n\n.pet.selected {\n  border: 2px solid red;\n}\n\n.emoji {\n  font-size: 70px;\n  cursor: pointer;\n  margin-top: 10px;\n}\n",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "class Pet {\n  constructor(id) {\n    this.id = id;\n    this.fedLevel = 100;\n    this.fedElement = document.getElementById(`hunger${id}`);\n    this.messageElement = document.getElementById(`message${id}`);\n    this.displayElement = document.getElementById(`pet${id}`);\n  }\n\n  decreaseFedLevel() {\n    this.fedLevel -= 10;\n    if (this.fedLevel < 0) this.fedLevel = 0;\n    this.fedElement.innerHTML = this.fedLevel;\n    if (this.fedLevel === 0) {\n      this.messageElement.innerHTML = \"Pet ran away\";\n      this.displayElement.style.opacity = 0.5;\n    }\n  }\n\n  feed(amount) {\n    this.fedLevel += amount;\n    if (this.fedLevel > 100) this.fedLevel = 100;\n    this.fedElement.innerHTML = this.fedLevel;\n  }\n}\n\nlet pet1 = new Pet(1);\nlet pet2 = new Pet(2);\n\nfunction feedPet(amount) {\n  if (selectedPet === 1) {\n    pet1.feed(amount);\n  } else if (selectedPet === 2) {\n    pet2.feed(amount);\n  }\n}\n\nlet selectedPet = null;\nconst pet1Element = document.getElementById(\"pet1\");\nconst pet2Element = document.getElementById(\"pet2\");\n\nfunction selectPet(id) {\n  pet1Element.classList.remove(\"selected\");\n  pet2Element.classList.remove(\"selected\");\n\n  selectedPet = id;\n  if (id == 1) {\n    pet1Element.classList.add(\"selected\");\n  } else {\n    pet2Element.classList.add(\"selected\");\n  }\n}\n\nsetInterval(() => {\n  pet1.decreaseFedLevel();\n  pet2.decreaseFedLevel();\n}, 5000);\n",
+                  "solvedContent": "class Pet {\n  constructor(id) {\n    this.id = id;\n    this.fedLevel = 100;\n    this.fedElement = document.getElementById(`hunger${id}`);\n    this.messageElement = document.getElementById(`message${id}`);\n    this.displayElement = document.getElementById(`pet${id}`);\n  }\n\n  decreaseFedLevel() {\n    this.fedLevel -= 10;\n    if (this.fedLevel < 0) this.fedLevel = 0;\n    this.fedElement.innerHTML = this.fedLevel;\n    if (this.fedLevel === 0) {\n      this.messageElement.innerHTML = \"Pet ran away\";\n      this.displayElement.style.opacity = 0.5;\n    }\n  }\n\n  feed(amount) {\n    this.fedLevel += amount;\n    if (this.fedLevel > 100) this.fedLevel = 100;\n    this.fedElement.innerHTML = this.fedLevel;\n  }\n}\n\nlet pet1 = new Pet(1);\nlet pet2 = new Pet(2);\n\nfunction feedPet(amount) {\n  if (selectedPet === 1) {\n    pet1.feed(amount);\n  } else if (selectedPet === 2) {\n    pet2.feed(amount);\n  }\n}\n\nlet selectedPet = null;\nconst pet1Element = document.getElementById(\"pet1\");\nconst pet2Element = document.getElementById(\"pet2\");\n\nfunction selectPet(id) {\n  pet1Element.classList.remove(\"selected\");\n  pet2Element.classList.remove(\"selected\");\n\n  selectedPet = id;\n  if (id == 1) {\n    pet1Element.classList.add(\"selected\");\n  } else {\n    pet2Element.classList.add(\"selected\");\n  }\n}\n\nsetInterval(() => {\n  pet1.decreaseFedLevel();\n  pet2.decreaseFedLevel();\n}, 5000);\n\nselectPet(1);\n"
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

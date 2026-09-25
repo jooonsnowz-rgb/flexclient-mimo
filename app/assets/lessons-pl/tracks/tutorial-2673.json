@@ -1,0 +1,223 @@
+{
+  "tutorial": {
+    "id": 2673,
+    "version": 6,
+    "type": "course",
+    "isNew": false,
+    "codeLanguage": "python",
+    "title": "Komunikacja z interfejsem API",
+    "descriptionContent": "Komunikacja z interfejsem API",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": null,
+    "chapters": [
+      {
+        "id": 14655,
+        "title": "Czym jest API?",
+        "type": "practiceLevel1",
+        "lessons": [
+          {
+            "title": "Intro",
+            "id": 129639,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Interfejsy programowania aplikacji, znane również jako <code>API</code>, ułatwiają komunikację między dwoma programami.</p><p><code>APIs</code> wysyłają <em>żądania</em> z programu nadawcy do programu odbiorcy. Następnie wysyłają <em>odpowiedzi</em> z programu odbiorcy do programu nadawcy.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Intro: Similar real life example I",
+            "id": 129640,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Wiele rzeczy w naszym codziennym życiu działa jak <code>API</code>. Jednym z przykładów jest kelner i personel kuchni.<br /></p><p>Kelner, podobnie jak program nadawcy, wysyła zamówienie do kuchni. Następnie kuchnia, jako program odbiorcy, odsyła jedzenie w odpowiedzi.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "How to use API?*",
+            "id": 129641,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>A teraz wróćmy do programów. Poniższy kod wysyła żądanie <code>GET</code> do <code>API</code>. Czy potrafisz zgadnąć, co robi żądanie <code>GET</code>?</p><p>Jeśli wszystko działa, powinniśmy otrzymać dane wraz z kodem stanu <code>200</code>, który informuje nas, że wszystko przebiegło pomyślnie.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"GET https://mimo.org/courses HTTP/\" /><text value=\"1.1\" class=\"number\" /></content><output><content><text value=\"{&quot;courses&quot;: [{ &quot;id&quot;: 1, &quot;title&quot;: &quot;Python&quot; }, { &quot;id&quot;: 2, &quot;title&quot;: &quot;HTML&quot; }, ...]}\" /></content></output></code><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\">Zażądaj danych</item><item value=\"2\" correct=\"false\">Utwórz nowego użytkownika</item></selection><p visible-if=\"wrong\">Zażądaj danych.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "How did the API get the data?",
+            "id": 129642,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Właśnie tak! Kod służył do zażądania pewnych danych. <code>https://mimo.org/courses</code> to <code>API</code>, które pomogło nam je uzyskać!</p><p>Ale skąd <code>API</code> pobrało te informacje? Pamiętaj, że <code>API</code> umożliwia komunikację między 2 programami.</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\">Interfejs <code>API</code> łączy się z innym programem, aby pobrać informacje z bazy danych</item><item value=\"2\" correct=\"false\"><code>API</code> to baza danych</item></selection><p visible-if=\"wrong\">Interfejs <code>API</code> łączy się z innym programem, aby pobrać informacje z bazy danych.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "API controls the request and response",
+            "id": 129643,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Aby wchodzić w interakcję z bazami danych, musimy pisać kod. <code>API</code> pozwala robić to w prostszy sposób.</p><p>Ale musisz użyć właściwej metody, aby wykonać działania. Do pobierania danych używamy <code>GET</code>. Jak myślisz, czego używamy do wstawiania danych?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\"><code>POST</code></item><item value=\"2\" correct=\"false\"><code>DELETE</code></item></selection><p visible-if=\"wrong\">Koniecznie wybierz <code>POST</code>.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Do interakcji z bazami danych potrzebujemy właściwej metody dla każdego działania. Dane pobieramy za pomocą <code>GET</code>, a wstawiamy za pomocą <code>POST</code>.</p><p>Formularz rejestracji wysyła nowy rekord użytkownika do <code>API</code>. Której metody powinien użyć?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\"><code>POST</code></item><item value=\"2\" correct=\"false\"><code>GET</code></item><item value=\"3\" correct=\"false\"><code>DELETE</code></item></selection><p visible-if=\"wrong\">Koniecznie wybierz <code>POST</code>.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Write a request*",
+            "id": 129644,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>To poprawne! Możemy wstawiać dane do bazy danych za pomocą żądań <code>POST</code>.</p><p>W przeciwieństwie do żądań <code>GET</code> musimy wysłać treść zawierającą informacje w żądaniach <code>POST</code>. Uzupełnij poniższe żądanie.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"POST https://mimo.org/users HTTP/\" /><text value=\"1.1\" class=\"number\" /><text value=\" \" /><text type=\"break\" /><text value=\" \" /><text type=\"break\" /><text value=\"{ \" /><text type=\"break\" /><text value=\" \" /><text value=\"&quot;username&quot;\" class=\"string\" /><text value=\": \" /><text value=\"&quot;test_user&quot;\" class=\"string\" /><text value=\", \" /><text type=\"break\" /><text value=\" \" /><text value=\"&quot;name&quot;\" class=\"string\" /><text value=\": \" /><text value=\"&quot;tester&quot;\" class=\"string\" /><text value=\" \" /><text type=\"break\" /><text value=\"}\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"0\" endIndex=\"4\" /><option startIndex=\"44\" endIndex=\"67\" /><option correct=\"false\"><content><text value=\"GET\" /></content></option><option correct=\"false\"><content><text value=\"DELETE\" /></content></option></options></interaction></interactions><output><content><text value=\"HTTP/1.1 201 Created\" /><text type=\"break\" /><text value=\"{ &quot;success&quot;: true, &quot;message&quot;: &quot;User created successfully&quot;, &quot;data&quot;: { &quot;id&quot;: 123, &quot;username&quot;: &quot;test_user&quot;, &quot;name&quot;: &quot;tester&quot; } }\" /></content></output></code><p visible-if=\"wrong\">Koniecznie wybierz <code>POST</code>, a następnie <code>\"username\": \"test_user\"</code>.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Question 1",
+            "id": 129646,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Co oznacza skrót <code>API</code>?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\">Interfejs programowania aplikacji</item><item value=\"2\" correct=\"false\">Interfejs wspomagający programowanie</item></selection><p visible-if=\"wrong\">Interfejs programowania aplikacji.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Question 2",
+            "id": 129647,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Oto kolejny przykład z życia. Piszesz skrypt wysyłający dane do serwera internetowego. Jaka jest właściwa rola każdej zaangażowanej strony?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\">Twój skrypt jest nadawcą, punktem końcowym serwera jest <code>API</code>, a serwer jest odbiorcą</item><item value=\"2\" correct=\"false\">Twój skrypt to <code>API</code>, punkt końcowy serwera jest nadawcą, a serwer jest odbiorcą</item><item value=\"3\" correct=\"false\">Twój skrypt jest nadawcą, punkt końcowy serwera jest odbiorcą, a serwer jest <code>API</code></item></selection><p visible-if=\"wrong\">Twój skrypt jest nadawcą, punktem końcowym serwera jest <code>API</code>, a serwer jest odbiorcą.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Aplikacja mobilna wysyła zdjęcie do serwera przez jego API. W którą stronę po przetworzeniu żądania wraca odpowiedź?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\">Z serwera z powrotem do aplikacji przez API.</item><item value=\"2\" correct=\"false\">Ponownie z aplikacji do serwera, ponieważ aplikacja wysłała żądanie.</item><item value=\"3\" correct=\"false\">Z API do bazy danych, ponieważ baza danych wysłała żądanie.</item></selection><p visible-if=\"wrong\">Z serwera z powrotem do aplikacji przez API.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Question 3",
+            "id": 129648,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Jak działa <code>API</code>?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\">Wysyła żądanie nadawcy do odbiorcy, a odpowiedź odbiorcy do nadawcy</item><item value=\"2\" correct=\"false\">Po prostu łączy nadawcę i odbiorcę oraz pozwala im robić swoje</item><item value=\"3\" correct=\"false\">Po prostu monitoruje, aby upewnić się, że nadawca i odbiorca wysyłają sobie nawzajem wiadomości</item></selection><p visible-if=\"wrong\">Wysyła żądanie nadawcy do odbiorcy, a odpowiedź odbiorcy do nadawcy.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Aplikacja żąda profilu przez <code>API</code>. Który przepływ wiadomości kończy tę wymianę?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\"><code>API</code> wysyła żądanie do odbiorcy, a następnie zwraca aplikacji jego odpowiedź.</item><item value=\"2\" correct=\"false\"><code>API</code> najpierw wysyła odpowiedź, a potem prosi odbiorcę o żądanie.</item><item value=\"3\" correct=\"false\"><code>API</code> tylko obserwuje, gdy aplikacja kontaktuje się bezpośrednio z odbiorcą.</item></selection><p visible-if=\"wrong\"><code>API</code> wysyła żądanie do odbiorcy, a następnie zwraca aplikacji jego odpowiedź.</p></body></html>"
+          },
+          {
+            "title": "Question 4",
+            "id": 129649,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Co się stanie, jeśli wyślemy coś nieoczekiwanego do <code>API</code>?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\">Interfejs <code>API</code> może to zignorować i wysłać odbiorcy tylko to, czego oczekuje z treści</item><item value=\"2\" correct=\"false\">Element <code>API</code> musi wysłać nieoczekiwane ciało do odbiorcy</item></selection><p visible-if=\"wrong\">Interfejs <code>API</code> może to zignorować i wysłać odbiorcy tylko to, czego oczekuje z treści.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p><code>API</code> oczekuje pola <code>username</code>, ale treść zawiera też nieoczekiwane pole <code>admin</code>. Co <code>API</code> może przekazać dalej?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\">Tylko oczekiwane pole <code>username</code>, ignorując <code>admin</code>.</item><item value=\"2\" correct=\"false\">Oba pola, ponieważ <code>API</code> musi przekazywać każdą nieoczekiwaną wartość.</item><item value=\"3\" correct=\"false\">Tylko <code>admin</code>, ponieważ nieoczekiwane pola zastępują oczekiwane.</item></selection><p visible-if=\"wrong\">Tylko oczekiwane pole <code>username</code>, ignorując <code>admin</code>.</p></body></html>"
+          },
+          {
+            "title": "Question 5",
+            "id": 129650,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Czy potrzebujemy jednego <code>API</code> dla jednej czynności?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\">Nie, możemy wykonywać różne działania za pomocą różnych metod</item><item value=\"2\" correct=\"false\">Tak, jeden <code>API</code> może wykonywać tylko jedną czynność</item></selection><p visible-if=\"wrong\">Nie, możemy wykonywać różne działania za pomocą różnych metod.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Jedno <code>API</code> może wykonywać różne działania za pomocą różnych metod.</p><p><code>API</code> kursów musi pobierać kursy i tworzyć kurs. Która para metod pasuje?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\">Do pobierania użyć <code>GET</code>, a do tworzenia <code>POST</code>.</item><item value=\"2\" correct=\"false\">Do pobierania użyć <code>POST</code>, a do tworzenia <code>GET</code>.</item><item value=\"3\" correct=\"false\">Utworzyć oddzielne <code>API</code>, ponieważ jedno API może wykonać tylko jedno działanie.</item></selection><p visible-if=\"wrong\">Do pobierania użyć <code>GET</code>, a do tworzenia <code>POST</code>.</p></body></html>",
+            "hardModeSelected": true
+          }
+        ]
+      },
+      {
+        "id": 14656,
+        "title": "Dlaczego używać API?",
+        "type": "practiceLevel1",
+        "lessons": [
+          {
+            "title": "Why API? 1",
+            "id": 129653,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Skoro wiesz już, czym jest <code>API</code>, dlaczego warto go używać? Jednym z powodów jest to, że <code>API</code> może pomóc nam szybciej zbudować system.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Why API? 2",
+            "id": 129654,
+            "contentType": "interactive",
+            "images": [
+              {
+                "id": "62f8f11e-7605-4590-bb91-6ee2236fc19f"
+              }
+            ],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Programiści back-endu nie muszą czekać na ukończenie prac nad front-endem, aby przetestować swój program.</p><p>Mogą testować swój program, po prostu wysyłając żądania do <code>API</code> i sprawdzając, czy odpowiedzi są poprawne.</p><img src=\"62f8f11e-7605-4590-bb91-6ee2236fc19f\" visible-if=\"always\" /></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "How to use API-DELETE*",
+            "id": 129655,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Omówiliśmy żądania <code>GET</code> i <code>POST</code>. Następnie przyjrzyjmy się temu, jak wysyłamy żądania usunięcia.</p><p>  Żądania <code>DELETE</code><em>muszą</em> zawierać identyfikator, aby przekazać <code>API</code>, co należy usunąć. Tak jak identyfikator <code>6</code> tutaj.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"DELETE http://mimo.org/api/courses/\" /><text value=\"6\" class=\"number\" /><text value=\" HTTP/\" /><text value=\"1.1\" class=\"number\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"0\" endIndex=\"6\" /><option startIndex=\"35\" endIndex=\"36\" /><option correct=\"false\"><content><text value=\"GET\" /></content></option><option correct=\"false\"><content><text value=\"POST\" /></content></option></options></interaction></interactions><output><content><text value=\"HTTP/1.1 200 Deleted\" /><text type=\"break\" /><text value=\"{&quot;courses&quot;: [{ &quot;id&quot;: 1, &quot;title&quot;: &quot;Python&quot; }, { &quot;id&quot;: 2, &quot;title&quot;: &quot;HTML&quot; }, ...]\" /></content></output></code><p visible-if=\"wrong\">Koniecznie wybierz <code>DELETE</code>, a następnie <code>6</code>.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "How to use API-PUT 1",
+            "id": 129656,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>  Żądania <code>PUT</code> są podobne do żądań <code>POST</code>, ale służą do <strong>zastępowania</strong> wcześniej utworzonego obiektu.</p><p>Ponieważ żądania <code>PUT</code> służą do zastępowania istniejących obiektów, potrzebują identyfikatora, aby wiedzieć, który obiekt zastąpić.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"PUT https://mimo.org/users/\" /><text value=\"1\" class=\"number\" /><text value=\" HTTP/\" /><text value=\"1.1\" class=\"number\" /><text type=\"break\" /><text type=\"break\" /><text value=\"{\" /><text type=\"break\" /><text value=\" \" /><text value=\"&quot;username&quot;\" class=\"string\" /><text value=\": \" /><text value=\"&quot;test_User&quot;\" class=\"string\" /><text value=\",\" /><text type=\"break\" /><text value=\" \" /><text value=\"&quot;name&quot;\" class=\"string\" /><text value=\": \" /><text value=\"&quot;tester&quot;\" class=\"string\" /><text type=\"break\" /><text value=\"}\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"0\" endIndex=\"3\" /><option startIndex=\"27\" endIndex=\"28\" /><option correct=\"false\"><content><text value=\"DELETE\" /></content></option><option correct=\"false\"><content><text value=\"POST\" /></content></option></options></interaction></interactions><output><content><text value=\"HTTP/1.1 204 Replaced\" /><text type=\"break\" /><text value=\"{\" /><text type=\"break\" /><text value=\" &quot;username&quot;: &quot;test_User&quot;,\" /><text type=\"break\" /><text value=\" &quot;name&quot;: &quot;tester&quot;\" /><text type=\"break\" /><text value=\"}\" /></content></output></code><p visible-if=\"wrong\">Koniecznie wybierz <code>PUT</code>, a następnie <code>1</code>.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "How to use API-PUT 2",
+            "id": 129657,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Jeśli w żądaniu <code>PUT</code> zostanie podany nieprawidłowy identyfikator lub nie zostanie podany żaden identyfikator, zostanie utworzony nowy obiekt.</p><p>Kod statusu odpowiedzi będzie wynosić <code>201</code> dla utworzonego obiektu i <code>204</code> dla zastąpionego obiektu. Zakoduj żądanie <code>PUT</code> bez identyfikacji.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"PUT https://mimo.org/users HTTP/\" /><text value=\"1.1\" class=\"number\" /><text value=\" \" /><text type=\"break\" /><text value=\" \" /><text type=\"break\" /><text value=\"{ \" /><text type=\"break\" /><text value=\" \" /><text value=\"&quot;username&quot;\" class=\"string\" /><text value=\": \" /><text value=\"&quot;test_User&quot;\" class=\"string\" /><text value=\", \" /><text type=\"break\" /><text value=\" \" /><text value=\"&quot;name&quot;\" class=\"string\" /><text value=\": \" /><text value=\"&quot;tester&quot;\" class=\"string\" /><text value=\" \" /><text type=\"break\" /><text value=\"}\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"20\" endIndex=\"26\" /></options></interaction></interactions><output><content><text value=\"HTTP/1.1 201 Created\" /><text type=\"break\" /><text value=\"{\" /><text type=\"break\" /><text value=\" &quot;username&quot;: &quot;test_User&quot;,\" /><text type=\"break\" /><text value=\" &quot;name&quot;: &quot;tester&quot;\" /><text type=\"break\" /><text value=\"}\" /></content></output></code><p visible-if=\"wrong\">Koniecznie wybierz <code>/users</code>.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>W tym API żądanie <code>PUT</code> bez prawidłowego identyfikatora tworzy nowy obiekt.</p><p>Utworzony obiekt zwraca <code>201</code>, a zastąpiony obiekt <code>204</code>.</p><p>Uzupełnij żądanie <code>PUT</code> dla <code>test_User</code>, które otrzyma <code>201</code> zamiast <code>204</code>.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"PUT https://mimo.org/users HTTP/\" /><text value=\"1.1\" class=\"number\" /><text value=\" \" /><text type=\"break\" /><text value=\" \" /><text type=\"break\" /><text value=\"{ \" /><text type=\"break\" /><text value=\" \" /><text value=\"&quot;username&quot;\" class=\"string\" /><text value=\": \" /><text value=\"&quot;test_User&quot;\" class=\"string\" /><text value=\", \" /><text type=\"break\" /><text value=\" \" /><text value=\"&quot;name&quot;\" class=\"string\" /><text value=\": \" /><text value=\"&quot;tester&quot;\" class=\"string\" /><text value=\" \" /><text type=\"break\" /><text value=\"}\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"0\" endIndex=\"3\" /><option startIndex=\"20\" endIndex=\"26\" /><option startIndex=\"55\" endIndex=\"66\" /><option correct=\"false\"><content><text value=\"POST\" /></content></option><option correct=\"false\"><content><text value=\"/users/1\" /></content></option><option correct=\"false\"><content><text value=\"&quot;tester&quot;\" /></content></option></options></interaction></interactions><output><content><text value=\"HTTP/1.1 201 Created\" /><text type=\"break\" /><text value=\"{\" /><text type=\"break\" /><text value=\" &quot;username&quot;: &quot;test_User&quot;,\" /><text type=\"break\" /><text value=\" &quot;name&quot;: &quot;tester&quot;\" /><text type=\"break\" /><text value=\"}\" /></content></output></code><p visible-if=\"wrong\">Koniecznie wybierz <code>PUT</code>, następnie <code>/users</code> i na końcu <code>\"test_User\"</code>.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "How to use API-PUT 3",
+            "id": 129658,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Podczas używania żądania <code>PUT</code> usuwa ono wszystkie istniejące dane i wstawia dane na podstawie treści żądania.</p><p>Uzupełnij żądanie <code>PUT</code><strong>bez</strong> pola <code>name</code>. Użytkownik z wartością <code>1</code> jako <code>id</code> nie będzie już mieć wartości pola <code>name</code> — stanie się ono puste.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"PUT https://mimo.org/users/\" /><text value=\"1\" class=\"number\" /><text value=\" HTTP/\" /><text value=\"1.1\" class=\"number\" /><text type=\"break\" /><text type=\"break\" /><text value=\"{\" /><text type=\"break\" /><text value=\" \" /><text value=\"&quot;username&quot;\" class=\"string\" /><text value=\": \" /><text value=\"&quot;test_User&quot;\" class=\"string\" /><text type=\"break\" /><text value=\"}\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"0\" endIndex=\"3\" /><option correct=\"false\"><content><text value=\",\" /></content></option><option correct=\"false\"><content><text value=\"&quot;name&quot;: &quot;test&quot;\" /></content></option><option startIndex=\"42\" endIndex=\"65\" /></options></interaction></interactions><output><content><text value=\"HTTP/1.1 204 Replaced\" /><text type=\"break\" /><text value=\"{\" /><text type=\"break\" /><text value=\" &quot;username&quot;: &quot;test_User&quot;\" /><text type=\"break\" /><text value=\"}\" /></content></output></code><p visible-if=\"wrong\">Koniecznie wybierz <code>PUT</code>, a następnie <code>\"username\": \"test_User\"</code>.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "How to use API-PATCH",
+            "id": 129659,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>  Żądania <code>PATCH</code> służą do aktualizowania niektórych pól obiektu, dlatego potrzebna jest identyfikacja, aby określić, który obiekt należy zaktualizować.</p><p>Wartości wszystkich niewymienionych pól pozostaną bez zmian. Użyj <code>1</code> jako identyfikatora poniższego żądania.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"PATCH https://mimo.org/users/\" /><text value=\"1\" class=\"number\" /><text value=\" HTTP/\" /><text value=\"1.1\" class=\"number\" /><text value=\" \" /><text type=\"break\" /><text value=\" \" /><text type=\"break\" /><text value=\"{ \" /><text type=\"break\" /><text value=\" \" /><text value=\"&quot;name&quot;\" class=\"string\" /><text value=\": \" /><text value=\"&quot;Barry&quot;\" class=\"string\" /><text value=\" \" /><text type=\"break\" /><text value=\"}\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"0\" endIndex=\"5\" /><option startIndex=\"29\" endIndex=\"30\" /><option correct=\"false\"><content><text value=\"PUT\" /></content></option><option correct=\"false\"><content><text value=\"DELETE\" /></content></option></options></interaction></interactions><output><content><text value=\"HTTP/1.1 204 Updated\" /><text type=\"break\" /><text value=\"{\" /><text type=\"break\" /><text value=\" &quot;name&quot;: &quot;Barry&quot;\" /><text type=\"break\" /><text value=\"}\" /></content></output></code><p visible-if=\"wrong\">Koniecznie wybierz <code>PATCH</code>, a następnie <code>1</code>.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "How to use API-PATCH 2",
+            "id": 129660,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Teraz spróbuj zmienić <code>username</code> na <code>the_bat</code> użytkownika, którego <code>id</code> jest równe <code>4</code>.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"PATCH https://mimo.org/users/\" /><text value=\"4\" class=\"number\" /><text value=\" HTTP/\" /><text value=\"1.1\" class=\"number\" /><text value=\" \" /><text type=\"break\" /><text value=\" \" /><text type=\"break\" /><text value=\"{ \" /><text type=\"break\" /><text value=\" \" /><text value=\"&quot;username&quot;\" class=\"string\" /><text value=\": \" /><text value=\"&quot;the_bat&quot;\" class=\"string\" /><text value=\" \" /><text type=\"break\" /><text value=\"}\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"29\" endIndex=\"30\" /><option startIndex=\"47\" endIndex=\"57\" /><option startIndex=\"57\" endIndex=\"58\" /><option startIndex=\"59\" endIndex=\"68\" /><option correct=\"false\"><content><text value=\"1\" /></content></option></options></interaction></interactions><output><content><text value=\"HTTP/1.1 204 Updated\" /><text type=\"break\" /><text value=\"{\" /><text type=\"break\" /><text value=\" &quot;username&quot;: &quot;the_bat&quot;\" /><text type=\"break\" /><text value=\"}\" /></content></output></code><p visible-if=\"wrong\">Koniecznie wybierz <code>4</code>, następnie <code>\"username\"</code>, a potem <code>:</code>, <code>\"the_bat\"</code>.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Uzupełnij częściową aktualizację, która zmienia <code>username</code> użytkownika <code>4</code> na <code>the_bat</code>.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"PATCH https://mimo.org/users/\" /><text value=\"4\" class=\"number\" /><text value=\" HTTP/\" /><text value=\"1.1\" class=\"number\" /><text value=\" \" /><text type=\"break\" /><text value=\" \" /><text type=\"break\" /><text value=\"{ \" /><text type=\"break\" /><text value=\" \" /><text value=\"&quot;username&quot;\" class=\"string\" /><text value=\": \" /><text value=\"&quot;the_bat&quot;\" class=\"string\" /><text value=\" \" /><text type=\"break\" /><text value=\"}\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"0\" endIndex=\"5\" /><option startIndex=\"29\" endIndex=\"30\" /><option startIndex=\"47\" endIndex=\"57\" /><option startIndex=\"59\" endIndex=\"68\" /><option correct=\"false\"><content><text value=\"PUT\" /></content></option><option correct=\"false\"><content><text value=\"1\" /></content></option><option correct=\"false\"><content><text value=\"&quot;name&quot;\" /></content></option></options></interaction></interactions><output><content><text value=\"HTTP/1.1 204 Updated\" /><text type=\"break\" /><text value=\"{\" /><text type=\"break\" /><text value=\" &quot;username&quot;: &quot;the_bat&quot;\" /><text type=\"break\" /><text value=\"}\" /></content></output></code><p visible-if=\"wrong\">Koniecznie wybierz <code>PATCH</code>, następnie <code>4</code>, <code>\"username\"</code> i na końcu <code>\"the_bat\"</code>.</p></body></html>"
+          },
+          {
+            "title": "Question 1",
+            "id": 129661,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Co musimy wziąć pod uwagę podczas tworzenia lub aktualizowania zasobów za pomocą metod takich jak <code>POST</code>, <code>PUT</code> lub <code>PATCH</code> w aplikacji internetowej w Pythonie?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\">Walidacja danych</item><item value=\"2\" correct=\"false\">Opłaty za dostęp</item></selection><p visible-if=\"wrong\">Walidacja danych.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Tworząc lub aktualizując zasoby za pomocą <code>POST</code>, <code>PUT</code> albo <code>PATCH</code>, musimy zweryfikować przesłane dane.</p><p>W żądaniu rejestracji brakuje wymaganego <code>username</code>. Które działanie sprawdza dane przed zapisaniem użytkownika?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\">Poproś o brakującą nazwę użytkownika i zapisz dopiero po jej podaniu.</item><item value=\"2\" correct=\"false\">Zapisz żądanie bez zmian, ponieważ pozostałe pola są obecne.</item><item value=\"3\" correct=\"false\">Sprawdź pozostałe pola i zapisz bez nazwy użytkownika, jeśli są poprawne.</item></selection><p visible-if=\"wrong\">Poproś o brakującą nazwę użytkownika i zapisz dopiero po jej podaniu.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Question 2",
+            "id": 129662,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Jeśli chcemy zmienić tylko jeden atrybut słownika, jakiej funkcji powinniśmy użyć?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\"><code>requests.patch()</code></item><item value=\"2\" correct=\"false\"><code>requests.replace()</code></item><item value=\"3\" correct=\"false\"><code>requests.remove()</code></item></selection><p visible-if=\"wrong\">Koniecznie wybierz <code>requests.patch()</code>.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Question 3",
+            "id": 129663,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Jak powinniśmy zastąpić obiekt, który już utworzyliśmy?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\">Wykonywanie żądania <code>PUT</code></item><item value=\"2\" correct=\"false\">Wykonaj żądanie <code>DELETE</code>, aby usunąć obiekt, a następnie wykonaj żądanie <code>POST</code></item></selection><p visible-if=\"wrong\">Wykonywanie żądania <code>PUT</code>.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Żądanie <code>PUT</code> zastępuje istniejący zasób przesłaną reprezentacją.</p><p>Aplikacja musi zastąpić cały profil zapisany pod <code>/users/42</code>. Która metoda żądania pasuje do tego zadania?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\"><code>PUT</code></item><item value=\"2\" correct=\"false\"><code>PATCH</code></item><item value=\"3\" correct=\"false\"><code>DELETE</code>, a następnie <code>POST</code></item></selection><p visible-if=\"wrong\">Koniecznie wybierz <code>PUT</code>.</p></body></html>"
+          },
+          {
+            "title": "Question 6",
+            "id": 129666,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Co się stanie, jeśli nie podamy identyfikatora podczas wykonywania żądania <code>PUT</code>?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\">Nic nie zostanie zastąpione, zostanie utworzony nowy obiekt</item><item value=\"2\" correct=\"false\">Wszystkie obiekty zostaną zastąpione</item><item value=\"3\" correct=\"false\">Nic się nie dzieje</item></selection><p visible-if=\"wrong\">Nic nie zostanie zastąpione, zostanie utworzony nowy obiekt.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Gdy żądanie <code>PUT</code> nie wskazuje istniejącego obiektu, serwer może utworzyć nowy obiekt z przesłanych danych.</p><p>Żądanie <code>PUT</code> do <code>/users</code> zawiera kompletne dane nowego użytkownika i otrzymuje kod <code>201</code>. Co się stało?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\">Utworzono nowy obiekt użytkownika.</item><item value=\"2\" correct=\"false\">Zastąpiono wszystkie istniejące obiekty użytkowników.</item><item value=\"3\" correct=\"false\">Nic się nie zmieniło, ponieważ <code>PUT</code> może tylko aktualizować obiekty.</item></selection><p visible-if=\"wrong\">Utworzono nowy obiekt użytkownika.</p></body></html>"
+          }
+        ]
+      }
+    ]
+  }
+}

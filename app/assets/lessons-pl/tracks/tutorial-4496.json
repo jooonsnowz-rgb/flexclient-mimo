@@ -1,0 +1,478 @@
+{
+  "tutorial": {
+    "id": 4496,
+    "version": 2,
+    "type": "challenges",
+    "isNew": false,
+    "codeLanguage": "html",
+    "title": "DOM i zdarzenia",
+    "descriptionContent": "Wyzwania to trudniejsze ćwiczenia, które sprawdzą twoje umiejętności.",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": null,
+    "chapters": [
+      {
+        "id": 17585,
+        "title": "HUD drzewa HTML",
+        "type": "challengeLevel2",
+        "lessons": [
+          {
+            "title": "Lesson #1",
+            "id": 149202,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Stwórzmy miniinterfejs HUD gry.\n\n1. Utwórz drzewo HTML pokazane na obrazie, dodając odpowiednie elementy.\n2. Wewnątrz znacznika `<body>` dodaj te elementy w tej kolejności:\n   - znacznik `<textarea>`\n   - znacznik `<br>`\n   - znacznik `<input>`\n   - znacznik `<button>` z tekstem `Attack`",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <body>\n  </body>\n</html>",
+                  "solvedContent": "<!doctype html>\n<html>\n  <body>\n    <textarea></textarea>\n    <br />\n    <input>\n    <button>Attack</button>\n  </body>\n</html>"
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      },
+      {
+        "id": 17586,
+        "title": "Interfejs zakresu wydarzenia w HTML",
+        "type": "challengeLevel2",
+        "lessons": [
+          {
+            "title": "Lesson #1",
+            "id": 149203,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Utwórz interfejs gry, który pozwala graczowi wybrać zakres dat poziomu dla wydarzenia ograniczonego czasowo. Zakoduj poniższe elementy w pliku `.html`.\n\n1. Dodaj element `input` typu `date` jako element podrzędny elementu `body`.\n2. Dodaj kolejny element `input` typu `date` jako element równorzędny względem drugiego elementu `input`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n  </body>\n</html>",
+                  "solvedContent": "<!doctype html>\n<html>\n  <head>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <input name=\"levelStart\" type=\"date\">\n    <input name=\"levelEnd\" type=\"date\">\n  </body>\n</html>"
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      },
+      {
+        "id": 17587,
+        "title": "firstElementChild w DOM-cie",
+        "type": "challengeLevel2",
+        "lessons": [
+          {
+            "title": "Lesson #1",
+            "id": 149204,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Stwórzmy stronę HUD gry. Zakoduj poniższe elementy w znaczniku script.\n\n1. Użyj DOM, aby ustawić tekst pierwszego elementu potomnego elementu `body` na `\"Player HUD\"`.",
+              "preselectedFileIndex": 1,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <body>\n    <h1></h1>\n    <script src=\"index.js\">\n    </script>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "index.js",
+                  "codeLanguage": "javascript",
+                  "content": "",
+                  "solvedContent": "document.body.firstElementChild.textContent = \"Player HUD\";\n"
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      },
+      {
+        "id": 17588,
+        "title": "Aktualizacja stanu zdrowia",
+        "type": "challengeLevel2",
+        "lessons": [
+          {
+            "title": "Lesson #1",
+            "id": 149205,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Stwórzmy prosty interfejs HUD gry. Mamy funkcję `healthChanged`, która oblicza procent paska zdrowia gracza na podstawie maksymalnego poziomu zdrowia, a następnie aktualizuje tekst elementu `p`.\n\n1. Dokończ kod, który aktualizuje HUD za każdym razem, gdy zmieni się wartość pola wejściowego. Użyj procedury obsługi zdarzenia `.onchange`.",
+              "preselectedFileIndex": 1,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n  </head>\n  <body>\n    <h1>Player HUD</h1>\n    <img src=\"https://mimo.app/i/croissant.png\" id=\"sprite\"\n      style=\"width:100px;height:100px;border: 1px solid black\">\n    <br> Max HP: 100 <br> Current HP<input type=\"number\">\n    <p> Health: 0% </p>\n    <script src=\"script.js\"></script>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "const input\n\nfunction healthChanged() {\n  document.querySelector(\"p\").innerHTML = \"Health: \" + Math.round((Number(input.value) / 100) * 100) + \"%\";\n}\n",
+                  "solvedContent": "const input = document.querySelector(\"input\");\n\nfunction healthChanged() {\n  document.querySelector(\"p\").innerHTML = \"Health: \" + Math.round((Number(input.value) / 100) * 100) + \"%\";\n}\ninput.onchange = healthChanged;"
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      },
+      {
+        "id": 17589,
+        "title": "Samouczki",
+        "type": "challengeLevel2",
+        "lessons": [
+          {
+            "title": "Lesson #1",
+            "id": 149206,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Stwórzmy panel samouczka gry, który sprawdza, czy naprawdę przeczytano instrukcje. Mamy funkcję `checkTutorialRead`, która określa, czy gracz przewinął zawartość do samego dołu.\n\n1. Dokończ kod wywołujący funkcję `checkTutorialRead` za każdym razem, gdy gracz przewija element `textarea`. Aby to zrobić, musisz utworzyć zmienną o wybranej przez siebie nazwie.",
+              "preselectedFileIndex": 1,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n <body>\n  <textarea style=\"height: 200px; width: 100%;\">\n   Welcome to Dungeon Runner!\n\n   How to Play\n\n   Move: Use the arrow keys to walk your hero around the map.\n   Attack: Press Space to swing your sword.\n   Pickups: Walk into coins to increase your score.\n   Health: Avoid enemies and traps or you will lose health.\n\n   Tips\n\n   - Keep an eye on your health bar.\n   - Collect enough coins to unlock the next level.\n   - If an enemy touches you, you take damage.\n\n   Good luck, hero!\n  </textarea>\n  <p></p>\n  <script src=\"script.js\"></script>\n </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "\n\nfunction checkTutorialRead () {\n  const read = tutorial.scrollHeight - Math.round(tutorial.scrollTop) === tutorial.clientHeight;\n  if(read){\n   document.getElementsByTagName(\"p\")[0].innerHTML = \"Tutorial Complete\";\n  }\n}\n",
+                  "solvedContent": "const tutorial = document.getElementsByTagName(\"textarea\")[0];\n\nfunction checkTutorialRead () {\n  const read = tutorial.scrollHeight - Math.round(tutorial.scrollTop) === tutorial.clientHeight;\n  if(read){\n   document.getElementsByTagName(\"p\")[0].innerHTML = \"Tutorial Complete\";\n  }\n}\n\ntutorial.onscroll = checkTutorialRead;"
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      },
+      {
+        "id": 17590,
+        "title": "Przycisk ataku z podwójnym kliknięciem",
+        "type": "challengeLevel2",
+        "lessons": [
+          {
+            "title": "Lesson #1",
+            "id": 149207,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Utwórzmy przycisk \"ataku\", który wymaga dwukrotnego kliknięcia.\n\n1. Dodaj niezbędny kod, aby wywołać funkcję `attack`, gdy przycisk miecza zostanie dwukrotnie kliknięty.",
+              "preselectedFileIndex": 1,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <link rel=\"stylesheet\" href=\"index.css\">\n  </head>\n  <body>\n    <h1>Dungeon Run</h1>\n    <img id=\"enemy\" src=\"https://mimo.app/i/ghost.png\"\n      style=\"width:100px;height:100px;border:1px solid black\">\n    <p></p>\n    <button class=\"sword\">attack</button>\n    <script src=\"./script.js\"></script>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "\n\nfunction attack() {\n  document.querySelector(\"p\").innerHTML = \"Hit!\";\n}\n",
+                  "solvedContent": "const btn = document.querySelector(\"button\");\n\nfunction attack() {\n  document.querySelector(\"p\").innerHTML = \"Hit!\";\n}\nbtn.ondblclick = attack;"
+                },
+                {
+                  "name": "index.css",
+                  "codeLanguage": "css",
+                  "content": ".sword {\n  width: 120px;\n  height: 44px;\n  margin: 1em auto;\n  display: block;\n  cursor: pointer;\n  background: #2b2b2b;\n  color: white;\n  border: 2px solid #666;\n  border-radius: 8px;\n  font-weight: bold;\n  text-transform: uppercase;\n}\n\n.sword:active {\n  transform: scale(0.98);\n}",
+                  "solvedContent": null
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      },
+      {
+        "id": 17591,
+        "title": "Panel HUD elementów potomnych DOM",
+        "type": "challengeLevel2",
+        "lessons": [
+          {
+            "title": "Lesson #1",
+            "id": 149208,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Stwórzmy stronę HUD gry. Napisz poniższy kod w znaczniku `script`.\n\n1. Użyj DOM, aby uzyskać dostęp do elementu `ul` jako drugiego dziecka elementu body, i zapisz go w zmiennej o nazwie `hud`.\n2. Użyj DOM, aby uzyskać dostęp do dwóch elementów potomnych elementu `ul` i ustaw ich tekst na statystyki gry (takie jak zdrowie i wynik).",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <body>\n    <h1>Game HUD</h1>\n    <ul>\n      <li></li>\n      <li></li>\n    </ul>\n    <script>\n    </script>\n  </body>\n</html>",
+                  "solvedContent": "<!doctype html>\n<html>\n  <body>\n    <h1>Game HUD</h1>\n    <ul>\n      <li></li>\n      <li></li>\n    </ul>\n    <script>\n      let hud = document.body.children[1];\n      hud.children[0].innerHTML = \"Health: 100\";\n      hud.children[1].innerHTML = \"Score: 0\";\n    </script>\n  </body>\n</html>"
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      },
+      {
+        "id": 17592,
+        "title": "Usuń element akapitu",
+        "type": "challengeLevel2",
+        "lessons": [
+          {
+            "title": "Lesson #1",
+            "id": 149209,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "W tym pliku HTML zadanie polega na usunięciu istniejącego elementu `p` za pomocą JavaScript.\n\n1. W pliku `script.js` utwórz nową zmienną const i nazwij ją `statusEl`.\n2. Użyj metody `getElementById()` na obiekcie `document`, aby pobrać akapit z wartością `id` równą `status`. Przypisz tę wartość do `statusEl`.\n3. Pobierz element `body` za pomocą metody `querySelector()`. Przypisz tę wartość do zmiennej const o nazwie `bodyEl`.\n4. Na obiekcie `bodyEl` uruchom metodę `removeChild()`, przekazując jej zmienną `statusEl` jako parametr. Spowoduje to usunięcie elementu `p` statusu z dokumentu (podobnie jak wyczyszczenie komunikatu HUD).",
+              "preselectedFileIndex": 1,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n <body>\n  <h1 id=\"the-heading\">Game HUD: Removing elements!</h1>\n  <p id=\"status\">Quest update: This message will be removed!</p>\n  <script src=\"script.js\"></script>\n </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "\n\nbodyEl.removeChild();",
+                  "solvedContent": "const statusEl = document.getElementById(\"status\");\nconst bodyEl = document.querySelector(\"body\");\nbodyEl.removeChild(statusEl);"
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      },
+      {
+        "id": 17593,
+        "title": "Filtr wyszukiwania elementów",
+        "type": "challengeLevel2",
+        "lessons": [
+          {
+            "title": "Lesson #1",
+            "id": 149210,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Daj graczom możliwość wyszukiwania przedmiotu w grze. Funkcja `searchItems`, która będzie wykonywać wyszukiwanie, została już dla ciebie utworzona.\n\n1. Pierwsze pole wprowadzania na stronie powinno wyszukiwać przedmioty, gdy gracz wpisuje w nim tekst.\n2. Pole wyboru na stronie powinno wyszukiwać przedmioty, gdy gracz je kliknie.",
+              "preselectedFileIndex": 1,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <body>\n    <h1>Inventory</h1> Search <input><br> Usable Only <input type=\"checkbox\">\n    <ul>\n    </ul>\n    <br>\n    <br>\n    <script src=\"./script.js\"></script>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "const items = [{\n  name: \"potion\",\n  usable: true\n}, {\n  name: \"rusty sword\",\n  usable: false\n}, {\n  name: \"shield\",\n  usable: true\n}];\n\n\nfunction searchItems() {\n  const ul = document.querySelector(\"ul\");\n  ul.innerHTML = \"\";\n  for (let i = 0; i < items.length; i++) {\n    if (show(items[i])) {\n      const li = document.createElement(\"li\");\n      li.innerHTML = items[i].name;\n      ul.appendChild(li);\n    }\n  }\n}\n\nfunction show(item){\n  const input = document.querySelector(\"input\");\n  const usableOnly = document.querySelectorAll(\"input\")[1];\n  return (input.value === \"\" || item.name.indexOf(input.value) > -1) && (!\n        usableOnly.checked || item.usable);\n}\nsearchItems();",
+                  "solvedContent": "const items = [{\n  name: \"potion\",\n  usable: true\n}, {\n  name: \"rusty sword\",\n  usable: false\n}, {\n  name: \"shield\",\n  usable: true\n}];\nconst input = document.querySelector(\"input\");\ninput.oninput = searchItems;\nconst checkbox = document.querySelectorAll(\"input\")[1];\ncheckbox.onchange = searchItems;\n\n\nfunction searchItems() {\n  const ul = document.querySelector(\"ul\");\n  ul.innerHTML = \"\";\n  for (let i = 0; i < items.length; i++) {\n    if (show(items[i])) {\n      const li = document.createElement(\"li\");\n      li.innerHTML = items[i].name;\n      ul.appendChild(li);\n    }\n  }\n}\n\nfunction show(item){\n  const input = document.querySelector(\"input\");\n  const usableOnly = document.querySelectorAll(\"input\")[1];\n  return (input.value === \"\" || item.name.indexOf(input.value) > -1) && (!\n        usableOnly.checked || item.usable);\n}\nsearchItems();"
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      },
+      {
+        "id": 17594,
+        "title": "Widoki HUD gracza",
+        "type": "challengeLevel2",
+        "lessons": [
+          {
+            "title": "Lesson #1",
+            "id": 149211,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Dodajmy możliwość wyświetlania różnych części interfejsu HUD gracza. W pliku `script.js` mamy funkcję `showStats()`, która wyświetla statystyki gracza, funkcję `showInventory()`, która pokazuje przedmioty, oraz funkcję `showQuests()`, która pokazuje aktywne zadania.\n\n1. Spraw, aby pierwszy element `button` wyświetlał statystyki gracza po kliknięciu.\n2. Spraw, aby drugi element `button` pokazywał ekwipunek po kliknięciu.\n3. Spraw, aby trzeci element `button` pokazywał zadania po kliknięciu.",
+              "preselectedFileIndex": 1,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <link rel=\"stylesheet\" href=\"index.css\">\n  </head>\n  <body>\n    <h1>Player HUD</h1>\n    <button>Stats</button> | <button>Inventory</button> | <button>Quests</button>\n    <br>\n    <br>\n    <div> Hero: Aria the Ranger </div>\n    <script src=\"./script.js\"></script>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "function showStats() {\n  document.querySelector(\"div\").innerHTML = \"Hero: Aria the Ranger<br>HP: 100<br>Score: 1200\";\n}\n\nfunction showInventory() {\n  document.querySelector(\"div\").innerHTML = \"Potion x2<br>Wooden Sword<br>Key\";\n}\n\nfunction showQuests() {\n  document.querySelector(\"div\").innerHTML = \"Active: Find the Crystal\";\n}\n\n\n",
+                  "solvedContent": "function showStats() {\n  document.querySelector(\"div\").innerHTML = \"Hero: Aria the Ranger<br>HP: 100<br>Score: 1200\";\n}\n\nfunction showInventory() {\n  document.querySelector(\"div\").innerHTML = \"Potion x2<br>Wooden Sword<br>Key\";\n}\n\nfunction showQuests() {\n  document.querySelector(\"div\").innerHTML = \"Active: Find the Crystal\";\n}\n\ndocument.querySelectorAll(\"button\")[0].onclick = showStats;\ndocument.querySelectorAll(\"button\")[1].onclick = showInventory;\ndocument.querySelectorAll(\"button\")[2].onclick = showQuests;"
+                },
+                {
+                  "name": "index.css",
+                  "codeLanguage": "css",
+                  "content": "button {\n  background: none;\n  border: none;\n  padding: 0;\n  /*optional*/\n  font-family: arial, sans-serif;\n  /*input has OS specific font-family*/\n  color: #069;\n  text-decoration: underline;\n  cursor: pointer;\n}",
+                  "solvedContent": null
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      },
+      {
+        "id": 17595,
+        "title": "Ostrzeżenie rozpoczęcia walidacji",
+        "type": "challengeLevel2",
+        "lessons": [
+          {
+            "title": "Lesson #1",
+            "id": 149212,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Interfejs użytkownika naszej gry musi ostrzegać gracza, jeśli spróbuje rozpocząć poziom z nieprawidłowymi ustawieniami. Mamy już funkcję `valid()`, która sprawdza poprawność, upewniając się, że wybrany zakres poziomów ma sens. Mamy też funkcję `startGame()`, która rozpoczyna grę.\n\n1. Spraw, aby pole wejściowe `Level Start` uruchamiało polecenie validate po jego zmianie.\n2. Spraw, aby pole wejściowe `Level End` uruchamiało polecenie validate po jego zmianie.\n3. Spraw, aby przycisk uruchamiał grę po jego kliknięciu.",
+              "preselectedFileIndex": 1,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <h1>Start Your Adventure</h1> Level Start <input name=\"levelstart\" type=\"number\" min=\"1\" max=\"99\">\n    <br> Level End <input name=\"levelend\" type=\"number\" min=\"1\" max=\"99\">\n    <p></p>\n    <button disabled onclick=\"startGame()\">Start</button>\n    <br>\n    <div></div>\n    <script src=\"script.js\"></script>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "\n\n\n\nfunction valid() {\n  if (Number(levelstart.value) >= Number(levelend.value)) {\n    document.querySelector(\"p\").innerHTML =\n      \"Level start must be before level end\";\n    document.querySelector(\"button\").disabled = true;\n  } else {\n    document.querySelector(\"p\").innerHTML = \"\";\n    document.querySelector(\"button\").disabled = false;\n  }\n}\nfunction startGame() {\n  document.querySelector(\"div\").innerHTML = \"Game started\";\n}\n\n\n",
+                  "solvedContent": "const levelstart = document.querySelectorAll(\"input\")[0];\nconst levelend = document.querySelectorAll(\"input\")[1];\nconst button = document.querySelector(\"button\");\n\nfunction valid() {\n  if (Number(levelstart.value) >= Number(levelend.value)) {\n    document.querySelector(\"p\").innerHTML =\n      \"Level start must be before level end\";\n    document.querySelector(\"button\").disabled = true;\n  } else {\n    document.querySelector(\"p\").innerHTML = \"\";\n    document.querySelector(\"button\").disabled = false;\n  }\n}\nfunction startGame() {\n  document.querySelector(\"div\").innerHTML = \"Game started\";\n}\nlevelstart.onchange = valid;\nlevelend.onchange = valid;\nbutton.onclick = startGame;"
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": ".done {\n  text-decoration: line-through;\n}",
+                  "solvedContent": null
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      },
+      {
+        "id": 17596,
+        "title": "Celowanie w interfejsie gry",
+        "type": "challengeLevel2",
+        "lessons": [
+          {
+            "title": "Lesson #1",
+            "id": 149213,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Stwórzmy mały interfejs HUD gry. Otrzymaliśmy funkcję `aiming`, która wyświetla wiadomość informującą, że gracz celuje. Jest też funkcja `fire`, która dodaje tekst strzału do dziennika walki.\n\n1. Dodaj kod, aby wiadomość `Aiming...` wyświetlała się, gdy gracz wpisuje tekst w polu wejściowym nazwy broni.\n2. Dodaj kod, aby następowało oddanie strzału (zapisanie go w dzienniku), gdy przycisk zostanie kliknięty.",
+              "preselectedFileIndex": 1,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <body>\n    <textarea style=\"height: 200px; width: 100%;\">\n  </textarea>\n    <p></p>\n    <br>\n    <input><button>Fire</button>\n    <script src=\"script.js\"></script>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "const input = document.querySelector(\"input\");\nconst button = document.querySelector(\"button\");\n\nfunction aiming() {\n  document.querySelector(\"p\").innerHTML = \"Aiming...\";\n}\n\nfunction fire() {\n  document.querySelector(\"textarea\").innerHTML =\n    document.querySelector(\"textarea\").innerHTML +\n    document.querySelector(\"input\").value +\n    \"\\r\\n\";\n  document.querySelector(\"p\").innerHTML = \"\";\n  document.querySelector(\"input\").value = \"\";\n}",
+                  "solvedContent": "const input = document.querySelector(\"input\");\nconst button = document.querySelector(\"button\");\n\nfunction aiming() {\n  document.querySelector(\"p\").innerHTML = \"Aiming...\";\n}\n\nfunction fire() {\n  document.querySelector(\"textarea\").innerHTML =\n    document.querySelector(\"textarea\").innerHTML +\n    document.querySelector(\"input\").value +\n    \"\\r\\n\";\n  document.querySelector(\"p\").innerHTML = \"\";\n  document.querySelector(\"input\").value = \"\";\n}\ninput.oninput = aiming;\nbutton.onclick = fire;"
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      },
+      {
+        "id": 17597,
+        "title": "Mini-gra o bohaterze",
+        "type": "challengeLevel2",
+        "lessons": [
+          {
+            "title": "Lesson #1",
+            "id": 149214,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Stwórzmy minigrę, w której przesuwasz duszka bohatera do celu. Istnieje funkcja `move`, która aktualizuje pozycję bohatera, gdy przesuwasz suwak. Istnieje funkcja `win`, która sprawdza, czy bohater dotarł do celu. Zakoduj poniższe elementy w pliku `script.js`.\n\n1. Funkcja `move` powinna być wywoływana za każdym razem, gdy wartość pola zakresu zostanie wprowadzona przez przesunięcie suwaka.\n2. Funkcja `win` powinna być wywoływana za każdym razem, gdy pole zakresu zostanie zmienione. Następnie funkcja sprawdzi, czy gracz rzeczywiście wygrał poziom.",
+              "preselectedFileIndex": 1,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n  </head>\n  <body>\n    <h1>Move the hero to the goal</h1>\n    <img src=\"https://mimo.app/i/batduck.png\" width=\"50px\"\n      style=\"position:absolute; border-radius: 50%;\">\n    <img src=\"https://mimo.app/i/house-2.png\" width=\"70px\"\n      style=\"left:100px;position:absolute\">\n    <br>\n    <br>\n    <br>\n    <input type=\"range\" value=\"0\">\n    <p></p>\n    <script src=\"script.js\"></script>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "const input = document.querySelector(\"input\");\nconst hero = document.querySelector(\"img\");\nconst step = 10;\n\nfunction move() {\n  const input = document.querySelector(\"input\");\n  hero.style.left = (input.value) + \"px\";\n}\n\nfunction win() {\n  const p = document.querySelector(\"p\");\n  const input = document.querySelector(\"input\");\n  if (Number(input.value) >= 100) {\n    p.innerHTML = \"Level Complete!\";\n  } else {\n    p.innerHTML = \"\";\n  }\n}",
+                  "solvedContent": "const input = document.querySelector(\"input\");\nconst hero = document.querySelector(\"img\");\nconst step = 10;\n\nfunction move() {\n  const input = document.querySelector(\"input\");\n  hero.style.left = (input.value) + \"px\";\n}\n\nfunction win() {\n  const p = document.querySelector(\"p\");\n  const input = document.querySelector(\"input\");\n  if (Number(input.value) >= 100) {\n    p.innerHTML = \"Level Complete!\";\n  } else {\n    p.innerHTML = \"\";\n  }\n}\ninput.oninput = move;\ninput.onchange = win;"
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      },
+      {
+        "id": 17598,
+        "title": "Kontroler interfejsu HUD gry",
+        "type": "challengeLevel2",
+        "lessons": [
+          {
+            "title": "Lesson #1",
+            "id": 149215,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Stwórzmy prosty kontroler HUD gry. W pliku `script.js` mamy już dwie funkcje:\n- `nextSprite` przełącza duszka gracza na następnego\n- `prevSprite` przełącza duszka gracza na poprzedniego\n\n1. Dodaj kod, aby duszek przechodził do następnego za każdym razem, gdy kliknięty zostanie pierwszy przycisk.\n2. Dodaj kod, aby duszek przechodził do poprzedniego za każdym razem, gdy kliknięty zostanie drugi przycisk.",
+              "preselectedFileIndex": 1,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n  </head>\n  <body>\n    <h1>Player Sprite Select</h1>\n   \n    <img src=\"https://mimo.app/i/shushi.png\" width=\"100px\" height=\"100px\">\n    <br>\n    <button>Next</button>\n    <button>Previous</button>\n    <script src=\"script.js\"></script>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "let index = 0;\nlet currentSrc = \"\";\nconst sprites = [\"https://mimo.app/i/shushi.png\",\n  \"https://mimo.app/i/sparkles.png\", \"https://mimo.app/i/whiskers.png\"\n];\n\nfunction nextSprite() {\n  index = index === 2 ? index : index + 1;\n  currentSrc = sprites[index];\n  updateSprite();\n}\n\nfunction prevSprite() {\n  index = index === 0 ? index : index - 1;\n  currentSrc = sprites[index];\n  updateSprite();\n}\n\nfunction updateSprite() {\n  const image = document.getElementsByTagName(\"img\")[0];\n  image.src = currentSrc;\n}",
+                  "solvedContent": "let index = 0;\nlet currentSrc = \"\";\nconst sprites = [\"https://mimo.app/i/shushi.png\",\n  \"https://mimo.app/i/sparkles.png\", \"https://mimo.app/i/whiskers.png\"\n];\n\nfunction nextSprite() {\n  index = index === 2 ? index : index + 1;\n  currentSrc = sprites[index];\n  updateSprite();\n}\n\nfunction prevSprite() {\n  index = index === 0 ? index : index - 1;\n  currentSrc = sprites[index];\n  updateSprite();\n}\n\nfunction updateSprite() {\n  const image = document.getElementsByTagName(\"img\")[0];\n  image.src = currentSrc;\n}\ndocument.getElementsByTagName(\"button\")[0].onclick = nextSprite;\ndocument.getElementsByTagName(\"button\")[1].onclick = prevSprite;"
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

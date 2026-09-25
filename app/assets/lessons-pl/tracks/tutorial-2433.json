@@ -1,0 +1,243 @@
+{
+  "tutorial": {
+    "id": 2433,
+    "version": 4,
+    "type": "guidedProjectOptional",
+    "isNew": false,
+    "codeLanguage": "python",
+    "title": "Inteligentny samochód",
+    "descriptionContent": "Wykorzystaj swoją wiedzę o błędach i wyjątkach, aby stworzyć inteligentny samochód",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": "tutorial-2433-icon-banner.svg",
+    "chapters": [
+      {
+        "id": 14005,
+        "title": "Inteligentny samochód",
+        "type": "practiceLevel1",
+        "lessons": [
+          {
+            "title": "Fixing first bugs",
+            "id": 124289,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Wykorzystajmy naszą wiedzę o błędach i wyjątkach, aby stworzyć inteligentny samochód!\n\nZauważ, że początkowy kod zgłasza błąd, gdy próbujemy go uruchomić. Zanim zaczniemy pisać więcej kodu, musimy naprawić te błędy!\n\nWykonaj kod i sprawdź zgłoszony błąd.\n\n1. Zacznijmy od naprawienia pierwszego błędu. Wygląda na to, że podczas tworzenia instancji klasy `Car` w wierszu 16 brakuje argumentu. Przyjrzyj się konstruktorowi klasy `Car`, aby zrozumieć, jak poprawnie utworzyć samochód. Zużycie paliwa Forda Mustanga wynosi `14`.\n2. Uruchom kod ponownie, aby sprawdzić następny błąd. Wygląda na to, że w klasie `Car` nie ma metody `ride`. Istnieje podobna metoda o nazwie `make_trip`, spróbuj zmienić jej nazwę na `ride`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "class Car:\r\n    def __init__(self, fuel_consumption):\r\n        self.fuel_consumption = fuel_consumption\r\n        self.total_distance = 0\r\n        self.distance_left = 0\r\n\r\n    def make_trip(self, distance):\r\n        self.total_distance += distance\r\n        self.distance_left -= distance\r\n        print(f\"The ride was successfull! Distance traveled: {distance}\")\r\n\r\n    def recharge(self, fuel):\r\n        self.distance_left += fuel * self.fuel_consumption\r\n        print(f\"Car charged successfully! Distance left to ride: {self.distance_left}.\")\r\n\r\nford_mustang = Car()\r\nford_mustang.recharge(10)\r\nford_mustang.ride(50)",
+                  "solvedContent": "class Car:\r\n    def __init__(self, fuel_consumption):\r\n        self.fuel_consumption = fuel_consumption\r\n        self.total_distance = 0\r\n        self.distance_left = 0\r\n\r\n    def ride(self, distance):\r\n        self.total_distance += distance\r\n        self.distance_left -= distance\r\n        print(f\"The ride was successfull! Distance traveled: {distance}\")\r\n\r\n    def recharge(self, fuel):\r\n        self.distance_left += fuel * self.fuel_consumption\r\n        print(f\"Car charged successfully! Distance left to ride: {self.distance_left}.\")\r\n\r\nford_mustang = Car(14)\r\nford_mustang.recharge(10)\r\nford_mustang.ride(50)"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Number of arguments in a class method",
+                  "content": "Remember, to check the number of arguments of a class method simply count the amount of arguments different than *self* the method has. Also remember that the order of the arguments is important!\n\nFor example, the method *class_method* has 2 arguments, *arg1* and *arg2* in that order.\nWe called this method with *arg1* as *a1* and *arg2* as *a2*.\n```\nclass C:\n  def __init__(self, arg1, arg2):\n    ...\n\nc = C(a1, a2)\n\n```\n"
+                }
+              ]
+            }
+          },
+          {
+            "title": "Adding distance check",
+            "id": 124291,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Teraz, gdy poprzednie błędy zostały naprawione i możemy uruchomić kod, dodajmy kilka kontroli do naszej metody `ride`.\n\nObecnie obiekt `Car` może wykonać `ride`, nawet jeśli nie ma wystarczającej ilości paliwa na przejazd.\n\nUpewnijmy się, że za każdym razem, gdy samochód wybiera się na przejażdżkę, ma wystarczająco dużo paliwa, aby ją ukończyć.\n\n1. Utwórz metodę `check_distance` z parametrem `distance`.\n2. Metoda zgłasza błąd `ValueError` z komunikatem `\"Not enough fuel, recharge the car!\"`, jeśli `self.distance_left < distance`. W przeciwnym razie nic się nie dzieje.\n3. Wewnątrz `ride()`, przed zmodyfikowaniem `total_distance`, wywołaj nowo utworzoną metodę `check_distance`, używając wartości parametru `distance`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "class Car:\r\n    def __init__(self, fuel_consumption):\r\n        self.fuel_consumption = fuel_consumption\r\n        self.total_distance = 0\r\n        self.distance_left = 0\r\n\r\n    def ride(self, distance):\r\n        self.total_distance += distance\r\n        self.distance_left -= distance\r\n        print(f\"The ride was successfull! Distance traveled: {distance}\")\r\n\r\n    def recharge(self, fuel):\r\n        self.distance_left += fuel * self.fuel_consumption\r\n        print(f\"Car charged successfully! Distance left to ride: {self.distance_left}.\")\r\n\r\nford_mustang = Car(14)\r\nford_mustang.recharge(10)\r\nford_mustang.ride(50)",
+                  "solvedContent": "class Car:\r\n    def __init__(self, fuel_consumption):\r\n        self.fuel_consumption = fuel_consumption\r\n        self.total_distance = 0\r\n        self.distance_left = 0\r\n\r\n    def ride(self, distance):\r\n        self.check_distance(distance)\r\n        self.total_distance += distance\r\n        self.distance_left -= distance\r\n        print(f\"The ride was successfull! Distance traveled: {distance}\")\r\n\r\n    def check_distance(self, distance):\r\n        if self.distance_left < distance:\r\n            raise ValueError(\"Not enough fuel, recharge the car!\")\r\n\r\n    def recharge(self, fuel):\r\n        self.distance_left += fuel * self.fuel_consumption\r\n        print(f\"Car charged successfully! Distance left to ride: {self.distance_left}.\")\r\n\r\nford_mustang = Car(14)\r\nford_mustang.recharge(10)\r\nford_mustang.ride(50)"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Throwing an exception",
+                  "content": "Remember, to throw an exception use the keyword `raise` and to create an exception use the class `Exception` that receives a message as an argument.\n\nFor example:\n\n`\nraise Exception(\"This is the exception message\")\n` "
+                }
+              ]
+            }
+          },
+          {
+            "title": "Fixing & testing ride method",
+            "id": 124303,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Skoro kontrola odległości jest już gotowa, wypróbujmy ją!\n\n1. Zaraz po utworzeniu samochodu (przed ponownym napełnieniem zbiornika paliwem) spróbuj użyć metody ride. Spróbuj wywołać metodę z argumentem `10` i uruchom kod, aby zobaczyć, co się stanie!    \n2. Sprawdź błąd, aby zrozumieć, co się dzieje. Zgłoszony wyjątek to utworzony przez nas własny wyjątek! Obsłużmy ten wyjątek!\n3. W metodzie `ride` dodaj instrukcję `try`. W bloku `try` wywołaj metodę `check_distance`.\n4. Dodaj instrukcję `except`, która wyświetla komunikat wyjątku.\n5. Dodaj instrukcję `else`, umieszczając w niej pozostały kod metody.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "class Car:\r\n    def __init__(self, fuel_consumption):\r\n        self.fuel_consumption = fuel_consumption\r\n        self.total_distance = 0\r\n        self.distance_left = 0\r\n\r\n    def ride(self, distance):\r\n        self.check_distance(distance)\r\n        self.total_distance += distance\r\n        self.distance_left -= distance\r\n        print(f\"The ride was successfull! Distance traveled: {distance}\")\r\n\r\n    def check_distance(self, distance):\r\n        if self.distance_left < distance:\r\n            raise ValueError(\"Not enough fuel, recharge the car!\")\r\n\r\n    def recharge(self, fuel):\r\n        self.distance_left += fuel * self.fuel_consumption\r\n        print(f\"Car charged successfully! Distance left to ride: {self.distance_left}.\")\r\n\r\nford_mustang = Car(14)\r\nford_mustang.recharge(10)\r\nford_mustang.ride(50)",
+                  "solvedContent": "class Car:\r\n    def __init__(self, fuel_consumption):\r\n        self.fuel_consumption = fuel_consumption\r\n        self.total_distance = 0\r\n        self.distance_left = 0\r\n\r\n    def ride(self, distance):\r\n        try:\r\n            self.check_distance(distance)\r\n        except Exception as e:\r\n            print(e)\r\n        else:\r\n            self.total_distance += distance\r\n            self.distance_left -= distance\r\n            print(f\"The ride was successfull! Distance traveled: {distance}\")\r\n    \r\n    def check_distance(self, distance):\r\n        if self.distance_left < distance:\r\n            raise ValueError(\"Not enough fuel, recharge the car!\")\r\n\r\n    def recharge(self, fuel):\r\n        self.distance_left += fuel * self.fuel_consumption\r\n        print(f\"Car charged successfully! Distance left to ride: {self.distance_left}.\")\r\n\r\nford_mustang = Car(14)\r\nford_mustang.ride(10)\r\nford_mustang.recharge(10)\r\nford_mustang.ride(50)"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Accessing an exception message.",
+                  "content": "Remember, to access an exception inside an `except` statement use the keyword `as` and give the exception message a name.\n\nFor example:\n\n```\ntry:\n  ...\nexcept Exception as e:\n  print(e)\nelse:\n  ...\n```"
+                }
+              ]
+            }
+          },
+          {
+            "title": "Calculating average trip speed",
+            "id": 124294,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Teraz, gdy możemy bez problemów odbyć przejażdżkę samochodem `Car`, dodamy nową metodę obliczającą średnią prędkość przejazdu.\n\n1. Utwórz metodę `calculate_average_speed`, która przyjmuje `distance` i `duration`.\n2. Wewnątrz metody oblicz i zwróć średnią prędkość przejazdu na podstawie `distance` i `duration`. Średnia prędkość jest równa `distance / duration`.\n3. Aby przetestować metodę, użyj wcześniej utworzonego samochodu `ford_mustang`, aby obliczyć średnią prędkość przejazdu dla dystansu `150` i czasu trwania `2`. Wyświetl wynik za pomocą następującego komunikatu `\"Average speed: \"`, a następnie średniej prędkości.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "class Car:\r\n    def __init__(self, fuel_consumption):\r\n        self.fuel_consumption = fuel_consumption\r\n        self.total_distance = 0\r\n        self.distance_left = 0\r\n\r\n    def ride(self, distance):\r\n        try:\r\n            self.check_distance(distance)\r\n        except Exception as e:\r\n            print(e)\r\n        else:\r\n            self.total_distance += distance\r\n            self.distance_left -= distance\r\n            print(f\"The ride was successfull! Distance traveled: {distance}\")\r\n    \r\n    def check_distance(self, distance):\r\n        if self.distance_left < distance:\r\n            raise ValueError(\"Not enough fuel, recharge the car!\")\r\n\r\n    def recharge(self, fuel):\r\n        self.distance_left += fuel * self.fuel_consumption\r\n        print(f\"Car charged successfully! Distance left to ride: {self.distance_left}.\")\r\n\r\nford_mustang = Car(14)\r\nford_mustang.ride(10)\r\nford_mustang.recharge(10)\r\nford_mustang.ride(50)",
+                  "solvedContent": "class Car:\r\n    def __init__(self, fuel_consumption):\r\n        self.fuel_consumption = fuel_consumption\r\n        self.total_distance = 0\r\n        self.distance_left = 0\r\n\r\n    def ride(self, distance):\r\n        try:\r\n            self.check_distance(distance)\r\n        except Exception as e:\r\n            print(e)\r\n        else:\r\n            self.total_distance += distance\r\n            self.distance_left -= distance\r\n            print(f\"The ride was successfull! Distance traveled: {distance}\")\r\n    \r\n    def check_distance(self, distance):\r\n        if self.distance_left < distance:\r\n            raise ValueError(\"Not enough fuel, recharge the car!\")\r\n\r\n    def calculate_average_speed(self, distance, duration):\r\n        average_speed = distance / duration\r\n        return average_speed\r\n\r\n    def recharge(self, fuel):\r\n        self.distance_left += fuel * self.fuel_consumption\r\n        print(f\"Car charged successfully! Distance left to ride: {self.distance_left}.\")\r\n\r\nford_mustang = Car(14)\r\nford_mustang.ride(10)\r\nford_mustang.recharge(10)\r\nford_mustang.ride(50)\r\n\r\naverage_speed = ford_mustang.calculate_average_speed(150, 2)\r\nprint(f\"Average speed: {average_speed}\")"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Creating a class method",
+                  "content": "Remember, to create a class method, define the method inside the class and the first argument of this method must be `self`.\n\nFor example:\n\n```\nclass ClassName:\n  def class_method(self, ...):\n    #Do something\n```"
+                }
+              ]
+            }
+          },
+          {
+            "title": "Fixing average speed calculator",
+            "id": 124296,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Przetestujmy ostatnio utworzoną metodę z innym przypadkiem.\n\n1. Korzystając z wcześniej utworzonego samochodu `ford_mustang`, oblicz średnią prędkość podróży o dystansie `150` i czasie trwania `0`. Wyświetl wynik za pomocą następującego komunikatu `\"Average speed: \"` po którym ma pojawić się średnia prędkość.\n2. Uruchom kod! Wystąpił błąd! Sprawdź błąd, aby zrozumieć, co się stało. Pokazuje on, że wykonano dzielenie przez zero. Dzielenie przez zero jest matematycznie operacją niezdefiniowaną, więc w Pythonie również jest niezdefiniowane. Stało się tak, ponieważ w metodzie `calculate_average_speed` użyliśmy dzielenia, ale nie sprawdziliśmy, czy czas trwania podróży wynosił `0`. Naprawmy to!\n3. Utwórz instrukcję `try`, która zawiera *dzielenie* i instrukcję `return`.\n4. Utwórz instrukcję `except` dla oczekiwanego wyjątku `ZeroDivisionError`. Wewnątrz po prostu zwróć `distance`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "class Car:\r\n    def __init__(self, fuel_consumption):\r\n        self.fuel_consumption = fuel_consumption\r\n        self.total_distance = 0\r\n        self.distance_left = 0\r\n\r\n    def ride(self, distance):\r\n        try:\r\n            self.check_distance(distance)\r\n        except Exception as e:\r\n            print(e)\r\n        else:\r\n            self.total_distance += distance\r\n            self.distance_left -= distance\r\n            print(f\"The ride was successfull! Distance traveled: {distance}\")\r\n    \r\n    def check_distance(self, distance):\r\n        if self.distance_left < distance:\r\n            raise ValueError(\"Not enough fuel, recharge the car!\")\r\n\r\n    def calculate_average_speed(self, distance, duration):\r\n        average_speed = distance / duration\r\n        return average_speed\r\n\r\n    def recharge(self, fuel):\r\n        self.distance_left += fuel * self.fuel_consumption\r\n        print(f\"Car charged successfully! Distance left to ride: {self.distance_left}.\")\r\n\r\nford_mustang = Car(14)\r\nford_mustang.ride(10)\r\nford_mustang.recharge(10)\r\nford_mustang.ride(50)\r\n\r\naverage_speed = ford_mustang.calculate_average_speed(150, 2)\r\nprint(f\"Average speed: {average_speed}\")\r\n",
+                  "solvedContent": "class Car:\r\n    def __init__(self, fuel_consumption):\r\n        self.fuel_consumption = fuel_consumption\r\n        self.total_distance = 0\r\n        self.distance_left = 0\r\n\r\n    def ride(self, distance):\r\n        try:\r\n            self.check_distance(distance)\r\n        except Exception as e:\r\n            print(e)\r\n        else:\r\n            self.total_distance += distance\r\n            self.distance_left -= distance\r\n            print(f\"The ride was successfull! Distance traveled: {distance}\")\r\n    \r\n    def check_distance(self, distance):\r\n        if self.distance_left < distance:\r\n            raise ValueError(\"Not enough fuel, recharge the car!\")\r\n\r\n    def calculate_average_speed(self, distance, duration):\r\n        try:\r\n            average_speed = distance / duration\r\n            return average_speed\r\n        except ZeroDivisionError:\r\n            return distance\r\n\r\n    def recharge(self, fuel):\r\n        self.distance_left += fuel * self.fuel_consumption\r\n        print(f\"Car charged successfully! Distance left to ride: {self.distance_left}.\")\r\n\r\nford_mustang = Car(14)\r\nford_mustang.ride(10)\r\nford_mustang.recharge(10)\r\nford_mustang.ride(50)\r\n\r\naverage_speed = ford_mustang.calculate_average_speed(150, 2)\r\nprint(f\"Average speed: {average_speed}\")\r\n\r\naverage_speed = ford_mustang.calculate_average_speed(150, 0)\r\nprint(f\"Average speed: {average_speed}\")"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Making a specific except statement",
+                  "content": "Remember, to make an except statement when you already know what exception to expect, just write the name of the exception after the `except` statement.\n\nFor example:\n\n```\ntry:\n  ...\nexcept SpecificException:\n  #Only runs this code if SpecificException was thrown.\n``` "
+                }
+              ]
+            }
+          },
+          {
+            "title": "Adding possible destinations",
+            "id": 124297,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Teraz, gdy kalkulator średniej prędkości jest gotowy, zmodyfikujmy klasę `Car`, aby umożliwić samochodom podróżowanie do wcześniej zapisanych miejsc docelowych.\n\nW tym celu musimy przechowywać możliwe miejsca docelowe wewnątrz klasy `Car`.\n\nZróbmy to!\n\n1. Zmodyfikuj metodę `__init__`, aby przyjmowała również `possible_destinations`.\n2. Wewnątrz metody `__init__` przypisz atrybutowi klasy `possible_destinations` nowy argument.\n3. Poza klasą utwórz zmienną `possible_destinations` ustawioną na słownik z kluczami `\"Eriador\"` i `\"Gondor\"` oraz odpowiadającymi im wartościami `100` i `50`.\n4. Przekaż tę zmienną jako możliwe miejsca docelowe podczas tworzenia samochodu `ford_mustang`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "class Car:\r\n    def __init__(self, fuel_consumption):\r\n        self.fuel_consumption = fuel_consumption\r\n        self.total_distance = 0\r\n        self.distance_left = 0\r\n\r\n    def ride(self, distance):\r\n        try:\r\n            self.check_distance(distance)\r\n        except Exception as e:\r\n            print(e)\r\n        else:\r\n            self.total_distance += distance\r\n            self.distance_left -= distance\r\n            print(f\"The ride was successfull! Distance traveled: {distance}\")\r\n    \r\n    def check_distance(self, distance):\r\n        if self.distance_left < distance:\r\n            raise ValueError(\"Not enough fuel, recharge the car!\")\r\n\r\n    def calculate_average_speed(self, distance, duration):\r\n        try:\r\n            average_speed = distance / duration\r\n            return average_speed\r\n        except ZeroDivisionError:\r\n            return distance\r\n\r\n    def recharge(self, fuel):\r\n        self.distance_left += fuel * self.fuel_consumption\r\n        print(f\"Car charged successfully! Distance left to ride: {self.distance_left}.\")\r\n\r\nford_mustang = Car(14)\r\nford_mustang.ride(10)\r\nford_mustang.recharge(10)\r\nford_mustang.ride(50)\r\n\r\naverage_speed = ford_mustang.calculate_average_speed(150, 2)\r\nprint(f\"Average speed: {average_speed}\")\r\n\r\naverage_speed = ford_mustang.calculate_average_speed(150, 0)\r\nprint(f\"Average speed: {average_speed}\")",
+                  "solvedContent": "class Car:\r\n    def __init__(self, fuel_consumption, possible_destinations):\r\n        self.fuel_consumption = fuel_consumption\r\n        self.possible_destinations = possible_destinations\r\n        self.total_distance = 0\r\n        self.distance_left = 0\r\n\r\n    def ride(self, distance):\r\n        try:\r\n            self.check_distance(distance)\r\n        except Exception as e:\r\n            print(e)\r\n        else:\r\n            self.total_distance += distance\r\n            self.distance_left -= distance\r\n            print(f\"The ride was successfull! Distance traveled: {distance}\")\r\n    \r\n    def check_distance(self, distance):\r\n        if self.distance_left < distance:\r\n            raise ValueError(\"Not enough fuel, recharge the car!\")\r\n\r\n    def calculate_average_speed(self, distance, duration):\r\n        try:\r\n            average_speed = distance / duration\r\n            return average_speed\r\n        except ZeroDivisionError:\r\n            return distance\r\n\r\n    def recharge(self, fuel):\r\n        self.distance_left += fuel * self.fuel_consumption\r\n        print(f\"Car charged successfully! Distance left to ride: {self.distance_left}.\")\r\n\r\npossible_destinations = {\r\n    \"Eriador\": 100,\r\n    \"Gondor\": 50\r\n}\r\n\r\nford_mustang = Car(14, possible_destinations)\r\nford_mustang.ride(10)\r\nford_mustang.recharge(10)\r\nford_mustang.ride(50)\r\n\r\naverage_speed = ford_mustang.calculate_average_speed(150, 2)\r\nprint(f\"Average speed: {average_speed}\")\r\n\r\naverage_speed = ford_mustang.calculate_average_speed(150, 0)\r\nprint(f\"Average speed: {average_speed}\")"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Assigning a class attribute",
+                  "content": "Remember, to assign a value to a class attribute simply write `self.` followed by the name of the attribute, an equal symbol and the value you want to assign.\n\nFor example, to assign the value `value` to the class attribute `attribute_name` inside the `__init__` method we do the following:\n\n```\ndef __init__(self, value):\n  self.attribute_name = value\n```"
+                }
+              ]
+            }
+          },
+          {
+            "title": "Adding ride to destination",
+            "id": 124298,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Teraz, gdy możliwe miejsca docelowe są zapisane w atrybucie, możemy utworzyć metodę, która zabiera w podróż do miejsca docelowego!\n\n1. Utwórz **metodę** `ride_to_destination`, która otrzymuje `destination` i ustawia zmienną `distance` na wynik wyszukania klucza `destination` w **atrybucie klasy** `possible_destinations`.\n2. Po pobraniu miejsca docelowego wywołaj metodę `ride` z niedawno obliczonym miejscem docelowym.\n3. Na koniec wyświetl komunikat: `\"Reached: \"` i miejsce docelowe, do którego dotarto.\n4. Aby przetestować metodę, użyj wcześniej utworzonego samochodu `ford_mustang` i miejsca docelowego `\"Gondor\"`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "class Car:\r\n    def __init__(self, fuel_consumption, possible_destinations):\r\n        self.fuel_consumption = fuel_consumption\r\n        self.possible_destinations = possible_destinations\r\n        self.total_distance = 0\r\n        self.distance_left = 0\r\n\r\n    def ride(self, distance):\r\n        try:\r\n            self.check_distance(distance)\r\n        except Exception as e:\r\n            print(e)\r\n        else:\r\n            self.total_distance += distance\r\n            self.distance_left -= distance\r\n            print(f\"The ride was successfull! Distance traveled: {distance}\")\r\n    \r\n    def check_distance(self, distance):\r\n        if self.distance_left < distance:\r\n            raise ValueError(\"Not enough fuel, recharge the car!\")\r\n\r\n    def calculate_average_speed(self, distance, duration):\r\n        try:\r\n            average_speed = distance / duration\r\n            return average_speed\r\n        except ZeroDivisionError:\r\n            return distance\r\n\r\n    def recharge(self, fuel):\r\n        self.distance_left += fuel * self.fuel_consumption\r\n        print(f\"Car charged successfully! Distance left to ride: {self.distance_left}.\")\r\n\r\npossible_destinations = {\r\n    \"Eriador\": 100,\r\n    \"Gondor\": 50\r\n}\r\n\r\nford_mustang = Car(14, possible_destinations)\r\nford_mustang.ride(10)\r\nford_mustang.recharge(10)\r\nford_mustang.ride(50)\r\n\r\naverage_speed = ford_mustang.calculate_average_speed(150, 2)\r\nprint(f\"Average speed: {average_speed}\")\r\n\r\naverage_speed = ford_mustang.calculate_average_speed(150, 0)\r\nprint(f\"Average speed: {average_speed}\")",
+                  "solvedContent": "class Car:\r\n    def __init__(self, fuel_consumption, possible_destinations):\r\n        self.fuel_consumption = fuel_consumption\r\n        self.possible_destinations = possible_destinations\r\n        self.total_distance = 0\r\n        self.distance_left = 0\r\n\r\n    def ride(self, distance):\r\n        try:\r\n            self.check_distance(distance)\r\n        except Exception as e:\r\n            print(e)\r\n        else:\r\n            self.total_distance += distance\r\n            self.distance_left -= distance\r\n            print(f\"The ride was successfull! Distance traveled: {distance}\")\r\n    \r\n    def check_distance(self, distance):\r\n        if self.distance_left < distance:\r\n            raise ValueError(\"Not enough fuel, recharge the car!\")\r\n\r\n    def calculate_average_speed(self, distance, duration):\r\n        try:\r\n            average_speed = distance / duration\r\n            return average_speed\r\n        except ZeroDivisionError:\r\n            return distance\r\n\r\n    def ride_to_destination(self, destination):\r\n        distance = self.possible_destinations[destination]\r\n        self.ride(distance)\r\n        print(f\"Reached {destination}!\")\r\n\r\n    def recharge(self, fuel):\r\n        self.distance_left += fuel * self.fuel_consumption\r\n        print(f\"Car charged successfully! Distance left to ride: {self.distance_left}.\")\r\n\r\npossible_destinations = {\r\n    \"Eriador\": 100,\r\n    \"Gondor\": 50\r\n}\r\n\r\nford_mustang = Car(14, possible_destinations)\r\nford_mustang.ride(10)\r\nford_mustang.recharge(10)\r\nford_mustang.ride(50)\r\n\r\naverage_speed = ford_mustang.calculate_average_speed(150, 2)\r\nprint(f\"Average speed: {average_speed}\")\r\n\r\naverage_speed = ford_mustang.calculate_average_speed(150, 0)\r\nprint(f\"Average speed: {average_speed}\")\r\n\r\nford_mustang.ride_to_destination(\"Gondor\")"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Searching for a key in a dictionary",
+                  "content": "Remember, to search for the value associated with a key in a Dictionary use square brackets `[ ]` with the key inside them.\n\nFor example, to check in the dictionary `my_dict` for the key `my_key` the following notation is used:\n\n```\nmy_dict[mykey]\n```"
+                }
+              ]
+            }
+          },
+          {
+            "title": "Fixing ride to destination",
+            "id": 124299,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Spróbujmy ostatniej metody z innym przypadkiem.\n\n1. Wywołaj metodę `ride_to_destination`, używając samochodu `ford_mustang` i miejsca docelowego `\"Wonderland\"`.\n2. Uruchom kod! Wystąpił błąd! Sprawdź błąd, aby zrozumieć, co się dzieje.\n3. Wyrzucony błąd pokazuje, że klucza `\"Wonderland\"` nie ma wśród naszych możliwych miejsc docelowych. Teraz wiemy, że aby uzyskać dostęp do słownika, musimy sprawdzić, czy klucz istnieje. Naprawmy to!\n4. Wewnątrz metody `ride_to_destination` utwórz instrukcję if, która sprawdza, czy klucz `destination` znajduje się w słowniku `possible_destinations` klasy.\n5. Jeśli ten warunek jest spełniony, kontynuuj wykonywanie metody zgodnie z jej definicją. Jeśli nie, wyświetl następujący komunikat: `\"Destination not in possible destinations!\"`",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "class Car:\r\n    def __init__(self, fuel_consumption, possible_destinations):\r\n        self.fuel_consumption = fuel_consumption\r\n        self.possible_destinations = possible_destinations\r\n        self.total_distance = 0\r\n        self.distance_left = 0\r\n\r\n    def ride(self, distance):\r\n        try:\r\n            self.check_distance(distance)\r\n        except Exception as e:\r\n            print(e)\r\n        else:\r\n            self.total_distance += distance\r\n            self.distance_left -= distance\r\n            print(f\"The ride was successfull! Distance traveled: {distance}\")\r\n    \r\n    def check_distance(self, distance):\r\n        if self.distance_left < distance:\r\n            raise ValueError(\"Not enough fuel, recharge the car!\")\r\n\r\n    def calculate_average_speed(self, distance, duration):\r\n        try:\r\n            average_speed = distance / duration\r\n            return average_speed\r\n        except ZeroDivisionError:\r\n            return distance\r\n\r\n    def ride_to_destination(self, destination):\r\n        distance = self.possible_destinations[destination]\r\n        self.ride(distance)\r\n        print(f\"Reached {destination}!\")\r\n\r\n    def recharge(self, fuel):\r\n        self.distance_left += fuel * self.fuel_consumption\r\n        print(f\"Car charged successfully! Distance left to ride: {self.distance_left}.\")\r\n\r\npossible_destinations = {\r\n    \"Eriador\": 100,\r\n    \"Gondor\": 50\r\n}\r\n\r\nford_mustang = Car(14, possible_destinations)\r\nford_mustang.ride(10)\r\nford_mustang.recharge(10)\r\nford_mustang.ride(50)\r\n\r\naverage_speed = ford_mustang.calculate_average_speed(150, 2)\r\nprint(f\"Average speed: {average_speed}\")\r\n\r\naverage_speed = ford_mustang.calculate_average_speed(150, 0)\r\nprint(f\"Average speed: {average_speed}\")\r\n\r\nford_mustang.ride_to_destination(\"Gondor\")",
+                  "solvedContent": "class Car:\r\n    def __init__(self, fuel_consumption, possible_destinations):\r\n        self.fuel_consumption = fuel_consumption\r\n        self.possible_destinations = possible_destinations\r\n        self.total_distance = 0\r\n        self.distance_left = 0\r\n\r\n    def ride(self, distance):\r\n        try:\r\n            self.check_distance(distance)\r\n        except Exception as e:\r\n            print(e)\r\n        else:\r\n            self.total_distance += distance\r\n            self.distance_left -= distance\r\n            print(f\"The ride was successfull! Distance traveled: {distance}\")\r\n    \r\n    def check_distance(self, distance):\r\n        if self.distance_left < distance:\r\n            raise ValueError(\"Not enough fuel, recharge the car!\")\r\n\r\n    def calculate_average_speed(self, distance, duration):\r\n        try:\r\n            average_speed = distance / duration\r\n            return average_speed\r\n        except ZeroDivisionError:\r\n            return distance\r\n\r\n    def ride_to_destination(self, destination):\r\n        if destination in self.possible_destinations:\r\n            distance = self.possible_destinations[destination]\r\n            self.ride(distance)\r\n            print(f\"Reached {destination}!\")\r\n        else:\r\n            print(f\"Destination not in possible destinations!\")\r\n\r\n    def recharge(self, fuel):\r\n        self.distance_left += fuel * self.fuel_consumption\r\n        print(f\"Car charged successfully! Distance left to ride: {self.distance_left}.\")\r\n\r\npossible_destinations = {\r\n    \"Eriador\": 100,\r\n    \"Gondor\": 50\r\n}\r\n\r\nford_mustang = Car(14, possible_destinations)\r\nford_mustang.ride(10)\r\nford_mustang.recharge(10)\r\nford_mustang.ride(50)\r\n\r\naverage_speed = ford_mustang.calculate_average_speed(150, 2)\r\nprint(f\"Average speed: {average_speed}\")\r\n\r\naverage_speed = ford_mustang.calculate_average_speed(150, 0)\r\nprint(f\"Average speed: {average_speed}\")\r\n\r\nford_mustang.ride_to_destination(\"Gondor\")\r\nford_mustang.ride_to_destination(\"Wonderland\")"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Checking if a key is in a dictionary",
+                  "content": "To check if a key is in a dictionary just write the key, followed by the keyword `in` and the dictionary.\n\nFor example, to check if the key `my_key` is in the dictionary `my_dict` we use the following notation:\n```\nmy_key in dict\n```"
+                }
+              ]
+            }
+          },
+          {
+            "title": "Overview",
+            "id": 124301,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Gratulacje! Wykorzystałeś swoją wiedzę o błędach i wyjątkach, aby naprawić i rozbudować kod inteligentnego samochodu!\n\nMożesz śmiało poeksperymentować z kodem.\n\nSpróbuj obsłużyć wyjątek `ZeroDivisionException` (występujący w `calculate_average_speed`) za pomocą instrukcji `if` albo obsłużyć wyjątek  `KeyErrorException` (występujący w `ride_to_destination`) za pomocą instrukcji `try` i `except`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "class Car:\r\n    def __init__(self, fuel_consumption, possible_destinations):\r\n        self.fuel_consumption = fuel_consumption\r\n        self.possible_destinations = possible_destinations\r\n        self.total_distance = 0\r\n        self.distance_left = 0\r\n\r\n    def ride(self, distance):\r\n        try:\r\n            self.check_distance(distance)\r\n        except Exception as e:\r\n            print(e)\r\n        else:\r\n            self.total_distance += distance\r\n            self.distance_left -= distance\r\n            print(f\"The ride was successfull! Distance traveled: {distance}\")\r\n    \r\n    def check_distance(self, distance):\r\n        if self.distance_left < distance:\r\n            raise ValueError(\"Not enough fuel, recharge the car!\")\r\n\r\n    def calculate_average_speed(self, distance, duration):\r\n        try:\r\n            average_speed = distance / duration\r\n            return average_speed\r\n        except ZeroDivisionError:\r\n            return distance\r\n\r\n    def ride_to_destination(self, destination):\r\n        if destination in self.possible_destinations:\r\n            distance = self.possible_destinations[destination]\r\n            self.ride(distance)\r\n            print(f\"Reached {destination}!\")\r\n        else:\r\n            print(f\"Destination not in possible destinations!\")\r\n\r\n    def recharge(self, fuel):\r\n        self.distance_left += fuel * self.fuel_consumption\r\n        print(f\"Car charged successfully! Distance left to ride: {self.distance_left}.\")\r\n\r\npossible_destinations = {\r\n    \"Eriador\": 100,\r\n    \"Gondor\": 50\r\n}\r\n\r\nford_mustang = Car(14, possible_destinations)\r\nford_mustang.ride(10)\r\nford_mustang.recharge(10)\r\nford_mustang.ride(50)\r\n\r\naverage_speed = ford_mustang.calculate_average_speed(150, 2)\r\nprint(f\"Average speed: {average_speed}\")\r\n\r\naverage_speed = ford_mustang.calculate_average_speed(150, 0)\r\nprint(f\"Average speed: {average_speed}\")\r\n\r\nford_mustang.ride_to_destination(\"Gondor\")\r\nford_mustang.ride_to_destination(\"Wonderland\")",
+                  "solvedContent": null
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

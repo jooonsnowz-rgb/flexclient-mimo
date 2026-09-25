@@ -1,0 +1,140 @@
+{
+  "tutorial": {
+    "id": 4625,
+    "version": 1,
+    "type": "practiceOptional",
+    "isNew": false,
+    "codeLanguage": "python",
+    "title": "Excepciones",
+    "descriptionContent": "Transfiere el manejo centrado de excepciones a tareas de Python menos guiadas y comprobaciones independientes.",
+    "shortDescriptionContent": "Estudiantes de Python que quieran practicar el manejo de excepciones con mayor dificultad",
+    "showInTrack": true,
+    "iconBanner": null,
+    "chapters": [
+      {
+        "id": 17839,
+        "title": "Desafíos de límites de excepción",
+        "type": "practiceLevel3",
+        "lessons": [
+          {
+            "title": "Spot an oversized boundary",
+            "id": 152127,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>El controlador espera únicamente texto de asiento no válido. ¿Qué trabajo debería moverse fuera de este bloque <code>try</code> sobredimensionado?</p><code version=\"2\" codelang=\"python\" name=\"booking.py\" visible-if=\"always\"><content><text value=\"try\" class=\"keyword\" /><text value=\":\" /><text type=\"break\" /><text value=\"  seats = int(form[\" /><text value=\"&quot;seats&quot;\" class=\"string\" /><text value=\"])\" /><text type=\"break\" /><text value=\"  total = seats * form[\" /><text value=\"&quot;price&quot;\" class=\"string\" /><text value=\"]\" /><text type=\"break\" /><text value=\"  save_booking(total)\" /><text type=\"break\" /><text value=\"except\" class=\"keyword\" /><text value=\" ValueError:\" /><text type=\"break\" /><text value=\"  \" /><text value=\"return\" class=\"keyword\" /><text value=\" \" /><text value=\"None\" class=\"literal\" /></content></code><selection multiple=\"multiple\"><item value=\"1\" correct=\"true\">El cálculo total y la llamada a <code>save_booking()</code></item><item value=\"2\" correct=\"false\">La conversión con <code>int()</code></item><item value=\"3\" correct=\"false\">El controlador de <code>ValueError</code></item><item value=\"4\" correct=\"false\">Todo el cuerpo de la función</item></selection><p visible-if=\"wrong\">El cálculo total y la llamada a <code>save_booking()</code>.</p></body></html>"
+          },
+          {
+            "title": "Move recovery to the caller",
+            "id": 152128,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>La reserva tiene una clave <code>\"seats\"</code>, pero su texto puede no ser válido. Completa el controlador específico del llamador alrededor de <code>parse_seats()</code>.</p><code version=\"2\" codelang=\"python\" name=\"booking.py\" visible-if=\"always\"><content><text value=\"def\" class=\"keyword\" /><text value=\" \" /><text value=\"parse_seats\" class=\"title\" /><text value=\"(value)\" class=\"params\" /><text value=\":\" /><text type=\"break\" /><text value=\"  \" /><text value=\"return\" class=\"keyword\" /><text value=\" int(value)\" /><text type=\"break\" /><text type=\"break\" /><text value=\"def\" class=\"keyword\" /><text value=\" \" /><text value=\"process_booking\" class=\"title\" /><text value=\"(booking)\" class=\"params\" /><text value=\":\" /><text type=\"break\" /><text value=\"  \" /><text value=\"try\" class=\"keyword\" /><text value=\":\" /><text type=\"break\" /><text value=\"    seats = parse_seats(booking[\" /><text value=\"&quot;seats&quot;\" class=\"string\" /><text value=\"])\" /><text type=\"break\" /><text value=\"  \" /><text value=\"except\" class=\"keyword\" /><text value=\" ValueError:\" /><text type=\"break\" /><text value=\"    \" /><text value=\"return\" class=\"keyword\" /><text value=\" \" /><text value=\"None\" class=\"literal\" /><text type=\"break\" /><text value=\"  \" /><text value=\"return\" class=\"keyword\" /><text value=\" seats\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"133\" endIndex=\"143\" /><option correct=\"false\"><content><text value=\"KeyError\" /></content></option><option correct=\"false\"><content><text value=\"TypeError\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Asegúrese de elegir <code>ValueError</code>.</p></body></html>"
+          },
+          {
+            "title": "Separate expected failures",
+            "id": 152129,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Completa el primer controlador para que una clave <code>\"seats\"</code> ausente tenga su propia respuesta.</p><code version=\"2\" codelang=\"python\" name=\"booking.py\" visible-if=\"always\"><content><text value=\"try\" class=\"keyword\" /><text value=\":\" /><text type=\"break\" /><text value=\"  seats = int(booking[\" /><text value=\"&quot;seats&quot;\" class=\"string\" /><text value=\"])\" /><text type=\"break\" /><text value=\"except\" class=\"keyword\" /><text value=\" KeyError:\" /><text type=\"break\" /><text value=\"  \" /><text value=\"return\" class=\"keyword\" /><text value=\" \" /><text value=\"&quot;Missing seats&quot;\" class=\"string\" /><text type=\"break\" /><text value=\"except\" class=\"keyword\" /><text value=\" ValueError:\" /><text type=\"break\" /><text value=\"  \" /><text value=\"return\" class=\"keyword\" /><text value=\" \" /><text value=\"&quot;Invalid seats&quot;\" class=\"string\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"44\" endIndex=\"52\" /><option correct=\"false\"><content><text value=\"TypeError\" /></content></option><option correct=\"false\"><content><text value=\"ValueError\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Asegúrese de elegir <code>KeyError</code>.</p></body></html>"
+          },
+          {
+            "title": "Keep saving outside",
+            "id": 152130,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>¿Qué se puede mejorar en el manejo de errores de este código?</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"try\" class=\"keyword\" /><text value=\":\" /><text type=\"break\" /><text value=\"  seats = int(form[\" /><text value=\"&quot;seats&quot;\" class=\"string\" /><text value=\"])\" /><text type=\"break\" /><text value=\"  save_booking(seats)\" /><text type=\"break\" /><text value=\"except\" class=\"keyword\" /><text value=\":\" /><text type=\"break\" /><text value=\"  \" /><text value=\"pass\" class=\"keyword\" /></content></code><selection multiple=\"multiple\"><item value=\"1\" correct=\"true\">Captura una excepción específica, como <code>ValueError</code>, en lugar de usar un <code>except</code> sin excepción y mueve <code>save_booking(seats)</code> fuera del bloque <code>try</code></item><item value=\"2\" correct=\"false\">Mueve <code>save_booking(seats)</code> fuera del bloque <code>try</code></item><item value=\"3\" correct=\"false\">Captura una excepción específica, como <code>ValueError</code>, en lugar de usar un <code>except</code> sin especificar</item><item value=\"4\" correct=\"false\">Nada</item></selection><p visible-if=\"wrong\">Captura una excepción específica, como <code>ValueError</code>, en lugar de usar un <code>except</code> sin excepción y mueve <code>save_booking(seats)</code> fuera del bloque <code>try</code>.</p></body></html>"
+          },
+          {
+            "title": "Repair a settings loader",
+            "id": 152131,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Completa el controlador de conversión esperado del cargador de configuración. El inicio permanece fuera del bloque.</p><code version=\"2\" codelang=\"python\" name=\"settings.py\" visible-if=\"always\"><content><text value=\"def\" class=\"keyword\" /><text value=\" \" /><text value=\"start_service\" class=\"title\" /><text value=\"(settings)\" class=\"params\" /><text value=\":\" /><text type=\"break\" /><text value=\"  \" /><text value=\"try\" class=\"keyword\" /><text value=\":\" /><text type=\"break\" /><text value=\"    port = int(settings[\" /><text value=\"&quot;port&quot;\" class=\"string\" /><text value=\"])\" /><text type=\"break\" /><text value=\"  \" /><text value=\"except\" class=\"keyword\" /><text value=\" ValueError:\" /><text type=\"break\" /><text value=\"    \" /><text value=\"return\" class=\"keyword\" /><text value=\" \" /><text value=\"&quot;Invalid port&quot;\" class=\"string\" /><text type=\"break\" /><text value=\"  \" /><text value=\"return\" class=\"keyword\" /><text value=\" port\" /></content><interactions><interaction type=\"validatedInput\" isDefault=\"true\" startIndex=\"78\" endIndex=\"88\" /></interactions></code><p visible-if=\"wrong\">Asegúrese de elegir <code>ValueError</code>.</p></body></html>"
+          },
+          {
+            "title": "Process bookings safely",
+            "id": 152132,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Mejora `process_booking()` para que capture solo `ValueError` y devuelva `None` cuando el texto del asiento no sea válido.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "def process_booking(booking):\n  try:\n    seats = int(booking[\"seats\"])\n    return seats * booking[\"price\"]\n  except ValueError:\n    pass\n",
+                  "solvedContent": "def process_booking(booking):\n  try:\n    seats = int(booking[\"seats\"])\n  except ValueError:\n    return None\n  return seats * booking[\"price\"]\n"
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      },
+      {
+        "id": 17840,
+        "title": "Desafíos del comportamiento alternativo",
+        "type": "practiceLevel3",
+        "lessons": [
+          {
+            "title": "Match fallback to meaning",
+            "id": 152133,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Una cantidad faltante impide realizar un pedido, mientras que un descuento faltante significa que no hay descuento. ¿Qué par de valores de respaldo coincide con esos significados?</p><selection multiple=\"multiple\"><item value=\"1\" correct=\"true\"><code>quantity: None, discount: 0</code></item><item value=\"2\" correct=\"false\"><code>quantity: 0, discount: None</code></item><item value=\"3\" correct=\"false\"><code>quantity: 0, discount: 1</code></item><item value=\"4\" correct=\"false\"><code>quantity: None, discount: None</code></item></selection><p visible-if=\"wrong\"><code>quantity: None, discount: 0</code>.</p></body></html>"
+          },
+          {
+            "title": "Detect a failed conversion",
+            "id": 152134,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Escribe la comparación que detecta la señal de fallo explícita del analizador.</p><code version=\"2\" codelang=\"python\" name=\"batch.py\" visible-if=\"always\"><content><text value=\"size = read_batch_size(\" /><text value=\"&quot;many&quot;\" class=\"string\" /><text value=\")\" /><text type=\"break\" /><text value=\"if\" class=\"keyword\" /><text value=\" size \" /><text value=\"is\" class=\"keyword\" /><text value=\" \" /><text value=\"None\" class=\"literal\" /><text value=\":\" /><text type=\"break\" /><text value=\"  print(\" /><text value=\"&quot;Skip batch&quot;\" class=\"string\" /><text value=\")\" /></content><interactions><interaction type=\"validatedInput\" isDefault=\"true\" startIndex=\"39\" endIndex=\"46\" /></interactions></code><p visible-if=\"wrong\">Asegúrese de elegir <code>is None</code>.</p></body></html>"
+          },
+          {
+            "title": "Replace a silent handler",
+            "id": 152135,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Reemplaza el fallo silencioso por un resultado que el código que realiza la llamada pueda inspeccionar.</p><code version=\"2\" codelang=\"python\" name=\"batch.py\" visible-if=\"always\"><content><text value=\"def\" class=\"keyword\" /><text value=\" \" /><text value=\"read_batch_size\" class=\"title\" /><text value=\"(value)\" class=\"params\" /><text value=\":\" /><text type=\"break\" /><text value=\"  \" /><text value=\"try\" class=\"keyword\" /><text value=\":\" /><text type=\"break\" /><text value=\"    \" /><text value=\"return\" class=\"keyword\" /><text value=\" int(value)\" /><text type=\"break\" /><text value=\"  \" /><text value=\"except\" class=\"keyword\" /><text value=\" ValueError:\" /><text type=\"break\" /><text value=\"    \" /><text value=\"return\" class=\"keyword\" /><text value=\" \" /><text value=\"None\" class=\"literal\" /></content><interactions><interaction type=\"validatedInput\" isDefault=\"true\" startIndex=\"89\" endIndex=\"93\" /></interactions></code><p visible-if=\"wrong\">Asegúrese de elegir <code>None</code>.</p></body></html>"
+          },
+          {
+            "title": "Select a valid default",
+            "id": 152136,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Un descuento opcional no válido significa que no hay descuento. ¿Qué <code>return</code> de <code>except ValueError:</code> conserva ese significado y permite continuar con el cálculo?</p><selection multiple=\"multiple\"><item value=\"1\" correct=\"true\"><code>return 0</code></item><item value=\"2\" correct=\"false\"><code>return None</code></item><item value=\"3\" correct=\"false\"><code>return 1</code></item><item value=\"4\" correct=\"false\"><code>pass</code></item></selection><p visible-if=\"wrong\"><code>return 0</code>.</p></body></html>"
+          },
+          {
+            "title": "Route a failed import",
+            "id": 152137,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Completa la rama del llamador que dirige un tamaño de lote no válido a una respuesta de omisión.</p><code version=\"2\" codelang=\"python\" name=\"batch.py\" visible-if=\"always\"><content><text value=\"size = read_batch_size(row[\" /><text value=\"&quot;size&quot;\" class=\"string\" /><text value=\"])\" /><text type=\"break\" /><text value=\"if\" class=\"keyword\" /><text value=\" size \" /><text value=\"is\" class=\"keyword\" /><text value=\" \" /><text value=\"None\" class=\"literal\" /><text value=\":\" /><text type=\"break\" /><text value=\"  \" /><text value=\"return\" class=\"keyword\" /><text value=\" \" /><text value=\"&quot;Skip row&quot;\" class=\"string\" /><text type=\"break\" /><text value=\"return\" class=\"keyword\" /><text value=\" size\" /></content><interactions><interaction type=\"validatedInput\" isDefault=\"true\" startIndex=\"44\" endIndex=\"51\" /></interactions></code><p visible-if=\"wrong\">Asegúrese de elegir <code>is None</code>.</p></body></html>"
+          },
+          {
+            "title": "Build a clear parser",
+            "id": 152138,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Completa el asistente `read_quantity()`. Captura solo `ValueError` y devuelve `None` para texto no válido.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "def read_quantity(value):\n  return int(value)\n\ndef read_discount(value):\n  try:\n    return int(value)\n  except ValueError:\n    return 0\n\ndef prepare_order(quantity_text, discount_text):\n  quantity = read_quantity(quantity_text)\n  if quantity is None:\n    return None\n\n  discount = read_discount(discount_text)\n  return quantity, discount",
+                  "solvedContent": "def read_quantity(value):\n  try:\n    return int(value)\n  except ValueError:\n    return None\n\ndef read_discount(value):\n  try:\n    return int(value)\n  except ValueError:\n    return 0\n\ndef prepare_order(quantity_text, discount_text):\n  quantity = read_quantity(quantity_text)\n  if quantity is None:\n    return None\n\n  discount = read_discount(discount_text)\n  return quantity, discount"
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

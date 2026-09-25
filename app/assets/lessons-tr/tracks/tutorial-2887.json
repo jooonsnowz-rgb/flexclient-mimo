@@ -1,0 +1,333 @@
+{
+  "tutorial": {
+    "id": 2887,
+    "version": 4,
+    "type": "guidedProject",
+    "isNew": false,
+    "codeLanguage": "node",
+    "title": "Kitap Takipçisi - 1. Bölüm",
+    "descriptionContent": "Okuduğun tüm kitapları takip eden bir backend oluştur. Bir veritabanının yardımıyla kusursuz dijital kitaplığını oluşturacaksın.",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": "tutorial-2887-icon-banner.svg",
+    "chapters": [
+      {
+        "id": 14978,
+        "title": "Kitap Takipçisi - 1. Bölüm",
+        "type": "practiceLevel3",
+        "lessons": [
+          {
+            "title": "Lesson #7",
+            "id": 132068,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "**Book Keeper** projesine hoş geldin. Okuduğumuz kitapları kaydetmemizi ve not eklememizi sağlayan bir uygulama oluşturacağız.\n\nExpress sunucusunu kurarak başlayacağız.\n\n1. `express` adında bir değişken tanımla ve `express` modülünü require et.\n2. `app` adında bir değişken tanımla ve `express` fonksiyonunu çağırarak başlat.\n3. `port` adında bir değişken tanımla ve ona `3000` değerini ata.\n4. Uygulamanın `port` değişkeni tarafından belirtilen bağlantı noktasını dinlemesini sağlamak için `app` üzerinde `listen` fonksiyonunu kullan.\n5. Sunucumuzun düzgün şekilde çalıştığını anlayabilmemiz için `listen` fonksiyonunun callback'i içinde konsola bir mesaj yazdır.",
+              "preselectedFileIndex": 1,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "database.js",
+                  "codeLanguage": "javascript",
+                  "content": "",
+                  "solvedContent": null
+                },
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "",
+                  "solvedContent": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});"
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/books",
+                "body": null
+              }
+            }
+          },
+          {
+            "title": "Lesson #6",
+            "id": 132067,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Sırada, gelen isteklerin JSON gövdelerini ayrıştırmak için biraz middleware ekleyeceğiz.\n\n1. `app.use`'u çağır ve tüm gelen isteklerin gövdelerini ayrıştırıp ayrıştırılan verileri `req.body` içine koymak için `express.json()`'ı geçir.",
+              "preselectedFileIndex": 1,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "database.js",
+                  "codeLanguage": "javascript",
+                  "content": "",
+                  "solvedContent": null
+                },
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});",
+                  "solvedContent": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.use(express.json());\n\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});"
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/books",
+                "body": null
+              }
+            }
+          },
+          {
+            "title": "Lesson #1",
+            "id": 132062,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Verilerle çalışmak için SQLite veritabanımızı kuracağız.\n\n1. `database.js` içinde, `require(\"better-sqlite3'\")` kullanarak `better-sqlite3` modülünü içe aktar. Ortaya çıkan nesneyi `Database` adlı bir sabite ata.\n2. `new Database(\"/tmp/books.db\")` çağrısını yaparak `/tmp/quiz.db` adlı yeni bir SQLite veritabanı oluştur. Veritabanı nesnesini `db` adlı bir sabite kaydet.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "database.js",
+                  "codeLanguage": "javascript",
+                  "content": "",
+                  "solvedContent": "const Database = require('better-sqlite3');\nconst db = new Database('/tmp/books.db');"
+                },
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.use(express.json());\n\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});",
+                  "solvedContent": null
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/books",
+                "body": null
+              }
+            }
+          },
+          {
+            "title": "Lesson #2",
+            "id": 132063,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Şimdi kitaplarımızı depolamak için bir tablo oluşturalım.\n\n1. Tablo oluşturma SQL komutunu çalıştırmak için `db.exec` metodunu kullan.\n2. `questions` tablosunu yalnızca henüz mevcut değilse oluştur. `books` tablosu aşağıdaki sütunlara sahip olmalı:\n- `id`: bir tam sayı, birincil anahtar, otomatik artırılan\n- `title`: bir dize, null olamaz\n- `author`: bir dize, null olamaz\n- `year`: bir tam sayı",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "database.js",
+                  "codeLanguage": "javascript",
+                  "content": "const Database = require('better-sqlite3');\nconst db = new Database('/tmp/books.db');",
+                  "solvedContent": "const Database = require('better-sqlite3');\nconst db = new Database('/tmp/books.db');\n\ndb.exec(`\n    CREATE TABLE IF NOT EXISTS books (\n      id INTEGER PRIMARY KEY AUTOINCREMENT,\n      title TEXT NOT NULL,\n      author TEXT NOT NULL,\n      year INTEGER\n    )\n`);"
+                },
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.use(express.json());\n\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});",
+                  "solvedContent": null
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/books",
+                "body": null
+              }
+            }
+          },
+          {
+            "title": "Lesson #3",
+            "id": 132064,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Kitaplar tablomuzda bazı örnek girdiler ekleyelim.\n\n1. `db.exec` kullanarak veritabanına en az üç kitap ekle.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "database.js",
+                  "codeLanguage": "javascript",
+                  "content": "const Database = require('better-sqlite3');\nconst db = new Database('/tmp/books.db');\n\ndb.exec(`\n    CREATE TABLE IF NOT EXISTS books (\n      id INTEGER PRIMARY KEY AUTOINCREMENT,\n      title TEXT NOT NULL,\n      author TEXT NOT NULL,\n      year INTEGER\n    )\n`);\n",
+                  "solvedContent": "const Database = require('better-sqlite3');\nconst db = new Database('/tmp/books.db');\n\ndb.exec(`\n    CREATE TABLE IF NOT EXISTS books (\n      id INTEGER PRIMARY KEY AUTOINCREMENT,\n      title TEXT NOT NULL,\n      author TEXT NOT NULL,\n      year INTEGER\n    )\n`);\n\ndb.exec(`\n  INSERT INTO books (title, author, year)\n    VALUES \n    ('1984', 'George Orwell', 1949),\n    ('Brave New World', 'Aldous Huxley', 1932),\n    ('Fahrenheit 451', 'Ray Bradbury', 1953)\n`);"
+                },
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.use(express.json());\n\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});",
+                  "solvedContent": null
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/books",
+                "body": null
+              }
+            }
+          },
+          {
+            "title": "Lesson #4",
+            "id": 132065,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Son olarak, veritabanı bağlantımızı diğer dosyalarda kullanabildiğimizden emin olalım.\n\n1. `module.exports` kullanarak dosyanın sonunda `db`'yi dışa aktar.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "database.js",
+                  "codeLanguage": "javascript",
+                  "content": "const Database = require('better-sqlite3');\nconst db = new Database('/tmp/books.db');\n\ndb.exec(`\n    CREATE TABLE IF NOT EXISTS books (\n      id INTEGER PRIMARY KEY AUTOINCREMENT,\n      title TEXT NOT NULL,\n      author TEXT NOT NULL,\n      year INTEGER\n    )\n`);\n\ndb.exec(`\n  INSERT INTO books (title, author, year)\n    VALUES \n    ('1984', 'George Orwell', 1949),\n    ('Brave New World', 'Aldous Huxley', 1932),\n    ('Fahrenheit 451', 'Ray Bradbury', 1953)\n`);",
+                  "solvedContent": "const Database = require('better-sqlite3');\nconst db = new Database('/tmp/books.db');\n\ndb.exec(`\n    CREATE TABLE IF NOT EXISTS books (\n      id INTEGER PRIMARY KEY AUTOINCREMENT,\n      title TEXT NOT NULL,\n      author TEXT NOT NULL,\n      year INTEGER\n    )\n`);\n\ndb.exec(`\n  INSERT INTO books (title, author, year)\n    VALUES \n    ('1984', 'George Orwell', 1949),\n    ('Brave New World', 'Aldous Huxley', 1932),\n    ('Fahrenheit 451', 'Ray Bradbury', 1953)\n`);\n\nmodule.exports = db;"
+                },
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.use(express.json());\n\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});",
+                  "solvedContent": null
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/books",
+                "body": null
+              }
+            }
+          },
+          {
+            "title": "Lesson #5",
+            "id": 132066,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Uygulamamızda oluşturduğumuz veritabanını kullanalım.\n\n1. `app.js` dosyasının başlangıcında, `database.js` dosyasından dışa aktardığımız `db` nesnesini içe aktar. İçe aktardığın veritabanını `db` adlı bir değişkende sakla.",
+              "preselectedFileIndex": 1,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "database.js",
+                  "codeLanguage": "javascript",
+                  "content": "const Database = require('better-sqlite3');\nconst db = new Database('/tmp/books.db');\n\ndb.exec(`\n    CREATE TABLE IF NOT EXISTS books (\n      id INTEGER PRIMARY KEY AUTOINCREMENT,\n      title TEXT NOT NULL,\n      author TEXT NOT NULL,\n      year INTEGER\n    )\n`);\n\ndb.exec(`\n  INSERT INTO books (title, author, year)\n    VALUES \n    ('1984', 'George Orwell', 1949),\n    ('Brave New World', 'Aldous Huxley', 1932),\n    ('Fahrenheit 451', 'Ray Bradbury', 1953)\n`);\n\nmodule.exports = db;",
+                  "solvedContent": null
+                },
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.use(express.json());\n\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});",
+                  "solvedContent": "const express = require('express');\nconst db = require('./database');\n\nconst app = express();\nconst port = 3000;\n\napp.use(express.json());\n\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});"
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/books",
+                "body": null
+              }
+            }
+          },
+          {
+            "title": "Lesson #8",
+            "id": 132069,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Şimdi tüm kitapları almak için bir endpoint oluşturalım.\n\n1. `/books` yolu için yeni bir GET rotası oluşturmak üzere `app.get` kullan.\n2. Rota işleyicisinin içinde, `books` tablosundaki tüm kayıtları seçmek için içe aktarılan `db`'yi kullan.\n3. Kitapları içeren bir JSON nesnesiyle yanıt ver ve durum kodunu 200 olarak ayarla.",
+              "preselectedFileIndex": 1,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "database.js",
+                  "codeLanguage": "javascript",
+                  "content": "const Database = require('better-sqlite3');\nconst db = new Database('/tmp/books.db');\n\ndb.exec(`\n    CREATE TABLE IF NOT EXISTS books (\n      id INTEGER PRIMARY KEY AUTOINCREMENT,\n      title TEXT NOT NULL,\n      author TEXT NOT NULL,\n      year INTEGER\n    )\n`);\n\ndb.exec(`\n  INSERT INTO books (title, author, year)\n    VALUES \n    ('1984', 'George Orwell', 1949),\n    ('Brave New World', 'Aldous Huxley', 1932),\n    ('Fahrenheit 451', 'Ray Bradbury', 1953)\n`);\n\nmodule.exports = db;",
+                  "solvedContent": null
+                },
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require('express');\nconst db = require('./database');\n\nconst app = express();\nconst port = 3000;\n\napp.use(express.json());\n\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});",
+                  "solvedContent": "const express = require('express');\nconst db = require('./database');\n\nconst app = express();\nconst port = 3000;\n\napp.use(express.json());\n\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});\n\napp.get('/books', (req, res) => {\n  const rows = db.prepare('SELECT * FROM books').all();\n  res.status(200).json({\n    books: rows\n  });\n});"
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/books",
+                "body": null
+              }
+            }
+          },
+          {
+            "title": "Lesson #9",
+            "id": 132070,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Şimdi tek bir kitap almak için bir uç nokta oluşturalım.\n\n1. `/books/:id` yolu için yeni bir GET rotası oluşturmak üzere `app.get` kullan.\n2. Rota işleyicisinin içinde, `req.params` içinden `id`'yi destructuring ile al.\n3. `books` tablosundan `id` değeri eşleşen bir kaydı seçmek için içe aktarılan `db`'yi kullan.\n4. Kitabı içeren bir JSON nesnesiyle yanıt ver ve durum kodunu 200 olarak ayarla.",
+              "preselectedFileIndex": 1,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "database.js",
+                  "codeLanguage": "javascript",
+                  "content": "const Database = require('better-sqlite3');\nconst db = new Database('/tmp/books.db');\n\ndb.exec(`\n    CREATE TABLE IF NOT EXISTS books (\n      id INTEGER PRIMARY KEY AUTOINCREMENT,\n      title TEXT NOT NULL,\n      author TEXT NOT NULL,\n      year INTEGER\n    )\n`);\n\ndb.exec(`\n  INSERT INTO books (title, author, year)\n    VALUES \n    ('1984', 'George Orwell', 1949),\n    ('Brave New World', 'Aldous Huxley', 1932),\n    ('Fahrenheit 451', 'Ray Bradbury', 1953)\n`);\n\nmodule.exports = db;",
+                  "solvedContent": null
+                },
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require('express');\nconst db = require('./database');\n\nconst app = express();\nconst port = 3000;\n\napp.use(express.json());\n\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});\n\napp.get('/books', (req, res) => {\n  const rows = db.prepare('SELECT * FROM books').all();\n  res.status(200).json({\n    books: rows\n  });\n});",
+                  "solvedContent": "const express = require('express');\nconst db = require('./database');\n\nconst app = express();\nconst port = 3000;\n\napp.use(express.json());\n\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});\n\napp.get('/books', (req, res) => {\n  const rows = db.prepare('SELECT * FROM books').all();\n  res.status(200).json({\n    books: rows\n  });\n});\n\napp.get('/books/:id', (req, res) => {\n  const { id } = req.params;\n  const book = db.prepare('SELECT * FROM books WHERE id = ?').get(id);\n  \n  res.status(200).json({\n    book: book\n  });\n});\n"
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/books/1",
+                "body": null
+              }
+            }
+          },
+          {
+            "title": "Lesson #10",
+            "id": 132071,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Şimdi yeni bir kitap eklemek için bir endpoint oluşturalım.\n\n1. `/books` yolu için yeni bir POST rotası oluşturmak üzere `app.post` kullan.\n2. Rota işleyicisinin içinde `title`, `author` ve `year` değerlerini `req.body` içinden destructuring ile ayır.\n3. Sağlanan `title`, `author` ve `year` değerlerini kullanarak books tablosuna yeni bir satır ekle.\n4. 201 durumuyla yanıt ver ve yeni kitabın kimliğini içeren `\"bookId\"` anahtarına sahip bir JSON nesnesi döndür.",
+              "preselectedFileIndex": 1,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "database.js",
+                  "codeLanguage": "javascript",
+                  "content": "const Database = require('better-sqlite3');\nconst db = new Database('/tmp/books.db');\n\ndb.exec(`\n    CREATE TABLE IF NOT EXISTS books (\n      id INTEGER PRIMARY KEY AUTOINCREMENT,\n      title TEXT NOT NULL,\n      author TEXT NOT NULL,\n      year INTEGER\n    )\n`);\n\ndb.exec(`\n  INSERT INTO books (title, author, year)\n    VALUES \n    ('1984', 'George Orwell', 1949),\n    ('Brave New World', 'Aldous Huxley', 1932),\n    ('Fahrenheit 451', 'Ray Bradbury', 1953)\n`);\n\nmodule.exports = db;",
+                  "solvedContent": null
+                },
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require('express');\nconst db = require('./database');\n\nconst app = express();\nconst port = 3000;\n\napp.use(express.json());\n\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});\n\napp.get('/books', (req, res) => {\n  const rows = db.prepare('SELECT * FROM books').all();\n  res.status(200).json({\n    books: rows\n  });\n});\n\napp.get('/books/:id', (req, res) => {\n  const { id } = req.params;\n  const book = db.prepare('SELECT * FROM books WHERE id = ?').get(id);\n  \n  res.status(200).json({\n    book: book\n  });\n});\n",
+                  "solvedContent": "const express = require('express');\nconst db = require('./database');\n\nconst app = express();\nconst port = 3000;\n\napp.use(express.json());\n\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});\n\napp.get('/books', (req, res) => {\n  const rows = db.prepare('SELECT * FROM books').all();\n  res.status(200).json({\n    books: rows\n  });\n});\n\napp.get('/books/:id', (req, res) => {\n  const { id } = req.params;\n  const book = db.prepare('SELECT * FROM books WHERE id = ?').get(id);\n  \n  res.status(200).json({\n    book: book\n  });\n});\n\napp.post('/books', (req, res) => {\n  const { title, author, year } = req.body;\n\n  const insert = db.prepare('INSERT INTO books (title, author, year) VALUES (?, ?, ?)');\n  const result = insert.run(title, author, year);\n\n  res.status(201).json({\n    bookId: result.lastInsertRowid\n  });\n});"
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "POST",
+                "path": "/books",
+                "body": "{\n  \"title\": \"My Book\",\n  \"author\": \"Me\",\n  \"year\": 2024\n}"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

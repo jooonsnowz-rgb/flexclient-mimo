@@ -1,0 +1,183 @@
+{
+  "tutorial": {
+    "id": 4571,
+    "version": 1,
+    "type": "guidedProject",
+    "isNew": false,
+    "codeLanguage": "python",
+    "title": "Crypto Craze - Partie 1",
+    "descriptionContent": "Utilise l'API Crypto Craze pour travailler avec une API privée, obtenir des données et les afficher",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": "tutorial-4571-icon-banner.svg",
+    "chapters": [
+      {
+        "id": 17728,
+        "title": "Crypto Craze - Partie 1",
+        "type": "practiceLevel3",
+        "lessons": [
+          {
+            "title": "Lesson #1",
+            "id": 151343,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Bienvenue dans le projet **Crypto Craze**. Dans ce projet, nous utiliserons une API de prix crypto pour récupérer des informations sur le Bitcoin, y compris le prix, le changement sur 24 heures et la capitalisation boursière. Cela nous permet de nous exercer à travailler avec de vraies réponses d'API et à afficher des données utiles à partir de celles-ci.\n\nNous utilisons le module `os` pour lire la clé API de Crypto Craze, qui est stockée en tant que variable d'environnement pour la garder sécurisée.\n\n1. Écris `import os` pour importer le module `os`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "app.py",
+                  "codeLanguage": "python",
+                  "content": "",
+                  "solvedContent": "import os"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #2",
+            "id": 151344,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Nous utilisons également le module `requests` dans notre script pour interagir avec l'API Crypto Craze, alors importons ce module aussi.\n\n1. Écris `import requests` pour importer le module `requests`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "app.py",
+                  "codeLanguage": "python",
+                  "content": "import os",
+                  "solvedContent": "import requests\nimport os"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #3",
+            "id": 151345,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Lorsque tu interagis avec une API qui nécessite une clé API, nous devons d'abord la récupérer à partir de tes variables d'environnement. Nous avons déjà ajouté la clé API requise dans le fichier `.env`. Tout ce que tu as à faire est de la récupérer.\n\n1. Crée une variable `api_key`.\n2. Utilise `os.getenv` pour récupérer ta clé API Crypto Craze.\n   - Interroge la clé API avec le nom `\"MIMO_CRYPTO_CRAZE_API_KEY\"`.\n   - Assigne la clé à la variable `api_key`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "app.py",
+                  "codeLanguage": "python",
+                  "content": "import requests\nimport os",
+                  "solvedContent": "import requests\nimport os\n\napi_key = os.getenv(\"MIMO_CRYPTO_CRAZE_API_KEY\")"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #4",
+            "id": 151346,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "L'endpoint que nous utiliserons est `https://crypto-craze.mimo.dev/api/coins/bitcoin`. Cet endpoint renvoie les données de prix du Bitcoin à partir de l'API Crypto Craze.\n\n1. Crée une variable `url` et assigne l'endpoint `https://crypto-craze.mimo.dev/api/coins/bitcoin` à la variable `url`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "app.py",
+                  "codeLanguage": "python",
+                  "content": "import requests\nimport os\n\napi_key = os.getenv(\"MIMO_CRYPTO_CRAZE_API_KEY\")",
+                  "solvedContent": "import requests\nimport os\n\napi_key = os.getenv(\"MIMO_CRYPTO_CRAZE_API_KEY\")\nurl = \"https://crypto-craze.mimo.dev/api/coins/bitcoin\""
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #5",
+            "id": 151347,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Les en-têtes de requête API sont nécessaires pour nous authentifier et garantir que ta requête est traitée. L'application prend cette clé API dans l'en-tête de la requête API. Configurons-la maintenant.\n\n1. Crée un dictionnaire `headers`.\n2. Ajoute `\"api-key\"` comme clé et `api_key` comme sa valeur.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "app.py",
+                  "codeLanguage": "python",
+                  "content": "import requests\nimport os\n\napi_key = os.getenv(\"MIMO_CRYPTO_CRAZE_API_KEY\")\nurl = \"https://crypto-craze.mimo.dev/api/coins/bitcoin\"",
+                  "solvedContent": "import requests\nimport os\n\napi_key = os.getenv(\"MIMO_CRYPTO_CRAZE_API_KEY\")\nurl = \"https://crypto-craze.mimo.dev/api/coins/bitcoin\"\nheaders = {\"api-key\": api_key}"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #7",
+            "id": 151349,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Maintenant, nous allons définir une fonction pour récupérer les données de Bitcoin.\n\n1. Crée une fonction nommée `get_crypto_price()`.\n2. À l'intérieur, envoie une requête `GET` en utilisant `requests` et définis l'`url` et les `headers`.\n3. Décompresse la réponse avec `json()` et retourne les données JSON.\n4. Appelle la fonction `get_crypto_price()`.\n\nExécute le programme et essaie-le !",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "app.py",
+                  "codeLanguage": "python",
+                  "content": "import requests\nimport os\n\napi_key = os.getenv(\"MIMO_CRYPTO_CRAZE_API_KEY\")\nurl = \"https://crypto-craze.mimo.dev/api/coins/bitcoin\"\nheaders = {\"api-key\": api_key}",
+                  "solvedContent": "import requests\nimport os\n\napi_key = os.getenv(\"MIMO_CRYPTO_CRAZE_API_KEY\")\nurl = \"https://crypto-craze.mimo.dev/api/coins/bitcoin\"\nheaders = {\"api-key\": api_key}\n\ndef get_crypto_price():\n    response = requests.get(url, headers=headers)\n    return response.json()\n\nget_crypto_price()"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #7 - Copy",
+            "id": 151353,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Maintenant, stockons le résultat et affichons-le.\n\n1. Crée une variable nommée crypto et assigne-lui la valeur de retour de la fonction `get_crypto_price()`.\n2. Imprime la réponse reçue.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "app.py",
+                  "codeLanguage": "python",
+                  "content": "import requests\nimport os\n\napi_key = os.getenv(\"MIMO_CRYPTO_CRAZE_API_KEY\")\nurl = \"https://crypto-craze.mimo.dev/api/coins/bitcoin\"\nheaders = {\"api-key\": api_key}\n\ndef get_crypto_price():\n    response = requests.get(url, headers=headers)\n    return response.json()\n\nget_crypto_price()",
+                  "solvedContent": "import requests\nimport os\n\napi_key = os.getenv(\"MIMO_CRYPTO_CRAZE_API_KEY\")\nurl = \"https://crypto-craze.mimo.dev/api/coins/bitcoin\"\nheaders = {\"api-key\": api_key}\n\ndef get_crypto_price():\n    response = requests.get(url, headers=headers)\n    return response.json()\n\ncrypto = get_crypto_price()\nprint(crypto)"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #7 - Copy - Copy",
+            "id": 151354,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "La réponse de l'API est un dictionnaire. Comme dernière étape de la première partie du projet, extrayons les valeurs qui nous intéressent et rendons l'affichage plus agréable.\n\n1. Crée une variable `symbol` et assigne-lui la valeur associée à la clé `\"symbol\"`.\n2. Crée une variable `price_usd` et assigne-lui la valeur associée à la clé `\"priceUsd\"`.\n3. Imprime `price_usd` et `price_usd`.\n4. Supprime l'instruction `print` pour la variable entière `crypto`, car nous voulons maintenant imprimer les valeurs individuelles.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "app.py",
+                  "codeLanguage": "python",
+                  "content": "import requests\nimport os\n\napi_key = os.getenv(\"MIMO_CRYPTO_CRAZE_API_KEY\")\nurl = \"https://crypto-craze.mimo.dev/api/coins/bitcoin\"\nheaders = {\"api-key\": api_key}\n\ndef get_crypto_price():\n    response = requests.get(url, headers=headers)\n    return response.json()\n\ncrypto = get_crypto_price()\nprint(crypto)",
+                  "solvedContent": "import requests\nimport os\n\napi_key = os.getenv(\"MIMO_CRYPTO_CRAZE_API_KEY\")\nurl = \"https://crypto-craze.mimo.dev/api/coins/bitcoin\"\nheaders = {\"api-key\": api_key}\n\ndef get_crypto_price():\n    response = requests.get(url, headers=headers)\n    return response.json()\n\ncrypto = get_crypto_price()\n\nsymbol = crypto.get(\"symbol\")\nprice_usd = crypto.get(\"priceUsd\")\n\nprint(symbol)\nprint(price_usd)"
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

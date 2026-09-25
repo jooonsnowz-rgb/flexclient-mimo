@@ -1,0 +1,148 @@
+{
+  "tutorial": {
+    "id": 2647,
+    "version": 5,
+    "type": "guidedProjectOptional",
+    "isNew": false,
+    "codeLanguage": "node",
+    "title": "Kalkulator",
+    "descriptionContent": "Gunakan Node.JS dan Express untuk membuat kalkulator",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": "tutorial-2647-icon-banner.svg",
+    "chapters": [
+      {
+        "id": 14610,
+        "title": "Kalkulator",
+        "type": "practiceLevel3",
+        "lessons": [
+          {
+            "title": "Lesson #1",
+            "id": 129327,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Dalam project ini, kita akan membuat server kalkulator sederhana dengan Express.js.\n\nMari mulai dengan menyiapkan server Express kita. Kita belum akan mendapatkan respons yang berguna. Jangan kaget.\n\n1. Deklarasikan variabel `express` dan require modul `express`.\n2. Deklarasikan variabel `app` dan inisialisasikan dengan memanggil fungsi `express`.\n3. Deklarasikan variabel `port` dan tetapkan nilainya menjadi `3000`.\n4. Gunakan fungsi `listen` pada `app` agar aplikasi mendengarkan port yang ditentukan oleh variabel `port`.\n5. Catat pesan ke console di dalam callback fungsi `listen` agar kita tahu server kita berjalan dengan benar.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "",
+                  "solvedContent": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.listen(port, () => {\n  console.log(`Calculator server running on port ${port}`);\n});"
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/",
+                "body": null
+              }
+            }
+          },
+          {
+            "title": "Lesson #2",
+            "id": 129329,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Sekarang, mari buat rute untuk kalkulator kita.\n\nKita akan mulai dengan rute penjumlahan. Rute ini akan menjumlahkan dua angka yang diberikan sebagai parameter kueri.\n\n1. Bantu Express mengurai body request kita dengan menambahkan `app.use(express.json());` sebelum kita membuat rute pertama.\n2. Buat handler rute untuk request `POST` ke `/add`. Dalam fungsi callback, dapatkan parameter kueri `a` dan `b` dari `req.body`.\n3. Hitung hasil penjumlahan `a` dan `b`. Pastikan untuk mengonversinya menjadi angka terlebih dahulu menggunakan `parseFloat`.\n4. Berikan respons dengan objek JSON yang berisi key `\"result\"` yang menyimpan hasilnya sebagai nilai.\n5. Atur kode status ke `200`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.listen(port, () => {\n  console.log(`Calculator server running on port ${port}`);\n});",
+                  "solvedContent": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.listen(port, () => {\n  console.log(`Calculator server running on port ${port}`);\n});\n\napp.use(express.json());\n\napp.post('/add', (req, res) => {\n  const { a, b } = req.body;\n  const result = parseFloat(a) + parseFloat(b);\n  res.status(200).json({ result: result });\n});"
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "POST",
+                "path": "/add",
+                "body": "{\"a\": 1, \"b\": 2}"
+              }
+            }
+          },
+          {
+            "title": "Lesson #3",
+            "id": 129330,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Kerja bagus! Sekarang lakukan hal yang sama untuk pengurangan.\n\n1. Buat route handler untuk request `POST` ke `/subtract`. Gunakan langkah yang sama seperti pada route penjumlahan, tetapi kali ini kurangi `b` dari `a`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.listen(port, () => {\n  console.log(`Calculator server running on port ${port}`);\n});\n\napp.use(express.json());\n\napp.post('/add', (req, res) => {\n  const { a, b } = req.body;\n  const result = parseFloat(a) + parseFloat(b);\n  res.status(200).json({ result: result });\n});",
+                  "solvedContent": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.listen(port, () => {\n  console.log(`Calculator server running on port ${port}`);\n});\n\napp.use(express.json());\n\napp.post('/add', (req, res) => {\n  const { a, b } = req.body;\n  const result = parseFloat(a) + parseFloat(b);\n  res.status(200).json({ result: result });\n});\n\napp.post('/subtract', (req, res) => {\n  const { a, b } = req.body;\n  const result = parseFloat(a) - parseFloat(b);\n  res.status(200).json({ result: result });\n});"
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "POST",
+                "path": "/subtract",
+                "body": "{\"a\": 10, \"b\": 19}"
+              }
+            }
+          },
+          {
+            "title": "Lesson #4",
+            "id": 129331,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Selanjutnya, mari buat route perkalian.\n\n1. Buat route handler untuk request `POST` ke `/multiply`.\n2. Di callback, dapatkan nilai `a` dan `b` dari `req.body`.\n3. Kalikan `a` dan `b` untuk mendapatkan hasilnya.\n4. Kembalikan hasilnya seperti yang kamu lakukan di route lainnya.\n5. Dan jangan lupa untuk menetapkan status code ke `200`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.listen(port, () => {\n  console.log(`Calculator server running on port ${port}`);\n});\n\napp.use(express.json());\n\napp.post('/add', (req, res) => {\n  const { a, b } = req.body;\n  const result = parseFloat(a) + parseFloat(b);\n  res.status(200).json({ result: result });\n});\n\napp.post('/subtract', (req, res) => {\n  const { a, b } = req.body;\n  const result = parseFloat(a) - parseFloat(b);\n  res.status(200).json({ result: result });\n});",
+                  "solvedContent": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.listen(port, () => {\n  console.log(`Calculator server running on port ${port}`);\n});\n\napp.use(express.json());\n\napp.post('/add', (req, res) => {\n  const { a, b } = req.body;\n  const result = parseFloat(a) + parseFloat(b);\n  res.status(200).json({ result: result });\n});\n\napp.post('/subtract', (req, res) => {\n  const { a, b } = req.body;\n  const result = parseFloat(a) - parseFloat(b);\n  res.status(200).json({ result: result });\n});\n\napp.post('/multiply', (req, res) => {\n  const { a, b } = req.body;\n  const result = parseFloat(a) * parseFloat(b);\n  res.status(200).json({ result: result });\n});"
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "POST",
+                "path": "/multiply",
+                "body": "{\"a\": -1, \"b\": -5}"
+              }
+            }
+          },
+          {
+            "title": "Lesson #5",
+            "id": 129332,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Terakhir, mari kita buat route pembagian. Namun, kita perlu berhati-hati dengan pembagian karena kita tidak bisa membagi dengan nol.\n\n1. Buat route handler untuk permintaan `POST` ke `/divide`.\n2. Di callback, dapatkan nilai `a` dan `b` dari `req.body`.\n3. Periksa apakah `b` bernilai nol. Jika ya, berikan respons dengan kode status 400 dan objek JSON yang berisi pesan error.\n4. Jika `b` tidak bernilai nol, bagi `a` dengan `b` untuk mendapatkan hasilnya, lalu berikan respons dengan objek JSON yang berisi hasil tersebut. Di sini, kita ingin menetapkan kode status ke `200`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.listen(port, () => {\n  console.log(`Calculator server running on port ${port}`);\n});\n\napp.use(express.json());\n\napp.post('/add', (req, res) => {\n  const { a, b } = req.body;\n  const result = parseFloat(a) + parseFloat(b);\n  res.status(200).json({ result: result });\n});\n\napp.post('/subtract', (req, res) => {\n  const { a, b } = req.body;\n  const result = parseFloat(a) - parseFloat(b);\n  res.status(200).json({ result: result });\n});\n\napp.post('/multiply', (req, res) => {\n  const { a, b } = req.body;\n  const result = parseFloat(a) * parseFloat(b);\n  res.status(200).json({ result: result });\n});",
+                  "solvedContent": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.listen(port, () => {\n  console.log(`Calculator server running on port ${port}`);\n});\n\napp.use(express.json());\n\napp.post('/add', (req, res) => {\n  const { a, b } = req.body;\n  const result = parseFloat(a) + parseFloat(b);\n  res.status(200).json({ result: result });\n});\n\napp.post('/subtract', (req, res) => {\n  const { a, b } = req.body;\n  const result = parseFloat(a) - parseFloat(b);\n  res.status(200).json({ result: result });\n});\n\napp.post('/multiply', (req, res) => {\n  const { a, b } = req.body;\n  const result = parseFloat(a) * parseFloat(b);\n  res.status(200).json({ result: result });\n});\n\napp.post('/divide', (req, res) => {\n  const { a, b } = req.body;\n  if (parseFloat(b) === 0) {\n    res.status(400).json({ error: 'Division by zero is not allowed' });\n  } else {\n    const result = parseFloat(a) / parseFloat(b);\n    res.status(200).json({ result: result });\n  }\n});"
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "POST",
+                "path": "/divide",
+                "body": "{\"a\": 10, \"b\": 5}"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

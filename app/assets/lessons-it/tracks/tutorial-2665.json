@@ -1,0 +1,203 @@
+{
+  "tutorial": {
+    "id": 2665,
+    "version": 8,
+    "type": "guidedProject",
+    "isNew": false,
+    "codeLanguage": "python",
+    "title": "Disegna una scheda - Parte 1",
+    "descriptionContent": "Nel progetto Disegna una carta creerai un mazzo di carte virtuale. Mescolale e poi visualizzale una alla volta usando l'arte ASCII.",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": "tutorial-2665-icon-banner.svg",
+    "chapters": [
+      {
+        "id": 14640,
+        "title": "Disegna una scheda - Parte 1",
+        "type": "practiceLevel3",
+        "lessons": [
+          {
+            "title": "Lesson #1",
+            "id": 129484,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Benvenuto nel progetto **Draw a Card**, in cui lavorerai con le carte digitali.\n\nIniziamo dal primo passaggio: creare un mazzo di carte. In un mazzo standard ci sono 4 semi e 13 valori. Creiamo queste liste.\n\n1. Crea una lista `suits` e aggiungi i 4 diversi semi come stringhe: `[\"♥\", \"♦\", \"♣\", \"♠\"]`.\n2. Crea una lista `ranks` e aggiungi i 13 diversi valori come stringhe: `[\"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"10\", \"J\", \"Q\", \"K\", \"A\"]`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "",
+                  "solvedContent": "suits = [\"♥\", \"♦\", \"♣\", \"♠\"]\nranks = [\"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"10\", \"J\", \"Q\", \"K\", \"A\"]"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #2",
+            "id": 129485,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Successivamente, combiniamo i semi e i valori per creare un mazzo di 52 carte uniche. Useremo le tuple per rappresentare ogni carta.\n\n1. Crea una lista vuota denominata `deck` che conterrà tutte le carte.\n2. Usa un ciclo for per iterare su ogni seme e, al suo interno, un altro ciclo for per iterare su ogni valore.\n3. Aggiungi ogni combinazione di seme e valore come tupla alla lista `deck`.\n4. Stampa `deck` per visualizzare tutte le combinazioni di carte.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "suits = [\"♥\", \"♦\", \"♣\", \"♠\"]\nranks = [\"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"10\", \"J\", \"Q\", \"K\", \"A\"]",
+                  "solvedContent": "suits = [\"♥\", \"♦\", \"♣\", \"♠\"]\nranks = [\"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"10\", \"J\", \"Q\", \"K\", \"A\"]\ndeck = []\n\nfor suit in suits:\n  for rank in ranks:\n    deck.append((suit, rank))\n\nprint(deck)"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #3",
+            "id": 129486,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Le carte devono essere estratte casualmente. Per farlo, dobbiamo mescolare il mazzo.\n\n1. Importa il modulo `random` all'inizio dello script Python.\n2. Usa `random.shuffle(deck)` per mescolare il mazzo prima di stamparlo.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "suits = [\"♥\", \"♦\", \"♣\", \"♠\"]\nranks = [\"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"10\", \"J\", \"Q\", \"K\", \"A\"]\ndeck = []\n\nfor suit in suits:\n  for rank in ranks:\n    deck.append((suit, rank))\n\nprint(deck)",
+                  "solvedContent": "import random\n\nsuits = [\"♥\", \"♦\", \"♣\", \"♠\"]\nranks = [\"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"10\", \"J\", \"Q\", \"K\", \"A\"]\ndeck = []\n\nfor suit in suits:\n  for rank in ranks:\n    deck.append((suit, rank))\n\nrandom.shuffle(deck)\nprint(deck)"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #4",
+            "id": 129487,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Ora abbiamo del codice che genera un mazzo e lo mescola. Mettiamo il codice per la creazione del mazzo in una funzione, così da poterlo riutilizzare.\n\n1. Crea una funzione chiamata `create_deck` che non accetta parametri.\n   - Sposta tutto il codice, tranne l'istruzione di importazione, all'interno della funzione appena creata.\n   - Fai in modo che la funzione restituisca il `deck`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "import random\n\nsuits = [\"♥\", \"♦\", \"♣\", \"♠\"]\nranks = [\"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"10\", \"J\", \"Q\", \"K\", \"A\"]\ndeck = []\n\nfor suit in suits:\n  for rank in ranks:\n    deck.append((suit, rank))\n\nrandom.shuffle(deck)\nprint(deck)",
+                  "solvedContent": "import random\n\ndef create_deck():\n  suits = [\"♥\", \"♦\", \"♣\", \"♠\"]\n  ranks = [\"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"10\", \"J\", \"Q\", \"K\", \"A\"]\n  deck = []\n\n  for suit in suits:\n    for rank in ranks:\n      deck.append((suit, rank))\n\n  random.shuffle(deck)\n  return deck"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #5",
+            "id": 129488,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Creiamo una funzione per pescare una carta dal mazzo.\n\n1. Definisci una nuova funzione chiamata `draw_card` che accetti `deck` come parametro.\n2. All'interno di `draw_card`, crea una variabile `hand` e impostala uguale all'ultimo elemento della lista `deck`.\n3. Poi rimuovi l'ultimo elemento da `deck`. Dato che l'abbiamo appena pescato, dobbiamo rimuoverlo dal mazzo.\n4. Restituisci una tupla in cui il primo valore sia `hand` e il secondo sia `deck` aggiornato.\n5. Entrambe le variabili che restituisci come parte della tupla devono essere liste. Una deve contenere un elemento, l'altra 51.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "import random\n\ndef create_deck():\n  suits = [\"♥\", \"♦\", \"♣\", \"♠\"]\n  ranks = [\"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"10\", \"J\", \"Q\", \"K\", \"A\"]\n  deck = []\n\n  for suit in suits:\n    for rank in ranks:\n      deck.append((suit, rank))\n\n  random.shuffle(deck)\n  return deck",
+                  "solvedContent": "import random\n\ndef draw_card(deck):\n  hand = deck.pop()\n  return [hand], deck\n\ndef create_deck():\n  suits = [\"♥\", \"♦\", \"♣\", \"♠\"]\n  ranks = [\"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"10\", \"J\", \"Q\", \"K\", \"A\"]\n  deck = []\n\n  for suit in suits:\n    for rank in ranks:\n      deck.append((suit, rank))\n\n  random.shuffle(deck)\n  return deck"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #6",
+            "id": 129489,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "È il momento di usare queste funzioni.\n\n1. Al di fuori delle definizioni delle tue funzioni, crea una variabile `deck` e impostala sul valore restituito dalla funzione `create_deck`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "import random\n\ndef draw_card(deck):\n  hand = deck.pop()\n  return [hand], deck\n\ndef create_deck():\n  suits = [\"♥\", \"♦\", \"♣\", \"♠\"]\n  ranks = [\"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"10\", \"J\", \"Q\", \"K\", \"A\"]\n  deck = []\n\n  for suit in suits:\n    for rank in ranks:\n      deck.append((suit, rank))\n\n  random.shuffle(deck)\n  return deck",
+                  "solvedContent": "import random\n\ndef draw_card(deck):\n  hand = deck.pop()\n  return [hand], deck\n\ndef create_deck():\n  suits = [\"♥\", \"♦\", \"♣\", \"♠\"]\n  ranks = [\"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"10\", \"J\", \"Q\", \"K\", \"A\"]\n  deck = []\n\n  for suit in suits:\n    for rank in ranks:\n      deck.append((suit, rank))\n\n  random.shuffle(deck)\n  return deck\n\ndeck = create_deck()"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #6 - Copy",
+            "id": 129491,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Pesca carte finché il mazzo non è vuoto.\n\n1. Crea un ciclo `while` che continui finché ci sono ancora carte nel mazzo.\n2. All'interno del ciclo, chiama `draw_card(deck)` per pescare una carta e aggiornare il mazzo.\n3. Crea due variabili, `hand` e `deck`, a cui assegni il valore restituito da `draw_card`.\n4. A ogni iterazione del ciclo, stampa la carta pescata.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "import random\n\ndef draw_card(deck):\n  hand = deck.pop()\n  return [hand], deck\n\ndef create_deck():\n  suits = [\"♥\", \"♦\", \"♣\", \"♠\"]\n  ranks = [\"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"10\", \"J\", \"Q\", \"K\", \"A\"]\n  deck = []\n\n  for suit in suits:\n    for rank in ranks:\n      deck.append((suit, rank))\n\n  random.shuffle(deck)\n  return deck\n\ndeck = create_deck()",
+                  "solvedContent": "import random\n\ndef draw_card(deck):\n  hand = deck.pop()\n  return [hand], deck\n\ndef create_deck():\n  suits = [\"♥\", \"♦\", \"♣\", \"♠\"]\n  ranks = [\"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"10\", \"J\", \"Q\", \"K\", \"A\"]\n  deck = []\n\n  for suit in suits:\n    for rank in ranks:\n      deck.append((suit, rank))\n\n  random.shuffle(deck)\n  return deck\n\ndeck = create_deck()\nwhile len(deck) > 0:\n  hand, deck = draw_card(deck)\n  print(hand[0])"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #6 - Copy - Copy",
+            "id": 129493,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Rendiamo il nostro script più interattivo e permettiamo all'utente di decidere quando pescare la carta successiva.\n\n1. All'inizio del blocco del tuo ciclo `while`, aggiungi una funzione `input` per attendere che l'utente prema Invio prima di pescare una carta.\n   - Aggiungi qualcosa come `\"Premi Invio per pescare la carta successiva\"` come prompt dell'input.\n   - Non è necessario salvare l'input da qualche parte, perché non ci serve. La funzione `input` attenderà finché non viene premuto Invio, quindi il ciclo `while` continuerà l'esecuzione e pescherà la carta successiva.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "import random\n\ndef draw_card(deck):\n  hand = deck.pop()\n  return [hand], deck\n\ndef create_deck():\n  suits = [\"♥\", \"♦\", \"♣\", \"♠\"]\n  ranks = [\"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"10\", \"J\", \"Q\", \"K\", \"A\"]\n  deck = []\n\n  for suit in suits:\n    for rank in ranks:\n      deck.append((suit, rank))\n\n  random.shuffle(deck)\n  return deck\n\ndeck = create_deck()\nwhile len(deck) > 0:\n  hand, deck = draw_card(deck)\n  print(hand[0])",
+                  "solvedContent": "import random\n\ndef draw_card(deck):\n  hand = deck.pop()\n  return [hand], deck\n\ndef create_deck():\n  suits = [\"♥\", \"♦\", \"♣\", \"♠\"]\n  ranks = [\"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"10\", \"J\", \"Q\", \"K\", \"A\"]\n  deck = []\n\n  for suit in suits:\n    for rank in ranks:\n      deck.append((suit, rank))\n\n  random.shuffle(deck)\n  return deck\n\ndeck = create_deck()\nwhile len(deck) > 0:\n  input(\"Press Enter to draw the next card\")\n  hand, deck = draw_card(deck)\n  print(hand[0])"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #6 - Copy - Copy",
+            "id": 129492,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Dopo aver esaurito le carte, vogliamo comunicare che non ci sono più carte.\n\n1. Stampa un messaggio al termine del ciclo con scritto \"We are out of cards\".",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "import random\n\ndef draw_card(deck):\n  hand = deck.pop()\n  return [hand], deck\n\ndef create_deck():\n  suits = [\"♥\", \"♦\", \"♣\", \"♠\"]\n  ranks = [\"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"10\", \"J\", \"Q\", \"K\", \"A\"]\n  deck = []\n\n  for suit in suits:\n    for rank in ranks:\n      deck.append((suit, rank))\n\n  random.shuffle(deck)\n  return deck\n\ndeck = create_deck()\nwhile len(deck) > 0:\n  input(\"Press Enter to draw the next card\")\n  hand, deck = draw_card(deck)\n  print(hand[0])",
+                  "solvedContent": "import random\n\ndef draw_card(deck):\n  hand = deck.pop()\n  return [hand], deck\n\ndef create_deck():\n  suits = [\"♥\", \"♦\", \"♣\", \"♠\"]\n  ranks = [\"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"10\", \"J\", \"Q\", \"K\", \"A\"]\n  deck = []\n\n  for suit in suits:\n    for rank in ranks:\n      deck.append((suit, rank))\n\n  random.shuffle(deck)\n  return deck\n\ndeck = create_deck()\nwhile len(deck) > 0:\n  input(\"Press Enter to draw the next card\")\n  hand, deck = draw_card(deck)\n  print(hand[0])\n\nprint(\"We are out of cards\")"
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

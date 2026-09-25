@@ -1,0 +1,205 @@
+{
+  "tutorial": {
+    "id": 4637,
+    "version": 1,
+    "type": "challenges",
+    "isNew": false,
+    "codeLanguage": "python",
+    "title": "Lavorare con le API",
+    "descriptionContent": "Risolvi esercizi indipendenti in Python che creano richieste API e ne gestiscono le risposte.",
+    "shortDescriptionContent": "Studenti di Python che hanno completato i tutorial sull'API forniti",
+    "showInTrack": true,
+    "iconBanner": null,
+    "chapters": [
+      {
+        "id": 17867,
+        "title": "Filtro",
+        "type": "challengeLevel0",
+        "lessons": [
+          {
+            "title": "Filter",
+            "id": 152316,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Completa `filter_courses()` in modo che invii una richiesta `GET` all'URL fornito con il dizionario `filters` come parametri della richiesta e restituisca l'elenco `\\\"results\\\"` dalla risposta JSON analizzata.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "import requests\n\ndef filter_courses():\n  url = \"https://things.mimo.dev/api/things\"\n  filters = {\"category\": \"electronics\"}\n  response = requests.get(url)\n  return []\n",
+                  "solvedContent": "import requests\n\ndef filter_courses():\n  url = \"https://things.mimo.dev/api/things\"\n  filters = {\"category\": \"electronics\"}\n  response = requests.get(url, params=filters)\n  data = response.json()\n  return data[\"results\"]\n"
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      },
+      {
+        "id": 17868,
+        "title": "Percorso",
+        "type": "challengeLevel0",
+        "lessons": [
+          {
+            "title": "Path",
+            "id": 152317,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Completa `load_airport()` in modo che richieda l'aeroporto fornito al percorso `/airports/{airport_id}` usando l'URL di base fornito e restituisca il valore di `\\\"name\\\"` dalla risposta JSON analizzata.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "import requests\n\ndef load_airport(airport_id):\n  base_url = \"https://airports.mimo.dev\"\n  path = \"\"\n  url = f\"{base_url}{path}\"\n  response = requests.get(url)\n  return \"\"",
+                  "solvedContent": "import requests\n\ndef load_airport(airport_id):\n  base_url = \"https://airports.mimo.dev\"\n  path = f\"/airports/{airport_id}\"\n  url = f\"{base_url}{path}\"\n  response = requests.get(url)\n  data = response.json()\n  return data[\"name\"]"
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      },
+      {
+        "id": 17869,
+        "title": "Post",
+        "type": "challengeLevel0",
+        "lessons": [
+          {
+            "title": "Post",
+            "id": 152318,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Completa `create_thing()` in modo che invii una richiesta `POST` all'URL fornito con un payload JSON contenente il `name` e la `category` forniti, quindi restituisca il valore di `\\\"id\\\"` dalla risposta JSON analizzata.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "import requests\n\ndef create_thing(name, category):\n  url = \"https://things.mimo.dev/api/things\"\n  data = {\n    \"name\": name,\n    \"category\": category\n  }\n  return 0",
+                  "solvedContent": "import requests\n\ndef create_thing(name, category):\n  url = \"https://things.mimo.dev/api/things\"\n  data = {\n    \"name\": name,\n    \"category\": category\n  }\n  response = requests.post(url, json=data)\n  result = response.json()\n  return result[\"id\"]"
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      },
+      {
+        "id": 17870,
+        "title": "Trova",
+        "type": "challengeLevel1",
+        "lessons": [
+          {
+            "title": "Find",
+            "id": 152319,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Completa `find_character()` in modo che invii una richiesta `GET` all'URL fornito con il dizionario `filters` come parametri della richiesta e chiami `raise_for_status()` sulla risposta prima di analizzare il JSON.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "import requests\n\ndef find_character(name):\n  url = \"https://swapi.mimo.dev/api/people\"\n  filters = {\"search\": name}\n  response = \n  data = response.json()\n  return data[\"results\"][0][\"name\"]",
+                  "solvedContent": "import requests\n\ndef find_character(name):\n  url = \"https://swapi.mimo.dev/api/people\"\n  filters = {\"search\": name}\n  response = requests.get(url, params=filters)\n  response.raise_for_status()\n  data = response.json()\n  return data[\"results\"][0][\"name\"]"
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      },
+      {
+        "id": 17872,
+        "title": "Gestisci un errore",
+        "type": "challengeLevel1",
+        "lessons": [
+          {
+            "title": "Catch an Error",
+            "id": 152321,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Completa `load_pokemon()` in modo che richieda il Pokémon fornito, controlli la risposta prima di restituire il valore `\\\"name\\\"` dal relativo JSON e restituisca `\\\"Pokémon not found\\\"` quando la richiesta genera `requests.exceptions.HTTPError`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "import requests\n\ndef load_pokemon(pokemon_id):\n  url = f\"https://pokedex.mimo.dev/api/pokemon/{pokemon_id}\"\n  response = requests.get(url)\n  response.raise_for_status()\n  data = response.json()\n  return data[\"name\"]",
+                  "solvedContent": "import requests\n\ndef load_pokemon(pokemon_id):\n  url = f\"https://pokedex.mimo.dev/api/pokemon/{pokemon_id}\"\n  try:\n    response = requests.get(url)\n    response.raise_for_status()\n    data = response.json()\n    return data[\"name\"]\n  except requests.exceptions.HTTPError:\n    return \"Pokémon not found\""
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      },
+      {
+        "id": 17874,
+        "title": "Caricamento",
+        "type": "challengeLevel2",
+        "lessons": [
+          {
+            "title": "Loading",
+            "id": 152323,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Completa `load_characters()` in modo che richieda l'URL fornito, controlli la risposta prima di restituire la lista `\\\"results\\\"` dal relativo JSON e restituisca una lista vuota quando la richiesta solleva `requests.exceptions.HTTPError`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "import requests\n\ndef load_characters():\n  return []\n",
+                  "solvedContent": "import requests\n\ndef load_characters():\n  url = \"https://rickandmorty.mimo.dev/api/character\"\n  try:\n    response = requests.get(url)\n    response.raise_for_status()\n    data = response.json()\n    return data[\"results\"]\n  except requests.exceptions.HTTPError:\n    return []"
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      },
+      {
+        "id": 17875,
+        "title": "Crea la route",
+        "type": "challengeLevel2",
+        "lessons": [
+          {
+            "title": "Build Route",
+            "id": 152324,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Completa `load_pokemon()` in modo che costruisca l'URL della richiesta usando il `name` del Pokémon fornito, invii una richiesta `GET` a quell'URL e restituisca il valore di `\\\"name\\\"` dalla risposta JSON analizzata.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "import requests\n\ndef load_pokemon(name):\n   return \"\"",
+                  "solvedContent": "import requests\n\ndef load_pokemon(name):\n  url = f\"https://pokedex.mimo.dev/api/pokemon/{name}\"\n  response = requests.get(url)\n  data = response.json()\n  return data[\"name\"]"
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

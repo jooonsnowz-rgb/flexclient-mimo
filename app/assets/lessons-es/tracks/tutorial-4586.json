@@ -1,0 +1,287 @@
+{
+  "tutorial": {
+    "id": 4586,
+    "version": 2,
+    "type": "guidedProject",
+    "isNew": false,
+    "codeLanguage": "jsx",
+    "title": "Alrededor del Mundo - Parte 2",
+    "descriptionContent": "En la segunda parte, configurarás el front-end para consumir la API y mostrar un aeropuerto cargado en un mapa.",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": "tutorial-4586-icon-banner.svg",
+    "chapters": [
+      {
+        "id": 17753,
+        "title": "Alrededor del Mundo - Parte 2",
+        "type": "practiceLevel3",
+        "lessons": [
+          {
+            "title": "Lesson #1",
+            "id": 151483,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Bienvenido de nuevo al proyecto **Around the World**. En la parte 2, trabajaremos en el front-end que consumirá la API que construimos en la primera parte.\n\nEstamos comenzando con una plantilla simple de React.\n\nAdemás, alojamos el back-end en `https://airports.mimo.dev` para que podamos usar realmente los endpoints de la API construida. El endpoint que construimos juntos en la primera parte está listo para ser utilizado.\n\nVamos a familiarizarnos con la plantilla de React y hacer un primer pequeño cambio.\n\n1. Cambia el título de la aplicación React a `Around the World` en `index.html`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <script type=\"module\" src=\"./index.js\"></script>\n    <link rel=\"stylesheet\" href=\"./index.css\" />\n    <title>React app</title>\n  </head>\n  <body>\n    <div id=\"root\">loading</div>\n  </body>\n</html>",
+                  "solvedContent": "<!doctype html>\n<html>\n  <head>\n    <script type=\"module\" src=\"./index.js\"></script>\n    <link rel=\"stylesheet\" href=\"./index.css\" />\n    <title>Around the World</title>\n  </head>\n  <body>\n    <div id=\"root\">loading</div>\n  </body>\n</html>"
+                },
+                {
+                  "name": "index.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React from \"react\";\nimport { createRoot } from \"react-dom/client\";\nimport App from \"./App\";\n\nconst rootElement = document.getElementById(\"root\");\nconst root = createRoot(rootElement);\nroot.render(<App />);\n",
+                  "solvedContent": null
+                },
+                {
+                  "name": "App.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React from \"react\";\nimport \"./App.css\";\n\nconst App = () => {\n  return <div></div>;\n};\n\nexport default App;\n",
+                  "solvedContent": "import React from \"react\";\nimport \"./App.css\";\n\nconst App = () => {\n  return <div></div>;\n};\n\nexport default App;\n"
+                },
+                {
+                  "name": "App.css",
+                  "codeLanguage": "css",
+                  "content": "",
+                  "solvedContent": null
+                },
+                {
+                  "name": "AirportMap.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "",
+                  "solvedContent": null
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #3",
+            "id": 151485,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Vamos a obtener un aeropuerto aleatorio de nuestra API ahora.\n\n1. En `App.jsx`, crea una función async llamada `loadRandomAirport()`.\n2. Dentro de ella, obtén un aeropuerto aleatorio de `https://airports.mimo.dev/api/random-airport`.\n3. Convierte la respuesta a JSON y guárdala en una variable llamada `data`. La usaremos en un momento.\n4. Añade un `useEffect` que llame a `loadRandomAirport()`. Asegúrate de importar `useEffect` para poder usar el hook.\n5. Asegúrate de que el array de dependencias sea `[]` para que solo se ejecute una vez.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <script type=\"module\" src=\"./index.js\"></script>\n    <link rel=\"stylesheet\" href=\"./index.css\" />\n    <title>Around the World</title>\n  </head>\n  <body>\n    <div id=\"root\">loading</div>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "index.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React from \"react\";\nimport { createRoot } from \"react-dom/client\";\nimport App from \"./App\";\n\nconst rootElement = document.getElementById(\"root\");\nconst root = createRoot(rootElement);\nroot.render(<App />);\n",
+                  "solvedContent": null
+                },
+                {
+                  "name": "App.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React from \"react\";\nimport \"./App.css\";\n\nconst App = () => {\n  return <div></div>;\n};\n\nexport default App;\n",
+                  "solvedContent": "import React, { useEffect } from \"react\";\nimport \"./App.css\";\n\nconst App = () => {\n  async function loadRandomAirport() {\n    const response = await fetch(\n      \"https://airports.mimo.dev/api/random-airport\",\n    );\n    const data = await response.json();\n  }\n\n  useEffect(() => {\n    loadRandomAirport();\n  }, []);\n\n  return <div></div>;\n};\n\nexport default App;\n"
+                },
+                {
+                  "name": "App.css",
+                  "codeLanguage": "css",
+                  "content": "",
+                  "solvedContent": null
+                },
+                {
+                  "name": "AirportMap.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "",
+                  "solvedContent": null
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #5",
+            "id": 151487,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "A continuación, mostraremos un mapa para pronto mostrar el aeropuerto que cargamos desde nuestra API. Usaremos Leaflet para el mapa.\n\nAgrega los archivos CSS y JavaScript de Leaflet al `<head>` del archivo `index.html`. También prepararemos algo de CSS que necesitaremos.\n\nEsto aún no mostrará el mapa, pero configura todo.\n\n1. Agrega un elemento `<link>` para la hoja de estilos de Leaflet en el elemento `<head>` para cargar el código necesario en nuestro proyecto.\n   ```HTML\n   <link rel=\"stylesheet\" href=\"https://unpkg.com/leaflet@1.9.4/dist/leaflet.css\"/>\n   ```\n2. Agrega un elemento `<script>` para el archivo JavaScript de Leaflet en el elemento `<head>`.\n   ```HTML\n   <script src=\"https://unpkg.com/leaflet@1.9.4/dist/leaflet.js\"></script>\n   ```\n3. En `App.css`, establece la `height` a `40vh` y el `margin` a `20px` para `.map`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <script type=\"module\" src=\"./index.js\"></script>\n    <link rel=\"stylesheet\" href=\"./index.css\" />\n    <title>Around the World</title>\n  </head>\n  <body>\n    <div id=\"root\">loading</div>\n  </body>\n</html>\n",
+                  "solvedContent": "<!doctype html>\n<html>\n  <head>\n    <script type=\"module\" src=\"./index.js\"></script>\n    <link rel=\"stylesheet\" href=\"./index.css\" />\n    <link\n      rel=\"stylesheet\"\n      href=\"https://unpkg.com/leaflet@1.9.4/dist/leaflet.css\"\n    />\n    <script src=\"https://unpkg.com/leaflet@1.9.4/dist/leaflet.js\"></script>\n    <title>Around the World</title>\n  </head>\n  <body>\n    <div id=\"root\">loading</div>\n  </body>\n</html>\n"
+                },
+                {
+                  "name": "index.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React from \"react\";\nimport { createRoot } from \"react-dom/client\";\nimport App from \"./App\";\n\nconst rootElement = document.getElementById(\"root\");\nconst root = createRoot(rootElement);\nroot.render(<App />);\n",
+                  "solvedContent": null
+                },
+                {
+                  "name": "App.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React, { useEffect } from \"react\";\nimport \"./App.css\";\n\nconst App = () => {\n  async function loadRandomAirport() {\n    const response = await fetch(\n      \"https://airports.mimo.dev/api/random-airport\",\n    );\n    const data = await response.json();\n  }\n\n  useEffect(() => {\n    loadRandomAirport();\n  }, []);\n\n  return <div></div>;\n};\n\nexport default App;\n",
+                  "solvedContent": null
+                },
+                {
+                  "name": "App.css",
+                  "codeLanguage": "css",
+                  "content": "",
+                  "solvedContent": ".map {\n  height: 40vh;\n  margin: 20px;\n}"
+                },
+                {
+                  "name": "AirportMap.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "",
+                  "solvedContent": ""
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #5 - Copy",
+            "id": 151493,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "A continuación, crearemos el componente para mostrar el mapa. Vamos a usar un sistema de mapas llamado Leaflet. Es similar a otros mapas, como Google Maps o Apple Maps.\n\nA veces utiliza una sintaxis un poco extraña, pero por ahora, simplemente sigue adelante.\n\n1. En `AirportMap.jsx`, importa `React` y `useEffect`.\n2. Crea un componente funcional `AirportMap`.\n3. Crea un hook `useEffect`, crea un mapa de Leaflet dentro del bloque `useEffect` y establece la vista:\n   ```JavaScript\n   const L = window.L;\n   const map = L.map(\"map\").setView([0, 0], 2);\n   ```\n4. Aún dentro del bloque `useEffect`, añade la capa de mosaico de OpenStreetMap al mapa:\n   ```JavaScript\n   L.tileLayer(\"https://tile.openstreetmap.org/{z}/{x}/{y}.png\").addTo(map);\n   ```\n5. Añade una función de limpieza que elimine el mapa cuando el componente se desmonte al final del bloque `useEffect`:\n   ```JavaScript\n   return () => map.remove();\n   ```\n6. Después del `useEffect`, devuelve un elemento `<div>` con el id `map` y la clase `map`:\n7. Exporta `AirportMap` como la exportación por defecto.\n8. Dirígete a `App.jsx`, importa `AirportMap` y renderízalo.",
+              "preselectedFileIndex": 4,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <script type=\"module\" src=\"./index.js\"></script>\n    <link rel=\"stylesheet\" href=\"./index.css\" />\n    <link\n      rel=\"stylesheet\"\n      href=\"https://unpkg.com/leaflet@1.9.4/dist/leaflet.css\"\n    />\n    <script src=\"https://unpkg.com/leaflet@1.9.4/dist/leaflet.js\"></script>\n    <title>Around the World</title>\n  </head>\n  <body>\n    <div id=\"root\">loading</div>\n  </body>\n</html>\n",
+                  "solvedContent": null
+                },
+                {
+                  "name": "index.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React from \"react\";\nimport { createRoot } from \"react-dom/client\";\nimport App from \"./App\";\n\nconst rootElement = document.getElementById(\"root\");\nconst root = createRoot(rootElement);\nroot.render(<App />);\n",
+                  "solvedContent": null
+                },
+                {
+                  "name": "App.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React, { useEffect } from \"react\";\nimport \"./App.css\";\n\nconst App = () => {\n  async function loadRandomAirport() {\n    const response = await fetch(\n      \"https://airports.mimo.dev/api/random-airport\",\n    );\n    const data = await response.json();\n  }\n\n  useEffect(() => {\n    loadRandomAirport();\n  }, []);\n\n  return <div></div>;\n};\n\nexport default App;\n",
+                  "solvedContent": "import React, { useEffect } from \"react\";\nimport AirportMap from \"./AirportMap\";\nimport \"./App.css\";\n\nconst App = () => {\n  async function loadRandomAirport() {\n    const response = await fetch(\n      \"https://airports.mimo.dev/api/random-airport\",\n    );\n    const data = await response.json();\n  }\n\n  useEffect(() => {\n    loadRandomAirport();\n  }, []);\n\n  return <AirportMap />;\n};\n\nexport default App;\n"
+                },
+                {
+                  "name": "App.css",
+                  "codeLanguage": "css",
+                  "content": ".map {\n  height: 40vh;\n  margin: 20px;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "AirportMap.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "",
+                  "solvedContent": "import React, { useEffect } from \"react\";\n\nconst AirportMap = () => {\n  useEffect(() => {\n    const L = window.L;\n    const map = L.map(\"map\").setView([0, 0], 2);\n\n    L.tileLayer(\"https://tile.openstreetmap.org/{z}/{x}/{y}.png\").addTo(map);\n\n    return () => map.remove();\n  }, []);\n\n  return <div id=\"map\" className=\"map\" />;\n};\n\nexport default AirportMap;\n"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #5 - Copy - Copy - Copy",
+            "id": 151511,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Ahora, pasaremos el aeropuerto cargado al componente del mapa.\n\n1. En `App.jsx`, actualiza la importación de React para incluir también `useState`.\n2. Crea una variable de estado llamada `airport` con un setter `setAirport`, usando estado, y configúralo inicialmente en `null`.\n3. En la función `loadRandomAirport()`, asigna los datos cargados a la variable de estado `airport`.\n4. Pasa `airport` a `AirportMap`.\n5. En el componente `AirportMap`, acepta la prop `airport` y desestructúrala en los parámetros de la función:.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <script type=\"module\" src=\"./index.js\"></script>\n    <link rel=\"stylesheet\" href=\"./index.css\" />\n    <link\n      rel=\"stylesheet\"\n      href=\"https://unpkg.com/leaflet@1.9.4/dist/leaflet.css\"\n    />\n    <script src=\"https://unpkg.com/leaflet@1.9.4/dist/leaflet.js\"></script>\n    <title>Around the World</title>\n  </head>\n  <body>\n    <div id=\"root\">loading</div>\n  </body>\n</html>\n",
+                  "solvedContent": null
+                },
+                {
+                  "name": "index.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React from \"react\";\nimport { createRoot } from \"react-dom/client\";\nimport App from \"./App\";\n\nconst rootElement = document.getElementById(\"root\");\nconst root = createRoot(rootElement);\nroot.render(<App />);\n",
+                  "solvedContent": null
+                },
+                {
+                  "name": "App.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React, { useEffect } from \"react\";\nimport AirportMap from \"./AirportMap\";\nimport \"./App.css\";\n\nconst App = () => {\n  async function loadRandomAirport() {\n    const response = await fetch(\n      \"https://airports.mimo.dev/api/random-airport\",\n    );\n    const data = await response.json();\n  }\n\n  useEffect(() => {\n    loadRandomAirport();\n  }, []);\n\n  return <AirportMap />;\n};\n\nexport default App;\n",
+                  "solvedContent": "import React, { useEffect, useState } from \"react\";\nimport AirportMap from \"./AirportMap\";\nimport \"./App.css\";\n\nconst App = () => {\n  const [airport, setAirport] = useState(null);\n\n  async function loadRandomAirport() {\n    const response = await fetch(\n      \"https://airports.mimo.dev/api/random-airport\",\n    );\n    const data = await response.json();\n    setAirport(data);\n  }\n\n  useEffect(() => {\n    loadRandomAirport();\n  }, []);\n\n  return <AirportMap airport={airport} />;\n};\n\nexport default App;\n"
+                },
+                {
+                  "name": "App.css",
+                  "codeLanguage": "css",
+                  "content": ".map {\n  height: 40vh;\n  margin: 20px;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "AirportMap.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React, { useEffect } from \"react\";\n\nconst AirportMap = () => {\n  useEffect(() => {\n    const L = window.L;\n    const map = L.map(\"map\").setView([0, 0], 2);\n\n    L.tileLayer(\"https://tile.openstreetmap.org/{z}/{x}/{y}.png\").addTo(map);\n\n    return () => map.remove();\n  }, []);\n\n  return <div id=\"map\" className=\"map\" />;\n};\n\nexport default AirportMap;\n",
+                  "solvedContent": "import React, { useEffect } from \"react\";\n\nconst AirportMap = ({ airport }) => {\n  useEffect(() => {\n    const L = window.L;\n    const map = L.map(\"map\").setView([0, 0], 2);\n\n    L.tileLayer(\"https://tile.openstreetmap.org/{z}/{x}/{y}.png\").addTo(map);\n\n    return () => map.remove();\n  }, []);\n\n  return <div id=\"map\" className=\"map\" />;\n};\n\nexport default AirportMap;\n"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #5 - Copy - Copy",
+            "id": 151495,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Ahora, mostraremos el aeropuerto pasado en el mapa renderizado.\n\n1. En `AirportMap`, al comienzo del hook `useEffect`, verifica si `airport` está disponible. Devuelve temprano cuando no lo esté.\n2. Crea un array `position` usando las propiedades `latitude_deg` y `longitude_deg` del aeropuerto:\n   ```javascript\n   const position = [airport.latitude_deg, airport.longitude_deg];\n   ```\n3. Establece la vista del mapa en `position` en lugar de las coordenadas genéricas `[0, 0]` y mantén el margen de `2`.\n4. Añade un marcador en la posición del aeropuerto y agrégalo al mapa:\n   ```javascript\n   L.marker(position).addTo(map);\n   ```\n5. Añade `airport` al array de dependencias de `useEffect` para ejecutar ese fragmento de código cada vez que la variable pasada `airport` cambie.\n6. ",
+              "preselectedFileIndex": 4,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <script type=\"module\" src=\"./index.js\"></script>\n    <link rel=\"stylesheet\" href=\"./index.css\" />\n    <link\n      rel=\"stylesheet\"\n      href=\"https://unpkg.com/leaflet@1.9.4/dist/leaflet.css\"\n    />\n    <script src=\"https://unpkg.com/leaflet@1.9.4/dist/leaflet.js\"></script>\n    <title>Around the World</title>\n  </head>\n  <body>\n    <div id=\"root\">loading</div>\n  </body>\n</html>\n",
+                  "solvedContent": null
+                },
+                {
+                  "name": "index.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React from \"react\";\nimport { createRoot } from \"react-dom/client\";\nimport App from \"./App\";\n\nconst rootElement = document.getElementById(\"root\");\nconst root = createRoot(rootElement);\nroot.render(<App />);\n",
+                  "solvedContent": null
+                },
+                {
+                  "name": "App.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React, { useEffect, useState } from \"react\";\nimport AirportMap from \"./AirportMap\";\nimport \"./App.css\";\n\nconst App = () => {\n  const [airport, setAirport] = useState(null);\n\n  async function loadRandomAirport() {\n    const response = await fetch(\n      \"https://airports.mimo.dev/api/random-airport\",\n    );\n    const data = await response.json();\n    setAirport(data);\n  }\n\n  useEffect(() => {\n    loadRandomAirport();\n  }, []);\n\n  return <AirportMap airport={airport} />;\n};\n\nexport default App;\n",
+                  "solvedContent": null
+                },
+                {
+                  "name": "App.css",
+                  "codeLanguage": "css",
+                  "content": ".map {\n  height: 40vh;\n  margin: 20px;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "AirportMap.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React, { useEffect } from \"react\";\n\nconst AirportMap = () => {\n  useEffect(() => {\n    const L = window.L;\n    const map = L.map(\"map\").setView([0, 0], 2);\n\n    L.tileLayer(\"https://tile.openstreetmap.org/{z}/{x}/{y}.png\").addTo(map);\n\n    return () => map.remove();\n  }, []);\n\n  return <div id=\"map\" className=\"map\" />;\n};\n\nexport default AirportMap;\n",
+                  "solvedContent": "import React, { useEffect } from \"react\";\n\nconst AirportMap = ({ airport }) => {\n  useEffect(() => {\n    if (!airport) return;\n\n    const L = window.L;\n    const position = [airport.latitude_deg, airport.longitude_deg];\n\n    const map = L.map(\"map\").setView(position, 2);\n\n    L.tileLayer(\"https://tile.openstreetmap.org/{z}/{x}/{y}.png\").addTo(map);\n\n    L.marker(position).addTo(map);\n\n    return () => map.remove();\n  }, [airport]);\n\n  return <div id=\"map\" className=\"map\" />;\n};\n\nexport default AirportMap;\n"
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

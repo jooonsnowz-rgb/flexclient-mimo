@@ -1,0 +1,163 @@
+{
+  "tutorial": {
+    "id": 4414,
+    "version": 1,
+    "type": "course",
+    "isNew": false,
+    "codeLanguage": "javascript",
+    "title": "Modifica dei valori negli array",
+    "descriptionContent": "Scopri cosa possono contenere gli array e come modificare i loro valori usando l'indice.",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": null,
+    "chapters": [
+      {
+        "id": 17440,
+        "title": "Indice",
+        "type": "practiceLevel1",
+        "lessons": [
+          {
+            "title": "Lesson #1",
+            "id": 147896,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Approfondiamo i valori che un array può memorizzare e come possiamo aggiornarli, proprio come una HUD di gioco potrebbe tenere traccia delle statistiche del giocatore durante un livello.</p><webview version=\"2\" content=\"&lt;!DOCTYPE html&gt;&#xA;&lt;html lang=&quot;en&quot;&gt;&#xA;&lt;head&gt;&#xA;    &lt;meta charset=&quot;UTF-8&quot;&gt;&#xA;    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;&#xA;    &lt;title&gt;Game HUD&lt;/title&gt;&#xA;    &lt;style&gt;&#xA;        body {&#xA;            font-family: Arial, sans-serif;&#xA;            display: flex;&#xA;            justify-content: center;&#xA;            align-items: center;&#xA;            margin: 24px auto;&#xA;            background: radial-gradient(circle at top, #1a2a3a, #0b1220);&#xA;            color: #fff;&#xA;        }&#xA;        .hud {&#xA;            background-color: rgba(30, 144, 255, 0.15);&#xA;            border: 1px solid rgba(255, 255, 255, 0.2);&#xA;            border-radius: 10px;&#xA;            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);&#xA;            padding: 18px;&#xA;            width: 320px;&#xA;            text-align: center;&#xA;        }&#xA;        .hud-title {&#xA;            font-size: 20px;&#xA;            margin-bottom: 14px;&#xA;        }&#xA;        .tabs {&#xA;            display: flex;&#xA;            justify-content: space-around;&#xA;            gap: 8px;&#xA;            margin-bottom: 14px;&#xA;        }&#xA;        .tab {&#xA;            cursor: pointer;&#xA;            padding: 10px;&#xA;            border-radius: 8px;&#xA;            background-color: rgba(255, 255, 255, 0.12);&#xA;            user-select: none;&#xA;            flex: 1;&#xA;        }&#xA;        .tab.active {&#xA;            background-color: rgba(255, 255, 255, 0.22);&#xA;        }&#xA;        .panel {&#xA;            font-size: 14px;&#xA;        }&#xA;        .row {&#xA;            display: flex;&#xA;            justify-content: space-between;&#xA;            gap: 8px;&#xA;            margin-bottom: 10px;&#xA;        }&#xA;        .cell {&#xA;            flex: 1;&#xA;            text-align: center;&#xA;            padding: 8px 6px;&#xA;            border-radius: 8px;&#xA;            background: rgba(255, 255, 255, 0.08);&#xA;        }&#xA;        .label {&#xA;            opacity: 0.85;&#xA;            font-size: 12px;&#xA;            display: block;&#xA;            margin-top: 4px;&#xA;        }&#xA;    &lt;/style&gt;&#xA;&lt;/head&gt;&#xA;&lt;body&gt;&#xA;    &lt;div class=&quot;hud&quot;&gt;&#xA;        &lt;div class=&quot;hud-title&quot;&gt;Level 1 HUD&lt;/div&gt;&#xA;        &lt;div class=&quot;tabs&quot;&gt;&#xA;            &lt;div class=&quot;tab active&quot; data-panel=&quot;1&quot;&gt;🧍 Player&lt;/div&gt;&#xA;            &lt;div class=&quot;tab&quot; data-panel=&quot;2&quot;&gt;👾 Enemies&lt;/div&gt;&#xA;            &lt;div class=&quot;tab&quot; data-panel=&quot;3&quot;&gt;🎒 Inventory&lt;/div&gt;&#xA;        &lt;/div&gt;&#xA;        &lt;div class=&quot;panel&quot;&gt;&#xA;            &lt;div class=&quot;row&quot; data-panel=&quot;1&quot;&gt;&#xA;                &lt;div class=&quot;cell&quot;&gt;100&lt;span class=&quot;label&quot;&gt;Health&lt;/span&gt;&lt;/div&gt;&#xA;                &lt;div class=&quot;cell&quot;&gt;0&lt;span class=&quot;label&quot;&gt;Score&lt;/span&gt;&lt;/div&gt;&#xA;                &lt;div class=&quot;cell&quot;&gt;1&lt;span class=&quot;label&quot;&gt;Lives&lt;/span&gt;&lt;/div&gt;&#xA;            &lt;/div&gt;&#xA;            &lt;div class=&quot;row&quot; data-panel=&quot;2&quot; style=&quot;display: none;&quot;&gt;&#xA;                &lt;div class=&quot;cell&quot;&gt;3&lt;span class=&quot;label&quot;&gt;Slimes&lt;/span&gt;&lt;/div&gt;&#xA;                &lt;div class=&quot;cell&quot;&gt;1&lt;span class=&quot;label&quot;&gt;Bats&lt;/span&gt;&lt;/div&gt;&#xA;                &lt;div class=&quot;cell&quot;&gt;0&lt;span class=&quot;label&quot;&gt;Boss&lt;/span&gt;&lt;/div&gt;&#xA;            &lt;/div&gt;&#xA;            &lt;div class=&quot;row&quot; data-panel=&quot;3&quot; style=&quot;display: none;&quot;&gt;&#xA;                &lt;div class=&quot;cell&quot;&gt;🗡️&lt;span class=&quot;label&quot;&gt;Sword&lt;/span&gt;&lt;/div&gt;&#xA;                &lt;div class=&quot;cell&quot;&gt;🧪&lt;span class=&quot;label&quot;&gt;Potion&lt;/span&gt;&lt;/div&gt;&#xA;                &lt;div class=&quot;cell&quot;&gt;🗝️&lt;span class=&quot;label&quot;&gt;Key&lt;/span&gt;&lt;/div&gt;&#xA;            &lt;/div&gt;&#xA;        &lt;/div&gt;&#xA;    &lt;/div&gt;&#xA;&#xA;    &lt;script&gt;&#xA;        document.addEventListener(&quot;DOMContentLoaded&quot;, function() {&#xA;            const tabs = document.querySelectorAll(&quot;.tab&quot;);&#xA;            const panels = document.querySelectorAll(&quot;.panel .row&quot;);&#xA;&#xA;            tabs.forEach(tab =&gt; {&#xA;                tab.addEventListener(&quot;click&quot;, function() {&#xA;                    tabs.forEach(t =&gt; t.classList.remove(&quot;active&quot;));&#xA;                    this.classList.add(&quot;active&quot;);&#xA;&#xA;                    const panel = this.getAttribute(&quot;data-panel&quot;);&#xA;                    panels.forEach(row =&gt; {&#xA;                        if (row.getAttribute(&quot;data-panel&quot;) === panel) {&#xA;                            row.style.display = &quot;flex&quot;;&#xA;                        } else {&#xA;                            row.style.display = &quot;none&quot;;&#xA;                        }&#xA;                    });&#xA;                });&#xA;            });&#xA;        });&#xA;    &lt;/script&gt;&#xA;&lt;/body&gt;&#xA;&lt;/html&gt;\" /></body></html>"
+          },
+          {
+            "title": "Lesson #2",
+            "id": 147897,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Un array può memorizzare diverse statistiche del giocatore e venire aggiornato mentre il ciclo di gioco viene eseguito durante un livello.</p><webview version=\"2\" content=\"&lt;!DOCTYPE html&gt;&#xA;&lt;html lang=&quot;en&quot;&gt;&#xA;&lt;head&gt;&#xA;    &lt;meta charset=&quot;UTF-8&quot;&gt;&#xA;    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;&#xA;    &lt;title&gt;Game HUD&lt;/title&gt;&#xA;    &lt;style&gt;&#xA;        body {&#xA;            font-family: Arial, sans-serif;&#xA;            display: flex;&#xA;            justify-content: center;&#xA;            align-items: center;&#xA;            margin: 24px auto;&#xA;            background: radial-gradient(circle at top, #1a2a3a, #0b1220);&#xA;            color: #fff;&#xA;        }&#xA;        .hud {&#xA;            background-color: rgba(30, 144, 255, 0.15);&#xA;            border: 1px solid rgba(255, 255, 255, 0.2);&#xA;            border-radius: 10px;&#xA;            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);&#xA;            padding: 18px;&#xA;            width: 320px;&#xA;            text-align: center;&#xA;        }&#xA;        .hud-title {&#xA;            font-size: 20px;&#xA;            margin-bottom: 14px;&#xA;        }&#xA;        .tabs {&#xA;            display: flex;&#xA;            justify-content: space-around;&#xA;            gap: 8px;&#xA;            margin-bottom: 14px;&#xA;        }&#xA;        .tab {&#xA;            cursor: pointer;&#xA;            padding: 10px;&#xA;            border-radius: 8px;&#xA;            background-color: rgba(255, 255, 255, 0.12);&#xA;            user-select: none;&#xA;            flex: 1;&#xA;        }&#xA;        .tab.active {&#xA;            background-color: rgba(255, 255, 255, 0.22);&#xA;        }&#xA;        .panel {&#xA;            font-size: 14px;&#xA;        }&#xA;        .row {&#xA;            display: flex;&#xA;            justify-content: space-between;&#xA;            gap: 8px;&#xA;            margin-bottom: 10px;&#xA;        }&#xA;        .cell {&#xA;            flex: 1;&#xA;            text-align: center;&#xA;            padding: 8px 6px;&#xA;            border-radius: 8px;&#xA;            background: rgba(255, 255, 255, 0.08);&#xA;        }&#xA;        .label {&#xA;            opacity: 0.85;&#xA;            font-size: 12px;&#xA;            display: block;&#xA;            margin-top: 4px;&#xA;        }&#xA;    &lt;/style&gt;&#xA;&lt;/head&gt;&#xA;&lt;body&gt;&#xA;    &lt;div class=&quot;hud&quot;&gt;&#xA;        &lt;div class=&quot;hud-title&quot;&gt;Level 1 HUD&lt;/div&gt;&#xA;        &lt;div class=&quot;tabs&quot;&gt;&#xA;            &lt;div class=&quot;tab active&quot; data-panel=&quot;1&quot;&gt;🧍 Player&lt;/div&gt;&#xA;            &lt;div class=&quot;tab&quot; data-panel=&quot;2&quot;&gt;👾 Enemies&lt;/div&gt;&#xA;            &lt;div class=&quot;tab&quot; data-panel=&quot;3&quot;&gt;🎒 Inventory&lt;/div&gt;&#xA;        &lt;/div&gt;&#xA;        &lt;div class=&quot;panel&quot;&gt;&#xA;            &lt;div class=&quot;row&quot; data-panel=&quot;1&quot;&gt;&#xA;                &lt;div class=&quot;cell&quot;&gt;100&lt;span class=&quot;label&quot;&gt;Health&lt;/span&gt;&lt;/div&gt;&#xA;                &lt;div class=&quot;cell&quot;&gt;0&lt;span class=&quot;label&quot;&gt;Score&lt;/span&gt;&lt;/div&gt;&#xA;                &lt;div class=&quot;cell&quot;&gt;1&lt;span class=&quot;label&quot;&gt;Lives&lt;/span&gt;&lt;/div&gt;&#xA;            &lt;/div&gt;&#xA;            &lt;div class=&quot;row&quot; data-panel=&quot;2&quot; style=&quot;display: none;&quot;&gt;&#xA;                &lt;div class=&quot;cell&quot;&gt;3&lt;span class=&quot;label&quot;&gt;Slimes&lt;/span&gt;&lt;/div&gt;&#xA;                &lt;div class=&quot;cell&quot;&gt;1&lt;span class=&quot;label&quot;&gt;Bats&lt;/span&gt;&lt;/div&gt;&#xA;                &lt;div class=&quot;cell&quot;&gt;0&lt;span class=&quot;label&quot;&gt;Boss&lt;/span&gt;&lt;/div&gt;&#xA;            &lt;/div&gt;&#xA;            &lt;div class=&quot;row&quot; data-panel=&quot;3&quot; style=&quot;display: none;&quot;&gt;&#xA;                &lt;div class=&quot;cell&quot;&gt;🗡️&lt;span class=&quot;label&quot;&gt;Sword&lt;/span&gt;&lt;/div&gt;&#xA;                &lt;div class=&quot;cell&quot;&gt;🧪&lt;span class=&quot;label&quot;&gt;Potion&lt;/span&gt;&lt;/div&gt;&#xA;                &lt;div class=&quot;cell&quot;&gt;🗝️&lt;span class=&quot;label&quot;&gt;Key&lt;/span&gt;&lt;/div&gt;&#xA;            &lt;/div&gt;&#xA;        &lt;/div&gt;&#xA;    &lt;/div&gt;&#xA;&#xA;    &lt;script&gt;&#xA;        document.addEventListener(&quot;DOMContentLoaded&quot;, function() {&#xA;            const tabs = document.querySelectorAll(&quot;.tab&quot;);&#xA;            const panels = document.querySelectorAll(&quot;.panel .row&quot;);&#xA;&#xA;            tabs.forEach(tab =&gt; {&#xA;                tab.addEventListener(&quot;click&quot;, function() {&#xA;                    tabs.forEach(t =&gt; t.classList.remove(&quot;active&quot;));&#xA;                    this.classList.add(&quot;active&quot;);&#xA;&#xA;                    const panel = this.getAttribute(&quot;data-panel&quot;);&#xA;                    panels.forEach(row =&gt; {&#xA;                        if (row.getAttribute(&quot;data-panel&quot;) === panel) {&#xA;                            row.style.display = &quot;flex&quot;;&#xA;                        } else {&#xA;                            row.style.display = &quot;none&quot;;&#xA;                        }&#xA;                    });&#xA;                });&#xA;            });&#xA;        });&#xA;    &lt;/script&gt;&#xA;&lt;/body&gt;&#xA;&lt;/html&gt;\" /></body></html>"
+          },
+          {
+            "title": "Lesson #3",
+            "id": 147898,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Immagina un array come una barra dell'inventario. Uno slot può contenere qualsiasi variabile o valore, che sia una stringa, un booleano o un numero come <code>100</code>.</p><code name=\"script.js\" version=\"2\" codelang=\"javascript\"><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option correct=\"false\"><content><text value=\"&quot;100&quot;\" /></content></option><option startIndex=\"21\" endIndex=\"24\" /></options></interaction></interactions><content><text value=\"const\" class=\"keyword\" /><text value=\" playerStats = [\" /><text value=\"100\" class=\"number\" /><text value=\", \" /><text value=\"0\" class=\"number\" /><text value=\", \" /><text value=\"true\" class=\"literal\" /><text value=\", \" /><text value=\"&quot;warrior&quot;\" class=\"string\" /><text value=\"];\" /></content></code><p visible-if=\"wrong\">Assicurati di scegliere <code>100</code>.</p></body></html>"
+          },
+          {
+            "title": "Lesson #4",
+            "id": 147899,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Ogni elemento in un array ha una posizione numerata chiamata indice.</p></body></html>"
+          },
+          {
+            "title": "Lesson #5",
+            "id": 147900,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Gli indici iniziano da 0 e aumentano con ogni valore successivo. Questo significa che il secondo elemento in <code>playerStats</code> si trova all'indice <code>1</code>. Codifica quell'indice.</p><code name=\"script.js\" version=\"2\" codelang=\"javascript\"><interactions><interaction type=\"validatedInput\" startIndex=\"71\" endIndex=\"72\" isDefault=\"true\" /></interactions><content><text value=\"const\" class=\"keyword\" /><text value=\" playerStats = [\" /><text value=\"100\" class=\"number\" /><text value=\", \" /><text value=\"0\" class=\"number\" /><text value=\", \" /><text value=\"true\" class=\"literal\" /><text value=\", \" /><text value=\"&quot;warrior&quot;\" class=\"string\" /><text value=\"];\" /><text type=\"break\" /><text value=\"console\" class=\"built_in\" /><text value=\".log(playerStats[\" /><text value=\"1\" class=\"number\" /><text value=\"]);\" /></content></code><p visible-if=\"wrong\">Assicurati di digitare <code>1</code>.</p></body></html>"
+          },
+          {
+            "title": "Lesson #6",
+            "id": 147901,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Per accedere a un elemento come il valore <code>true</code>, scrivi il nome dell'array <code>playerStats</code> seguito dall'indice dell'elemento tra parentesi quadre <code>[2]</code>.</p><code name=\"script.js\" version=\"2\" codelang=\"javascript\"><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option correct=\"false\"><content><text value=\"3\" /></content></option><option startIndex=\"59\" endIndex=\"70\" /><option startIndex=\"70\" endIndex=\"71\" /><option startIndex=\"71\" endIndex=\"72\" /><option startIndex=\"72\" endIndex=\"73\" /></options></interaction></interactions><content><text value=\"const\" class=\"keyword\" /><text value=\" playerStats = [\" /><text value=\"100\" class=\"number\" /><text value=\", \" /><text value=\"0\" class=\"number\" /><text value=\", \" /><text value=\"true\" class=\"literal\" /><text value=\", \" /><text value=\"&quot;warrior&quot;\" class=\"string\" /><text value=\"];\" /><text type=\"break\" /><text value=\"console\" class=\"built_in\" /><text value=\".log(playerStats[\" /><text value=\"2\" class=\"number\" /><text value=\"]);\" /></content></code><p visible-if=\"wrong\">Assicurati di scegliere <code>playerStats</code>, seguito da <code>[</code> e poi <code>2</code>, <code>]</code>.</p></body></html>"
+          },
+          {
+            "title": "Lesson #7",
+            "id": 147902,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Per aggiornare il valore al secondo indice, accedilo tramite <code>playerStats[2]</code>, poi usa <code>=</code> per assegnargli un nuovo valore come <code>false</code>.</p><code name=\"script.js\" version=\"2\" codelang=\"javascript\"><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option correct=\"false\"><content><text value=\"3\" /></content></option><option startIndex=\"47\" endIndex=\"61\" /><option startIndex=\"62\" endIndex=\"63\" /><option startIndex=\"64\" endIndex=\"69\" /></options></interaction></interactions><content><text value=\"const\" class=\"keyword\" /><text value=\" playerStats = [\" /><text value=\"100\" class=\"number\" /><text value=\", \" /><text value=\"0\" class=\"number\" /><text value=\", \" /><text value=\"true\" class=\"literal\" /><text value=\", \" /><text value=\"&quot;warrior&quot;\" class=\"string\" /><text value=\"];\" /><text type=\"break\" /><text value=\"playerStats[\" /><text value=\"2\" class=\"number\" /><text value=\"] = \" /><text value=\"false\" class=\"literal\" /><text value=\";\" /><text type=\"break\" /><text value=\"console\" class=\"built_in\" /><text value=\".log(playerStats);\" /></content></code><p visible-if=\"wrong\">Assicurati di scegliere <code>playerStats[2]</code>, seguito da <code>=</code> e infine <code>false</code>.</p></body></html>"
+          },
+          {
+            "title": "Lesson #8",
+            "id": 147903,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Nonostante l'array contenga quattro elementi, l'ultimo indice a cui possiamo accedere è <code>3</code> perché l'indicizzazione inizia da 0.</p><code name=\"script.js\" version=\"2\" codelang=\"javascript\"><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option correct=\"false\"><content><text value=\"4\" /></content></option><option startIndex=\"60\" endIndex=\"61\" /></options></interaction></interactions><content><text value=\"const\" class=\"keyword\" /><text value=\" playerStats = [\" /><text value=\"100\" class=\"number\" /><text value=\", \" /><text value=\"0\" class=\"number\" /><text value=\", \" /><text value=\"false\" class=\"literal\" /><text value=\", \" /><text value=\"&quot;warrior&quot;\" class=\"string\" /><text value=\"];\" /><text type=\"break\" /><text value=\"playerStats[\" /><text value=\"3\" class=\"number\" /><text value=\"] = \" /><text value=\"&quot;mage&quot;\" class=\"string\" /><text value=\";\" /><text type=\"break\" /><text value=\"console\" class=\"built_in\" /><text value=\".log(playerStats);\" /></content></code><p visible-if=\"wrong\">Assicurati di scegliere <code>3</code>.</p></body></html>"
+          },
+          {
+            "title": "Lesson #9",
+            "id": 147904,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Quali tipi di valori può memorizzare un array?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\">Qualsiasi valore, incluse stringhe, numeri e booleani</item><item value=\"2\" correct=\"false\">Solo stringhe</item></selection><p visible-if=\"wrong\">Qualsiasi valore, incluse stringhe, numeri e booleani.</p></body></html>"
+          },
+          {
+            "title": "Lesson #10",
+            "id": 147905,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Come chiamiamo la posizione di un elemento in un array?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\">L'indice dell'elemento</item><item value=\"2\" correct=\"false\">Il numero dell'elemento</item></selection><p visible-if=\"wrong\">L'indice dell'elemento.</p></body></html>"
+          },
+          {
+            "title": "Lesson #11",
+            "id": 147906,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Quale indice ha l'elemento in questo array?</p><code name=\"script.js\" version=\"2\" codelang=\"javascript\"><content><text value=\"const\" class=\"keyword\" /><text value=\" enemies = [\" /><text value=\"&quot;slime&quot;\" class=\"string\" /><text value=\"];\" /></content></code><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\"><code>0</code></item><item value=\"2\" correct=\"false\"><code>1</code></item></selection><p visible-if=\"wrong\">Assicurati di scegliere <code>0</code>.</p></body></html>"
+          },
+          {
+            "title": "Lesson #12",
+            "id": 147907,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Come accediamo a un elemento di questo array?</p><code name=\"script.js\" version=\"2\" codelang=\"javascript\"><content><text value=\"const\" class=\"keyword\" /><text value=\" loot = [\" /><text value=\"&quot;coin&quot;\" class=\"string\" /><text value=\", \" /><text value=\"&quot;gem&quot;\" class=\"string\" /><text value=\", \" /><text value=\"&quot;potion&quot;\" class=\"string\" /><text value=\"];\" /></content></code><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\"><code>loot[1]</code></item><item value=\"2\" correct=\"false\"><code>loot[\"gem\"]</code></item></selection><p visible-if=\"wrong\">Assicurati di scegliere <code>loot[1]</code>.</p></body></html>"
+          },
+          {
+            "title": "Lesson #13",
+            "id": 147908,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Come si aggiorna un valore in un array?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\">Accediamo al valore tramite il suo indice, poi assegniamo un altro valore</item><item value=\"2\" correct=\"false\">Non possiamo aggiornare i valori negli array</item></selection><p visible-if=\"wrong\">Accediamo al valore tramite il suo indice, poi assegniamo un altro valore.</p></body></html>"
+          },
+          {
+            "title": "Lesson #14",
+            "id": 147909,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>A quali indici possiamo accedere in un array con due elementi?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\"><code>0</code> e <code>1</code></item><item value=\"2\" correct=\"false\"><code>1</code> e <code>2</code></item></selection><p visible-if=\"wrong\"><code>0</code> e <code>1</code>.</p></body></html>"
+          },
+          {
+            "title": "Lesson #15",
+            "id": 147910,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Codifica il valore <code>false</code> in questo array.</p><code name=\"script.js\" version=\"2\" codelang=\"javascript\"><interactions><interaction type=\"validatedInput\" startIndex=\"27\" endIndex=\"32\" isDefault=\"true\" /></interactions><content><text value=\"const\" class=\"keyword\" /><text value=\" gameOptions = [\" /><text value=\"true\" class=\"literal\" /><text value=\", \" /><text value=\"false\" class=\"literal\" /><text value=\"];\" /></content></code><p visible-if=\"wrong\">Assicurati di digitare <code>false</code>.</p></body></html>"
+          },
+          {
+            "title": "Lesson #16",
+            "id": 147911,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Assicurati che <code>\"sword\"</code> si trovi all'indice <code>0</code> e che <code>\"shield\"</code> si trovi all'indice <code>1</code>, inserendo prima <code>\"sword\"</code> e poi <code>\"shield\"</code>.</p><code name=\"script.js\" version=\"2\" codelang=\"javascript\"><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option correct=\"false\"><content><text value=\"&quot;bow&quot;\" /></content></option><option startIndex=\"19\" endIndex=\"26\" /><option startIndex=\"28\" endIndex=\"36\" /></options></interaction></interactions><content><text value=\"const\" class=\"keyword\" /><text value=\" equipment = [\" /><text value=\"&quot;sword&quot;\" class=\"string\" /><text value=\", \" /><text value=\"&quot;shield&quot;\" class=\"string\" /><text value=\"];\" /><text type=\"break\" /><text value=\"console\" class=\"built_in\" /><text value=\".log(equipment);\" /></content></code><p visible-if=\"wrong\">Assicurati di scegliere <code>\"sword\"</code>, seguito da <code>\"shield\"</code>.</p></body></html>"
+          },
+          {
+            "title": "Lesson #17",
+            "id": 147912,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Codifica il valore <code>9</code> all'indice zero.</p><code name=\"script.js\" version=\"2\" codelang=\"javascript\"><interactions><interaction type=\"validatedInput\" startIndex=\"19\" endIndex=\"20\" isDefault=\"true\" /></interactions><content><text value=\"const\" class=\"keyword\" /><text value=\" comboCode = [\" /><text value=\"9\" class=\"number\" /><text value=\", \" /><text value=\"4\" class=\"number\" /><text value=\", \" /><text value=\"7\" class=\"number\" /><text value=\"];\" /><text type=\"break\" /><text value=\"console\" class=\"built_in\" /><text value=\".log(comboCode);\" /></content></code><p visible-if=\"wrong\">Assicurati di digitare <code>9</code>.</p></body></html>"
+          },
+          {
+            "title": "Lesson #18",
+            "id": 147913,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Scrivi <code>items[1]</code> per visualizzare il secondo elemento, <code>\"potion\"</code>, nell'array.</p><code name=\"script.js\" version=\"2\" codelang=\"javascript\"><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option correct=\"false\"><content><text value=\"items[2]\" /></content></option><option startIndex=\"53\" endIndex=\"61\" /></options></interaction></interactions><content><text value=\"const\" class=\"keyword\" /><text value=\" items = [\" /><text value=\"&quot;coin&quot;\" class=\"string\" /><text value=\", \" /><text value=\"&quot;potion&quot;\" class=\"string\" /><text value=\", \" /><text value=\"&quot;key&quot;\" class=\"string\" /><text value=\"];\" /><text type=\"break\" /><text value=\"console\" class=\"built_in\" /><text value=\".log(items[\" /><text value=\"1\" class=\"number\" /><text value=\"]);\" /></content></code><p visible-if=\"wrong\">Assicurati di scegliere <code>items[1]</code>.</p></body></html>"
+          },
+          {
+            "title": "Lesson #19",
+            "id": 147914,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Aggiorna il primo elemento dell'array da <code>3</code> a <code>2</code>.</p><code name=\"script.js\" version=\"2\" codelang=\"javascript\"><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"25\" endIndex=\"33\" /><option startIndex=\"34\" endIndex=\"35\" /><option startIndex=\"36\" endIndex=\"37\" /></options></interaction></interactions><content><text value=\"const\" class=\"keyword\" /><text value=\" lives = [\" /><text value=\"3\" class=\"number\" /><text value=\", \" /><text value=\"2\" class=\"number\" /><text value=\", \" /><text value=\"1\" class=\"number\" /><text value=\"];\" /><text type=\"break\" /><text value=\"lives[\" /><text value=\"0\" class=\"number\" /><text value=\"] = \" /><text value=\"2\" class=\"number\" /><text value=\";\" /><text type=\"break\" /><text value=\"console\" class=\"built_in\" /><text value=\".log(lives);\" /></content></code><p visible-if=\"wrong\">Assicurati di scegliere <code>lives[0]</code>, seguito da <code>=</code> e infine <code>2</code>.</p></body></html>"
+          },
+          {
+            "title": "Lesson #20",
+            "id": 147915,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Accedi al terzo elemento dell'array.<br /></p><code name=\"script.js\" version=\"2\" codelang=\"javascript\"><interactions><interaction type=\"validatedInput\" startIndex=\"59\" endIndex=\"60\" isDefault=\"true\" /></interactions><content><text value=\"const\" class=\"keyword\" /><text value=\" highScores = [\" /><text value=\"100\" class=\"number\" /><text value=\", \" /><text value=\"130\" class=\"number\" /><text value=\", \" /><text value=\"240\" class=\"number\" /><text value=\"];\" /><text type=\"break\" /><text value=\"console\" class=\"built_in\" /><text value=\".log(highScores[\" /><text value=\"2\" class=\"number\" /><text value=\"]);\" /></content></code><p visible-if=\"wrong\">Assicurati di digitare <code>2</code>.</p></body></html>"
+          }
+        ]
+      }
+    ]
+  }
+}

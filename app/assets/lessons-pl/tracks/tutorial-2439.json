@@ -1,0 +1,183 @@
+{
+  "tutorial": {
+    "id": 2439,
+    "version": 5,
+    "type": "guidedProjectOptional",
+    "isNew": false,
+    "codeLanguage": "python",
+    "title": "Sklep z elektroniką",
+    "descriptionContent": "Zajmijmy się formatowaniem ciągów znaków, aby pomóc w czyszczeniu danych dla sklepu z elektroniką",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": "tutorial-2439-icon-banner.svg",
+    "chapters": [
+      {
+        "id": 14019,
+        "title": "Sklep z elektroniką",
+        "type": "practiceLevel1",
+        "lessons": [
+          {
+            "title": "Extracting the Data Pieces",
+            "id": 124361,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Pracujesz w sklepie z elektroniką. Twoim zadaniem jest oczyszczenie i sformatowanie danych zawierających informacje o niektórych urządzeniach.\n\nWłaściciel sklepu przechował wszystkie dane jako ciąg znaków w zmiennej o nazwie `data`. Ten ciąg zawiera informacje o zestawie różnych urządzeń. Każda informacja obejmuje typ urządzenia i jego cenę. Dane dotyczące każdego urządzenia są oddzielone znakiem `|`. Wszystkie te informacje są przydatne, ale niezbyt łatwe do odczytania, więc wyodrębnijmy je i przechowajmy w formie listy z różnymi elementami.\n\n1. Utwórz zmienną `device_list` i przypisz jej wartość powstałą przez podzielenie ciągu `data`.\n2. Utwórz zmienną `formatted_list` i zapisz w niej pustą listę.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "data = \"14inch l@ptop,699|16inch l@ptop,999|sm@rtphone,1099|t@blet,499|g@ming pc,1999\"",
+                  "solvedContent": "data = \"14inch l@ptop,699|16inch l@ptop,999|sm@rtphone,1099|t@blet,499|g@ming pc,1999\"\ndevice_list = data.split(\"|\")\nformatted_list = []"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Split Device Information",
+            "id": 124362,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Teraz, gdy lista ciągów znaków jest przechowywana w `device_list`, rozdzielmy typ i cenę urządzenia, dzieląc dane urządzenia według przecinka oddzielającego typ urządzenia od ceny.\n\n1. Utwórz pętlę `for`, aby iterować po `device_list`. Użyj `device` jako zmiennej iteracyjnej.\n2. Utwórz zmienną `device_info_list` i przypisz do niej wartość uzyskaną przez podzielenie zmiennej `device` według `,`.\n3. Utwórz zmienną `name` i ustaw jako jej wartość pierwszy element `device_info_list`.\n4. Utwórz zmienną `price`. Przekonwertuj drugi element `device_info_list` na liczbę całkowitą, a następnie ustaw go jako wartość `price`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "data = \"14inch l@ptop,699|16inch l@ptop,999|sm@rtphone,1099|t@blet,499|g@ming pc,1999\"\ndevice_list = data.split(\"|\")\nformatted_list = []",
+                  "solvedContent": "data = \"14inch l@ptop,699|16inch l@ptop,999|sm@rtphone,1099|t@blet,499|g@ming pc,1999\"\ndevice_list = data.split(\"|\")\nformatted_list = []\nfor device in device_list:\n device_info_list = device.split(\",\")\n name = device_info_list[0]\n price = int(device_info_list[1])"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "Remember that you can access the values in a list using the index. Index starts from 0.\n\nRemember that you can convert a string to an integer using `int()`. The syntax is `int(<string>)`."
+                }
+              ]
+            }
+          },
+          {
+            "title": "Adjust Prices",
+            "id": 124664,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Z powodu inflacji właściciel sklepu chce zaktualizować ceny i dodać 10% do ceny każdego urządzenia. Aby uprościć księgowość, właściciel decyduje się zaokrąglić **w dół** nową cenę do pełnego dolara. Ponieważ typ urządzenia i cenę wyodrębniliśmy już osobno, zastosujmy podwyżkę przed sformatowaniem danych.\n\n1. Wewnątrz pętli utwórz zmienną `new_price`.\n2. Zwiększ wartość `price` o 10% i przekonwertuj ją na liczbę całkowitą, zanim ustawisz ją jako wartość `new_price`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "data = \"14inch l@ptop,699|16inch l@ptop,999|sm@rtphone,1099|t@blet,499|g@ming pc,1999\"\r\ndevice_list = data.split(\"|\")\r\nformatted_list = []\r\nfor device in device_list:\r\n device_info_list = device.split(\",\")\r\n name = device_info_list[0]\r\n price = int(device_info_list[1])",
+                  "solvedContent": "data = \"14inch l@ptop,699|16inch l@ptop,999|sm@rtphone,1099|t@blet,499|g@ming pc,1999\"\r\ndevice_list = data.split(\"|\")\r\nformatted_list = []\r\nfor device in device_list:\r\n device_info_list = device.split(\",\")\r\n name = device_info_list[0]\r\n price = int(device_info_list[1])\r\n new_price = int(price * 1.1);"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "You can increase a float by 10% by multiplying it by `1.1`."
+                }
+              ]
+            }
+          },
+          {
+            "title": "Format Information",
+            "id": 124665,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Świetnie! Podzieliliśmy ciąg znaków na poszczególne potrzebne części. Sformatujmy te informacje przed dodaniem ich do zmiennej `formatted_list`.\n\n1. W pętli utwórz zmienną `formatted_device` i ustaw jako jej wartość następujący f-string:\n```\nf\"Device Name: {name}, Device Price: ${price}\"\n```",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "data = \"14inch l@ptop,699|16inch l@ptop,999|sm@rtphone,1099|t@blet,499|g@ming pc,1999\"\r\ndevice_list = data.split(\"|\")\r\nformatted_list = []\r\nfor device in device_list:\r\n device_info_list = device.split(\",\")\r\n name = device_info_list[0]\r\n price = int(device_info_list[1])\r\n new_price = int(price * 1.1);",
+                  "solvedContent": "data = \"14inch l@ptop,699|16inch l@ptop,999|sm@rtphone,1099|t@blet,499|g@ming pc,1999\"\r\ndevice_list = data.split(\"|\")\r\nformatted_list = []\r\nfor device in device_list:\r\n device_info_list = device.split(\",\")\r\n name = device_info_list[0]\r\n price = int(device_info_list[1])\r\n new_price = int(price * 1.1);\r\n formatted_device = f\"Device Name: {name}, Device Price: ${price}\""
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Fix Typo",
+            "id": 124667,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Właściciel sklepu właśnie poinformował nas, że kiedy zestawiał dane w tabeli, jego klawiatura była zepsuta. Zamiast `a` właściciel sklepu wpisywał `@` we wszystkich ciągach zmiennej `data`.\n\n1. Wewnątrz pętli utwórz zmienną `corrected_formatted_device`. Użyj `replace()` na `formatted_device`, aby zastąpić `@` literą `a`, i ustaw wynik jako wartość `corrected_formatted_device`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "data = \"14inch l@ptop,699|16inch l@ptop,999|sm@rtphone,1099|t@blet,499|g@ming pc,1999\"\r\ndevice_list = data.split(\"|\")\r\nformatted_list = []\r\nfor device in device_list:\r\n device_info_list = device.split(\",\")\r\n name = device_info_list[0]\r\n price = int(device_info_list[1])\r\n new_price = int(price * 1.1);\r\n formatted_device = f\"Device Name: {name}, Device Price: ${price}\"",
+                  "solvedContent": "data = \"14inch l@ptop,699|16inch l@ptop,999|sm@rtphone,1099|t@blet,499|g@ming pc,1999\"\r\ndevice_list = data.split(\"|\")\r\nformatted_list = []\r\nfor device in device_list:\r\n device_info_list = device.split(\",\")\r\n name = device_info_list[0]\r\n price = int(device_info_list[1])\r\n new_price = int(price * 1.1);\r\n formatted_device = f\"Device Name: {name}, Device Price: ${price}\"\r\n corrected_formatted_device = formatted_device.replace(\"@\",\"a\")"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "Remember that we can use `replace()` to replace all occurrences of a specific text within the string. The syntax is <string>.replace(<text to be replaced>, <replacement text>)`."
+                }
+              ]
+            }
+          },
+          {
+            "title": "Append to List",
+            "id": 124666,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Świetna praca! Teraz poprawione dane są gotowe i możemy wypełnić zmienną `formatted_list` tymi danymi.\n\n1. W pętli `for` dołącz `corrected_formatted_device` do `formatted_list`.\n2. Poza pętlą `for` wyświetl zmienną `formatted_list`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "data = \"14inch l@ptop,699|16inch l@ptop,999|sm@rtphone,1099|t@blet,499|g@ming pc,1999\"\r\ndevice_list = data.split(\"|\")\r\nformatted_list = []\r\nfor device in device_list:\r\n device_info_list = device.split(\",\")\r\n name = device_info_list[0]\r\n price = int(device_info_list[1])\r\n new_price = int(price * 1.1);\r\n formatted_device = f\"Device Name: {name}, Device Price: ${price}\"\r\n corrected_formatted_device = formatted_device.replace(\"@\",\"a\")",
+                  "solvedContent": "data = \"14inch l@ptop,699|16inch l@ptop,999|sm@rtphone,1099|t@blet,499|g@ming pc,1999\"\r\ndevice_list = data.split(\"|\")\r\nformatted_list = []\r\nfor device in device_list:\r\n device_info_list = device.split(\",\")\r\n name = device_info_list[0]\r\n price = int(device_info_list[1])\r\n new_price = int(price * 1.1);\r\n formatted_device = f\"Device Name: {name}, Device Price: ${price}\"\r\n corrected_formatted_device = formatted_device.replace(\"@\",\"a\")\r\n formatted_list.append(corrected_formatted_device)\r\nprint(formatted_list)"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "Remember you can append values to a list using `append()`. The syntax is `<list>.append(<value>)`."
+                }
+              ]
+            }
+          },
+          {
+            "title": "Overview",
+            "id": 124368,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Gratulacje! Udało ci się przekształcić ciąg informacji oddzielonych znakami `|`, który był bardzo trudny do odczytania, w znacznie bardziej uporządkowaną listę wartościowych informacji.\n\nW tym miejscu nie uruchamiamy żadnych testów, więc śmiało eksperymentuj z kodem!\n\nMożesz na przykład dodać do zmiennej `data` więcej informacji, takich jak okres gwarancji lub wymiary, a następnie zmodyfikować program tak, aby również formatował i wyświetlał te nowe informacje jako część danych urządzenia.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "data = \"14inch l@ptop,699|16inch l@ptop,999|sm@rtphone,1099|t@blet,499|g@ming pc,1999\"\ndevice_list = data.split(\"|\")\nformatted_list = []\nfor device in device_list:\n device_info_list = device.split(\",\")\n name = device_info_list[0]\n price = int(device_info_list[1])\n new_price = int(price * 1.1);\n formatted_device = f\"Device Name: {name}, Device Price: ${price}\"\n corrected_formatted_device = formatted_device.replace(\"@\",\"a\")\n formatted_list.append(corrected_formatted_device)\nprint(formatted_list)",
+                  "solvedContent": null
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

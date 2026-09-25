@@ -1,0 +1,593 @@
+{
+  "tutorial": {
+    "id": 1641,
+    "version": 11,
+    "type": "guidedProjectOptional",
+    "isNew": false,
+    "codeLanguage": "html",
+    "title": "Strona rejestracji",
+    "descriptionContent": "Dowiedz się, jak weryfikować adresy e-mail i hasła użytkowników na stronie rejestracji",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": "tutorial-1641-icon-banner.svg",
+    "chapters": [
+      {
+        "id": 11263,
+        "title": "Strona rejestracji",
+        "type": "practiceLevel3",
+        "lessons": [
+          {
+            "title": "Sign Up Page Intro",
+            "id": 104423,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Wykorzystajmy naszą wiedzę o JavaScript, aby zbudować interaktywną część strony rejestracji.\n\nOto interfejs HTML, którego użyjemy. Przyjrzyj się plikom, które będą częścią tego projektu.\n\n1. Na dole elementu `body` dołączono do `index.html` dwa pliki skryptów: jeden do pola wprowadzania adresu e-mail, a drugi do hasła.\n2. `password.js` zawiera już funkcję pomocniczą. Na razie nie przejmuj się tym kodem, zajmiemy się nim później.\n3. Plik `signup.js` jest na razie pusty, ale później dodamy do niego kod.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <link rel=\"stylesheet\" href=\"style.css\">\n    <link rel=\"stylesheet\"\n      href=\"https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css\"\n      integrity=\"sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2\"\n      crossorigin=\"anonymous\">\n  </head>\n  <body>\n    <div>\n      <div class=\"main-body\">\n        <div class=\"row\">\n          <div class=\"col-lg-8\">\n            <div class=\"card\">\n              <div class=\"card-body\">\n                <div class=\"row mb-3\">\n                  <div class=\"col-sm-3\">\n                    <h6>Email</h6>\n                  </div>\n                  <div class=\"col-sm-9 text-secondary\">\n                    <input required type=\"text\" class=\"form-control\" value=\"\">\n                  </div>\n                </div>\n                <div class=\"row\">\n                  <div class=\"col-sm-3\">\n                    <h6>Password</h6>\n                  </div>\n                  <div class=\"col-sm-9 text-secondary\">\n                    <input required type=\"text\" class=\"form-control\" value=\"\">\n                    <p style=\"color:red\"></p>\n                  </div>\n                </div>\n                <div class=\"row\">\n                  <div class=\"col-sm-3\"></div>\n                  <div class=\"col-sm-9 text-secondary\">\n                    <button type=\"button\" class=\"btn btn-primary px-4\">Sign\n                      Up</button>\n                  </div>\n                </div>\n                <div class=\"row\">\n                  <div class=\"col-sm-9 text-secondary\">\n                    <br>\n                    <p></p>\n                  </div>\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n    <script src=\"password.js\"></script>\n    <script src=\"signup.js\"></script>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  margin-top: 20px;\n  color: #1A202C;\n  text-align: left;\n  background-color: #E2E8F0;\n}\n\n.main-body {\n  padding: 15px;\n}\n\n.card {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  min-width: 0;\n  word-wrap: break-word;\n  background-color: #FFF;\n  background-clip: border-box;\n  border: 0 solid rgba(0, 0, 0, .125);\n  border-radius: .25rem;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "password.js",
+                  "codeLanguage": "javascript",
+                  "content": "function validatePassword(pw) {\n  const pattern =\n    /^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$/;\n  return pattern.test(pw);\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "signup.js",
+                  "codeLanguage": "javascript",
+                  "content": "",
+                  "solvedContent": null
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Assign Ids",
+            "id": 104778,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Aby wchodzić w interakcje z elementami DOM, musimy nadać im informacje umożliwiające ich identyfikację. Następnie możemy odwołać się do nich w kodzie JavaScript.\n\nNajłatwiej to zrobić, nadając atrybut `id` każdemu elementowi, z którym chcemy pracować. Zaczynając od góry i przechodząc w dół, dodaj kilka atrybutów `id`.\n\n1. Użyj `Cmd/Ctrl F`, aby znaleźć pierwszy element `input`, który powinien znajdować się pod nagłówkiem `Email`. Nadaj mu `id` o wartości `email`.\n2. Pod nagłówkiem `Password` znajdź drugi element `input` i nadaj mu `id` o wartości `password`.\n3. Znajdź pierwszy element `p` znajdujący się bezpośrednio pod elementem `input` dotyczącym hasła i nadaj mu `id` o wartości `pwError`.\n4. Pod koniec dokumentu znajdź drugi element `p` i nadaj mu `id` o wartości `message`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <link rel=\"stylesheet\" href=\"style.css\">\n    <link rel=\"stylesheet\"\n      href=\"https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css\"\n      integrity=\"sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2\"\n      crossorigin=\"anonymous\">\n  </head>\n  <body>\n    <div>\n      <div class=\"main-body\">\n        <div class=\"row\">\n          <div class=\"col-lg-8\">\n            <div class=\"card\">\n              <div class=\"card-body\">\n                <div class=\"row mb-3\">\n                  <div class=\"col-sm-3\">\n                    <h6>Email</h6>\n                  </div>\n                  <div class=\"col-sm-9 text-secondary\">\n                    <input required type=\"text\" class=\"form-control\" value=\"\">\n                  </div>\n                </div>\n                <div class=\"row\">\n                  <div class=\"col-sm-3\">\n                    <h6>Password</h6>\n                  </div>\n                  <div class=\"col-sm-9 text-secondary\">\n                    <input required type=\"text\" class=\"form-control\" value=\"\">\n                    <p style=\"color:red\"></p>\n                  </div>\n                </div>\n                <div class=\"row\">\n                  <div class=\"col-sm-3\"></div>\n                  <div class=\"col-sm-9 text-secondary\">\n                    <button type=\"button\" class=\"btn btn-primary px-4\">Sign\n                      Up</button>\n                  </div>\n                </div>\n                <div class=\"row\">\n                  <div class=\"col-sm-9 text-secondary\">\n                    <br>\n                    <p></p>\n                  </div>\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n    <script src=\"password.js\"></script>\n    <script src=\"signup.js\"></script>\n  </body>\n</html>",
+                  "solvedContent": "<!doctype html>\n<html>\n  <head>\n    <link rel=\"stylesheet\" href=\"style.css\">\n    <link rel=\"stylesheet\"\n      href=\"https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css\"\n      integrity=\"sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2\"\n      crossorigin=\"anonymous\">\n  </head>\n  <body>\n    <div>\n      <div class=\"main-body\">\n        <div class=\"row\">\n          <div class=\"col-lg-8\">\n            <div class=\"card\">\n              <div class=\"card-body\">\n                <div class=\"row mb-3\">\n                  <div class=\"col-sm-3\">\n                    <h6>Email</h6>\n                  </div>\n                  <div class=\"col-sm-9 text-secondary\">\n                    <input id=\"email\" required type=\"text\" class=\"form-control\"\n                      value=\"\">\n                  </div>\n                </div>\n                <div class=\"row\">\n                  <div class=\"col-sm-3\">\n                    <h6>Password</h6>\n                  </div>\n                  <div class=\"col-sm-9 text-secondary\">\n                    <input id=\"password\" required type=\"text\"\n                      class=\"form-control\" value=\"\">\n                    <p style=\"color:red\" id=\"pwError\"></p>\n                  </div>\n                </div>\n                <div class=\"row\">\n                  <div class=\"col-sm-3\"></div>\n                  <div class=\"col-sm-9 text-secondary\">\n                    <button type=\"button\" class=\"btn btn-primary px-4\">Sign\n                      Up</button>\n                  </div>\n                </div>\n                <div class=\"row\">\n                  <div class=\"col-sm-9 text-secondary\">\n                    <br>\n                    <p id=\"message\"></p>\n                  </div>\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n    <script src=\"password.js\"></script>\n    <script src=\"signup.js\"></script>\n  </body>\n</html>"
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  margin-top: 20px;\n  color: #1A202C;\n  text-align: left;\n  background-color: #E2E8F0;\n}\n\n.main-body {\n  padding: 15px;\n}\n\n.card {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  min-width: 0;\n  word-wrap: break-word;\n  background-color: #FFF;\n  background-clip: border-box;\n  border: 0 solid rgba(0, 0, 0, .125);\n  border-radius: .25rem;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "password.js",
+                  "codeLanguage": "javascript",
+                  "content": "function validatePassword(pw) {\n  const pattern =\n    /^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$/;\n  return pattern.test(pw);\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "signup.js",
+                  "codeLanguage": "javascript",
+                  "content": "",
+                  "solvedContent": null
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Password",
+            "id": 104779,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Dodajmy funkcję walidacji hasła.\n\nPodczas wpisywania hasła będziemy wyświetlać użytkownikowi **komunikat o wymaganiach dotyczących hasła**. Gdy hasło spełni minimalne wymagania, ten komunikat zniknie.\n\n1. Przyjrzyj się funkcji `validatePassword`. Korzysta ona z czegoś, co nazywa się **wyrażeniem regularnym**, aby sprawdzić, czy wpisany przez użytkownika ciąg hasła pasuje do określonego **wzoru**.\n2. Możesz poszukać dodatkowych informacji o działaniu wyrażeń regularnych! W przeciwnym razie zapamiętaj, że ta funkcja przyjmuje jeden parametr będący ciągiem znaków i zwraca `true`, jeśli ciąg znaków jest dobrym hasłem, lub `false` w przeciwnym razie.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <link rel=\"stylesheet\" href=\"style.css\">\n    <link rel=\"stylesheet\"\n      href=\"https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css\"\n      integrity=\"sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2\"\n      crossorigin=\"anonymous\">\n  </head>\n  <body>\n    <div>\n      <div class=\"main-body\">\n        <div class=\"row\">\n          <div class=\"col-lg-8\">\n            <div class=\"card\">\n              <div class=\"card-body\">\n                <div class=\"row mb-3\">\n                  <div class=\"col-sm-3\">\n                    <h6>Email</h6>\n                  </div>\n                  <div class=\"col-sm-9 text-secondary\">\n                    <input id=\"email\" required type=\"text\" class=\"form-control\"\n                      value=\"\">\n                  </div>\n                </div>\n                <div class=\"row\">\n                  <div class=\"col-sm-3\">\n                    <h6>Password</h6>\n                  </div>\n                  <div class=\"col-sm-9 text-secondary\">\n                    <input id=\"password\" required type=\"text\"\n                      class=\"form-control\" value=\"\">\n                    <p style=\"color:red\" id=\"pwError\"></p>\n                  </div>\n                </div>\n                <div class=\"row\">\n                  <div class=\"col-sm-3\"></div>\n                  <div class=\"col-sm-9 text-secondary\">\n                    <button type=\"button\" class=\"btn btn-primary px-4\">Sign\n                      Up</button>\n                  </div>\n                </div>\n                <div class=\"row\">\n                  <div class=\"col-sm-9 text-secondary\">\n                    <br>\n                    <p id=\"message\"></p>\n                  </div>\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n    <script src=\"password.js\"></script>\n    <script src=\"signup.js\"></script>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  margin-top: 20px;\n  color: #1A202C;\n  text-align: left;\n  background-color: #E2E8F0;\n}\n\n.main-body {\n  padding: 15px;\n}\n\n.card {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  min-width: 0;\n  word-wrap: break-word;\n  background-color: #FFF;\n  background-clip: border-box;\n  border: 0 solid rgba(0, 0, 0, .125);\n  border-radius: .25rem;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "password.js",
+                  "codeLanguage": "javascript",
+                  "content": "function validatePassword(pw) {\n  const pattern =\n    /^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$/;\n  return pattern.test(pw);\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "signup.js",
+                  "codeLanguage": "javascript",
+                  "content": "",
+                  "solvedContent": null
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Password Elements",
+            "id": 104844,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Wprowadźmy potrzebne elementy do naszego kodu JavaScript.\n\n1. Utwórz zmienną `const` o nazwie `txtPassword`. Wybierz pole wejściowe hasła według identyfikatora i zapisz je w `txtPassword`\n2. Utwórz zmienną `const` o nazwie `pPasswordError`. Wybierz akapit błędu hasła według identyfikatora i zapisz go w `pPasswordError`",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <link rel=\"stylesheet\" href=\"style.css\">\n    <link rel=\"stylesheet\"\n      href=\"https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css\"\n      integrity=\"sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2\"\n      crossorigin=\"anonymous\">\n  </head>\n  <body>\n    <div>\n      <div class=\"main-body\">\n        <div class=\"row\">\n          <div class=\"col-lg-8\">\n            <div class=\"card\">\n              <div class=\"card-body\">\n                <div class=\"row mb-3\">\n                  <div class=\"col-sm-3\">\n                    <h6>Email</h6>\n                  </div>\n                  <div class=\"col-sm-9 text-secondary\">\n                    <input id=\"email\" required type=\"text\" class=\"form-control\"\n                      value=\"\">\n                  </div>\n                </div>\n                <div class=\"row\">\n                  <div class=\"col-sm-3\">\n                    <h6>Password</h6>\n                  </div>\n                  <div class=\"col-sm-9 text-secondary\">\n                    <input id=\"password\" required type=\"text\"\n                      class=\"form-control\" value=\"\">\n                    <p style=\"color:red\" id=\"pwError\"></p>\n                  </div>\n                </div>\n                <div class=\"row\">\n                  <div class=\"col-sm-3\"></div>\n                  <div class=\"col-sm-9 text-secondary\">\n                    <button type=\"button\" class=\"btn btn-primary px-4\">Sign\n                      Up</button>\n                  </div>\n                </div>\n                <div class=\"row\">\n                  <div class=\"col-sm-9 text-secondary\">\n                    <br>\n                    <p id=\"message\"></p>\n                  </div>\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n    <script src=\"password.js\"></script>\n    <script src=\"signup.js\"></script>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  margin-top: 20px;\n  color: #1A202C;\n  text-align: left;\n  background-color: #E2E8F0;\n}\n\n.main-body {\n  padding: 15px;\n}\n\n.card {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  min-width: 0;\n  word-wrap: break-word;\n  background-color: #FFF;\n  background-clip: border-box;\n  border: 0 solid rgba(0, 0, 0, .125);\n  border-radius: .25rem;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "password.js",
+                  "codeLanguage": "javascript",
+                  "content": "function validatePassword(pw) {\n  const pattern =\n    /^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$/;\n  return pattern.test(pw);\n}",
+                  "solvedContent": "const txtPassword = document.getElementById(\"password\");\nconst pPasswordError = document.getElementById(\"pwError\");\n\nfunction validatePassword(pw) {\n  const pattern =\n    /^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$/;\n  return pattern.test(pw);\n}"
+                },
+                {
+                  "name": "signup.js",
+                  "codeLanguage": "javascript",
+                  "content": "",
+                  "solvedContent": null
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Password Changed",
+            "id": 104780,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Przy każdym znaku wpisywanym przez użytkownika sprawdzimy, czy hasło jest prawidłowe.\n\nMożemy to zrobić za pomocą zdarzenia `input`, które jest wywoływane, gdy ktoś wpisuje tekst w pole tekstowe.\n\n1. Utwórz funkcję o nazwie `passwordChanged` i na razie pozostaw jej ciało puste. Wywołamy ją, gdy detektor zdarzeń zostanie uruchomiony.\n2. Poza funkcją ustaw detektor zdarzeń dla elementu `input` przechowywanego w zmiennej `txtPassword`. Ustaw `\"input\"` jako typ zdarzenia, a `passwordChanged` jako funkcję wywoływaną po jego wystąpieniu.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <link rel=\"stylesheet\" href=\"style.css\">\n    <link rel=\"stylesheet\"\n      href=\"https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css\"\n      integrity=\"sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2\"\n      crossorigin=\"anonymous\">\n  </head>\n  <body>\n    <div>\n      <div class=\"main-body\">\n        <div class=\"row\">\n          <div class=\"col-lg-8\">\n            <div class=\"card\">\n              <div class=\"card-body\">\n                <div class=\"row mb-3\">\n                  <div class=\"col-sm-3\">\n                    <h6>Email</h6>\n                  </div>\n                  <div class=\"col-sm-9 text-secondary\">\n                    <input id=\"email\" required type=\"text\" class=\"form-control\"\n                      value=\"\">\n                  </div>\n                </div>\n                <div class=\"row\">\n                  <div class=\"col-sm-3\">\n                    <h6>Password</h6>\n                  </div>\n                  <div class=\"col-sm-9 text-secondary\">\n                    <input id=\"password\" required type=\"text\"\n                      class=\"form-control\" value=\"\">\n                    <p style=\"color:red\" id=\"pwError\"></p>\n                  </div>\n                </div>\n                <div class=\"row\">\n                  <div class=\"col-sm-3\"></div>\n                  <div class=\"col-sm-9 text-secondary\">\n                    <button type=\"button\" class=\"btn btn-primary px-4\">Sign\n                      Up</button>\n                  </div>\n                </div>\n                <div class=\"row\">\n                  <div class=\"col-sm-9 text-secondary\">\n                    <br>\n                    <p id=\"message\"></p>\n                  </div>\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n    <script src=\"password.js\"></script>\n    <script src=\"signup.js\"></script>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  margin-top: 20px;\n  color: #1A202C;\n  text-align: left;\n  background-color: #E2E8F0;\n}\n\n.main-body {\n  padding: 15px;\n}\n\n.card {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  min-width: 0;\n  word-wrap: break-word;\n  background-color: #FFF;\n  background-clip: border-box;\n  border: 0 solid rgba(0, 0, 0, .125);\n  border-radius: .25rem;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "password.js",
+                  "codeLanguage": "javascript",
+                  "content": "const txtPassword = document.getElementById(\"password\");\nconst pPasswordError = document.getElementById(\"pwError\");\n\nfunction validatePassword(pw) {\n  const pattern =\n    /^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$/;\n  return pattern.test(pw);\n}",
+                  "solvedContent": "const txtPassword = document.getElementById(\"password\");\nconst pPasswordError = document.getElementById(\"pwError\");\n\nfunction passwordChanged() {}\ntxtPassword.addEventListener(\"input\", passwordChanged);\n\nfunction validatePassword(pw) {\n  const pattern =\n    /^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$/;\n  return pattern.test(pw);\n}"
+                },
+                {
+                  "name": "signup.js",
+                  "codeLanguage": "javascript",
+                  "content": "",
+                  "solvedContent": null
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Password Validation",
+            "id": 104781,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Zadaniem funkcji `passwordChanged` jest określenie, czy wpisana wartość spełnia minimalne wymagania dotyczące hasła. Możesz wywołać funkcję `validatePassword`, aby sprawdziła hasło za ciebie.\n\nZaimplementuj poniższe elementy w ciele funkcji `passwordChanged`.\n\n1. Utwórz zmienną o nazwie `password`. Pobierz wartość `txtPassword` i zapisz ją w zmiennej `password`.\n2. Utwórz zmienną `passwordIsGood`. Wywołaj funkcję `validatePassword`, przekazując do niej zmienną `password`, i zapisz wynik w zmiennej `passwordIsGood`.\n3. Do celów testowych dodaj dokładnie poniższą instrukcję `return` po zmiennych. Zostanie usunięta w następnej lekcji.  \n```js\nreturn [password, passwordIsGood];\n```",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <link rel=\"stylesheet\" href=\"style.css\">\n    <link rel=\"stylesheet\"\n      href=\"https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css\"\n      integrity=\"sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2\"\n      crossorigin=\"anonymous\">\n  </head>\n  <body>\n    <div>\n      <div class=\"main-body\">\n        <div class=\"row\">\n          <div class=\"col-lg-8\">\n            <div class=\"card\">\n              <div class=\"card-body\">\n                <div class=\"row mb-3\">\n                  <div class=\"col-sm-3\">\n                    <h6>Email</h6>\n                  </div>\n                  <div class=\"col-sm-9 text-secondary\">\n                    <input id=\"email\" required type=\"text\" class=\"form-control\"\n                      value=\"\">\n                  </div>\n                </div>\n                <div class=\"row\">\n                  <div class=\"col-sm-3\">\n                    <h6>Password</h6>\n                  </div>\n                  <div class=\"col-sm-9 text-secondary\">\n                    <input id=\"password\" required type=\"text\"\n                      class=\"form-control\" value=\"\">\n                    <p style=\"color:red\" id=\"pwError\"></p>\n                  </div>\n                </div>\n                <div class=\"row\">\n                  <div class=\"col-sm-3\"></div>\n                  <div class=\"col-sm-9 text-secondary\">\n                    <button type=\"button\" class=\"btn btn-primary px-4\">Sign\n                      Up</button>\n                  </div>\n                </div>\n                <div class=\"row\">\n                  <div class=\"col-sm-9 text-secondary\">\n                    <br>\n                    <p id=\"message\"></p>\n                  </div>\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n    <script src=\"password.js\"></script>\n    <script src=\"signup.js\"></script>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  margin-top: 20px;\n  color: #1A202C;\n  text-align: left;\n  background-color: #E2E8F0;\n}\n\n.main-body {\n  padding: 15px;\n}\n\n.card {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  min-width: 0;\n  word-wrap: break-word;\n  background-color: #FFF;\n  background-clip: border-box;\n  border: 0 solid rgba(0, 0, 0, .125);\n  border-radius: .25rem;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "password.js",
+                  "codeLanguage": "javascript",
+                  "content": "const txtPassword = document.getElementById(\"password\");\nconst pPasswordError = document.getElementById(\"pwError\");\n\nfunction passwordChanged() {}\ntxtPassword.addEventListener(\"input\", passwordChanged);\n\nfunction validatePassword(pw) {\n  const pattern =\n    /^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$/;\n  return pattern.test(pw);\n}",
+                  "solvedContent": "const txtPassword = document.getElementById(\"password\");\nconst pPasswordError = document.getElementById(\"pwError\");\n\nfunction passwordChanged() {\n  const password = txtPassword.value;\n  const passwordIsGood = validatePassword(password);\n  return [password, passwordIsGood];\n}\ntxtPassword.addEventListener(\"input\", passwordChanged);\n\nfunction validatePassword(pw) {\n  const pattern =\n    /^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$/;\n  return pattern.test(pw);\n}"
+                },
+                {
+                  "name": "signup.js",
+                  "codeLanguage": "javascript",
+                  "content": "",
+                  "solvedContent": null
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Password Message",
+            "id": 104782,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Teraz podejmiemy decyzję, czy wyświetlać komunikat o minimalnych wymaganiach dotyczących hasła.\n\nPamiętaj, że używamy instrukcji if, aby informować nasz kod o podejmowaniu decyzji. Dodaj poniższy kod do funkcji `passwordChanged`.\n\n1. Usuń instrukcję return w funkcji, która została dodana do celów testowych.\n2. Napisz instrukcję `if`, sprawdzającą, czy `passwordIsGood` ma wartość `true`.\n3. W bloku `if` użyj `.innerText`, aby na potrzeby testowania element `pPasswordError` wyświetlał `\"test\"`. Zostanie to zmienione w następnej lekcji.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <link rel=\"stylesheet\" href=\"style.css\">\n    <link rel=\"stylesheet\"\n      href=\"https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css\"\n      integrity=\"sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2\"\n      crossorigin=\"anonymous\">\n  </head>\n  <body>\n    <div>\n      <div class=\"main-body\">\n        <div class=\"row\">\n          <div class=\"col-lg-8\">\n            <div class=\"card\">\n              <div class=\"card-body\">\n                <div class=\"row mb-3\">\n                  <div class=\"col-sm-3\">\n                    <h6>Email</h6>\n                  </div>\n                  <div class=\"col-sm-9 text-secondary\">\n                    <input id=\"email\" required type=\"text\" class=\"form-control\"\n                      value=\"\">\n                  </div>\n                </div>\n                <div class=\"row\">\n                  <div class=\"col-sm-3\">\n                    <h6>Password</h6>\n                  </div>\n                  <div class=\"col-sm-9 text-secondary\">\n                    <input id=\"password\" required type=\"text\"\n                      class=\"form-control\" value=\"\">\n                    <p style=\"color:red\" id=\"pwError\"></p>\n                  </div>\n                </div>\n                <div class=\"row\">\n                  <div class=\"col-sm-3\"></div>\n                  <div class=\"col-sm-9 text-secondary\">\n                    <button type=\"button\" class=\"btn btn-primary px-4\">Sign\n                      Up</button>\n                  </div>\n                </div>\n                <div class=\"row\">\n                  <div class=\"col-sm-9 text-secondary\">\n                    <br>\n                    <p id=\"message\"></p>\n                  </div>\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n    <script src=\"password.js\"></script>\n    <script src=\"signup.js\"></script>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  margin-top: 20px;\n  color: #1A202C;\n  text-align: left;\n  background-color: #E2E8F0;\n}\n\n.main-body {\n  padding: 15px;\n}\n\n.card {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  min-width: 0;\n  word-wrap: break-word;\n  background-color: #FFF;\n  background-clip: border-box;\n  border: 0 solid rgba(0, 0, 0, .125);\n  border-radius: .25rem;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "password.js",
+                  "codeLanguage": "javascript",
+                  "content": "const txtPassword = document.getElementById(\"password\");\nconst pPasswordError = document.getElementById(\"pwError\");\n\nfunction passwordChanged() {\n  const password = txtPassword.value;\n  const passwordIsGood = validatePassword(password);\n  return [password, passwordIsGood];\n}\ntxtPassword.addEventListener(\"input\", passwordChanged);\n\nfunction validatePassword(pw) {\n  const pattern =\n    /^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$/;\n  return pattern.test(pw);\n}",
+                  "solvedContent": "const txtPassword = document.getElementById(\"password\");\nconst pPasswordError = document.getElementById(\"pwError\");\n\nfunction passwordChanged() {\n  const password = txtPassword.value;\n  const passwordIsGood = validatePassword(password);\n  if (passwordIsGood) {\n    pPasswordError.innerText = \"test\";\n  }\n}\ntxtPassword.addEventListener(\"input\", passwordChanged);\n\nfunction validatePassword(pw) {\n  const pattern =\n    /^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$/;\n  return pattern.test(pw);\n}"
+                },
+                {
+                  "name": "signup.js",
+                  "codeLanguage": "javascript",
+                  "content": "",
+                  "solvedContent": null
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Password Message 2",
+            "id": 104783,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Teraz czas zdecydować, co zrobić, jeśli hasło nie spełnia jeszcze minimalnych wymagań.\n\n1. W instrukcji if ustaw `innerText` na `\"\"`.\n2. Napisz instrukcję else towarzyszącą już istniejącej instrukcji if.\n3. W bloku else ustaw tekst elementu `pPasswordError` na:\n```js\n\"Minimum eight characters, at least one letter, one number and one special character\"\n```",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <link rel=\"stylesheet\" href=\"style.css\">\n    <link rel=\"stylesheet\"\n      href=\"https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css\"\n      integrity=\"sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2\"\n      crossorigin=\"anonymous\">\n  </head>\n  <body>\n    <div>\n      <div class=\"main-body\">\n        <div class=\"row\">\n          <div class=\"col-lg-8\">\n            <div class=\"card\">\n              <div class=\"card-body\">\n                <div class=\"row mb-3\">\n                  <div class=\"col-sm-3\">\n                    <h6>Email</h6>\n                  </div>\n                  <div class=\"col-sm-9 text-secondary\">\n                    <input id=\"email\" required type=\"text\" class=\"form-control\"\n                      value=\"\">\n                  </div>\n                </div>\n                <div class=\"row\">\n                  <div class=\"col-sm-3\">\n                    <h6>Password</h6>\n                  </div>\n                  <div class=\"col-sm-9 text-secondary\">\n                    <input id=\"password\" required type=\"text\"\n                      class=\"form-control\" value=\"\">\n                    <p style=\"color:red\" id=\"pwError\"></p>\n                  </div>\n                </div>\n                <div class=\"row\">\n                  <div class=\"col-sm-3\"></div>\n                  <div class=\"col-sm-9 text-secondary\">\n                    <button type=\"button\" class=\"btn btn-primary px-4\">Sign\n                      Up</button>\n                  </div>\n                </div>\n                <div class=\"row\">\n                  <div class=\"col-sm-9 text-secondary\">\n                    <br>\n                    <p id=\"message\"></p>\n                  </div>\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n    <script src=\"password.js\"></script>\n    <script src=\"signup.js\"></script>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  margin-top: 20px;\n  color: #1A202C;\n  text-align: left;\n  background-color: #E2E8F0;\n}\n\n.main-body {\n  padding: 15px;\n}\n\n.card {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  min-width: 0;\n  word-wrap: break-word;\n  background-color: #FFF;\n  background-clip: border-box;\n  border: 0 solid rgba(0, 0, 0, .125);\n  border-radius: .25rem;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "password.js",
+                  "codeLanguage": "javascript",
+                  "content": "const txtPassword = document.getElementById(\"password\");\nconst pPasswordError = document.getElementById(\"pwError\");\n\nfunction passwordChanged() {\n  const password = txtPassword.value;\n  const passwordIsGood = validatePassword(password);\n  if (passwordIsGood) {\n    pPasswordError.innerText = \"test\";\n  }\n}\ntxtPassword.addEventListener(\"input\", passwordChanged);\n\nfunction validatePassword(pw) {\n  const pattern =\n    /^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$/;\n  return pattern.test(pw);\n}",
+                  "solvedContent": "const txtPassword = document.getElementById(\"password\");\nconst pPasswordError = document.getElementById(\"pwError\");\n\nfunction passwordChanged() {\n  const password = txtPassword.value;\n  const passwordIsGood = validatePassword(password);\n  if (passwordIsGood) {\n    pPasswordError.innerText = \"\";\n  } else {\n    pPasswordError.innerText =\n      \"Minimum eight characters, at least one letter, one number and one special character\";\n  }\n}\ntxtPassword.addEventListener(\"input\", passwordChanged);\n\nfunction validatePassword(pw) {\n  const pattern =\n    /^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$/;\n  return pattern.test(pw);\n}"
+                },
+                {
+                  "name": "signup.js",
+                  "codeLanguage": "javascript",
+                  "content": "",
+                  "solvedContent": null
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Password Validation Complete",
+            "id": 104784,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Gratulacje! Udało ci się utworzyć bardzo ważną funkcję każdego dobrego interfejsu, czyli przekazywanie informacji zwrotnych użytkownikowi. Przetestuj działający kod, wpisując tekst w polu hasła. \n\nNastępnie dokończmy stronę rejestracji, kodując to, co stanie się po kliknięciu przycisku `Sign Up`. Aby użytkownicy mogli się zarejestrować, sprawdzimy, czy podali adres e-mail i czy hasło jest prawidłowe.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <link rel=\"stylesheet\" href=\"style.css\">\n    <link rel=\"stylesheet\"\n      href=\"https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css\"\n      integrity=\"sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2\"\n      crossorigin=\"anonymous\">\n  </head>\n  <body>\n    <div>\n      <div class=\"main-body\">\n        <div class=\"row\">\n          <div class=\"col-lg-8\">\n            <div class=\"card\">\n              <div class=\"card-body\">\n                <div class=\"row mb-3\">\n                  <div class=\"col-sm-3\">\n                    <h6>Email</h6>\n                  </div>\n                  <div class=\"col-sm-9 text-secondary\">\n                    <input id=\"email\" required type=\"text\" class=\"form-control\"\n                      value=\"\">\n                  </div>\n                </div>\n                <div class=\"row\">\n                  <div class=\"col-sm-3\">\n                    <h6>Password</h6>\n                  </div>\n                  <div class=\"col-sm-9 text-secondary\">\n                    <input id=\"password\" required type=\"text\"\n                      class=\"form-control\" value=\"\">\n                    <p style=\"color:red\" id=\"pwError\"></p>\n                  </div>\n                </div>\n                <div class=\"row\">\n                  <div class=\"col-sm-3\"></div>\n                  <div class=\"col-sm-9 text-secondary\">\n                    <button type=\"button\" class=\"btn btn-primary px-4\">Sign\n                      Up</button>\n                  </div>\n                </div>\n                <div class=\"row\">\n                  <div class=\"col-sm-9 text-secondary\">\n                    <br>\n                    <p id=\"message\"></p>\n                  </div>\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n    <script src=\"password.js\"></script>\n    <script src=\"signup.js\"></script>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  margin-top: 20px;\n  color: #1A202C;\n  text-align: left;\n  background-color: #E2E8F0;\n}\n\n.main-body {\n  padding: 15px;\n}\n\n.card {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  min-width: 0;\n  word-wrap: break-word;\n  background-color: #FFF;\n  background-clip: border-box;\n  border: 0 solid rgba(0, 0, 0, .125);\n  border-radius: .25rem;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "password.js",
+                  "codeLanguage": "javascript",
+                  "content": "const txtPassword = document.getElementById(\"password\");\nconst pPasswordError = document.getElementById(\"pwError\");\n\nfunction passwordChanged() {\n  const password = txtPassword.value;\n  const passwordIsGood = validatePassword(password);\n  if (passwordIsGood) {\n    pPasswordError.innerText = \"\";\n  } else {\n    pPasswordError.innerText =\n      \"Minimum eight characters, at least one letter, one number and one special character\";\n  }\n}\ntxtPassword.addEventListener(\"input\", passwordChanged);\n\nfunction validatePassword(pw) {\n  const pattern =\n    /^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$/;\n  return pattern.test(pw);\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "signup.js",
+                  "codeLanguage": "javascript",
+                  "content": "",
+                  "solvedContent": null
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Sign Up Elements",
+            "id": 104785,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Zaczniemy od pobrania wszystkich potrzebnych elementów DOM do kodu JavaScript przy użyciu *wyłącznie* `querySelector`.\n\n1. Utwórz zmienną `const` o nazwie `signUpButton`. Znajdź przycisk rejestracji po typie elementu `button` i zapisz go w zmiennej `signUpButton`.\n2. Utwórz zmienną `const` o nazwie `email`. Znajdź pole tekstowe adresu e-mail po jego identyfikatorze `email` i zapisz je w zmiennej `email`.\n3. Utwórz zmienną `const` o nazwie `password`. Znajdź pole tekstowe hasła po jego identyfikatorze `password` i zapisz je w zmiennej `password`.\n4. Utwórz zmienną `const` o nazwie `message`. Znajdź akapit komunikatu po jego identyfikatorze `message` i zapisz go w zmiennej `message`.",
+              "preselectedFileIndex": 3,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <link rel=\"stylesheet\" href=\"style.css\">\n    <link rel=\"stylesheet\"\n      href=\"https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css\"\n      integrity=\"sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2\"\n      crossorigin=\"anonymous\">\n  </head>\n  <body>\n    <div>\n      <div class=\"main-body\">\n        <div class=\"row\">\n          <div class=\"col-lg-8\">\n            <div class=\"card\">\n              <div class=\"card-body\">\n                <div class=\"row mb-3\">\n                  <div class=\"col-sm-3\">\n                    <h6>Email</h6>\n                  </div>\n                  <div class=\"col-sm-9 text-secondary\">\n                    <input id=\"email\" required type=\"text\" class=\"form-control\"\n                      value=\"\">\n                  </div>\n                </div>\n                <div class=\"row\">\n                  <div class=\"col-sm-3\">\n                    <h6>Password</h6>\n                  </div>\n                  <div class=\"col-sm-9 text-secondary\">\n                    <input id=\"password\" required type=\"text\"\n                      class=\"form-control\" value=\"\">\n                    <p style=\"color:red\" id=\"pwError\"></p>\n                  </div>\n                </div>\n                <div class=\"row\">\n                  <div class=\"col-sm-3\"></div>\n                  <div class=\"col-sm-9 text-secondary\">\n                    <button type=\"button\" class=\"btn btn-primary px-4\">Sign\n                      Up</button>\n                  </div>\n                </div>\n                <div class=\"row\">\n                  <div class=\"col-sm-9 text-secondary\">\n                    <br>\n                    <p id=\"message\"></p>\n                  </div>\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n    <script src=\"password.js\"></script>\n    <script src=\"signup.js\"></script>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  margin-top: 20px;\n  color: #1A202C;\n  text-align: left;\n  background-color: #E2E8F0;\n}\n\n.main-body {\n  padding: 15px;\n}\n\n.card {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  min-width: 0;\n  word-wrap: break-word;\n  background-color: #FFF;\n  background-clip: border-box;\n  border: 0 solid rgba(0, 0, 0, .125);\n  border-radius: .25rem;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "password.js",
+                  "codeLanguage": "javascript",
+                  "content": "const txtPassword = document.getElementById(\"password\");\nconst pPasswordError = document.getElementById(\"pwError\");\n\nfunction passwordChanged() {\n  const password = txtPassword.value;\n  const passwordIsGood = validatePassword(password);\n  if (passwordIsGood) {\n    pPasswordError.innerText = \"\";\n  } else {\n    pPasswordError.innerText =\n      \"Minimum eight characters, at least one letter, one number and one special character\";\n  }\n}\ntxtPassword.addEventListener(\"input\", passwordChanged);\n\nfunction validatePassword(pw) {\n  const pattern =\n    /^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$/;\n  return pattern.test(pw);\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "signup.js",
+                  "codeLanguage": "javascript",
+                  "content": "",
+                  "solvedContent": "const signUpButton = document.querySelector(\"button\");\nconst email = document.querySelector(\"#email\");\nconst password = document.querySelector(\"#password\");\nconst message = document.querySelector(\"#message\");"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Button Click",
+            "id": 104786,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Następnie musisz utworzyć funkcję, która będzie pełnić rolę odbiornika zdarzeń, i przypisać ją do zdarzenia kliknięcia przycisku rejestracji.\n\n1. Utwórz funkcję o nazwie `validateSignUp`, która będzie odbiornikiem zdarzeń.\n2. Poza funkcją ustaw odbiornik zdarzeń na elemencie zapisanym w `signUpButton`. Ustaw typ zdarzenia na `\"click\"`, a jako wywoływaną funkcję ustaw `validateSignUp`.",
+              "preselectedFileIndex": 3,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <link rel=\"stylesheet\" href=\"style.css\">\n    <link rel=\"stylesheet\"\n      href=\"https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css\"\n      integrity=\"sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2\"\n      crossorigin=\"anonymous\">\n  </head>\n  <body>\n    <div>\n      <div class=\"main-body\">\n        <div class=\"row\">\n          <div class=\"col-lg-8\">\n            <div class=\"card\">\n              <div class=\"card-body\">\n                <div class=\"row mb-3\">\n                  <div class=\"col-sm-3\">\n                    <h6>Email</h6>\n                  </div>\n                  <div class=\"col-sm-9 text-secondary\">\n                    <input id=\"email\" required type=\"text\" class=\"form-control\"\n                      value=\"\">\n                  </div>\n                </div>\n                <div class=\"row\">\n                  <div class=\"col-sm-3\">\n                    <h6>Password</h6>\n                  </div>\n                  <div class=\"col-sm-9 text-secondary\">\n                    <input id=\"password\" required type=\"text\"\n                      class=\"form-control\" value=\"\">\n                    <p style=\"color:red\" id=\"pwError\"></p>\n                  </div>\n                </div>\n                <div class=\"row\">\n                  <div class=\"col-sm-3\"></div>\n                  <div class=\"col-sm-9 text-secondary\">\n                    <button type=\"button\" class=\"btn btn-primary px-4\">Sign\n                      Up</button>\n                  </div>\n                </div>\n                <div class=\"row\">\n                  <div class=\"col-sm-9 text-secondary\">\n                    <br>\n                    <p id=\"message\"></p>\n                  </div>\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n    <script src=\"password.js\"></script>\n    <script src=\"signup.js\"></script>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  margin-top: 20px;\n  color: #1A202C;\n  text-align: left;\n  background-color: #E2E8F0;\n}\n\n.main-body {\n  padding: 15px;\n}\n\n.card {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  min-width: 0;\n  word-wrap: break-word;\n  background-color: #FFF;\n  background-clip: border-box;\n  border: 0 solid rgba(0, 0, 0, .125);\n  border-radius: .25rem;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "password.js",
+                  "codeLanguage": "javascript",
+                  "content": "const txtPassword = document.getElementById(\"password\");\nconst pPasswordError = document.getElementById(\"pwError\");\n\nfunction passwordChanged() {\n  const password = txtPassword.value;\n  const passwordIsGood = validatePassword(password);\n  if (passwordIsGood) {\n    pPasswordError.innerText = \"\";\n  } else {\n    pPasswordError.innerText =\n      \"Minimum eight characters, at least one letter, one number and one special character\";\n  }\n}\ntxtPassword.addEventListener(\"input\", passwordChanged);\n\nfunction validatePassword(pw) {\n  const pattern =\n    /^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$/;\n  return pattern.test(pw);\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "signup.js",
+                  "codeLanguage": "javascript",
+                  "content": "const signUpButton = document.querySelector(\"button\");\nconst email = document.querySelector(\"#email\");\nconst password = document.querySelector(\"#password\");\nconst message = document.querySelector(\"#message\");",
+                  "solvedContent": "const signUpButton = document.querySelector(\"button\");\nconst email = document.querySelector(\"#email\");\nconst password = document.querySelector(\"#password\");\nconst message = document.querySelector(\"#message\");\n\nfunction validateSignUp() {}\nsignUpButton.addEventListener(\"click\", validateSignUp);"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Email Validation",
+            "id": 104787,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Czas zacząć pisać kod określający, co się stanie, gdy użytkownicy klikną `Sign Up`.\n\nNapisz poniższy kod w funkcji `validateSignUp`.\n\n1. Utwórz zmienną o nazwie `emailText`. Pobierz wartość tekstową znajdującą się w polu wprowadzania adresu e-mail i zapisz ją w `emailText`\n2. Utwórz zmienną o nazwie `isNotEmpty`. Użyj wyrażenia z `!==`, aby sprawdzić, czy `emailText` *nie* jest pustym ciągiem. Następnie zapisz wynik w `isNotEmpty`\n3. Na potrzeby testów dodaj tę instrukcję `return`: `return [emailText, isNotEmpty];`. Zostanie usunięta w następnej lekcji.",
+              "preselectedFileIndex": 3,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <link rel=\"stylesheet\" href=\"style.css\">\n    <link rel=\"stylesheet\"\n      href=\"https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css\"\n      integrity=\"sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2\"\n      crossorigin=\"anonymous\">\n  </head>\n  <body>\n    <div>\n      <div class=\"main-body\">\n        <div class=\"row\">\n          <div class=\"col-lg-8\">\n            <div class=\"card\">\n              <div class=\"card-body\">\n                <div class=\"row mb-3\">\n                  <div class=\"col-sm-3\">\n                    <h6>Email</h6>\n                  </div>\n                  <div class=\"col-sm-9 text-secondary\">\n                    <input id=\"email\" required type=\"text\" class=\"form-control\"\n                      value=\"\">\n                  </div>\n                </div>\n                <div class=\"row\">\n                  <div class=\"col-sm-3\">\n                    <h6>Password</h6>\n                  </div>\n                  <div class=\"col-sm-9 text-secondary\">\n                    <input id=\"password\" required type=\"text\"\n                      class=\"form-control\" value=\"\">\n                    <p style=\"color:red\" id=\"pwError\"></p>\n                  </div>\n                </div>\n                <div class=\"row\">\n                  <div class=\"col-sm-3\"></div>\n                  <div class=\"col-sm-9 text-secondary\">\n                    <button type=\"button\" class=\"btn btn-primary px-4\">Sign\n                      Up</button>\n                  </div>\n                </div>\n                <div class=\"row\">\n                  <div class=\"col-sm-9 text-secondary\">\n                    <br>\n                    <p id=\"message\"></p>\n                  </div>\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n    <script src=\"password.js\"></script>\n    <script src=\"signup.js\"></script>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  margin-top: 20px;\n  color: #1A202C;\n  text-align: left;\n  background-color: #E2E8F0;\n}\n\n.main-body {\n  padding: 15px;\n}\n\n.card {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  min-width: 0;\n  word-wrap: break-word;\n  background-color: #FFF;\n  background-clip: border-box;\n  border: 0 solid rgba(0, 0, 0, .125);\n  border-radius: .25rem;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "password.js",
+                  "codeLanguage": "javascript",
+                  "content": "const txtPassword = document.getElementById(\"password\");\nconst pPasswordError = document.getElementById(\"pwError\");\n\nfunction passwordChanged() {\n  const password = txtPassword.value;\n  const passwordIsGood = validatePassword(password);\n  if (passwordIsGood) {\n    pPasswordError.innerText = \"\"\n  } else {\n    pPasswordError.innerText =\n      \"Minimum eight characters, at least one letter, one number and one special character\"\n  }\n}\ntxtPassword.addEventListener(\"input\", passwordChanged);\n\nfunction validatePassword(pw) {\n  const pattern =\n    /^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$/;\n  return pattern.test(pw);\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "signup.js",
+                  "codeLanguage": "javascript",
+                  "content": "const signUpButton = document.querySelector(\"button\");\nconst email = document.querySelector(\"#email\");\nconst password = document.querySelector(\"#password\");\nconst message = document.querySelector(\"#message\");\n\nfunction validateSignUp() {}\nsignUpButton.addEventListener(\"click\", validateSignUp);",
+                  "solvedContent": "const signUpButton = document.querySelector(\"button\");\nconst email = document.querySelector(\"#email\");\nconst password = document.querySelector(\"#password\");\nconst message = document.querySelector(\"#message\");\n\nfunction validateSignUp() {\n  const emailText = email.value;\n  const isNotEmpty = emailText !== \"\";\n  return [emailText, isNotEmpty];\n}\nsignUpButton.addEventListener(\"click\", validateSignUp);"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Password Validation Again",
+            "id": 104788,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Przed zarejestrowaniem użytkownika ponownie zweryfikujmy hasło, na wszelki wypadek.\n\nTa część jest już zakodowana, więc powinna być znajoma. Możesz zauważyć, że używamy funkcji `validatePassword`, której nie ma w tym pliku. W Javascript możemy używać kodu z innych plików, o ile są połączone z tą samą stroną HTML.\n\n1. Usuń instrukcję `return` z funkcji.\n2. Utwórz zmienną `const` o nazwie `passwordText` wewnątrz `validateSignUp()`. Pobierz wartość pola hasła i zapisz ją w `passwordText`.\n3. Utwórz zmienną `const` o nazwie `passwordIsGood`. Wywołaj funkcję `validatePassword()`, przekazując jej zmienną `passwordText`, i zapisz wynik w `passwordIsGood`.\n4. Dodaj instrukcję `return` na potrzeby testowania: `return [passwordText, passwordIsGood];`.\n5. Na potrzeby testowania musimy również dodać funkcję `validatePassword` z pliku `./password.js`. Usuniemy ją na końcu projektu. Dodaj ten blok kodu do pliku:\n```JS\nfunction validatePassword(pw) {\n  const pattern =\n    /^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$/;\n  return pattern.test(pw);\n}\n```",
+              "preselectedFileIndex": 3,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <link rel=\"stylesheet\" href=\"style.css\">\n    <link rel=\"stylesheet\"\n      href=\"https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css\"\n      integrity=\"sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2\"\n      crossorigin=\"anonymous\">\n  </head>\n  <body>\n    <div>\n      <div class=\"main-body\">\n        <div class=\"row\">\n          <div class=\"col-lg-8\">\n            <div class=\"card\">\n              <div class=\"card-body\">\n                <div class=\"row mb-3\">\n                  <div class=\"col-sm-3\">\n                    <h6>Email</h6>\n                  </div>\n                  <div class=\"col-sm-9 text-secondary\">\n                    <input id=\"email\" required type=\"text\" class=\"form-control\"\n                      value=\"\">\n                  </div>\n                </div>\n                <div class=\"row\">\n                  <div class=\"col-sm-3\">\n                    <h6>Password</h6>\n                  </div>\n                  <div class=\"col-sm-9 text-secondary\">\n                    <input id=\"password\" required type=\"text\"\n                      class=\"form-control\" value=\"\">\n                    <p style=\"color:red\" id=\"pwError\"></p>\n                  </div>\n                </div>\n                <div class=\"row\">\n                  <div class=\"col-sm-3\"></div>\n                  <div class=\"col-sm-9 text-secondary\">\n                    <button type=\"button\" class=\"btn btn-primary px-4\">Sign\n                      Up</button>\n                  </div>\n                </div>\n                <div class=\"row\">\n                  <div class=\"col-sm-9 text-secondary\">\n                    <br>\n                    <p id=\"message\"></p>\n                  </div>\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n    <script src=\"password.js\"></script>\n    <script src=\"signup.js\"></script>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  margin-top: 20px;\n  color: #1A202C;\n  text-align: left;\n  background-color: #E2E8F0;\n}\n\n.main-body {\n  padding: 15px;\n}\n\n.card {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  min-width: 0;\n  word-wrap: break-word;\n  background-color: #FFF;\n  background-clip: border-box;\n  border: 0 solid rgba(0, 0, 0, .125);\n  border-radius: .25rem;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "password.js",
+                  "codeLanguage": "javascript",
+                  "content": "const txtPassword = document.getElementById(\"password\");\nconst pPasswordError = document.getElementById(\"pwError\");\n\nfunction passwordChanged() {\n  const password = txtPassword.value;\n  const passwordIsGood = validatePassword(password);\n  if (passwordIsGood) {\n    pPasswordError.innerText = \"\";\n  } else {\n    pPasswordError.innerText =\n      \"Minimum eight characters, at least one letter, one number and one special character\";\n  }\n}\ntxtPassword.addEventListener(\"input\", passwordChanged);\n\nfunction validatePassword(pw) {\n  const pattern =\n    /^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$/;\n  return pattern.test(pw);\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "signup.js",
+                  "codeLanguage": "javascript",
+                  "content": "const signUpButton = document.querySelector(\"button\");\nconst email = document.querySelector(\"#email\");\nconst password = document.querySelector(\"#password\");\nconst message = document.querySelector(\"#message\");\n\nfunction validateSignUp() {\n  const emailText = email.value;\n  const isNotEmpty = emailText !== \"\";\n  return [emailText, isNotEmpty];\n}\nsignUpButton.addEventListener(\"click\", validateSignUp);",
+                  "solvedContent": "const signUpButton = document.querySelector(\"button\");\nconst email = document.querySelector(\"#email\");\nconst password = document.querySelector(\"#password\");\nconst message = document.querySelector(\"#message\");\n\nfunction validateSignUp() {\n  const emailText = email.value;\n  const isNotEmpty = emailText !== \"\";\n  const passwordText = password.value;\n  const passwordIsGood = validatePassword(passwordText);\n  return [passwordText, passwordIsGood];\n}\nsignUpButton.addEventListener(\"click\", validateSignUp);\n\nfunction validatePassword(pw) {\n  const pattern =\n    /^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$/;\n  return pattern.test(pw);\n}"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Sign Up Success",
+            "id": 104789,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Nadszedł czas, aby zdecydować, co zrobić, jeśli użytkownik poprawnie wprowadził informacje rejestracyjne.\n\nPonieważ rejestracja jest skomplikowanym procesem, a my wciąż się uczymy, zachowamy prostotę. Jeśli wszystko jest poprawne, wyświetlimy zielaty komunikat \"welcome\".\n\n1. Wewnątrz `validateSignUp()` napisz instrukcję if sprawdzającą, czy zarówno `isNotEmpty`, jak i `passwordIsGood` są równe `true`.\n2. W bloku if ustaw właściwość `style.color` komunikatu na `\"green\"`.\n3. W bloku if spraw, aby element przechowywany w `message` wyświetlał `\"Welcome!\"`.",
+              "preselectedFileIndex": 3,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <link rel=\"stylesheet\" href=\"style.css\">\n    <link rel=\"stylesheet\"\n      href=\"https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css\"\n      integrity=\"sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2\"\n      crossorigin=\"anonymous\">\n  </head>\n  <body>\n    <div>\n      <div class=\"main-body\">\n        <div class=\"row\">\n          <div class=\"col-lg-8\">\n            <div class=\"card\">\n              <div class=\"card-body\">\n                <div class=\"row mb-3\">\n                  <div class=\"col-sm-3\">\n                    <h6>Email</h6>\n                  </div>\n                  <div class=\"col-sm-9 text-secondary\">\n                    <input id=\"email\" required type=\"text\" class=\"form-control\"\n                      value=\"\">\n                  </div>\n                </div>\n                <div class=\"row\">\n                  <div class=\"col-sm-3\">\n                    <h6>Password</h6>\n                  </div>\n                  <div class=\"col-sm-9 text-secondary\">\n                    <input id=\"password\" required type=\"text\"\n                      class=\"form-control\" value=\"\">\n                    <p style=\"color:red\" id=\"pwError\"></p>\n                  </div>\n                </div>\n                <div class=\"row\">\n                  <div class=\"col-sm-3\"></div>\n                  <div class=\"col-sm-9 text-secondary\">\n                    <button type=\"button\" class=\"btn btn-primary px-4\">Sign\n                      Up</button>\n                  </div>\n                </div>\n                <div class=\"row\">\n                  <div class=\"col-sm-9 text-secondary\">\n                    <br>\n                    <p id=\"message\"></p>\n                  </div>\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n    <script src=\"password.js\"></script>\n    <script src=\"signup.js\"></script>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  margin-top: 20px;\n  color: #1A202C;\n  text-align: left;\n  background-color: #E2E8F0;\n}\n\n.main-body {\n  padding: 15px;\n}\n\n.card {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  min-width: 0;\n  word-wrap: break-word;\n  background-color: #FFF;\n  background-clip: border-box;\n  border: 0 solid rgba(0, 0, 0, .125);\n  border-radius: .25rem;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "password.js",
+                  "codeLanguage": "javascript",
+                  "content": "const txtPassword = document.getElementById(\"password\");\nconst pPasswordError = document.getElementById(\"pwError\");\n\nfunction passwordChanged() {\n  const password = txtPassword.value;\n  const passwordIsGood = validatePassword(password);\n  if (passwordIsGood) {\n    pPasswordError.innerText = \"\";\n  } else {\n    pPasswordError.innerText =\n      \"Minimum eight characters, at least one letter, one number and one special character\";\n  }\n}\ntxtPassword.addEventListener(\"input\", passwordChanged);\n\nfunction validatePassword(pw) {\n  const pattern =\n    /^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$/;\n  return pattern.test(pw);\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "signup.js",
+                  "codeLanguage": "javascript",
+                  "content": "const signUpButton = document.querySelector(\"button\");\nconst email = document.querySelector(\"#email\");\nconst password = document.querySelector(\"#password\");\nconst message = document.querySelector(\"#message\");\n\nfunction validateSignUp() {\n  const emailText = email.value;\n  const isNotEmpty = emailText !== \"\";\n  const passwordText = password.value;\n  const passwordIsGood = validatePassword(passwordText);\n}\nsignUpButton.addEventListener(\"click\", validateSignUp);\n\nfunction validatePassword(pw) {\n  const pattern =\n    /^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$/;\n  return pattern.test(pw);\n}",
+                  "solvedContent": "const signUpButton = document.querySelector(\"button\");\nconst email = document.querySelector(\"#email\");\nconst password = document.querySelector(\"#password\");\nconst message = document.querySelector(\"#message\");\n\nfunction validateSignUp() {\n  const emailText = email.value;\n  const isNotEmpty = emailText !== \"\";\n  const passwordText = password.value;\n  const passwordIsGood = validatePassword(passwordText);\n  if (isNotEmpty && passwordIsGood) {\n    message.style.color = \"green\";\n    message.innerText = \"Welcome!\";\n  }\n}\nsignUpButton.addEventListener(\"click\", validateSignUp);\n\nfunction validatePassword(pw) {\n  const pattern =\n    /^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$/;\n  return pattern.test(pw);\n}"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Sign Up Failure",
+            "id": 104790,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Następnie zdecydujmy, co się stanie, jeśli którejś z informacji potrzebnych do rejestracji brakuje lub jest nieprawidłowa.\n\nWyświetlmy komunikat na czerwono, aby wskazać, że coś poszło nie tak.\n\n1. Napisz instrukcję else uzupełniającą już istniejącą instrukcję if.\n2. W bloku else ustaw właściwość `style.color` komunikatu na `\"red\"`.\n3. W bloku else spraw, aby element w `message` wyświetlał poniższy tekst:\n```js\n\"email missing or incorrect password\" \n```",
+              "preselectedFileIndex": 3,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <link rel=\"stylesheet\" href=\"style.css\">\n    <link rel=\"stylesheet\"\n      href=\"https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css\"\n      integrity=\"sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2\"\n      crossorigin=\"anonymous\">\n  </head>\n  <body>\n    <div>\n      <div class=\"main-body\">\n        <div class=\"row\">\n          <div class=\"col-lg-8\">\n            <div class=\"card\">\n              <div class=\"card-body\">\n                <div class=\"row mb-3\">\n                  <div class=\"col-sm-3\">\n                    <h6>Email</h6>\n                  </div>\n                  <div class=\"col-sm-9 text-secondary\">\n                    <input id=\"email\" required type=\"text\" class=\"form-control\"\n                      value=\"\">\n                  </div>\n                </div>\n                <div class=\"row\">\n                  <div class=\"col-sm-3\">\n                    <h6>Password</h6>\n                  </div>\n                  <div class=\"col-sm-9 text-secondary\">\n                    <input id=\"password\" required type=\"text\"\n                      class=\"form-control\" value=\"\">\n                    <p style=\"color:red\" id=\"pwError\"></p>\n                  </div>\n                </div>\n                <div class=\"row\">\n                  <div class=\"col-sm-3\"></div>\n                  <div class=\"col-sm-9 text-secondary\">\n                    <button type=\"button\" class=\"btn btn-primary px-4\">Sign\n                      Up</button>\n                  </div>\n                </div>\n                <div class=\"row\">\n                  <div class=\"col-sm-9 text-secondary\">\n                    <br>\n                    <p id=\"message\"></p>\n                  </div>\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n    <script src=\"password.js\"></script>\n    <script src=\"signup.js\"></script>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  margin-top: 20px;\n  color: #1A202C;\n  text-align: left;\n  background-color: #E2E8F0;\n}\n\n.main-body {\n  padding: 15px;\n}\n\n.card {\n  position: relative;\n  display: flex;\n  flex-direction: column;\n  min-width: 0;\n  word-wrap: break-word;\n  background-color: #FFF;\n  background-clip: border-box;\n  border: 0 solid rgba(0, 0, 0, .125);\n  border-radius: .25rem;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "password.js",
+                  "codeLanguage": "javascript",
+                  "content": "const txtPassword = document.getElementById(\"password\");\nconst pPasswordError = document.getElementById(\"pwError\");\n\nfunction passwordChanged() {\n  const password = txtPassword.value;\n  const passwordIsGood = validatePassword(password);\n  if (passwordIsGood) {\n    pPasswordError.innerText = \"\";\n  } else {\n    pPasswordError.innerText =\n      \"Minimum eight characters, at least one letter, one number and one special character\";\n  }\n}\ntxtPassword.addEventListener(\"input\", passwordChanged);\n\nfunction validatePassword(pw) {\n  const pattern =\n    /^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$/;\n  return pattern.test(pw);\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "signup.js",
+                  "codeLanguage": "javascript",
+                  "content": "const signUpButton = document.querySelector(\"button\");\nconst email = document.querySelector(\"#email\");\nconst password = document.querySelector(\"#password\");\nconst message = document.querySelector(\"#message\");\n\nfunction validateSignUp() {\n  const emailText = email.value;\n  const isNotEmpty = emailText !== \"\";\n  const passwordText = password.value;\n  const passwordIsGood = validatePassword(passwordText);\n  if (isNotEmpty && passwordIsGood) {\n    message.style.color = \"green\";\n    message.innerText = \"Welcome!\";\n  }\n}\nsignUpButton.addEventListener(\"click\", validateSignUp);\n\nfunction validatePassword(pw) {\n  const pattern =\n    /^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$/;\n  return pattern.test(pw);\n}",
+                  "solvedContent": "const signUpButton = document.querySelector(\"button\");\nconst email = document.querySelector(\"#email\");\nconst password = document.querySelector(\"#password\");\nconst message = document.querySelector(\"#message\");\n\nfunction validateSignUp() {\n  const emailText = email.value;\n  const isNotEmpty = emailText !== \"\";\n  const passwordText = password.value;\n  const passwordIsGood = validatePassword(passwordText);\n  if (isNotEmpty && passwordIsGood) {\n    message.style.color = \"green\";\n    message.innerText = \"Welcome!\";\n  } else {\n    message.style.color = \"red\";\n    message.innerText = \"email missing or incorrect password\";\n  }\n}\nsignUpButton.addEventListener(\"click\", validateSignUp);\n\nfunction validatePassword(pw) {\n  const pattern =\n    /^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{8,}$/;\n  return pattern.test(pw);\n}"
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

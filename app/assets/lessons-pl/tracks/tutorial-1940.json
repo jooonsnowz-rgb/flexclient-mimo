@@ -1,0 +1,331 @@
+{
+  "tutorial": {
+    "id": 1940,
+    "version": 12,
+    "type": "guidedProjectOptional",
+    "isNew": false,
+    "codeLanguage": "javascript",
+    "title": "Lista wolontariuszy",
+    "descriptionContent": "Dowiedz się, jak używać JavaScriptu do przechodzenia po elementach nadrzędnych i podrzędnych HTML oraz manipulowania nimi",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": "tutorial-1940-icon-banner.svg",
+    "chapters": [
+      {
+        "id": 12546,
+        "title": "Lista wolontariuszy",
+        "type": "practiceLevel3",
+        "lessons": [
+          {
+            "title": "Step 1",
+            "id": 113403,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "W tym projekcie utworzysz funkcję JavaScript, która będzie przeglądać i modyfikować Document Object Model (DOM) na podstawie danych wprowadzonych przez użytkownika.\n\nNajpierw przeanalizuj dostarczony kod: definicję funkcji `addVolunteer()`, kilka deklaracji zmiennych oraz kod usuwający klasę CSS `.error` z elementu `#day` (więcej na ten temat później).\n\nPrzyjrzyjmy się teraz funkcji, którą zamierzamy zbudować: `addVolunteer`. Pamiętaj, że chcemy utworzyć stronę rejestracji, która uniemożliwi użytkownikom zarezerwowanie tego samego terminu wolontariatu.\n\nTa funkcja uzyska dostęp do terminów dla wybranego dnia. Jeśli pierwszy termin będzie zajęty, funkcja spróbuje zająć drugi termin. Jeśli żaden termin nie będzie dostępny, wyświetlimy użytkownikowi błąd.\n\nNajpierw uzyskajmy dostęp do elementu `<div>` zawierającego wszystkie listy terminów. W następnych kilku krokach przejdziemy do konkretnego dnia, dla którego chcemy zmodyfikować listę terminów.\n\n1. W funkcji `addVolunteer` zapisz odwołanie do elementu `<div>` `#daysOfWeek` w zmiennej `daysOfWeek`.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <link rel=\"stylesheet\" href=\"./index.css\" />\n  </head>\n  <body>\n    <h3 id=\"title\">Volunteer Sign Ups</h3>\n    <div id=\"daysOfWeek\">\n      <div id=\"mon\">\n        <h5>Monday</h5>\n        <ul>\n          <li>open</li>\n          <li>open</li>\n        </ul>\n      </div>\n      <div id=\"tues\">\n        <h5>Tuesday</h5>\n        <ul>\n          <li>open</li>\n          <li>open</li>\n        </ul>\n      </div>\n      <div id=\"weds\">\n        <h5>Wednesday</h5>\n        <ul>\n          <li>open</li>\n          <li>open</li>\n        </ul>\n      </div>\n    </div>\n    <div>\n      <p>Enter your name and choose a day below:</p>\n      <input type=\"text\" placeholder=\"name\" id=\"name\" />\n      <select id=\"day\">\n        <option value=\"0\">Mon</option>\n        <option value=\"1\">Tues</option>\n        <option value=\"2\">Wed</option>\n      </select>\n      <button id=\"add\"\n        onclick=\"addVolunteer(document.getElementById('day').value, document.getElementById('name').value)\">+</button>\n    </div>\n    <script src=\"index.js\"></script>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "index.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n font-family: sans-serif;\n background-color: white;\n padding-top: 10%;\n margin-left: 10%;\n}\n\nh3,\nh4 {\n text-align: left;\n margin-left: 10%;\n}\n\n#name,\n#ADD {\n border: 1px solid black;\n background-color: transparent;\n border-radius: 5px;\n padding: 4px;\n}\n\nselect {\n height: 26px;\n}\n\n.error {\n border: 2px solid red;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "index.js",
+                  "codeLanguage": "javascript",
+                  "content": "const dayInput = document.getElementById(\"day\");\nlet daysOfWeek;\nlet dayPicked;\nlet volunteerSlots;\nlet firstSlot;\n\nfunction addVolunteer(day, userName) {\n  dayInput.classList.remove(\"error\");\n  \n}",
+                  "solvedContent": "const dayInput = document.getElementById(\"day\");\nlet daysOfWeek;\nlet dayPicked;\nlet volunteerSlots;\nlet firstSlot;\n\nfunction addVolunteer(day, userName) {\n  dayInput.classList.remove(\"error\");\n  daysOfWeek = document.getElementById(\"daysOfWeek\");\n}"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Step 2",
+            "id": 113414,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Element `#daysOfWeek` zawiera listę przedziałów czasowych dla każdego dnia. Musimy manipulować jego elementami potomnymi, czyli elementami `<div>` zawierającymi dzień i odpowiadającą mu listę przedziałów czasowych. Zmodyfikujmy nasz kod, aby pobrać elementy potomne elementu `<div>` `#daysOfWeek`.\n\n1. Zmodyfikuj kod, aby przechowywać elementy potomne elementu `<div>` `#daysOfWeek` w zmiennej `daysOfWeek`.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <link rel=\"stylesheet\" href=\"./index.css\" />\n  </head>\n  <body>\n    <h3 id=\"title\">Volunteer Sign Ups</h3>\n    <div id=\"daysOfWeek\">\n      <div id=\"mon\">\n        <h5>Monday</h5>\n        <ul>\n          <li>open</li>\n          <li>open</li>\n        </ul>\n      </div>\n      <div id=\"tues\">\n        <h5>Tuesday</h5>\n        <ul>\n          <li>open</li>\n          <li>open</li>\n        </ul>\n      </div>\n      <div id=\"weds\">\n        <h5>Wednesday</h5>\n        <ul>\n          <li>open</li>\n          <li>open</li>\n        </ul>\n      </div>\n    </div>\n    <div>\n      <p>Enter your name and choose a day below:</p>\n      <input type=\"text\" placeholder=\"name\" id=\"name\" />\n      <select id=\"day\">\n        <option value=\"0\">Mon</option>\n        <option value=\"1\">Tues</option>\n        <option value=\"2\">Wed</option>\n      </select>\n      <button id=\"add\"\n        onclick=\"addVolunteer(document.getElementById('day').value, document.getElementById('name').value)\">+</button>\n    </div>\n    <script src=\"index.js\"></script>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "index.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  font-family: sans-serif;\n  background-color: white;\n  padding-top: 10%;\n  margin-left: 10%;\n}\n\nh3,\nh4 {\n  text-align: left;\n  margin-left: 10%;\n}\n\n#name,\n#ADD {\n  border: 1px solid black;\n  background-color: transparent;\n  border-radius: 5px;\n  padding: 4px;\n}\n\nselect {\n  height: 26px;\n}\n\n.error {\n  border: 2px solid red;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "index.js",
+                  "codeLanguage": "javascript",
+                  "content": "const dayInput = document.getElementById(\"day\");\nlet daysOfWeek;\nlet dayPicked;\nlet volunteerSlots;\nlet firstSlot;\n\nfunction addVolunteer(day, userName) {\n  dayInput.classList.remove(\"error\");\n  daysOfWeek = document.getElementById(\"daysOfWeek\");\n}",
+                  "solvedContent": "const dayInput = document.getElementById(\"day\");\nlet daysOfWeek;\nlet dayPicked;\nlet volunteerSlots;\nlet firstSlot;\n\nfunction addVolunteer(day, userName) {\n  dayInput.classList.remove(\"error\");\n  daysOfWeek = document.getElementById(\"daysOfWeek\").children;\n}"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Step 3",
+            "id": 113415,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Teraz zawęźmy informacje, z którymi pracujemy, tylko do dnia wybranego przez użytkownika. Jeśli przejrzysz `HTML`, zauważysz, że element `<select>` `#day` ma wartości odpowiadające indeksom tablicy.\n\n1. Uzyskaj dostęp do tablicy `daysOfWeek` za pomocą parametru `day`. Zapisz tę wartość w zmiennej `dayPicked`.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <link rel=\"stylesheet\" href=\"./index.css\" />\n  </head>\n  <body>\n    <h3 id=\"title\">Volunteer Sign Ups</h3>\n    <div id=\"daysOfWeek\">\n      <div id=\"mon\">\n        <h5>Monday</h5>\n        <ul>\n          <li>open</li>\n          <li>open</li>\n        </ul>\n      </div>\n      <div id=\"tues\">\n        <h5>Tuesday</h5>\n        <ul>\n          <li>open</li>\n          <li>open</li>\n        </ul>\n      </div>\n      <div id=\"weds\">\n        <h5>Wednesday</h5>\n        <ul>\n          <li>open</li>\n          <li>open</li>\n        </ul>\n      </div>\n    </div>\n    <div>\n      <p>Enter your name and choose a day below:</p>\n      <input type=\"text\" placeholder=\"name\" id=\"name\" />\n      <select id=\"day\">\n        <option value=\"0\">Mon</option>\n        <option value=\"1\">Tues</option>\n        <option value=\"2\">Wed</option>\n      </select>\n      <button id=\"add\"\n        onclick=\"addVolunteer(document.getElementById('day').value, document.getElementById('name').value)\">+</button>\n    </div>\n    <script src=\"index.js\"></script>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "index.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  font-family: sans-serif;\n  background-color: white;\n  padding-top: 10%;\n  margin-left: 10%;\n}\n\nh3,\nh4 {\n  text-align: left;\n  margin-left: 10%;\n}\n\n#name,\n#ADD {\n  border: 1px solid black;\n  background-color: transparent;\n  border-radius: 5px;\n  padding: 4px;\n}\n\nselect {\n  height: 26px;\n}\n\n.error {\n  border: 2px solid red;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "index.js",
+                  "codeLanguage": "javascript",
+                  "content": "const dayInput = document.getElementById(\"day\");\nlet daysOfWeek;\nlet dayPicked;\nlet volunteerSlots;\nlet firstSlot;\n\nfunction addVolunteer(day, userName) {\n  dayInput.classList.remove(\"error\");\n  daysOfWeek = document.getElementById(\"daysOfWeek\").children;\n}",
+                  "solvedContent": "const dayInput = document.getElementById(\"day\");\nlet daysOfWeek;\nlet dayPicked;\nlet volunteerSlots;\nlet firstSlot;\n\nfunction addVolunteer(day, userName) {\n  dayInput.classList.remove(\"error\");\n  daysOfWeek = document.getElementById(\"daysOfWeek\").children;\n  dayPicked = daysOfWeek[day];\n}"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "You can use bracket notation to access an array by its index, like so: \n\n```\nvar animals = [\"cat\", \"dog\", \"fish\"];\nvar myAnimal = animals[1];            // stores \"dog\"\n```"
+                }
+              ]
+            }
+          },
+          {
+            "title": "Step 4",
+            "id": 113416,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Ponownie w tym przypadku nie chcemy modyfikować elementu `<div>` `dayPicked`, lecz jego elementy potomne, czyli listy przedziałów czasowych. Zmodyfikujmy nasz kod.\n\n1. Zmodyfikuj kod tak, aby zmienna `dayPicked` przechowywała elementy potomne wybranego \"dnia\" w tablicy `daysOfWeek`.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <link rel=\"stylesheet\" href=\"./index.css\" />\n  </head>\n  <body>\n    <h3 id=\"title\">Volunteer Sign Ups</h3>\n    <div id=\"daysOfWeek\">\n      <div id=\"mon\">\n        <h5>Monday</h5>\n        <ul>\n          <li>open</li>\n          <li>open</li>\n        </ul>\n      </div>\n      <div id=\"tues\">\n        <h5>Tuesday</h5>\n        <ul>\n          <li>open</li>\n          <li>open</li>\n        </ul>\n      </div>\n      <div id=\"weds\">\n        <h5>Wednesday</h5>\n        <ul>\n          <li>open</li>\n          <li>open</li>\n        </ul>\n      </div>\n    </div>\n    <div>\n      <p>Enter your name and choose a day below:</p>\n      <input type=\"text\" placeholder=\"name\" id=\"name\" />\n      <select id=\"day\">\n        <option value=\"0\">Mon</option>\n        <option value=\"1\">Tues</option>\n        <option value=\"2\">Wed</option>\n      </select>\n      <button id=\"add\"\n        onclick=\"addVolunteer(document.getElementById('day').value, document.getElementById('name').value)\">+</button>\n    </div>\n    <script src=\"index.js\"></script>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "index.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  font-family: sans-serif;\n  background-color: white;\n  padding-top: 10%;\n  margin-left: 10%;\n}\n\nh3,\nh4 {\n  text-align: left;\n  margin-left: 10%;\n}\n\n#name,\n#ADD {\n  border: 1px solid black;\n  background-color: transparent;\n  border-radius: 5px;\n  padding: 4px;\n}\n\nselect {\n  height: 26px;\n}\n\n.error {\n  border: 2px solid red;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "index.js",
+                  "codeLanguage": "javascript",
+                  "content": "const dayInput = document.getElementById(\"day\");\nlet daysOfWeek;\nlet dayPicked;\nlet volunteerSlots;\nlet firstSlot;\n\nfunction addVolunteer(day, userName) {\n  dayInput.classList.remove(\"error\");\n  daysOfWeek = document.getElementById(\"daysOfWeek\").children;\n  dayPicked = daysOfWeek[day];\n}",
+                  "solvedContent": "const dayInput = document.getElementById(\"day\");\nlet daysOfWeek;\nlet dayPicked;\nlet volunteerSlots;\nlet firstSlot;\n\nfunction addVolunteer(day, userName) {\n  dayInput.classList.remove(\"error\");\n  daysOfWeek = document.getElementById(\"daysOfWeek\").children;\n  dayPicked = daysOfWeek[day].children;\n}"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Step 5",
+            "id": 113417,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Teraz musimy zbudować logikę wypełniania miejsc dla wolontariuszy. Jeśli pamiętasz, gdy użytkownik wybierze dzień, nasza funkcja powinna sprawdzić, czy pierwsze miejsce jest już zajęte. Zacznijmy więc od uzyskania dostępu do listy miejsc dla wybranego przez użytkownika dnia.\n\n1. W tablicy `dayPicked` zapisaliśmy już elementy potomne znacznika `<div>` odpowiadającego wybranemu przez użytkownika dniu. Uzyskaj dostęp do tej tablicy i pobierz drugi element (który odpowiada elementowi `<ul>`).\n2. Zapisz to odwołanie w zmiennej `volunteerSlots`.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <link rel=\"stylesheet\" href=\"./index.css\" />\n  </head>\n  <body>\n    <h3 id=\"title\">Volunteer Sign Ups</h3>\n    <div id=\"daysOfWeek\">\n      <div id=\"mon\">\n        <h5>Monday</h5>\n        <ul>\n          <li>open</li>\n          <li>open</li>\n        </ul>\n      </div>\n      <div id=\"tues\">\n        <h5>Tuesday</h5>\n        <ul>\n          <li>open</li>\n          <li>open</li>\n        </ul>\n      </div>\n      <div id=\"weds\">\n        <h5>Wednesday</h5>\n        <ul>\n          <li>open</li>\n          <li>open</li>\n        </ul>\n      </div>\n    </div>\n    <div>\n      <p>Enter your name and choose a day below:</p>\n      <input type=\"text\" placeholder=\"name\" id=\"name\" />\n      <select id=\"day\">\n        <option value=\"0\">Mon</option>\n        <option value=\"1\">Tues</option>\n        <option value=\"2\">Wed</option>\n      </select>\n      <button id=\"add\"\n        onclick=\"addVolunteer(document.getElementById('day').value, document.getElementById('name').value)\">+</button>\n    </div>\n    <script src=\"index.js\"></script>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "index.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  font-family: sans-serif;\n  background-color: white;\n  padding-top: 10%;\n  margin-left: 10%;\n}\n\nh3,\nh4 {\n  text-align: left;\n  margin-left: 10%;\n}\n\n#name,\n#ADD {\n  border: 1px solid black;\n  background-color: transparent;\n  border-radius: 5px;\n  padding: 4px;\n}\n\nselect {\n  height: 26px;\n}\n\n.error {\n  border: 2px solid red;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "index.js",
+                  "codeLanguage": "javascript",
+                  "content": "const dayInput = document.getElementById(\"day\");\nlet daysOfWeek;\nlet dayPicked;\nlet volunteerSlots;\nlet firstSlot;\n\nfunction addVolunteer(day, userName) {\n  dayInput.classList.remove(\"error\");\n  daysOfWeek = document.getElementById(\"daysOfWeek\").children;\n  dayPicked = daysOfWeek[day].children;\n  \n}",
+                  "solvedContent": "const dayInput = document.getElementById(\"day\");\nlet daysOfWeek;\nlet dayPicked;\nlet volunteerSlots;\nlet firstSlot;\n\nfunction addVolunteer(day, userName) {\n  dayInput.classList.remove(\"error\");\n  daysOfWeek = document.getElementById(\"daysOfWeek\").children;\n  dayPicked = daysOfWeek[day].children;\n  volunteerSlots = dayPicked[1];\n}"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "Remember that when accessing an array using bracket notation, indices begin at 0. For example: \n\n```\nvar animals = [\"cat\", \"dog\", \"fish\"];\nvar myAnimal = animals[0];            // stores \"cat\"\nvar myAnimal = animals[1];            // stores \"dog\"\n```"
+                }
+              ]
+            }
+          },
+          {
+            "title": "Step 6",
+            "id": 113418,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "W ostatnim kroku uzyskaliśmy dostęp do elementu `<ul>`. Jednak bardziej interesują nas zawarte w nim elementy `<li>`, ponieważ to one faktycznie wyświetlają informacje. Uzyskajmy dostęp do pierwszego elementu `<li>`.\n\n1. Użyj odpowiedniej właściwości JavaScript, aby pobrać pierwszy element potomny elementu `<ul>` przechowywanego w `volunteerSlots`.\n2. Następnie zapisz to odwołanie w zmiennej `firstSlot`.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <link rel=\"stylesheet\" href=\"./index.css\" />\n  </head>\n  <body>\n    <h3 id=\"title\">Volunteer Sign Ups</h3>\n    <div id=\"daysOfWeek\">\n      <div id=\"mon\">\n        <h5>Monday</h5>\n        <ul>\n          <li>open</li>\n          <li>open</li>\n        </ul>\n      </div>\n      <div id=\"tues\">\n        <h5>Tuesday</h5>\n        <ul>\n          <li>open</li>\n          <li>open</li>\n        </ul>\n      </div>\n      <div id=\"weds\">\n        <h5>Wednesday</h5>\n        <ul>\n          <li>open</li>\n          <li>open</li>\n        </ul>\n      </div>\n    </div>\n    <div>\n      <p>Enter your name and choose a day below:</p>\n      <input type=\"text\" placeholder=\"name\" id=\"name\" />\n      <select id=\"day\">\n        <option value=\"0\">Mon</option>\n        <option value=\"1\">Tues</option>\n        <option value=\"2\">Wed</option>\n      </select>\n      <button id=\"add\"\n        onclick=\"addVolunteer(document.getElementById('day').value, document.getElementById('name').value)\">+</button>\n    </div>\n    <script src=\"index.js\"></script>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "index.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  font-family: sans-serif;\n  background-color: white;\n  padding-top: 10%;\n  margin-left: 10%;\n}\n\nh3,\nh4 {\n  text-align: left;\n  margin-left: 10%;\n}\n\n#name,\n#ADD {\n  border: 1px solid black;\n  background-color: transparent;\n  border-radius: 5px;\n  padding: 4px;\n}\n\nselect {\n  height: 26px;\n}\n\n.error {\n  border: 2px solid red;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "index.js",
+                  "codeLanguage": "javascript",
+                  "content": "const dayInput = document.getElementById(\"day\");\nlet daysOfWeek;\nlet dayPicked;\nlet volunteerSlots;\nlet firstSlot;\n\nfunction addVolunteer(day, userName) {\n  dayInput.classList.remove(\"error\");\n  daysOfWeek = document.getElementById(\"daysOfWeek\").children;\n  dayPicked = daysOfWeek[day].children;\n  volunteerSlots = dayPicked[1];\n  \n}",
+                  "solvedContent": "const dayInput = document.getElementById(\"day\");\nlet daysOfWeek;\nlet dayPicked;\nlet volunteerSlots;\nlet firstSlot;\n\nfunction addVolunteer(day, userName) {\n  dayInput.classList.remove(\"error\");\n  daysOfWeek = document.getElementById(\"daysOfWeek\").children;\n  dayPicked = daysOfWeek[day].children;\n  volunteerSlots = dayPicked[1];\n  firstSlot = volunteerSlots.firstElementChild;\n}"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Step 7",
+            "id": 113419,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Mamy już wszystkie elementy na miejscu, więc napiszmy teraz logikę dodawania wolontariuszy do przedziałów czasowych. Na początek zajmijmy się sytuacją, gdy pierwszy przedział dla wybranego dnia ma wartość `\"open\"`. W takim przypadku chcemy dodać wolontariusza do tego przedziału.\n\n1. Napisz warunkową instrukcję `if`, która sprawdza, czy właściwość `innerHTML` elementu `first_slot` jest równa `\"open\"`.\n2. Następnie, jeśli warunek zostanie spełniony, ciało instrukcji warunkowej powinno ustawić właściwość `innerHTML` elementu `firstSlot` na wartość przekazaną przez parametr `userName`.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <link rel=\"stylesheet\" href=\"./index.css\" />\n  </head>\n  <body>\n    <h3 id=\"title\">Volunteer Sign Ups</h3>\n    <div id=\"daysOfWeek\">\n      <div id=\"mon\">\n        <h5>Monday</h5>\n        <ul>\n          <li>open</li>\n          <li>open</li>\n        </ul>\n      </div>\n      <div id=\"tues\">\n        <h5>Tuesday</h5>\n        <ul>\n          <li>open</li>\n          <li>open</li>\n        </ul>\n      </div>\n      <div id=\"weds\">\n        <h5>Wednesday</h5>\n        <ul>\n          <li>open</li>\n          <li>open</li>\n        </ul>\n      </div>\n    </div>\n    <div>\n      <p>Enter your name and choose a day below:</p>\n      <input type=\"text\" placeholder=\"name\" id=\"name\" />\n      <select id=\"day\">\n        <option value=\"0\">Mon</option>\n        <option value=\"1\">Tues</option>\n        <option value=\"2\">Wed</option>\n      </select>\n      <button id=\"add\"\n        onclick=\"addVolunteer(document.getElementById('day').value, document.getElementById('name').value)\">+</button>\n    </div>\n    <script src=\"index.js\"></script>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "index.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  font-family: sans-serif;\n  background-color: white;\n  padding-top: 10%;\n  margin-left: 10%;\n}\n\nh3,\nh4 {\n  text-align: left;\n  margin-left: 10%;\n}\n\n#name,\n#ADD {\n  border: 1px solid black;\n  background-color: transparent;\n  border-radius: 5px;\n  padding: 4px;\n}\n\nselect {\n  height: 26px;\n}\n\n.error {\n  border: 2px solid red;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "index.js",
+                  "codeLanguage": "javascript",
+                  "content": "const dayInput = document.getElementById(\"day\");\nlet daysOfWeek;\nlet dayPicked;\nlet volunteerSlots;\nlet firstSlot;\n\nfunction addVolunteer(day, userName) {\n  dayInput.classList.remove(\"error\");\n  daysOfWeek = document.getElementById(\"daysOfWeek\").children;\n  dayPicked = daysOfWeek[day].children;\n  volunteerSlots = dayPicked[1];\n  firstSlot = volunteerSlots.firstElementChild;\n  \n}",
+                  "solvedContent": "const dayInput = document.getElementById(\"day\");\nlet daysOfWeek;\nlet dayPicked;\nlet volunteerSlots;\nlet firstSlot;\n\nfunction addVolunteer(day, userName) {\n  dayInput.classList.remove(\"error\");\n  daysOfWeek = document.getElementById(\"daysOfWeek\").children;\n  dayPicked = daysOfWeek[day].children;\n  volunteerSlots = dayPicked[1];\n  firstSlot = volunteerSlots.firstElementChild;\n  if (firstSlot.innerHTML == \"open\") {\n    firstSlot.innerHTML = userName;\n  }\n}"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Step 8",
+            "id": 113420,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Jeśli pierwszy warunek nie zostanie spełniony (tzn. jego `innerText` nie wynosi `\"open\"`, lecz zawiera nazwę użytkownika), wiemy, że pierwsze miejsce jest zajęte. W takim przypadku chcemy sprawdzić, czy możemy dodać wolontariusza do drugiego miejsca.\n\n1. Dodaj instrukcję `else if`, która za pomocą odpowiedniej właściwości sprawdzi, czy `innerHTML` następnego elementu rodzeństwa `firstSlot` wynosi `\"open\"`.\n2. Jeśli tak, ciało instrukcji warunkowej powinno ustawić `innerHTML` elementu rodzeństwa na wartość `userName`.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <link rel=\"stylesheet\" href=\"./index.css\" />\n  </head>\n  <body>\n    <h3 id=\"title\">Volunteer Sign Ups</h3>\n    <div id=\"daysOfWeek\">\n      <div id=\"mon\">\n        <h5>Monday</h5>\n        <ul>\n          <li>open</li>\n          <li>open</li>\n        </ul>\n      </div>\n      <div id=\"tues\">\n        <h5>Tuesday</h5>\n        <ul>\n          <li>open</li>\n          <li>open</li>\n        </ul>\n      </div>\n      <div id=\"weds\">\n        <h5>Wednesday</h5>\n        <ul>\n          <li>open</li>\n          <li>open</li>\n        </ul>\n      </div>\n    </div>\n    <div>\n      <p>Enter your name and choose a day below:</p>\n      <input type=\"text\" placeholder=\"name\" id=\"name\" />\n      <select id=\"day\">\n        <option value=\"0\">Mon</option>\n        <option value=\"1\">Tues</option>\n        <option value=\"2\">Wed</option>\n      </select>\n      <button id=\"add\"\n        onclick=\"addVolunteer(document.getElementById('day').value, document.getElementById('name').value)\">+</button>\n    </div>\n    <script src=\"index.js\"></script>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "index.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  font-family: sans-serif;\n  background-color: white;\n  padding-top: 10%;\n  margin-left: 10%;\n}\n\nh3,\nh4 {\n  text-align: left;\n  margin-left: 10%;\n}\n\n#name,\n#ADD {\n  border: 1px solid black;\n  background-color: transparent;\n  border-radius: 5px;\n  padding: 4px;\n}\n\nselect {\n  height: 26px;\n}\n\n.error {\n  border: 2px solid red;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "index.js",
+                  "codeLanguage": "javascript",
+                  "content": "const dayInput = document.getElementById(\"day\");\nlet daysOfWeek;\nlet dayPicked;\nlet volunteerSlots;\nlet firstSlot;\n\nfunction addVolunteer(day, userName) {\n  dayInput.classList.remove(\"error\");\n  daysOfWeek = document.getElementById(\"daysOfWeek\").children;\n  dayPicked = daysOfWeek[day].children;\n  volunteerSlots = dayPicked[1];\n  firstSlot = volunteerSlots.firstElementChild;\n  if (firstSlot.innerHTML == \"open\") {\n    firstSlot.innerHTML = userName;\n    \n  }\n}",
+                  "solvedContent": "const dayInput = document.getElementById(\"day\");\nlet daysOfWeek;\nlet dayPicked;\nlet volunteerSlots;\nlet firstSlot;\n\nfunction addVolunteer(day, userName) {\n  dayInput.classList.remove(\"error\");\n  daysOfWeek = document.getElementById(\"daysOfWeek\").children;\n  dayPicked = daysOfWeek[day].children;\n  volunteerSlots = dayPicked[1];\n  firstSlot = volunteerSlots.firstElementChild;\n  if (firstSlot.innerHTML == \"open\") {\n    firstSlot.innerHTML = userName;\n  } else if (firstSlot.nextElementSibling.innerHTML == \"open\") {\n    firstSlot.nextElementSibling.innerHTML = userName;\n  }\n}"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "You can use `nextElementSibling` to traverse the DOM and find the next element in a list of elements."
+                }
+              ]
+            }
+          },
+          {
+            "title": "Step 9",
+            "id": 113421,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Na koniec, jeśli oba przedziały czasowe dla wybranego dnia są zajęte (czyli gdy oba wcześniejsze warunki nie zostaną spełnione), chcemy wyświetlić użytkownikowi prosty komunikat o błędzie informujący, że powinien spróbować wybrać inny dzień.\n\n1. Dokończ instrukcję warunkową, dodając instrukcję `else`, która doda klasę CSS `.error` do elementu `#day`, zapisanego już w zmiennej `dayInput`.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <link rel=\"stylesheet\" href=\"./index.css\" />\n  </head>\n  <body>\n    <h3 id=\"title\">Volunteer Sign Ups</h3>\n    <div id=\"daysOfWeek\">\n      <div id=\"mon\">\n        <h5>Monday</h5>\n        <ul>\n          <li>open</li>\n          <li>open</li>\n        </ul>\n      </div>\n      <div id=\"tues\">\n        <h5>Tuesday</h5>\n        <ul>\n          <li>open</li>\n          <li>open</li>\n        </ul>\n      </div>\n      <div id=\"weds\">\n        <h5>Wednesday</h5>\n        <ul>\n          <li>open</li>\n          <li>open</li>\n        </ul>\n      </div>\n    </div>\n    <div>\n      <p>Enter your name and choose a day below:</p>\n      <input type=\"text\" placeholder=\"name\" id=\"name\" />\n      <select id=\"day\">\n        <option value=\"0\">Mon</option>\n        <option value=\"1\">Tues</option>\n        <option value=\"2\">Wed</option>\n      </select>\n      <button id=\"add\"\n        onclick=\"addVolunteer(document.getElementById('day').value, document.getElementById('name').value)\">+</button>\n    </div>\n    <script src=\"index.js\"></script>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "index.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  font-family: sans-serif;\n  background-color: white;\n  padding-top: 10%;\n  margin-left: 10%;\n}\n\nh3,\nh4 {\n  text-align: left;\n  margin-left: 10%;\n}\n\n#name,\n#ADD {\n  border: 1px solid black;\n  background-color: transparent;\n  border-radius: 5px;\n  padding: 4px;\n}\n\nselect {\n  height: 26px;\n}\n\n.error {\n  border: 2px solid red;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "index.js",
+                  "codeLanguage": "javascript",
+                  "content": "const dayInput = document.getElementById(\"day\");\nlet daysOfWeek;\nlet dayPicked;\nlet volunteerSlots;\nlet firstSlot;\n\nfunction addVolunteer(day, userName) {\n  dayInput.classList.remove(\"error\");\n  daysOfWeek = document.getElementById(\"daysOfWeek\").children;\n  dayPicked = daysOfWeek[day].children;\n  volunteerSlots = dayPicked[1];\n  firstSlot = volunteerSlots.firstElementChild;\n  if (firstSlot.innerHTML == \"open\") {\n    firstSlot.innerHTML = userName;\n  } else if (firstSlot.nextElementSibling.innerHTML == \"open\") {\n    firstSlot.nextElementSibling.innerHTML = userName;\n    \n  }\n}",
+                  "solvedContent": "const dayInput = document.getElementById(\"day\");\nlet daysOfWeek;\nlet dayPicked;\nlet volunteerSlots;\nlet firstSlot;\n\nfunction addVolunteer(day, userName) {\n  dayInput.classList.remove(\"error\");\n  daysOfWeek = document.getElementById(\"daysOfWeek\").children;\n  dayPicked = daysOfWeek[day].children;\n  volunteerSlots = dayPicked[1];\n  firstSlot = volunteerSlots.firstElementChild;\n  if (firstSlot.innerHTML == \"open\") {\n    firstSlot.innerHTML = userName;\n  } else if (firstSlot.nextElementSibling.innerHTML == \"open\") {\n    firstSlot.nextElementSibling.innerHTML = userName;\n  } else {\n    dayInput.classList.add(\"error\");\n  }\n}"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "You can target an element using `document.getElementById()` and you can access its CSS classes through the `.classList` property. "
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

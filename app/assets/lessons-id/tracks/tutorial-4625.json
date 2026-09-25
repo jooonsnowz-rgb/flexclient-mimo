@@ -1,0 +1,140 @@
+{
+  "tutorial": {
+    "id": 4625,
+    "version": 1,
+    "type": "practiceOptional",
+    "isNew": false,
+    "codeLanguage": "python",
+    "title": "Pengecualian",
+    "descriptionContent": "Menerapkan penanganan eksepsi yang berfokus pada transfer ke tugas Python yang panduannya lebih sedikit dan pemeriksaan mandiri.",
+    "shortDescriptionContent": "Pembelajar Python yang ingin berlatih penanganan exception yang lebih menantang",
+    "showInTrack": true,
+    "iconBanner": null,
+    "chapters": [
+      {
+        "id": 17839,
+        "title": "Tantangan Batas Exception",
+        "type": "practiceLevel3",
+        "lessons": [
+          {
+            "title": "Spot an oversized boundary",
+            "id": 152127,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Handler hanya mengharapkan teks kursi yang tidak valid. Pekerjaan mana yang harus dipindahkan ke luar blok <code>try</code> yang terlalu besar ini?</p><code version=\"2\" codelang=\"python\" name=\"booking.py\" visible-if=\"always\"><content><text value=\"try\" class=\"keyword\" /><text value=\":\" /><text type=\"break\" /><text value=\"  seats = int(form[\" /><text value=\"&quot;seats&quot;\" class=\"string\" /><text value=\"])\" /><text type=\"break\" /><text value=\"  total = seats * form[\" /><text value=\"&quot;price&quot;\" class=\"string\" /><text value=\"]\" /><text type=\"break\" /><text value=\"  save_booking(total)\" /><text type=\"break\" /><text value=\"except\" class=\"keyword\" /><text value=\" ValueError:\" /><text type=\"break\" /><text value=\"  \" /><text value=\"return\" class=\"keyword\" /><text value=\" \" /><text value=\"None\" class=\"literal\" /></content></code><selection multiple=\"multiple\"><item value=\"1\" correct=\"true\">Perhitungan total dan pemanggilan <code>save_booking()</code></item><item value=\"2\" correct=\"false\">Konversi dengan <code>int()</code></item><item value=\"3\" correct=\"false\">Penangan <code>ValueError</code></item><item value=\"4\" correct=\"false\">Seluruh isi fungsi</item></selection><p visible-if=\"wrong\">Perhitungan total dan pemanggilan <code>save_booking()</code>.</p></body></html>"
+          },
+          {
+            "title": "Move recovery to the caller",
+            "id": 152128,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Pemesanan memiliki key <code>\"seats\"</code>, tetapi teksnya mungkin tidak valid. Lengkapi handler khusus milik pemanggil di sekitar <code>parse_seats()</code>.</p><code version=\"2\" codelang=\"python\" name=\"booking.py\" visible-if=\"always\"><content><text value=\"def\" class=\"keyword\" /><text value=\" \" /><text value=\"parse_seats\" class=\"title\" /><text value=\"(value)\" class=\"params\" /><text value=\":\" /><text type=\"break\" /><text value=\"  \" /><text value=\"return\" class=\"keyword\" /><text value=\" int(value)\" /><text type=\"break\" /><text type=\"break\" /><text value=\"def\" class=\"keyword\" /><text value=\" \" /><text value=\"process_booking\" class=\"title\" /><text value=\"(booking)\" class=\"params\" /><text value=\":\" /><text type=\"break\" /><text value=\"  \" /><text value=\"try\" class=\"keyword\" /><text value=\":\" /><text type=\"break\" /><text value=\"    seats = parse_seats(booking[\" /><text value=\"&quot;seats&quot;\" class=\"string\" /><text value=\"])\" /><text type=\"break\" /><text value=\"  \" /><text value=\"except\" class=\"keyword\" /><text value=\" ValueError:\" /><text type=\"break\" /><text value=\"    \" /><text value=\"return\" class=\"keyword\" /><text value=\" \" /><text value=\"None\" class=\"literal\" /><text type=\"break\" /><text value=\"  \" /><text value=\"return\" class=\"keyword\" /><text value=\" seats\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"133\" endIndex=\"143\" /><option correct=\"false\"><content><text value=\"KeyError\" /></content></option><option correct=\"false\"><content><text value=\"TypeError\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Pastikan kamu memilih <code>ValueError</code>.</p></body></html>"
+          },
+          {
+            "title": "Separate expected failures",
+            "id": 152129,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Lengkapi handler pertama agar key <code>\"seats\"</code> yang hilang mendapatkan responsnya sendiri.</p><code version=\"2\" codelang=\"python\" name=\"booking.py\" visible-if=\"always\"><content><text value=\"try\" class=\"keyword\" /><text value=\":\" /><text type=\"break\" /><text value=\"  seats = int(booking[\" /><text value=\"&quot;seats&quot;\" class=\"string\" /><text value=\"])\" /><text type=\"break\" /><text value=\"except\" class=\"keyword\" /><text value=\" KeyError:\" /><text type=\"break\" /><text value=\"  \" /><text value=\"return\" class=\"keyword\" /><text value=\" \" /><text value=\"&quot;Missing seats&quot;\" class=\"string\" /><text type=\"break\" /><text value=\"except\" class=\"keyword\" /><text value=\" ValueError:\" /><text type=\"break\" /><text value=\"  \" /><text value=\"return\" class=\"keyword\" /><text value=\" \" /><text value=\"&quot;Invalid seats&quot;\" class=\"string\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"44\" endIndex=\"52\" /><option correct=\"false\"><content><text value=\"TypeError\" /></content></option><option correct=\"false\"><content><text value=\"ValueError\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Pastikan kamu memilih <code>KeyError</code>.</p></body></html>"
+          },
+          {
+            "title": "Keep saving outside",
+            "id": 152130,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Apa yang dapat diperbaiki dari penanganan error dalam kode ini?</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"try\" class=\"keyword\" /><text value=\":\" /><text type=\"break\" /><text value=\"  seats = int(form[\" /><text value=\"&quot;seats&quot;\" class=\"string\" /><text value=\"])\" /><text type=\"break\" /><text value=\"  save_booking(seats)\" /><text type=\"break\" /><text value=\"except\" class=\"keyword\" /><text value=\":\" /><text type=\"break\" /><text value=\"  \" /><text value=\"pass\" class=\"keyword\" /></content></code><selection multiple=\"multiple\"><item value=\"1\" correct=\"true\">Tangkap pengecualian tertentu, seperti <code>ValueError</code>, alih-alih menggunakan <code>except</code> tanpa jenis pengecualian, dan pindahkan <code>save_booking(seats)</code> ke luar blok <code>try</code></item><item value=\"2\" correct=\"false\">Pindahkan <code>save_booking(seats)</code> ke luar blok <code>try</code></item><item value=\"3\" correct=\"false\">Tangkap exception tertentu, seperti <code>ValueError</code>, alih-alih menggunakan <code>except</code> tanpa spesifikasi</item><item value=\"4\" correct=\"false\">Tidak ada</item></selection><p visible-if=\"wrong\">Tangkap pengecualian tertentu, seperti <code>ValueError</code>, alih-alih menggunakan <code>except</code> tanpa jenis pengecualian, dan pindahkan <code>save_booking(seats)</code> ke luar blok <code>try</code>.</p></body></html>"
+          },
+          {
+            "title": "Repair a settings loader",
+            "id": 152131,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Lengkapi handler konversi yang diharapkan dari pemuat pengaturan. Startup tetap berada di luar blok.</p><code version=\"2\" codelang=\"python\" name=\"settings.py\" visible-if=\"always\"><content><text value=\"def\" class=\"keyword\" /><text value=\" \" /><text value=\"start_service\" class=\"title\" /><text value=\"(settings)\" class=\"params\" /><text value=\":\" /><text type=\"break\" /><text value=\"  \" /><text value=\"try\" class=\"keyword\" /><text value=\":\" /><text type=\"break\" /><text value=\"    port = int(settings[\" /><text value=\"&quot;port&quot;\" class=\"string\" /><text value=\"])\" /><text type=\"break\" /><text value=\"  \" /><text value=\"except\" class=\"keyword\" /><text value=\" ValueError:\" /><text type=\"break\" /><text value=\"    \" /><text value=\"return\" class=\"keyword\" /><text value=\" \" /><text value=\"&quot;Invalid port&quot;\" class=\"string\" /><text type=\"break\" /><text value=\"  \" /><text value=\"return\" class=\"keyword\" /><text value=\" port\" /></content><interactions><interaction type=\"validatedInput\" isDefault=\"true\" startIndex=\"78\" endIndex=\"88\" /></interactions></code><p visible-if=\"wrong\">Pastikan kamu mengetik <code>ValueError</code>.</p></body></html>"
+          },
+          {
+            "title": "Process bookings safely",
+            "id": 152132,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Sempurnakan `process_booking()` agar hanya menangkap `ValueError` dan mengembalikan `None` untuk teks kursi yang tidak valid.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "def process_booking(booking):\n  try:\n    seats = int(booking[\"seats\"])\n    return seats * booking[\"price\"]\n  except ValueError:\n    pass\n",
+                  "solvedContent": "def process_booking(booking):\n  try:\n    seats = int(booking[\"seats\"])\n  except ValueError:\n    return None\n  return seats * booking[\"price\"]\n"
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      },
+      {
+        "id": 17840,
+        "title": "Tantangan Perilaku Fallback",
+        "type": "practiceLevel3",
+        "lessons": [
+          {
+            "title": "Match fallback to meaning",
+            "id": 152133,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Kuantitas yang tidak ada mencegah pesanan, sedangkan diskon yang tidak ada berarti tidak ada diskon. Pasangan fallback mana yang sesuai dengan makna tersebut?</p><selection multiple=\"multiple\"><item value=\"1\" correct=\"true\"><code>quantity: None, discount: 0</code></item><item value=\"2\" correct=\"false\"><code>quantity: 0, discount: None</code></item><item value=\"3\" correct=\"false\"><code>quantity: 0, discount: 1</code></item><item value=\"4\" correct=\"false\"><code>quantity: None, discount: None</code></item></selection><p visible-if=\"wrong\"><code>quantity: None, discount: 0</code>.</p></body></html>"
+          },
+          {
+            "title": "Detect a failed conversion",
+            "id": 152134,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Ketik perbandingan yang mendeteksi sinyal kegagalan eksplisit dari parser.</p><code version=\"2\" codelang=\"python\" name=\"batch.py\" visible-if=\"always\"><content><text value=\"size = read_batch_size(\" /><text value=\"&quot;many&quot;\" class=\"string\" /><text value=\")\" /><text type=\"break\" /><text value=\"if\" class=\"keyword\" /><text value=\" size \" /><text value=\"is\" class=\"keyword\" /><text value=\" \" /><text value=\"None\" class=\"literal\" /><text value=\":\" /><text type=\"break\" /><text value=\"  print(\" /><text value=\"&quot;Skip batch&quot;\" class=\"string\" /><text value=\")\" /></content><interactions><interaction type=\"validatedInput\" isDefault=\"true\" startIndex=\"39\" endIndex=\"46\" /></interactions></code><p visible-if=\"wrong\">Pastikan kamu mengetik <code>is None</code>.</p></body></html>"
+          },
+          {
+            "title": "Replace a silent handler",
+            "id": 152135,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Ganti kegagalan diam-diam dengan hasil yang dapat diperiksa oleh pemanggil.</p><code version=\"2\" codelang=\"python\" name=\"batch.py\" visible-if=\"always\"><content><text value=\"def\" class=\"keyword\" /><text value=\" \" /><text value=\"read_batch_size\" class=\"title\" /><text value=\"(value)\" class=\"params\" /><text value=\":\" /><text type=\"break\" /><text value=\"  \" /><text value=\"try\" class=\"keyword\" /><text value=\":\" /><text type=\"break\" /><text value=\"    \" /><text value=\"return\" class=\"keyword\" /><text value=\" int(value)\" /><text type=\"break\" /><text value=\"  \" /><text value=\"except\" class=\"keyword\" /><text value=\" ValueError:\" /><text type=\"break\" /><text value=\"    \" /><text value=\"return\" class=\"keyword\" /><text value=\" \" /><text value=\"None\" class=\"literal\" /></content><interactions><interaction type=\"validatedInput\" isDefault=\"true\" startIndex=\"89\" endIndex=\"93\" /></interactions></code><p visible-if=\"wrong\">Pastikan kamu mengetik <code>None</code>.</p></body></html>"
+          },
+          {
+            "title": "Select a valid default",
+            "id": 152136,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Diskon opsional yang tidak valid berarti tidak ada diskon. Return mana dari <code>except ValueError:</code> yang mempertahankan makna tersebut dan membuat perhitungan tetap dapat dilakukan?</p><selection multiple=\"multiple\"><item value=\"1\" correct=\"true\"><code>return 0</code></item><item value=\"2\" correct=\"false\"><code>return None</code></item><item value=\"3\" correct=\"false\"><code>return 1</code></item><item value=\"4\" correct=\"false\"><code>pass</code></item></selection><p visible-if=\"wrong\"><code>return 0</code>.</p></body></html>"
+          },
+          {
+            "title": "Route a failed import",
+            "id": 152137,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Lengkapi branch caller yang mengarahkan ukuran batch yang tidak valid ke respons skip.</p><code version=\"2\" codelang=\"python\" name=\"batch.py\" visible-if=\"always\"><content><text value=\"size = read_batch_size(row[\" /><text value=\"&quot;size&quot;\" class=\"string\" /><text value=\"])\" /><text type=\"break\" /><text value=\"if\" class=\"keyword\" /><text value=\" size \" /><text value=\"is\" class=\"keyword\" /><text value=\" \" /><text value=\"None\" class=\"literal\" /><text value=\":\" /><text type=\"break\" /><text value=\"  \" /><text value=\"return\" class=\"keyword\" /><text value=\" \" /><text value=\"&quot;Skip row&quot;\" class=\"string\" /><text type=\"break\" /><text value=\"return\" class=\"keyword\" /><text value=\" size\" /></content><interactions><interaction type=\"validatedInput\" isDefault=\"true\" startIndex=\"44\" endIndex=\"51\" /></interactions></code><p visible-if=\"wrong\">Pastikan kamu mengetik <code>is None</code>.</p></body></html>"
+          },
+          {
+            "title": "Build a clear parser",
+            "id": 152138,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Lengkapi helper `read_quantity()`. Tangkap hanya `ValueError` dan kembalikan `None` untuk teks yang tidak valid.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "def read_quantity(value):\n  return int(value)\n\ndef read_discount(value):\n  try:\n    return int(value)\n  except ValueError:\n    return 0\n\ndef prepare_order(quantity_text, discount_text):\n  quantity = read_quantity(quantity_text)\n  if quantity is None:\n    return None\n\n  discount = read_discount(discount_text)\n  return quantity, discount",
+                  "solvedContent": "def read_quantity(value):\n  try:\n    return int(value)\n  except ValueError:\n    return None\n\ndef read_discount(value):\n  try:\n    return int(value)\n  except ValueError:\n    return 0\n\ndef prepare_order(quantity_text, discount_text):\n  quantity = read_quantity(quantity_text)\n  if quantity is None:\n    return None\n\n  discount = read_discount(discount_text)\n  return quantity, discount"
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

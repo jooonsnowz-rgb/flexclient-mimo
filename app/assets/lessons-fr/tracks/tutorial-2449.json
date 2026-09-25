@@ -1,0 +1,268 @@
+{
+  "tutorial": {
+    "id": 2449,
+    "version": 5,
+    "type": "guidedProjectOptional",
+    "isNew": false,
+    "codeLanguage": "python",
+    "title": "Animaux de compagnie",
+    "descriptionContent": "Utilise les bases de la POO en Python pour créer des objets flexibles et efficaces",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": "tutorial-2449-icon-banner.svg",
+    "chapters": [
+      {
+        "id": 14043,
+        "title": "Animaux de compagnie en POO",
+        "type": "practiceLevel1",
+        "lessons": [
+          {
+            "title": "Starter code",
+            "id": 124747,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Dans ce projet, nous allons créer des classes pour modéliser les données et les comportements de certains de nos amis les animaux de compagnie préférés ! Au passage, nous utiliserons les piliers de la POO (programmation orientée objet) pour créer un code flexible et efficace.\n\nAvant de commencer à créer nos sous-classes, testons notre classe parente (ou superclasse), `Pet()`.\n\n1. Crée une variable nommée `my_pet`.\n2. Dans cette variable, crée une instance de la classe `Pet()`. Transmets `\"gecko\"` pour `pet_type`, `\"Sammy\"` pour `name` et `\"gek\"` pour `sound`.\n3. Appelle ensuite la méthode `speak()` sur ton nouvel objet pour vérifier que ton code fonctionne !",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "class Pet:\n  def __init__(self, pet_type, name, sound):\n    self.pet_type = pet_type\n    self.name = name\n    self.sound = sound\n\n  def speak(self):\n    print(f\"{self.name} goes {self.sound}!\")\n\n  def play(self):\n    print(f\"{self.name} is playing!\")",
+                  "solvedContent": "class Pet:\n  def __init__(self, pet_type, name, sound):\n    self.pet_type = pet_type\n    self.name = name\n    self.sound = sound\n\n  def speak(self):\n    print(f\"{self.name} goes {self.sound}!\")\n\n  def play(self):\n    print(f\"{self.name} is playing!\")\n\n\nmy_pet = Pet(\"gecko\", \"Sammy\", \"gek\") \nmy_pet.speak()"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "1. To create an instance of a class, we use this format:  `Class_Name(first_argument, second_argument, ...)`.\n2. To call a method on an object, we use this syntax: `object_name.method_name(first_argument, second_argument, ...)`. Only pass in arguments if the method definition includes them!"
+                }
+              ]
+            }
+          },
+          {
+            "title": "Creating the `Cat()` subclass",
+            "id": 124748,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Nous allons maintenant utiliser l’héritage en POO pour créer une sous-classe de `Pet()` appelée `Cat`.\n\n1. Commence par créer une classe nommée `Cat`.\n2. Indique que cette nouvelle classe hérite de `Pet()`.\n3. Dans `Cat()`, crée une méthode constructeur avec un paramètre `self` et des paramètres supplémentaires pour `name`, `sound` et `coat_length`.\n4. Nous devons ensuite transmettre les bons arguments de données à la superclasse `Pet()`. Dans le constructeur, appelle la méthode constructeur de la superclasse et transmets-lui `\"cat\"`, `name` et `sound`.\n5. Ajoute du code dans la méthode constructeur de `Cat()` pour affecter la valeur `coat_length` reçue à une propriété de l’objet nommée `coat_length`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "class Pet:\n  def __init__(self, pet_type, name, sound):\n    self.pet_type = pet_type\n    self.name = name\n    self.sound = sound\n\n  def speak(self):\n    print(f\"{self.name} goes {self.sound}!\")\n\n  def play(self):\n    print(f\"{self.name} is playing!\")",
+                  "solvedContent": "class Pet:\n  def __init__(self, pet_type, name, sound):\n    self.pet_type = pet_type\n    self.name = name\n    self.sound = sound\n\n  def speak(self):\n    print(f\"{self.name} goes {self.sound}!\")\n\n  def play(self):\n    print(f\"{self.name} is playing!\")\n\nclass Cat(Pet):\n  def __init__(self, name, sound, coat_length):\n    super().__init__(\"cat\", name, sound)\n    self.coat_length = coat_length\n"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "1. To specify that a class inherits from another class, we use this syntax: `class Class_Name(Class_To_Inherit):`.\n2. A class constructor method follows this format:\n```python\n def __init__(self, first_param_val, second_param_val, third_param_val, ...):\n  # to pass values to the superclass constructor:\n  super().__init__(first_param_val, second_param_val, ...)  \n\n  # to assign values to class instance properties:\n  self.third_param = third_param_val\n  ...\n```"
+                }
+              ]
+            }
+          },
+          {
+            "title": "Creating an instance of `Cat()`",
+            "id": 124805,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Testons maintenant notre nouvelle sous-classe `Cat()` en créant une instance !\n\n1. Crée une nouvelle variable nommée `cat`.\n2. Dans cette nouvelle variable, crée une instance de la classe `Cat()` avec le nom `\"Mittens\"`, le son `\"Meow\"` et une valeur de `coat_length` égale à `\"long\"`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "class Pet:\n  def __init__(self, pet_type, name, sound):\n    self.pet_type = pet_type\n    self.name = name\n    self.sound = sound\n\n  def speak(self):\n    print(f\"{self.name} goes {self.sound}!\")\n\n  def play(self):\n    print(f\"{self.name} is playing!\")\n\nclass Cat(Pet):\n  def __init__(self, name, sound, coat_length):\n    super().__init__(\"cat\", name, sound)\n    self.coat_length = coat_length\n",
+                  "solvedContent": "class Pet:\n  def __init__(self, pet_type, name, sound):\n    self.pet_type = pet_type\n    self.name = name\n    self.sound = sound\n\n  def speak(self):\n    print(f\"{self.name} goes {self.sound}!\")\n\n  def play(self):\n    print(f\"{self.name} is playing!\")\n\nclass Cat(Pet):\n  def __init__(self, name, sound, coat_length):\n    super().__init__(\"cat\", name, sound)\n    self.coat_length = coat_length\n\ncat = Cat(\"Mittens\", \"Meow\", \"long\")"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "1. To create an instance of a class, we use this format:  `Class_Name(first_argument, second_argument, ...)`."
+                }
+              ]
+            }
+          },
+          {
+            "title": "Adding the `purr()` method",
+            "id": 124749,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Ajoutons maintenant une méthode unique réservée aux objets `Cat()`, appelée `purr`.\n\n1. Dans la classe `Cat()`, mais après le constructeur, définis une méthode nommée `purr`.\n2. Dans `purr()`, écris du code pour afficher un message au format suivant : `\"<name> is purring.\"`.\n3. Remplace `<name>` par la valeur de la propriété `name` de l’objet chat.\n4. Ensuite, appelle la méthode `purr()` sur l’objet chat !",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "class Pet:\n  def __init__(self, pet_type, name, sound):\n    self.pet_type = pet_type\n    self.name = name\n    self.sound = sound\n\n  def speak(self):\n    print(f\"{self.name} goes {self.sound}!\")\n\n  def play(self):\n    print(f\"{self.name} is playing!\")\n\nclass Cat(Pet):\n  def __init__(self, name, sound, coat_length):\n    super().__init__(\"cat\", name, sound)\n    self.coat_length = coat_length\n\ncat = Cat(\"Mittens\", \"Meow\", \"long\")",
+                  "solvedContent": "class Pet:\n  def __init__(self, pet_type, name, sound):\n    self.pet_type = pet_type\n    self.name = name\n    self.sound = sound\n\n  def speak(self):\n    print(f\"{self.name} goes {self.sound}!\")\n\n  def play(self):\n    print(f\"{self.name} is playing!\")\n\nclass Cat(Pet):\n  def __init__(self, name, sound, coat_length):\n    super().__init__(\"cat\", name, sound)\n    self.coat_length = coat_length\n\n  def purr(self):\n    print(f\"{self.name} is purring.\")\n\ncat = Cat(\"Mittens\", \"Meow\", \"long\")\ncat.purr()"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "1. To create a new method within a class, we use the following syntax: `def method_name(self, first_param_val, second_param_val, ...):`.\n2. We can access a property within a class method using `self.property_name`."
+                }
+              ]
+            }
+          },
+          {
+            "title": "Creating the `Dog()` subclass",
+            "id": 124750,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Ensuite, nous utiliserons l’héritage pour créer une autre sous-classe de `Pet()`, appelée `Dog`.\n\n1. Crée une classe nommée `Dog`.\n2. Indique que cette nouvelle classe hérite de `Pet()`.\n3. Dans `Dog()`, crée une méthode constructeur avec des paramètres pour `name`, `sound` et `size`.\n4. Nous devons ensuite transmettre les arguments de données appropriés à la superclasse `Pet()`. Dans le constructeur, appelle la méthode constructeur de la superclasse et transmets-lui `\"dog\"`, `name` et `sound`.\n5. Ajoute du code dans la méthode constructeur de `Dog()` pour affecter la valeur `size` transmise à une propriété d’objet nommée `size`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "class Pet:\n  def __init__(self, pet_type, name, sound):\n    self.pet_type = pet_type\n    self.name = name\n    self.sound = sound\n\n  def speak(self):\n    print(f\"{self.name} goes {self.sound}!\")\n\n  def play(self):\n    print(f\"{self.name} is playing!\")\n\nclass Cat(Pet):\n  def __init__(self, name, sound, coat_length):\n    super().__init__(\"cat\", name, sound)\n    self.coat_length = coat_length\n\n  def purr(self):\n    print(f\"{self.name} is purring.\")\n\ncat = Cat(\"Mittens\", \"Meow\", \"long\")\ncat.purr()",
+                  "solvedContent": "class Pet:\n  def __init__(self, pet_type, name, sound):\n    self.pet_type = pet_type\n    self.name = name\n    self.sound = sound\n\n  def speak(self):\n    print(f\"{self.name} goes {self.sound}!\")\n\n  def play(self):\n    print(f\"{self.name} is playing!\")\n\nclass Cat(Pet):\n  def __init__(self, name, sound, coat_length):\n    super().__init__(\"cat\", name, sound)\n    self.coat_length = coat_length\n\n  def purr(self):\n    print(f\"{self.name} is purring.\")\n\nclass Dog(Pet):\n  def __init__(self, name, sound, size):\n    super().__init__(\"dog\", name, sound)\n    self.size = size\n\ncat = Cat(\"Mittens\", \"Meow\", \"long\")\ncat.purr()"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "1. To specify that a class inherits from another class, we use this syntax: `class Class_Name(Class_To_Inherit):`.\n2. A class constructor method follows this format:\n```python\n def __init__(self, first_param_val, second_param_val, third_param_val, ...):\n  # to pass values to the superclass constructor:\n  super().__init__(first_param_val, second_param_val, ...)  \n\n  # to assign values to class properties:\n  self.third_param = third_param_val\n  ...\n```"
+                }
+              ]
+            }
+          },
+          {
+            "title": "Creating an instance of `Dog()`",
+            "id": 124804,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Testons maintenant notre nouvelle sous-classe `Dog()` en créant une instance !\n\n1. Crée une nouvelle variable nommée `dog`.\n2. Dans cette variable, crée une instance de la classe `Dog()` avec le nom `\"Cruiser\"`, le son `\"Woof\"` et la taille `\"small\"`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "class Pet:\n  def __init__(self, pet_type, name, sound):\n    self.pet_type = pet_type\n    self.name = name\n    self.sound = sound\n\n  def speak(self):\n    print(f\"{self.name} goes {self.sound}!\")\n\n  def play(self):\n    print(f\"{self.name} is playing!\")\n\nclass Cat(Pet):\n  def __init__(self, name, sound, coat_length):\n    super().__init__(\"cat\", name, sound)\n    self.coat_length = coat_length\n\n  def purr(self):\n    print(f\"{self.name} is purring.\")\n\nclass Dog(Pet):\n  def __init__(self, name, sound, size):\n    super().__init__(\"dog\", name, sound)\n    self.size = size\n\ncat = Cat(\"Mittens\", \"Meow\", \"long\")\ncat.purr()",
+                  "solvedContent": "class Pet:\n  def __init__(self, pet_type, name, sound):\n    self.pet_type = pet_type\n    self.name = name\n    self.sound = sound\n\n  def speak(self):\n    print(f\"{self.name} goes {self.sound}!\")\n\n  def play(self):\n    print(f\"{self.name} is playing!\")\n\nclass Cat(Pet):\n  def __init__(self, name, sound, coat_length):\n    super().__init__(\"cat\", name, sound)\n    self.coat_length = coat_length\n\n  def purr(self):\n    print(f\"{self.name} is purring.\")\n\nclass Dog(Pet):\n  def __init__(self, name, sound, size):\n    super().__init__(\"dog\", name, sound)\n    self.size = size\n\ncat = Cat(\"Mittens\", \"Meow\", \"long\")\ncat.purr()\n\ndog = Dog(\"Cruiser\", \"Woof\", \"small\")"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "1. To create an instance of a class, we use this format:  `Class_Name(first_argument, second_argument, ...)`."
+                }
+              ]
+            }
+          },
+          {
+            "title": "Overriding the `speak()` method",
+            "id": 124751,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Pour illustrer le polymorphisme en POO, tu vas remplacer la méthode `speak()` dans la sous-classe `Dog()` afin d’y inclure la taille du chien.\n\n1. Définis une méthode `speak()` dans la classe `Dog()`. (Remarque que le nom de cette méthode doit être écrit exactement comme celui de la méthode `speak()` dans `Pet()`.)\n2. Dans cette méthode, écris du code pour afficher un message au format `\"<name> the <size> dog goes <sound>!\"`.\n3. Remplace `<...>` par les valeurs de propriété correspondantes de l’objet.\n4. Ensuite, appelle la méthode `speak()` sur l’objet chien.\n\nLe concept présenté ici, appelé redéfinition de méthode, permet aux sous-classes de fournir un comportement différent de celui de la superclasse lorsque la même méthode est appelée.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "class Pet:\n  def __init__(self, pet_type, name, sound):\n    self.pet_type = pet_type\n    self.name = name\n    self.sound = sound\n\n  def speak(self):\n    print(f\"{self.name} goes {self.sound}!\")\n\n  def play(self):\n    print(f\"{self.name} is playing!\")\n\nclass Cat(Pet):\n  def __init__(self, name, sound, coat_length):\n    super().__init__(\"cat\", name, sound)\n    self.coat_length = coat_length\n\n  def purr(self):\n    print(f\"{self.name} is purring.\")\n\nclass Dog(Pet):\n  def __init__(self, name, sound, size):\n    super().__init__(\"dog\", name, sound)\n    self.size = size\n\ncat = Cat(\"Mittens\", \"Meow\", \"long\")\ncat.purr()\n\ndog = Dog(\"Cruiser\", \"Woof\", \"small\")",
+                  "solvedContent": "class Pet:\n  def __init__(self, pet_type, name, sound):\n    self.pet_type = pet_type\n    self.name = name\n    self.sound = sound\n\n  def speak(self):\n    print(f\"{self.name} goes {self.sound}!\")\n\n  def play(self):\n    print(f\"{self.name} is playing!\")\n\nclass Cat(Pet):\n  def __init__(self, name, sound, coat_length):\n    super().__init__(\"cat\", name, sound)\n    self.coat_length = coat_length\n\n  def purr(self):\n    print(f\"{self.name} is purring.\")\n\nclass Dog(Pet):\n  def __init__(self, name, sound, size):\n    super().__init__(\"dog\", name, sound)\n    self.size = size\n\n  def speak(self):\n    print(f\"{self.name} the {self.size} dog goes {self.sound}!\")\n\ncat = Cat(\"Mittens\", \"Meow\", \"long\")\ncat.purr()\n\ndog = Dog(\"Cruiser\", \"Woof\", \"small\")\ndog.speak()"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "1. To create a new method within a class, we use the following syntax: `def method_name(self, first_param_val, second_param_val, ...):`.\n2. Note that this method name should be spelled and capitalized exactly the same as the method you wish to override from the parent class (superclass).\n3. We can access a property within a class method using `self.property_name`."
+                }
+              ]
+            }
+          },
+          {
+            "title": "Adding the `wag_tail()` method",
+            "id": 124752,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Ensuite, nous allons ajouter une méthode unique aux objets instanciés à l'aide de la classe `Dog()`, appelée `wag_tail`.\n\n1. Dans la classe `Dog()`, définis une méthode supplémentaire nommée `wag_tail`.\n2. Dans `wag_tail()`, écris du code pour afficher un message au format suivant : `\"<name> is wagging its tail.\"`.\n3. Remplace `<name>` par la valeur de la propriété `name` de l'objet chien.\n4. Ensuite, appelle la méthode `wag_tail()` sur l'objet chien.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "class Pet:\n  def __init__(self, pet_type, name, sound):\n    self.pet_type = pet_type\n    self.name = name\n    self.sound = sound\n\n  def speak(self):\n    print(f\"{self.name} goes {self.sound}!\")\n\n  def play(self):\n    print(f\"{self.name} is playing!\")\n\nclass Cat(Pet):\n  def __init__(self, name, sound, coat_length):\n    super().__init__(\"cat\", name, sound)\n    self.coat_length = coat_length\n\n  def purr(self):\n    print(f\"{self.name} is purring.\")\n\nclass Dog(Pet):\n  def __init__(self, name, sound, size):\n    super().__init__(\"dog\", name, sound)\n    self.size = size\n\n  def speak(self):\n    print(f\"{self.name} the {self.size} dog goes {self.sound}!\")\n\ncat = Cat(\"Mittens\", \"Meow\", \"long\")\ncat.purr()\n\ndog = Dog(\"Cruiser\", \"Woof\", \"small\")\ndog.speak()",
+                  "solvedContent": "class Pet:\n  def __init__(self, pet_type, name, sound):\n    self.pet_type = pet_type\n    self.name = name\n    self.sound = sound\n\n  def speak(self):\n    print(f\"{self.name} goes {self.sound}!\")\n\n  def play(self):\n    print(f\"{self.name} is playing!\")\n\nclass Cat(Pet):\n  def __init__(self, name, sound, coat_length):\n    super().__init__(\"cat\", name, sound)\n    self.coat_length = coat_length\n\n  def purr(self):\n    print(f\"{self.name} is purring.\")\n\nclass Dog(Pet):\n  def __init__(self, name, sound, size):\n    super().__init__(\"dog\", name, sound)\n    self.size = size\n\n  def speak(self):\n    print(f\"{self.name} the {self.size} dog goes {self.sound}!\")\n\n  def wag_tail(self):\n    print(f\"{self.name} is wagging its tail.\")\n\ncat = Cat(\"Mittens\", \"Meow\", \"long\")\ncat.purr()\n\ndog = Dog(\"Cruiser\", \"Woof\", \"small\")\ndog.speak()\ndog.wag_tail()"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "1. To create a new method within a class, we use the following syntax: `def method_name(self, first_param_val, second_param_val, ...):`.\n2. We can access a property within a class method using `self.property_name`."
+                }
+              ]
+            }
+          },
+          {
+            "title": "Calling methods and accessing properties",
+            "id": 124754,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Enfin, testons le reste de nos méthodes et vérifions que nous pouvons accéder aux propriétés de nos objets !\n\n1. Appelle les méthodes `speak()` et `play()` sur l’objet `cat`.\n2. Écris du code pour afficher la valeur de `coat_length` de l’objet `cat`.\n3. Appelle la méthode `play()` sur l’objet `dog`.\n4. Écris du code pour afficher la valeur de `size` de l’objet `dog`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "class Pet:\n  def __init__(self, pet_type, name, sound):\n    self.pet_type = pet_type\n    self.name = name\n    self.sound = sound\n\n  def speak(self):\n    print(f\"{self.name} goes {self.sound}!\")\n\n  def play(self):\n    print(f\"{self.name} is playing!\")\n\nclass Cat(Pet):\n  def __init__(self, name, sound, coat_length):\n    super().__init__(\"cat\", name, sound)\n    self.coat_length = coat_length\n\n  def purr(self):\n    print(f\"{self.name} is purring.\")\n\nclass Dog(Pet):\n  def __init__(self, name, sound, size):\n    super().__init__(\"dog\", name, sound)\n    self.size = size\n\n  def speak(self):\n    print(f\"{self.name} the {self.size} dog goes {self.sound}!\")\n\n  def wag_tail(self):\n    print(f\"{self.name} is wagging its tail.\")\n\ncat = Cat(\"Mittens\", \"Meow\", \"long\")\ncat.purr()\n\ndog = Dog(\"Cruiser\", \"Woof\", \"small\")\ndog.speak()\ndog.wag_tail()",
+                  "solvedContent": "class Pet:\n  def __init__(self, pet_type, name, sound):\n    self.pet_type = pet_type\n    self.name = name\n    self.sound = sound\n\n  def speak(self):\n    print(f\"{self.name} goes {self.sound}!\")\n\n  def play(self):\n    print(f\"{self.name} is playing!\")\n\nclass Cat(Pet):\n  def __init__(self, name, sound, coat_length):\n    super().__init__(\"cat\", name, sound)\n    self.coat_length = coat_length\n\n  def purr(self):\n    print(f\"{self.name} is purring.\")\n\nclass Dog(Pet):\n  def __init__(self, name, sound, size):\n    super().__init__(\"dog\", name, sound)\n    self.size = size\n\n  def speak(self):\n    print(f\"{self.name} the {self.size} dog goes {self.sound}!\")\n\n  def wag_tail(self):\n    print(f\"{self.name} is wagging its tail.\")\n\ncat = Cat(\"Mittens\", \"Meow\", \"long\")\ncat.purr()\ncat.speak()\ncat.play()\nprint(cat.coat_length)\n\ndog = Dog(\"Cruiser\", \"Woof\", \"small\")\ndog.speak()\ndog.wag_tail()\ndog.play()\nprint(dog.size)\n"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "1. To call a method on an object, we use this syntax: `object_name.method_name(first_argument, second_argument, ...)`. Only pass in arguments if the method definition includes them!\n2. To access a property on an object, we use this syntax: `object_name.property_name`."
+                }
+              ]
+            }
+          },
+          {
+            "title": "Project recap",
+            "id": 124755,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Excellent travail pour avoir utilisé tes compétences en POO Python afin de créer des sous-classes ! Dans ce projet, nous avons utilisé l’héritage de classes pour éviter le code répétitif et améliorer l’efficacité et la lisibilité. Nous avons également utilisé l’encapsulation pour regrouper les données et les méthodes associées, ainsi que le polymorphisme pour remplacer une méthode de la superclasse afin de personnaliser son fonctionnement au sein d’une sous-classe.\n\nC’est maintenant à toi d’expérimenter avec le code final du projet. Essaie une ou plusieurs des suggestions suivantes :\n- Ajoute des propriétés et des méthodes supplémentaires à l’une des classes existantes.\n- Ajoute des sous-classes supplémentaires qui héritent de `Cat()` et/ou de `Dog()`. Par exemple, crée une sous-classe `Poodle()` qui hérite de `Dog()` et encapsule les propriétés et les méthodes propres aux caniches.\n- Ajoute une validation ou une gestion des erreurs pour les valeurs des propriétés ou les paramètres des méthodes. Par exemple, écris du code pour vérifier que le nom de l’animal est une chaîne non vide.\n- Entraîne-toi à remplacer d’autres méthodes de la superclasse au sein des sous-classes.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "class Pet:\n  def __init__(self, pet_type, name, sound):\n    self.pet_type = pet_type\n    self.name = name\n    self.sound = sound\n\n  def speak(self):\n    print(f\"{self.name} goes {self.sound}!\")\n\n  def play(self):\n    print(f\"{self.name} is playing!\")\n\nclass Cat(Pet):\n  def __init__(self, name, sound, coat_length):\n    super().__init__(\"cat\", name, sound)\n    self.coat_length = coat_length\n\n  def purr(self):\n    print(f\"{self.name} is purring.\")\n\nclass Dog(Pet):\n  def __init__(self, name, sound, size):\n    super().__init__(\"dog\", name, sound)\n    self.size = size\n\n  def speak(self):\n    print(f\"{self.name} the {self.size} dog goes {self.sound}!\")\n\n  def wag_tail(self):\n    print(f\"{self.name} is wagging its tail.\")\n\ncat = Cat(\"Mittens\", \"Meow\", \"long\")\ncat.purr()\ncat.speak()\ncat.play()\nprint(cat.coat_length)\n\ndog = Dog(\"Cruiser\", \"Woof\", \"small\")\ndog.speak()\ndog.wag_tail()\ndog.play()\nprint(dog.size)\n",
+                  "solvedContent": "class Pet:\n  def __init__(self, pet_type, name, sound):\n    self.pet_type = pet_type\n    self.name = name\n    self.sound = sound\n\n  def speak(self):\n    print(f\"{self.name} goes {self.sound}!\")\n\n  def play(self):\n    print(f\"{self.name} is playing!\")\n\nclass Cat(Pet):\n  def __init__(self, name, sound, coat_length):\n    super().__init__(\"cat\", name, sound)\n    self.coat_length = coat_length\n\n  def purr(self):\n    print(f\"{self.name} is purring.\")\n\nclass Dog(Pet):\n  def __init__(self, name, sound, size):\n    super().__init__(\"dog\", name, sound)\n    self.size = size\n\n  def speak(self):\n    print(f\"{self.name} the {self.size} dog goes {self.sound}!\")\n\n  def wag_tail(self):\n    print(f\"{self.name} is wagging its tail.\")\n\ncat = Cat(\"Mittens\", \"Meow\", \"long\")\ncat.purr()\ncat.speak()\ncat.play()\nprint(cat.coat_length)\n\ndog = Dog(\"Cruiser\", \"Woof\", \"small\")\ndog.speak()\ndog.wag_tail()\ndog.play()\nprint(dog.size)\n"
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

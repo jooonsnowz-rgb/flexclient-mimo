@@ -1,0 +1,160 @@
+{
+  "tutorial": {
+    "id": 1163,
+    "version": 9,
+    "type": "course",
+    "isNew": false,
+    "codeLanguage": "python",
+    "title": "Ponowne użycie kodu z funkcjami",
+    "descriptionContent": "Dowiedz się, jak ponownie wykorzystywać kod, tworząc funkcje z parametrem i wartością zwracaną.",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": null,
+    "chapters": [
+      {
+        "id": 9066,
+        "title": "Funkcje",
+        "type": "practiceLevel1",
+        "lessons": [
+          {
+            "title": "Intro",
+            "id": 79917,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Programy takie jak ten poniżej często muszą wielokrotnie wykonywać to samo zadanie.</p><webview version=\"2\" visible-if=\"always\" content=\"&lt;!doctype html&gt;&#xA;&lt;html&gt;&#xA; &lt;head&gt;&#xA;  &lt;style&gt;&#xA;   body {&#xA;    text-align: center;&#xA;    height: 275px;&#xA;    font-size: 16px;&#xA;    margin: 0 auto;&#xA;    background-color: #F0F8FF;&#xA;   }&#xA;   &#xA;   button {&#xA;    background-color: darkBlue;&#xA;    border: none;&#xA;    border-radius: 8px;&#xA;    color: white;&#xA;    text-align: center;&#xA;    text-decoration: none;&#xA;    display: inline-block;&#xA;    font-size: 14px;&#xA;    padding: 6px 12px;&#xA;    margin: 0 12px 0 0;&#xA;   }&#xA;   &#xA;   h2 {&#xA;    text-align: center;&#xA;   }&#xA;   &#xA;   #playerList {&#xA;    text-align: left;&#xA;   }&#xA;  &lt;/style&gt;&#xA; &lt;/head&gt;&#xA; &lt;body&gt;&#xA;  &lt;img height=180 src=&quot;https://mimo.app/i/volume-icon.png&quot;&gt;&lt;br&gt;&#xA;  &lt;button onclick=&quot;increase()&quot;&gt;Increase volume&lt;/button&gt;&#xA;  &lt;p id=&quot;container&quot;&gt;&#xA;   &lt;/div&gt;&#xA;   &lt;script&gt;&#xA;    let volume = 0;&#xA;    &#xA;    function increase() {&#xA;     document.getElementById(&quot;container&quot;).innerHTML =&#xA;      &quot;Volume increased!&quot;;&#xA;     const s = document.getElementById('container').style;&#xA;     s.display = &quot;block&quot;;&#xA;     s.opacity = 1;&#xA;     (function fade() {&#xA;      if ((s.opacity -= .1) &lt; 0) s.display = &quot;none&quot;;&#xA;      else setTimeout(fade, 150);&#xA;     })();&#xA;    }&#xA;   &lt;/script&gt;&#xA; &lt;/body&gt;&#xA;&lt;/html&gt;\" /></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Intro 2",
+            "id": 79895,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Zamiast przepisywać ten sam kod, możemy używać <strong>funkcji</strong>, aby grupować powiązany kod i wykonywać zadanie w jednym miejscu.</p><webview version=\"2\" visible-if=\"always\" content=\"&lt;!doctype html&gt;&#xA;&lt;html&gt;&#xA; &lt;head&gt;&#xA;  &lt;style&gt;&#xA;   body {&#xA;    text-align: center;&#xA;    height: 275px;&#xA;    font-size: 16px;&#xA;    margin: 0 auto;&#xA;    background-color: #F0F8FF;&#xA;   }&#xA;   &#xA;   button {&#xA;    background-color: darkBlue;&#xA;    border: none;&#xA;    border-radius: 8px;&#xA;    color: white;&#xA;    text-align: center;&#xA;    text-decoration: none;&#xA;    display: inline-block;&#xA;    font-size: 14px;&#xA;    padding: 6px 12px;&#xA;    margin: 0 12px 0 0;&#xA;   }&#xA;   &#xA;   h2 {&#xA;    text-align: center;&#xA;   }&#xA;   &#xA;   #playerList {&#xA;    text-align: left;&#xA;   }&#xA;  &lt;/style&gt;&#xA; &lt;/head&gt;&#xA; &lt;body&gt;&#xA;  &lt;img height=180 src=&quot;https://mimo.app/i/volume-icon.png&quot;&gt;&lt;br&gt;&#xA;  &lt;button onclick=&quot;decrease()&quot;&gt;Decrease volume&lt;/button&gt;&#xA;  &lt;p id=&quot;container&quot;&gt;&#xA;   &lt;/div&gt;&#xA;   &lt;script&gt;&#xA;    let volume = 0;&#xA;    &#xA;    function decrease() {&#xA;     document.getElementById(&quot;container&quot;).innerHTML =&#xA;      &quot;Volume decreased!&quot;;&#xA;     const s = document.getElementById('container').style;&#xA;     s.display = &quot;block&quot;;&#xA;     s.opacity = 1;&#xA;     (function fade() {&#xA;      if ((s.opacity -= .1) &lt; 0) s.display = &quot;none&quot;;&#xA;      else setTimeout(fade, 150);&#xA;     })();&#xA;    }&#xA;   &lt;/script&gt;&#xA; &lt;/body&gt;&#xA;&lt;/html&gt;\" /></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Functions",
+            "id": 79921,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Aby rozpocząć grupowanie powiązanego kodu, zaczynamy definiować funkcję za pomocą słowa kluczowego <code>def</code>. </p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"def\" class=\"keyword\" /><text value=\" \" /></content><interactions><interaction type=\"validatedInput\" isDefault=\"true\" startIndex=\"0\" endIndex=\"3\" /></interactions></code><p visible-if=\"wrong\">Koniecznie wpisz <code>def</code>.</p></body></html>"
+          },
+          {
+            "title": "Functions",
+            "id": 79920,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Następnie pojawia się nazwa funkcji zapisana w notacji snake case, na przykład <code>greet_user</code>, po której następują nawiasy, <code>(</code> i <code>)</code>.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"def\" class=\"keyword\" /><text value=\" \" /><text value=\"greet_user\" class=\"title\" /><text value=\"()\" class=\"params\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"4\" endIndex=\"14\" /><option startIndex=\"14\" endIndex=\"15\" /><option startIndex=\"15\" endIndex=\"16\" /></options></interaction></interactions></code><p visible-if=\"wrong\">Koniecznie wybierz <code>greet_user</code>, następnie <code>(</code> i na końcu <code>)</code>.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Po <code>def</code> dodaj nazwę w notacji snake case, a następnie nawiasy: <code>(</code> i <code>)</code>.</p><p>Nazwij tę funkcję, używając w tej kolejności osobnych słów <code>greet</code> i <code>user</code>.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"def\" class=\"keyword\" /><text value=\" \" /><text value=\"greet_user\" class=\"title\" /><text value=\"()\" class=\"params\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"4\" endIndex=\"14\" /><option startIndex=\"14\" endIndex=\"15\" /><option startIndex=\"15\" endIndex=\"16\" /><option correct=\"false\"><content><text value=\"greetuser\" /></content></option><option correct=\"false\"><content><text value=\"[\" /></content></option><option correct=\"false\"><content><text value=\"]\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Koniecznie wybierz <code>greet_user</code>, następnie <code>(</code> i na końcu <code>)</code>.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Functions",
+            "id": 79919,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Tak jak wcześniej dwukropek <code>:</code> oznacza początek bloku kodu należącego do funkcji.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"def\" class=\"keyword\" /><text value=\" \" /><text value=\"greet_user\" class=\"title\" /><text value=\"()\" class=\"params\" /><text value=\":\" /></content><interactions><interaction type=\"validatedInput\" isDefault=\"true\" startIndex=\"16\" endIndex=\"17\" /></interactions></code><p visible-if=\"wrong\">Koniecznie wpisz <code>:</code>.</p></body></html>"
+          },
+          {
+            "title": "Functions",
+            "id": 79922,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Aby zgrupować kod w funkcji, wcinamy go o dwie spacje. Ta funkcja grupuje dwie powiązane instrukcje <code>print()</code>.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"def\" class=\"keyword\" /><text value=\" \" /><text value=\"greet_user\" class=\"title\" /><text value=\"()\" class=\"params\" /><text value=\":\" /><text type=\"break\" /><text value=\"  print(\" /><text value=\"&quot;Good morning Anna&quot;\" class=\"string\" /><text value=\")\" /><text type=\"break\" /><text value=\"  print(\" /><text value=\"&quot;Welcome back&quot;\" class=\"string\" /><text value=\")\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"20\" endIndex=\"25\" /><option startIndex=\"49\" endIndex=\"54\" /></options></interaction></interactions></code><p visible-if=\"wrong\">Koniecznie wybierz <code>print</code>, a następnie <code>print</code>.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Aby zgrupować kod w funkcji, zrób wcięcie o dwie spacje.</p><p>Zgrupuj dwie instrukcje <code>print()</code>. Najpierw pokaż <code>Good morning Anna</code>, a potem <code>Welcome back</code>.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"def\" class=\"keyword\" /><text value=\" \" /><text value=\"greet_user\" class=\"title\" /><text value=\"()\" class=\"params\" /><text value=\":\" /><text type=\"break\" /><text value=\"  print(\" /><text value=\"&quot;Good morning Anna&quot;\" class=\"string\" /><text value=\")\" /><text type=\"break\" /><text value=\"  print(\" /><text value=\"&quot;Welcome back&quot;\" class=\"string\" /><text value=\")\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"20\" endIndex=\"46\" /><option startIndex=\"49\" endIndex=\"70\" /><option correct=\"false\"><content><text value=\"&quot;Good morning Anna&quot;\" /></content></option><option correct=\"false\"><content><text value=\"&quot;Welcome back&quot;\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Koniecznie wybierz <code>print(\"Good morning Anna\")</code>, a następnie <code>print(\"Welcome back\")</code>.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Functions",
+            "id": 79928,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Aby uruchomić kod, musimy <strong>wywołać</strong> funkcję. Robimy to, zapisując jej nazwę, a następnie nawiasy, na przykład <code>greet_user()</code>.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"def\" class=\"keyword\" /><text value=\" \" /><text value=\"greet_user\" class=\"title\" /><text value=\"()\" class=\"params\" /><text value=\":\" /><text type=\"break\" /><text value=\"  print(\" /><text value=\"&quot;Good morning Anna&quot;\" class=\"string\" /><text value=\")\" /><text type=\"break\" /><text value=\"  print(\" /><text value=\"&quot;Welcome back&quot;\" class=\"string\" /><text value=\")\" /><text type=\"break\" /><text value=\"greet_user()\" /></content><interactions><interaction type=\"validatedInput\" isDefault=\"true\" startIndex=\"71\" endIndex=\"83\" /></interactions><output><content><text value=\"Good morning Anna\" /><text type=\"break\" /><text value=\"Welcome back\" /></content></output></code><p visible-if=\"wrong\">Koniecznie wpisz <code>greet_user()</code>.</p></body></html>"
+          },
+          {
+            "title": "Question: Function",
+            "id": 79923,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Jak zaczynamy grupować powiązany kod?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\">Dodając słowo kluczowe <code>def</code></item><item value=\"2\" correct=\"false\">Przez dodanie słowa kluczowego <code>function</code></item></selection><p visible-if=\"wrong\">Dodając słowo kluczowe <code>def</code>.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Grupowanie powiązanego kodu zaczynamy od dodania słowa kluczowego <code>def</code>.</p><p>Który wiersz rozpoczyna funkcję o nazwie <code>show_menu</code>?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\"><code>def show_menu():</code></item><item value=\"2\" correct=\"false\"><code>function show_menu():</code></item><item value=\"3\" correct=\"false\"><code>def = show_menu()</code></item></selection><p visible-if=\"wrong\">Koniecznie wybierz <code>def show_menu():</code>.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Question: Function name",
+            "id": 79924,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Jak nazywamy funkcję?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\">Używając notacji snake case</item><item value=\"2\" correct=\"false\">Przez umieszczenie spacji w nazwie funkcji</item></selection><p visible-if=\"wrong\">Używając notacji snake case.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Do nazywania funkcji używamy notacji snake case.</p><p>Która nazwa jest zgodna z tym stylem dla funkcji wyświetlającej sumę?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\"><code>display_total</code></item><item value=\"2\" correct=\"false\"><code>display total</code></item><item value=\"3\" correct=\"false\"><code>DisplayTotal</code></item></selection><p visible-if=\"wrong\">Koniecznie wybierz <code>display_total</code>.</p></body></html>"
+          },
+          {
+            "title": "Question: Colon",
+            "id": 79925,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Do czego służy dwukropek <code>:</code>?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\">Oznaczają początek bloku kodu funkcji</item><item value=\"2\" correct=\"false\">Wskazuje, który kod funkcja powinna pominąć</item></selection><p visible-if=\"wrong\">Oznaczają początek bloku kodu funkcji.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Dwukropek <code>:</code> oznacza początek bloku kodu funkcji.</p><p>Który nagłówek poprawnie rozpoczyna funkcję <code>greet</code>?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\"><code>def greet():</code></item><item value=\"2\" correct=\"false\"><code>def greet()</code></item><item value=\"3\" correct=\"false\"><code>def greet(:)</code></item></selection><p visible-if=\"wrong\">Koniecznie wybierz <code>def greet():</code>.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Question: Code block",
+            "id": 79926,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Gdzie umieszczamy kod, który chcemy zgrupować?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\">Po definicji funkcji, z wcięciem o dwie spacje</item><item value=\"2\" correct=\"false\">Między nawiasami <code>(</code> i <code>)</code></item></selection><p visible-if=\"wrong\">Po definicji funkcji, z wcięciem o dwie spacje.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Kod zgrupowany w funkcji umieszczamy po definicji i poprzedzamy wcięciem dwóch spacji.</p><p>Gdzie należy umieścić <code>print(\"Hi\")</code>, aby należało do funkcji <code>greet</code>?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\">W następnym wierszu po <code>def greet():</code>, z wcięciem dwóch spacji</item><item value=\"2\" correct=\"false\">W następnym wierszu po <code>def greet():</code>, na równi z <code>def</code></item><item value=\"3\" correct=\"false\">Między nawiasami w <code>greet()</code></item></selection><p visible-if=\"wrong\">W następnym wierszu po <code>def greet():</code>, z wcięciem dwóch spacji.</p></body></html>"
+          },
+          {
+            "title": "Question: Calling the function",
+            "id": 79927,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Jak uruchamiamy kod znajdujący się wewnątrz funkcji?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\">Wywołując ją</item><item value=\"2\" correct=\"false\">Tworząc na jego podstawie zmienną</item></selection><p visible-if=\"wrong\">Wywołując ją.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Aby uruchomić funkcję, wywołaj ją, wpisując jej nazwę, a po niej nawiasy: <code>()</code>.</p><p>Który wiersz uruchomi kod po zdefiniowaniu funkcji <code>greet</code>?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\"><code>greet()</code></item><item value=\"2\" correct=\"false\"><code>greet</code></item><item value=\"3\" correct=\"false\"><code>greet = True</code></item></selection><p visible-if=\"wrong\">Koniecznie wybierz <code>greet()</code>.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Example: Function",
+            "id": 79908,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Wpisz słowo kluczowe <code>def</code>, aby uzupełnić funkcję.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"def\" class=\"keyword\" /><text value=\" \" /><text value=\"weather_update\" class=\"title\" /><text value=\"()\" class=\"params\" /><text value=\":\" /><text type=\"break\" /><text value=\"  print(\" /><text value=\"&quot;Weather update&quot;\" class=\"string\" /><text value=\")\" /><text type=\"break\" /><text value=\"  print(\" /><text value=\"&quot;Sunny skies ahead&quot;\" class=\"string\" /><text value=\")\" /><text type=\"break\" /><text value=\"weather_update()\" /></content><interactions><interaction type=\"validatedInput\" isDefault=\"true\" startIndex=\"0\" endIndex=\"3\" /></interactions><output><content><text value=\"Weather update\" /><text type=\"break\" /><text value=\"Sunny skies ahead\" /></content></output></code><p visible-if=\"wrong\">Koniecznie wpisz <code>def</code>.</p></body></html>"
+          },
+          {
+            "title": "Example: Function name",
+            "id": 79918,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Nadaj tej funkcji nazwę w stylu snake case.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"def\" class=\"keyword\" /><text value=\" \" /><text value=\"night_routine\" class=\"title\" /><text value=\"()\" class=\"params\" /><text value=\":\" /><text type=\"break\" /><text value=\"  print(\" /><text value=\"&quot;Lights off&quot;\" class=\"string\" /><text value=\")\" /><text type=\"break\" /><text value=\"  print(\" /><text value=\"&quot;Alarm set&quot;\" class=\"string\" /><text value=\")\" /><text type=\"break\" /><text value=\"night_routine()\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"4\" endIndex=\"17\" /><option correct=\"false\"><content><text value=\"nightroutine\" /></content></option></options></interaction></interactions><output><content><text value=\"Lights off\" /><text type=\"break\" /><text value=\"Alarm set\" /></content></output></code><p visible-if=\"wrong\">Koniecznie wybierz <code>night_routine</code>.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Użyj w tej kolejności osobnych słów <code>night</code> i <code>routine</code> w notacji snake case zarówno w definicji, jak i wywołaniu.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"def\" class=\"keyword\" /><text value=\" \" /><text value=\"night_routine\" class=\"title\" /><text value=\"()\" class=\"params\" /><text value=\":\" /><text type=\"break\" /><text value=\"  print(\" /><text value=\"&quot;Lights off&quot;\" class=\"string\" /><text value=\")\" /><text type=\"break\" /><text value=\"  print(\" /><text value=\"&quot;Alarm set&quot;\" class=\"string\" /><text value=\")\" /><text type=\"break\" /><text value=\"night_routine()\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"4\" endIndex=\"17\" /><option startIndex=\"64\" endIndex=\"77\" /><option correct=\"false\"><content><text value=\"nightroutine\" /></content></option></options></interaction></interactions><output><content><text value=\"Lights off\" /><text type=\"break\" /><text value=\"Alarm set\" /></content></output></code><p visible-if=\"wrong\">Koniecznie wybierz <code>night_routine</code>, a następnie <code>night_routine</code>.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Example: Colon",
+            "id": 79907,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Dodaj dwukropek, aby zaznaczyć początek bloku kodu.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"def\" class=\"keyword\" /><text value=\" \" /><text value=\"morning_routine\" class=\"title\" /><text value=\"()\" class=\"params\" /><text value=\":\" /><text type=\"break\" /><text value=\"  print(\" /><text value=\"&quot;Lights on&quot;\" class=\"string\" /><text value=\")\" /><text type=\"break\" /><text value=\"  print(\" /><text value=\"&quot;Alarm off&quot;\" class=\"string\" /><text value=\")\" /><text type=\"break\" /><text value=\"morning_routine()\" /></content><interactions><interaction type=\"validatedInput\" isDefault=\"true\" startIndex=\"21\" endIndex=\"22\" /></interactions><output><content><text value=\"Lights on\" /><text type=\"break\" /><text value=\"Alarm off\" /></content></output></code><p visible-if=\"wrong\">Koniecznie wpisz <code>:</code>.</p></body></html>"
+          },
+          {
+            "title": "Example: Code block",
+            "id": 79899,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Dodaj kolejną instrukcję <code>print()</code> do bloku kodu funkcji.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"def\" class=\"keyword\" /><text value=\" \" /><text value=\"launch\" class=\"title\" /><text value=\"()\" class=\"params\" /><text value=\":\" /><text type=\"break\" /><text value=\"  print(\" /><text value=\"&quot;3&quot;\" class=\"string\" /><text value=\")\" /><text type=\"break\" /><text value=\"  print(\" /><text value=\"&quot;2&quot;\" class=\"string\" /><text value=\")\" /><text type=\"break\" /><text value=\"  print(\" /><text value=\"&quot;1&quot;\" class=\"string\" /><text value=\")\" /><text type=\"break\" /><text value=\"  print(\" /><text value=\"&quot;Launch!&quot;\" class=\"string\" /><text value=\")\" /><text type=\"break\" /><text value=\"launch()\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"55\" endIndex=\"60\" /><option startIndex=\"60\" endIndex=\"71\" /></options></interaction></interactions><output><content><text value=\"3\" /><text type=\"break\" /><text value=\"2\" /><text type=\"break\" /><text value=\"1\" /><text type=\"break\" /><text value=\"Launch!\" /></content></output></code><p visible-if=\"wrong\">Koniecznie wybierz <code>print</code>, a następnie <code>(\"Launch!\")</code>.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Wyświetl <code>Launch!</code> wewnątrz funkcji, a następnie wywołaj funkcję, aby uruchomić odliczanie.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"def\" class=\"keyword\" /><text value=\" \" /><text value=\"launch\" class=\"title\" /><text value=\"()\" class=\"params\" /><text value=\":\" /><text type=\"break\" /><text value=\"  print(\" /><text value=\"&quot;3&quot;\" class=\"string\" /><text value=\")\" /><text type=\"break\" /><text value=\"  print(\" /><text value=\"&quot;2&quot;\" class=\"string\" /><text value=\")\" /><text type=\"break\" /><text value=\"  print(\" /><text value=\"&quot;1&quot;\" class=\"string\" /><text value=\")\" /><text type=\"break\" /><text value=\"  print(\" /><text value=\"&quot;Launch!&quot;\" class=\"string\" /><text value=\")\" /><text type=\"break\" /><text value=\"launch()\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"55\" endIndex=\"60\" /><option startIndex=\"72\" endIndex=\"78\" /><option correct=\"false\"><content><text value=\"&quot;Launch!&quot;\" /></content></option><option correct=\"false\"><content><text value=\"&quot;launch&quot;\" /></content></option></options></interaction></interactions><output><content><text value=\"3\" /><text type=\"break\" /><text value=\"2\" /><text type=\"break\" /><text value=\"1\" /><text type=\"break\" /><text value=\"Launch!\" /></content></output></code><p visible-if=\"wrong\">Koniecznie wybierz <code>print</code>, a następnie <code>launch</code>.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Example: Calling the function",
+            "id": 79894,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Wywołaj funkcję, wpisując kod <code>greet()</code>.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"def\" class=\"keyword\" /><text value=\" \" /><text value=\"greet\" class=\"title\" /><text value=\"()\" class=\"params\" /><text value=\":\" /><text type=\"break\" /><text value=\"  print(\" /><text value=\"&quot;Good evening&quot;\" class=\"string\" /><text value=\")\" /><text type=\"break\" /><text value=\"greet()\" /></content><interactions><interaction type=\"validatedInput\" isDefault=\"true\" startIndex=\"37\" endIndex=\"44\" /></interactions><output><content><text value=\"Good evening\" /></content></output></code><p visible-if=\"wrong\">Koniecznie wpisz <code>greet()</code>.</p></body></html>"
+          }
+        ]
+      }
+    ]
+  }
+}

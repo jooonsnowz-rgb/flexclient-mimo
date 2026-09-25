@@ -1,0 +1,48 @@
+.class Lkotlin/reflect/jvm/internal/DescriptorKCallable$$Lambda$7;
+.super Ljava/lang/Object;
+
+# interfaces
+.implements Lkotlin/jvm/functions/Function0;
+
+
+# instance fields
+.field private final arg$0:Le80/m0;
+
+
+# direct methods
+.method public constructor <init>(Le80/m0;)V
+    .locals 0
+
+    .line 1
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 2
+    .line 3
+    .line 4
+    iput-object p1, p0, Lkotlin/reflect/jvm/internal/DescriptorKCallable$$Lambda$7;->arg$0:Le80/m0;
+
+    .line 5
+    .line 6
+    return-void
+.end method
+
+
+# virtual methods
+.method public invoke()Ljava/lang/Object;
+    .locals 0
+
+    .line 1
+    iget-object p0, p0, Lkotlin/reflect/jvm/internal/DescriptorKCallable$$Lambda$7;->arg$0:Le80/m0;
+
+    .line 2
+    .line 3
+    invoke-static {p0}, Lkotlin/reflect/jvm/internal/DescriptorKCallable;->accessor$DescriptorKCallable$lambda7(Le80/m0;)Le80/h0;
+
+    .line 4
+    .line 5
+    .line 6
+    move-result-object p0
+
+    .line 7
+    return-object p0
+.end method

@@ -1,0 +1,230 @@
+.class final Lcom/google/android/gms/internal/firebase-auth-api/zzadh;
+.super Lcom/google/android/gms/internal/firebase-auth-api/zzafn;
+.source "r8-map-id-1f727e275a08ce64a20d04e23955c803c09eee16123e99f4b75a65a9479c9615"
+
+
+# annotations
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "Lcom/google/android/gms/internal/firebase-auth-api/zzafn<",
+        "Lcom/google/firebase/auth/AuthResult;",
+        "Luu/o;",
+        ">;"
+    }
+.end annotation
+
+
+# instance fields
+.field private final zzv:Lcom/google/firebase/auth/EmailAuthCredential;
+
+.field private final zzw:Ljava/lang/String;
+
+
+# direct methods
+.method public constructor <init>(Lcom/google/firebase/auth/EmailAuthCredential;Ljava/lang/String;)V
+    .locals 2
+
+    .line 1
+    const/4 v0, 0x2
+
+    .line 2
+    invoke-direct {p0, v0}, Lcom/google/android/gms/internal/firebase-auth-api/zzafn;-><init>(I)V
+
+    .line 3
+    .line 4
+    .line 5
+    const-string v0, "credential cannot be null"
+
+    .line 6
+    .line 7
+    invoke-static {p1, v0}, Lcom/google/android/gms/common/internal/a0;->i(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 8
+    .line 9
+    .line 10
+    iput-object p1, p0, Lcom/google/android/gms/internal/firebase-auth-api/zzadh;->zzv:Lcom/google/firebase/auth/EmailAuthCredential;
+
+    .line 11
+    .line 12
+    iget-object v0, p1, Lcom/google/firebase/auth/EmailAuthCredential;->a:Ljava/lang/String;
+
+    .line 13
+    .line 14
+    const-string v1, "email cannot be null"
+
+    .line 15
+    .line 16
+    invoke-static {v0, v1}, Lcom/google/android/gms/common/internal/a0;->f(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 17
+    .line 18
+    .line 19
+    iget-object p1, p1, Lcom/google/firebase/auth/EmailAuthCredential;->b:Ljava/lang/String;
+
+    .line 20
+    .line 21
+    const-string v0, "password cannot be null"
+
+    .line 22
+    .line 23
+    invoke-static {p1, v0}, Lcom/google/android/gms/common/internal/a0;->f(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 24
+    .line 25
+    .line 26
+    iput-object p2, p0, Lcom/google/android/gms/internal/firebase-auth-api/zzadh;->zzw:Ljava/lang/String;
+
+    .line 27
+    .line 28
+    return-void
+.end method
+
+
+# virtual methods
+.method public final zza()Ljava/lang/String;
+    .locals 0
+
+    .line 42
+    const-string p0, "linkEmailAuthCredential"
+
+    return-object p0
+.end method
+
+.method public final zza(Lcom/google/android/gms/tasks/TaskCompletionSource;Lcom/google/android/gms/internal/firebase-auth-api/zzaet;)V
+    .locals 7
+
+    .line 1
+    new-instance v0, Lcom/google/android/gms/internal/firebase-auth-api/zzafu;
+
+    .line 2
+    .line 3
+    invoke-direct {v0, p0, p1}, Lcom/google/android/gms/internal/firebase-auth-api/zzafu;-><init>(Lcom/google/android/gms/internal/firebase-auth-api/zzafn;Lcom/google/android/gms/tasks/TaskCompletionSource;)V
+
+    .line 4
+    .line 5
+    .line 6
+    iput-object v0, p0, Lcom/google/android/gms/internal/firebase-auth-api/zzafn;->zzg:Lcom/google/android/gms/internal/firebase-auth-api/zzafl;
+
+    .line 7
+    .line 8
+    iget-object p1, p0, Lcom/google/android/gms/internal/firebase-auth-api/zzadh;->zzv:Lcom/google/firebase/auth/EmailAuthCredential;
+
+    .line 9
+    .line 10
+    iget-object v1, p1, Lcom/google/firebase/auth/EmailAuthCredential;->a:Ljava/lang/String;
+
+    .line 11
+    .line 12
+    iget-object v2, p1, Lcom/google/firebase/auth/EmailAuthCredential;->b:Ljava/lang/String;
+
+    .line 13
+    .line 14
+    invoke-static {v2}, Lcom/google/android/gms/common/internal/a0;->e(Ljava/lang/String;)V
+
+    .line 15
+    .line 16
+    .line 17
+    iget-object p1, p0, Lcom/google/android/gms/internal/firebase-auth-api/zzafn;->zzd:Lcom/google/firebase/auth/FirebaseUser;
+
+    .line 18
+    .line 19
+    check-cast p1, Lcom/google/firebase/auth/internal/zzad;
+
+    .line 20
+    .line 21
+    iget-object p1, p1, Lcom/google/firebase/auth/internal/zzad;->a:Lcom/google/android/gms/internal/firebase-auth-api/zzaia;
+
+    .line 22
+    .line 23
+    invoke-virtual {p1}, Lcom/google/android/gms/internal/firebase-auth-api/zzaia;->zzf()Ljava/lang/String;
+
+    .line 24
+    .line 25
+    .line 26
+    move-result-object v3
+
+    .line 27
+    iget-object p1, p0, Lcom/google/android/gms/internal/firebase-auth-api/zzafn;->zzd:Lcom/google/firebase/auth/FirebaseUser;
+
+    .line 28
+    .line 29
+    invoke-virtual {p1}, Lcom/google/firebase/auth/FirebaseUser;->x()Ljava/lang/String;
+
+    .line 30
+    .line 31
+    .line 32
+    move-result-object v4
+
+    .line 33
+    iget-object v5, p0, Lcom/google/android/gms/internal/firebase-auth-api/zzadh;->zzw:Ljava/lang/String;
+
+    .line 34
+    .line 35
+    iget-object v6, p0, Lcom/google/android/gms/internal/firebase-auth-api/zzafn;->zzb:Lcom/google/android/gms/internal/firebase-auth-api/zzafp;
+
+    .line 36
+    .line 37
+    move-object v0, p2
+
+    .line 38
+    invoke-virtual/range {v0 .. v6}, Lcom/google/android/gms/internal/firebase-auth-api/zzaet;->zza(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/google/android/gms/internal/firebase-auth-api/zzaer;)V
+
+    .line 39
+    .line 40
+    .line 41
+    return-void
+.end method
+
+.method public final zzb()V
+    .locals 3
+
+    .line 1
+    iget-object v0, p0, Lcom/google/android/gms/internal/firebase-auth-api/zzafn;->zzc:Llu/g;
+
+    .line 2
+    .line 3
+    iget-object v1, p0, Lcom/google/android/gms/internal/firebase-auth-api/zzafn;->zzk:Lcom/google/android/gms/internal/firebase-auth-api/zzaht;
+
+    .line 4
+    .line 5
+    invoke-static {v0, v1}, Lcom/google/android/gms/internal/firebase-auth-api/zzacv;->zza(Llu/g;Lcom/google/android/gms/internal/firebase-auth-api/zzaht;)Lcom/google/firebase/auth/internal/zzad;
+
+    .line 6
+    .line 7
+    .line 8
+    move-result-object v0
+
+    .line 9
+    iget-object v1, p0, Lcom/google/android/gms/internal/firebase-auth-api/zzafn;->zze:Ljava/lang/Object;
+
+    .line 10
+    .line 11
+    check-cast v1, Luu/o;
+
+    .line 12
+    .line 13
+    iget-object v2, p0, Lcom/google/android/gms/internal/firebase-auth-api/zzafn;->zzj:Lcom/google/android/gms/internal/firebase-auth-api/zzaia;
+
+    .line 14
+    .line 15
+    invoke-interface {v1, v2, v0}, Luu/o;->a(Lcom/google/android/gms/internal/firebase-auth-api/zzaia;Lcom/google/firebase/auth/FirebaseUser;)V
+
+    .line 16
+    .line 17
+    .line 18
+    new-instance v1, Lcom/google/firebase/auth/internal/zzx;
+
+    .line 19
+    .line 20
+    invoke-direct {v1, v0}, Lcom/google/firebase/auth/internal/zzx;-><init>(Lcom/google/firebase/auth/internal/zzad;)V
+
+    .line 21
+    .line 22
+    .line 23
+    invoke-virtual {p0, v1}, Lcom/google/android/gms/internal/firebase-auth-api/zzafn;->zzb(Ljava/lang/Object;)V
+
+    .line 24
+    .line 25
+    .line 26
+    return-void
+.end method

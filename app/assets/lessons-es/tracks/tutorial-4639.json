@@ -1,0 +1,105 @@
+{
+  "tutorial": {
+    "id": 4639,
+    "version": 1,
+    "type": "practiceOptional",
+    "isNew": false,
+    "codeLanguage": "python",
+    "title": "Comprobación de respuestas de la API",
+    "descriptionContent": "Aplica las comprobaciones de respuesta a situaciones más difíciles y a tareas independientes de gestión de API.",
+    "shortDescriptionContent": "Estudiantes de Python que quieran practicar con respuestas de API más difíciles",
+    "showInTrack": true,
+    "iconBanner": null,
+    "chapters": [
+      {
+        "id": 17877,
+        "title": "Gestión fiable de respuestas",
+        "type": "practiceLevel3",
+        "lessons": [
+          {
+            "title": "Diagnose Error Codes",
+            "id": 152335,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>¿Qué par asigna un recurso faltante y un fallo del servidor, en ese orden?</p><selection multiple=\"multiple\"><item value=\"1\" correct=\"true\"><code>404</code>, <code>500</code></item><item value=\"2\" correct=\"false\"><code>500</code>, <code>404</code></item><item value=\"3\" correct=\"false\"><code>200</code>, <code>404</code></item><item value=\"4\" correct=\"false\"><code>201</code>, <code>500</code></item></selection><p visible-if=\"wrong\"><code>404</code>, <code>500</code>.</p></body></html>"
+          },
+          {
+            "title": "Accept Any Success",
+            "id": 152336,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Una solicitud de creación devuelve <code>201</code>. Completa la comprobación general de éxito que también rechaza <code>404</code> y <code>500</code>.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"if\" class=\"keyword\" /><text value=\" response.ok:\" /><text type=\"break\" /><text value=\"  print(\" /><text value=\"&quot;Saved&quot;\" class=\"string\" /><text value=\")\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"12\" endIndex=\"14\" /><option correct=\"false\"><content><text value=\"status_code == 200\" /></content></option><option correct=\"false\"><content><text value=\"raise_for_status()\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Asegúrese de elegir <code>ok</code>.</p></body></html>"
+          },
+          {
+            "title": "Guard JSON Parsing",
+            "id": 152337,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Completa el método de comprobación de errores antes de que el programa lea datos JSON.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"response.raise_for_status()\" /><text type=\"break\" /><text value=\"data = response.json()\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"0\" endIndex=\"8\" /><option startIndex=\"8\" endIndex=\"9\" /><option startIndex=\"9\" endIndex=\"25\" /><option startIndex=\"25\" endIndex=\"26\" /><option startIndex=\"26\" endIndex=\"27\" /><option correct=\"false\"><content><text value=\"ok\" /></content></option><option correct=\"false\"><content><text value=\"==\" /></content></option><option correct=\"false\"><content><text value=\"200\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Asegúrese de elegir <code>response</code> seguido de <code>.</code> y luego <code>raise_for_status</code>, <code>(</code>, <code>)</code>.</p></body></html>"
+          },
+          {
+            "title": "Choose the HTTP Exception",
+            "id": 152338,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>¿Qué tipo de excepción captura los errores de nivel 400 y 500 generados por <code>raise_for_status()</code>?</p><selection multiple=\"multiple\"><item value=\"1\" correct=\"true\"><code>requests.exceptions.HTTPError</code></item><item value=\"2\" correct=\"false\"><code>requests.exceptions.JSONError</code></item><item value=\"3\" correct=\"false\"><code>requests.exceptions.StatusError</code></item><item value=\"4\" correct=\"false\"><code>requests.exceptions.ResponseError</code></item></selection><p visible-if=\"wrong\">Asegúrese de elegir <code>requests.exceptions.HTTPError</code>.</p></body></html>"
+          },
+          {
+            "title": "Build a Status Reporter",
+            "id": 152339,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Completa `script.py` para que establezca `message` en `\"Not found\"` para el estado `404` y en `\"Server error\"` para el estado `500`. Establécelo en `\"Ready\"` cuando `response.ok` sea verdadero. Usa `\"Request failed\"` para cualquier otra respuesta fallida. Conserva la solicitud proporcionada y la llamada a `print()`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "import requests\n\nurl = \"https://things.mimo.dev/api/things/1\"\nresponse = requests.get(url)\n\nif response.status_code == :\n message = \"Not found\"\nelif response.status_code == :\n message = \"Server error\"\nelif response.ok:\n message = \"Ready\"\nelse:\n message = \"Request failed\"\n\nprint(message)\n",
+                  "solvedContent": "import requests\n\nurl = \"https://things.mimo.dev/api/things/1\"\nresponse = requests.get(url)\n\nif response.status_code == 404:\n message = \"Not found\"\nelif response.status_code == 500:\n message = \"Server error\"\nelif response.ok:\n message = \"Ready\"\nelse:\n message = \"Request failed\"\n\nprint(message)\n"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Compare Success Checks",
+            "id": 152340,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>¿Qué propiedad booleana de respuesta es <code>True</code> para el estado <code>201</code>?</p><selection multiple=\"multiple\"><item value=\"1\" correct=\"true\"><code>response.ok</code></item><item value=\"2\" correct=\"false\"><code>response.status_code == 200</code></item><item value=\"3\" correct=\"false\"><code>response.status_code == 404</code></item><item value=\"4\" correct=\"false\"><code>response.status_code</code></item></selection><p visible-if=\"wrong\">Asegúrese de elegir <code>response.ok</code>.</p></body></html>"
+          },
+          {
+            "title": "Choose the Failure Path",
+            "id": 152341,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Una solicitud de envío usa <code>raise_for_status()</code>. ¿Qué controlador informa solo del fallo HTTP?</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"try\" class=\"keyword\" /><text value=\":\" /><text type=\"break\" /><text value=\"  response.raise_for_status()\" /><text type=\"break\" /><text value=\"  print(\" /><text value=\"&quot;Response ready&quot;\" class=\"string\" /><text value=\")\" /></content></code><selection multiple=\"multiple\"><item value=\"1\" correct=\"true\"><code>except requests.exceptions.HTTPError: print(\"Request failed\")</code></item><item value=\"2\" correct=\"false\"><code>if response.ok: print(\"Request failed\")</code></item><item value=\"3\" correct=\"false\"><code>except requests: print(\"Request failed\")</code></item><item value=\"4\" correct=\"false\"><code>else: print(\"Request failed\")</code></item></selection><p visible-if=\"wrong\"><code>except requests.exceptions.HTTPError: print(\"Request failed\")</code>.</p></body></html>"
+          },
+          {
+            "title": "Build a Safe JSON Flow",
+            "id": 152342,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Completa `script.py` para que llame a `response.raise_for_status()` antes de `response.json()`. Imprime el valor de `\"name\"` de la respuesta cuando la solicitud tenga éxito. Captura `requests.exceptions.HTTPError` e imprime `\"Request failed\"` cuando no lo tenga.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "import requests\n\nurl = \"https://things.mimo.dev/api/things/1\"\n\ntry:\n  response = requests.get(url)\n\n  data = response.json()\n  print(data[\"name\"])\nexcept requests.exceptions.HTTPError:\n  print(\"Request failed\")\n",
+                  "solvedContent": "import requests\n\nurl = \"https://things.mimo.dev/api/things/1\"\n\ntry:\n  response = requests.get(url)\n  response.raise_for_status()\n  data = response.json()\n  print(data[\"name\"])\nexcept requests.exceptions.HTTPError:\n  print(\"Request failed\")\n"
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

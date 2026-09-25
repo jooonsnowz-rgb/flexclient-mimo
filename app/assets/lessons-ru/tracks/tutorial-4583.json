@@ -1,0 +1,238 @@
+{
+  "tutorial": {
+    "id": 4583,
+    "version": 2,
+    "type": "guidedProject",
+    "isNew": false,
+    "codeLanguage": "node",
+    "title": "Вокруг света - Часть 1",
+    "descriptionContent": "Создайте игру-угадайку аэропорта, где игроки пытаются определить местоположение аэропорта на карте. В первой части вы настроите начальную серверную часть.",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": "tutorial-4583-icon-banner.svg",
+    "chapters": [
+      {
+        "id": 17749,
+        "title": "Вокруг света - Часть 1",
+        "type": "practiceLevel3",
+        "lessons": [
+          {
+            "title": "Lesson #1",
+            "id": 151458,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Добро пожаловать в проект **Around the World**. Мы создадим full-stack приложение, состоящее из фронтенда на React и бэкенда на Express для игры в угадывание аэропортов.\n\nДавайте начнем с настройки бэкенда, используя сервер Express.\n\n1. Объяви переменную `express` и подключи модуль `express`.\n2. Объяви переменную `app` и инициализируй её, вызвав функцию `express`.\n3. Объяви переменную `PORT` и присвой ей значение `3000`.\n4. Используй функцию `listen` на `app`, чтобы приложение слушало порт, указанный в переменной `PORT`.\n5. Выведи сообщение в консоль внутри функции обратного вызова `listen`, чтобы мы знали, что наш сервер работает правильно.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "",
+                  "solvedContent": "const express = require(\"express\");\n\nconst app = express();\nconst PORT = 3000;\n\napp.listen(PORT, () => {\n  console.log(`Server is running on port ${PORT}`);\n});\n"
+                },
+                {
+                  "name": "database.js",
+                  "codeLanguage": "javascript",
+                  "content": "",
+                  "solvedContent": null
+                },
+                {
+                  "name": "airports.json",
+                  "codeLanguage": "json",
+                  "content": "[\n  {\n    \"id\": \"6523\",\n    \"name\": \"Total RF Heliport\",\n    \"latitude_deg\": \"40.070985\",\n    \"longitude_deg\": \"-74.933689\",\n    \"iso_country\": \"US\",\n    \"municipality\": \"Bensalem\",\n    \"iata_code\": null\n  },\n  {\n    \"id\": \"323361\",\n    \"name\": \"Aero B Ranch Airport\",\n    \"latitude_deg\": \"38.704022\",\n    \"longitude_deg\": \"-101.473911\",\n    \"iso_country\": \"US\",\n    \"municipality\": \"Leoti\",\n    \"iata_code\": null\n  },\n  {\n    \"id\": \"6524\",\n    \"name\": \"Lowell Field\",\n    \"latitude_deg\": \"59.947733\",\n    \"longitude_deg\": \"-151.692524\",\n    \"iso_country\": \"US\",\n    \"municipality\": \"Anchor Point\",\n    \"iata_code\": null\n  },\n  {\n    \"id\": \"6525\",\n    \"name\": \"Epps Airpark\",\n    \"latitude_deg\": \"34.86479949951172\",\n    \"longitude_deg\": \"-86.77030181884766\",\n    \"iso_country\": \"US\",\n    \"municipality\": \"Harvest\",\n    \"iata_code\": null\n  }\n]",
+                  "solvedContent": null
+                },
+                {
+                  "name": "db-setup.js",
+                  "codeLanguage": "javascript",
+                  "content": "const Database = require(\"better-sqlite3\");\n\nconst db = new Database(\"/tmp/airports.db\");\n\ndb.exec(`\n  CREATE TABLE IF NOT EXISTS airports (\n    id INTEGER PRIMARY KEY,\n    name TEXT,\n    latitude_deg REAL,\n    longitude_deg REAL,\n    iso_country TEXT,\n    municipality TEXT,\n    iata_code TEXT\n  )\n`);\n\nconst rowCount = db.prepare(\"SELECT COUNT(*) AS count FROM airports\").get().count;\n\nif (rowCount === 0) {\n  const airports = require(\"./airports.json\");\n\n  const insertStatement = db.prepare(`\n    INSERT INTO airports (\n      id, name, latitude_deg, longitude_deg, iso_country, municipality, iata_code\n    )\n    VALUES (?, ?, ?, ?, ?, ?, ?)\n  `);\n\n  const insertTransaction = db.transaction((rows) => {\n    for (const row of rows) {\n      insertStatement.run(\n        row.id,\n        row.name,\n        row.latitude_deg,\n        row.longitude_deg,\n        row.iso_country,\n        row.municipality,\n        row.iata_code\n      );\n    }\n  });\n\n  insertTransaction(airports);\n}\n\nmodule.exports = db;",
+                  "solvedContent": null
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/",
+                "body": null
+              }
+            }
+          },
+          {
+            "title": "Lesson #5",
+            "id": 151471,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Мы будем использовать вспомогательный модуль, чтобы выбрать случайный аэропорт из нашей базы данных для игры в угадайку.\n\nЕсли ты посмотришь на `db-setup.js` и `airports.json`, то увидишь, что мы уже настроили базовую базу данных с некоторыми данными. Мы будем использовать эту существующую базу данных для запросов.\n\n1. В `database.js` импортируй существующую базу данных, которая экспортируется из `db-setup.js`.\n2. Создай функцию под названием `getRandomAirport()`, которая не принимает аргументов.\n3. Внутри функции используй `db.prepare()`, чтобы подготовить SQL-запрос.\n4. Выбери все из таблицы аэропортов и используй `ORDER BY RANDOM()` и `LIMIT 1` в SQL-запросе, чтобы получить один случайный аэропорт.\n5. Вызови `.get()` на подготовленном выражении, чтобы вернуть случайный аэропорт.\n6. Экспортируй `getRandomAirport` из `database.js`, чтобы сделать его доступным в другом файле.",
+              "preselectedFileIndex": 1,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require(\"express\");\n\nconst app = express();\nconst PORT = 3000;\n\napp.listen(PORT, () => {\n  console.log(`Server is running on port ${PORT}`);\n});",
+                  "solvedContent": null
+                },
+                {
+                  "name": "database.js",
+                  "codeLanguage": "javascript",
+                  "content": "",
+                  "solvedContent": "const db = require(\"./database\");\n\nfunction getRandomAirport() {\n  return db.prepare(\"SELECT * FROM airports ORDER BY RANDOM() LIMIT 1\").get();\n}\n\nmodule.exports = { getRandomAirport };\n"
+                },
+                {
+                  "name": "airports.json",
+                  "codeLanguage": "json",
+                  "content": "[\n  {\n    \"id\": \"6523\",\n    \"name\": \"Total RF Heliport\",\n    \"latitude_deg\": \"40.070985\",\n    \"longitude_deg\": \"-74.933689\",\n    \"iso_country\": \"US\",\n    \"municipality\": \"Bensalem\",\n    \"iata_code\": null\n  },\n  {\n    \"id\": \"323361\",\n    \"name\": \"Aero B Ranch Airport\",\n    \"latitude_deg\": \"38.704022\",\n    \"longitude_deg\": \"-101.473911\",\n    \"iso_country\": \"US\",\n    \"municipality\": \"Leoti\",\n    \"iata_code\": null\n  },\n  {\n    \"id\": \"6524\",\n    \"name\": \"Lowell Field\",\n    \"latitude_deg\": \"59.947733\",\n    \"longitude_deg\": \"-151.692524\",\n    \"iso_country\": \"US\",\n    \"municipality\": \"Anchor Point\",\n    \"iata_code\": null\n  },\n  {\n    \"id\": \"6525\",\n    \"name\": \"Epps Airpark\",\n    \"latitude_deg\": \"34.86479949951172\",\n    \"longitude_deg\": \"-86.77030181884766\",\n    \"iso_country\": \"US\",\n    \"municipality\": \"Harvest\",\n    \"iata_code\": null\n  }\n]",
+                  "solvedContent": null
+                },
+                {
+                  "name": "db-setup.js",
+                  "codeLanguage": "javascript",
+                  "content": "const Database = require(\"better-sqlite3\");\n\nconst db = new Database(\"/tmp/airports.db\");\n\ndb.exec(`\n  CREATE TABLE IF NOT EXISTS airports (\n    id INTEGER PRIMARY KEY,\n    name TEXT,\n    latitude_deg REAL,\n    longitude_deg REAL,\n    iso_country TEXT,\n    municipality TEXT,\n    iata_code TEXT\n  )\n`);\n\nconst rowCount = db.prepare(\"SELECT COUNT(*) AS count FROM airports\").get().count;\n\nif (rowCount === 0) {\n  const airports = require(\"./airports.json\");\n\n  const insertStatement = db.prepare(`\n    INSERT INTO airports (\n      id, name, latitude_deg, longitude_deg, iso_country, municipality, iata_code\n    )\n    VALUES (?, ?, ?, ?, ?, ?, ?)\n  `);\n\n  const insertTransaction = db.transaction((rows) => {\n    for (const row of rows) {\n      insertStatement.run(\n        row.id,\n        row.name,\n        row.latitude_deg,\n        row.longitude_deg,\n        row.iso_country,\n        row.municipality,\n        row.iata_code\n      );\n    }\n  });\n\n  insertTransaction(airports);\n}\n\nmodule.exports = db;",
+                  "solvedContent": null
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/",
+                "body": null
+              }
+            }
+          },
+          {
+            "title": "Lesson #5 - Copy",
+            "id": 151472,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Пора добавить маршрут, который возвращает один случайный аэропорт для игры в угадайку, и использовать функцию `getRandomAirport()`.\n\n1. В `app.js` импортируй `getRandomAirport` из `\"./database\"`.\n2. Добавь обработчик маршрута `GET` для `/api/random-airport`.\n3. Используй `getRandomAirport()`, чтобы загрузить один случайный аэропорт из базы данных.\n4. Верни статус `200` и JSON-объект со случайным аэропортом, используя ключ `airport`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require(\"express\");\n\nconst app = express();\nconst PORT = 3000;\n\napp.listen(PORT, () => {\n  console.log(`Server is running on port ${PORT}`);\n});\n",
+                  "solvedContent": "const express = require(\"express\");\nconst { getRandomAirport } = require(\"./database\");\n\nconst app = express();\nconst PORT = 3000;\n\napp.get(\"/api/random-airport\", (req, res) => {\n  const airport = getRandomAirport();\n\n  res.status(200).json({ airport: airport });\n});\n\napp.listen(PORT, () => {\n  console.log(`Server is running on port ${PORT}`);\n});\n"
+                },
+                {
+                  "name": "database.js",
+                  "codeLanguage": "javascript",
+                  "content": "const db = require(\"./database\");\n\nfunction getRandomAirport() {\n  return db.prepare(\"SELECT * FROM airports ORDER BY RANDOM() LIMIT 1\").get();\n}\n\nmodule.exports = { getRandomAirport };\n",
+                  "solvedContent": null
+                },
+                {
+                  "name": "airports.json",
+                  "codeLanguage": "json",
+                  "content": "[\n  {\n    \"id\": \"6523\",\n    \"name\": \"Total RF Heliport\",\n    \"latitude_deg\": \"40.070985\",\n    \"longitude_deg\": \"-74.933689\",\n    \"iso_country\": \"US\",\n    \"municipality\": \"Bensalem\",\n    \"iata_code\": null\n  },\n  {\n    \"id\": \"323361\",\n    \"name\": \"Aero B Ranch Airport\",\n    \"latitude_deg\": \"38.704022\",\n    \"longitude_deg\": \"-101.473911\",\n    \"iso_country\": \"US\",\n    \"municipality\": \"Leoti\",\n    \"iata_code\": null\n  },\n  {\n    \"id\": \"6524\",\n    \"name\": \"Lowell Field\",\n    \"latitude_deg\": \"59.947733\",\n    \"longitude_deg\": \"-151.692524\",\n    \"iso_country\": \"US\",\n    \"municipality\": \"Anchor Point\",\n    \"iata_code\": null\n  },\n  {\n    \"id\": \"6525\",\n    \"name\": \"Epps Airpark\",\n    \"latitude_deg\": \"34.86479949951172\",\n    \"longitude_deg\": \"-86.77030181884766\",\n    \"iso_country\": \"US\",\n    \"municipality\": \"Harvest\",\n    \"iata_code\": null\n  }\n]",
+                  "solvedContent": null
+                },
+                {
+                  "name": "db-setup.js",
+                  "codeLanguage": "javascript",
+                  "content": "const Database = require(\"better-sqlite3\");\n\nconst db = new Database(\"/tmp/airports.db\");\n\ndb.exec(`\n  CREATE TABLE IF NOT EXISTS airports (\n    id INTEGER PRIMARY KEY,\n    name TEXT,\n    latitude_deg REAL,\n    longitude_deg REAL,\n    iso_country TEXT,\n    municipality TEXT,\n    iata_code TEXT\n  )\n`);\n\nconst rowCount = db.prepare(\"SELECT COUNT(*) AS count FROM airports\").get().count;\n\nif (rowCount === 0) {\n  const airports = require(\"./airports.json\");\n\n  const insertStatement = db.prepare(`\n    INSERT INTO airports (\n      id, name, latitude_deg, longitude_deg, iso_country, municipality, iata_code\n    )\n    VALUES (?, ?, ?, ?, ?, ?, ?)\n  `);\n\n  const insertTransaction = db.transaction((rows) => {\n    for (const row of rows) {\n      insertStatement.run(\n        row.id,\n        row.name,\n        row.latitude_deg,\n        row.longitude_deg,\n        row.iso_country,\n        row.municipality,\n        row.iata_code\n      );\n    }\n  });\n\n  insertTransaction(airports);\n}\n\nmodule.exports = db;",
+                  "solvedContent": null
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/api/random-airport",
+                "body": null
+              }
+            }
+          },
+          {
+            "title": "Lesson #5 - Copy - Copy",
+            "id": 151473,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Теперь мы сделаем endpoint `/api/random-airport` более безопасным, обрабатывая неожиданные ошибки. Для этого мы обернем логику, которая получает все аэропорты, в блок try и catch и вернем ответ `500`, если что-то пойдет не так.\n\n1. В обработчике маршрута `/api/random-airport` добавь блок try.\n2. Перемести существующий вызов `getAllAirports()` и ответ `200` внутрь блока try.\n3. Добавь блок catch, который ловит `error`.\n4. Внутри блока catch верни статус `500`.\n5. Отправь JSON-ответ с сообщением `\"Error fetching airports\"` и сообщением об ошибке, используя `error.message`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require(\"express\");\nconst { getRandomAirport } = require(\"./database\");\n\nconst app = express();\nconst PORT = 3000;\n\napp.get(\"/api/random-airport\", (req, res) => {\n  const airport = getRandomAirport();\n\n  res.status(200).json({ airport: airport });\n});\n\napp.listen(PORT, () => {\n  console.log(`Server is running on port ${PORT}`);\n});\n",
+                  "solvedContent": "const express = require(\"express\");\nconst { getRandomAirport } = require(\"./database\");\n\nconst app = express();\nconst PORT = 3000;\n\napp.get(\"/api/random-airport\", (req, res) => {\n  try {\n    const airport = getRandomAirport();\n\n    res.status(200).json({ airport: airport });\n  } catch (error) {\n    res\n      .status(500)\n      .json({ message: \"Error fetching airports\", error: error.message });\n  }\n});\n\napp.listen(PORT, () => {\n  console.log(`Server is running on port ${PORT}`);\n});\n"
+                },
+                {
+                  "name": "database.js",
+                  "codeLanguage": "javascript",
+                  "content": "const db = require(\"./database\");\n\nfunction getRandomAirport() {\n  return db.prepare(\"SELECT * FROM airports ORDER BY RANDOM() LIMIT 1\").get();\n}\n\nmodule.exports = { getRandomAirport };\n",
+                  "solvedContent": null
+                },
+                {
+                  "name": "airports.json",
+                  "codeLanguage": "json",
+                  "content": "[\n  {\n    \"id\": \"6523\",\n    \"name\": \"Total RF Heliport\",\n    \"latitude_deg\": \"40.070985\",\n    \"longitude_deg\": \"-74.933689\",\n    \"iso_country\": \"US\",\n    \"municipality\": \"Bensalem\",\n    \"iata_code\": null\n  },\n  {\n    \"id\": \"323361\",\n    \"name\": \"Aero B Ranch Airport\",\n    \"latitude_deg\": \"38.704022\",\n    \"longitude_deg\": \"-101.473911\",\n    \"iso_country\": \"US\",\n    \"municipality\": \"Leoti\",\n    \"iata_code\": null\n  },\n  {\n    \"id\": \"6524\",\n    \"name\": \"Lowell Field\",\n    \"latitude_deg\": \"59.947733\",\n    \"longitude_deg\": \"-151.692524\",\n    \"iso_country\": \"US\",\n    \"municipality\": \"Anchor Point\",\n    \"iata_code\": null\n  },\n  {\n    \"id\": \"6525\",\n    \"name\": \"Epps Airpark\",\n    \"latitude_deg\": \"34.86479949951172\",\n    \"longitude_deg\": \"-86.77030181884766\",\n    \"iso_country\": \"US\",\n    \"municipality\": \"Harvest\",\n    \"iata_code\": null\n  }\n]",
+                  "solvedContent": null
+                },
+                {
+                  "name": "db-setup.js",
+                  "codeLanguage": "javascript",
+                  "content": "const Database = require(\"better-sqlite3\");\n\nconst db = new Database(\"/tmp/airports.db\");\n\ndb.exec(`\n  CREATE TABLE IF NOT EXISTS airports (\n    id INTEGER PRIMARY KEY,\n    name TEXT,\n    latitude_deg REAL,\n    longitude_deg REAL,\n    iso_country TEXT,\n    municipality TEXT,\n    iata_code TEXT\n  )\n`);\n\nconst rowCount = db.prepare(\"SELECT COUNT(*) AS count FROM airports\").get().count;\n\nif (rowCount === 0) {\n  const airports = require(\"./airports.json\");\n\n  const insertStatement = db.prepare(`\n    INSERT INTO airports (\n      id, name, latitude_deg, longitude_deg, iso_country, municipality, iata_code\n    )\n    VALUES (?, ?, ?, ?, ?, ?, ?)\n  `);\n\n  const insertTransaction = db.transaction((rows) => {\n    for (const row of rows) {\n      insertStatement.run(\n        row.id,\n        row.name,\n        row.latitude_deg,\n        row.longitude_deg,\n        row.iso_country,\n        row.municipality,\n        row.iata_code\n      );\n    }\n  });\n\n  insertTransaction(airports);\n}\n\nmodule.exports = db;",
+                  "solvedContent": null
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/api/random-airport",
+                "body": null
+              }
+            }
+          },
+          {
+            "title": "Lesson #5 - Copy - Copy - Copy",
+            "id": 151474,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Наш back-end готов. Прежде чем мы начнем создавать front-end, нам нужно включить CORS, что означает Cross-Origin Resource Sharing (совместное использование ресурсов между источниками).\n\nИсточник — это адрес, где работает приложение. Front-end и back-end могут работать по разным адресам.\n\nБраузеры по умолчанию блокируют запросы между разными источниками в целях безопасности. Поскольку наш front-end и back-end будут размещены по разным адресам, нам нужен CORS, чтобы разрешить front-end отправлять запросы на back-end.\n\nМы можем включить CORS, используя пакет `cors`.\n\n1. Подключите пакет `\"cors\"` и присвойте его переменной с именем `cors`.\n2. Заставьте приложение использовать импортированный middleware `cors`, вызвав `app.use` и передав функцию `cors()` в качестве параметра.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require(\"express\");\nconst { getRandomAirport } = require(\"./database\");\n\nconst app = express();\nconst PORT = 3000;\n\napp.get(\"/api/random-airport\", (req, res) => {\n  try {\n    const airport = getRandomAirport();\n\n    res.status(200).json({ airport });\n  } catch (error) {\n    res\n      .status(500)\n      .json({ message: \"Error fetching airports\", error: error.message });\n  }\n});\n\napp.listen(PORT, () => {\n  console.log(`Server is running on port ${PORT}`);\n});\n",
+                  "solvedContent": "const express = require(\"express\");\nconst cors = require(\"cors\");\nconst { getRandomAirport } = require(\"./database\");\n\nconst app = express();\napp.use(cors());\nconst PORT = 3000;\n\napp.get(\"/api/random-airport\", (req, res) => {\n  try {\n    const airport = getRandomAirport();\n\n    res.status(200).json({ airport });\n  } catch (error) {\n    res\n      .status(500)\n      .json({ message: \"Error fetching airports\", error: error.message });\n  }\n});\n\napp.listen(PORT, () => {\n  console.log(`Server is running on port ${PORT}`);\n});\n"
+                },
+                {
+                  "name": "database.js",
+                  "codeLanguage": "javascript",
+                  "content": "const db = require(\"./database\");\n\nfunction getRandomAirport() {\n  return db.prepare(\"SELECT * FROM airports ORDER BY RANDOM() LIMIT 1\").get();\n}\n\nmodule.exports = { getRandomAirport };\n",
+                  "solvedContent": null
+                },
+                {
+                  "name": "airports.json",
+                  "codeLanguage": "json",
+                  "content": "[\n  {\n    \"id\": \"6523\",\n    \"name\": \"Total RF Heliport\",\n    \"latitude_deg\": \"40.070985\",\n    \"longitude_deg\": \"-74.933689\",\n    \"iso_country\": \"US\",\n    \"municipality\": \"Bensalem\",\n    \"iata_code\": null\n  },\n  {\n    \"id\": \"323361\",\n    \"name\": \"Aero B Ranch Airport\",\n    \"latitude_deg\": \"38.704022\",\n    \"longitude_deg\": \"-101.473911\",\n    \"iso_country\": \"US\",\n    \"municipality\": \"Leoti\",\n    \"iata_code\": null\n  },\n  {\n    \"id\": \"6524\",\n    \"name\": \"Lowell Field\",\n    \"latitude_deg\": \"59.947733\",\n    \"longitude_deg\": \"-151.692524\",\n    \"iso_country\": \"US\",\n    \"municipality\": \"Anchor Point\",\n    \"iata_code\": null\n  },\n  {\n    \"id\": \"6525\",\n    \"name\": \"Epps Airpark\",\n    \"latitude_deg\": \"34.86479949951172\",\n    \"longitude_deg\": \"-86.77030181884766\",\n    \"iso_country\": \"US\",\n    \"municipality\": \"Harvest\",\n    \"iata_code\": null\n  }\n]",
+                  "solvedContent": null
+                },
+                {
+                  "name": "db-setup.js",
+                  "codeLanguage": "javascript",
+                  "content": "const Database = require(\"better-sqlite3\");\n\nconst db = new Database(\"/tmp/airports.db\");\n\ndb.exec(`\n  CREATE TABLE IF NOT EXISTS airports (\n    id INTEGER PRIMARY KEY,\n    name TEXT,\n    latitude_deg REAL,\n    longitude_deg REAL,\n    iso_country TEXT,\n    municipality TEXT,\n    iata_code TEXT\n  )\n`);\n\nconst rowCount = db.prepare(\"SELECT COUNT(*) AS count FROM airports\").get().count;\n\nif (rowCount === 0) {\n  const airports = require(\"./airports.json\");\n\n  const insertStatement = db.prepare(`\n    INSERT INTO airports (\n      id, name, latitude_deg, longitude_deg, iso_country, municipality, iata_code\n    )\n    VALUES (?, ?, ?, ?, ?, ?, ?)\n  `);\n\n  const insertTransaction = db.transaction((rows) => {\n    for (const row of rows) {\n      insertStatement.run(\n        row.id,\n        row.name,\n        row.latitude_deg,\n        row.longitude_deg,\n        row.iso_country,\n        row.municipality,\n        row.iata_code\n      );\n    }\n  });\n\n  insertTransaction(airports);\n}\n\nmodule.exports = db;",
+                  "solvedContent": null
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/api/random-airport",
+                "body": null
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

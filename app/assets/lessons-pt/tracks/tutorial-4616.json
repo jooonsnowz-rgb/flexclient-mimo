@@ -1,0 +1,123 @@
+{
+  "tutorial": {
+    "id": 4616,
+    "version": 1,
+    "type": "guidedProject",
+    "isNew": false,
+    "codeLanguage": "python",
+    "title": "Validador de leitura de sensores",
+    "descriptionContent": "Analise as leituras dos sensores, trate dados ausentes ou inválidos com exceções e valide os valores compatíveis.",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": "tutorial-4616-icon-banner.svg",
+    "chapters": [
+      {
+        "id": 17824,
+        "title": "Capítulo #1",
+        "type": "practiceLevel3",
+        "lessons": [
+          {
+            "title": "Lesson #1",
+            "id": 152001,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Boas-vindas ao projeto **Sensor Reading Validator**. Vamos limpar os dados dos sensores e calcular uma média a partir das leituras válidas.\n\n1. Já existe uma lista de dicionários com dados no arquivo `script.py`. Atribua-a a uma variável chamada `readings`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "[\n    {\"sensor\": \"greenhouse\", \"value\": \"23.5\"},\n    {\"sensor\": \"freezer\", \"value\": \"not available\"},\n    {\"value\": \"18.0\"},\n    {\"sensor\": \"boiler\", \"value\": \"140\"},\n]",
+                  "solvedContent": "readings = [\n    {\"sensor\": \"greenhouse\", \"value\": \"23.5\"},\n    {\"sensor\": \"freezer\", \"value\": \"not available\"},\n    {\"value\": \"18.0\"},\n    {\"sensor\": \"boiler\", \"value\": \"140\"},\n]"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #2",
+            "id": 152002,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Agora, vamos criar uma função que converte uma leitura em um resultado útil.\n\n1. Defina `parse_reading` com um parâmetro `reading`.\n2. Obtenha o nome do sensor usando `reading[\"sensor\"]` e salve-o em uma variável chamada `sensor`.\n3. Converta o valor armazenado em um número com `float()` e salve-o em uma variável chamada `value`.\n4. Retorne o sensor e o valor como uma tupla.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "readings = [\n    {\"sensor\": \"greenhouse\", \"value\": \"23.5\"},\n    {\"sensor\": \"freezer\", \"value\": \"not available\"},\n    {\"value\": \"18.0\"},\n    {\"sensor\": \"boiler\", \"value\": \"140\"},\n]",
+                  "solvedContent": "readings = [\n    {\"sensor\": \"greenhouse\", \"value\": \"23.5\"},\n    {\"sensor\": \"freezer\", \"value\": \"not available\"},\n    {\"value\": \"18.0\"},\n    {\"sensor\": \"boiler\", \"value\": \"140\"},\n]\n\ndef parse_reading(reading):\n    sensor = reading[\"sensor\"]\n    value = float(reading[\"value\"])\n\n    return sensor, value"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #3",
+            "id": 152003,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Algumas leituras contêm dados ausentes ou inutilizáveis. Use o tratamento de exceções para que uma leitura inválida não interrompa o programa.\n\n1. Fora da função `parse_reading()`, crie uma nova variável `valid_readings` que contenha uma lista vazia.\n2. Percorra `readings`.\n   - Dentro de `try`, analise e adicione cada leitura a `valid_readings`.\n   - Capture `KeyError`, `TypeError` e `ValueError` juntos.\n   - Imprima o erro quando uma leitura for ignorada.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "readings = [\n    {\"sensor\": \"greenhouse\", \"value\": \"23.5\"},\n    {\"sensor\": \"freezer\", \"value\": \"not available\"},\n    {\"value\": \"18.0\"},\n    {\"sensor\": \"boiler\", \"value\": \"140\"},\n]\n\ndef parse_reading(reading):\n    sensor = reading[\"sensor\"]\n    value = float(reading[\"value\"])\n\n    return sensor, value",
+                  "solvedContent": "readings = [\n    {\"sensor\": \"greenhouse\", \"value\": \"23.5\"},\n    {\"sensor\": \"freezer\", \"value\": \"not available\"},\n    {\"value\": \"18.0\"},\n    {\"sensor\": \"boiler\", \"value\": \"140\"},\n]\n\ndef parse_reading(reading):\n    sensor = reading[\"sensor\"]\n    value = float(reading[\"value\"])\n\n    return sensor, value\n\nvalid_readings = []\n\nfor reading in readings:\n    try:\n        valid_readings.append(parse_reading(reading))\n    except (KeyError, TypeError, ValueError) as error:\n        print(f\"Skipped reading: {error}\")"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #4",
+            "id": 152004,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Um valor numérico ainda pode estar fora do intervalo compatível. Adicione uma validação antes de retornar a leitura analisada.\n\n1. Na função `parse_reading()`, depois de acessar os dados do sensor e do valor, verifique se `value` é menor que `-50` ou maior que `100`.\n2. Se for, gere um `ValueError` com `raise ValueError(f\"{sensor} reported an unsupported value.\")`.\n3. O bloco `except` existente capturará e relatará esse erro.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "readings = [\n    {\"sensor\": \"greenhouse\", \"value\": \"23.5\"},\n    {\"sensor\": \"freezer\", \"value\": \"not available\"},\n    {\"value\": \"18.0\"},\n    {\"sensor\": \"boiler\", \"value\": \"140\"},\n]\n\ndef parse_reading(reading):\n    sensor = reading[\"sensor\"]\n    value = float(reading[\"value\"])\n\n    return sensor, value\n\nvalid_readings = []\n\nfor reading in readings:\n    try:\n        valid_readings.append(parse_reading(reading))\n    except (KeyError, TypeError, ValueError) as error:\n        print(f\"Skipped reading: {error}\")",
+                  "solvedContent": "readings = [\n    {\"sensor\": \"greenhouse\", \"value\": \"23.5\"},\n    {\"sensor\": \"freezer\", \"value\": \"not available\"},\n    {\"value\": \"18.0\"},\n    {\"sensor\": \"boiler\", \"value\": \"140\"},\n]\n\ndef parse_reading(reading):\n    sensor = reading[\"sensor\"]\n    value = float(reading[\"value\"])\n\n    if value < -50 or value > 100:\n        raise ValueError(f\"{sensor} reported an unsupported value.\")\n\n    return sensor, value\n\nvalid_readings = []\n\nfor reading in readings:\n    try:\n        valid_readings.append(parse_reading(reading))\n    except (KeyError, TypeError, ValueError) as error:\n        print(f\"Skipped reading: {error}\")"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #5",
+            "id": 152005,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Vamos finalizar calculando uma média somente quando houver leituras válidas.\n\n1. No final do script. verifique `valid_readings` com uma instrução `if`.\n2. Use `sum(value for _, value in valid_readings)` para totalizar os valores válidos.\n3. Divida o total por `len(valid_readings)`.\n4. Imprima a média com uma casa decimal.\n5. Adicione uma mensagem `else` para o caso em que nenhuma leitura seja válida.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "readings = [\n    {\"sensor\": \"greenhouse\", \"value\": \"23.5\"},\n    {\"sensor\": \"freezer\", \"value\": \"not available\"},\n    {\"value\": \"18.0\"},\n    {\"sensor\": \"boiler\", \"value\": \"140\"},\n]\n\ndef parse_reading(reading):\n    sensor = reading[\"sensor\"]\n    value = float(reading[\"value\"])\n\n    if value < -50 or value > 100:\n        raise ValueError(f\"{sensor} reported an unsupported value.\")\n\n    return sensor, value\n\nvalid_readings = []\n\nfor reading in readings:\n    try:\n        valid_readings.append(parse_reading(reading))\n    except (KeyError, TypeError, ValueError) as error:\n        print(f\"Skipped reading: {error}\")",
+                  "solvedContent": "readings = [\n    {\"sensor\": \"greenhouse\", \"value\": \"23.5\"},\n    {\"sensor\": \"freezer\", \"value\": \"not available\"},\n    {\"value\": \"18.0\"},\n    {\"sensor\": \"boiler\", \"value\": \"140\"},\n]\n\ndef parse_reading(reading):\n    sensor = reading[\"sensor\"]\n    value = float(reading[\"value\"])\n\n    if value < -50 or value > 100:\n        raise ValueError(f\"{sensor} reported an unsupported value.\")\n\n    return sensor, value\n\nvalid_readings = []\n\nfor reading in readings:\n    try:\n        valid_readings.append(parse_reading(reading))\n    except (KeyError, TypeError, ValueError) as error:\n        print(f\"Skipped reading: {error}\")\n\nif valid_readings:\n    average = sum(value for _, value in valid_readings) / len(valid_readings)\n    print(f\"Average valid reading: {average:.1f}\")\nelse:\n    print(\"No valid readings available.\")"
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

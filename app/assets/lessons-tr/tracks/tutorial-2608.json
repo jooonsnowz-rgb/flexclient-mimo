@@ -1,0 +1,220 @@
+{
+  "tutorial": {
+    "id": 2608,
+    "version": 9,
+    "type": "guidedProject",
+    "isNew": false,
+    "codeLanguage": "html",
+    "title": "Bilgi Yarışması - 2. Bölüm",
+    "descriptionContent": "Mantık yerli yerinde olduğuna göre artık her şey oyuncu etkileşimiyle ilgili. Birden fazla soru ekleyip bir skor görüntüleyerek oyunumuzu güzelleştireceğiz.",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": "tutorial-2608-icon-banner.svg",
+    "chapters": [
+      {
+        "id": 14459,
+        "title": "Proje Bölüm 2: Daha fazla soru",
+        "type": "practiceLevel3",
+        "lessons": [
+          {
+            "title": "Lesson #1",
+            "id": 128880,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Trivia Game projemizin ikinci bölümüne hoş geldin; burada daha fazla soru ekleyip oyun mantığımızı genişleteceğiz.\n\n1. Başlamak için `question` değişkenini birden fazla dize içeren `questions` adlı bir diziye dönüştür. Bir soru için başka bir fikre ihtiyacın varsa `\"Who painted the Mona Lisa?\"` nasıl?\n2. `currentQuestionIndex ` adında yeni bir değişken oluştur ve değerini `0` olarak ayarla.\n3. `displayQuestion` fonksiyonunun içinde, `currentQuestionIndex` değerini dizin olarak kullanarak yeni `questions` dizisinin doğru öğesine eriş; bunu, `question` öğesine doğrudan `question` değişkeninin değerini atamak yerine yap.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n<head>\n  <title>Simple Trivia</title>\n  <link rel=\"stylesheet\" href=\"style.css\">\n</head>\n<body>\n  <div class=\"container\">\n    <h1>Simple Trivia</h1>\n    <h2 id=\"question\"></h2>\n    <div id=\"choices\">\n      <button id=\"choice1\" onclick=\"checkAnswer(this)\"></button>\n      <button id=\"choice2\" onclick=\"checkAnswer(this)\"></button>\n      <button id=\"choice3\" onclick=\"checkAnswer(this)\"></button>\n      <button id=\"choice4\" onclick=\"checkAnswer(this)\"></button>\n    </div>\n  <div id=\"result\"></div>\n</div>\n  <script src=\"script.js\"></script>\n</body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "const question = \"What planet is known as the 'Red Planet'?\";\nconst choices = [\"Earth\", \"Mars\", \"Jupiter\", \"Saturn\"];\nconst correctAnswer = \"Mars\";\n\nfunction displayQuestion() {\n  document.getElementById('question').innerHTML = question;\n  for (let i = 0; i < choices.length; i++){\n    const btn = document.getElementById(`choice${i+1}`);\n    btn.innerHTML = choices[i];\n    btn.value = choices[i];\n  }\n}\n\nfunction checkAnswer(button) {\n  if (button.value === correctAnswer) {\n    document.getElementById('result').innerHTML = \"Correct!\";\n  } else {\n    document.getElementById('result').innerHTML = \"Wrong!\";\n  }\n  for(let i = 1; i <= 4; i++){\n    document.getElementById(`choice${i}`).disabled = true;\n  }\n}\n\ndisplayQuestion();",
+                  "solvedContent": "const questions = [\"What planet is known as the 'Red Planet'?\",\n\"Who painted the Mona Lisa?\"];\nconst choices = [\"Earth\", \"Mars\", \"Jupiter\", \"Saturn\"];\nconst correctAnswer = \"Mars\";\n\nlet currentQuestionIndex = 0;\n\nfunction displayQuestion() {\n  document.getElementById('question').innerHTML = questions[currentQuestionIndex];\n  for (let i = 0; i < choices.length; i++){\n    const btn = document.getElementById(`choice${i+1}`);\n    btn.innerHTML = choices[i];\n    btn.value = choices[i];\n  }\n}\n\nfunction checkAnswer(button) {\n  if (button.value === correctAnswer) {\n    document.getElementById('result').innerHTML = \"Correct!\";\n  } else {\n    document.getElementById('result').innerHTML = \"Wrong!\";\n  }\n  for(let i = 1; i <= 4; i++){\n    document.getElementById(`choice${i}`).disabled = true;\n  }\n}\n\ndisplayQuestion();"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #2",
+            "id": 128881,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Sonraki adımda, birden fazla soruyu hesaba katacak şekilde `choices` ve `correctAnswer` değişkenlerimizi güncellemeliyiz.\n\n1. `choicesArray` ve `correctAnswers` adında iki dizi oluştur.\n2. `choicesArray` içinde her öğe, ilgili trivia sorusuna ait dört cevabı içeren bir dizi olmalı.\n3. `correctAnswers` içinde her öğe, ilgili trivia sorusunun doğru cevabı olan bir dize olmalı.\n4. Artık onlara ihtiyacımız olmadığı için eski `choices` ve `correctAnswer` değişkenlerini kaldır.\n\nBu değişiklikler web sayfamızı kısa süreliğine bozacak. Endişelenme, bunu yakında düzelteceğiz.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n<head>\n  <title>Simple Trivia</title>\n  <link rel=\"stylesheet\" href=\"style.css\">\n</head>\n<body>\n  <div class=\"container\">\n    <h1>Simple Trivia</h1>\n    <h2 id=\"question\"></h2>\n    <div id=\"choices\">\n      <button id=\"choice1\" onclick=\"checkAnswer(this)\"></button>\n      <button id=\"choice2\" onclick=\"checkAnswer(this)\"></button>\n      <button id=\"choice3\" onclick=\"checkAnswer(this)\"></button>\n      <button id=\"choice4\" onclick=\"checkAnswer(this)\"></button>\n    </div>\n  <div id=\"result\"></div>\n</div>\n  <script src=\"script.js\"></script>\n</body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "const questions = [\"What planet is known as the 'Red Planet'?\",\n\"Who painted the Mona Lisa?\"];\nconst choices = [\"Earth\", \"Mars\", \"Jupiter\", \"Saturn\"];\nconst correctAnswer = \"Mars\";\n\nlet currentQuestionIndex = 0;\n\nfunction displayQuestion() {\n  document.getElementById('question').innerHTML = questions[currentQuestionIndex];\n  for (let i = 0; i < choices.length; i++){\n    const btn = document.getElementById(`choice${i+1}`);\n    btn.innerHTML = choices[i];\n    btn.value = choices[i];\n  }\n}\n\nfunction checkAnswer(button) {\n  if (button.value === correctAnswer) {\n    document.getElementById('result').innerHTML = \"Correct!\";\n  } else {\n    document.getElementById('result').innerHTML = \"Wrong!\";\n  }\n  for(let i = 1; i <= 4; i++){\n    document.getElementById(`choice${i}`).disabled = true;\n  }\n}\n\ndisplayQuestion();",
+                  "solvedContent": "const questions = [\"What planet is known as the 'Red Planet'?\",\n\"Who painted the Mona Lisa?\"];\nconst choicesArray = [\n    [\"Earth\", \"Mars\", \"Jupiter\", \"Saturn\"],\n    [\"Van Gogh\", \"Picasso\", \"Da Vinci\", \"Rembrandt\"]\n];\n\nconst correctAnswers = [\"Mars\", \"Da Vinci\"];\n\nlet currentQuestionIndex = 0;\n\nfunction displayQuestion() {\n  document.getElementById('question').innerHTML = questions[currentQuestionIndex];\n  for (let i = 0; i < choices.length; i++){\n    const btn = document.getElementById(`choice${i+1}`);\n    btn.innerHTML = choices[i];\n    btn.value = choices[i];\n  }\n}\n\nfunction checkAnswer(button) {\n  if (button.value === correctAnswer) {\n    document.getElementById('result').innerHTML = \"Correct!\";\n  } else {\n    document.getElementById('result').innerHTML = \"Wrong!\";\n  }\n  for(let i = 1; i <= 4; i++){\n    document.getElementById(`choice${i}`).disabled = true;\n  }\n}\n\ndisplayQuestion();"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "How should the arrays look?",
+                  "content": "```JavaScript\nconst questions = [\n  \"What planet is known as the 'Red Planet'?\",\n  \"Who painted the Mona Lisa?\"\n];\n\nconst choicesArray = [\n  [\"Earth\", \"Mars\", \"Jupiter\", \"Saturn\"],\n  [\"Van Gogh\", \"Picasso\", \"Da Vinci\", \"Rembrandt\"]\n];\n\nconst correctAnswers = [\"Mars\", \"Da Vinci\"];\n```"
+                }
+              ]
+            }
+          },
+          {
+            "title": "Lesson #3",
+            "id": 128904,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Seçenekleri yeniden doğru şekilde görüntülemenin zamanı geldi.\n\n1. Doğru seçenekleri ayarlamak için `displayQuestion` fonksiyonundaki for döngüsü içinde `innerHTML` ve `value` atamalarını güncelle. `choices[i]` yerine önce soruya ait doğru diziye, ardından doğru seçeneğe erişmek için `choicesArray[currentQuestionIndex][i]` kullan.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n<head>\n  <title>Simple Trivia</title>\n  <link rel=\"stylesheet\" href=\"style.css\">\n</head>\n<body>\n  <div class=\"container\">\n    <h1>Simple Trivia</h1>\n    <h2 id=\"question\"></h2>\n    <div id=\"choices\">\n      <button id=\"choice1\" onclick=\"checkAnswer(this)\"></button>\n      <button id=\"choice2\" onclick=\"checkAnswer(this)\"></button>\n      <button id=\"choice3\" onclick=\"checkAnswer(this)\"></button>\n      <button id=\"choice4\" onclick=\"checkAnswer(this)\"></button>\n    </div>\n  <div id=\"result\"></div>\n</div>\n  <script src=\"script.js\"></script>\n</body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "const questions = [\"What planet is known as the 'Red Planet'?\",\n\"Who painted the Mona Lisa?\"];\nconst choicesArray = [\n    [\"Earth\", \"Mars\", \"Jupiter\", \"Saturn\"],\n    [\"Van Gogh\", \"Picasso\", \"Da Vinci\", \"Rembrandt\"]\n];\n\nconst correctAnswers = [\"Mars\", \"Da Vinci\"];\n\nlet currentQuestionIndex = 0;\n\nfunction displayQuestion() {\n  document.getElementById('question').innerHTML = questions[currentQuestionIndex];\n  for (let i = 0; i < 4; i++) {\n    const btn = document.getElementById(`choice${i+1}`);\n    btn.innerHTML = choices[i];\n    btn.value = choices[i];\n  }\n}\n\nfunction checkAnswer(button) {\n  if (button.value === correctAnswer) {\n    document.getElementById('result').innerHTML = \"Correct!\";\n  } else {\n    document.getElementById('result').innerHTML = \"Wrong!\";\n  }\n  for(let i = 1; i <= 4; i++){\n    document.getElementById(`choice${i}`).disabled = true;\n  }\n}\n\ndisplayQuestion();",
+                  "solvedContent": "const questions = [\"What planet is known as the 'Red Planet'?\",\n\"Who painted the Mona Lisa?\"];\nconst choicesArray = [\n    [\"Earth\", \"Mars\", \"Jupiter\", \"Saturn\"],\n    [\"Van Gogh\", \"Picasso\", \"Da Vinci\", \"Rembrandt\"]\n];\n\nconst correctAnswers = [\"Mars\", \"Da Vinci\"];\n\nlet currentQuestionIndex = 0;\n\nfunction displayQuestion() {\n  document.getElementById('question').innerHTML = questions[currentQuestionIndex];\n  for (let i = 0; i < 4; i++) {\n    const btn = document.getElementById(`choice${i+1}`);\n    btn.innerHTML = choicesArray[currentQuestionIndex][i];\n    btn.value = choicesArray[currentQuestionIndex][i];\n  }\n}\n\nfunction checkAnswer(button) {\n  if (button.value === correctAnswer) {\n    document.getElementById('result').innerHTML = \"Correct!\";\n  } else {\n    document.getElementById('result').innerHTML = \"Wrong!\";\n  }\n  for(let i = 1; i <= 4; i++){\n    document.getElementById(`choice${i}`).disabled = true;\n  }\n}\n\ndisplayQuestion();"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #4",
+            "id": 128885,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Birden fazla sorumuz olduğuna göre yalnızca bir soru görüntülemekle kalmayalım, daha fazlasını görüntüleyelim.\n\n1. `displayQuestion` fonksiyonundaki tüm kodunu bir if bloğunun içine al.\n2. `currentQuestionIndex` değerinin hâlâ `questions` değişkenindeki öğelerin sayısından küçük olup olmadığını kontrol et.\n3. Bir else bloğu ekle.\n4. Bu else bloğunda oyuncunun final skorunu görüntüle ve seçenek düğmelerini devre dışı bırak. Sonucun görüntüleneceği öğeyi hedeflemek için `document.getElementById` kullan.\n5. Öğelerin `innerHTML` özelliğini skoru gösterecek şekilde ayarla.\n6. `question` kimliğine sahip öğenin `innerHTML` özelliğini boş bir dizeye ayarlayarak soruyu kaldır.\n7. Ardından, `choices` kimliğine sahip `div` öğesinin `innerHTML` özelliğini boş bir dizeye ayarlayarak tüm düğmeleri kaldır.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n<head>\n  <title>Simple Trivia</title>\n  <link rel=\"stylesheet\" href=\"style.css\">\n</head>\n<body>\n  <div class=\"container\">\n    <h1>Simple Trivia</h1>\n    <h2 id=\"question\"></h2>\n    <div id=\"choices\">\n      <button id=\"choice1\" onclick=\"checkAnswer(this)\"></button>\n      <button id=\"choice2\" onclick=\"checkAnswer(this)\"></button>\n      <button id=\"choice3\" onclick=\"checkAnswer(this)\"></button>\n      <button id=\"choice4\" onclick=\"checkAnswer(this)\"></button>\n    </div>\n  <div id=\"result\"></div>\n</div>\n  <script src=\"script.js\"></script>\n</body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "const questions = [\"What planet is known as the 'Red Planet'?\",\n  \"Who painted the Mona Lisa?\"\n];\nconst choicesArray = [\n  [\"Earth\", \"Mars\", \"Jupiter\", \"Saturn\"],\n  [\"Van Gogh\", \"Picasso\", \"Da Vinci\", \"Rembrandt\"]\n];\nconst correctAnswers = [\"Mars\", \"Da Vinci\"];\nlet currentQuestionIndex = 0;\n\nfunction displayQuestion() {\n  document.getElementById('question').innerHTML = questions[\n    currentQuestionIndex];\n  for (let i = 0; i < 4; i++) {\n    const btn = document.getElementById(`choice${i+1}`);\n    btn.innerHTML = choicesArray[currentQuestionIndex][i];\n    btn.value = choicesArray[currentQuestionIndex][i];\n  }\n}\n\nfunction checkAnswer(button) {\n  if (button.value === correctAnswer) {\n    document.getElementById('result').innerHTML = \"Correct!\";\n  } else {\n    document.getElementById('result').innerHTML = \"Wrong!\";\n  }\n  for (let i = 1; i <= 4; i++) {\n    document.getElementById(`choice${i}`).disabled = true;\n  }\n}\ndisplayQuestion();",
+                  "solvedContent": "const questions = [\"What planet is known as the 'Red Planet'?\",\n  \"Who painted the Mona Lisa?\"\n];\nconst choicesArray = [\n  [\"Earth\", \"Mars\", \"Jupiter\", \"Saturn\"],\n  [\"Van Gogh\", \"Picasso\", \"Da Vinci\", \"Rembrandt\"]\n];\nconst correctAnswers = [\"Mars\", \"Da Vinci\"];\nlet currentQuestionIndex = 0;\n\nfunction displayQuestion() {\n  if (currentQuestionIndex < questions.length) {\n    document.getElementById('question').innerHTML = questions[\n      currentQuestionIndex];\n    for (let i = 0; i < 4; i++) {\n    const btn = document.getElementById(`choice${i+1}`);\n    btn.innerHTML = choicesArray[currentQuestionIndex][i];\n    btn.value = choicesArray[currentQuestionIndex][i];\n  }\n  } else {\n    document.getElementById('result').innerHTML =\n      `You scored ${score} out of ${questions.length}!`;\n      document.getElementById('question').innerHTML = \"\";\n      document.getElementById('choices').innerHTML = \"\";\n  }\n}\n\nfunction checkAnswer(button) {\n  if (button.value === correctAnswer) {\n    document.getElementById('result').innerHTML = \"Correct!\";\n  } else {\n    document.getElementById('result').innerHTML = \"Wrong!\";\n  }\n  for (let i = 1; i <= 4; i++) {\n    document.getElementById(`choice${i}`).disabled = true;\n  }\n}\ndisplayQuestion();"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #5",
+            "id": 128886,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Son olarak, oyuncunun seçtiği yanıtı doğrulamak için fonksiyonu güncelleyeceğiz.\n\n1. Dosyanın en üstünde yeni bir `score` değişkeni tanımla ve değerini `0` olarak ayarla.\n2. `checkAnswer()` fonksiyonundaki tüm kodu kaldır.\n3. Bu `checkAnswer()` fonksiyonuna, `currentQuestionIndex` kullanarak `correctAnswers` dizisinden doğru yanıtı alıp `button` parametresinin `value` değerinin mevcut doğru yanıta eşit olup olmadığını kontrol eden bir if ifadesi ekle.\n4. Eşitse, `score` değerini `1` artır.\n5. if ifadesinden sonra `currentQuestionIndex` değerini `1` artır.\n6. Fonksiyonun en sonunda, sonraki soruyu görüntülemek için `displayQuestion()` fonksiyonunu çağır.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n<head>\n  <title>Simple Trivia</title>\n  <link rel=\"stylesheet\" href=\"style.css\">\n</head>\n<body>\n  <div class=\"container\">\n    <h1>Simple Trivia</h1>\n    <h2 id=\"question\"></h2>\n    <div id=\"choices\">\n      <button id=\"choice1\" onclick=\"checkAnswer(this)\"></button>\n      <button id=\"choice2\" onclick=\"checkAnswer(this)\"></button>\n      <button id=\"choice3\" onclick=\"checkAnswer(this)\"></button>\n      <button id=\"choice4\" onclick=\"checkAnswer(this)\"></button>\n    </div>\n  <div id=\"result\"></div>\n</div>\n  <script src=\"script.js\"></script>\n</body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "const questions = [\"What planet is known as the 'Red Planet'?\",\n  \"Who painted the Mona Lisa?\"\n];\nconst choicesArray = [\n  [\"Earth\", \"Mars\", \"Jupiter\", \"Saturn\"],\n  [\"Van Gogh\", \"Picasso\", \"Da Vinci\", \"Rembrandt\"]\n];\nconst correctAnswers = [\"Mars\", \"Da Vinci\"];\nlet currentQuestionIndex = 0;\n\nfunction displayQuestion() {\n  if (currentQuestionIndex < questions.length) {\n    document.getElementById('question').innerHTML = questions[\n      currentQuestionIndex];\n    for (let i = 0; i < 4; i++) {\n    const btn = document.getElementById(`choice${i+1}`);\n    btn.innerHTML = choicesArray[currentQuestionIndex][i];\n    btn.value = choicesArray[currentQuestionIndex][i];\n  }\n    } else {\n    document.getElementById('result').innerHTML =\n      `You scored ${score} out of ${questions.length}!`;\n      document.getElementById('question').innerHTML = \"\";\n      document.getElementById('choices').innerHTML = \"\";\n  }\n}\n\nfunction checkAnswer(button) {\n  if (button.value === correctAnswer) {\n    document.getElementById('result').innerHTML = \"Correct!\";\n  } else {\n    document.getElementById('result').innerHTML = \"Wrong!\";\n  }\n  for (let i = 1; i <= 4; i++) {\n    document.getElementById(`choice${i}`).disabled = true;\n  }\n}\ndisplayQuestion();",
+                  "solvedContent": "const questions = [\"What planet is known as the 'Red Planet'?\",\n  \"Who painted the Mona Lisa?\"\n];\nconst choicesArray = [\n  [\"Earth\", \"Mars\", \"Jupiter\", \"Saturn\"],\n  [\"Van Gogh\", \"Picasso\", \"Da Vinci\", \"Rembrandt\"]\n];\nconst correctAnswers = [\"Mars\", \"Da Vinci\"];\nlet currentQuestionIndex = 0;\nlet score = 0;\n\nfunction displayQuestion() {\n  if (currentQuestionIndex < questions.length) {\n    document.getElementById('question').innerHTML = questions[\n      currentQuestionIndex];\n    for (let i = 0; i < 4; i++) {\n    const btn = document.getElementById(`choice${i+1}`);\n    btn.innerHTML = choicesArray[currentQuestionIndex][i];\n    btn.value = choicesArray[currentQuestionIndex][i];\n  }\n    } else {\n    document.getElementById('result').innerHTML =\n      `You scored ${score} out of ${questions.length}!`;\n      document.getElementById('question').innerHTML = \"\";\n      document.getElementById('choices').innerHTML = \"\";\n  }\n}\n\nfunction checkAnswer(button) {\n  if (button.value === correctAnswers[currentQuestionIndex]) {\n        score++;\n    }\n    currentQuestionIndex++;\n    displayQuestion();\n}\ndisplayQuestion();"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #6",
+            "id": 128888,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Biraz renk ekleyelim. Sayfayı istediğin gibi stillendir. Fikre ihtiyacın olursa aşağıdakileri yapabilirsin. Web sayfamızın 5 yönünü stillendireceğiz: `body`, `container`, `button`, `button:hover` ve `result`.\n\n1. `body` içinde font ailesini `\"Arial\", sans-serif` olarak ayarla, arka planı bir linear gradient olarak ayarla, yüksekliği `100vh` olarak ayarla, `display` modunu `flex` olarak ayarla, `align-items` ve `justify-content` özelliklerini `center` olarak ayarla ve metin hizalamasını da `center` olarak ayarla.\n2. `.container` içinde `background` özelliğini `white` olarak ayarla, kenar yarıçapını sana uygun bir değere ayarla, `width` değerini `90%` olarak ayarla, maksimum genişliği istediğin bir değere ayarla, bir kutu gölgesi ve iç boşluk ekle.\n3. `button` için iç boşluğu, dış boşluğu, arka plan rengini, metin rengini, kenarlığı ve kenar yarıçapını belirt ve `cursor-style` özelliğini `pointer` olarak ayarla.\n4. `button:hover` için arka plan rengini farklı bir renge ayarla.\n5. Son olarak `#result` içinde `margin-top`, `font-weight`, `font-size` ve `color` özelliklerini ayarla.",
+              "preselectedFileIndex": 1,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n<head>\n    <title>Trivia Game</title>\n    <link rel=\"stylesheet\" href=\"style.css\">\n</head>\n<body>\n    <div class=\"container\">\n        <h1>Trivia Game</h1>\n        <h2 id=\"question\"></h2>\n        <div id=\"choices\">\n            <button id=\"choice1\" onclick=\"checkAnswer(this)\"></button>\n            <button id=\"choice2\" onclick=\"checkAnswer(this)\"></button>\n            <button id=\"choice3\" onclick=\"checkAnswer(this)\"></button>\n            <button id=\"choice4\" onclick=\"checkAnswer(this)\"></button>\n        </div>\n        <div id=\"result\"></div>\n    </div>\n    <script src=\"script.js\"></script>\n</body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "",
+                  "solvedContent": "body {\n    font-family: 'Arial', sans-serif;\n    background: linear-gradient(45deg, teal, white);\n    height: 100vh;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    text-align: center;\n}\n\n.container {\n    background: white;\n    border-radius: 10px;\n    width: 90%;\n    max-width: 600px;\n    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);\n    padding: 12px;\n}\n\nbutton {\n    padding: 10px 20px;\n    background-color: slategray;\n    color: white;\n    border: none;\n    border-radius: 5px;\n    cursor: pointer;\n    margin: 10px;\n    transition: background-color 0.3s, transform 0.3s;\n}\n\nbutton:hover {\n    background-color: teal;\n    transform: scale(1.05);\n}\n\n#result {\n    margin-top: 20px;\n    font-weight: bold;\n    font-size: 1.3rem;\n    color: teal;\n}"
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "const questions = [\n    \"What's the capital of France?\", \n    \"Who painted the Mona Lisa?\"\n];\n\nconst choicesArray = [\n    [\"Paris\", \"London\", \"Berlin\", \"Madrid\"], \n    [\"Van Gogh\", \"Picasso\", \"Da Vinci\", \"Rembrandt\"]\n];\n\nconst correctAnswers = [\"Paris\", \"Da Vinci\"];\n\nlet currentQuestionIndex = 0;\nlet score = 0;\n\nfunction displayQuestion() {\n    if (currentQuestionIndex < questions.length) {\n        document.getElementById('question').innerHTML = questions[currentQuestionIndex];\n        for (let i = 0; i < 4; i++) {\n            const btn = document.getElementById(`choice${i+1}`);\n            btn.innerHTML = choicesArray[currentQuestionIndex][i];\n            btn.value = choicesArray[currentQuestionIndex][i];\n        }\n      } else {\n    document.getElementById('result').innerHTML =\n      `You scored ${score} out of ${questions.length}!`;\n      document.getElementById('question').innerHTML = \"\";\n      document.getElementById('choices').innerHTML = \"\";\n  }\n}\n\nfunction checkAnswer(btn) {\n    if (btn.value === correctAnswers[currentQuestionIndex]) {\n        score++;\n    }\n    currentQuestionIndex++;\n    displayQuestion();\n}\n\ndisplayQuestion();",
+                  "solvedContent": null
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

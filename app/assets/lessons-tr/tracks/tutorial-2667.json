@@ -1,0 +1,183 @@
+{
+  "tutorial": {
+    "id": 2667,
+    "version": 8,
+    "type": "guidedProject",
+    "isNew": false,
+    "codeLanguage": "python",
+    "title": "Star Wars API'si - 1. Bölüm",
+    "descriptionContent": "Star Wars API'yi çağırarak geniş Star Wars evrenindeki karakterleri alan bir projeyle galaksiye açıl.",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": "tutorial-2667-icon-banner.svg",
+    "chapters": [
+      {
+        "id": 14642,
+        "title": "Star Wars API'si - 1. Bölüm",
+        "type": "practiceLevel3",
+        "lessons": [
+          {
+            "title": "Lesson #1",
+            "id": 129499,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "**Star Wars API** projesine hoş geldin. Bu projede, uzak bir sunucudan veri almak ve bu verileri görüntülemek için harici bir API kullanacağız.\n\n1. Başlamak için `requests` kütüphanesini içe aktar.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "",
+                  "solvedContent": "import requests"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #2",
+            "id": 129500,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Bir REST API'den veri almayı planlıyoruz. Bu API'nin birden fazla uç noktası var. Önce people uç noktasını çağıralım.\n\n1. `option` adında bir değişken oluştur ve ona `\"people\"` değerini ata.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "import requests",
+                  "solvedContent": "import requests\n\noption = \"people\""
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #3",
+            "id": 129501,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "URL'yi oluşturalım. `/people` endpoint'ini kullanacağız. Ancak bunu istediğimiz zaman değiştirebilmek için esnek olmak istiyoruz. Bu nedenle URL'yi oluşturmak için bir f-string kullanıyoruz.\n\n1. `url` adında yeni bir değişken oluştur ve ona şu f-string'i ata: `f\"https://swapi.mimo.dev/api/{option}/\"`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "import requests\n\noption = \"people\"",
+                  "solvedContent": "import requests\n\noption = \"people\"\nurl = f\"https://swapi.mimo.dev/api/{option}/\""
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #4",
+            "id": 129502,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "API uç noktasına isteği gönderme zamanı.\n\n1. `requests.get(url)` ekle ve döndürülen yanıt nesnesini `response` adlı bir değişkende sakla.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "import requests\n\noption = \"people\"\nurl = f\"https://swapi.mimo.dev/api/{option}/\"",
+                  "solvedContent": "import requests\n\noption = \"people\"\nurl = f\"https://swapi.mimo.dev/api/{option}/\"\nresponse = requests.get(url)"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #5",
+            "id": 129503,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "İsteğimiz başarısız olduğunda ortaya çıkabilecek HTTP hatalarını düzgün şekilde ele almamız gerekir. Bu amaçla `raise_for_status` metodunu kullanacağız.\n\n1. HTTP isteği başarısız bir durum kodu döndürdüyse istisna oluşturmak için `raise_for_status` metodunu `response` üzerinde çağır.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "import requests\n\noption = \"people\"\nurl = f\"https://swapi.mimo.dev/api/{option}/\"\nresponse = requests.get(url)",
+                  "solvedContent": "import requests\n\noption = \"people\"\nurl = f\"https://swapi.mimo.dev/api/{option}/\"\nresponse = requests.get(url)\nresponse.raise_for_status()"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #6",
+            "id": 129504,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "İsteğimizin başarılı olduğundan emin olduğumuza göre JSON yanıtını ayrıştırma zamanı.\n\n1. `response` üzerinde `.json()` metodunu çağır ve döndürdüğü değeri `data` adlı bir değişkende sakla.\n2. `data` değişkeninde kaydedilen listenin uzunluğunu sayarak başarıyla alınan öğe sayısını belirten bir mesaj yazdır.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "import requests\n\noption = \"people\"\nurl = f\"https://swapi.mimo.dev/api/{option}/\"\nresponse = requests.get(url)\nresponse.raise_for_status()",
+                  "solvedContent": "import requests\n\noption = \"people\"\nurl = f\"https://swapi.mimo.dev/api/{option}/\"\nresponse = requests.get(url)\nresponse.raise_for_status()\n\ndata = response.json()\nprint(f\"Successfully fetched {len(data)} entities\")"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #7",
+            "id": 129505,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Son olarak, isteğimiz sırasında oluşmuş olabilecek HTTP hatalarını ele almak için bir try-except bloğu ekleyelim.\n\n1. HTTP isteği ve yanıt işleme kodunu bir `try` bloğunun içine taşı.\n   - İçe aktarma ifadesini, `option` ve `url` değişkenlerini dışarıda bırak.\n   - Geri kalan her şey `try` bloğunun içine girmeli.\n2. `except` bloğunun içinde `requests.HTTPError` hatasını `e` olarak yakala ve `e` hatası hakkında bilgi veren bir hata mesajı yazdır.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "import requests\n\noption = \"people\"\nurl = f\"https://swapi.mimo.dev/api/{option}/\"\nresponse = requests.get(url)\nresponse.raise_for_status()\n\ndata = response.json()\nprint(f\"Successfully fetched {len(data)} entities\")",
+                  "solvedContent": "import requests\n\noption = \"people\"\nurl = f\"https://swapi.mimo.dev/api/{option}/\"\ntry:\n  response = requests.get(url)\n  response.raise_for_status()\n\n  data = response.json()\n  print(f\"Successfully fetched {len(data)} entities\")\nexcept requests.HTTPError as e:\n  print(f\"Error fetching data: {e}\")"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #9",
+            "id": 129507,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Çektiğimiz veriler elimizde. Şimdi bu verileri düzgün bir şekilde görüntülemek için kod ekleyelim.\n\n1. try-except bloğundan sonra, `data` öğesine değer atanıp atanmadığını kontrol eden bir `if` ifadesi ekle.\n   - if bloğunda `data` listesi üzerinde döngü oluştur.\n   - `data` öğeleri sözlüklerdir. Her biri için `name` anahtarının değerini yazdır.\n2. `data` boşsa `Unable to download data` yazdırmak için bir `else` ifadesi ekle.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "import requests\n\noption = \"people\"\nurl = f\"https://swapi.mimo.dev/api/{option}/\"\ntry:\n  response = requests.get(url)\n  response.raise_for_status()\n\n  data = response.json()\n  print(f\"Successfully fetched {len(data)} entities\")\nexcept requests.HTTPError as e:\n  print(f\"Error fetching data: {e}\")",
+                  "solvedContent": "import requests\n\noption = \"people\"\nurl = f\"https://swapi.mimo.dev/api/{option}/\"\ntry:\n  response = requests.get(url)\n  response.raise_for_status()\n\n  data = response.json()\n  print(f\"Successfully fetched {len(data)} entities\")\nexcept requests.HTTPError as e:\n  print(f\"Error fetching data: {e}\")\n\nif data:\n  for entity in data:\n    print(entity[\"name\"])\nelse:\n  print(\"Unable to download data\")"
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

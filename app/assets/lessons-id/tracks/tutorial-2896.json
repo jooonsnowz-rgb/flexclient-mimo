@@ -1,0 +1,367 @@
+{
+  "tutorial": {
+    "id": 2896,
+    "version": 5,
+    "type": "guidedProject",
+    "isNew": false,
+    "codeLanguage": "node",
+    "title": "Kuis - Bagian 1",
+    "descriptionContent": "Memanfaatkan kekuatan Express untuk membangun aplikasi Kuis yang kompleks dan terstruktur dengan baik",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": "tutorial-2896-icon-banner.svg",
+    "chapters": [
+      {
+        "id": 14987,
+        "title": "Kuis - Bagian 1",
+        "type": "practiceLevel3",
+        "lessons": [
+          {
+            "title": "Lesson #1",
+            "id": 132139,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Selamat datang di proyek **Quiz**. Kita akan membuat API yang menyediakan pertanyaan dan memeriksa apakah pengguna menjawab dengan benar.\n\nKita akan mulai dengan menyiapkan server Express.\n\n1. Deklarasikan variabel `express` dan require modul `express`.\n2. Deklarasikan variabel `app` dan inisialisasikan dengan memanggil fungsi `express`.\n3. Deklarasikan variabel `port` dan tetapkan nilainya menjadi `3000`.\n4. Gunakan fungsi `listen` pada `app` agar aplikasi mendengarkan port yang ditentukan oleh variabel `port`.\n5. Catat sebuah pesan ke console di dalam callback fungsi `listen` agar kita tahu server kita berjalan dengan benar.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "Question.js",
+                  "codeLanguage": "javascript",
+                  "content": "",
+                  "solvedContent": null
+                },
+                {
+                  "name": "Quiz.js",
+                  "codeLanguage": "javascript",
+                  "content": "",
+                  "solvedContent": null
+                },
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "",
+                  "solvedContent": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.listen(port, () => {\n console.log(`App is running on port ${port}`);\n});"
+                },
+                {
+                  "name": "quizRoutes.js",
+                  "codeLanguage": "javascript",
+                  "content": "",
+                  "solvedContent": null
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/quiz/question",
+                "body": null
+              }
+            }
+          },
+          {
+            "title": "Lesson #1 - Copy",
+            "id": 132207,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Untuk kuis kita, kita membutuhkan pertanyaan. Mari buat class `Question`, yang akan bertanggung jawab menyimpan ID pertanyaan, teks pertanyaan, opsi, dan jawaban yang benar.\n\n1. Di file `Question.js`, deklarasikan class `Question`, lalu buat agar constructornya menerima `id`, `question`, `options`, dan `correctAnswer` sebagai parameter dan menginisialisasinya.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "Question.js",
+                  "codeLanguage": "javascript",
+                  "content": "",
+                  "solvedContent": "class Question {\n  constructor(id, question, options, correctAnswer) {\n    this.id = id;\n    this.question = question;\n    this.options = options;\n    this.correctAnswer = correctAnswer;\n  }\n}"
+                },
+                {
+                  "name": "Quiz.js",
+                  "codeLanguage": "javascript",
+                  "content": "",
+                  "solvedContent": null
+                },
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.listen(port, () => {\n console.log(`App is running on port ${port}`);\n});",
+                  "solvedContent": null
+                },
+                {
+                  "name": "quizRoutes.js",
+                  "codeLanguage": "javascript",
+                  "content": "",
+                  "solvedContent": null
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/quiz/question",
+                "body": null
+              }
+            }
+          },
+          {
+            "title": "Lesson #2",
+            "id": 132140,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Sekarang mari tambahkan metode untuk memeriksa apakah jawaban yang diberikan benar.\n\n1. Tambahkan metode `isCorrectAnswer` di dalam class `Question` yang menerima parameter `answer` dan memeriksa apakah nilainya sama dengan `correctAnswer` untuk pertanyaan tersebut. Bergantung pada hasilnya, metode tersebut harus mengembalikan `true` atau `false`.\n2. Terakhir, ekspor class `Question` menggunakan `module.exports = Question;`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "Question.js",
+                  "codeLanguage": "javascript",
+                  "content": "class Question {\n  constructor(id, question, options, correctAnswer) {\n    this.id = id;\n    this.question = question;\n    this.options = options;\n    this.correctAnswer = correctAnswer;\n  }\n}",
+                  "solvedContent": "class Question {\n  constructor(id, question, options, correctAnswer) {\n    this.id = id;\n    this.question = question;\n    this.options = options;\n    this.correctAnswer = correctAnswer;\n  }\n\n  isCorrectAnswer(answer) {\n    return this.correctAnswer === answer;\n  }\n}\n\nmodule.exports = Question;"
+                },
+                {
+                  "name": "Quiz.js",
+                  "codeLanguage": "javascript",
+                  "content": "",
+                  "solvedContent": null
+                },
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.listen(port, () => {\n console.log(`App is running on port ${port}`);\n});",
+                  "solvedContent": null
+                },
+                {
+                  "name": "quizRoutes.js",
+                  "codeLanguage": "javascript",
+                  "content": "",
+                  "solvedContent": null
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/quiz/question",
+                "body": null
+              }
+            }
+          },
+          {
+            "title": "Lesson #4",
+            "id": 132142,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Kita memerlukan beberapa pertanyaan untuk kuis kita.\n\n1. Buat array bernama `questionsData` yang berisi objek yang merepresentasikan setiap pertanyaan.\n2. Tambahkan setidaknya dua pertanyaan. Setiap objek pertanyaan harus memiliki `id`, `question`, `options` (array pilihan jawaban), dan `correctAnswer` (jawaban yang benar dari pilihan yang tersedia).\n\nSilakan gunakan pertanyaan berikut jika kamu tidak ingin membuat pertanyaan sendiri:\n```\nconst questionsData = [\n  {\n    id: 1,\n    question: \"What is the capital of France?\",\n    options: [\"Paris\", \"Rome\", \"Berlin\", \"Madrid\"],\n    correctAnswer: \"Paris\",\n  },\n  {\n    id: 2,\n    question: \"What is 2 + 2?\",\n    options: [\"3\", \"4\", \"5\", \"6\"],\n    correctAnswer: \"4\",\n  },\n];\n```",
+              "preselectedFileIndex": 1,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "Question.js",
+                  "codeLanguage": "javascript",
+                  "content": "class Question {\n  constructor(id, question, options, correctAnswer) {\n    this.id = id;\n    this.question = question;\n    this.options = options;\n    this.correctAnswer = correctAnswer;\n  }\n  isCorrectAnswer(answer) {\n    return this.correctAnswer === answer;\n  }\n}\nmodule.exports = Question;",
+                  "solvedContent": null
+                },
+                {
+                  "name": "Quiz.js",
+                  "codeLanguage": "javascript",
+                  "content": "",
+                  "solvedContent": "const questionsData = [{\n  id: 1,\n  question: \"What is the capital of France?\",\n  options: [\"Paris\", \"Rome\", \"Berlin\", \"Madrid\"],\n  correctAnswer: \"Paris\",\n}, {\n  id: 2,\n  question: \"What is 2 + 2?\",\n  options: [\"3\", \"4\", \"5\", \"6\"],\n  correctAnswer: \"4\",\n}, ];"
+                },
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.listen(port, () => {\n console.log(`App is running on port ${port}`);\n});",
+                  "solvedContent": null
+                },
+                {
+                  "name": "quizRoutes.js",
+                  "codeLanguage": "javascript",
+                  "content": "",
+                  "solvedContent": null
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/quiz/question",
+                "body": null
+              }
+            }
+          },
+          {
+            "title": "Lesson #4 - Copy",
+            "id": 132148,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Sekarang, kita akan menggunakan class `Question` dan data pertanyaan dalam class `Quiz` baru.\n\n1. Di file `Quiz.js`, buat variabel bernama `Question` dan impor modul `Question` ke dalamnya.\n2. Buat class `Quiz` yang menyimpan array pertanyaan:\n   - Class tersebut harus memiliki constructor yang memproses array `questionsData`.\n   - Di dalam constructor, setiap entri dalam `questionsData` harus diubah menjadi objek `Question`.\n   - Objek `Question` harus dibuat menggunakan properti dari setiap entri dalam `questionsData` (misalnya, `id`, `question`, `options`, dan `correctAnswer`).\n   - Semua objek pertanyaan harus disimpan dalam array `questions` di dalam class `Quiz`.",
+              "preselectedFileIndex": 1,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "Question.js",
+                  "codeLanguage": "javascript",
+                  "content": "class Question {\n  constructor(id, question, options, correctAnswer) {\n    this.id = id;\n    this.question = question;\n    this.options = options;\n    this.correctAnswer = correctAnswer;\n  }\n\n  isCorrectAnswer(answer) {\n    return this.correctAnswer === answer;\n  }\n}\n\nmodule.exports = Question;",
+                  "solvedContent": null
+                },
+                {
+                  "name": "Quiz.js",
+                  "codeLanguage": "javascript",
+                  "content": "const questionsData = [{\n  id: 1,\n  question: \"What is the capital of France?\",\n  options: [\"Paris\", \"Rome\", \"Berlin\", \"Madrid\"],\n  correctAnswer: \"Paris\",\n}, {\n  id: 2,\n  question: \"What is 2 + 2?\",\n  options: [\"3\", \"4\", \"5\", \"6\"],\n  correctAnswer: \"4\",\n}, ];",
+                  "solvedContent": "const Question = require(\"./Question\");\n\nconst questionsData = [{\n  id: 1,\n  question: \"What is the capital of France?\",\n  options: [\"Paris\", \"Rome\", \"Berlin\", \"Madrid\"],\n  correctAnswer: \"Paris\",\n}, {\n  id: 2,\n  question: \"What is 2 + 2?\",\n  options: [\"3\", \"4\", \"5\", \"6\"],\n  correctAnswer: \"4\",\n}, ];\n\nclass Quiz {\n  constructor() {\n    this.questions = [];\n    for (let i = 0; i < questionsData.length; i++) {\n      const q = questionsData[i];\n      this.questions.push(new Question(q.id, q.question, q.options, q\n        .correctAnswer));\n    }\n  }\n}"
+                },
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.listen(port, () => {\n console.log(`App is running on port ${port}`);\n});",
+                  "solvedContent": null
+                },
+                {
+                  "name": "quizRoutes.js",
+                  "codeLanguage": "javascript",
+                  "content": "",
+                  "solvedContent": null
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/quiz/question",
+                "body": null
+              }
+            }
+          },
+          {
+            "title": "Lesson #5",
+            "id": 132143,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Sekarang tambahkan fungsionalitas untuk mendapatkan pertanyaan acak.\n\n1. Tambahkan method `getRandomQuestion` di class `Quiz` yang memilih dan mengembalikan pertanyaan acak dari `this.questions`.\n2. Terakhir, export class `Quiz`.",
+              "preselectedFileIndex": 1,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "Question.js",
+                  "codeLanguage": "javascript",
+                  "content": "class Question {\n  constructor(id, question, options, correctAnswer) {\n    this.id = id;\n    this.question = question;\n    this.options = options;\n    this.correctAnswer = correctAnswer;\n  }\n\n  isCorrectAnswer(answer) {\n    return this.correctAnswer === answer;\n  }\n}\n\nmodule.exports = Question;",
+                  "solvedContent": null
+                },
+                {
+                  "name": "Quiz.js",
+                  "codeLanguage": "javascript",
+                  "content": "const Question = require(\"./Question\");\n\nconst questionsData = [{\n  id: 1,\n  question: \"What is the capital of France?\",\n  options: [\"Paris\", \"Rome\", \"Berlin\", \"Madrid\"],\n  correctAnswer: \"Paris\",\n}, {\n  id: 2,\n  question: \"What is 2 + 2?\",\n  options: [\"3\", \"4\", \"5\", \"6\"],\n  correctAnswer: \"4\",\n}, ];\n\nclass Quiz {\n  constructor() {\n    this.questions = [];\n    for (let i = 0; i < questionsData.length; i++) {\n      const q = questionsData[i];\n      this.questions.push(new Question(q.id, q.question, q.options, q\n        .correctAnswer));\n    }\n  }\n}",
+                  "solvedContent": "const Question = require(\"./Question\");\n\nconst questionsData = [{\n  id: 1,\n  question: \"What is the capital of France?\",\n  options: [\"Paris\", \"Rome\", \"Berlin\", \"Madrid\"],\n  correctAnswer: \"Paris\",\n}, {\n  id: 2,\n  question: \"What is 2 + 2?\",\n  options: [\"3\", \"4\", \"5\", \"6\"],\n  correctAnswer: \"4\",\n}, ];\n\nclass Quiz {\n  constructor() {\n    this.questions = [];\n    for (let i = 0; i < questionsData.length; i++) {\n      const q = questionsData[i];\n      this.questions.push(new Question(q.id, q.question, q.options, q\n        .correctAnswer));\n    }\n  }\n  getRandomQuestion() {\n    const randomIndex = Math.floor(Math.random() * this.questions.length);\n    return this.questions[randomIndex];\n  }\n}\n\nmodule.exports = Quiz;"
+                },
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.listen(port, () => {\n console.log(`App is running on port ${port}`);\n});",
+                  "solvedContent": null
+                },
+                {
+                  "name": "quizRoutes.js",
+                  "codeLanguage": "javascript",
+                  "content": "",
+                  "solvedContent": null
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/quiz/question",
+                "body": null
+              }
+            }
+          },
+          {
+            "title": "Lesson #9",
+            "id": 132147,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Terakhir, di `quizRoutes.js`, kita akan mendefinisikan route handler untuk aplikasi Quiz kita.\n\n1. Impor class `Quiz` dan buat instance `quiz` dengan menggunakan `require`.\n2. Inisialisasi objek router baru. Jangan lupa mengimpor Express untuk melakukannya.\n3. Buat route GET `/question` pada router.\n   - Route tersebut harus memilih pertanyaan secara acak dan mengembalikannya sebagai respons JSON.\n   - Respons JSON harus memiliki key `id`, `question`, dan `options` yang kamu ambil dari pertanyaan yang diterima dari quiz.\n4. Ekspor `router` menggunakan `module.exports = router;`.",
+              "preselectedFileIndex": 3,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "Question.js",
+                  "codeLanguage": "javascript",
+                  "content": "class Question {\n  constructor(id, question, options, correctAnswer) {\n    this.id = id;\n    this.question = question;\n    this.options = options;\n    this.correctAnswer = correctAnswer;\n  }\n\n  isCorrectAnswer(answer) {\n    return this.correctAnswer === answer;\n  }\n}\n\nmodule.exports = Question;",
+                  "solvedContent": null
+                },
+                {
+                  "name": "Quiz.js",
+                  "codeLanguage": "javascript",
+                  "content": "const Question = require(\"./Question\");\n\nconst questionsData = [{\n  id: 1,\n  question: \"What is the capital of France?\",\n  options: [\"Paris\", \"Rome\", \"Berlin\", \"Madrid\"],\n  correctAnswer: \"Paris\",\n}, {\n  id: 2,\n  question: \"What is 2 + 2?\",\n  options: [\"3\", \"4\", \"5\", \"6\"],\n  correctAnswer: \"4\",\n}, ];\n\nclass Quiz {\n  constructor() {\n    this.questions = [];\n    for (let i = 0; i < questionsData.length; i++) {\n      const q = questionsData[i];\n      this.questions.push(new Question(q.id, q.question, q.options, q\n        .correctAnswer));\n    }\n  }\n  getRandomQuestion() {\n    const randomIndex = Math.floor(Math.random() * this.questions.length);\n    return this.questions[randomIndex];\n  }\n}\n\nmodule.exports = Quiz;",
+                  "solvedContent": null
+                },
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.listen(port, () => {\n console.log(`App is running on port ${port}`);\n});",
+                  "solvedContent": null
+                },
+                {
+                  "name": "quizRoutes.js",
+                  "codeLanguage": "javascript",
+                  "content": "",
+                  "solvedContent": "const express = require(\"express\");\nconst Quiz = require(\"./Quiz\");\n\nconst router = express.Router();\nconst quiz = new Quiz();\n\nrouter.get(\"/question\", (req, res) => {\n  const question = quiz.getRandomQuestion();\n  res.json({\n    id: question.id,\n    question: question.question,\n    options: question.options,\n  });\n});\n\nmodule.exports = router;"
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/quiz/question",
+                "body": null
+              }
+            }
+          },
+          {
+            "title": "Lesson #7",
+            "id": 132145,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Sekarang, mari kita memperluas file utama `app.js` agar menyertakan endpoint dari rute kuis.\n\n1. Pertama, require modul yang diperlukan`quizRoutes`.\n2. Mount middleware routing `quizRoutes` pada path `/quiz` agar endpoint `/quiz/question` dapat dipanggil.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "Question.js",
+                  "codeLanguage": "javascript",
+                  "content": "class Question {\n  constructor(id, question, options, correctAnswer) {\n    this.id = id;\n    this.question = question;\n    this.options = options;\n    this.correctAnswer = correctAnswer;\n  }\n\n  isCorrectAnswer(answer) {\n    return this.correctAnswer === answer;\n  }\n}\n\nmodule.exports = Question;",
+                  "solvedContent": null
+                },
+                {
+                  "name": "Quiz.js",
+                  "codeLanguage": "javascript",
+                  "content": "const Question = require(\"./Question\");\n\nconst questionsData = [{\n  id: 1,\n  question: \"What is the capital of France?\",\n  options: [\"Paris\", \"Rome\", \"Berlin\", \"Madrid\"],\n  correctAnswer: \"Paris\",\n}, {\n  id: 2,\n  question: \"What is 2 + 2?\",\n  options: [\"3\", \"4\", \"5\", \"6\"],\n  correctAnswer: \"4\",\n}, ];\n\nclass Quiz {\n  constructor() {\n    this.questions = [];\n    for (let i = 0; i < questionsData.length; i++) {\n      const q = questionsData[i];\n      this.questions.push(new Question(q.id, q.question, q.options, q\n        .correctAnswer));\n    }\n  }\n  getRandomQuestion() {\n    const randomIndex = Math.floor(Math.random() * this.questions.length);\n    return this.questions[randomIndex];\n  }\n}\n\nmodule.exports = Quiz;",
+                  "solvedContent": null
+                },
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require('express');\nconst app = express();\nconst port = 3000;\napp.listen(port, () => {\n  console.log(`App is running on port ${port}`);\n});",
+                  "solvedContent": "const express = require('express');\nconst quizRoutes = require(\"./quizRoutes\");\n\nconst app = express();\nconst port = 3000;\n\napp.use(\"/quiz\", quizRoutes);\n\napp.listen(port, () => {\n  console.log(`App is running on port ${port}`);\n});"
+                },
+                {
+                  "name": "quizRoutes.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require(\"express\");\nconst Quiz = require(\"./Quiz\");\n\nconst router = express.Router();\nconst quiz = new Quiz();\n\nrouter.get(\"/question\", (req, res) => {\n  const question = quiz.getRandomQuestion();\n  res.json({\n    id: question.id,\n    question: question.question,\n    options: question.options,\n  });\n});\n\nmodule.exports = router;",
+                  "solvedContent": null
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/quiz/question",
+                "body": null
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

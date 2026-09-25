@@ -1,0 +1,546 @@
+{
+  "tutorial": {
+    "id": 3095,
+    "version": 5,
+    "type": "guidedProject",
+    "isNew": false,
+    "codeLanguage": "jsx",
+    "title": "Pokédex - Bagian 2",
+    "descriptionContent": "Tingkatkan Pokédex-mu dengan fitur pencarian untuk menemukan Pokémon favoritmu dengan cepat",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": "tutorial-3095-icon-banner.svg",
+    "chapters": [
+      {
+        "id": 15386,
+        "title": "Pokédex - Bagian 2",
+        "type": "practiceLevel3",
+        "lessons": [
+          {
+            "title": "Lesson #1",
+            "id": 135404,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Selamat datang kembali di proyek **Pokédex**. Di bagian kedua, kita akan melanjutkan pemberian style pada aplikasi dan menambahkan pencarian.\n\n1. Buat komponen `PokemonCard` baru yang menerima satu objek sebagai properti: `pokemon`. Impor `React` dan ekspor komponennya.\n2. Kembalikan sebuah `div` dengan class `\"pokemon-card\"`.\n3. Di dalam `div`, kembalikan nama Pokémon dalam elemen `h2` dengan mengakses properti name dari objek yang diteruskan menggunakan `pokemon.name`.\n4. Impor komponen `PokemonCard` di komponen `Pokedex`.\n5. Di komponen `Pokedex`, render `PokemonCard` sebagai pengganti elemen `li`. Pastikan tetap menetapkan `index` sebagai key dan meneruskan item dari daftar Pokémon sebagai properti bernama `pokemon` ke `PokemonCard`.",
+              "preselectedFileIndex": 8,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <script type=\"module\" src=\"./index.js\"></script>\n    <link rel=\"stylesheet\" href=\"./index.css\" />\n    <title>Pokédex</title>\n  </head>\n  <body>\n    <div id=\"root\">loading</div>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "index.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React from \"react\";\nimport { createRoot } from \"react-dom/client\";\nimport App from \"./App\";\n\nconst container = document.getElementById(\"root\");\nconst root = createRoot(container);\nroot.render(<App />);\n",
+                  "solvedContent": null
+                },
+                {
+                  "name": "App.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React from \"react\";\nimport { BrowserRouter, Routes, Route, Link } from \"react-router-dom\";\nimport \"./App.css\";\nimport Home from \"./Home\";\nimport Pokedex from \"./Pokedex\";\n\nconst NavigationBar = () => {\n  return (\n    <nav>\n      <Link to=\"/\">Home</Link>\n      <Link to=\"/pokedex\">Pokédex</Link>\n    </nav>\n  );\n};\n\nconst App = () => (\n  <BrowserRouter>\n    <NavigationBar />\n    <div className=\"content\">\n      <Routes>\n        <Route path=\"/\" element={<Home />} />\n        <Route path=\"/pokedex\" element={<Pokedex />} />\n      </Routes>\n    </div>\n  </BrowserRouter>\n);\n\nexport default App;\n",
+                  "solvedContent": null
+                },
+                {
+                  "name": "App.css",
+                  "codeLanguage": "css",
+                  "content": "@import url(\"https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap\");\n\nbody {\n  margin: 0;\n  font-family: \"Press Start 2P\", sans-serif;\n  background-color: #F7E39C;\n  text-align: center;\n}\n\n.content {\n  width: 90%;\n  max-width: 640px;\n  margin: 0 auto;\n}\n\np {\n  line-height: 1.5;\n}\n\nnav {\n  display: flex;\n  justify-content: center;\n  gap: 10px;\n  padding: 10px;\n  background-color: #D13325;\n  position: sticky;\n  top: 0;\n  z-index: 1000;\n}\n\nnav a {\n  text-decoration: none;\n  font-weight: bold;\n  color: #F7E39C;\n  margin: 0 4px;\n}\n\nnav a:hover {\n  color: black;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "Home.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React from \"react\";\n\nconst Home = () => {\n  return (\n    <div>\n      <h1>Welcome to the Pokédex App</h1>\n      <p>Explore the world of Pokémon with our comprehensive Pokédex.</p>\n    </div>\n  );\n};\n\nexport default Home;\n",
+                  "solvedContent": null
+                },
+                {
+                  "name": "Pokedex.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React, { useState, useEffect } from \"react\";\n\nconst Pokedex = () => {\n  const [pokemons, setPokemons] = useState([]);\n\n  const fetchPokemons = async () => {\n    fetch(\"https://pokedex.mimo.dev/api/pokemon\")\n      .then((response) => response.json())\n      .then((data) => setPokemons(data));\n  };\n\n  useEffect(() => {\n    fetchPokemons();\n  }, []);\n\n  return (\n    <>\n      <h1>All Pokemon</h1>\n      <ul>\n        {pokemons.map((pokemon, index) => (\n          <li key={index}>{pokemon.name}</li>\n        ))}\n      </ul>\n    </>\n  );\n};\n\nexport default Pokedex;\n",
+                  "solvedContent": "import React, { useState, useEffect } from \"react\";\nimport PokemonCard from \"./PokemonCard\";\n\nconst Pokedex = () => {\n  const [pokemons, setPokemons] = useState([]);\n\n  const fetchPokemons = async () => {\n    fetch(\"https://pokedex.mimo.dev/api/pokemon\")\n      .then((response) => response.json())\n      .then((data) => setPokemons(data));\n  };\n\n  useEffect(() => {\n    fetchPokemons();\n  }, []);\n\n  return (\n    <>\n      <h1>All Pokemon</h1>\n      <ul>\n        {pokemons.map((pokemon, index) => (\n          <PokemonCard key={index} pokemon={pokemon} />\n        ))}\n      </ul>\n    </>\n  );\n};\n\nexport default Pokedex;\n"
+                },
+                {
+                  "name": "Search.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "",
+                  "solvedContent": null
+                },
+                {
+                  "name": "Search.css",
+                  "codeLanguage": "css",
+                  "content": "",
+                  "solvedContent": null
+                },
+                {
+                  "name": "PokemonCard.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "",
+                  "solvedContent": "import React from \"react\";\n\nconst PokemonCard = ({ pokemon }) => {\n  return (\n    <div className=\"pokemon-card\">\n      <h2>{pokemon.name}</h2>\n    </div>\n  );\n};\n\nexport default PokemonCard;\n"
+                },
+                {
+                  "name": "PokemonCard.css",
+                  "codeLanguage": "css",
+                  "content": "",
+                  "solvedContent": null
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #1 - Copy",
+            "id": 135411,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Mari tampilkan beberapa gambar. API ini menyertakan field `id`. `id` tersebut akan digunakan untuk mengambil gambar yang sesuai.\n\nKita akan mengambil gambar dari GitHub menggunakan link ini dan mengganti `x` dengan angka yang benar.\n\n```JavaScript\nhttps://raw.githubusercontent.com/getmimo/things-api/main/files/pokedex/sprites/master/sprites/pokemon/x.png\n```\n\n1. Di dalam `PokemonCard`, tambahkan URL sprite sebagai `SPRITE_BASE_URL` dan tetapkan nilainya ke `\"https://raw.githubusercontent.com/getmimo/things-api/main/files/pokedex/sprites/master/sprites/pokemon\"`\n2. Tambahkan gambar di dalam `<div>` dan tetapkan sumbernya ke `${SPRITE_BASE_URL}/${pokemon.id}.png`\n3. Tetapkan atribut `alt` ke nama Pokémon yang ingin kita tampilkan.",
+              "preselectedFileIndex": 8,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <script type=\"module\" src=\"./index.js\"></script>\n    <link rel=\"stylesheet\" href=\"./index.css\" />\n    <title>Pokédex</title>\n  </head>\n  <body>\n    <div id=\"root\">loading</div>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "index.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React from \"react\";\nimport { createRoot } from \"react-dom/client\";\nimport App from \"./App\";\n\nconst container = document.getElementById(\"root\");\nconst root = createRoot(container);\nroot.render(<App />);\n",
+                  "solvedContent": null
+                },
+                {
+                  "name": "App.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React from \"react\";\nimport { BrowserRouter, Routes, Route, Link } from \"react-router-dom\";\nimport \"./App.css\";\nimport Home from \"./Home\";\nimport Pokedex from \"./Pokedex\";\n\nconst NavigationBar = () => {\n  return (\n    <nav>\n      <Link to=\"/\">Home</Link>\n      <Link to=\"/pokedex\">Pokédex</Link>\n    </nav>\n  );\n};\n\nconst App = () => (\n  <BrowserRouter>\n    <NavigationBar />\n    <div className=\"content\">\n      <Routes>\n        <Route path=\"/\" element={<Home />} />\n        <Route path=\"/pokedex\" element={<Pokedex />} />\n      </Routes>\n    </div>\n  </BrowserRouter>\n);\n\nexport default App;\n",
+                  "solvedContent": null
+                },
+                {
+                  "name": "App.css",
+                  "codeLanguage": "css",
+                  "content": "@import url(\"https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap\");\n\nbody {\n  margin: 0;\n  font-family: \"Press Start 2P\", sans-serif;\n  background-color: #F7E39C;\n  text-align: center;\n}\n\n.content {\n  width: 90%;\n  max-width: 640px;\n  margin: 0 auto;\n}\n\np {\n  line-height: 1.5;\n}\n\nnav {\n  display: flex;\n  justify-content: center;\n  gap: 10px;\n  padding: 10px;\n  background-color: #D13325;\n  position: sticky;\n  top: 0;\n  z-index: 1000;\n}\n\nnav a {\n  text-decoration: none;\n  font-weight: bold;\n  color: #F7E39C;\n  margin: 0 4px;\n}\n\nnav a:hover {\n  color: black;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "Home.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React from \"react\";\n\nconst Home = () => {\n  return (\n    <div>\n      <h1>Welcome to the Pokédex App</h1>\n      <p>Explore the world of Pokémon with our comprehensive Pokédex.</p>\n    </div>\n  );\n};\n\nexport default Home;\n",
+                  "solvedContent": null
+                },
+                {
+                  "name": "Pokedex.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React, { useState, useEffect } from \"react\";\nimport PokemonCard from \"./PokemonCard\";\n\nconst Pokedex = () => {\n  const [pokemons, setPokemons] = useState([]);\n\n  const fetchPokemons = async () => {\n    fetch(\"https://pokedex.mimo.dev/api/pokemon\")\n      .then((response) => response.json())\n      .then((data) => setPokemons(data));\n  };\n\n  useEffect(() => {\n    fetchPokemons();\n  }, []);\n\n  return (\n    <>\n      <h1>All Pokemon</h1>\n      <ul>\n        {pokemons.map((pokemon, index) => (\n          <PokemonCard key={index} pokemon={pokemon} />\n        ))}\n      </ul>\n    </>\n  );\n};\n\nexport default Pokedex;\n",
+                  "solvedContent": null
+                },
+                {
+                  "name": "Search.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "",
+                  "solvedContent": null
+                },
+                {
+                  "name": "Search.css",
+                  "codeLanguage": "css",
+                  "content": "",
+                  "solvedContent": null
+                },
+                {
+                  "name": "PokemonCard.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React from \"react\";\n\nconst PokemonCard = ({ pokemon }) => {\n  return (\n    <div className=\"pokemon-card\">\n      <h2>{pokemon.name}</h2>\n    </div>\n  );\n};\n\nexport default PokemonCard;\n",
+                  "solvedContent": "import React from \"react\";\n\nconst SPRITE_BASE_URL =\n  \"https://raw.githubusercontent.com/getmimo/things-api/main/files/pokedex/sprites/master/sprites/pokemon\";\n\nconst PokemonCard = ({ pokemon }) => {\n  return (\n    <div className=\"pokemon-card\">\n      <img src={`${SPRITE_BASE_URL}/${pokemon.id}.png`} alt={pokemon.name} />\n      <h2>{pokemon.name}</h2>\n    </div>\n  );\n};\n\nexport default PokemonCard;\n"
+                },
+                {
+                  "name": "PokemonCard.css",
+                  "codeLanguage": "css",
+                  "content": "",
+                  "solvedContent": null
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #1 - Copy - Copy",
+            "id": 135412,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Mari kita menata card. Kita akan melakukannya di file `PokemonCard.css`.\n\n1. Di file `PokemonCard.jsx`, muat file `PokemonCard.css`.\n2. Di `PokemonCard.css`, tentukan style untuk class `.pokemon-card`:\n   - Atur `background-color` menjadi `white`.\n   - Atur `border-radius` menjadi `5px`.\n   - Atur `padding` menjadi `0px`.\n   - Atur `box-shadow` menjadi `0 4px 6px rgba(0, 0, 0, 0.1)`.\n   - Atur `margin-top` menjadi `5px`.\n   - Atur `display` menjadi `flex`.\n   - Atur `flex-direction` menjadi `column`.\n   - Atur `align-items` menjadi `center`.\n6. Tentukan style untuk `.pokemon-card img`:\n   - Atur `max-width` menjadi `150px`.\n   - Atur `margin-bottom` menjadi `-20px`.\n7. Tentukan style untuk `.pokemon-card h2`:\n   - Atur `font-size` menjadi `small`.",
+              "preselectedFileIndex": 8,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <script type=\"module\" src=\"./index.js\"></script>\n    <link rel=\"stylesheet\" href=\"./index.css\" />\n    <title>Pokédex</title>\n  </head>\n  <body>\n    <div id=\"root\">loading</div>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "index.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React from \"react\";\nimport { createRoot } from \"react-dom/client\";\nimport App from \"./App\";\n\nconst container = document.getElementById(\"root\");\nconst root = createRoot(container);\nroot.render(<App />);\n",
+                  "solvedContent": null
+                },
+                {
+                  "name": "App.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React from \"react\";\nimport { BrowserRouter, Routes, Route, Link } from \"react-router-dom\";\nimport \"./App.css\";\nimport Home from \"./Home\";\nimport Pokedex from \"./Pokedex\";\n\nconst NavigationBar = () => {\n  return (\n    <nav>\n      <Link to=\"/\">Home</Link>\n      <Link to=\"/pokedex\">Pokédex</Link>\n    </nav>\n  );\n};\n\nconst App = () => (\n  <BrowserRouter>\n    <NavigationBar />\n    <div className=\"content\">\n      <Routes>\n        <Route path=\"/\" element={<Home />} />\n        <Route path=\"/pokedex\" element={<Pokedex />} />\n      </Routes>\n    </div>\n  </BrowserRouter>\n);\n\nexport default App;\n",
+                  "solvedContent": null
+                },
+                {
+                  "name": "App.css",
+                  "codeLanguage": "css",
+                  "content": "@import url(\"https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap\");\n\nbody {\n  margin: 0;\n  font-family: \"Press Start 2P\", sans-serif;\n  background-color: #F7E39C;\n  text-align: center;\n}\n\n.content {\n  width: 90%;\n  max-width: 640px;\n  margin: 0 auto;\n}\n\np {\n  line-height: 1.5;\n}\n\nnav {\n  display: flex;\n  justify-content: center;\n  gap: 10px;\n  padding: 10px;\n  background-color: #D13325;\n  position: sticky;\n  top: 0;\n  z-index: 1000;\n}\n\nnav a {\n  text-decoration: none;\n  font-weight: bold;\n  color: #F7E39C;\n  margin: 0 4px;\n}\n\nnav a:hover {\n  color: black;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "Home.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React from \"react\";\n\nconst Home = () => {\n  return (\n    <div>\n      <h1>Welcome to the Pokédex App</h1>\n      <p>Explore the world of Pokémon with our comprehensive Pokédex.</p>\n    </div>\n  );\n};\n\nexport default Home;\n",
+                  "solvedContent": null
+                },
+                {
+                  "name": "Pokedex.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React, { useState, useEffect } from \"react\";\nimport PokemonCard from \"./PokemonCard\";\n\nconst Pokedex = () => {\n  const [pokemons, setPokemons] = useState([]);\n\n  const fetchPokemons = async () => {\n    fetch(\"https://pokedex.mimo.dev/api/pokemon\")\n      .then((response) => response.json())\n      .then((data) => setPokemons(data));\n  };\n\n  useEffect(() => {\n    fetchPokemons();\n  }, []);\n\n  return (\n    <>\n      <h1>All Pokemon</h1>\n      <ul>\n        {pokemons.map((pokemon, index) => (\n          <PokemonCard key={index} pokemon={pokemon} />\n        ))}\n      </ul>\n    </>\n  );\n};\n\nexport default Pokedex;\n",
+                  "solvedContent": null
+                },
+                {
+                  "name": "Search.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "",
+                  "solvedContent": null
+                },
+                {
+                  "name": "Search.css",
+                  "codeLanguage": "css",
+                  "content": "",
+                  "solvedContent": null
+                },
+                {
+                  "name": "PokemonCard.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React from \"react\";\n\nconst SPRITE_BASE_URL =\n  \"https://raw.githubusercontent.com/getmimo/things-api/main/files/pokedex/sprites/master/sprites/pokemon\";\n\nconst PokemonCard = ({ pokemon }) => {\n  return (\n    <div className=\"pokemon-card\">\n      <img src={`${SPRITE_BASE_URL}/${pokemon.id}.png`} alt={pokemon.name} />\n      <h2>{pokemon.name}</h2>\n    </div>\n  );\n};\n\nexport default PokemonCard;\n",
+                  "solvedContent": "import React from \"react\";\nimport \"./PokemonCard.css\";\n\nconst SPRITE_BASE_URL =\n  \"https://raw.githubusercontent.com/getmimo/things-api/main/files/pokedex/sprites/master/sprites/pokemon\";\n\nconst PokemonCard = ({ pokemon }) => {\n  return (\n    <div className=\"pokemon-card\">\n      <img src={`${SPRITE_BASE_URL}/${pokemon.id}.png`} alt={pokemon.name} />\n      <h2>{pokemon.name}</h2>\n    </div>\n  );\n};\n\nexport default PokemonCard;\n"
+                },
+                {
+                  "name": "PokemonCard.css",
+                  "codeLanguage": "css",
+                  "content": "",
+                  "solvedContent": ".pokemon-card {\n  background-color: white;\n  border-radius: 5px;\n  padding: 0px;\n  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);\n  margin: 5px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n\n.pokemon-card img {\n  max-width: 150px;\n  margin-bottom: -20px;\n}\n\n.pokemon-card h2 {\n  font-size: small;\n}"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #1 - Copy - Copy - Copy",
+            "id": 135413,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Mari beri style pada card. Kita akan melakukannya di file `PokemonCard.css`.\n\n1. Di file `Search.jsx`, buat komponen `Search` yang mengembalikan `h1` dengan teks seperti *Cari Pokémon*. Agar berfungsi sesuai harapan, impor `React`. Ekspor komponen tersebut juga.\n2. Impor komponen `Search` di bagian atas file `App.jsx`.\n3. Tambahkan `Link` baru dengan teks *Cari* dan tautan ke `\"/search\"`.\n3. Tambahkan `Route` baru untuk path `\"/search\"` di dalam komponen `Routes`.",
+              "preselectedFileIndex": 6,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <script type=\"module\" src=\"./index.js\"></script>\n    <link rel=\"stylesheet\" href=\"./index.css\" />\n    <title>Pokédex</title>\n  </head>\n  <body>\n    <div id=\"root\">loading</div>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "index.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React from \"react\";\nimport { createRoot } from \"react-dom/client\";\nimport App from \"./App\";\n\nconst container = document.getElementById(\"root\");\nconst root = createRoot(container);\nroot.render(<App />);\n",
+                  "solvedContent": null
+                },
+                {
+                  "name": "App.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React from \"react\";\nimport { BrowserRouter, Routes, Route, Link } from \"react-router-dom\";\nimport \"./App.css\";\nimport Home from \"./Home\";\nimport Pokedex from \"./Pokedex\";\n\nconst NavigationBar = () => {\n  return (\n    <nav>\n      <Link to=\"/\">Home</Link>\n      <Link to=\"/pokedex\">Pokédex</Link>\n    </nav>\n  );\n};\n\nconst App = () => (\n  <BrowserRouter>\n    <NavigationBar />\n    <div className=\"content\">\n      <Routes>\n        <Route path=\"/\" element={<Home />} />\n        <Route path=\"/pokedex\" element={<Pokedex />} />\n      </Routes>\n    </div>\n  </BrowserRouter>\n);\n\nexport default App;\n",
+                  "solvedContent": "import React from \"react\";\nimport { BrowserRouter, Routes, Route, Link } from \"react-router-dom\";\nimport \"./App.css\";\nimport Home from \"./Home\";\nimport Pokedex from \"./Pokedex\";\nimport Search from \"./Search\";\n\nconst NavigationBar = () => {\n  return (\n    <nav>\n      <Link to=\"/\">Home</Link>\n      <Link to=\"/pokedex\">Pokédex</Link>\n      <Link to=\"/search\">Search</Link>\n    </nav>\n  );\n};\n\nconst App = () => (\n  <BrowserRouter>\n    <NavigationBar />\n    <div className=\"content\">\n      <Routes>\n        <Route path=\"/\" element={<Home />} />\n        <Route path=\"/pokedex\" element={<Pokedex />} />\n        <Route path=\"/search\" element={<Search />} />\n      </Routes>\n    </div>\n  </BrowserRouter>\n);\n\nexport default App;\n"
+                },
+                {
+                  "name": "App.css",
+                  "codeLanguage": "css",
+                  "content": "@import url(\"https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap\");\n\nbody {\n  margin: 0;\n  font-family: \"Press Start 2P\", sans-serif;\n  background-color: #F7E39C;\n  text-align: center;\n}\n\n.content {\n  width: 90%;\n  max-width: 640px;\n  margin: 0 auto;\n}\n\np {\n  line-height: 1.5;\n}\n\nnav {\n  display: flex;\n  justify-content: center;\n  gap: 10px;\n  padding: 10px;\n  background-color: #D13325;\n  position: sticky;\n  top: 0;\n  z-index: 1000;\n}\n\nnav a {\n  text-decoration: none;\n  font-weight: bold;\n  color: #F7E39C;\n  margin: 0 4px;\n}\n\nnav a:hover {\n  color: black;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "Home.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React from \"react\";\n\nconst Home = () => {\n  return (\n    <div>\n      <h1>Welcome to the Pokédex App</h1>\n      <p>Explore the world of Pokémon with our comprehensive Pokédex.</p>\n    </div>\n  );\n};\n\nexport default Home;\n",
+                  "solvedContent": null
+                },
+                {
+                  "name": "Pokedex.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React, { useState, useEffect } from \"react\";\nimport PokemonCard from \"./PokemonCard\";\n\nconst Pokedex = () => {\n  const [pokemons, setPokemons] = useState([]);\n\n  const fetchPokemons = async () => {\n    fetch(\"https://pokedex.mimo.dev/api/pokemon\")\n      .then((response) => response.json())\n      .then((data) => setPokemons(data));\n  };\n\n  useEffect(() => {\n    fetchPokemons();\n  }, []);\n\n  return (\n    <>\n      <h1>All Pokemon</h1>\n      <ul>\n        {pokemons.map((pokemon, index) => (\n          <PokemonCard key={index} pokemon={pokemon} />\n        ))}\n      </ul>\n    </>\n  );\n};\n\nexport default Pokedex;\n",
+                  "solvedContent": null
+                },
+                {
+                  "name": "Search.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "",
+                  "solvedContent": "import React from \"react\";\n\nconst Search = () => {\n  return <h1>Search a Pokémon</h1>;\n};\n\nexport default Search;\n"
+                },
+                {
+                  "name": "Search.css",
+                  "codeLanguage": "css",
+                  "content": "",
+                  "solvedContent": null
+                },
+                {
+                  "name": "PokemonCard.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React from \"react\";\nimport \"./PokemonCard.css\";\n\nconst SPRITE_BASE_URL =\n  \"https://raw.githubusercontent.com/getmimo/things-api/main/files/pokedex/sprites/master/sprites/pokemon\";\n\nconst PokemonCard = ({ pokemon }) => {\n  return (\n    <div className=\"pokemon-card\">\n      <img src={`${SPRITE_BASE_URL}/${pokemon.id}.png`} alt={pokemon.name} />\n      <h2>{pokemon.name}</h2>\n    </div>\n  );\n};\n\nexport default PokemonCard;\n",
+                  "solvedContent": null
+                },
+                {
+                  "name": "PokemonCard.css",
+                  "codeLanguage": "css",
+                  "content": ".pokemon-card {\n  background-color: white;\n  border-radius: 5px;\n  padding: 0px;\n  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);\n  margin: 5px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n\n.pokemon-card img {\n  max-width: 150px;\n  margin-bottom: -20px;\n}\n\n.pokemon-card h2 {\n  font-size: small;\n}",
+                  "solvedContent": null
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "a",
+            "id": 135414,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Mari mulai dengan fungsionalitas pencarian. Pada langkah pertama ini, kita akan mereplikasi hal yang ada di komponen `Pokedex` untuk memuat semua Pokémon dan menampilkan semuanya.\n\n1. Di file `Search.jsx`, impor hook yang diperlukan, yaitu `useState` dan `useEffect`.\n2. Impor komponen `PokemonCard`.\n3. Inisialisasi variabel state `pokemons` untuk menyimpan data Pokémon menggunakan `useState`. Inisialisasi dengan array kosong.\n4. Implementasikan fungsi async `fetchPokemons` yang mengambil data Pokémon.\n   - Gunakan `fetch` untuk mendapatkan data dari `https://pokedex.mimo.dev/api/pokemon`.\n   - Setelah mendapatkan respons, akses JSON dan perbarui variabel state `pokemons` dengan data yang diterima.\n5. Gunakan `useEffect` untuk memanggil `fetchPokemons` hanya sekali saat komponen dipasang dengan menetapkan array dependensi kosong.\n6. Dalam pernyataan `return`, di bawah header, lakukan iterasi pada variabel state `pokemons` untuk menampilkannya dalam unordered list. Gunakan komponen `PokemonCard` dan tetapkan `index` sebagai key.",
+              "preselectedFileIndex": 6,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <script type=\"module\" src=\"./index.js\"></script>\n    <link rel=\"stylesheet\" href=\"./index.css\" />\n    <title>Pokédex</title>\n  </head>\n  <body>\n    <div id=\"root\">loading</div>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "index.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React from \"react\";\nimport { createRoot } from \"react-dom/client\";\nimport App from \"./App\";\n\nconst container = document.getElementById(\"root\");\nconst root = createRoot(container);\nroot.render(<App />);\n",
+                  "solvedContent": null
+                },
+                {
+                  "name": "App.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React from \"react\";\nimport { BrowserRouter, Routes, Route, Link } from \"react-router-dom\";\nimport \"./App.css\";\nimport Home from \"./Home\";\nimport Pokedex from \"./Pokedex\";\nimport Search from \"./Search\";\n\nconst NavigationBar = () => {\n  return (\n    <nav>\n      <Link to=\"/\">Home</Link>\n      <Link to=\"/pokedex\">Pokédex</Link>\n      <Link to=\"/search\">Search</Link>\n    </nav>\n  );\n};\n\nconst App = () => (\n  <BrowserRouter>\n    <NavigationBar />\n    <div className=\"content\">\n      <Routes>\n        <Route path=\"/\" element={<Home />} />\n        <Route path=\"/pokedex\" element={<Pokedex />} />\n        <Route path=\"/search\" element={<Search />} />\n      </Routes>\n    </div>\n  </BrowserRouter>\n);\n\nexport default App;\n",
+                  "solvedContent": null
+                },
+                {
+                  "name": "App.css",
+                  "codeLanguage": "css",
+                  "content": "@import url(\"https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap\");\n\nbody {\n  margin: 0;\n  font-family: \"Press Start 2P\", sans-serif;\n  background-color: #F7E39C;\n  text-align: center;\n}\n\n.content {\n  width: 90%;\n  max-width: 640px;\n  margin: 0 auto;\n}\n\np {\n  line-height: 1.5;\n}\n\nnav {\n  display: flex;\n  justify-content: center;\n  gap: 10px;\n  padding: 10px;\n  background-color: #D13325;\n  position: sticky;\n  top: 0;\n  z-index: 1000;\n}\n\nnav a {\n  text-decoration: none;\n  font-weight: bold;\n  color: #F7E39C;\n  margin: 0 4px;\n}\n\nnav a:hover {\n  color: black;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "Home.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React from \"react\";\n\nconst Home = () => {\n  return (\n    <div>\n      <h1>Welcome to the Pokédex App</h1>\n      <p>Explore the world of Pokémon with our comprehensive Pokédex.</p>\n    </div>\n  );\n};\n\nexport default Home;\n",
+                  "solvedContent": null
+                },
+                {
+                  "name": "Pokedex.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React, { useState, useEffect } from \"react\";\nimport PokemonCard from \"./PokemonCard\";\n\nconst Pokedex = () => {\n  const [pokemons, setPokemons] = useState([]);\n\n  const fetchPokemons = async () => {\n    fetch(\"https://pokedex.mimo.dev/api/pokemon\")\n      .then((response) => response.json())\n      .then((data) => setPokemons(data));\n  };\n\n  useEffect(() => {\n    fetchPokemons();\n  }, []);\n\n  return (\n    <>\n      <h1>All Pokemon</h1>\n      <ul>\n        {pokemons.map((pokemon, index) => (\n          <PokemonCard key={index} pokemon={pokemon} />\n        ))}\n      </ul>\n    </>\n  );\n};\n\nexport default Pokedex;\n",
+                  "solvedContent": null
+                },
+                {
+                  "name": "Search.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React from \"react\";\n\nconst Search = () => {\n  return <h1>Search a Pokémon</h1>;\n};\n\nexport default Search;\n",
+                  "solvedContent": "import React, { useState, useEffect } from \"react\";\nimport PokemonCard from \"./PokemonCard\";\n\nconst Search = () => {\n  const [pokemons, setPokemons] = useState([]);\n\n  const fetchPokemons = async () => {\n    fetch(\"https://pokedex.mimo.dev/api/pokemon\")\n      .then((response) => response.json())\n      .then((data) => setPokemons(data));\n  };\n\n  useEffect(() => {\n    fetchPokemons();\n  }, []);\n\n  return (\n    <>\n      <h1>Search a Pokémon</h1>\n      <ul>\n        {pokemons.map((pokemon) => (\n          <PokemonCard key={pokemon.name} pokemon={pokemon} />\n        ))}\n      </ul>\n    </>\n  );\n};\n\nexport default Search;\n"
+                },
+                {
+                  "name": "Search.css",
+                  "codeLanguage": "css",
+                  "content": "",
+                  "solvedContent": null
+                },
+                {
+                  "name": "PokemonCard.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React from \"react\";\nimport \"./PokemonCard.css\";\n\nconst SPRITE_BASE_URL =\n  \"https://raw.githubusercontent.com/getmimo/things-api/main/files/pokedex/sprites/master/sprites/pokemon\";\n\nconst PokemonCard = ({ pokemon }) => {\n  return (\n    <div className=\"pokemon-card\">\n      <img src={`${SPRITE_BASE_URL}/${pokemon.id}.png`} alt={pokemon.name} />\n      <h2>{pokemon.name}</h2>\n    </div>\n  );\n};\n\nexport default PokemonCard;\n",
+                  "solvedContent": null
+                },
+                {
+                  "name": "PokemonCard.css",
+                  "codeLanguage": "css",
+                  "content": ".pokemon-card {\n  background-color: white;\n  border-radius: 5px;\n  padding: 0px;\n  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);\n  margin: 5px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n\n.pokemon-card img {\n  max-width: 150px;\n  margin-bottom: -20px;\n}\n\n.pokemon-card h2 {\n  font-size: small;\n}",
+                  "solvedContent": null
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "a - Copy",
+            "id": 135416,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Sekarang kita akan mengimplementasikan pencarian. Kita akan memfilter daftar Pokémon berdasarkan teks yang diketik pengguna di kolom input.\n\n1. Di komponen `Search`, tambahkan dua variabel state baru: `filteredPokemons`, yang diinisialisasi sebagai array kosong, dan `input`, yang diinisialisasi sebagai string kosong.\n2. Render elemen `input` di bawah elemen `h1` yang memperbarui variabel state `input` saat pengguna mengetik. Gunakan event handler `onChange` untuk menangkap perubahan input.\n3. Tambahkan hook `useEffect` yang mendengarkan perubahan pada variabel state `input` dan `pokemons` untuk memperbarui `filteredPokemons`:\n   - Atur variabel state `filteredPokemons` ke array kosong jika variabel state `input` adalah string kosong.\n   - Jika tidak, filter daftar Pokémon yang disimpan di `pokemons` untuk memeriksa apakah nama Pokémon diawali dengan teks yang tersimpan di `input`. Atur daftar yang telah difilter ini sebagai nilai baru untuk variabel state `filteredPokemons`.\n4. Di pernyataan return, perbarui kode agar melakukan loop dan me-render `filteredPokemons`, bukan `pokemons`.",
+              "preselectedFileIndex": 6,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <script type=\"module\" src=\"./index.js\"></script>\n    <link rel=\"stylesheet\" href=\"./index.css\" />\n    <title>Pokédex</title>\n  </head>\n  <body>\n    <div id=\"root\">loading</div>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "index.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React from \"react\";\nimport { createRoot } from \"react-dom/client\";\nimport App from \"./App\";\n\nconst container = document.getElementById(\"root\");\nconst root = createRoot(container);\nroot.render(<App />);\n",
+                  "solvedContent": null
+                },
+                {
+                  "name": "App.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React from \"react\";\nimport { BrowserRouter, Routes, Route, Link } from \"react-router-dom\";\nimport \"./App.css\";\nimport Home from \"./Home\";\nimport Pokedex from \"./Pokedex\";\nimport Search from \"./Search\";\n\nconst NavigationBar = () => {\n  return (\n    <nav>\n      <Link to=\"/\">Home</Link>\n      <Link to=\"/pokedex\">Pokédex</Link>\n      <Link to=\"/search\">Search</Link>\n    </nav>\n  );\n};\n\nconst App = () => (\n  <BrowserRouter>\n    <NavigationBar />\n    <div className=\"content\">\n      <Routes>\n        <Route path=\"/\" element={<Home />} />\n        <Route path=\"/pokedex\" element={<Pokedex />} />\n        <Route path=\"/search\" element={<Search />} />\n      </Routes>\n    </div>\n  </BrowserRouter>\n);\n\nexport default App;\n",
+                  "solvedContent": null
+                },
+                {
+                  "name": "App.css",
+                  "codeLanguage": "css",
+                  "content": "@import url(\"https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap\");\n\nbody {\n  margin: 0;\n  font-family: \"Press Start 2P\", sans-serif;\n  background-color: #F7E39C;\n  text-align: center;\n}\n\n.content {\n  width: 90%;\n  max-width: 640px;\n  margin: 0 auto;\n}\n\np {\n  line-height: 1.5;\n}\n\nnav {\n  display: flex;\n  justify-content: center;\n  gap: 10px;\n  padding: 10px;\n  background-color: #D13325;\n  position: sticky;\n  top: 0;\n  z-index: 1000;\n}\n\nnav a {\n  text-decoration: none;\n  font-weight: bold;\n  color: #F7E39C;\n  margin: 0 4px;\n}\n\nnav a:hover {\n  color: black;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "Home.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React from \"react\";\n\nconst Home = () => {\n  return (\n    <div>\n      <h1>Welcome to the Pokédex App</h1>\n      <p>Explore the world of Pokémon with our comprehensive Pokédex.</p>\n    </div>\n  );\n};\n\nexport default Home;\n",
+                  "solvedContent": null
+                },
+                {
+                  "name": "Pokedex.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React, { useState, useEffect } from \"react\";\nimport PokemonCard from \"./PokemonCard\";\n\nconst Pokedex = () => {\n  const [pokemons, setPokemons] = useState([]);\n\n  const fetchPokemons = async () => {\n    fetch(\"https://pokedex.mimo.dev/api/pokemon\")\n      .then((response) => response.json())\n      .then((data) => setPokemons(data));\n  };\n\n  useEffect(() => {\n    fetchPokemons();\n  }, []);\n\n  return (\n    <>\n      <h1>All Pokemon</h1>\n      <ul>\n        {pokemons.map((pokemon, index) => (\n          <PokemonCard key={index} pokemon={pokemon} />\n        ))}\n      </ul>\n    </>\n  );\n};\n\nexport default Pokedex;\n",
+                  "solvedContent": null
+                },
+                {
+                  "name": "Search.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React, { useState, useEffect } from \"react\";\nimport PokemonCard from \"./PokemonCard\";\n\nconst Search = () => {\n  const [pokemons, setPokemons] = useState([]);\n\n  const fetchPokemons = async () => {\n    fetch(\"https://pokedex.mimo.dev/api/pokemon\")\n      .then((response) => response.json())\n      .then((data) => setPokemons(data));\n  };\n\n  useEffect(() => {\n    fetchPokemons();\n  }, []);\n\n  return (\n    <>\n      <h1>Search a Pokémon</h1>\n      <ul>\n        {pokemons.map((pokemon) => (\n          <PokemonCard key={pokemon.name} pokemon={pokemon} />\n        ))}\n      </ul>\n    </>\n  );\n};\n\nexport default Search;\n",
+                  "solvedContent": "import React, { useState, useEffect } from \"react\";\nimport PokemonCard from \"./PokemonCard\";\n\nconst Search = () => {\n  const [pokemons, setPokemons] = useState([]);\n  const [filteredPokemons, setFilteredPokemons] = useState([]);\n  const [input, setInput] = useState(\"\");\n\n  const fetchPokemons = async () => {\n    fetch(\"https://pokedex.mimo.dev/api/pokemon\")\n      .then((response) => response.json())\n      .then((data) => setPokemons(data));\n  };\n\n  useEffect(() => {\n    fetchPokemons();\n  }, []);\n\n  useEffect(() => {\n    if (input === \"\") {\n      setFilteredPokemons([]);\n    } else {\n      const filtered = pokemons.filter((pokemon) =>\n        pokemon.name.toLowerCase().startsWith(input.toLowerCase()),\n      );\n      setFilteredPokemons(filtered);\n    }\n  }, [input, pokemons]);\n\n  return (\n    <>\n      <h1>Search a Pokémon</h1>\n      <input\n        placeholder=\"Enter Pokémon name...\"\n        onChange={(e) => setInput(e.target.value)}\n      />\n      <ul>\n        {filteredPokemons.map((pokemon) => (\n          <PokemonCard key={pokemon.name} pokemon={pokemon} />\n        ))}\n      </ul>\n    </>\n  );\n};\n\nexport default Search;\n"
+                },
+                {
+                  "name": "Search.css",
+                  "codeLanguage": "css",
+                  "content": "",
+                  "solvedContent": null
+                },
+                {
+                  "name": "PokemonCard.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React from \"react\";\nimport \"./PokemonCard.css\";\n\nconst SPRITE_BASE_URL =\n  \"https://raw.githubusercontent.com/getmimo/things-api/main/files/pokedex/sprites/master/sprites/pokemon\";\n\nconst PokemonCard = ({ pokemon }) => {\n  return (\n    <div className=\"pokemon-card\">\n      <img src={`${SPRITE_BASE_URL}/${pokemon.id}.png`} alt={pokemon.name} />\n      <h2>{pokemon.name}</h2>\n    </div>\n  );\n};\n\nexport default PokemonCard;\n",
+                  "solvedContent": null
+                },
+                {
+                  "name": "PokemonCard.css",
+                  "codeLanguage": "css",
+                  "content": ".pokemon-card {\n  background-color: white;\n  border-radius: 5px;\n  padding: 0px;\n  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);\n  margin: 5px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n\n.pokemon-card img {\n  max-width: 150px;\n  margin-bottom: -20px;\n}\n\n.pokemon-card h2 {\n  font-size: small;\n}",
+                  "solvedContent": null
+                }
+              ],
+              "hints": [
+                {
+                  "title": "How do I filter?",
+                  "content": "```JavaScript\nconst filtered = pokemons.filter((pokemon) =>\n  pokemon.name.toLowerCase().startsWith(input.toLowerCase()),\n);\n```"
+                }
+              ]
+            }
+          },
+          {
+            "title": "a - Copy - Copy",
+            "id": 135417,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Kamu mungkin sudah menyadari bahwa meskipun telah mengatur `font-family` di file `App.css` untuk `body`, elemen `input` tidak terpengaruh. Kita perlu mengatur font secara khusus untuk `input`.\n\n1. Di file `Search.jsx`, impor file `Search.css`.\n2. Di `Search.css`, tambahkan style untuk `input` agar font juga diterapkan di sini.\n   - Atur `font-family` ke `\"Press Start 2P\", sans-serif`.",
+              "preselectedFileIndex": 6,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <script type=\"module\" src=\"./index.js\"></script>\n    <link rel=\"stylesheet\" href=\"./index.css\" />\n    <title>Pokédex</title>\n  </head>\n  <body>\n    <div id=\"root\">loading</div>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "index.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React from \"react\";\nimport { createRoot } from \"react-dom/client\";\nimport App from \"./App\";\n\nconst container = document.getElementById(\"root\");\nconst root = createRoot(container);\nroot.render(<App />);\n",
+                  "solvedContent": null
+                },
+                {
+                  "name": "App.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React from \"react\";\nimport { BrowserRouter, Routes, Route, Link } from \"react-router-dom\";\nimport \"./App.css\";\nimport Home from \"./Home\";\nimport Pokedex from \"./Pokedex\";\nimport Search from \"./Search\";\n\nconst NavigationBar = () => {\n  return (\n    <nav>\n      <Link to=\"/\">Home</Link>\n      <Link to=\"/pokedex\">Pokédex</Link>\n      <Link to=\"/search\">Search</Link>\n    </nav>\n  );\n};\n\nconst App = () => (\n  <BrowserRouter>\n    <NavigationBar />\n    <div className=\"content\">\n      <Routes>\n        <Route path=\"/\" element={<Home />} />\n        <Route path=\"/pokedex\" element={<Pokedex />} />\n        <Route path=\"/search\" element={<Search />} />\n      </Routes>\n    </div>\n  </BrowserRouter>\n);\n\nexport default App;\n",
+                  "solvedContent": null
+                },
+                {
+                  "name": "App.css",
+                  "codeLanguage": "css",
+                  "content": "@import url(\"https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap\");\n\nbody {\n  margin: 0;\n  font-family: \"Press Start 2P\", sans-serif;\n  background-color: #F7E39C;\n  text-align: center;\n}\n\n.content {\n  width: 90%;\n  max-width: 640px;\n  margin: 0 auto;\n}\n\np {\n  line-height: 1.5;\n}\n\nnav {\n  display: flex;\n  justify-content: center;\n  gap: 10px;\n  padding: 10px;\n  background-color: #D13325;\n  position: sticky;\n  top: 0;\n  z-index: 1000;\n}\n\nnav a {\n  text-decoration: none;\n  font-weight: bold;\n  color: #F7E39C;\n  margin: 0 4px;\n}\n\nnav a:hover {\n  color: black;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "Home.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React from \"react\";\n\nconst Home = () => {\n  return (\n    <div>\n      <h1>Welcome to the Pokédex App</h1>\n      <p>Explore the world of Pokémon with our comprehensive Pokédex.</p>\n    </div>\n  );\n};\n\nexport default Home;\n",
+                  "solvedContent": null
+                },
+                {
+                  "name": "Pokedex.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React, { useState, useEffect } from \"react\";\nimport PokemonCard from \"./PokemonCard\";\n\nconst Pokedex = () => {\n  const [pokemons, setPokemons] = useState([]);\n\n  const fetchPokemons = async () => {\n    fetch(\"https://pokedex.mimo.dev/api/pokemon\")\n      .then((response) => response.json())\n      .then((data) => setPokemons(data));\n  };\n\n  useEffect(() => {\n    fetchPokemons();\n  }, []);\n\n  return (\n    <>\n      <h1>All Pokemon</h1>\n      <ul>\n        {pokemons.map((pokemon, index) => (\n          <PokemonCard key={index} pokemon={pokemon} />\n        ))}\n      </ul>\n    </>\n  );\n};\n\nexport default Pokedex;\n",
+                  "solvedContent": null
+                },
+                {
+                  "name": "Search.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React, { useState, useEffect } from \"react\";\nimport PokemonCard from \"./PokemonCard\";\n\nconst Search = () => {\n  const [pokemons, setPokemons] = useState([]);\n  const [filteredPokemons, setFilteredPokemons] = useState([]);\n  const [input, setInput] = useState(\"\");\n\n  const fetchPokemons = async () => {\n    fetch(\"https://pokedex.mimo.dev/api/pokemon\")\n      .then((response) => response.json())\n      .then((data) => setPokemons(data));\n  };\n\n  useEffect(() => {\n    fetchPokemons();\n  }, []);\n\n  useEffect(() => {\n    if (input === \"\") {\n      setFilteredPokemons([]);\n    } else {\n      const filtered = pokemons.filter((pokemon) =>\n        pokemon.name.toLowerCase().startsWith(input.toLowerCase()),\n      );\n      setFilteredPokemons(filtered);\n    }\n  }, [input, pokemons]);\n\n  return (\n    <>\n      <h1>Search a Pokémon</h1>\n      <input\n        placeholder=\"Enter Pokémon name...\"\n        onChange={(e) => setInput(e.target.value)}\n      />\n      <ul>\n        {filteredPokemons.map((pokemon) => (\n          <PokemonCard key={pokemon.name} pokemon={pokemon} />\n        ))}\n      </ul>\n    </>\n  );\n};\n\nexport default Search;\n",
+                  "solvedContent": "import React, { useState, useEffect } from \"react\";\nimport \"./Search.css\";\nimport PokemonCard from \"./PokemonCard\";\n\nconst Search = () => {\n  const [pokemons, setPokemons] = useState([]);\n  const [filteredPokemons, setFilteredPokemons] = useState([]);\n  const [input, setInput] = useState(\"\");\n\n  const fetchPokemons = async () => {\n    fetch(\"https://pokedex.mimo.dev/api/pokemon\")\n      .then((response) => response.json())\n      .then((data) => setPokemons(data));\n  };\n\n  useEffect(() => {\n    fetchPokemons();\n  }, []);\n\n  useEffect(() => {\n    if (input === \"\") {\n      setFilteredPokemons([]);\n    } else {\n      const filtered = pokemons.filter((pokemon) =>\n        pokemon.name.toLowerCase().startsWith(input.toLowerCase()),\n      );\n      setFilteredPokemons(filtered);\n    }\n  }, [input, pokemons]);\n\n  return (\n    <>\n      <h1>Search a Pokémon</h1>\n      <input\n        placeholder=\"Enter Pokémon name...\"\n        onChange={(e) => setInput(e.target.value)}\n      />\n      <ul>\n        {filteredPokemons.map((pokemon) => (\n          <PokemonCard key={pokemon.name} pokemon={pokemon} />\n        ))}\n      </ul>\n    </>\n  );\n};\n\nexport default Search;\n"
+                },
+                {
+                  "name": "Search.css",
+                  "codeLanguage": "css",
+                  "content": "",
+                  "solvedContent": "input {\n  font-family: \"Press Start 2P\", sans-serif;\n}"
+                },
+                {
+                  "name": "PokemonCard.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React from \"react\";\nimport \"./PokemonCard.css\";\n\nconst SPRITE_BASE_URL =\n  \"https://raw.githubusercontent.com/getmimo/things-api/main/files/pokedex/sprites/master/sprites/pokemon\";\n\nconst PokemonCard = ({ pokemon }) => {\n  return (\n    <div className=\"pokemon-card\">\n      <img src={`${SPRITE_BASE_URL}/${pokemon.id}.png`} alt={pokemon.name} />\n      <h2>{pokemon.name}</h2>\n    </div>\n  );\n};\n\nexport default PokemonCard;\n",
+                  "solvedContent": null
+                },
+                {
+                  "name": "PokemonCard.css",
+                  "codeLanguage": "css",
+                  "content": ".pokemon-card {\n  background-color: white;\n  border-radius: 5px;\n  padding: 0px;\n  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);\n  margin: 5px;\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n}\n\n.pokemon-card img {\n  max-width: 150px;\n  margin-bottom: -20px;\n}\n\n.pokemon-card h2 {\n  font-size: small;\n}",
+                  "solvedContent": null
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

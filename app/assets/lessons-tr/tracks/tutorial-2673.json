@@ -1,0 +1,223 @@
+{
+  "tutorial": {
+    "id": 2673,
+    "version": 6,
+    "type": "course",
+    "isNew": false,
+    "codeLanguage": "python",
+    "title": "Bir API ile iletişim kurma",
+    "descriptionContent": "Bir API ile iletişim kurma",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": null,
+    "chapters": [
+      {
+        "id": 14655,
+        "title": "API nedir?",
+        "type": "practiceLevel1",
+        "lessons": [
+          {
+            "title": "Intro",
+            "id": 129639,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Uygulama programlama arayüzleri, <code>API</code> olarak da bilinir ve iki program arasındaki iletişimi kolaylaştırır.</p><p><code>APIs</code>, gönderen programdan alıcı programa <em>istekler</em> gönderir. Ardından, alıcıdan gönderen programa <em>yanıtlar</em> gönderir.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Intro: Similar real life example I",
+            "id": 129640,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Günlük hayatımızdaki birçok şey bir <code>API</code> gibi çalışır. Buna bir örnek, garson ile mutfak personelidir.<br /></p><p>Bir garson, gönderen program gibi, mutfağa bir sipariş gönderir. Ardından mutfak, alıcı program olarak yiyeceği yanıt şeklinde geri gönderir.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "How to use API?*",
+            "id": 129641,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Şimdi programlara dönelim. Aşağıdaki kod bir <code>API</code>'ye <code>GET</code> isteği gönderiyor. Sence <code>GET</code> isteği ne yapar?</p><p>Her şey çalışıyorsa, her şeyin yolunda gittiğini belirten <code>200</code> durum koduyla birlikte verileri almalıyız.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"GET https://mimo.org/courses HTTP/\" /><text value=\"1.1\" class=\"number\" /></content><output><content><text value=\"{&quot;courses&quot;: [{ &quot;id&quot;: 1, &quot;title&quot;: &quot;Python&quot; }, { &quot;id&quot;: 2, &quot;title&quot;: &quot;HTML&quot; }, ...]}\" /></content></output></code><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\">Biraz veri iste</item><item value=\"2\" correct=\"false\">Yeni bir kullanıcı oluştur</item></selection><p visible-if=\"wrong\">Biraz veri iste.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "How did the API get the data?",
+            "id": 129642,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Doğru! Kod, bazı verileri istememiz içindi. <code>https://mimo.org/courses</code>, bunları almamıza yardımcı olan <code>API</code>'ydi!</p><p>Peki <code>API</code> bilgileri nereden aldı? <code>API</code>'nin 2 program arasındaki iletişimi sağladığını unutma.</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\"><code>API</code>, bir veritabanından bilgi almak için başka bir programa bağlanır</item><item value=\"2\" correct=\"false\"><code>API</code> veritabanıdır</item></selection><p visible-if=\"wrong\"><code>API</code>, bir veritabanından bilgi almak için başka bir programa bağlanır.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "API controls the request and response",
+            "id": 129643,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Veritabanlarıyla etkileşim kurmak için kod yazmamız gerekir. Bir <code>API</code>, bunu daha basit bir şekilde yapmamızı sağlar.</p><p>Ancak işlemleri gerçekleştirmek için doğru metodu kullanman gerekir. Veri almak için <code>GET</code> kullanırız. Sence veri eklemek için ne kullanırız?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\"><code>POST</code></item><item value=\"2\" correct=\"false\"><code>DELETE</code></item></selection><p visible-if=\"wrong\"><code>POST</code> öğesini seçtiğinden emin ol.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Veritabanlarıyla etkileşim kurmak için her işlemde doğru metoda ihtiyacımız vardır. Veri almak için <code>GET</code>, veri eklemek için <code>POST</code> kullanırız.</p><p>Bir kayıt formu, <code>API</code>'ye yeni bir kullanıcı kaydı gönderiyor. Hangi metodu kullanmalı?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\"><code>POST</code></item><item value=\"2\" correct=\"false\"><code>GET</code></item><item value=\"3\" correct=\"false\"><code>DELETE</code></item></selection><p visible-if=\"wrong\"><code>POST</code> öğesini seçtiğinden emin ol.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Write a request*",
+            "id": 129644,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Bu doğru! <code>POST</code> isteklerini kullanarak bir veritabanına veri ekleyebiliriz.</p><p><code>GET</code> isteklerinin aksine, <code>POST</code> istekleri için bilgileri içeren bir gövde göndermemiz gerekir. Aşağıdaki isteği tamamla.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"POST https://mimo.org/users HTTP/\" /><text value=\"1.1\" class=\"number\" /><text value=\" \" /><text type=\"break\" /><text value=\" \" /><text type=\"break\" /><text value=\"{ \" /><text type=\"break\" /><text value=\" \" /><text value=\"&quot;username&quot;\" class=\"string\" /><text value=\": \" /><text value=\"&quot;test_user&quot;\" class=\"string\" /><text value=\", \" /><text type=\"break\" /><text value=\" \" /><text value=\"&quot;name&quot;\" class=\"string\" /><text value=\": \" /><text value=\"&quot;tester&quot;\" class=\"string\" /><text value=\" \" /><text type=\"break\" /><text value=\"}\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"0\" endIndex=\"4\" /><option startIndex=\"44\" endIndex=\"67\" /><option correct=\"false\"><content><text value=\"GET\" /></content></option><option correct=\"false\"><content><text value=\"DELETE\" /></content></option></options></interaction></interactions><output><content><text value=\"HTTP/1.1 201 Created\" /><text type=\"break\" /><text value=\"{ &quot;success&quot;: true, &quot;message&quot;: &quot;User created successfully&quot;, &quot;data&quot;: { &quot;id&quot;: 123, &quot;username&quot;: &quot;test_user&quot;, &quot;name&quot;: &quot;tester&quot; } }\" /></content></output></code><p visible-if=\"wrong\">Önce <code>POST</code>, ardından <code>\"username\": \"test_user\"</code> öğelerini seçtiğinden emin ol.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Question 1",
+            "id": 129646,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p><code>API</code> neyin kısaltmasıdır?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\">Uygulama Programlama Arayüzü</item><item value=\"2\" correct=\"false\">Programlama Arayüzüne Yardım Etme</item></selection><p visible-if=\"wrong\">Uygulama Programlama Arayüzü.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Question 2",
+            "id": 129647,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>İşte bir başka gerçek yaşam örneği. Bir web sunucusuna veri göndermek için bir betik yazıyorsun; sürece dahil olan tarafların her birinin doğru rolü nedir?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\">Betiğin göndericidir, sunucunun uç noktası <code>API</code>'dir, sunucu alıcıdır</item><item value=\"2\" correct=\"false\">Script'in <code>API</code>, sunucunun endpoint'i gönderici, sunucu alıcıdır</item><item value=\"3\" correct=\"false\">Script'in gönderici, sunucunun uç noktası alıcı, sunucu ise <code>API</code>'dir</item></selection><p visible-if=\"wrong\">Betiğin göndericidir, sunucunun uç noktası <code>API</code>'dir, sunucu alıcıdır.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Bir mobil uygulama, API aracılığıyla sunucuya fotoğraf gönderiyor. İstek işlendikten sonra yanıt hangi yönde ilerler?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\">Sunucudan API aracılığıyla uygulamaya geri döner.</item><item value=\"2\" correct=\"false\">İsteği uygulama gönderdiği için uygulamadan tekrar sunucuya gider.</item><item value=\"3\" correct=\"false\">İsteği veri tabanı yaptığı için API'den veri tabanına gider.</item></selection><p visible-if=\"wrong\">Sunucudan API aracılığıyla uygulamaya geri döner.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Question 3",
+            "id": 129648,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Bir <code>API</code> nasıl çalışır?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\">Gönderenin isteğini alıcıya, alıcının yanıtını da gönderene iletir</item><item value=\"2\" correct=\"false\">Yalnızca göndericiyle alıcıyı birbirine bağlar ve kendi işlerini yapmalarına izin verir</item><item value=\"3\" correct=\"false\">Yalnızca gönderici ile alıcının birbirlerine mesaj gönderdiğinden emin olmak için izleme yapar</item></selection><p visible-if=\"wrong\">Gönderenin isteğini alıcıya, alıcının yanıtını da gönderene iletir.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Bir uygulama, <code>API</code> aracılığıyla bir profil istiyor. Hangi mesaj akışı alışverişi tamamlar?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\"><code>API</code> isteği alıcıya gönderir, ardından alıcının yanıtını uygulamaya döndürür.</item><item value=\"2\" correct=\"false\"><code>API</code> önce yanıtı gönderir, ardından alıcıdan bir istek ister.</item><item value=\"3\" correct=\"false\">Uygulama alıcıyla doğrudan iletişim kurarken <code>API</code> yalnızca izler.</item></selection><p visible-if=\"wrong\"><code>API</code> isteği alıcıya gönderir, ardından alıcının yanıtını uygulamaya döndürür.</p></body></html>"
+          },
+          {
+            "title": "Question 4",
+            "id": 129649,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p><code>API</code>'ye beklenmedik bir şey gönderirsek ne olur?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\"><code>API</code> bunu yok sayabilir ve gövdeden yalnızca bekleneni alıcıya gönderebilir</item><item value=\"2\" correct=\"false\"><code>API</code>, beklenmeyen gövdeyi alıcıya göndermelidir</item></selection><p visible-if=\"wrong\"><code>API</code> bunu yok sayabilir ve gövdeden yalnızca bekleneni alıcıya gönderebilir.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Bir <code>API</code>, <code>username</code> bekliyor ancak gövde beklenmeyen bir <code>admin</code> alanı da içeriyor. <code>API</code> neyi iletebilir?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\"><code>admin</code> alanını yok sayıp yalnızca beklenen <code>username</code> alanını.</item><item value=\"2\" correct=\"false\">İki alanı da, çünkü bir <code>API</code> beklenmeyen her değeri iletmelidir.</item><item value=\"3\" correct=\"false\">Yalnızca <code>admin</code> alanını, çünkü beklenmeyen alanlar beklenenlerin yerini alır.</item></selection><p visible-if=\"wrong\"><code>admin</code> alanını yok sayıp yalnızca beklenen <code>username</code> alanını.</p></body></html>"
+          },
+          {
+            "title": "Question 5",
+            "id": 129650,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Bir işlem için bir <code>API</code>'ye mi ihtiyacımız var?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\">Hayır, farklı metotları kullanarak farklı işlemler gerçekleştirebiliriz</item><item value=\"2\" correct=\"false\">Evet, bir <code>API</code> yalnızca bir işlem gerçekleştirebilir</item></selection><p visible-if=\"wrong\">Hayır, farklı metotları kullanarak farklı işlemler gerçekleştirebiliriz.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Bir <code>API</code>, farklı metotlar kullanarak farklı işlemler gerçekleştirebilir.</p><p>Bir kurs <code>API</code>'sinin kursları alması ve bir kurs oluşturması gerekiyor. Hangi metot çifti uygundur?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\">Almak için <code>GET</code>, oluşturmak için <code>POST</code> kullanmak.</item><item value=\"2\" correct=\"false\">Almak için <code>POST</code>, oluşturmak için <code>GET</code> kullanmak.</item><item value=\"3\" correct=\"false\">Bir API yalnızca tek bir işlem gerçekleştirebildiği için ayrı bir <code>API</code> oluşturmak.</item></selection><p visible-if=\"wrong\">Almak için <code>GET</code>, oluşturmak için <code>POST</code> kullanmak.</p></body></html>",
+            "hardModeSelected": true
+          }
+        ]
+      },
+      {
+        "id": 14656,
+        "title": "Neden API kullanılır?",
+        "type": "practiceLevel1",
+        "lessons": [
+          {
+            "title": "Why API? 1",
+            "id": 129653,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Artık bir <code>API</code>'nin ne olduğunu bildiğine göre onu neden kullanmalıyız? Bunun bir nedeni, <code>API'lerin</code> bir sistemi daha hızlı oluşturmamıza yardımcı olabilmesidir.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Why API? 2",
+            "id": 129654,
+            "contentType": "interactive",
+            "images": [
+              {
+                "id": "62f8f11e-7605-4590-bb91-6ee2236fc19f"
+              }
+            ],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Back-end geliştiricilerinin programlarını test etmek için front-end geliştirmenin tamamlanmasını beklemeleri gerekmez.</p><p><code>API</code>'ye istekler gönderip yanıtların doğru olup olmadığını kontrol ederek programlarını kolayca test edebilirler.</p><img src=\"62f8f11e-7605-4590-bb91-6ee2236fc19f\" visible-if=\"always\" /></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "How to use API-DELETE*",
+            "id": 129655,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p><code>GET</code> ve <code>POST</code> isteklerini inceledik. Şimdi silme işlemlerini nasıl istediğimize bakalım.</p><p><code>DELETE</code> isteklerinde, <code>API</code>'nin neyi sileceğini bilmesi için bir tanımlayıcı <em>olmalıdır</em>. Buradaki <code>6</code> tanımlayıcısı gibi.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"DELETE http://mimo.org/api/courses/\" /><text value=\"6\" class=\"number\" /><text value=\" HTTP/\" /><text value=\"1.1\" class=\"number\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"0\" endIndex=\"6\" /><option startIndex=\"35\" endIndex=\"36\" /><option correct=\"false\"><content><text value=\"GET\" /></content></option><option correct=\"false\"><content><text value=\"POST\" /></content></option></options></interaction></interactions><output><content><text value=\"HTTP/1.1 200 Deleted\" /><text type=\"break\" /><text value=\"{&quot;courses&quot;: [{ &quot;id&quot;: 1, &quot;title&quot;: &quot;Python&quot; }, { &quot;id&quot;: 2, &quot;title&quot;: &quot;HTML&quot; }, ...]\" /></content></output></code><p visible-if=\"wrong\">Önce <code>DELETE</code>, ardından <code>6</code> öğelerini seçtiğinden emin ol.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "How to use API-PUT 1",
+            "id": 129656,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p><code>PUT</code> istekleri <code>POST</code> isteklerine benzer, ancak daha önce oluşturulmuş bir nesneyi <strong>değiştirmek</strong> için kullanılır.</p><p><code>PUT</code> istekleri mevcut nesneleri değiştirmek için kullanıldığından, hangi nesnenin değiştirileceğini bilmeleri için tanımlanmaları gerekir.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"PUT https://mimo.org/users/\" /><text value=\"1\" class=\"number\" /><text value=\" HTTP/\" /><text value=\"1.1\" class=\"number\" /><text type=\"break\" /><text type=\"break\" /><text value=\"{\" /><text type=\"break\" /><text value=\" \" /><text value=\"&quot;username&quot;\" class=\"string\" /><text value=\": \" /><text value=\"&quot;test_User&quot;\" class=\"string\" /><text value=\",\" /><text type=\"break\" /><text value=\" \" /><text value=\"&quot;name&quot;\" class=\"string\" /><text value=\": \" /><text value=\"&quot;tester&quot;\" class=\"string\" /><text type=\"break\" /><text value=\"}\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"0\" endIndex=\"3\" /><option startIndex=\"27\" endIndex=\"28\" /><option correct=\"false\"><content><text value=\"DELETE\" /></content></option><option correct=\"false\"><content><text value=\"POST\" /></content></option></options></interaction></interactions><output><content><text value=\"HTTP/1.1 204 Replaced\" /><text type=\"break\" /><text value=\"{\" /><text type=\"break\" /><text value=\" &quot;username&quot;: &quot;test_User&quot;,\" /><text type=\"break\" /><text value=\" &quot;name&quot;: &quot;tester&quot;\" /><text type=\"break\" /><text value=\"}\" /></content></output></code><p visible-if=\"wrong\">Önce <code>PUT</code>, ardından <code>1</code> öğelerini seçtiğinden emin ol.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "How to use API-PUT 2",
+            "id": 129657,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Bir <code>PUT</code> isteğinde geçersiz bir kimlik veya hiç kimlik sağlanmazsa yeni bir nesne oluşturulur.</p><p>Yanıtın durum kodu, oluşturulan nesne için <code>201</code> ve değiştirilen nesne için <code>204</code> olacaktır. Kimlik belirtmeden bir <code>PUT</code> isteği kodla.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"PUT https://mimo.org/users HTTP/\" /><text value=\"1.1\" class=\"number\" /><text value=\" \" /><text type=\"break\" /><text value=\" \" /><text type=\"break\" /><text value=\"{ \" /><text type=\"break\" /><text value=\" \" /><text value=\"&quot;username&quot;\" class=\"string\" /><text value=\": \" /><text value=\"&quot;test_User&quot;\" class=\"string\" /><text value=\", \" /><text type=\"break\" /><text value=\" \" /><text value=\"&quot;name&quot;\" class=\"string\" /><text value=\": \" /><text value=\"&quot;tester&quot;\" class=\"string\" /><text value=\" \" /><text type=\"break\" /><text value=\"}\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"20\" endIndex=\"26\" /></options></interaction></interactions><output><content><text value=\"HTTP/1.1 201 Created\" /><text type=\"break\" /><text value=\"{\" /><text type=\"break\" /><text value=\" &quot;username&quot;: &quot;test_User&quot;,\" /><text type=\"break\" /><text value=\" &quot;name&quot;: &quot;tester&quot;\" /><text type=\"break\" /><text value=\"}\" /></content></output></code><p visible-if=\"wrong\"><code>/users</code> öğesini seçtiğinden emin ol.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Bu API'de geçerli bir tanımlayıcısı olmayan <code>PUT</code> isteği yeni bir nesne oluşturur.</p><p>Oluşturulan nesne <code>201</code>, değiştirilen nesne ise <code>204</code> döndürür.</p><p><code>test_User</code> için <code>204</code> yerine <code>201</code> alan bir <code>PUT</code> isteğini tamamla.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"PUT https://mimo.org/users HTTP/\" /><text value=\"1.1\" class=\"number\" /><text value=\" \" /><text type=\"break\" /><text value=\" \" /><text type=\"break\" /><text value=\"{ \" /><text type=\"break\" /><text value=\" \" /><text value=\"&quot;username&quot;\" class=\"string\" /><text value=\": \" /><text value=\"&quot;test_User&quot;\" class=\"string\" /><text value=\", \" /><text type=\"break\" /><text value=\" \" /><text value=\"&quot;name&quot;\" class=\"string\" /><text value=\": \" /><text value=\"&quot;tester&quot;\" class=\"string\" /><text value=\" \" /><text type=\"break\" /><text value=\"}\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"0\" endIndex=\"3\" /><option startIndex=\"20\" endIndex=\"26\" /><option startIndex=\"55\" endIndex=\"66\" /><option correct=\"false\"><content><text value=\"POST\" /></content></option><option correct=\"false\"><content><text value=\"/users/1\" /></content></option><option correct=\"false\"><content><text value=\"&quot;tester&quot;\" /></content></option></options></interaction></interactions><output><content><text value=\"HTTP/1.1 201 Created\" /><text type=\"break\" /><text value=\"{\" /><text type=\"break\" /><text value=\" &quot;username&quot;: &quot;test_User&quot;,\" /><text type=\"break\" /><text value=\" &quot;name&quot;: &quot;tester&quot;\" /><text type=\"break\" /><text value=\"}\" /></content></output></code><p visible-if=\"wrong\">Önce <code>PUT</code>, ardından <code>/users</code> ve son olarak <code>\"test_User\"</code> öğelerini seçtiğinden emin ol.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "How to use API-PUT 3",
+            "id": 129658,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Bir <code>PUT</code> isteği kullanıldığında mevcut tüm verileri kaldırır ve isteğin gövdesine göre verileri ekler.</p><p><code>name</code> alanı <strong>olmadan</strong><code>PUT</code> isteğini tamamla. <code>id</code> değeri <code>1</code> olan kullanıcının artık <code>name</code> değeri olmayacak, bu değer boş hale gelecek.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"PUT https://mimo.org/users/\" /><text value=\"1\" class=\"number\" /><text value=\" HTTP/\" /><text value=\"1.1\" class=\"number\" /><text type=\"break\" /><text type=\"break\" /><text value=\"{\" /><text type=\"break\" /><text value=\" \" /><text value=\"&quot;username&quot;\" class=\"string\" /><text value=\": \" /><text value=\"&quot;test_User&quot;\" class=\"string\" /><text type=\"break\" /><text value=\"}\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"0\" endIndex=\"3\" /><option correct=\"false\"><content><text value=\",\" /></content></option><option correct=\"false\"><content><text value=\"&quot;name&quot;: &quot;test&quot;\" /></content></option><option startIndex=\"42\" endIndex=\"65\" /></options></interaction></interactions><output><content><text value=\"HTTP/1.1 204 Replaced\" /><text type=\"break\" /><text value=\"{\" /><text type=\"break\" /><text value=\" &quot;username&quot;: &quot;test_User&quot;\" /><text type=\"break\" /><text value=\"}\" /></content></output></code><p visible-if=\"wrong\">Önce <code>PUT</code>, ardından <code>\"username\": \"test_User\"</code> öğelerini seçtiğinden emin ol.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "How to use API-PATCH",
+            "id": 129659,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p><code>PATCH</code> istekleri, bir nesnenin bazı alanlarını güncellemek için kullanılır; bu nedenle hangi nesnenin güncelleneceğini belirlemek için tanımlama gerekir.</p><p>Belirtilmeyen tüm alanların değerleri değişmeden kalacak. Aşağıdaki istek için tanımlayıcı olarak <code>1</code> kullan.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"PATCH https://mimo.org/users/\" /><text value=\"1\" class=\"number\" /><text value=\" HTTP/\" /><text value=\"1.1\" class=\"number\" /><text value=\" \" /><text type=\"break\" /><text value=\" \" /><text type=\"break\" /><text value=\"{ \" /><text type=\"break\" /><text value=\" \" /><text value=\"&quot;name&quot;\" class=\"string\" /><text value=\": \" /><text value=\"&quot;Barry&quot;\" class=\"string\" /><text value=\" \" /><text type=\"break\" /><text value=\"}\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"0\" endIndex=\"5\" /><option startIndex=\"29\" endIndex=\"30\" /><option correct=\"false\"><content><text value=\"PUT\" /></content></option><option correct=\"false\"><content><text value=\"DELETE\" /></content></option></options></interaction></interactions><output><content><text value=\"HTTP/1.1 204 Updated\" /><text type=\"break\" /><text value=\"{\" /><text type=\"break\" /><text value=\" &quot;name&quot;: &quot;Barry&quot;\" /><text type=\"break\" /><text value=\"}\" /></content></output></code><p visible-if=\"wrong\">Önce <code>PATCH</code>, ardından <code>1</code> öğelerini seçtiğinden emin ol.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "How to use API-PATCH 2",
+            "id": 129660,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Şimdi, <code>id</code> değeri <code>4</code>'e eşit olan kullanıcının <code>username</code> değerini <code>the_bat</code> olarak değiştirmeyi dene.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"PATCH https://mimo.org/users/\" /><text value=\"4\" class=\"number\" /><text value=\" HTTP/\" /><text value=\"1.1\" class=\"number\" /><text value=\" \" /><text type=\"break\" /><text value=\" \" /><text type=\"break\" /><text value=\"{ \" /><text type=\"break\" /><text value=\" \" /><text value=\"&quot;username&quot;\" class=\"string\" /><text value=\": \" /><text value=\"&quot;the_bat&quot;\" class=\"string\" /><text value=\" \" /><text type=\"break\" /><text value=\"}\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"29\" endIndex=\"30\" /><option startIndex=\"47\" endIndex=\"57\" /><option startIndex=\"57\" endIndex=\"58\" /><option startIndex=\"59\" endIndex=\"68\" /><option correct=\"false\"><content><text value=\"1\" /></content></option></options></interaction></interactions><output><content><text value=\"HTTP/1.1 204 Updated\" /><text type=\"break\" /><text value=\"{\" /><text type=\"break\" /><text value=\" &quot;username&quot;: &quot;the_bat&quot;\" /><text type=\"break\" /><text value=\"}\" /></content></output></code><p visible-if=\"wrong\">Önce <code>4</code>, ardından <code>\"username\"</code> ve sonra <code>:</code>, <code>\"the_bat\"</code> öğelerini seçtiğinden emin ol.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p><code>4</code> numaralı kullanıcının <code>username</code> değerini <code>the_bat</code> olarak değiştiren kısmi güncellemeyi tamamla.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"PATCH https://mimo.org/users/\" /><text value=\"4\" class=\"number\" /><text value=\" HTTP/\" /><text value=\"1.1\" class=\"number\" /><text value=\" \" /><text type=\"break\" /><text value=\" \" /><text type=\"break\" /><text value=\"{ \" /><text type=\"break\" /><text value=\" \" /><text value=\"&quot;username&quot;\" class=\"string\" /><text value=\": \" /><text value=\"&quot;the_bat&quot;\" class=\"string\" /><text value=\" \" /><text type=\"break\" /><text value=\"}\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"0\" endIndex=\"5\" /><option startIndex=\"29\" endIndex=\"30\" /><option startIndex=\"47\" endIndex=\"57\" /><option startIndex=\"59\" endIndex=\"68\" /><option correct=\"false\"><content><text value=\"PUT\" /></content></option><option correct=\"false\"><content><text value=\"1\" /></content></option><option correct=\"false\"><content><text value=\"&quot;name&quot;\" /></content></option></options></interaction></interactions><output><content><text value=\"HTTP/1.1 204 Updated\" /><text type=\"break\" /><text value=\"{\" /><text type=\"break\" /><text value=\" &quot;username&quot;: &quot;the_bat&quot;\" /><text type=\"break\" /><text value=\"}\" /></content></output></code><p visible-if=\"wrong\">Önce <code>PATCH</code>, ardından <code>4</code>, <code>\"username\"</code> ve son olarak <code>\"the_bat\"</code> öğelerini seçtiğinden emin ol.</p></body></html>"
+          },
+          {
+            "title": "Question 1",
+            "id": 129661,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Bir Python web uygulamasında <code>POST</code>, <code>PUT</code> veya <code>PATCH</code> gibi metotlarla kaynak oluştururken ya da güncellerken neleri göz önünde bulundurmamız gerekir?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\">Veri Doğrulama</item><item value=\"2\" correct=\"false\">Erişim Ücretleri</item></selection><p visible-if=\"wrong\">Veri Doğrulama.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p><code>POST</code>, <code>PUT</code> veya <code>PATCH</code> ile kaynak oluştururken ya da güncellerken gönderilen verileri doğrulamamız gerekir.</p><p>Bir kayıt isteğinde gerekli <code>username</code> eksik. Kullanıcıyı kaydetmeden önce hangi işlem doğrulama uygular?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\">Eksik kullanıcı adını iste ve yalnızca sağlandıktan sonra kaydet.</item><item value=\"2\" correct=\"false\">Diğer alanlar bulunduğu için isteği değiştirmeden kaydet.</item><item value=\"3\" correct=\"false\">Diğer alanları kontrol et ve geçerliyse kullanıcı adı olmadan kaydet.</item></selection><p visible-if=\"wrong\">Eksik kullanıcı adını iste ve yalnızca sağlandıktan sonra kaydet.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Question 2",
+            "id": 129662,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Bir sözlüğün yalnızca bir özniteliğini değiştirmek istiyorsak hangi fonksiyonu kullanmalıyız?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\"><code>requests.patch()</code></item><item value=\"2\" correct=\"false\"><code>requests.replace()</code></item><item value=\"3\" correct=\"false\"><code>requests.remove()</code></item></selection><p visible-if=\"wrong\"><code>requests.patch()</code> öğesini seçtiğinden emin ol.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Question 3",
+            "id": 129663,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Zaten oluşturduğumuz bir nesneyi nasıl değiştirmeliyiz?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\">Bir <code>PUT</code> isteği gönderme</item><item value=\"2\" correct=\"false\">Nesneyi silmek için <code>DELETE</code> isteği gönder, ardından <code>POST</code> isteği gönder</item></selection><p visible-if=\"wrong\">Bir <code>PUT</code> isteği gönderme.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Bir <code>PUT</code> isteği, mevcut bir kaynağın yerini gönderilen temsille değiştirir.</p><p>Bir uygulamanın <code>/users/42</code> adresinde depolanan profilin tamamını değiştirmesi gerekiyor. Bu görev için hangi istek metodu uygundur?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\"><code>PUT</code></item><item value=\"2\" correct=\"false\"><code>PATCH</code></item><item value=\"3\" correct=\"false\"><code>DELETE</code> ve ardından <code>POST</code></item></selection><p visible-if=\"wrong\"><code>PUT</code> öğesini seçtiğinden emin ol.</p></body></html>"
+          },
+          {
+            "title": "Question 6",
+            "id": 129666,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p><code>PUT</code> isteği yaparken tanımlama sağlamazsak ne olur?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\">Hiçbir şeyin yerine yenisi konulmayacak, yeni bir nesne oluşturulacak</item><item value=\"2\" correct=\"false\">Tüm nesneler değiştirilecek</item><item value=\"3\" correct=\"false\">Hiçbir şey olmuyor</item></selection><p visible-if=\"wrong\">Hiçbir şeyin yerine yenisi konulmayacak, yeni bir nesne oluşturulacak.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Bir <code>PUT</code> isteği mevcut bir nesneyi tanımlamazsa sunucu gönderilen verilerden yeni bir nesne oluşturabilir.</p><p><code>/users</code> adresine gönderilen bir <code>PUT</code> isteği, yeni kullanıcının tüm verilerini içeriyor ve <code>201</code> durum kodunu alıyor. Ne oldu?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\">Yeni bir kullanıcı nesnesi oluşturuldu.</item><item value=\"2\" correct=\"false\">Mevcut tüm kullanıcı nesnelerinin yerini aldı.</item><item value=\"3\" correct=\"false\"><code>PUT</code> yalnızca nesneleri güncelleyebildiği için hiçbir şey değişmedi.</item></selection><p visible-if=\"wrong\">Yeni bir kullanıcı nesnesi oluşturuldu.</p></body></html>"
+          }
+        ]
+      }
+    ]
+  }
+}

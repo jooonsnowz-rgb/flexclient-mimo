@@ -1,0 +1,148 @@
+{
+  "tutorial": {
+    "id": 2089,
+    "version": 6,
+    "type": "guidedProjectOptional",
+    "isNew": false,
+    "codeLanguage": "sql",
+    "title": "Penyanyi Favorit",
+    "descriptionContent": "Gunakan subquery untuk mendapatkan daftar penyanyi yang lagunya lebih sering diputar.",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": "tutorial-2089-icon-banner.svg",
+    "chapters": [
+      {
+        "id": 13153,
+        "title": "Belajar",
+        "type": "practiceLevel3",
+        "lessons": [
+          {
+            "title": "Table details",
+            "id": 118296,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Kita sedang mengembangkan fitur baru untuk meningkatkan pengalaman pengguna aplikasi musik. Fitur baru ini akan menghasilkan daftar penyanyi yang lagunya lebih sering diputar oleh pengguna.\n\nTabel `saved_playlist` berisi id lagu yang disimpan pengguna dan jumlah berapa kali lagu tersebut diputar. Daftar lengkap lagu terdapat di tabel `songs`, tetapi kita akan membahas tabel itu nanti.\n\n**Penting**: Tabel **Hasil yang Diharapkan** di bawah ini menunjukkan hasil yang harus kamu capai melalui query pada pelajaran ini. Lihat tabel tersebut kapan saja untuk lebih memahami hasil yang diharapkan.\n\n1. Mari tulis query untuk mendapatkan `times_played` dari lagu-lagu di `saved_playlist`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.sql",
+                  "codeLanguage": "sql",
+                  "content": "",
+                  "solvedContent": "SELECT times_played FROM saved_playlist;"
+                }
+              ],
+              "hints": [],
+              "sourceDatabaseTables": "{\"Tables\":[{\"Name\":\"saved_playlist\",\"Rows\":[{\"Cells\":[{\"CellType\":\"Header\",\"Content\":\"song_id\"},{\"CellType\":\"Header\",\"Content\":\"times_played\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"1\"},{\"CellType\":\"Data\",\"Content\":\"8\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"23\"},{\"CellType\":\"Data\",\"Content\":\"0\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"456\"},{\"CellType\":\"Data\",\"Content\":\"2\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"678\"},{\"CellType\":\"Data\",\"Content\":\"14\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"679\"},{\"CellType\":\"Data\",\"Content\":\"7\"}]}]},{\"Name\":\"songs\",\"Rows\":[{\"Cells\":[{\"CellType\":\"Header\",\"Content\":\"id\"},{\"CellType\":\"Header\",\"Content\":\"title\"},{\"CellType\":\"Header\",\"Content\":\"singer\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"1\"},{\"CellType\":\"Data\",\"Content\":\"Green Population\"},{\"CellType\":\"Data\",\"Content\":\"Clean Writer\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"23\"},{\"CellType\":\"Data\",\"Content\":\"Charismatic Sails\"},{\"CellType\":\"Data\",\"Content\":\"Tolerate Object\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"456\"},{\"CellType\":\"Data\",\"Content\":\"Script to Siege\"},{\"CellType\":\"Data\",\"Content\":\"skeleton\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"678\"},{\"CellType\":\"Data\",\"Content\":\"Attention\"},{\"CellType\":\"Data\",\"Content\":\"Vegan Economy\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"679\"},{\"CellType\":\"Data\",\"Content\":\"Broken Plate\"},{\"CellType\":\"Data\",\"Content\":\"Vegan Economy\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"790\"},{\"CellType\":\"Data\",\"Content\":\"Skip\"},{\"CellType\":\"Data\",\"Content\":\"Pinky Bunny\"}]}]}]}",
+              "solutionDatabaseTables": "{\"Tables\":[{\"Name\":\"Result\",\"Rows\":[{\"Cells\":[{\"CellType\":\"Header\",\"Content\":\"times_played\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"8\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"0\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"2\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"14\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"7\"}]}]}]}"
+            }
+          },
+          {
+            "title": "What's the average?",
+            "id": 118297,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Kita ingin membuat daftar penyanyi yang lagunya lebih sering diputar oleh pengguna.\n\nKita sudah mendapatkan jumlah setiap lagu diputar oleh pengguna, tetapi berapa rata-rata sebuah lagu diputar?\n\n1. Mari kita ubah query untuk mengambil hanya rata-rata `times_played` dari `saved_playlist`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.sql",
+                  "codeLanguage": "sql",
+                  "content": "SELECT * FROM saved_playlist JOIN songs ON saved_playlist.song_id=songs.id;",
+                  "solvedContent": "SELECT AVG(times_played)\r\nFROM saved_playlist"
+                }
+              ],
+              "hints": [],
+              "sourceDatabaseTables": "{\"Tables\":[{\"Name\":\"saved_playlist\",\"Rows\":[{\"Cells\":[{\"CellType\":\"Header\",\"Content\":\"song_id\"},{\"CellType\":\"Header\",\"Content\":\"times_played\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"1\"},{\"CellType\":\"Data\",\"Content\":\"8\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"23\"},{\"CellType\":\"Data\",\"Content\":\"0\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"456\"},{\"CellType\":\"Data\",\"Content\":\"2\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"678\"},{\"CellType\":\"Data\",\"Content\":\"14\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"679\"},{\"CellType\":\"Data\",\"Content\":\"7\"}]}]},{\"Name\":\"songs\",\"Rows\":[{\"Cells\":[{\"CellType\":\"Header\",\"Content\":\"id\"},{\"CellType\":\"Header\",\"Content\":\"title\"},{\"CellType\":\"Header\",\"Content\":\"singer\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"1\"},{\"CellType\":\"Data\",\"Content\":\"Green Population\"},{\"CellType\":\"Data\",\"Content\":\"Clean Writer\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"23\"},{\"CellType\":\"Data\",\"Content\":\"Charismatic Sails\"},{\"CellType\":\"Data\",\"Content\":\"Tolerate Object\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"456\"},{\"CellType\":\"Data\",\"Content\":\"Script to Siege\"},{\"CellType\":\"Data\",\"Content\":\"skeleton\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"678\"},{\"CellType\":\"Data\",\"Content\":\"Attention\"},{\"CellType\":\"Data\",\"Content\":\"Vegan Economy\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"679\"},{\"CellType\":\"Data\",\"Content\":\"Broken Plate\"},{\"CellType\":\"Data\",\"Content\":\"Vegan Economy\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"790\"},{\"CellType\":\"Data\",\"Content\":\"Skip\"},{\"CellType\":\"Data\",\"Content\":\"Pinky Bunny\"}]}]}]}",
+              "solutionDatabaseTables": "{\"Tables\":[{\"Name\":\"Result\",\"Rows\":[{\"Cells\":[{\"CellType\":\"Header\",\"Content\":\"AVG(times_played)\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"6.2\"}]}]}]}"
+            }
+          },
+          {
+            "title": "What's played more than average?",
+            "id": 118298,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Sekarang kita tahu berapa kali sebuah lagu diputar secara rata-rata. Mari gunakan informasi ini sebagai subquery lain untuk mengidentifikasi lagu yang lebih sering diputar.\n\n1. Tulis query untuk memilih `song_id` lagu dari `saved_playlist`.\n2. Pastikan hanya memilih `song_id` lagu yang `times_played`-nya *lebih besar* daripada rata-rata yang kita dapatkan pada langkah sebelumnya.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.sql",
+                  "codeLanguage": "sql",
+                  "content": "SELECT AVG(times_played)\r\nFROM saved_playlist",
+                  "solvedContent": "SELECT song_id\r\nFROM saved_playlist\r\nWHERE times_played > \r\n(\r\n SELECT AVG(times_played)\r\n FROM saved_playlist\r\n)"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "You can use subqueries as conditions for a query. Here's an example of the syntax:\n```\nSELECT * \nFROM tableA \nWHERE columnA > \n(\nSELECT  columnB \nFROM tableB \nWHERE columnC = 1\n)\n```"
+                }
+              ],
+              "sourceDatabaseTables": "{\"Tables\":[{\"Name\":\"saved_playlist\",\"Rows\":[{\"Cells\":[{\"CellType\":\"Header\",\"Content\":\"song_id\"},{\"CellType\":\"Header\",\"Content\":\"times_played\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"1\"},{\"CellType\":\"Data\",\"Content\":\"8\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"23\"},{\"CellType\":\"Data\",\"Content\":\"0\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"456\"},{\"CellType\":\"Data\",\"Content\":\"2\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"678\"},{\"CellType\":\"Data\",\"Content\":\"14\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"679\"},{\"CellType\":\"Data\",\"Content\":\"7\"}]}]},{\"Name\":\"songs\",\"Rows\":[{\"Cells\":[{\"CellType\":\"Header\",\"Content\":\"id\"},{\"CellType\":\"Header\",\"Content\":\"title\"},{\"CellType\":\"Header\",\"Content\":\"singer\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"1\"},{\"CellType\":\"Data\",\"Content\":\"Green Population\"},{\"CellType\":\"Data\",\"Content\":\"Clean Writer\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"23\"},{\"CellType\":\"Data\",\"Content\":\"Charismatic Sails\"},{\"CellType\":\"Data\",\"Content\":\"Tolerate Object\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"456\"},{\"CellType\":\"Data\",\"Content\":\"Script to Siege\"},{\"CellType\":\"Data\",\"Content\":\"skeleton\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"678\"},{\"CellType\":\"Data\",\"Content\":\"Attention\"},{\"CellType\":\"Data\",\"Content\":\"Vegan Economy\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"679\"},{\"CellType\":\"Data\",\"Content\":\"Broken Plate\"},{\"CellType\":\"Data\",\"Content\":\"Vegan Economy\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"790\"},{\"CellType\":\"Data\",\"Content\":\"Skip\"},{\"CellType\":\"Data\",\"Content\":\"Pinky Bunny\"}]}]}]}",
+              "solutionDatabaseTables": "{\"Tables\":[{\"Name\":\"Result\",\"Rows\":[{\"Cells\":[{\"CellType\":\"Header\",\"Content\":\"song_id\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"1\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"678\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"679\"}]}]}]}"
+            }
+          },
+          {
+            "title": "Who sang these songs?",
+            "id": 118824,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Mantap! Sekarang setelah kita memiliki lagu-lagu yang diputar lebih sering daripada rata-rata, mari cari tahu siapa penyanyinya.\n\nTabel `songs` berisi `id`, `title`, dan `singer` dari daftar lagu.\n\nNilai `song_id` dalam tabel `saved_playlist` berasal dari kolom `id` pada tabel `songs`.\n\n1. Tulis query untuk memilih `singer` dari tabel `songs`.\n2. Pastikan kamu hanya memilih `singer` yang `id`-nya ada dalam hasil query yang kita buat pada pelajaran sebelumnya.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.sql",
+                  "codeLanguage": "sql",
+                  "content": "SELECT song_id\r\nFROM saved_playlist\r\nWHERE times_played >\r\n(\r\n SELECT AVG(times_played)\r\n FROM saved_playlist\r\n )",
+                  "solvedContent": "SELECT singer FROM songs\r\nWHERE id IN \r\n(\r\n SELECT song_id\r\n FROM saved_playlist\r\n WHERE times_played >\r\n (\r\n  SELECT AVG(times_played)\r\n  FROM saved_playlist\r\n )\r\n)"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "Remember, you can use `IN` when the `WHERE` condition needs to be able to accept multiple values.\nThe syntax for In is as below:\n\n```\nSELECT * FROM <table> WHERE <column> IN (<value1>,<value2>,...)\n```"
+                }
+              ],
+              "sourceDatabaseTables": "{\"Tables\":[{\"Name\":\"saved_playlist\",\"Rows\":[{\"Cells\":[{\"CellType\":\"Header\",\"Content\":\"song_id\"},{\"CellType\":\"Header\",\"Content\":\"times_played\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"1\"},{\"CellType\":\"Data\",\"Content\":\"8\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"23\"},{\"CellType\":\"Data\",\"Content\":\"0\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"456\"},{\"CellType\":\"Data\",\"Content\":\"2\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"678\"},{\"CellType\":\"Data\",\"Content\":\"14\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"679\"},{\"CellType\":\"Data\",\"Content\":\"7\"}]}]},{\"Name\":\"songs\",\"Rows\":[{\"Cells\":[{\"CellType\":\"Header\",\"Content\":\"id\"},{\"CellType\":\"Header\",\"Content\":\"title\"},{\"CellType\":\"Header\",\"Content\":\"singer\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"1\"},{\"CellType\":\"Data\",\"Content\":\"Green Population\"},{\"CellType\":\"Data\",\"Content\":\"Clean Writer\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"23\"},{\"CellType\":\"Data\",\"Content\":\"Charismatic Sails\"},{\"CellType\":\"Data\",\"Content\":\"Tolerate Object\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"456\"},{\"CellType\":\"Data\",\"Content\":\"Script to Siege\"},{\"CellType\":\"Data\",\"Content\":\"skeleton\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"678\"},{\"CellType\":\"Data\",\"Content\":\"Attention\"},{\"CellType\":\"Data\",\"Content\":\"Vegan Economy\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"679\"},{\"CellType\":\"Data\",\"Content\":\"Broken Plate\"},{\"CellType\":\"Data\",\"Content\":\"Vegan Economy\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"790\"},{\"CellType\":\"Data\",\"Content\":\"Skip\"},{\"CellType\":\"Data\",\"Content\":\"Pinky Bunny\"}]}]}]}",
+              "solutionDatabaseTables": "{\"Tables\":[{\"Name\":\"Result\",\"Rows\":[{\"Cells\":[{\"CellType\":\"Header\",\"Content\":\"singer\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"Clean Writer\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"Vegan Economy\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"Vegan Economy\"}]}]}]}"
+            }
+          },
+          {
+            "title": "Optional - Remove duplicates",
+            "id": 118300,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Bagus, kamu sudah mendapatkan daftar penyanyi favorit yang lagunya lebih sering diputar. Namun, band `Vegan Economy` muncul berulang kali. Kita tidak berfokus pada lagu mereka, jadi kita bisa membuat daftar terlihat lebih baik dengan menghapus duplikat.\n\n1. Modifikasi query agar hanya mengembalikan daftar penyanyi tanpa duplikat.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.sql",
+                  "codeLanguage": "sql",
+                  "content": "SELECT singer FROM songs\r\nWHERE id IN \r\n(\r\n SELECT song_id\r\n FROM saved_playlist\r\n WHERE times_played > \r\n (\r\n  SELECT AVG(times_played)\r\n  FROM saved_playlist\r\n )\r\n)",
+                  "solvedContent": "SELECT DISTINCT singer FROM songs\r\nWHERE id IN \r\n(\r\n SELECT song_id\r\n FROM saved_playlist\r\n WHERE times_played > \r\n (\r\n  SELECT AVG(times_played)\r\n  FROM saved_playlist\r\n )\r\n)"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "Duplicates can be removed by selecting `DISTINCT` values"
+                }
+              ],
+              "sourceDatabaseTables": "{\"Tables\":[{\"Name\":\"saved_playlist\",\"Rows\":[{\"Cells\":[{\"CellType\":\"Header\",\"Content\":\"song_id\"},{\"CellType\":\"Header\",\"Content\":\"times_played\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"1\"},{\"CellType\":\"Data\",\"Content\":\"8\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"23\"},{\"CellType\":\"Data\",\"Content\":\"0\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"456\"},{\"CellType\":\"Data\",\"Content\":\"2\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"678\"},{\"CellType\":\"Data\",\"Content\":\"14\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"679\"},{\"CellType\":\"Data\",\"Content\":\"7\"}]}]},{\"Name\":\"songs\",\"Rows\":[{\"Cells\":[{\"CellType\":\"Header\",\"Content\":\"id\"},{\"CellType\":\"Header\",\"Content\":\"title\"},{\"CellType\":\"Header\",\"Content\":\"singer\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"1\"},{\"CellType\":\"Data\",\"Content\":\"Green Population\"},{\"CellType\":\"Data\",\"Content\":\"Clean Writer\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"23\"},{\"CellType\":\"Data\",\"Content\":\"Charismatic Sails\"},{\"CellType\":\"Data\",\"Content\":\"Tolerate Object\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"456\"},{\"CellType\":\"Data\",\"Content\":\"Script to Siege\"},{\"CellType\":\"Data\",\"Content\":\"skeleton\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"678\"},{\"CellType\":\"Data\",\"Content\":\"Attention\"},{\"CellType\":\"Data\",\"Content\":\"Vegan Economy\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"679\"},{\"CellType\":\"Data\",\"Content\":\"Broken Plate\"},{\"CellType\":\"Data\",\"Content\":\"Vegan Economy\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"790\"},{\"CellType\":\"Data\",\"Content\":\"Skip\"},{\"CellType\":\"Data\",\"Content\":\"Pinky Bunny\"}]}]}]}",
+              "solutionDatabaseTables": "{\"Tables\":[{\"Name\":\"Result\",\"Rows\":[{\"Cells\":[{\"CellType\":\"Header\",\"Content\":\"singer\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"Clean Writer\"}]},{\"Cells\":[{\"CellType\":\"Data\",\"Content\":\"Vegan Economy\"}]}]}]}"
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

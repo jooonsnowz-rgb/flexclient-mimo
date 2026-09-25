@@ -1,0 +1,148 @@
+{
+  "tutorial": {
+    "id": 2647,
+    "version": 5,
+    "type": "guidedProjectOptional",
+    "isNew": false,
+    "codeLanguage": "node",
+    "title": "Kalkulator",
+    "descriptionContent": "Użyj Node.JS i Express, aby utworzyć kalkulator",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": "tutorial-2647-icon-banner.svg",
+    "chapters": [
+      {
+        "id": 14610,
+        "title": "Kalkulator",
+        "type": "practiceLevel3",
+        "lessons": [
+          {
+            "title": "Lesson #1",
+            "id": 129327,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "W tym projekcie utworzymy prosty serwer kalkulatora za pomocą Express.js.\n\nZacznijmy od skonfigurowania naszego serwera Express. Na razie nie otrzymamy jeszcze użytecznej odpowiedzi. Nie zdziw się.\n\n1. Zadeklaruj zmienną `express` i zaimportuj moduł `express` za pomocą `require`.\n2. Zadeklaruj zmienną `app` i zainicjalizuj ją, wywołując funkcję `express`.\n3. Zadeklaruj zmienną `port` i przypisz jej wartość `3000`.\n4. Użyj funkcji `listen` na `app`, aby aplikacja nasłuchiwała na porcie określonym przez zmienną `port`.\n5. Zaloguj wiadomość w konsoli wewnątrz funkcji zwrotnej funkcji `listen`, aby wiedzieć, że nasz serwer działa prawidłowo.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "",
+                  "solvedContent": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.listen(port, () => {\n  console.log(`Calculator server running on port ${port}`);\n});"
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/",
+                "body": null
+              }
+            }
+          },
+          {
+            "title": "Lesson #2",
+            "id": 129329,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Teraz utwórzmy trasy dla naszego kalkulatora.\n\nZaczniemy od trasy dodawania. Ta trasa doda dwie liczby przekazane jako parametry zapytania.\n\n1. Pomóżmy Expressowi analizować treść naszego żądania, dodając `app.use(express.json());` przed zakodowaniem pierwszej trasy.\n2. Utwórz funkcję obsługi trasy dla żądania `POST` do `/add`. W funkcji wywołania zwrotnego pobierz parametry `a` i `b` z `req.body`.\n3. Oblicz wynik dodawania `a` i `b`. Najpierw przekonwertuj je na liczby za pomocą `parseFloat`.\n4. Odpowiedz obiektem JSON zawierającym klucz `\"result\"`, którego wartością będzie wynik.\n5. Ustaw kod statusu na `200`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.listen(port, () => {\n  console.log(`Calculator server running on port ${port}`);\n});",
+                  "solvedContent": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.listen(port, () => {\n  console.log(`Calculator server running on port ${port}`);\n});\n\napp.use(express.json());\n\napp.post('/add', (req, res) => {\n  const { a, b } = req.body;\n  const result = parseFloat(a) + parseFloat(b);\n  res.status(200).json({ result: result });\n});"
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "POST",
+                "path": "/add",
+                "body": "{\"a\": 1, \"b\": 2}"
+              }
+            }
+          },
+          {
+            "title": "Lesson #3",
+            "id": 129330,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Świetna robota! Teraz zróbmy to samo dla odejmowania.\n\n1. Utwórz procedurę obsługi trasy dla żądań `POST` kierowanych do `/subtract`. Wykonaj te same kroki co w przypadku trasy dodawania, ale tym razem odejmij `b` od `a`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.listen(port, () => {\n  console.log(`Calculator server running on port ${port}`);\n});\n\napp.use(express.json());\n\napp.post('/add', (req, res) => {\n  const { a, b } = req.body;\n  const result = parseFloat(a) + parseFloat(b);\n  res.status(200).json({ result: result });\n});",
+                  "solvedContent": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.listen(port, () => {\n  console.log(`Calculator server running on port ${port}`);\n});\n\napp.use(express.json());\n\napp.post('/add', (req, res) => {\n  const { a, b } = req.body;\n  const result = parseFloat(a) + parseFloat(b);\n  res.status(200).json({ result: result });\n});\n\napp.post('/subtract', (req, res) => {\n  const { a, b } = req.body;\n  const result = parseFloat(a) - parseFloat(b);\n  res.status(200).json({ result: result });\n});"
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "POST",
+                "path": "/subtract",
+                "body": "{\"a\": 10, \"b\": 19}"
+              }
+            }
+          },
+          {
+            "title": "Lesson #4",
+            "id": 129331,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Następnie utwórzmy trasę mnożenia.\n\n1. Utwórz funkcję obsługi trasy dla żądań `POST` kierowanych do `/multiply`.\n2. W funkcji zwrotnej pobierz wartości `a` i `b` z `req.body`.\n3. Pomnóż `a` i `b`, aby uzyskać wynik.\n4. Zwróć wynik tak jak w innych trasach.\n5. I nie zapomnij ustawić kodu statusu na `200`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.listen(port, () => {\n  console.log(`Calculator server running on port ${port}`);\n});\n\napp.use(express.json());\n\napp.post('/add', (req, res) => {\n  const { a, b } = req.body;\n  const result = parseFloat(a) + parseFloat(b);\n  res.status(200).json({ result: result });\n});\n\napp.post('/subtract', (req, res) => {\n  const { a, b } = req.body;\n  const result = parseFloat(a) - parseFloat(b);\n  res.status(200).json({ result: result });\n});",
+                  "solvedContent": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.listen(port, () => {\n  console.log(`Calculator server running on port ${port}`);\n});\n\napp.use(express.json());\n\napp.post('/add', (req, res) => {\n  const { a, b } = req.body;\n  const result = parseFloat(a) + parseFloat(b);\n  res.status(200).json({ result: result });\n});\n\napp.post('/subtract', (req, res) => {\n  const { a, b } = req.body;\n  const result = parseFloat(a) - parseFloat(b);\n  res.status(200).json({ result: result });\n});\n\napp.post('/multiply', (req, res) => {\n  const { a, b } = req.body;\n  const result = parseFloat(a) * parseFloat(b);\n  res.status(200).json({ result: result });\n});"
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "POST",
+                "path": "/multiply",
+                "body": "{\"a\": -1, \"b\": -5}"
+              }
+            }
+          },
+          {
+            "title": "Lesson #5",
+            "id": 129332,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Na koniec utwórzmy trasę dzielenia. Musimy jednak zachować ostrożność podczas dzielenia, ponieważ nie można dzielić przez zero.\n\n1. Utwórz procedurę obsługi trasy dla żądań `POST` kierowanych do `/divide`.\n2. W funkcji zwrotnej pobierz wartości `a` i `b` z `req.body`.\n3. Sprawdź, czy `b` wynosi zero. Jeśli tak, odpowiedz kodem statusu 400 i obiektem JSON zawierającym komunikat o błędzie.\n4. Jeśli `b` nie wynosi zero, podziel `a` przez `b`, aby uzyskać wynik, i odpowiedz obiektem JSON zawierającym wynik. W tym przypadku ustaw kod statusu na `200`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.listen(port, () => {\n  console.log(`Calculator server running on port ${port}`);\n});\n\napp.use(express.json());\n\napp.post('/add', (req, res) => {\n  const { a, b } = req.body;\n  const result = parseFloat(a) + parseFloat(b);\n  res.status(200).json({ result: result });\n});\n\napp.post('/subtract', (req, res) => {\n  const { a, b } = req.body;\n  const result = parseFloat(a) - parseFloat(b);\n  res.status(200).json({ result: result });\n});\n\napp.post('/multiply', (req, res) => {\n  const { a, b } = req.body;\n  const result = parseFloat(a) * parseFloat(b);\n  res.status(200).json({ result: result });\n});",
+                  "solvedContent": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.listen(port, () => {\n  console.log(`Calculator server running on port ${port}`);\n});\n\napp.use(express.json());\n\napp.post('/add', (req, res) => {\n  const { a, b } = req.body;\n  const result = parseFloat(a) + parseFloat(b);\n  res.status(200).json({ result: result });\n});\n\napp.post('/subtract', (req, res) => {\n  const { a, b } = req.body;\n  const result = parseFloat(a) - parseFloat(b);\n  res.status(200).json({ result: result });\n});\n\napp.post('/multiply', (req, res) => {\n  const { a, b } = req.body;\n  const result = parseFloat(a) * parseFloat(b);\n  res.status(200).json({ result: result });\n});\n\napp.post('/divide', (req, res) => {\n  const { a, b } = req.body;\n  if (parseFloat(b) === 0) {\n    res.status(400).json({ error: 'Division by zero is not allowed' });\n  } else {\n    const result = parseFloat(a) / parseFloat(b);\n    res.status(200).json({ result: result });\n  }\n});"
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "POST",
+                "path": "/divide",
+                "body": "{\"a\": 10, \"b\": 5}"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
