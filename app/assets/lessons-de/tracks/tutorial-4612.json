@@ -1,0 +1,143 @@
+{
+  "tutorial": {
+    "id": 4612,
+    "version": 1,
+    "type": "guidedProject",
+    "isNew": false,
+    "codeLanguage": "python",
+    "title": "Schadensrechner",
+    "descriptionContent": "Erstelle einen Schadensrechner für ein Spiel, der mehrere Python-Pakete für die aufwendige Berechnung verwendet",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": "tutorial-4612-icon-banner.svg",
+    "chapters": [
+      {
+        "id": 17812,
+        "title": "Kapitel #1",
+        "type": "practiceLevel3",
+        "lessons": [
+          {
+            "title": "Lesson #1",
+            "id": 151983,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "In diesem Projekt **Game Damage Calculator** verwenden wir zwei Pakete, um von anderen erstellten Code zu nutzen.\n\nZuerst speichern wir die verfügbaren Waffen und ihre Schadenswerte.\n\n1. Erstelle eine Liste namens `weapons`.\n2. Füge für jede Waffe und ihren Schaden eine verschachtelte Liste hinzu. Füge mindestens drei Elemente hinzu. Du kannst zum Beispiel `[\"Sword\", 5]`, `[\"Axe\", 7]` und `[\"Wand\", 4]` verwenden.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "",
+                  "solvedContent": "weapons = [\n    [\"Sword\", 5],\n    [\"Axe\", 7],\n    [\"Wand\", 4]\n]"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #2",
+            "id": 151984,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Im nächsten Schritt verwenden wir Pythons `math`-Paket, um stärkere Angriffe zu berechnen.\n\n1. Importiere Pythons standardmäßiges `math`-Modul.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "weapons = [\n    [\"Sword\", 5],\n    [\"Axe\", 7],\n    [\"Wand\", 4]\n]",
+                  "solvedContent": "import math\n\nweapons = [\n    [\"Sword\", 5],\n    [\"Axe\", 7],\n    [\"Wand\", 4]\n]"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #3",
+            "id": 151985,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Berechnen wir jetzt den Power-Angriff jeder Waffe, indem wir ihren Schaden quadrieren.\n\n1. Erstelle eine leere Liste namens `results`.\n2. Durchlaufe `weapons`.\n   - Greife auf den ersten Eintrag jeder Waffe zu und speichere ihn in einer Variable namens `name`.\n   - Greife auf den zweiten Eintrag jeder Waffe zu und speichere ihn in einer Variable namens `damage`.\n   - Berechne `power_attack` mit `math.pow(damage, 2)`.\n   - Hänge `name`, `damage` und `power_attack` als verschachtelte Liste an die Liste `results` an.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "import math\n\nweapons = [\n    [\"Sword\", 5],\n    [\"Axe\", 7],\n    [\"Wand\", 4]\n]",
+                  "solvedContent": "import math\n\nweapons = [\n    [\"Sword\", 5],\n    [\"Axe\", 7],\n    [\"Wand\", 4]\n]\n\nresults = []\n\nfor weapon in weapons:\n    name = weapon[0]\n    damage = weapon[1]\n\n    power_attack = math.pow(damage, 2)\n\n    results.append([name, damage, power_attack])"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #4",
+            "id": 151986,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "In der nächsten Lektion verwenden wir das Paket `tabulate`, um die Ergebnisse als Tabelle anzuzeigen.\n\n1. Füge `from tabulate import tabulate` unter dem vorhandenen Import hinzu.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "import math\n\nweapons = [\n    [\"Sword\", 5],\n    [\"Axe\", 7],\n    [\"Wand\", 4]\n]\n\nresults = []\n\nfor weapon in weapons:\n    name = weapon[0]\n    damage = weapon[1]\n\n    power_attack = math.pow(damage, 2)\n\n    results.append([name, damage, power_attack])",
+                  "solvedContent": "import math\nfrom tabulate import tabulate\n\nweapons = [\n    [\"Sword\", 5],\n    [\"Axe\", 7],\n    [\"Wand\", 4]\n]\n\nresults = []\n\nfor weapon in weapons:\n    name = weapon[0]\n    damage = weapon[1]\n\n    power_attack = math.pow(damage, 2)\n\n    results.append([name, damage, power_attack])"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #5",
+            "id": 151987,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Wir haben jetzt eine Liste, die eine Reihe von Listen mit Zeichenfolgen und Zahlen enthält. Mit `tabulate` können wir die Bedeutung dieser Einträge mithilfe der Option für die Überschriften explizit machen.\n\n1. Erstelle eine neue Liste namens `headers` und füge dieser Liste die folgenden drei Elemente hinzu: `\"Weapon\"`, `\"Damage\"` und `\"Power Attack\"`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "import math\nfrom tabulate import tabulate\n\nweapons = [\n    [\"Sword\", 5],\n    [\"Axe\", 7],\n    [\"Wand\", 4]\n]\n\nresults = []\n\nfor weapon in weapons:\n    name = weapon[0]\n    damage = weapon[1]\n\n    power_attack = math.pow(damage, 2)\n\n    results.append([name, damage, power_attack])",
+                  "solvedContent": "import math\nfrom tabulate import tabulate\n\nweapons = [\n    [\"Sword\", 5],\n    [\"Axe\", 7],\n    [\"Wand\", 4]\n]\n\nresults = []\n\nfor weapon in weapons:\n    name = weapon[0]\n    damage = weapon[1]\n\n    power_attack = math.pow(damage, 2)\n\n    results.append([name, damage, power_attack])\n\nheaders = [\"Weapon\", \"Damage\", \"Power Attack\"]"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #5 - Copy",
+            "id": 151988,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Zum Abschluss zeigen wir die Ergebnisse in einer Tabelle an. Für diesen Schritt verwenden wir `tabulate`, um sie übersichtlich zu formatieren. `tabulate()` akzeptiert die Daten als ersten Parameter. Anschließend können wir einen zweiten Parameter übergeben, um die Kopfzeile festzulegen.\n\n1. Rufe `tabulate()` auf und übergib `result` und `headers` als Argumente. Speichere die Ausgabe der Funktion `tabulate` in einer Variable namens `output`.\n2. Verwende `print()`, um die Variable `output` anzuzeigen.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "import math\nfrom tabulate import tabulate\n\nweapons = [\n    [\"Sword\", 5],\n    [\"Axe\", 7],\n    [\"Wand\", 4]\n]\n\nresults = []\n\nfor weapon in weapons:\n    name = weapon[0]\n    damage = weapon[1]\n\n    power_attack = math.pow(damage, 2)\n\n    results.append([name, damage, power_attack])\n\nheaders = [\"Weapon\", \"Damage\", \"Power Attack\"]",
+                  "solvedContent": "import math\nfrom tabulate import tabulate\n\nweapons = [\n    [\"Sword\", 5],\n    [\"Axe\", 7],\n    [\"Wand\", 4]\n]\n\nresults = []\n\nfor weapon in weapons:\n    name = weapon[0]\n    damage = weapon[1]\n\n    power_attack = math.pow(damage, 2)\n\n    results.append([name, damage, power_attack])\n\nheaders = [\"Weapon\", \"Damage\", \"Power Attack\"]\n\noutput = tabulate(results, headers)\n\nprint(output)"
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

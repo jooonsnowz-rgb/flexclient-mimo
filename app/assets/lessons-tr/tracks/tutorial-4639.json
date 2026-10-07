@@ -1,0 +1,105 @@
+{
+  "tutorial": {
+    "id": 4639,
+    "version": 1,
+    "type": "practiceOptional",
+    "isNew": false,
+    "codeLanguage": "python",
+    "title": "API Yanıtlarını Kontrol Etme",
+    "descriptionContent": "Yanıt kontrollerini daha zor durumlara ve bağımsız API işleme görevlerine aktar.",
+    "shortDescriptionContent": "Daha zor API yanıtı pratiği yapmak isteyen Python öğrenenleri",
+    "showInTrack": true,
+    "iconBanner": null,
+    "chapters": [
+      {
+        "id": 17877,
+        "title": "Güvenilir Yanıt İşleme",
+        "type": "practiceLevel3",
+        "lessons": [
+          {
+            "title": "Diagnose Error Codes",
+            "id": 152335,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Hangi çift, sırasıyla eksik bir kaynağı ve sunucu hatasını eşler?</p><selection multiple=\"multiple\"><item value=\"1\" correct=\"true\"><code>404</code>, <code>500</code></item><item value=\"2\" correct=\"false\"><code>500</code>, <code>404</code></item><item value=\"3\" correct=\"false\"><code>200</code>, <code>404</code></item><item value=\"4\" correct=\"false\"><code>201</code>, <code>500</code></item></selection><p visible-if=\"wrong\"><code>404</code>, <code>500</code>.</p></body></html>"
+          },
+          {
+            "title": "Accept Any Success",
+            "id": 152336,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Bir oluşturma isteği <code>201</code> döndürür. <code>404</code> ve <code>500</code> durumlarını da reddeden genel başarı kontrolünü tamamla.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"if\" class=\"keyword\" /><text value=\" response.ok:\" /><text type=\"break\" /><text value=\"  print(\" /><text value=\"&quot;Saved&quot;\" class=\"string\" /><text value=\")\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"12\" endIndex=\"14\" /><option correct=\"false\"><content><text value=\"status_code == 200\" /></content></option><option correct=\"false\"><content><text value=\"raise_for_status()\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\"><code>ok</code> öğesini seçtiğinden emin ol.</p></body></html>"
+          },
+          {
+            "title": "Guard JSON Parsing",
+            "id": 152337,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Program JSON verilerini okumadan önce hata denetimi metodunu tamamla.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"response.raise_for_status()\" /><text type=\"break\" /><text value=\"data = response.json()\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"0\" endIndex=\"8\" /><option startIndex=\"8\" endIndex=\"9\" /><option startIndex=\"9\" endIndex=\"25\" /><option startIndex=\"25\" endIndex=\"26\" /><option startIndex=\"26\" endIndex=\"27\" /><option correct=\"false\"><content><text value=\"ok\" /></content></option><option correct=\"false\"><content><text value=\"==\" /></content></option><option correct=\"false\"><content><text value=\"200\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Önce <code>response</code>, ardından <code>.</code> ve sonra <code>raise_for_status</code>, <code>(</code>, <code>)</code> öğelerini seçtiğinden emin ol.</p></body></html>"
+          },
+          {
+            "title": "Choose the HTTP Exception",
+            "id": 152338,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p><code>raise_for_status()</code> tarafından oluşturulan 400 ve 500 düzeyindeki hataları hangi istisna türü yakalar?</p><selection multiple=\"multiple\"><item value=\"1\" correct=\"true\"><code>requests.exceptions.HTTPError</code></item><item value=\"2\" correct=\"false\"><code>requests.exceptions.JSONError</code></item><item value=\"3\" correct=\"false\"><code>requests.exceptions.StatusError</code></item><item value=\"4\" correct=\"false\"><code>requests.exceptions.ResponseError</code></item></selection><p visible-if=\"wrong\"><code>requests.exceptions.HTTPError</code> öğesini seçtiğinden emin ol.</p></body></html>"
+          },
+          {
+            "title": "Build a Status Reporter",
+            "id": 152339,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "`script.py` dosyasını, `404` durumu için `message` değişkenini `\"Not found\"` ve `500` durumu için `\"Server error\"` olarak ayarlayacak şekilde tamamla. `response.ok` true olduğunda bunu `\"Ready\"` olarak ayarla. Başarısız olan diğer tüm yanıtlar için `\"Request failed\"` kullan. Sağlanan isteği ve `print()` çağrısını koru.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "import requests\n\nurl = \"https://things.mimo.dev/api/things/1\"\nresponse = requests.get(url)\n\nif response.status_code == :\n message = \"Not found\"\nelif response.status_code == :\n message = \"Server error\"\nelif response.ok:\n message = \"Ready\"\nelse:\n message = \"Request failed\"\n\nprint(message)\n",
+                  "solvedContent": "import requests\n\nurl = \"https://things.mimo.dev/api/things/1\"\nresponse = requests.get(url)\n\nif response.status_code == 404:\n message = \"Not found\"\nelif response.status_code == 500:\n message = \"Server error\"\nelif response.ok:\n message = \"Ready\"\nelse:\n message = \"Request failed\"\n\nprint(message)\n"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Compare Success Checks",
+            "id": 152340,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Durum <code>201</code> için hangi Boolean yanıt özelliği <code>True</code> olur?</p><selection multiple=\"multiple\"><item value=\"1\" correct=\"true\"><code>response.ok</code></item><item value=\"2\" correct=\"false\"><code>response.status_code == 200</code></item><item value=\"3\" correct=\"false\"><code>response.status_code == 404</code></item><item value=\"4\" correct=\"false\"><code>response.status_code</code></item></selection><p visible-if=\"wrong\"><code>response.ok</code> öğesini seçtiğinden emin ol.</p></body></html>"
+          },
+          {
+            "title": "Choose the Failure Path",
+            "id": 152341,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Bir gönderi isteği <code>raise_for_status()</code> kullanıyor. Hangi işleyici yalnızca HTTP hatasını bildirir?</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"try\" class=\"keyword\" /><text value=\":\" /><text type=\"break\" /><text value=\"  response.raise_for_status()\" /><text type=\"break\" /><text value=\"  print(\" /><text value=\"&quot;Response ready&quot;\" class=\"string\" /><text value=\")\" /></content></code><selection multiple=\"multiple\"><item value=\"1\" correct=\"true\"><code>except requests.exceptions.HTTPError: print(\"Request failed\")</code></item><item value=\"2\" correct=\"false\"><code>if response.ok: print(\"Request failed\")</code></item><item value=\"3\" correct=\"false\"><code>except requests: print(\"Request failed\")</code></item><item value=\"4\" correct=\"false\"><code>else: print(\"Request failed\")</code></item></selection><p visible-if=\"wrong\"><code>except requests.exceptions.HTTPError: print(\"Request failed\")</code>.</p></body></html>"
+          },
+          {
+            "title": "Build a Safe JSON Flow",
+            "id": 152342,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "`script.py` dosyasını, `response.json()` çağrısından önce `response.raise_for_status()` çağıracak şekilde tamamla. İstek başarılı olduğunda yanıtın `\"name\"` değerini yazdır. Başarısız olduğunda `requests.exceptions.HTTPError` hatasını yakala ve `\"Request failed\"` yazdır.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "import requests\n\nurl = \"https://things.mimo.dev/api/things/1\"\n\ntry:\n  response = requests.get(url)\n\n  data = response.json()\n  print(data[\"name\"])\nexcept requests.exceptions.HTTPError:\n  print(\"Request failed\")\n",
+                  "solvedContent": "import requests\n\nurl = \"https://things.mimo.dev/api/things/1\"\n\ntry:\n  response = requests.get(url)\n  response.raise_for_status()\n  data = response.json()\n  print(data[\"name\"])\nexcept requests.exceptions.HTTPError:\n  print(\"Request failed\")\n"
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

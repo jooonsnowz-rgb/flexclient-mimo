@@ -1,0 +1,183 @@
+{
+  "tutorial": {
+    "id": 2667,
+    "version": 8,
+    "type": "guidedProject",
+    "isNew": false,
+    "codeLanguage": "python",
+    "title": "API Star Wars - Bagian 1",
+    "descriptionContent": "Jelajahi galaksi dengan project yang memanggil Star Wars API untuk mengambil karakter dari jagat Star Wars yang luas.",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": "tutorial-2667-icon-banner.svg",
+    "chapters": [
+      {
+        "id": 14642,
+        "title": "API Star Wars - Bagian 1",
+        "type": "practiceLevel3",
+        "lessons": [
+          {
+            "title": "Lesson #1",
+            "id": 129499,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Selamat datang di proyek **Star Wars API**, tempat kita akan menggunakan API eksternal untuk mengambil data dari server jarak jauh dan menampilkannya.\n\n1. Untuk memulai, impor library `requests`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "",
+                  "solvedContent": "import requests"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #2",
+            "id": 129500,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Kita berencana mengambil data dari REST API. API ini memiliki beberapa endpoint. Mari panggil endpoint people terlebih dahulu.\n\n1. Buat variabel bernama `option` dan tetapkan nilai `\"people\"` padanya.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "import requests",
+                  "solvedContent": "import requests\n\noption = \"people\""
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #3",
+            "id": 129501,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Mari kita susun url-nya. Kita akan menggunakan endpoint `/people`. Namun, kita ingin tetap fleksibel agar bisa menggantinya kapan saja. Itulah alasan kita menggunakan f-string untuk menyusunnya.\n\n1. Buat variabel baru bernama `url` dan tetapkan f-string berikut ke dalamnya: `f\"https://swapi.mimo.dev/api/{option}/\"`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "import requests\n\noption = \"people\"",
+                  "solvedContent": "import requests\n\noption = \"people\"\nurl = f\"https://swapi.mimo.dev/api/{option}/\""
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #4",
+            "id": 129502,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Saatnya mengirim permintaan ke endpoint API.\n\n1. Tambahkan `requests.get(url)` dan simpan objek respons yang dikembalikan dalam variabel bernama `response`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "import requests\n\noption = \"people\"\nurl = f\"https://swapi.mimo.dev/api/{option}/\"",
+                  "solvedContent": "import requests\n\noption = \"people\"\nurl = f\"https://swapi.mimo.dev/api/{option}/\"\nresponse = requests.get(url)"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #5",
+            "id": 129503,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Kita perlu menangani error HTTP yang mungkin terjadi saat request kita tidak berhasil. Untuk itu, kita akan menggunakan method `raise_for_status`.\n\n1. Panggil method `raise_for_status` pada `response` untuk memunculkan exception jika request HTTP mengembalikan kode status yang menandakan kegagalan.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "import requests\n\noption = \"people\"\nurl = f\"https://swapi.mimo.dev/api/{option}/\"\nresponse = requests.get(url)",
+                  "solvedContent": "import requests\n\noption = \"people\"\nurl = f\"https://swapi.mimo.dev/api/{option}/\"\nresponse = requests.get(url)\nresponse.raise_for_status()"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #6",
+            "id": 129504,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Setelah memastikan bahwa request kita berhasil, sekarang waktunya mem-parse respons JSON.\n\n1. Panggil metode `.json()` pada `response` dan simpan nilai yang dikembalikannya dalam variabel bernama `data`.\n2. Cetak pesan yang menunjukkan jumlah entitas yang berhasil diambil dengan menghitung panjang list yang disimpan dalam variabel `data`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "import requests\n\noption = \"people\"\nurl = f\"https://swapi.mimo.dev/api/{option}/\"\nresponse = requests.get(url)\nresponse.raise_for_status()",
+                  "solvedContent": "import requests\n\noption = \"people\"\nurl = f\"https://swapi.mimo.dev/api/{option}/\"\nresponse = requests.get(url)\nresponse.raise_for_status()\n\ndata = response.json()\nprint(f\"Successfully fetched {len(data)} entities\")"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #7",
+            "id": 129505,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Terakhir, tambahkan blok try-except untuk menangani error HTTP apa pun yang mungkin terjadi selama request kita.\n\n1. Pindahkan kode request HTTP dan penanganan respons ke dalam blok `try`.\n   - Pertahankan pernyataan import serta variabel `option` dan `url` di luar.\n   - Masukkan sisanya ke dalam blok `try`.\n2. Di dalam blok `except`, tangkap `requests.HTTPError` sebagai `e` dan cetak pesan error yang menginformasikan tentang error `e`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "import requests\n\noption = \"people\"\nurl = f\"https://swapi.mimo.dev/api/{option}/\"\nresponse = requests.get(url)\nresponse.raise_for_status()\n\ndata = response.json()\nprint(f\"Successfully fetched {len(data)} entities\")",
+                  "solvedContent": "import requests\n\noption = \"people\"\nurl = f\"https://swapi.mimo.dev/api/{option}/\"\ntry:\n  response = requests.get(url)\n  response.raise_for_status()\n\n  data = response.json()\n  print(f\"Successfully fetched {len(data)} entities\")\nexcept requests.HTTPError as e:\n  print(f\"Error fetching data: {e}\")"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #9",
+            "id": 129507,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Kita sudah mendapatkan data yang diambil. Sekarang, tambahkan kode untuk menampilkan data ini dengan rapi.\n\n1. Setelah blok try-except, tambahkan pernyataan `if` yang memeriksa apakah `data` memiliki nilai.\n   - Di dalam blok if, lakukan iterasi pada list `data`.\n   - Elemen-elemen `data` adalah dictionary. Untuk setiap elemen, cetak nilai dari key `name`.\n2. Tambahkan pernyataan `else` untuk mencetak `Unable to download data` jika `data` kosong.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "import requests\n\noption = \"people\"\nurl = f\"https://swapi.mimo.dev/api/{option}/\"\ntry:\n  response = requests.get(url)\n  response.raise_for_status()\n\n  data = response.json()\n  print(f\"Successfully fetched {len(data)} entities\")\nexcept requests.HTTPError as e:\n  print(f\"Error fetching data: {e}\")",
+                  "solvedContent": "import requests\n\noption = \"people\"\nurl = f\"https://swapi.mimo.dev/api/{option}/\"\ntry:\n  response = requests.get(url)\n  response.raise_for_status()\n\n  data = response.json()\n  print(f\"Successfully fetched {len(data)} entities\")\nexcept requests.HTTPError as e:\n  print(f\"Error fetching data: {e}\")\n\nif data:\n  for entity in data:\n    print(entity[\"name\"])\nelse:\n  print(\"Unable to download data\")"
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

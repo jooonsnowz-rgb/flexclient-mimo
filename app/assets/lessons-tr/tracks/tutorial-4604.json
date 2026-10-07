@@ -1,0 +1,178 @@
+{
+  "tutorial": {
+    "id": 4604,
+    "version": 1,
+    "type": "course",
+    "isNew": false,
+    "codeLanguage": "python",
+    "title": "Paket Sürümlerini Yönetme",
+    "descriptionContent": "Bağımlılık sürümlerini kontrol et ve paketleri güncelle.",
+    "shortDescriptionContent": "requirements.txt dosyasından paket yükleyebilen Python öğrenenleri.",
+    "showInTrack": true,
+    "iconBanner": null,
+    "chapters": [
+      {
+        "id": 17792,
+        "title": "Sürümlerin Önemi",
+        "type": "practiceLevel1",
+        "lessons": [
+          {
+            "title": "Same Project, Different Result",
+            "id": 151810,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Table projesini çalıştıran herkes, aynı bağımlılık kümesini yüklemek için <code>requirements.txt</code> dosyasını kullanır.</p><p>Ancak paket değişebilir. Sen (veya başka biri) daha sonra geri dönerse, yüklenen paket değişmiş olabilir ve bu da sorunlara yol açabilir.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Packages Change",
+            "id": 151811,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Geliştiriciler paketler üzerinde çalıştıkça paketler zaman içinde değişir. Yeni sürümlerde düzeltmeler ve özellikler bulunabilir.</p><p>Ayrıca eski davranışları kullanımdan kaldırabilir veya geriye dönük uyumsuz değişiklikler getirebilirler.</p><code version=\"2\" codelang=\"text\" name=\"release_history.txt\" visible-if=\"always\"><content><text value=\"0.8.10: fixes\" /><text type=\"break\" /><text value=\"0.9.0: features and deprecations\" /></content></code></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Versions Affect Behavior",
+            "id": 151812,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Ortamımız <code>0.8.10</code> sürümünü kullandığında ve biz bu belirli sürümü test ettiğimizde, bunu <code>requirements.txt</code> dosyasında belirtmek iyi bir fikirdir.</p><p>Paket adının hemen yanına <code>==</code> ve sürüm numarasını ekleyerek sürümü belirt.</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"tabulate==0.8.10\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"8\" endIndex=\"10\" /><option startIndex=\"10\" endIndex=\"16\" /><option correct=\"false\"><content><text value=\"=\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Önce <code>==</code>, ardından <code>0.8.10</code> öğelerini seçtiğinden emin ol.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Versions Affect Behavior - Copy",
+            "id": 151813,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Kesin bir pin, tek bir paket sürümünü zorunlu kılmak için <code>==</code> kullanır.</p><p><code>tabulate</code> paketi için 0.8.10 sürümünü sabitlemek üzere eksik karakterleri ekle.<br /></p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"tabulate==0.8.10\" /></content><interactions><interaction type=\"validatedInput\" isDefault=\"true\" startIndex=\"8\" endIndex=\"10\" /></interactions></code><p visible-if=\"wrong\"><code>==</code> ifadesini yazdığından emin ol.</p></body></html>"
+          },
+          {
+            "title": "Recreate the Environment",
+            "id": 151814,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Bir sürüm numarası belirtmemiz gerekmiyor, ancak belirtirsek <code>pip</code>, <code>pip install</code> komutunu her çalıştırdığımızda doğru sürümü yüklemesini sağlar.</p><p>Bu, projeyi sıfırdan çalıştırmak ve uyumluluk sorunlarından kaçınmak istediğimiz her durumda kullanışlıdır.</p><code version=\"2\" codelang=\"bash\" name=\"script.sh\" visible-if=\"always\"><content><text value=\"pip install -r requirements.txt\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"0\" endIndex=\"3\" /><option startIndex=\"4\" endIndex=\"11\" /></options></interaction></interactions></code><p visible-if=\"wrong\">Önce <code>pip</code>, ardından <code>install</code> öğelerini seçtiğinden emin ol.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p><code>requirements.txt</code> bir sürümü sabitlerse bu dosyadan yükleme yapmak, pip'ten tam olarak o sürümü ister.</p><p>Bu, projeyi sıfırdan çalıştırmak ve uyumluluk sorunlarından kaçınmak istediğimiz her durumda kullanışlıdır.</p><p>Ortamı <code>requirements.txt</code> dosyasından yeniden oluştur.</p><code version=\"2\" codelang=\"bash\" name=\"script.sh\" visible-if=\"always\"><content><text value=\"pip install -r requirements.txt\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"0\" endIndex=\"3\" /><option startIndex=\"4\" endIndex=\"11\" /><option startIndex=\"12\" endIndex=\"14\" /><option startIndex=\"15\" endIndex=\"31\" /><option correct=\"false\"><content><text value=\"tabulate\" /></content></option><option correct=\"false\"><content><text value=\"import\" /></content></option><option correct=\"false\"><content><text value=\"requirements.py\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Önce <code>pip</code>, ardından <code>install</code>, <code>-r</code> ve son olarak <code>requirements.txt</code> öğelerini seçtiğinden emin ol.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Pin Another Package",
+            "id": 151817,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Takım arkadaşlarının aynı sürümü yüklemesi için <code>requests</code>'i tam olarak <code>2.32.3</code> sürümüne sabitle.</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"requests==2.23.3\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"0\" endIndex=\"8\" /><option startIndex=\"8\" endIndex=\"10\" /><option startIndex=\"10\" endIndex=\"16\" /></options></interaction></interactions></code><p visible-if=\"wrong\">Önce <code>requests</code>, ardından <code>==</code> ve son olarak <code>2.23.3</code> öğelerini seçtiğinden emin ol.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Takım arkadaşlarının aynı sürümü yüklemesi için <code>requests</code>'i tam olarak <code>2.32.3</code> sürümüne sabitle.</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"requests==\" /><text value=\"2.32\" class=\"number\" /><text value=\".\" /><text value=\"3\" class=\"number\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"0\" endIndex=\"8\" /><option startIndex=\"8\" endIndex=\"10\" /><option startIndex=\"10\" endIndex=\"16\" /><option correct=\"false\"><content><text value=\"&gt;=\" /></content></option><option correct=\"false\"><content><text value=\"&lt;=\" /></content></option><option correct=\"false\"><content><text value=\"&lt;\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Önce <code>requests</code>, ardından <code>==</code> ve son olarak <code>2.32.3</code> öğelerini seçtiğinden emin ol.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Recall Package Changes",
+            "id": 151815,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Hangi paket değişikliği eski projenin davranışının çalışmayı durdurmasına neden olabilir?</p><selection multiple=\"multiple\"><item value=\"1\" correct=\"true\">Yeni bir sürümde geriye dönük uyumluluğu bozan değişiklik<br /></item><item value=\"2\" correct=\"false\">Aynı sürümü yeniden yükleme</item></selection><p visible-if=\"wrong\">Yeni bir sürümde geriye dönük uyumluluğu bozan değişiklik<br />.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Projen bir paket fonksiyonunu iki girdili çağırıyor. Yeni sürüm yalnızca bir girdi kabul ediyor. Güncellemeden önce neyi kontrol etmelisin?</p><selection multiple=\"multiple\"><item value=\"1\" correct=\"true\">Projenin yeni sürümle çalışmak için çağrısını değiştirmesi gerekip gerekmediğini.</item><item value=\"2\" correct=\"false\">Yalnızca paket adının aynı kalıp kalmadığını; çağrıları yine çalışmalıdır.</item><item value=\"3\" correct=\"false\">Hiçbir şeyi, çünkü daha yeni bir sürüm mevcut çağrıları her zaman korur.</item></selection><p visible-if=\"wrong\">Projenin yeni sürümle çalışmak için çağrısını değiştirmesi gerekip gerekmediğini.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Identify the Version",
+            "id": 151816,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>pip bu requirements dosyasından tam olarak hangi tabulate sürümünü yükleyecek?</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"tabulate==0.9.0\" /></content></code><selection multiple=\"multiple\"><item value=\"1\" correct=\"true\">0.9.0</item><item value=\"2\" correct=\"false\">0.8.10</item></selection><p visible-if=\"wrong\">0.9.0 öğesini seçtiğinden emin ol.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Dosyayı <code>tabulate==0.8.10</code> olarak değiştiriyorsun. <code>0.9.0</code> da mevcut. Değişen dosyadan yükleme yapmak hangi sürümü ister?</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"tabulate==0.9.0\" /></content></code><selection multiple=\"multiple\"><item value=\"1\" correct=\"true\"><code>0.8.10</code></item><item value=\"2\" correct=\"false\">Daha yeni olduğu için <code>0.9.0</code>.</item><item value=\"3\" correct=\"false\">Her ikisi de tabulate paketine ait olduğundan iki sürümden biri.</item></selection><p visible-if=\"wrong\"><code>0.8.10</code> öğesini seçtiğinden emin ol.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Pin Another Package 2",
+            "id": 151818,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p><code>==</code> kullanarak, ekip arkadaşlarının, yapay zeka ajanlarının ve gelecekteki senin aynı sürümü yüklemesi için <code>numpy</code>'yi tam olarak <code>2.5.2</code> sürümüne sabitle.</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"numpy==2.5.2\" /></content><interactions><interaction type=\"validatedInput\" isDefault=\"true\" startIndex=\"5\" endIndex=\"7\" /></interactions></code><p visible-if=\"wrong\"><code>==</code> ifadesini yazdığından emin ol.</p></body></html>"
+          }
+        ]
+      },
+      {
+        "id": 17793,
+        "title": "Aralıklar ve Bilinçli Güncellemeler",
+        "type": "practiceLevel1",
+        "lessons": [
+          {
+            "title": "Allow Compatible Updates",
+            "id": 151819,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p><code>pip</code> ile çalışırken kesin sürüm sabitleme tek bir sürümü tutar, ancak daha yeni düzeltmelerin otomatik olarak yüklenmesine izin vermez.</p><p>Bir sürüm aralığı, sınırlar belirlerken seçili güncellemelere izin verebilir. Kabul edilen sürümleri belirlemenin daha gelişmiş yollarını inceleyelim.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Set a Lower Bound",
+            "id": 151821,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p><code>&gt;=</code> ile bir alt sınır belirleriz. Belirtilen sürümden daha yeni sürümlere izin verir.</p><p><code>requirements.txt</code> dosyasındaki alt sınır operatörünü, 0.8 veya daha yeni sürümlere izin verecek şekilde tamamla.</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"tabulate&gt;=0.8\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"8\" endIndex=\"10\" /><option correct=\"false\"><content><text value=\"==\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\"><code>&gt;=</code> öğesini seçtiğinden emin ol.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Set an Upper Bound",
+            "id": 151822,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p><code>&lt;</code> ile bir üst sınır belirleriz. Belirtilen sürümleri ve daha yeni olan her şeyi hariç tutar.</p><p>1 veya daha yeni sürümleri hariç tutmak için üst sınır operatörünü tamamla.</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"tabulate&lt;1.0\" /></content><interactions><interaction type=\"validatedInput\" isDefault=\"true\" startIndex=\"8\" endIndex=\"9\" /></interactions></code><p visible-if=\"wrong\"><code>&lt;</code> ifadesini yazdığından emin ol.</p></body></html>"
+          },
+          {
+            "title": "Read the Whole Range",
+            "id": 151823,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Virgül kullanarak, yalnızca belirli bir aralıktaki sürümlere izin vermek için bir üst sınır ve bir alt sınır kuralını birleştirebiliriz.</p><p>0.8'den başlayıp 1'i kapsamayan sürümlere izin verecek kodu tamamla.</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"tabulate&gt;=0.8,&lt;1\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"13\" endIndex=\"14\" /><option correct=\"false\"><content><text value=\"&amp;\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\"><code>,</code> öğesini seçtiğinden emin ol.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Virgül iki sürüm kuralını birleştirir. <code>&lt;</code> kuralı, sınırını ve daha yeni tüm sürümleri dışarıda bırakır.</p><p><code>tabulate</code> için <code>0.8</code> ve üstüne izin ver, ancak <code>1</code> ve üstünü dışarıda bırak.</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"tabulate&gt;=0.8,&lt;1\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"13\" endIndex=\"14\" /><option startIndex=\"8\" endIndex=\"10\" /><option startIndex=\"0\" endIndex=\"8\" /><option correct=\"false\"><content><text value=\"&gt;\" /></content></option><option correct=\"false\"><content><text value=\"==\" /></content></option><option correct=\"false\"><content><text value=\"&amp;\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Önce <code>tabulate</code>, ardından <code>&gt;=</code> ve son olarak <code>,</code> öğelerini seçtiğinden emin ol.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Compare a Pin and a Range",
+            "id": 151824,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p><code>requirements.txt</code> dosyasında her paket için tam bir sürüm veya bir aralık belirtebiliriz.</p><p><code>numpy</code>'ın her zaman 2.5.2 sürümünü kullandığından emin ol ve <code>tabulate</code> için bir aralık belirt.</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"numpy==2.5.2\" /><text type=\"break\" /><text value=\"tabulate&gt;=0.8,&lt;1\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"21\" endIndex=\"26\" /><option startIndex=\"26\" endIndex=\"29\" /><option startIndex=\"5\" endIndex=\"12\" /></options></interaction></interactions></code><p visible-if=\"wrong\">Önce <code>==2.5.2</code>, ardından <code>&gt;=0.8</code> ve son olarak <code>,&lt;1</code> öğelerini seçtiğinden emin ol.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p><code>requirements.txt</code> dosyasında her paket için tam bir sürüm veya bir aralık belirtebiliriz.</p><p><code>numpy</code> sürümünü <code>2.5.2</code>'ye sabitle. <code>tabulate</code> için <code>0.8</code> dâhil, <code>1</code>'den düşük sürümlere izin ver.</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"numpy==2.5.2\" /><text type=\"break\" /><text value=\"tabulate&gt;=0.8,&lt;1\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"5\" endIndex=\"7\" /><option startIndex=\"21\" endIndex=\"23\" /><option startIndex=\"27\" endIndex=\"28\" /><option correct=\"false\"><content><text value=\"&gt;\" /></content></option><option correct=\"false\"><content><text value=\"&lt;=\" /></content></option><option correct=\"false\"><content><text value=\"=\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Önce <code>==</code>, ardından <code>&gt;=</code> ve son olarak <code>&lt;</code> öğelerini seçtiğinden emin ol.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Choose for the Goal",
+            "id": 151825,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Kesin pin operatörünü kullanmak için kodu tamamla.</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"tabulate==0.8\" /></content><interactions><interaction type=\"validatedInput\" isDefault=\"true\" startIndex=\"8\" endIndex=\"10\" /></interactions></code><p visible-if=\"wrong\"><code>==</code> ifadesini yazdığından emin ol.</p></body></html>"
+          },
+          {
+            "title": "Change One Dependency",
+            "id": 151826,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Verilen paket için yalnızca 0.8'in altındaki sürümlere izin ver.</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"tabulate&lt;0.8\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"8\" endIndex=\"9\" /><option correct=\"false\"><content><text value=\"&lt;=\" /></content></option><option correct=\"false\"><content><text value=\"&gt;\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\"><code>&lt;</code> öğesini seçtiğinden emin ol.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Interpret a Range",
+            "id": 151827,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Hangi ifade bu sınırlı sürüm aralığıyla eşleşir?</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"requests&gt;=1.2,&lt;2\" /></content></code><selection multiple=\"multiple\"><item value=\"1\" correct=\"true\">1.2 veya daha yeni, ancak 2'den düşük bir sürümü yükle</item><item value=\"2\" correct=\"false\">Yalnızca 1.2 sürümünü yükle</item></selection><p visible-if=\"wrong\">1.2 veya daha yeni, ancak 2'den düşük bir sürümü yükle.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Gösterilen aralığı koruyorsun. Yeni bir ortam <code>1.1</code>, <code>1.2</code> veya <code>2</code> sürümünü seçebilir. Hangisi iki kurala da uyar?</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"requests&gt;=1.2,&lt;2\" /></content></code><selection multiple=\"multiple\"><item value=\"1\" correct=\"true\"><code>1.2</code></item><item value=\"2\" correct=\"false\"><code>1.1</code></item><item value=\"3\" correct=\"false\"><code>2</code></item></selection><p visible-if=\"wrong\"><code>1.2</code> öğesini seçtiğinden emin ol.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Write a Bounded Range",
+            "id": 151828,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Aralığı, <code>requests</code> sürüm 2.30 veya daha yenisini kullanabilecek, ancak 3'ün altında kalacak şekilde ayarla.<br /></p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"requests&gt;=2.30,&lt;3\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"8\" endIndex=\"17\" /><option correct=\"false\"><content><text value=\"&gt;2,&lt;=3\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\"><code>&gt;=2.30,&lt;3</code> öğesini seçtiğinden emin ol.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Aralığı, <code>requests</code> sürüm 2.30 veya daha yenisini kullanabilecek, ancak 3'ün altında kalacak şekilde ayarla.<br/></p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"requests&gt;=2.30,&lt;3\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"8\" endIndex=\"10\" /><option startIndex=\"14\" endIndex=\"15\" /><option startIndex=\"15\" endIndex=\"16\" /><option correct=\"false\"><content><text value=\"&gt;\" /></content></option><option correct=\"false\"><content><text value=\"&lt;=\" /></content></option><option correct=\"false\"><content><text value=\"==\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Önce <code>&gt;=</code>, ardından <code>,</code> ve son olarak <code>&lt;</code> öğelerini seçtiğinden emin ol.</p></body></html>",
+            "hardModeSelected": true
+          }
+        ]
+      }
+    ]
+  }
+}

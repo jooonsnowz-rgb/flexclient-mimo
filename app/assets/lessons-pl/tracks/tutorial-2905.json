@@ -1,0 +1,123 @@
+{
+  "tutorial": {
+    "id": 2905,
+    "version": 4,
+    "type": "guidedProject",
+    "isNew": false,
+    "codeLanguage": "node",
+    "title": "Liczby losowe - część 2",
+    "descriptionContent": "W drugiej części projektu użyjemy parametrów zapytania, aby dostosować punkty końcowe do naszych potrzeb.",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": "tutorial-2905-icon-banner.svg",
+    "chapters": [
+      {
+        "id": 14996,
+        "title": "Liczby losowe - część 2",
+        "type": "practiceLevel3",
+        "lessons": [
+          {
+            "title": "Lesson #1",
+            "id": 132200,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "W drugiej części projektu **Random Numbers** użyjemy parametrów zapytania, aby dostosować żądania.\n\nNajpierw zaktualizujmy endpoint `/randomNumber`, aby umożliwić użytkownikom określenie zarówno minimalnej, jak i maksymalnej liczby.\n\n1. Utwórz dwie nowe zmienne wewnątrz funkcji endpointu `/randomNumber`: `min` i `max`.\n2. Przeanalizuj te wartości z `req.query.min` i `req.query.max` za pomocą `parseInt`.\n3. Ustaw domyślnie `min` na `1`, a `max` na `100`, jeśli odpowiednie parametry zapytania nie zostały podane.\n4. Sprawdź, czy `min` jest większe lub równe `max`. Jeśli tak, zwróć odpowiedź błędu o kodzie 400 z obiektem JSON zawierającym właściwość `error` z komunikatem.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require('express');\nconst app = express();\nconst port = 3000;\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});\napp.get('/coinFlip', function(req, res) {\n  const result = Math.floor(Math.random() * 2);\n  res.status(200).json({\n    result: result === 0 ? 'Heads' : 'Tails'\n  });\n});\napp.get('/diceRoll', function(req, res) {\n  const result = Math.floor(Math.random() * 6) + 1;\n  res.status(200).json({\n    result: result\n  });\n});\napp.get('/randomNumber', function(req, res) {\n  const result = Math.floor(Math.random() * 100) + 1;\n  res.status(200).json({\n    result: result\n  });\n});",
+                  "solvedContent": "const express = require('express');\nconst app = express();\nconst port = 3000;\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});\napp.get('/coinFlip', function(req, res) {\n  const result = Math.floor(Math.random() * 2);\n  res.status(200).json({\n    result: result === 0 ? 'Heads' : 'Tails'\n  });\n});\napp.get('/diceRoll', function(req, res) {\n  const result = Math.floor(Math.random() * 6) + 1;\n  res.status(200).json({\n    result: result\n  });\n});\napp.get('/randomNumber', function(req, res) {\n  const min = parseInt(req.query.min) || 1;\n  const max = parseInt(req.query.max) || 100;\n  if (min >= max) {\n    return res.status(400).json({\n      error: 'Min should be less than max.'\n    });\n  }\n  const result = Math.floor(Math.random() * 100) + 1;\n  res.status(200).json({\n    result: result\n  });\n});"
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/randomNumber?min=100&max=200",
+                "body": null
+              }
+            }
+          },
+          {
+            "title": "Lesson #1 - Copy",
+            "id": 132204,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Teraz chcemy użyć przeanalizowanych parametrów, aby dostosować funkcję generowania liczb losowych.\n\n1. W przypadku braku błędu dostosuj wzór tak, aby generował liczbę losową z przedziału od `min` do `max` włącznie.\n2. Upewnij się, że nadal odsyłasz obiekt JSON z kluczem `result`, który zawiera losowo wygenerowaną liczbę.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require('express');\nconst app = express();\nconst port = 3000;\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});\napp.get('/coinFlip', function(req, res) {\n  const result = Math.floor(Math.random() * 2);\n  res.status(200).json({\n    result: result === 0 ? 'Heads' : 'Tails'\n  });\n});\napp.get('/diceRoll', function(req, res) {\n  const result = Math.floor(Math.random() * 6) + 1;\n  res.status(200).json({\n    result: result\n  });\n});\napp.get('/randomNumber', function(req, res) {\n  const min = parseInt(req.query.min) || 1;\n  const max = parseInt(req.query.max) || 100;\n  if (min >= max) {\n    return res.status(400).json({\n      error: 'Min should be less than max.'\n    });\n  }\n  const result = Math.floor(Math.random() * 100) + 1;\n  res.status(200).json({\n    result: result\n  });\n});",
+                  "solvedContent": "const express = require('express');\nconst app = express();\nconst port = 3000;\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});\napp.get('/coinFlip', function(req, res) {\n  const result = Math.floor(Math.random() * 2);\n  res.status(200).json({\n    result: result === 0 ? 'Heads' : 'Tails'\n  });\n});\napp.get('/diceRoll', function(req, res) {\n  const result = Math.floor(Math.random() * 6) + 1;\n  res.status(200).json({\n    result: result\n  });\n});\napp.get('/randomNumber', function(req, res) {\n  const min = parseInt(req.query.min) || 1;\n  const max = parseInt(req.query.max) || 100;\n  if (min >= max) {\n    return res.status(400).json({\n      error: 'Min should be less than max.'\n    });\n  }\n  const result = Math.floor(Math.random() * (max - min + 1)) + min;\n  res.status(200).json({\n    result: result\n  });\n});"
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/randomNumber?min=100&max=200",
+                "body": null
+              }
+            }
+          },
+          {
+            "title": "Lesson #2",
+            "id": 132201,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Następnie zaktualizujmy endpoint `/diceRoll`. Obecnie zawsze rzuca on jedną kostką, ale chcemy umożliwić użytkownikom określenie, iloma kostkami rzucić.\n\n1. Dodaj nową zmienną o nazwie `times` i sparsuj wartość z `req.query.times` za pomocą `parseInt`. Ta wartość określi, ile razy należy rzucić kostką.\n2. Liczba rzutów kostką powinna domyślnie wynosić `1`, jeśli nie podano parametru zapytania.\n3. Utwórz pustą tablicę o nazwie `results`.\n4. Uruchom pętlę `for` tyle razy, ile rzutów kostką należy wykonać. Wewnątrz pętli wykonaj istniejące obliczenie rzutu kostką i dodaj każdy wynik do tablicy `results`.\n5. Zwróć tablicę `results` w odpowiedzi JSON zamiast pojedynczego wyniku.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});\n\napp.get('/coinFlip', function(req, res) {\n  const result = Math.floor(Math.random() * 2);\n  res.status(200).json({ result: result === 0 ? 'Heads' : 'Tails' });\n});\n\napp.get('/diceRoll', function(req, res) {\n  const result = Math.floor(Math.random() * 6) + 1;\n  res.status(200).json({ result: result });\n});\n\napp.get('/randomNumber', function(req, res) {\n  const min = parseInt(req.query.min, 10) || 1;\n  const max = parseInt(req.query.max, 10) || 100;\n  if (min >= max) {\n    return res.status(400).json({ error: 'Min should be less than max.' });\n  }\n  const result = Math.floor(Math.random() * (max - min + 1)) + min;\n  res.status(200).json({ result });\n});",
+                  "solvedContent": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});\n\napp.get('/coinFlip', function(req, res) {\n  const result = Math.floor(Math.random() * 2);\n  res.status(200).json({ result: result === 0 ? 'Heads' : 'Tails' });\n});\n\napp.get('/diceRoll', function(req, res) {\n  const times = parseInt(req.query.times) || 1;\n  let results = [];\n  for (let i = 0; i < times; i++) {\n    const result = Math.floor(Math.random() * 6) + 1;\n    results.push(result);\n  }\n  res.status(200).json({ result: results });\n});\n\napp.get('/randomNumber', function(req, res) {\n  const min = parseInt(req.query.min, 10) || 1;\n  const max = parseInt(req.query.max, 10) || 100;\n  if (min >= max) {\n    return res.status(400).json({ error: 'Min should be less than max.' });\n  }\n  const result = Math.floor(Math.random() * (max - min + 1)) + min;\n  res.status(200).json({ result });\n});"
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/diceRoll?times=3",
+                "body": null
+              }
+            }
+          },
+          {
+            "title": "Lesson #3",
+            "id": 132202,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Na koniec ulepszmy endpoint `/coinFlip`. Tak jak w przypadku `/diceRoll`, pozwólmy użytkownikowi określić, ile razy rzucić monetą.\n\n1. Dodaj nową zmienną `times` i przypisz jej wartość `req.query.times`, używając `parseInt`.\n2. Ustaw domyślną wartość `times` na `1`, jeśli parametr zapytania nie został podany.\n3. Utwórz pustą tablicę o nazwie `results`.\n4. Uruchom pętlę `for` na określoną liczbę razy i podczas każdej iteracji wykonaj obliczenie rzutu monetą, a następnie dodaj każdy wynik do tablicy `results`.\n5. Zwróć tablicę `results` w odpowiedzi JSON zamiast pojedynczego wyniku.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});\n\napp.get('/coinFlip', function(req, res) {\n  const result = Math.floor(Math.random() * 2);\n  res.status(200).json({ result: result === 0 ? 'Heads' : 'Tails' });\n});\n\napp.get('/diceRoll', function(req, res) {\n  const times = parseInt(req.query.times, 10) || 1;\n  let results = [];\n  for (let i = 0; i < times; i++) {\n    const result = Math.floor(Math.random() * 6) + 1;\n    results.push(result);\n  }\n  res.status(200).json({ results });\n});\n\napp.get('/randomNumber', function(req, res) {\n  const min = parseInt(req.query.min, 10) || 1;\n  const max = parseInt(req.query.max, 10) || 100;\n  if (min >= max) {\n    return res.status(400).json({ error: 'Min should be less than max.' });\n  }\n  const result = Math.floor(Math.random() * (max - min + 1)) + min;\n  res.status(200).json({ result });\n});",
+                  "solvedContent": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});\n\napp.get('/coinFlip', function(req, res) {\n  const times = parseInt(req.query.times, 10) || 1;\n  let results = [];\n  for (let i = 0; i < times; i++) {\n    const result = Math.random() < 0.5 ? 'Heads' : 'Tails';\n    results.push(result);\n  }\n  res.status(200).json({ result: results });\n});\n\napp.get('/diceRoll', function(req, res) {\n  const times = parseInt(req.query.times, 10) || 1;\n  let results = [];\n  for (let i = 0; i < times; i++) {\n    const result = Math.floor(Math.random() * 6) + 1;\n    results.push(result);\n  }\n  res.status(200).json({ results });\n});\n\napp.get('/randomNumber', function(req, res) {\n  const min = parseInt(req.query.min, 10) || 1;\n  const max = parseInt(req.query.max, 10) || 100;\n  if (min >= max) {\n    return res.status(400).json({ error: 'Min should be less than max.' });\n  }\n  const result = Math.floor(Math.random() * (max - min + 1)) + min;\n  res.status(200).json({ result });\n});"
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/coinFlip?times=100",
+                "body": null
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

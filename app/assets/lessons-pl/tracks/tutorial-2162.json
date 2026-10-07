@@ -1,0 +1,163 @@
+{
+  "tutorial": {
+    "id": 2162,
+    "version": 9,
+    "type": "guidedProjectOptional",
+    "isNew": false,
+    "codeLanguage": "javascript",
+    "title": "Dostosowywanie danych JSON",
+    "descriptionContent": "Przekonwertujmy JSON na obiekt JS, aby dostosować jego dane, a następnie ponownie zamieńmy go na ciąg JSON.",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": "tutorial-2162-icon-banner.svg",
+    "chapters": [
+      {
+        "id": 13490,
+        "title": "Dostosowywanie danych JSON",
+        "type": "practiceLevel3",
+        "lessons": [
+          {
+            "title": "Parse Data",
+            "id": 121256,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Cena materiałów, których używamy w naszej firmie, wzrosła. Dlatego musimy również dostosować cenę naszych produktów o 10%. Zaktualizujmy system!\n\nWszystkie informacje o naszych produktach są przechowywane w pliku `JSON`. Nasza firma korzysta z ograniczonego systemu i możemy eksportować oraz importować dane tylko tego typu. Jak widzisz, trudno dostrzec istotne informacje w ciągu `JSON`, więc przeanalizujmy go, aby był bardziej czytelny i łatwiej było wprowadzać zmiany.\n\n1. Zapisaliśmy dane json w zmiennej `jsonText`, teraz utwórz zmienną `jsonObject`, w której będą przechowywane przeanalizowane dane.\n2. Użyj `console.log`, aby wyświetlić `jsonObject` i lepiej zobaczyć strukturę danych.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "const jsonText =\r\n  '{\"orders\":[{\"id\":\"O001\",\"product\":[{\"id\":\"P010\",\"name\":\"Blue paint\",\"price\":35.00,\"quantity\":2},{\"id\":\"P512\",\"name\":\"Roller Brush\",\"price\":2.50,\"quantity\":6},{\"id\":\"P3010\",\"name\":\"Tape\",\"price\":6.50,\"quantity\":2}],\"address\":\"63 Faraday Lane\",\"payment\":\"Paid\"},{\"id\":\"O006\",\"product\":[{\"id\":\"P009\",\"name\":\"White Sealer\",\"price\":30.00,\"quantity\":4},{\"id\":\"P512\",\"name\":\"Roller Brush\",\"price\":2.50,\"quantity\":6},{\"id\":\"P864\",\"name\":\"Mixing Motor\",\"price\":650.90,\"quantity\":1},{\"id\":\"P840\",\"name\":\"Li-Ion Battery\",\"price\":145.90,\"quantity\":1}],\"address\":\"1342 Lith Drive\",\"payment\":\"Cash on Delivery\"},{\"id\":\"O152\",\"product\":[{\"id\":\"P934\",\"name\":\"Paint Job\",\"price\":5100.00,\"quantity\":1}],\"address\":\"10 Oxy Avenue 13-478\",\"payment\":\"Paid\"}],\"inventory\":{\"product\":[{\"id\":\"P010\",\"name\":\"Blue paint\",\"price\":35.00,\"quantity\":200},{\"id\":\"P512\",\"name\":\"Roller Brush\",\"price\":2.50,\"quantity\":2000},{\"id\":\"P3010\",\"name\":\"Tape\",\"price\":6.50,\"quantity\":5000},{\"id\":\"P009\",\"name\":\"White Sealer\",\"price\":30.00,\"quantity\":1600},{\"id\":\"P864\",\"name\":\"Mixing Motor\",\"price\":650.90,\"quantity\":10},{\"id\":\"P840\",\"name\":\"Li-Ion Battery\",\"price\":145.90,\"quantity\":100},{\"id\":\"P934\",\"name\":\"Paint Job\",\"price\":5100.00,\"quantity\":99999}]}}';",
+                  "solvedContent": "const jsonText =\r\n  '{\"orders\":[{\"id\":\"O001\",\"product\":[{\"id\":\"P010\",\"name\":\"Blue paint\",\"price\":35.00,\"quantity\":2},{\"id\":\"P512\",\"name\":\"Roller Brush\",\"price\":2.50,\"quantity\":6},{\"id\":\"P3010\",\"name\":\"Tape\",\"price\":6.50,\"quantity\":2}],\"address\":\"63 Faraday Lane\",\"payment\":\"Paid\"},{\"id\":\"O006\",\"product\":[{\"id\":\"P009\",\"name\":\"White Sealer\",\"price\":30.00,\"quantity\":4},{\"id\":\"P512\",\"name\":\"Roller Brush\",\"price\":2.50,\"quantity\":6},{\"id\":\"P864\",\"name\":\"Mixing Motor\",\"price\":650.90,\"quantity\":1},{\"id\":\"P840\",\"name\":\"Li-Ion Battery\",\"price\":145.90,\"quantity\":1}],\"address\":\"1342 Lith Drive\",\"payment\":\"Cash on Delivery\"},{\"id\":\"O152\",\"product\":[{\"id\":\"P934\",\"name\":\"Paint Job\",\"price\":5100.00,\"quantity\":1}],\"address\":\"10 Oxy Avenue 13-478\",\"payment\":\"Paid\"}],\"inventory\":{\"product\":[{\"id\":\"P010\",\"name\":\"Blue paint\",\"price\":35.00,\"quantity\":200},{\"id\":\"P512\",\"name\":\"Roller Brush\",\"price\":2.50,\"quantity\":2000},{\"id\":\"P3010\",\"name\":\"Tape\",\"price\":6.50,\"quantity\":5000},{\"id\":\"P009\",\"name\":\"White Sealer\",\"price\":30.00,\"quantity\":1600},{\"id\":\"P864\",\"name\":\"Mixing Motor\",\"price\":650.90,\"quantity\":10},{\"id\":\"P840\",\"name\":\"Li-Ion Battery\",\"price\":145.90,\"quantity\":100},{\"id\":\"P934\",\"name\":\"Paint Job\",\"price\":5100.00,\"quantity\":99999}]}}';\r\nlet jsonObject = JSON.parse(jsonText);\r\nconsole.log(jsonObject);"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Get specific parts of the data",
+            "id": 121257,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Teraz możemy łatwiej przeanalizować obiekt. Wyraźnie widać, że `jsonObject` ma dwie główne właściwości: `orders` i `inventory`.\n\n1. Utwórz nową zmienną `orders` i przypisz jej obiekt danych `orders` jako wartość\n2. Wyświetl zmienną `orders` za pomocą `console.log`\n3. Utwórz nową zmienną `inventory` i przypisz jej obiekt danych `inventory` jako wartość\n4. Wyświetl zmienną `inventory` za pomocą `console.log`",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "const jsonText =\r\n  '{\"orders\":[{\"id\":\"O001\",\"product\":[{\"id\":\"P010\",\"name\":\"Blue paint\",\"price\":35.00,\"quantity\":2},{\"id\":\"P512\",\"name\":\"Roller Brush\",\"price\":2.50,\"quantity\":6},{\"id\":\"P3010\",\"name\":\"Tape\",\"price\":6.50,\"quantity\":2}],\"address\":\"63 Faraday Lane\",\"payment\":\"Paid\"},{\"id\":\"O006\",\"product\":[{\"id\":\"P009\",\"name\":\"White Sealer\",\"price\":30.00,\"quantity\":4},{\"id\":\"P512\",\"name\":\"Roller Brush\",\"price\":2.50,\"quantity\":6},{\"id\":\"P864\",\"name\":\"Mixing Motor\",\"price\":650.90,\"quantity\":1},{\"id\":\"P840\",\"name\":\"Li-Ion Battery\",\"price\":145.90,\"quantity\":1}],\"address\":\"1342 Lith Drive\",\"payment\":\"Cash on Delivery\"},{\"id\":\"O152\",\"product\":[{\"id\":\"P934\",\"name\":\"Paint Job\",\"price\":5100.00,\"quantity\":1}],\"address\":\"10 Oxy Avenue 13-478\",\"payment\":\"Paid\"}],\"inventory\":{\"product\":[{\"id\":\"P010\",\"name\":\"Blue paint\",\"price\":35.00,\"quantity\":200},{\"id\":\"P512\",\"name\":\"Roller Brush\",\"price\":2.50,\"quantity\":2000},{\"id\":\"P3010\",\"name\":\"Tape\",\"price\":6.50,\"quantity\":5000},{\"id\":\"P009\",\"name\":\"White Sealer\",\"price\":30.00,\"quantity\":1600},{\"id\":\"P864\",\"name\":\"Mixing Motor\",\"price\":650.90,\"quantity\":10},{\"id\":\"P840\",\"name\":\"Li-Ion Battery\",\"price\":145.90,\"quantity\":100},{\"id\":\"P934\",\"name\":\"Paint Job\",\"price\":5100.00,\"quantity\":99999}]}}';\r\nlet jsonObject = JSON.parse(jsonText);\r\nconsole.log(jsonObject);",
+                  "solvedContent": "const jsonText =\r\n  '{\"orders\":[{\"id\":\"O001\",\"product\":[{\"id\":\"P010\",\"name\":\"Blue paint\",\"price\":35.00,\"quantity\":2},{\"id\":\"P512\",\"name\":\"Roller Brush\",\"price\":2.50,\"quantity\":6},{\"id\":\"P3010\",\"name\":\"Tape\",\"price\":6.50,\"quantity\":2}],\"address\":\"63 Faraday Lane\",\"payment\":\"Paid\"},{\"id\":\"O006\",\"product\":[{\"id\":\"P009\",\"name\":\"White Sealer\",\"price\":30.00,\"quantity\":4},{\"id\":\"P512\",\"name\":\"Roller Brush\",\"price\":2.50,\"quantity\":6},{\"id\":\"P864\",\"name\":\"Mixing Motor\",\"price\":650.90,\"quantity\":1},{\"id\":\"P840\",\"name\":\"Li-Ion Battery\",\"price\":145.90,\"quantity\":1}],\"address\":\"1342 Lith Drive\",\"payment\":\"Cash on Delivery\"},{\"id\":\"O152\",\"product\":[{\"id\":\"P934\",\"name\":\"Paint Job\",\"price\":5100.00,\"quantity\":1}],\"address\":\"10 Oxy Avenue 13-478\",\"payment\":\"Paid\"}],\"inventory\":{\"product\":[{\"id\":\"P010\",\"name\":\"Blue paint\",\"price\":35.00,\"quantity\":200},{\"id\":\"P512\",\"name\":\"Roller Brush\",\"price\":2.50,\"quantity\":2000},{\"id\":\"P3010\",\"name\":\"Tape\",\"price\":6.50,\"quantity\":5000},{\"id\":\"P009\",\"name\":\"White Sealer\",\"price\":30.00,\"quantity\":1600},{\"id\":\"P864\",\"name\":\"Mixing Motor\",\"price\":650.90,\"quantity\":10},{\"id\":\"P840\",\"name\":\"Li-Ion Battery\",\"price\":145.90,\"quantity\":100},{\"id\":\"P934\",\"name\":\"Paint Job\",\"price\":5100.00,\"quantity\":99999}]}}';\r\nlet jsonObject = JSON.parse(jsonText);\r\nconsole.log(jsonObject);\r\nlet orders = jsonObject.orders;\r\nconsole.log(orders);\r\nlet inventory = jsonObject.inventory;\r\nconsole.log(inventory);"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "You can access any parsed object as a regular JS object.\n\nFor example, if we have the following `JSON` object,\n```\nconst json = JSON.parse({\n  \"test\": [\"name\": \"test\", \"id\": \"001\"]\n});\n```\nWe can access the `test` object using the code below.\n`const test = json.test;`"
+                }
+              ]
+            }
+          },
+          {
+            "title": "Changing orders data I",
+            "id": 121260,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Być może zauważyłeś, że gdy wyświetlamy `orders` i `inventory`, wyglądają inaczej niż wtedy, gdy wyświetlamy cały obiekt `jsonObject`. Niektóre pola w `jsonObject` są uproszczone do postaci `[Array]` lub `[Object]`. Teraz jednak są szczegółowo widoczne w `orders` i `inventory`. Dzieje się tak dlatego, że im głębiej zagłębiamy się w strukturę danych, tym dokładniejsze informacje otrzymujemy.\n\nAle działajmy dalej! Nadal musimy wprowadzić pewne zmiany w obiektach danych `orders` i `inventory`. Najpierw zajmijmy się obiektem `orders`.\n\nMusimy znaleźć zamówienia, w których typ płatności to `\"Cash on Delivery\"`.\n\n1. Skoro znasz już struktury danych, możemy usunąć wszystkie wywołania `console.log`.\n2. Przejdź w pętli przez wszystkie zamówienia w zmiennej `orders`.\n3. Sprawdź, czy `payment` każdego zamówienia ma wartość `\"Cash on Delivery\"`.\n4. Jeśli tak, wyświetl w konsoli `product` z zamówienia.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "const jsonText =\r\n  '{\"orders\":[{\"id\":\"O001\",\"product\":[{\"id\":\"P010\",\"name\":\"Blue paint\",\"price\":35.00,\"quantity\":2},{\"id\":\"P512\",\"name\":\"Roller Brush\",\"price\":2.50,\"quantity\":6},{\"id\":\"P3010\",\"name\":\"Tape\",\"price\":6.50,\"quantity\":2}],\"address\":\"63 Faraday Lane\",\"payment\":\"Paid\"},{\"id\":\"O006\",\"product\":[{\"id\":\"P009\",\"name\":\"White Sealer\",\"price\":30.00,\"quantity\":4},{\"id\":\"P512\",\"name\":\"Roller Brush\",\"price\":2.50,\"quantity\":6},{\"id\":\"P864\",\"name\":\"Mixing Motor\",\"price\":650.90,\"quantity\":1},{\"id\":\"P840\",\"name\":\"Li-Ion Battery\",\"price\":145.90,\"quantity\":1}],\"address\":\"1342 Lith Drive\",\"payment\":\"Cash on Delivery\"},{\"id\":\"O152\",\"product\":[{\"id\":\"P934\",\"name\":\"Paint Job\",\"price\":5100.00,\"quantity\":1}],\"address\":\"10 Oxy Avenue 13-478\",\"payment\":\"Paid\"}],\"inventory\":{\"product\":[{\"id\":\"P010\",\"name\":\"Blue paint\",\"price\":35.00,\"quantity\":200},{\"id\":\"P512\",\"name\":\"Roller Brush\",\"price\":2.50,\"quantity\":2000},{\"id\":\"P3010\",\"name\":\"Tape\",\"price\":6.50,\"quantity\":5000},{\"id\":\"P009\",\"name\":\"White Sealer\",\"price\":30.00,\"quantity\":1600},{\"id\":\"P864\",\"name\":\"Mixing Motor\",\"price\":650.90,\"quantity\":10},{\"id\":\"P840\",\"name\":\"Li-Ion Battery\",\"price\":145.90,\"quantity\":100},{\"id\":\"P934\",\"name\":\"Paint Job\",\"price\":5100.00,\"quantity\":99999}]}}';\r\nlet jsonObject = JSON.parse(jsonText);\r\nconsole.log(jsonObject);\r\nlet orders = jsonObject.orders;\r\nconsole.log(orders);\r\nlet inventory = jsonObject.inventory;\r\nconsole.log(inventory);",
+                  "solvedContent": "const jsonText =\r\n  '{\"orders\":[{\"id\":\"O001\",\"product\":[{\"id\":\"P010\",\"name\":\"Blue paint\",\"price\":35.00,\"quantity\":2},{\"id\":\"P512\",\"name\":\"Roller Brush\",\"price\":2.50,\"quantity\":6},{\"id\":\"P3010\",\"name\":\"Tape\",\"price\":6.50,\"quantity\":2}],\"address\":\"63 Faraday Lane\",\"payment\":\"Paid\"},{\"id\":\"O006\",\"product\":[{\"id\":\"P009\",\"name\":\"White Sealer\",\"price\":30.00,\"quantity\":4},{\"id\":\"P512\",\"name\":\"Roller Brush\",\"price\":2.50,\"quantity\":6},{\"id\":\"P864\",\"name\":\"Mixing Motor\",\"price\":650.90,\"quantity\":1},{\"id\":\"P840\",\"name\":\"Li-Ion Battery\",\"price\":145.90,\"quantity\":1}],\"address\":\"1342 Lith Drive\",\"payment\":\"Cash on Delivery\"},{\"id\":\"O152\",\"product\":[{\"id\":\"P934\",\"name\":\"Paint Job\",\"price\":5100.00,\"quantity\":1}],\"address\":\"10 Oxy Avenue 13-478\",\"payment\":\"Paid\"}],\"inventory\":{\"product\":[{\"id\":\"P010\",\"name\":\"Blue paint\",\"price\":35.00,\"quantity\":200},{\"id\":\"P512\",\"name\":\"Roller Brush\",\"price\":2.50,\"quantity\":2000},{\"id\":\"P3010\",\"name\":\"Tape\",\"price\":6.50,\"quantity\":5000},{\"id\":\"P009\",\"name\":\"White Sealer\",\"price\":30.00,\"quantity\":1600},{\"id\":\"P864\",\"name\":\"Mixing Motor\",\"price\":650.90,\"quantity\":10},{\"id\":\"P840\",\"name\":\"Li-Ion Battery\",\"price\":145.90,\"quantity\":100},{\"id\":\"P934\",\"name\":\"Paint Job\",\"price\":5100.00,\"quantity\":99999}]}}';\r\nlet jsonObject = JSON.parse(jsonText);\r\nlet orders = jsonObject.orders;\r\nlet inventory = jsonObject.inventory;\r\nfor (let i = 0; i < orders.length; i++) {\r\n  if (orders[i].payment == \"Cash on Delivery\") {\r\n    console.log(orders[i].product);\r\n  }\r\n}"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Changing orders data II",
+            "id": 121265,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Świetnie, zebraliśmy wszystkie produkty z zamówień, które zostaną opłacone przy odbiorze. To ważne, ponieważ nasza firma nie podnosi ceny zamówień, które zostały opłacone z góry, więc musimy wprowadzić zmiany tylko w przypadku zamówień, które nie zostały jeszcze opłacone.\n \n1. W utworzonym wcześniej warunku `if` wykonaj pętlę po liście `product` obiektu `orders`.\n2. Zwiększ `price` produktu o 10%.\n3. Poza pętlą wyświetl `product` za pomocą `console.log()`, aby sprawdzić zaktualizowane ceny. **Nie usuwaj** `console.log()` z poprzedniej lekcji.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "const jsonText =\r\n  '{\"orders\":[{\"id\":\"O001\",\"product\":[{\"id\":\"P010\",\"name\":\"Blue paint\",\"price\":35.00,\"quantity\":2},{\"id\":\"P512\",\"name\":\"Roller Brush\",\"price\":2.50,\"quantity\":6},{\"id\":\"P3010\",\"name\":\"Tape\",\"price\":6.50,\"quantity\":2}],\"address\":\"63 Faraday Lane\",\"payment\":\"Paid\"},{\"id\":\"O006\",\"product\":[{\"id\":\"P009\",\"name\":\"White Sealer\",\"price\":30.00,\"quantity\":4},{\"id\":\"P512\",\"name\":\"Roller Brush\",\"price\":2.50,\"quantity\":6},{\"id\":\"P864\",\"name\":\"Mixing Motor\",\"price\":650.90,\"quantity\":1},{\"id\":\"P840\",\"name\":\"Li-Ion Battery\",\"price\":145.90,\"quantity\":1}],\"address\":\"1342 Lith Drive\",\"payment\":\"Cash on Delivery\"},{\"id\":\"O152\",\"product\":[{\"id\":\"P934\",\"name\":\"Paint Job\",\"price\":5100.00,\"quantity\":1}],\"address\":\"10 Oxy Avenue 13-478\",\"payment\":\"Paid\"}],\"inventory\":{\"product\":[{\"id\":\"P010\",\"name\":\"Blue paint\",\"price\":35.00,\"quantity\":200},{\"id\":\"P512\",\"name\":\"Roller Brush\",\"price\":2.50,\"quantity\":2000},{\"id\":\"P3010\",\"name\":\"Tape\",\"price\":6.50,\"quantity\":5000},{\"id\":\"P009\",\"name\":\"White Sealer\",\"price\":30.00,\"quantity\":1600},{\"id\":\"P864\",\"name\":\"Mixing Motor\",\"price\":650.90,\"quantity\":10},{\"id\":\"P840\",\"name\":\"Li-Ion Battery\",\"price\":145.90,\"quantity\":100},{\"id\":\"P934\",\"name\":\"Paint Job\",\"price\":5100.00,\"quantity\":99999}]}}';\r\nlet jsonObject = JSON.parse(jsonText);\r\nlet orders = jsonObject.orders;\r\nlet inventory = jsonObject.inventory;\r\nfor (let i = 0; i < orders.length; i++) {\r\n  if (orders[i].payment == \"Cash on Delivery\") {\r\n    console.log(orders[i].product);\r\n  }\r\n}",
+                  "solvedContent": "const jsonText =\r\n  '{\"orders\":[{\"id\":\"O001\",\"product\":[{\"id\":\"P010\",\"name\":\"Blue paint\",\"price\":35.00,\"quantity\":2},{\"id\":\"P512\",\"name\":\"Roller Brush\",\"price\":2.50,\"quantity\":6},{\"id\":\"P3010\",\"name\":\"Tape\",\"price\":6.50,\"quantity\":2}],\"address\":\"63 Faraday Lane\",\"payment\":\"Paid\"},{\"id\":\"O006\",\"product\":[{\"id\":\"P009\",\"name\":\"White Sealer\",\"price\":30.00,\"quantity\":4},{\"id\":\"P512\",\"name\":\"Roller Brush\",\"price\":2.50,\"quantity\":6},{\"id\":\"P864\",\"name\":\"Mixing Motor\",\"price\":650.90,\"quantity\":1},{\"id\":\"P840\",\"name\":\"Li-Ion Battery\",\"price\":145.90,\"quantity\":1}],\"address\":\"1342 Lith Drive\",\"payment\":\"Cash on Delivery\"},{\"id\":\"O152\",\"product\":[{\"id\":\"P934\",\"name\":\"Paint Job\",\"price\":5100.00,\"quantity\":1}],\"address\":\"10 Oxy Avenue 13-478\",\"payment\":\"Paid\"}],\"inventory\":{\"product\":[{\"id\":\"P010\",\"name\":\"Blue paint\",\"price\":35.00,\"quantity\":200},{\"id\":\"P512\",\"name\":\"Roller Brush\",\"price\":2.50,\"quantity\":2000},{\"id\":\"P3010\",\"name\":\"Tape\",\"price\":6.50,\"quantity\":5000},{\"id\":\"P009\",\"name\":\"White Sealer\",\"price\":30.00,\"quantity\":1600},{\"id\":\"P864\",\"name\":\"Mixing Motor\",\"price\":650.90,\"quantity\":10},{\"id\":\"P840\",\"name\":\"Li-Ion Battery\",\"price\":145.90,\"quantity\":100},{\"id\":\"P934\",\"name\":\"Paint Job\",\"price\":5100.00,\"quantity\":99999}]}}';\r\nlet jsonObject = JSON.parse(jsonText);\r\nlet orders = jsonObject.orders;\r\nlet inventory = jsonObject.inventory;\r\nfor (let i = 0; i < orders.length; i++) {\r\n  if (orders[i].payment == \"Cash on Delivery\") {\r\n    console.log(orders[i].product);\r\n    for (let j = 0; j < orders[i].product.length; j++) {\r\n      orders[i].product[j].price = (orders[i].product[j].price * 1.1);\r\n    }\r\n    console.log(orders[i].product);\r\n  }\r\n}"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "Note you're using two loops now. For the second loop, remember to use a different loop counter variable than the one you used in the first loop.\n\nYou can increase the price of a product by 10% by multiplying the price by `1.1`. "
+                }
+              ]
+            }
+          },
+          {
+            "title": "Changing inventory data",
+            "id": 121261,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Świetnie! Zajmijmy się teraz `inventory`, aby uniknąć wszelkich niezgodności. Cena każdego produktu w magazynie musi zostać zaktualizowana.\n\n1. Skończyliśmy z `orders`, więc teraz usuń wszystkie `console.log`.\n2. Po pierwszej pętli utwórz kolejną pętlę, aby przejść przez listę `product` w `inventory`.\n3. Wyświetl `price` produktu za pomocą `console.log`.\n4. Zwiększ `price` produktu o 10%.\n5. Ponownie wyświetl `price` produktu za pomocą `console.log`. Powinno być widać, że cena produktu uległa zmianie.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "const jsonText =\r\n  '{\"orders\":[{\"id\":\"O001\",\"product\":[{\"id\":\"P010\",\"name\":\"Blue paint\",\"price\":35.00,\"quantity\":2},{\"id\":\"P512\",\"name\":\"Roller Brush\",\"price\":2.50,\"quantity\":6},{\"id\":\"P3010\",\"name\":\"Tape\",\"price\":6.50,\"quantity\":2}],\"address\":\"63 Faraday Lane\",\"payment\":\"Paid\"},{\"id\":\"O006\",\"product\":[{\"id\":\"P009\",\"name\":\"White Sealer\",\"price\":30.00,\"quantity\":4},{\"id\":\"P512\",\"name\":\"Roller Brush\",\"price\":2.50,\"quantity\":6},{\"id\":\"P864\",\"name\":\"Mixing Motor\",\"price\":650.90,\"quantity\":1},{\"id\":\"P840\",\"name\":\"Li-Ion Battery\",\"price\":145.90,\"quantity\":1}],\"address\":\"1342 Lith Drive\",\"payment\":\"Cash on Delivery\"},{\"id\":\"O152\",\"product\":[{\"id\":\"P934\",\"name\":\"Paint Job\",\"price\":5100.00,\"quantity\":1}],\"address\":\"10 Oxy Avenue 13-478\",\"payment\":\"Paid\"}],\"inventory\":{\"product\":[{\"id\":\"P010\",\"name\":\"Blue paint\",\"price\":35.00,\"quantity\":200},{\"id\":\"P512\",\"name\":\"Roller Brush\",\"price\":2.50,\"quantity\":2000},{\"id\":\"P3010\",\"name\":\"Tape\",\"price\":6.50,\"quantity\":5000},{\"id\":\"P009\",\"name\":\"White Sealer\",\"price\":30.00,\"quantity\":1600},{\"id\":\"P864\",\"name\":\"Mixing Motor\",\"price\":650.90,\"quantity\":10},{\"id\":\"P840\",\"name\":\"Li-Ion Battery\",\"price\":145.90,\"quantity\":100},{\"id\":\"P934\",\"name\":\"Paint Job\",\"price\":5100.00,\"quantity\":99999}]}}';\r\nlet jsonObject = JSON.parse(jsonText);\r\nlet orders = jsonObject.orders;\r\nlet inventory = jsonObject.inventory;\r\nfor (let i = 0; i < orders.length; i++) {\r\n  if (orders[i].payment == \"Cash on Delivery\") {\r\n    console.log(orders[i].product);\r\n    for (let j = 0; j < orders[i].product.length; j++) {\r\n      orders[i].product[j].price = (orders[i].product[j].price * 1.1);\r\n    }\r\n    console.log(orders[i].product);\r\n  }\r\n}",
+                  "solvedContent": "const jsonText =\r\n  '{\"orders\":[{\"id\":\"O001\",\"product\":[{\"id\":\"P010\",\"name\":\"Blue paint\",\"price\":35.00,\"quantity\":2},{\"id\":\"P512\",\"name\":\"Roller Brush\",\"price\":2.50,\"quantity\":6},{\"id\":\"P3010\",\"name\":\"Tape\",\"price\":6.50,\"quantity\":2}],\"address\":\"63 Faraday Lane\",\"payment\":\"Paid\"},{\"id\":\"O006\",\"product\":[{\"id\":\"P009\",\"name\":\"White Sealer\",\"price\":30.00,\"quantity\":4},{\"id\":\"P512\",\"name\":\"Roller Brush\",\"price\":2.50,\"quantity\":6},{\"id\":\"P864\",\"name\":\"Mixing Motor\",\"price\":650.90,\"quantity\":1},{\"id\":\"P840\",\"name\":\"Li-Ion Battery\",\"price\":145.90,\"quantity\":1}],\"address\":\"1342 Lith Drive\",\"payment\":\"Cash on Delivery\"},{\"id\":\"O152\",\"product\":[{\"id\":\"P934\",\"name\":\"Paint Job\",\"price\":5100.00,\"quantity\":1}],\"address\":\"10 Oxy Avenue 13-478\",\"payment\":\"Paid\"}],\"inventory\":{\"product\":[{\"id\":\"P010\",\"name\":\"Blue paint\",\"price\":35.00,\"quantity\":200},{\"id\":\"P512\",\"name\":\"Roller Brush\",\"price\":2.50,\"quantity\":2000},{\"id\":\"P3010\",\"name\":\"Tape\",\"price\":6.50,\"quantity\":5000},{\"id\":\"P009\",\"name\":\"White Sealer\",\"price\":30.00,\"quantity\":1600},{\"id\":\"P864\",\"name\":\"Mixing Motor\",\"price\":650.90,\"quantity\":10},{\"id\":\"P840\",\"name\":\"Li-Ion Battery\",\"price\":145.90,\"quantity\":100},{\"id\":\"P934\",\"name\":\"Paint Job\",\"price\":5100.00,\"quantity\":99999}]}}';\r\nlet jsonObject = JSON.parse(jsonText);\r\nlet orders = jsonObject.orders;\r\nlet inventory = jsonObject.inventory;\r\nfor (let i = 0; i < orders.length; i++) {\r\n  if (orders[i].payment == \"Cash on Delivery\") {\r\n    for (let j = 0; j < orders[i].product.length; j++) {\r\n      orders[i].product[j].price = (orders[i].product[j].price * 1.1);\r\n    }\r\n  }\r\n}\r\nfor (let i = 0; i < inventory.product.length; i++) {\r\n  console.log(inventory.product[i].price);\r\n  inventory.product[i].price = (inventory.product[i].price * 1.1);\r\n  console.log(inventory.product[i].price);\r\n}"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "Remember you can increase the price of an item by multiplying it by `1.1`. "
+                }
+              ]
+            }
+          },
+          {
+            "title": "Put the data back together",
+            "id": 121262,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Teraz, gdy poszczególne obiekty danych zostały zaktualizowane, czas połączyć je z powrotem w jeden obiekt danych.\n\n1. Zakończyliśmy pracę z `inventory`, więc usuń teraz wszystkie wywołania `console.log`.\n2. Utwórz nową zmienną `updatedData`. Powinna przechowywać obiekt z właściwościami `orders` i `inventory`, które używają wartości z naszych wcześniejszych zmiennych.\n3. Zserializuj `updatedData` i ustaw wynik jako wartość nowej zmiennej `printData`.\n4. Wyświetl `printData` za pomocą `console.log`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "const jsonText =\r\n  '{\"orders\":[{\"id\":\"O001\",\"product\":[{\"id\":\"P010\",\"name\":\"Blue paint\",\"price\":35.00,\"quantity\":2},{\"id\":\"P512\",\"name\":\"Roller Brush\",\"price\":2.50,\"quantity\":6},{\"id\":\"P3010\",\"name\":\"Tape\",\"price\":6.50,\"quantity\":2}],\"address\":\"63 Faraday Lane\",\"payment\":\"Paid\"},{\"id\":\"O006\",\"product\":[{\"id\":\"P009\",\"name\":\"White Sealer\",\"price\":30.00,\"quantity\":4},{\"id\":\"P512\",\"name\":\"Roller Brush\",\"price\":2.50,\"quantity\":6},{\"id\":\"P864\",\"name\":\"Mixing Motor\",\"price\":650.90,\"quantity\":1},{\"id\":\"P840\",\"name\":\"Li-Ion Battery\",\"price\":145.90,\"quantity\":1}],\"address\":\"1342 Lith Drive\",\"payment\":\"Cash on Delivery\"},{\"id\":\"O152\",\"product\":[{\"id\":\"P934\",\"name\":\"Paint Job\",\"price\":5100.00,\"quantity\":1}],\"address\":\"10 Oxy Avenue 13-478\",\"payment\":\"Paid\"}],\"inventory\":{\"product\":[{\"id\":\"P010\",\"name\":\"Blue paint\",\"price\":35.00,\"quantity\":200},{\"id\":\"P512\",\"name\":\"Roller Brush\",\"price\":2.50,\"quantity\":2000},{\"id\":\"P3010\",\"name\":\"Tape\",\"price\":6.50,\"quantity\":5000},{\"id\":\"P009\",\"name\":\"White Sealer\",\"price\":30.00,\"quantity\":1600},{\"id\":\"P864\",\"name\":\"Mixing Motor\",\"price\":650.90,\"quantity\":10},{\"id\":\"P840\",\"name\":\"Li-Ion Battery\",\"price\":145.90,\"quantity\":100},{\"id\":\"P934\",\"name\":\"Paint Job\",\"price\":5100.00,\"quantity\":99999}]}}';\r\nlet jsonObject = JSON.parse(jsonText);\r\nlet orders = jsonObject.orders;\r\nlet inventory = jsonObject.inventory;\r\nfor (let i = 0; i < orders.length; i++) {\r\n  if (orders[i].payment == \"Cash on Delivery\") {\r\n    for (let j = 0; j < orders[i].product.length; j++) {\r\n      orders[i].product[j].price = (orders[i].product[j].price * 1.1);\r\n    }\r\n  }\r\n}\r\nfor (let i = 0; i < inventory.product.length; i++) {\r\n  console.log(inventory.product[i].price);\r\n  inventory.product[i].price = (inventory.product[i].price * 1.1);\r\n  console.log(inventory.product[i].price);\r\n}",
+                  "solvedContent": "const jsonText =\r\n  '{\"orders\":[{\"id\":\"O001\",\"product\":[{\"id\":\"P010\",\"name\":\"Blue paint\",\"price\":35.00,\"quantity\":2},{\"id\":\"P512\",\"name\":\"Roller Brush\",\"price\":2.50,\"quantity\":6},{\"id\":\"P3010\",\"name\":\"Tape\",\"price\":6.50,\"quantity\":2}],\"address\":\"63 Faraday Lane\",\"payment\":\"Paid\"},{\"id\":\"O006\",\"product\":[{\"id\":\"P009\",\"name\":\"White Sealer\",\"price\":30.00,\"quantity\":4},{\"id\":\"P512\",\"name\":\"Roller Brush\",\"price\":2.50,\"quantity\":6},{\"id\":\"P864\",\"name\":\"Mixing Motor\",\"price\":650.90,\"quantity\":1},{\"id\":\"P840\",\"name\":\"Li-Ion Battery\",\"price\":145.90,\"quantity\":1}],\"address\":\"1342 Lith Drive\",\"payment\":\"Cash on Delivery\"},{\"id\":\"O152\",\"product\":[{\"id\":\"P934\",\"name\":\"Paint Job\",\"price\":5100.00,\"quantity\":1}],\"address\":\"10 Oxy Avenue 13-478\",\"payment\":\"Paid\"}],\"inventory\":{\"product\":[{\"id\":\"P010\",\"name\":\"Blue paint\",\"price\":35.00,\"quantity\":200},{\"id\":\"P512\",\"name\":\"Roller Brush\",\"price\":2.50,\"quantity\":2000},{\"id\":\"P3010\",\"name\":\"Tape\",\"price\":6.50,\"quantity\":5000},{\"id\":\"P009\",\"name\":\"White Sealer\",\"price\":30.00,\"quantity\":1600},{\"id\":\"P864\",\"name\":\"Mixing Motor\",\"price\":650.90,\"quantity\":10},{\"id\":\"P840\",\"name\":\"Li-Ion Battery\",\"price\":145.90,\"quantity\":100},{\"id\":\"P934\",\"name\":\"Paint Job\",\"price\":5100.00,\"quantity\":99999}]}}';\r\nlet jsonObject = JSON.parse(jsonText);\r\nlet orders = jsonObject.orders;\r\nlet inventory = jsonObject.inventory;\r\nfor (let i = 0; i < orders.length; i++) {\r\n  if (orders[i].payment == \"Cash on Delivery\") {\r\n    for (let j = 0; j < orders[i].product.length; j++) {\r\n      orders[i].product[j].price = (orders[i].product[j].price * 1.1);\r\n    }\r\n  }\r\n}\r\nfor (let i = 0; i < inventory.product.length; i++) {\r\n  inventory.product[i].price = (inventory.product[i].price * 1.1);\r\n}\r\nlet updatedData = {\r\n  \"orders\": orders,\r\n  \"inventory\": inventory\r\n};\r\nlet printData = JSON.stringify(updatedData);\r\nconsole.log(printData);"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "Stringify means to turn something into a string. We can stringify `JSON` data objects using the code below.\n```\nJSON.stringify(object);\n```\n"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

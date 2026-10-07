@@ -1,0 +1,479 @@
+{
+  "tutorial": {
+    "id": 1759,
+    "version": 13,
+    "type": "guidedProjectOptional",
+    "isNew": false,
+    "codeLanguage": "javascript",
+    "title": "Validatore di moduli",
+    "descriptionContent": "Usa le funzioni per creare un validatore di moduli",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": "tutorial-1759-icon-banner.svg",
+    "chapters": [
+      {
+        "id": 11678,
+        "title": "Validatore di moduli",
+        "type": "practiceLevel3",
+        "lessons": [
+          {
+            "title": "e.preventDefault()",
+            "id": 107090,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "In questo progetto, acquisirai i dati inseriti dall'utente tramite un modulo di registrazione completo di una semplice validazione.\n\nPer iniziare il progetto, osserviamo alcune parti del codice che fanno funzionare l'intero sito web. Non ci concentreremo troppo su queste parti, ma è utile riconoscerle.\n\nOsserva l'attributo `onsubmit=\"formInput(event)\"` associato all'elemento `form` nel nostro `index.html`. Useremo `event` per inviare a `script.js` i dati inseriti dall'utente e acquisiti dagli elementi `input` del modulo. Abbiamo anche iniziato a sviluppare `script.js` per aiutarti a cominciare. Ci concentreremo sul completamento della funzione di input del modulo.\n\n1. All'interno di `script.js`, nella funzione `formInput(e)`, inserisci il codice `e.preventDefault()`. Questa chiamata al metodo ci permette di impedire l'invio del modulo finché non vengono superati tutti i controlli di validazione.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<html>\n  <head>\n    <meta charset=\"utf-8\">\n    <meta name=\"viewport\" content=\"width=device-width\">\n    <title></title>\n    <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n    <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n    <link href=\"https://fonts.googleapis.com/css2?family=Lato&display=swap\"\n      rel=\"stylesheet\">\n    <link href=\"style.css\" rel=\"stylesheet\" type=\"text/css\" />\n  </head>\n  <body>\n    <div id=\"form-container\">\n      <h1>Register Here</h1>\n      <form onsubmit=\"formInput(event)\">\n        <input type=\"text\" name=\"username\" id=\"username\"\n          placeholder=\"Username\" />\n        <input type=\"email\" name=\"email\" id=\"email\" placeholder=\"Email\" />\n        <input type=\"password\" name=\"password\" id=\"password\"\n          placeholder=\"Password\" />\n        <button type=\"submit\" id=\"button\">Complete Registration</button>\n      </form>\n    </div>\n    <div id=\"profile-container\">\n      <h1>Welcome To Your Profile!</h1>\n    </div>\n    <script src=\"script.js\"></script>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  font-family: 'Lato', sans-serif;\n  background-color: #3E416D;\n}\n\nh1 {\n  color: white;\n  margin-bottom: 20px;\n}\n\ninput {\n  height: 35px;\n  margin: 10px;\n  border-radius: 10px;\n}\n\nform {\n  display: flex;\n  margin: 0 auto;\n  flex-direction: column;\n  min-width: 300px;\n  max-width: 500px;\n}\n\nbutton {\n  height: 35px;\n  margin: 10px;\n  background-color: #62D76B;\n  border-radius: 16px;\n}\n\n#form-container {\n  text-align: center;\n}\n\n#none {\n  display: none;\n}\n\n#profile-container {\n  visibility: hidden;\n  color: white;\n  text-align: center;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "let userName = '';\nlet email = '';\nlet password = '';\nlet userExists = false;\nlet registered = false;\nconst formContainer = document.getElementById(\"form-container\");\nconst profileContainer = document.getElementById(\"profile-container\");\n\nfunction formInput(e) {}",
+                  "solvedContent": "let userName = '';\nlet email = '';\nlet password = '';\nlet userExists = false;\nlet registered = false;\nconst formContainer = document.getElementById(\"form-container\");\nconst profileContainer = document.getElementById(\"profile-container\");\n\nfunction formInput(e) {\n  e.preventDefault();\n}"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Assigning Values",
+            "id": 107102,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Continua a sviluppare la nostra funzione assegnando il valore di ogni elemento `input` del nostro modulo alla rispettiva variabile.\n\nUseremo `e.target` per fare riferimento all'elemento del modulo nel suo insieme. Per specificare quale valore ci serve da un elemento `input`, fai riferimento all'attributo `name` dell'elemento. Ad esempio, per ottenere il valore dell'elemento `input` per il nome utente, la soluzione sarà `e.target.username.value;`.\n\n1. Assegna alla variabile `userName` il valore dell'elemento `input` per il nome utente.\n2. Assegna alla variabile `email` il valore dell'elemento `input` per l'email.\n3. Assegna alla variabile `password` il valore dell'elemento `input` per la password.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<html>\n  <head>\n    <meta charset=\"utf-8\">\n    <meta name=\"viewport\" content=\"width=device-width\">\n    <title></title>\n    <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n    <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n    <link href=\"https://fonts.googleapis.com/css2?family=Lato&display=swap\"\n      rel=\"stylesheet\">\n    <link href=\"style.css\" rel=\"stylesheet\" type=\"text/css\" />\n  </head>\n  <body>\n    <div id=\"form-container\">\n      <h1>Register Here</h1>\n      <form onsubmit=\"formInput(event)\">\n        <input type=\"text\" name=\"username\" id=\"username\"\n          placeholder=\"Username\" />\n        <input type=\"email\" name=\"email\" id=\"email\" placeholder=\"Email\" />\n        <input type=\"password\" name=\"password\" id=\"password\"\n          placeholder=\"Password\" />\n        <button type=\"submit\" id=\"button\">Complete Registration</button>\n      </form>\n    </div>\n    <div id=\"profile-container\">\n      <h1>Welcome To Your Profile!</h1>\n    </div>\n    <script src=\"script.js\"></script>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  font-family: 'Lato', sans-serif;\n  background-color: #3E416D;\n}\n\nh1 {\n  color: white;\n  margin-bottom: 20px;\n}\n\ninput {\n  height: 35px;\n  margin: 10px;\n  border-radius: 10px;\n}\n\nform {\n  display: flex;\n  margin: 0 auto;\n  flex-direction: column;\n  min-width: 300px;\n  max-width: 500px;\n}\n\nbutton {\n  height: 35px;\n  margin: 10px;\n  background-color: #62D76B;\n  border-radius: 16px;\n}\n\n#form-container {\n  text-align: center;\n}\n\n#none {\n  display: none;\n}\n\n#profile-container {\n  visibility: hidden;\n  color: white;\n  text-align: center;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "let userName = '';\nlet email = '';\nlet password = '';\nlet userExists = false;\nlet registered = false;\nconst formContainer = document.getElementById(\"form-container\");\nconst profileContainer = document.getElementById(\"profile-container\");\n\nfunction formInput(e) {\n  e.preventDefault();\n}",
+                  "solvedContent": "let userName = '';\nlet email = '';\nlet password = '';\nlet userExists = false;\nlet registered = false;\nconst formContainer = document.getElementById(\"form-container\");\nconst profileContainer = document.getElementById(\"profile-container\");\n\nfunction formInput(e) {\n  e.preventDefault();\n  userName = e.target.username.value;\n  email = e.target.email.value;\n  password = e.target.password.value;\n}"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "1. The `userName` variable should be assigned the value `e.target.username.value;`.\n2. The `email` variable should be assigned the value `e.target.email.value;`.\n3. The `password` variable should be assigned the value `e.target.password.value;`."
+                }
+              ]
+            }
+          },
+          {
+            "title": "userDatabase Array & checkExistingUser()",
+            "id": 107105,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Ora creiamo un array di database fittizio e una funzione per verificare se un utente esiste già nell'array.\n\n1. Crea una costante `userDatabase` che abbia come valore un array contenente `\"John\"`, `\"Jane\"`, `\"Bob\"` e `\"Ashley\"`. Per mantenere organizzato script.js, questa variabile deve essere posizionata sotto le altre variabili e sopra `formInput(e)`.\n2. Crea una funzione denominata `checkExistingUser`. Anche questa funzione deve avere un parametro denominato `array`.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<html>\n  <head>\n    <meta charset=\"utf-8\">\n    <meta name=\"viewport\" content=\"width=device-width\">\n    <title></title>\n    <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n    <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n    <link href=\"https://fonts.googleapis.com/css2?family=Lato&display=swap\"\n      rel=\"stylesheet\">\n    <link href=\"style.css\" rel=\"stylesheet\" type=\"text/css\" />\n  </head>\n  <body>\n    <div id=\"form-container\">\n      <h1>Register Here</h1>\n      <form onsubmit=\"formInput(event)\">\n        <input type=\"text\" name=\"username\" id=\"username\"\n          placeholder=\"Username\" />\n        <input type=\"email\" name=\"email\" id=\"email\" placeholder=\"Email\" />\n        <input type=\"password\" name=\"password\" id=\"password\"\n          placeholder=\"Password\" />\n        <button type=\"submit\" id=\"button\">Complete Registration</button>\n      </form>\n    </div>\n    <div id=\"profile-container\">\n      <h1>Welcome To Your Profile!</h1>\n    </div>\n    <script src=\"script.js\"></script>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  font-family: 'Lato', sans-serif;\n  background-color: #3E416D;\n}\n\nh1 {\n  color: white;\n  margin-bottom: 20px;\n}\n\ninput {\n  height: 35px;\n  margin: 10px;\n  border-radius: 10px;\n}\n\nform {\n  display: flex;\n  margin: 0 auto;\n  flex-direction: column;\n  min-width: 300px;\n  max-width: 500px;\n}\n\nbutton {\n  height: 35px;\n  margin: 10px;\n  background-color: #62D76B;\n  border-radius: 16px;\n}\n\n#form-container {\n  text-align: center;\n}\n\n#none {\n  display: none;\n}\n\n#profile-container {\n  visibility: hidden;\n  color: white;\n  text-align: center;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "let userName = '';\nlet email = '';\nlet password = '';\nlet userExists = false;\nlet registered = false;\nconst formContainer = document.getElementById(\"form-container\");\nconst profileContainer = document.getElementById(\"profile-container\");\n\nfunction formInput(e) {\n  e.preventDefault();\n  userName = e.target.username.value;\n  email = e.target.email.value;\n  password = e.target.password.value;\n}",
+                  "solvedContent": "let userName = '';\nlet email = '';\nlet password = '';\nlet userExists = false;\nlet registered = false;\nconst formContainer = document.getElementById(\"form-container\");\nconst profileContainer = document.getElementById(\"profile-container\");\nconst userDatabase = [\"John\", \"Jane\", \"Bob\", \"Ashley\"];\n\nfunction formInput(e) {\n  e.preventDefault();\n  userName = e.target.username.value;\n  email = e.target.email.value;\n  password = e.target.password.value;\n}\n\nfunction checkExistingUser(array) {}"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "Arrays are written as `[\"item1\", \"item2\", \"item3\"];`.\nFunctions are written as `function functionName(parameter) {};`"
+                }
+              ]
+            }
+          },
+          {
+            "title": "checkExistingUser - For Loop",
+            "id": 107106,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Per verificare se un nome utente esiste già, itera attraverso l'array `userDatabase`.\n\n1. Crea un ciclo for all'interno della funzione`checkExistingUser` che in seguito itererà attraverso gli utenti.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<html>\n  <head>\n    <meta charset=\"utf-8\">\n    <meta name=\"viewport\" content=\"width=device-width\">\n    <title></title>\n    <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n    <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n    <link href=\"https://fonts.googleapis.com/css2?family=Lato&display=swap\"\n      rel=\"stylesheet\">\n    <link href=\"style.css\" rel=\"stylesheet\" type=\"text/css\" />\n  </head>\n  <body>\n    <div id=\"form-container\">\n      <h1>Register Here</h1>\n      <form onsubmit=\"formInput(event)\">\n        <input type=\"text\" name=\"username\" id=\"username\"\n          placeholder=\"Username\" />\n        <input type=\"email\" name=\"email\" id=\"email\" placeholder=\"Email\" />\n        <input type=\"password\" name=\"password\" id=\"password\"\n          placeholder=\"Password\" />\n        <button type=\"submit\" id=\"button\">Complete Registration</button>\n      </form>\n    </div>\n    <div id=\"profile-container\">\n      <h1>Welcome To Your Profile!</h1>\n    </div>\n    <script src=\"script.js\"></script>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  font-family: 'Lato', sans-serif;\n  background-color: #3E416D;\n}\n\nh1 {\n  color: white;\n  margin-bottom: 20px;\n}\n\ninput {\n  height: 35px;\n  margin: 10px;\n  border-radius: 10px;\n}\n\nform {\n  display: flex;\n  margin: 0 auto;\n  flex-direction: column;\n  min-width: 300px;\n  max-width: 500px;\n}\n\nbutton {\n  height: 35px;\n  margin: 10px;\n  background-color: #62D76B;\n  border-radius: 16px;\n}\n\n#form-container {\n  text-align: center;\n}\n\n#none {\n  display: none;\n}\n\n#profile-container {\n  visibility: hidden;\n  color: white;\n  text-align: center;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "let userName = '';\nlet email = '';\nlet password = '';\nlet userExists = false;\nlet registered = false;\nconst formContainer = document.getElementById(\"form-container\");\nconst profileContainer = document.getElementById(\"profile-container\");\nconst userDatabase = [\"John\", \"Jane\", \"Bob\", \"Ashley\"];\n\nfunction formInput(e) {\n  e.preventDefault();\n  userName = e.target.username.value;\n  email = e.target.email.value;\n  password = e.target.password.value;\n}\n\nfunction checkExistingUser(array) {}",
+                  "solvedContent": "let userName = '';\nlet email = '';\nlet password = '';\nlet userExists = false;\nlet registered = false;\nconst formContainer = document.getElementById(\"form-container\");\nconst profileContainer = document.getElementById(\"profile-container\");\nconst userDatabase = [\"John\", \"Jane\", \"Bob\", \"Ashley\"];\n\nfunction formInput(e) {\n  e.preventDefault();\n  userName = e.target.username.value;\n  email = e.target.email.value;\n  password = e.target.password.value;\n}\n\nfunction checkExistingUser(array) {\n  for (let i = 0; i < array.length; i++) {}\n}"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "To iterate through the length of `userDatabase`, code out a for loop by declaring the variable `i` and initializing it to 0, checking that `i` is less the length of the array, and incrementing `i` by 1 after each pass through the loop. "
+                }
+              ]
+            }
+          },
+          {
+            "title": "checkExistingUser - If Statement",
+            "id": 107107,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "A ogni iterazione del nostro ciclo for, verifica se `userName` corrisponde all'elemento nell'array.\n\n1. Usa un'istruzione `if` per verificare se `userName` è uguale all'elemento corrente nell'array. Se c'è una corrispondenza, scrivi un messaggio nella console che indichi che il nome utente è già in uso. Puoi scrivere qualsiasi messaggio, ma includi la parola `\"taken\"`.\n2. Se c'è una corrispondenza, `checkExistingUser(array)` dovrebbe anche `return` `true`.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<html>\n  <head>\n    <meta charset=\"utf-8\">\n    <meta name=\"viewport\" content=\"width=device-width\">\n    <title></title>\n    <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n    <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n    <link href=\"https://fonts.googleapis.com/css2?family=Lato&display=swap\"\n      rel=\"stylesheet\">\n    <link href=\"style.css\" rel=\"stylesheet\" type=\"text/css\" />\n  </head>\n  <body>\n    <div id=\"form-container\">\n      <h1>Register Here</h1>\n      <form onsubmit=\"formInput(event)\">\n        <input type=\"text\" name=\"username\" id=\"username\"\n          placeholder=\"Username\" />\n        <input type=\"email\" name=\"email\" id=\"email\" placeholder=\"Email\" />\n        <input type=\"password\" name=\"password\" id=\"password\"\n          placeholder=\"Password\" />\n        <button type=\"submit\" id=\"button\">Complete Registration</button>\n      </form>\n    </div>\n    <div id=\"profile-container\">\n      <h1>Welcome To Your Profile!</h1>\n    </div>\n    <script src=\"script.js\"></script>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  font-family: 'Lato', sans-serif;\n  background-color: #3E416D;\n}\n\nh1 {\n  color: white;\n  margin-bottom: 20px;\n}\n\ninput {\n  height: 35px;\n  margin: 10px;\n  border-radius: 10px;\n}\n\nform {\n  display: flex;\n  margin: 0 auto;\n  flex-direction: column;\n  min-width: 300px;\n  max-width: 500px;\n}\n\nbutton {\n  height: 35px;\n  margin: 10px;\n  background-color: #62D76B;\n  border-radius: 16px;\n}\n\n#form-container {\n  text-align: center;\n}\n\n#none {\n  display: none;\n}\n\n#profile-container {\n  visibility: hidden;\n  color: white;\n  text-align: center;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "let userName = '';\nlet email = '';\nlet password = '';\nlet userExists = false;\nlet registered = false;\nconst formContainer = document.getElementById(\"form-container\");\nconst profileContainer = document.getElementById(\"profile-container\");\nconst userDatabase = [\"John\", \"Jane\", \"Bob\", \"Ashley\"];\n\nfunction formInput(e) {\n  e.preventDefault();\n  userName = e.target.username.value;\n  email = e.target.email.value;\n  password = e.target.password.value;\n}\n\nfunction checkExistingUser(array) {\n  for (let i = 0; i < array.length; i++) {}\n}",
+                  "solvedContent": "let userName = '';\nlet email = '';\nlet password = '';\nlet userExists = false;\nlet registered = false;\nconst formContainer = document.getElementById(\"form-container\");\nconst profileContainer = document.getElementById(\"profile-container\");\nconst userDatabase = [\"John\", \"Jane\", \"Bob\", \"Ashley\"];\n\nfunction formInput(e) {\n  e.preventDefault();\n  userName = e.target.username.value;\n  email = e.target.email.value;\n  password = e.target.password.value;\n}\n\nfunction checkExistingUser(array) {\n  for (let i = 0; i < array.length; i++) {\n    if (userName === array[i]) {\n      console.log(\n        \"It looks like this username is already taken. Please choose another.\"\n        );\n      return true;\n    }\n  }\n}"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "To check if `userName` is equal to the current element in the array, code out `if(userName === array[i])`. If there is a match, `return true;` inside the `if` statement."
+                }
+              ]
+            }
+          },
+          {
+            "title": "checkExistingUser(userDatabase)",
+            "id": 107409,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Torniamo alla funzione `formInput(e)` che hai creato nelle lezioni precedenti.\n\nOra che gli input dell'utente sono memorizzati nelle variabili e che la funzione `checkExistingUser` è stata creata, possiamo verificare se il valore di `userName` esiste già in un database simulato.\n\n1. Chiama `checkExistingUser` all'interno della funzione `formInput` e passa la variabile `userDatabase` come argomento.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<html>\n  <head>\n    <meta charset=\"utf-8\">\n    <meta name=\"viewport\" content=\"width=device-width\">\n    <title></title>\n    <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n    <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n    <link href=\"https://fonts.googleapis.com/css2?family=Lato&display=swap\"\n      rel=\"stylesheet\">\n    <link href=\"style.css\" rel=\"stylesheet\" type=\"text/css\" />\n  </head>\n  <body>\n    <div id=\"form-container\">\n      <h1>Register Here</h1>\n      <form onsubmit=\"formInput(event)\">\n        <input type=\"text\" name=\"username\" id=\"username\"\n          placeholder=\"Username\" />\n        <input type=\"email\" name=\"email\" id=\"email\" placeholder=\"Email\" />\n        <input type=\"password\" name=\"password\" id=\"password\"\n          placeholder=\"Password\" />\n        <button type=\"submit\" id=\"button\">Complete Registration</button>\n      </form>\n    </div>\n    <div id=\"profile-container\">\n      <h1>Welcome To Your Profile!</h1>\n    </div>\n    <script src=\"script.js\"></script>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  font-family: 'Lato', sans-serif;\n  background-color: #3E416D;\n}\n\nh1 {\n  color: white;\n  margin-bottom: 20px;\n}\n\ninput {\n  height: 35px;\n  margin: 10px;\n  border-radius: 10px;\n}\n\nform {\n  display: flex;\n  margin: 0 auto;\n  flex-direction: column;\n  min-width: 300px;\n  max-width: 500px;\n}\n\nbutton {\n  height: 35px;\n  margin: 10px;\n  background-color: #62D76B;\n  border-radius: 16px;\n}\n\n#form-container {\n  text-align: center;\n}\n\n#none {\n  display: none;\n}\n\n#profile-container {\n  visibility: hidden;\n  color: white;\n  text-align: center;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "let userName = '';\nlet email = '';\nlet password = '';\nlet userExists = false;\nlet registered = false;\nconst formContainer = document.getElementById(\"form-container\");\nconst profileContainer = document.getElementById(\"profile-container\");\nconst userDatabase = [\"John\", \"Jane\", \"Bob\", \"Ashley\"];\n\nfunction formInput(e) {\n  e.preventDefault();\n  userName = e.target.username.value;\n  email = e.target.email.value;\n  password = e.target.password.value;\n}\n\nfunction checkExistingUser(array) {\n  for (let i = 0; i < array.length; i++) {\n    if (userName === array[i]) {\n      console.log(\n        \"It looks like this username is already taken. Please choose another.\"\n        );\n      return true;\n    }\n  }\n}",
+                  "solvedContent": "let userName = '';\nlet email = '';\nlet password = '';\nlet userExists = false;\nlet registered = false;\nconst formContainer = document.getElementById(\"form-container\");\nconst profileContainer = document.getElementById(\"profile-container\");\nconst userDatabase = [\"John\", \"Jane\", \"Bob\", \"Ashley\"];\n\nfunction formInput(e) {\n  e.preventDefault();\n  userName = e.target.username.value;\n  email = e.target.email.value;\n  password = e.target.password.value;\n  checkExistingUser(userDatabase);\n}\n\nfunction checkExistingUser(array) {\n  for (let i = 0; i < array.length; i++) {\n    if (userName === array[i]) {\n      console.log(\n        \"It looks like this username is already taken. Please choose another.\"\n        );\n      return true;\n    }\n  }\n}"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "Inside `formInput(e)`, code `checkExistingUser(userDatabase);` at the end of the code block."
+                }
+              ]
+            }
+          },
+          {
+            "title": "Create formValidate()",
+            "id": 107108,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Ora crea una funzione che accetti `userName`, `email` e `password` per una semplice validazione del modulo.\n\n1. Crea una funzione denominata `formValidate()`. Dovrebbe avere tre parametri: `usernameVar`, `emailVar` e `passwordVar`.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<html>\n  <head>\n    <meta charset=\"utf-8\">\n    <meta name=\"viewport\" content=\"width=device-width\">\n    <title></title>\n    <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n    <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n    <link href=\"https://fonts.googleapis.com/css2?family=Lato&display=swap\"\n      rel=\"stylesheet\">\n    <link href=\"style.css\" rel=\"stylesheet\" type=\"text/css\" />\n  </head>\n  <body>\n    <div id=\"form-container\">\n      <h1>Register Here</h1>\n      <form onsubmit=\"formInput(event)\">\n        <input type=\"text\" name=\"username\" id=\"username\"\n          placeholder=\"Username\" />\n        <input type=\"email\" name=\"email\" id=\"email\" placeholder=\"Email\" />\n        <input type=\"password\" name=\"password\" id=\"password\"\n          placeholder=\"Password\" />\n        <button type=\"submit\" id=\"button\">Complete Registration</button>\n      </form>\n    </div>\n    <div id=\"profile-container\">\n      <h1>Welcome To Your Profile!</h1>\n    </div>\n    <script src=\"script.js\"></script>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  font-family: 'Lato', sans-serif;\n  background-color: #3E416D;\n}\n\nh1 {\n  color: white;\n  margin-bottom: 20px;\n}\n\ninput {\n  height: 35px;\n  margin: 10px;\n  border-radius: 10px;\n}\n\nform {\n  display: flex;\n  margin: 0 auto;\n  flex-direction: column;\n  min-width: 300px;\n  max-width: 500px;\n}\n\nbutton {\n  height: 35px;\n  margin: 10px;\n  background-color: #62D76B;\n  border-radius: 16px;\n}\n\n#form-container {\n  text-align: center;\n}\n\n#none {\n  display: none;\n}\n\n#profile-container {\n  visibility: hidden;\n  color: white;\n  text-align: center;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "let userName = '';\nlet email = '';\nlet password = '';\nlet userExists = false;\nlet registered = false;\nconst formContainer = document.getElementById(\"form-container\");\nconst profileContainer = document.getElementById(\"profile-container\");\nconst userDatabase = [\"John\", \"Jane\", \"Bob\", \"Ashley\"];\n\nfunction formInput(e) {\n  e.preventDefault();\n  userName = e.target.username.value;\n  email = e.target.email.value;\n  password = e.target.password.value;\n  checkExistingUser(userDatabase);\n}\n\nfunction checkExistingUser(array) {\n  for (let i = 0; i < array.length; i++) {\n    if (userName === array[i]) {\n      console.log(\n        \"It looks like this username is already taken. Please choose another.\"\n        );\n      return true;\n    }\n  }\n}",
+                  "solvedContent": "let userName = '';\nlet email = '';\nlet password = '';\nlet userExists = false;\nlet registered = false;\nconst formContainer = document.getElementById(\"form-container\");\nconst profileContainer = document.getElementById(\"profile-container\");\nconst userDatabase = [\"John\", \"Jane\", \"Bob\", \"Ashley\"];\n\nfunction formInput(e) {\n  e.preventDefault();\n  userName = e.target.username.value;\n  email = e.target.email.value;\n  password = e.target.password.value;\n  checkExistingUser(userDatabase);\n}\n\nfunction checkExistingUser(array) {\n  for (let i = 0; i < array.length; i++) {\n    if (userName === array[i]) {\n      console.log(\n        \"It looks like this username is already taken. Please choose another.\"\n        );\n      return true;\n    }\n  }\n}\n\nfunction formValidate(usernameVar, emailVar, passwordVar) {}"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "formValidate() - If Statement",
+            "id": 107109,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Ora scrivi un'istruzione `if` che verificherà se `usernameVar`, `emailVar` e `passwordVar` sono `true`. Se il valore di una qualsiasi di queste variabili è una stringa vuota, verrà considerato false.\n\n1. Crea un'istruzione `if` che verifichi se `usernameVar`, `emailVar` e `passwordVar` sono true. Per farlo, inserisci `usernameVar && emailVar && passwordVar` tra le parentesi.\n2. Quando la condizione dell'istruzione `if` è soddisfatta, stampa nella console un messaggio che indichi che la registrazione è riuscita.\n3. Inoltre, aggiorna il valore di `registered` impostandolo su `true`.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<html>\n  <head>\n    <meta charset=\"utf-8\">\n    <meta name=\"viewport\" content=\"width=device-width\">\n    <title></title>\n    <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n    <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n    <link href=\"https://fonts.googleapis.com/css2?family=Lato&display=swap\"\n      rel=\"stylesheet\">\n    <link href=\"style.css\" rel=\"stylesheet\" type=\"text/css\" />\n  </head>\n  <body>\n    <div id=\"form-container\">\n      <h1>Register Here</h1>\n      <form onsubmit=\"formInput(event)\">\n        <input type=\"text\" name=\"username\" id=\"username\"\n          placeholder=\"Username\" />\n        <input type=\"email\" name=\"email\" id=\"email\" placeholder=\"Email\" />\n        <input type=\"password\" name=\"password\" id=\"password\"\n          placeholder=\"Password\" />\n        <button type=\"submit\" id=\"button\">Complete Registration</button>\n      </form>\n    </div>\n    <div id=\"profile-container\">\n      <h1>Welcome To Your Profile!</h1>\n    </div>\n    <script src=\"script.js\"></script>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  font-family: 'Lato', sans-serif;\n  background-color: #3E416D;\n}\n\nh1 {\n  color: white;\n  margin-bottom: 20px;\n}\n\ninput {\n  height: 35px;\n  margin: 10px;\n  border-radius: 10px;\n}\n\nform {\n  display: flex;\n  margin: 0 auto;\n  flex-direction: column;\n  min-width: 300px;\n  max-width: 500px;\n}\n\nbutton {\n  height: 35px;\n  margin: 10px;\n  background-color: #62D76B;\n  border-radius: 16px;\n}\n\n#form-container {\n  text-align: center;\n}\n\n#none {\n  display: none;\n}\n\n#profile-container {\n  visibility: hidden;\n  color: white;\n  text-align: center;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "let userName = '';\nlet email = '';\nlet password = '';\nlet userExists = false;\nlet registered = false;\nconst formContainer = document.getElementById(\"form-container\");\nconst profileContainer = document.getElementById(\"profile-container\");\nconst userDatabase = [\"John\", \"Jane\", \"Bob\", \"Ashley\"];\n\nfunction formInput(e) {\n  e.preventDefault();\n  userName = e.target.username.value;\n  email = e.target.email.value;\n  password = e.target.password.value;\n  checkExistingUser(userDatabase);\n}\n\nfunction checkExistingUser(array) {\n  for (let i = 0; i < array.length; i++) {\n    if (userName === array[i]) {\n      console.log(\n        \"It looks like this username is already taken. Please choose another.\"\n        );\n      return true;\n    }\n  }\n}\n\nfunction formValidate(usernameVar, emailVar, passwordVar) {}",
+                  "solvedContent": "let userName = '';\nlet email = '';\nlet password = '';\nlet userExists = false;\nlet registered = false;\nconst formContainer = document.getElementById(\"form-container\");\nconst profileContainer = document.getElementById(\"profile-container\");\nconst userDatabase = [\"John\", \"Jane\", \"Bob\", \"Ashley\"];\n\nfunction formInput(e) {\n  e.preventDefault();\n  userName = e.target.username.value;\n  email = e.target.email.value;\n  password = e.target.password.value;\n  checkExistingUser(userDatabase);\n}\n\nfunction checkExistingUser(array) {\n  for (let i = 0; i < array.length; i++) {\n    if (userName === array[i]) {\n      console.log(\n        \"It looks like this username is already taken. Please choose another.\"\n        );\n      return true;\n    }\n  }\n}\n\nfunction formValidate(usernameVar, emailVar, passwordVar) {\n  if (usernameVar && emailVar && passwordVar) {\n    console.log(\"Congratulations on signing up!\");\n    registered = true;\n  }\n}"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "Be sure to use the correct logic to check that all inputs are true."
+                }
+              ]
+            }
+          },
+          {
+            "title": "formValidate() - Else Statement",
+            "id": 107411,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Completa l'istruzione `else` per `formValidate()`.\n\n1. Crea un'istruzione `else` che stampi nella console un messaggio indicante `\"All form fields must be filled out\"`.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<html>\n  <head>\n    <meta charset=\"utf-8\">\n    <meta name=\"viewport\" content=\"width=device-width\">\n    <title></title>\n    <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n    <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n    <link href=\"https://fonts.googleapis.com/css2?family=Lato&display=swap\"\n      rel=\"stylesheet\">\n    <link href=\"style.css\" rel=\"stylesheet\" type=\"text/css\" />\n  </head>\n  <body>\n    <div id=\"form-container\">\n      <h1>Register Here</h1>\n      <form onsubmit=\"formInput(event)\">\n        <input type=\"text\" name=\"username\" id=\"username\"\n          placeholder=\"Username\" />\n        <input type=\"email\" name=\"email\" id=\"email\" placeholder=\"Email\" />\n        <input type=\"password\" name=\"password\" id=\"password\"\n          placeholder=\"Password\" />\n        <button type=\"submit\" id=\"button\">Complete Registration</button>\n      </form>\n    </div>\n    <div id=\"profile-container\">\n      <h1>Welcome To Your Profile!</h1>\n    </div>\n    <script src=\"script.js\"></script>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  font-family: 'Lato', sans-serif;\n  background-color: #3E416D;\n}\n\nh1 {\n  color: white;\n  margin-bottom: 20px;\n}\n\ninput {\n  height: 35px;\n  margin: 10px;\n  border-radius: 10px;\n}\n\nform {\n  display: flex;\n  margin: 0 auto;\n  flex-direction: column;\n  min-width: 300px;\n  max-width: 500px;\n}\n\nbutton {\n  height: 35px;\n  margin: 10px;\n  background-color: #62D76B;\n  border-radius: 16px;\n}\n\n#form-container {\n  text-align: center;\n}\n\n#none {\n  display: none;\n}\n\n#profile-container {\n  visibility: hidden;\n  color: white;\n  text-align: center;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "let userName = '';\nlet email = '';\nlet password = '';\nlet userExists = false;\nlet registered = false;\nconst formContainer = document.getElementById(\"form-container\");\nconst profileContainer = document.getElementById(\"profile-container\");\nconst userDatabase = [\"John\", \"Jane\", \"Bob\", \"Ashley\"];\n\nfunction formInput(e) {\n  e.preventDefault();\n  userName = e.target.username.value;\n  email = e.target.email.value;\n  password = e.target.password.value;\n  checkExistingUser(userDatabase);\n}\n\nfunction checkExistingUser(array) {\n  for (let i = 0; i < array.length; i++) {\n    if (userName === array[i]) {\n      console.log(\n        \"It looks like this username is already taken. Please choose another.\"\n        );\n      return true;\n    }\n  }\n}\n\nfunction formValidate(usernameVar, emailVar, passwordVar) {\n  if (usernameVar && emailVar && passwordVar) {\n    console.log(\"Congratulations on signing up!\");\n    registered = true;\n  }\n}",
+                  "solvedContent": "let userName = '';\nlet email = '';\nlet password = '';\nlet userExists = false;\nlet registered = false;\nconst formContainer = document.getElementById(\"form-container\");\nconst profileContainer = document.getElementById(\"profile-container\");\nconst userDatabase = [\"John\", \"Jane\", \"Bob\", \"Ashley\"];\n\nfunction formInput(e) {\n  e.preventDefault();\n  userName = e.target.username.value;\n  email = e.target.email.value;\n  password = e.target.password.value;\n  checkExistingUser(userDatabase);\n}\n\nfunction checkExistingUser(array) {\n  for (let i = 0; i < array.length; i++) {\n    if (userName === array[i]) {\n      console.log(\n        \"It looks like this username is already taken. Please choose another.\"\n        );\n      return true;\n    }\n  }\n}\n\nfunction formValidate(usernameVar, emailVar, passwordVar) {\n  if (usernameVar && emailVar && passwordVar) {\n    console.log(\"Congratulations on signing up!\");\n    registered = true;\n  } else {\n    console.log(\"All form fields must be filled out.\");\n  }\n}"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "formValidate()",
+            "id": 107410,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Ora che la funzione `formValidate` funziona, `checkExistingUser(array)` dovrebbe chiamarla per gestire la validazione semplice del modulo.\n\n1. Nella funzione `checkExistingUser`, chiama `formValidate` passando i parametri `userName`, `email` e `password`, dopo il ciclo for.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<html>\n  <head>\n    <meta charset=\"utf-8\">\n    <meta name=\"viewport\" content=\"width=device-width\">\n    <title></title>\n    <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n    <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n    <link href=\"https://fonts.googleapis.com/css2?family=Lato&display=swap\"\n      rel=\"stylesheet\">\n    <link href=\"style.css\" rel=\"stylesheet\" type=\"text/css\" />\n  </head>\n  <body>\n    <div id=\"form-container\">\n      <h1>Register Here</h1>\n      <form onsubmit=\"formInput(event)\">\n        <input type=\"text\" name=\"username\" id=\"username\"\n          placeholder=\"Username\" />\n        <input type=\"email\" name=\"email\" id=\"email\" placeholder=\"Email\" />\n        <input type=\"password\" name=\"password\" id=\"password\"\n          placeholder=\"Password\" />\n        <button type=\"submit\" id=\"button\">Complete Registration</button>\n      </form>\n    </div>\n    <div id=\"profile-container\">\n      <h1>Welcome To Your Profile!</h1>\n    </div>\n    <script src=\"script.js\"></script>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  font-family: 'Lato', sans-serif;\n  background-color: #3E416D;\n}\n\nh1 {\n  color: white;\n  margin-bottom: 20px;\n}\n\ninput {\n  height: 35px;\n  margin: 10px;\n  border-radius: 10px;\n}\n\nform {\n  display: flex;\n  margin: 0 auto;\n  flex-direction: column;\n  min-width: 300px;\n  max-width: 500px;\n}\n\nbutton {\n  height: 35px;\n  margin: 10px;\n  background-color: #62D76B;\n  border-radius: 16px;\n}\n\n#form-container {\n  text-align: center;\n}\n\n#none {\n  display: none;\n}\n\n#profile-container {\n  visibility: hidden;\n  color: white;\n  text-align: center;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "let userName = '';\nlet email = '';\nlet password = '';\nlet userExists = false;\nlet registered = false;\nconst formContainer = document.getElementById(\"form-container\");\nconst profileContainer = document.getElementById(\"profile-container\");\nconst userDatabase = [\"John\", \"Jane\", \"Bob\", \"Ashley\"];\n\nfunction formInput(e) {\n  e.preventDefault();\n  userName = e.target.username.value;\n  email = e.target.email.value;\n  password = e.target.password.value;\n  checkExistingUser(userDatabase);\n}\n\nfunction checkExistingUser(array) {\n  for (let i = 0; i < array.length; i++) {\n    if (userName === array[i]) {\n      console.log(\n        \"It looks like this username is already taken. Please choose another.\"\n        );\n      return true;\n    }\n  }\n}\n\nfunction formValidate(usernameVar, emailVar, passwordVar) {\n  if (usernameVar && emailVar && passwordVar) {\n    console.log(\"Congratulations on signing up!\");\n    registered = true;\n  } else {\n    console.log(\"All form fields must be filled out.\");\n  }\n}",
+                  "solvedContent": "let userName = '';\nlet email = '';\nlet password = '';\nlet userExists = false;\nlet registered = false;\nconst formContainer = document.getElementById(\"form-container\");\nconst profileContainer = document.getElementById(\"profile-container\");\nconst userDatabase = [\"John\", \"Jane\", \"Bob\", \"Ashley\"];\n\nfunction formInput(e) {\n  e.preventDefault();\n  userName = e.target.username.value;\n  email = e.target.email.value;\n  password = e.target.password.value;\n  checkExistingUser(userDatabase);\n}\n\nfunction checkExistingUser(array) {\n  for (let i = 0; i < array.length; i++) {\n    if (userName === array[i]) {\n      console.log(\n        \"It looks like this username is already taken. Please choose another.\"\n        );\n      return true;\n    }\n  }\n  formValidate(userName, email, password);\n}\n\nfunction formValidate(usernameVar, emailVar, passwordVar) {\n  if (usernameVar && emailVar && passwordVar) {\n    console.log(\"Congratulations on signing up!\");\n    registered = true;\n  } else {\n    console.log(\"All form fields must be filled out.\");\n  }\n}"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "To call to function`formValidate()`, code out `formValidate(userName, email, password);`within the existing `checkExistingUsers` function."
+                }
+              ]
+            }
+          },
+          {
+            "title": "Create renderProfile()",
+            "id": 107110,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Ci sei quasi! Ora crea la funzione `renderProfile`, che porterà un utente alla sua pagina del profilo dopo una registrazione completata correttamente.\n\n1. Crea una funzione chiamata `renderProfile` con un parametro chiamato in modo significativo `registeredBoolean`.\n2. `renderProfile()` dovrebbe contenere un'istruzione `if` che controlla se `registeredBoolean` è `true`.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<html>\n  <head>\n    <meta charset=\"utf-8\">\n    <meta name=\"viewport\" content=\"width=device-width\">\n    <title></title>\n    <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n    <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n    <link href=\"https://fonts.googleapis.com/css2?family=Lato&display=swap\"\n      rel=\"stylesheet\">\n    <link href=\"style.css\" rel=\"stylesheet\" type=\"text/css\" />\n  </head>\n  <body>\n    <div id=\"form-container\">\n      <h1>Register Here</h1>\n      <form onsubmit=\"formInput(event)\">\n        <input type=\"text\" name=\"username\" id=\"username\"\n          placeholder=\"Username\" />\n        <input type=\"email\" name=\"email\" id=\"email\" placeholder=\"Email\" />\n        <input type=\"password\" name=\"password\" id=\"password\"\n          placeholder=\"Password\" />\n        <button type=\"submit\" id=\"button\">Complete Registration</button>\n      </form>\n    </div>\n    <div id=\"profile-container\">\n      <h1>Welcome To Your Profile!</h1>\n    </div>\n    <script src=\"script.js\"></script>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  font-family: 'Lato', sans-serif;\n  background-color: #3E416D;\n}\n\nh1 {\n  color: white;\n  margin-bottom: 20px;\n}\n\ninput {\n  height: 35px;\n  margin: 10px;\n  border-radius: 10px;\n}\n\nform {\n  display: flex;\n  margin: 0 auto;\n  flex-direction: column;\n  min-width: 300px;\n  max-width: 500px;\n}\n\nbutton {\n  height: 35px;\n  margin: 10px;\n  background-color: #62D76B;\n  border-radius: 16px;\n}\n\n#form-container {\n  text-align: center;\n}\n\n#none {\n  display: none;\n}\n\n#profile-container {\n  visibility: hidden;\n  color: white;\n  text-align: center;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "let userName = '';\nlet email = '';\nlet password = '';\nlet userExists = false;\nlet registered = false;\nconst formContainer = document.getElementById(\"form-container\");\nconst profileContainer = document.getElementById(\"profile-container\");\nconst userDatabase = [\"John\", \"Jane\", \"Bob\", \"Ashley\"];\n\nfunction formInput(e) {\n  e.preventDefault();\n  userName = e.target.username.value;\n  email = e.target.email.value;\n  password = e.target.password.value;\n  checkExistingUser(userDatabase);\n}\n\nfunction checkExistingUser(array) {\n  for (let i = 0; i < array.length; i++) {\n    if (userName === array[i]) {\n      console.log(\n        \"It looks like this username is already taken. Please choose another.\"\n        );\n      return true;\n    }\n  }\n  formValidate(userName, email, password);\n}\n\nfunction formValidate(usernameVar, emailVar, passwordVar) {\n  if (usernameVar && emailVar && passwordVar) {\n    console.log(\"Congratulations on signing up!\");\n    registered = true;\n  } else {\n    console.log(\"All form fields must be filled out.\");\n  }\n}",
+                  "solvedContent": "let userName = '';\nlet email = '';\nlet password = '';\nlet userExists = false;\nlet registered = false;\nconst formContainer = document.getElementById(\"form-container\");\nconst profileContainer = document.getElementById(\"profile-container\");\nconst userDatabase = [\"John\", \"Jane\", \"Bob\", \"Ashley\"];\n\nfunction formInput(e) {\n  e.preventDefault();\n  userName = e.target.username.value;\n  email = e.target.email.value;\n  password = e.target.password.value;\n  checkExistingUser(userDatabase);\n}\n\nfunction checkExistingUser(array) {\n  for (let i = 0; i < array.length; i++) {\n    if (userName === array[i]) {\n      console.log(\n        \"It looks like this username is already taken. Please choose another.\"\n        );\n      return true;\n    }\n  }\n  formValidate(userName, email, password);\n}\n\nfunction formValidate(usernameVar, emailVar, passwordVar) {\n  if (usernameVar && emailVar && passwordVar) {\n    console.log(\"Congratulations on signing up!\");\n    registered = true;\n  } else {\n    console.log(\"All form fields must be filled out.\");\n  }\n}\n\nfunction renderProfile(registeredBoolean) {\n  if (registeredBoolean) {}\n}"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "To check if `registeredBoolean` is true, write `if (registeredBoolean) {};`."
+                }
+              ]
+            }
+          },
+          {
+            "title": "renderProfile() - Conditional Rendering",
+            "id": 107111,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Se l'istruzione `if` è soddisfatta, aggiorneremo l'attributo dell'elemento HTML `form` da `id` a `none`. In questo modo, il modulo non apparirà più nel browser. Per completare il passaggio dell'utente alla pagina del suo profilo, l'elemento `div` con un `id` di `profile-container` dovrebbe avere la visibilità impostata su `'visible'`.\n\n1. Copia e incolla quanto segue all'interno dell'istruzione `if` della tua funzione `renderProfile`.\n\n```javascript\nformContainer.setAttribute(\"id\", \"none\");\nprofileContainer.style.visibility = \"visible\";\n```",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<html>\n  <head>\n    <meta charset=\"utf-8\">\n    <meta name=\"viewport\" content=\"width=device-width\">\n    <title></title>\n    <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n    <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n    <link href=\"https://fonts.googleapis.com/css2?family=Lato&display=swap\"\n      rel=\"stylesheet\">\n    <link href=\"style.css\" rel=\"stylesheet\" type=\"text/css\" />\n  </head>\n  <body>\n    <div id=\"form-container\">\n      <h1>Register Here</h1>\n      <form onsubmit=\"formInput(event)\">\n        <input type=\"text\" name=\"username\" id=\"username\"\n          placeholder=\"Username\" />\n        <input type=\"email\" name=\"email\" id=\"email\" placeholder=\"Email\" />\n        <input type=\"password\" name=\"password\" id=\"password\"\n          placeholder=\"Password\" />\n        <button type=\"submit\" id=\"button\">Complete Registration</button>\n      </form>\n    </div>\n    <div id=\"profile-container\">\n      <h1>Welcome To Your Profile!</h1>\n    </div>\n    <script src=\"script.js\"></script>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  font-family: 'Lato', sans-serif;\n  background-color: #3E416D;\n}\n\nh1 {\n  color: white;\n  margin-bottom: 20px;\n}\n\ninput {\n  height: 35px;\n  margin: 10px;\n  border-radius: 10px;\n}\n\nform {\n  display: flex;\n  margin: 0 auto;\n  flex-direction: column;\n  min-width: 300px;\n  max-width: 500px;\n}\n\nbutton {\n  height: 35px;\n  margin: 10px;\n  background-color: #62D76B;\n  border-radius: 16px;\n}\n\n#form-container {\n  text-align: center;\n}\n\n#none {\n  display: none;\n}\n\n#profile-container {\n  visibility: hidden;\n  color: white;\n  text-align: center;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "let userName = '';\nlet email = '';\nlet password = '';\nlet userExists = false;\nlet registered = false;\nconst formContainer = document.getElementById(\"form-container\");\nconst profileContainer = document.getElementById(\"profile-container\");\nconst userDatabase = [\"John\", \"Jane\", \"Bob\", \"Ashley\"];\n\nfunction formInput(e) {\n  e.preventDefault();\n  userName = e.target.username.value;\n  email = e.target.email.value;\n  password = e.target.password.value;\n  checkExistingUser(userDatabase);\n}\n\nfunction checkExistingUser(array) {\n  for (let i = 0; i < array.length; i++) {\n    if (userName === array[i]) {\n      console.log(\n        \"It looks like this username is already taken. Please choose another.\"\n        );\n      return true;\n    }\n  }\n  formValidate(userName, email, password);\n}\n\nfunction formValidate(usernameVar, emailVar, passwordVar) {\n  if (usernameVar && emailVar && passwordVar) {\n    console.log(\"Congratulations on signing up!\");\n    registered = true;\n  } else {\n    console.log(\"All form fields must be filled out.\");\n  }\n}\n\nfunction renderProfile(registeredBoolean) {\n  if (registeredBoolean) {}\n}",
+                  "solvedContent": "let userName = '';\nlet email = '';\nlet password = '';\nlet userExists = false;\nlet registered = false;\nconst formContainer = document.getElementById(\"form-container\");\nconst profileContainer = document.getElementById(\"profile-container\");\nconst userDatabase = [\"John\", \"Jane\", \"Bob\", \"Ashley\"];\n\nfunction formInput(e) {\n  e.preventDefault();\n  userName = e.target.username.value;\n  email = e.target.email.value;\n  password = e.target.password.value;\n  checkExistingUser(userDatabase);\n}\n\nfunction checkExistingUser(array) {\n  for (let i = 0; i < array.length; i++) {\n    if (userName === array[i]) {\n      console.log(\n        \"It looks like this username is already taken. Please choose another.\"\n        );\n      return true;\n    }\n  }\n  formValidate(userName, email, password);\n}\n\nfunction formValidate(usernameVar, emailVar, passwordVar) {\n  if (usernameVar && emailVar && passwordVar) {\n    console.log(\"Congratulations on signing up!\");\n    registered = true;\n  } else {\n    console.log(\"All form fields must be filled out.\");\n  }\n}\n\nfunction renderProfile(registeredBoolean) {\n  if (registeredBoolean) {\n    formContainer.setAttribute(\"id\", \"none\");\n    profileContainer.style.visibility = \"visible\";\n  }\n}"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Create renderProfile()",
+            "id": 117662,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Ora che la funzione `renderProfile` è completa, `formValidate(usernameVar, emailVar, passwordVar)` dovrebbe chiamarla se la registrazione è riuscita.\n\n1. Chiama `renderProfile` passando `registered` come parametro nella funzione `formValidate`, all'interno dell'istruzione if, dopo che `registered` è stato impostato su `true`.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<html>\n  <head>\n    <meta charset=\"utf-8\">\n    <meta name=\"viewport\" content=\"width=device-width\">\n    <title></title>\n    <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n    <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n    <link href=\"https://fonts.googleapis.com/css2?family=Lato&display=swap\"\n      rel=\"stylesheet\">\n    <link href=\"style.css\" rel=\"stylesheet\" type=\"text/css\" />\n  </head>\n  <body>\n    <div id=\"form-container\">\n      <h1>Register Here</h1>\n      <form onsubmit=\"formInput(event)\">\n        <input type=\"text\" name=\"username\" id=\"username\"\n          placeholder=\"Username\" />\n        <input type=\"email\" name=\"email\" id=\"email\" placeholder=\"Email\" />\n        <input type=\"password\" name=\"password\" id=\"password\"\n          placeholder=\"Password\" />\n        <button type=\"submit\" id=\"button\">Complete Registration</button>\n      </form>\n    </div>\n    <div id=\"profile-container\">\n      <h1>Welcome To Your Profile!</h1>\n    </div>\n    <script src=\"script.js\"></script>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  font-family: 'Lato', sans-serif;\n  background-color: #3E416D;\n}\n\nh1 {\n  color: white;\n  margin-bottom: 20px;\n}\n\ninput {\n  height: 35px;\n  margin: 10px;\n  border-radius: 10px;\n}\n\nform {\n  display: flex;\n  margin: 0 auto;\n  flex-direction: column;\n  min-width: 300px;\n  max-width: 500px;\n}\n\nbutton {\n  height: 35px;\n  margin: 10px;\n  background-color: #62D76B;\n  border-radius: 16px;\n}\n\n#form-container {\n  text-align: center;\n}\n\n#none {\n  display: none;\n}\n\n#profile-container {\n  visibility: hidden;\n  color: white;\n  text-align: center;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "let userName = '';\nlet email = '';\nlet password = '';\nlet userExists = false;\nlet registered = false;\nconst formContainer = document.getElementById(\"form-container\");\nconst profileContainer = document.getElementById(\"profile-container\");\nconst userDatabase = [\"John\", \"Jane\", \"Bob\", \"Ashley\"];\n\nfunction formInput(e) {\n  e.preventDefault();\n  userName = e.target.username.value;\n  email = e.target.email.value;\n  password = e.target.password.value;\n  checkExistingUser(userDatabase);\n}\n\nfunction checkExistingUser(array) {\n  for (let i = 0; i < array.length; i++) {\n    if (userName === array[i]) {\n      console.log(\n        \"It looks like this username is already taken. Please choose another.\"\n        );\n      return true;\n    }\n  }\n  formValidate(userName, email, password);\n}\n\nfunction formValidate(usernameVar, emailVar, passwordVar) {\n  if (usernameVar && emailVar && passwordVar) {\n    console.log(\"Congratulations on signing up!\");\n    registered = true;\n  } else {\n    console.log(\"All form fields must be filled out.\");\n  }\n}\n\nfunction renderProfile(registeredBoolean) {\n  if (registeredBoolean) {\n    formContainer.setAttribute(\"id\", \"none\");\n    profileContainer.style.visibility = \"visible\";\n  }\n}",
+                  "solvedContent": "let userName = '';\nlet email = '';\nlet password = '';\nlet userExists = false;\nlet registered = false;\nconst formContainer = document.getElementById(\"form-container\");\nconst profileContainer = document.getElementById(\"profile-container\");\nconst userDatabase = [\"John\", \"Jane\", \"Bob\", \"Ashley\"];\n\nfunction formInput(e) {\n  e.preventDefault();\n  userName = e.target.username.value;\n  email = e.target.email.value;\n  password = e.target.password.value;\n  checkExistingUser(userDatabase);\n}\n\nfunction checkExistingUser(array) {\n  for (let i = 0; i < array.length; i++) {\n    if (userName === array[i]) {\n      console.log(\n        \"It looks like this username is already taken. Please choose another.\"\n        );\n      return true;\n    }\n  }\n  formValidate(userName, email, password);\n}\n\nfunction formValidate(usernameVar, emailVar, passwordVar) {\n  if (usernameVar && emailVar && passwordVar) {\n    console.log(\"Congratulations on signing up!\");\n    registered = true;\n    renderProfile(registered);\n  } else {\n    console.log(\"All form fields must be filled out.\");\n  }\n}\n\nfunction renderProfile(registeredBoolean) {\n  if (registeredBoolean) {\n    formContainer.setAttribute(\"id\", \"none\");\n    profileContainer.style.visibility = \"visible\";\n  }\n}"
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

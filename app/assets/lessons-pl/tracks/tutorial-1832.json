@@ -1,0 +1,331 @@
+{
+  "tutorial": {
+    "id": 1832,
+    "version": 9,
+    "type": "guidedProjectOptional",
+    "isNew": false,
+    "codeLanguage": "javascript",
+    "title": "Interaktywna galeria obrazów",
+    "descriptionContent": "Użyj JavaScriptu, aby utworzyć przyciski głosowania w górę i w dół",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": "tutorial-1832-icon-banner.svg",
+    "chapters": [
+      {
+        "id": 12149,
+        "title": "Interaktywna galeria obrazów",
+        "type": "practiceLevel3",
+        "lessons": [
+          {
+            "title": "Step 1",
+            "id": 110801,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Zbudujmy interaktywną galerię obrazów, która wyświetla duże, główne zdjęcie oraz serię miniatur.\n\nNajpierw poświęć chwilę na przeanalizowanie dostarczonego kodu. Zwróć szczególną uwagę na strukturę HTML galerii obrazów oraz identyfikatory elementów obrazów.\n\nPodczas przeglądania galerii obrazów użytkownik powinien móc wybrać miniaturę, aby wyświetlić ją jako główne zdjęcie. Zacznijmy od zadeklarowania funkcji, która przyjmuje jako parametr `id` klikniętej miniatury. Przekazując `id` miniatury, będziemy mogli zmienić główne zdjęcie na dowolny obraz miniatury kliknięty przez użytkownika.\n\n1. Zadeklaruj funkcję `setMainImage()`, która powinna przyjmować jeden parametr: `id`.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <title></title>\n    <script type=\"text/javascript\" src=\"script.js\"></script>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div id=\"gallery\">\n      <div id=\"main\">\n        <img id=\"mainImage\" src=\"https://mimo.app/i/kittles.png\" />\n      </div>\n      <div id=\"thumbnailList\">\n        <img id=\"thumbnail1\" class=\"border\"\n          src=\"https://mimo.app/i/kittles.png\" />\n        <img id=\"thumbnail2\" src=\"https://mimo.app/i/babaganoosh.png\" />\n        <img id=\"thumbnail3\" src=\"https://mimo.app/i/underwater.png\" />\n        <img id=\"thumbnail4\" src=\"https://mimo.app/i/lighthouse.png\" />\n        <img id=\"thumbnail5\" src=\"https://mimo.app/i/market.png\" />\n      </div>\n    </div>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-content: center;\n}\n\n#thumbnailList img {\n  width: 15%;\n  height: auto;\n}\n\n#mainImage {\n  width: 50%;\n  height: auto;\n}\n\n.border {\n  border: 2px solid pink;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "",
+                  "solvedContent": "function setMainImage(id) {}"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Step 2",
+            "id": 110807,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Teraz ustawmy zmienne w naszej funkcji, aby wyszukać i zapisać odwołania do elementów, którymi chcemy manipulować.\n\n1. Najpierw wyszukaj w `document` element `#mainImage` i zapisz jego odwołanie w zmiennej o nazwie `mainImage`.\n2. Następnie wyszukaj w `document` element `#thumbnail` z powiązanym atrybutem `id`, zgodnym z formatem atrybutów `id` miniatur w pliku HTML. Zapisz jego odwołanie w zmiennej o nazwie `thumbnail`.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <title></title>\n    <script type=\"text/javascript\" src=\"script.js\"></script>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div id=\"gallery\">\n      <div id=\"main\">\n        <img id=\"mainImage\" src=\"https://mimo.app/i/kittles.png\" />\n      </div>\n      <div id=\"thumbnailList\">\n        <img id=\"thumbnail1\" class=\"border\"\n          src=\"https://mimo.app/i/kittles.png\" />\n        <img id=\"thumbnail2\" src=\"https://mimo.app/i/babaganoosh.png\" />\n        <img id=\"thumbnail3\" src=\"https://mimo.app/i/underwater.png\" />\n        <img id=\"thumbnail4\" src=\"https://mimo.app/i/lighthouse.png\" />\n        <img id=\"thumbnail5\" src=\"https://mimo.app/i/market.png\" />\n      </div>\n    </div>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-content: center;\n}\n\n#thumbnailList img {\n  width: 15%;\n  height: auto;\n}\n\n#mainImage {\n  width: 50%;\n  height: auto;\n}\n\n.border {\n  border: 2px solid pink;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "function setMainImage(id) {}",
+                  "solvedContent": "function setMainImage(id) {\n  const mainImage = document.querySelector(\"#mainImage\");\n  const thumbnail = document.querySelector(\"#thumbnail\" + id);\n}"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "For the `thumbnail` variable, you'll need to concatenate a string with the `id` parameter to appropriately target the element. The `id` parameter will be an integer corresponding to the thumbnail number, so you'll need to concatenate `\"#thumbnail\"` with the `id` parameter. For example, calling the function with the argument`3` should store the value `#thumbnail3` in the `thumbnail` variable."
+                }
+              ]
+            }
+          },
+          {
+            "title": "Step 3",
+            "id": 110808,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Aby dynamicznie ustawiać główny obraz na obraz, który użytkownik kliknie, musisz pobrać atrybut `src` wybranej miniatury.\n\n1. Utwórz zmienną o nazwie `thumbnailSrc`.\n2. Użyj odpowiedniej funkcji JavaScript, aby pobrać atrybut `src` wybranej miniatury i zapisać go w zmiennej `thumbnailSrc`.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <title></title>\n    <script type=\"text/javascript\" src=\"script.js\"></script>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div id=\"gallery\">\n      <div id=\"main\">\n        <img id=\"mainImage\" src=\"https://mimo.app/i/kittles.png\" />\n      </div>\n      <div id=\"thumbnailList\">\n        <img id=\"thumbnail1\" class=\"border\"\n          src=\"https://mimo.app/i/kittles.png\" />\n        <img id=\"thumbnail2\" src=\"https://mimo.app/i/babaganoosh.png\" />\n        <img id=\"thumbnail3\" src=\"https://mimo.app/i/underwater.png\" />\n        <img id=\"thumbnail4\" src=\"https://mimo.app/i/lighthouse.png\" />\n        <img id=\"thumbnail5\" src=\"https://mimo.app/i/market.png\" />\n      </div>\n    </div>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-content: center;\n}\n\n#thumbnailList img {\n  width: 15%;\n  height: auto;\n}\n\n#mainImage {\n  width: 50%;\n  height: auto;\n}\n\n.border {\n  border: 2px solid pink;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "function setMainImage(id) {\n  const mainImage = document.querySelector(\"#mainImage\");\n  const thumbnail = document.querySelector(\"#thumbnail\" + id);\n}",
+                  "solvedContent": "function setMainImage(id) {\n  const mainImage = document.querySelector(\"#mainImage\");\n  const thumbnail = document.querySelector(\"#thumbnail\" + id);\n  const thumbnailSrc = thumbnail.getAttribute(\"src\");\n}"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Step 4",
+            "id": 110812,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Do tej pory zapisaliśmy odwołania do elementów `mainImage` i `thumbnail`, a także atrybut `src` obrazu `thumbnail`. Jak wspomniano wcześniej, wywołanie tej funkcji powinno ustawić `mainImage` na klikniętą miniaturę. Zakodujmy teraz tę funkcjonalność.\n\n1. Użyj odpowiedniej funkcji JavaScript, aby ustawić atrybut `src` elementu `mainImage` na wartość przechowywaną w zmiennej `thumbnailSrc`.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <title></title>\n    <script type=\"text/javascript\" src=\"script.js\"></script>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div id=\"gallery\">\n      <div id=\"main\">\n        <img id=\"mainImage\" src=\"https://mimo.app/i/kittles.png\" />\n      </div>\n      <div id=\"thumbnailList\">\n        <img id=\"thumbnail1\" class=\"border\"\n          src=\"https://mimo.app/i/kittles.png\" />\n        <img id=\"thumbnail2\" src=\"https://mimo.app/i/babaganoosh.png\" />\n        <img id=\"thumbnail3\" src=\"https://mimo.app/i/underwater.png\" />\n        <img id=\"thumbnail4\" src=\"https://mimo.app/i/lighthouse.png\" />\n        <img id=\"thumbnail5\" src=\"https://mimo.app/i/market.png\" />\n      </div>\n    </div>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-content: center;\n}\n\n#thumbnailList img {\n  width: 15%;\n  height: auto;\n}\n\n#mainImage {\n  width: 50%;\n  height: auto;\n}\n\n.border {\n  border: 2px solid pink;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "function setMainImage(id) {\n  const mainImage = document.querySelector(\"#mainImage\");\n  const thumbnail = document.querySelector(\"#thumbnail\" + id);\n  const thumbnailSrc = thumbnail.getAttribute(\"src\");\n}",
+                  "solvedContent": "\nconst setMainImage = id => {\n  const mainImage = document.querySelector(\"#mainImage\");\n  const thumbnail = document.querySelector(\"#thumbnail\" + id);\n  const thumbnailSrc = thumbnail.getAttribute(\"src\");\n  mainImage.setAttribute(\"src\", thumbnailSrc);\n};"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "Use the `setAttribute` function, which can take two parameters: attribute name and value.\n"
+                }
+              ]
+            }
+          },
+          {
+            "title": "Step 5",
+            "id": 110816,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Chcemy wywoływać funkcję `setMainImage()` po kliknięciu miniatury. Aby to zrobić, dodaj odbiornik zdarzenia `onclick` do każdego obrazu miniatury w pliku `HTML`, tak aby wywoływał naszą nową funkcję z odpowiednim parametrem. Pamiętaj, aby przekazać liczbę całkowitą odpowiadającą identyfikatorowi `id` miniatury.\n\nPo zakończeniu kliknięcie miniatur powinno zmieniać główny obraz. Spróbuj!\n\n1. Dodaj odbiornik zdarzenia `onclick` do każdego elementu obrazu miniatury, który wywołuje funkcję `setMainImage()` z odpowiednim parametrem. Po zakończeniu spróbuj wejść w interakcję z galerią, aby sprawdzić swoje rozwiązanie.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <title></title>\n    <script type=\"text/javascript\" src=\"script.js\"></script>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div id=\"gallery\">\n      <div id=\"main\">\n        <img id=\"mainImage\" src=\"https://mimo.app/i/kittles.png\">\n      </div>\n      <div id=\"thumbnailList\">\n        <img id=\"thumbnail1\" class=\"border\"\n          src=\"https://mimo.app/i/kittles.png\">\n        <img id=\"thumbnail2\" src=\"https://mimo.app/i/babaganoosh.png\">\n        <img id=\"thumbnail3\" src=\"https://mimo.app/i/underwater.png\">\n        <img id=\"thumbnail4\" src=\"https://mimo.app/i/lighthouse.png\">\n        <img id=\"thumbnail5\" src=\"https://mimo.app/i/market.png\">\n      </div>\n    </div>\n  </body>\n</html>",
+                  "solvedContent": "<!doctype html>\n<html>\n  <head>\n    <title></title>\n    <script type=\"text/javascript\" src=\"script.js\"></script>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div id=\"gallery\">\n      <div id=\"main\">\n        <img id=\"mainImage\" src=\"https://mimo.app/i/kittles.png\">\n      </div>\n      <div id=\"thumbnailList\">\n        <img id=\"thumbnail1\" class=\"border\" src=\"https://mimo.app/i/kittles.png\"\n          onclick=\"setMainImage(1)\">\n        <img id=\"thumbnail2\" src=\"https://mimo.app/i/babaganoosh.png\"\n          onclick=\"setMainImage(2)\">\n        <img id=\"thumbnail3\" src=\"https://mimo.app/i/underwater.png\"\n          onclick=\"setMainImage(3)\">\n        <img id=\"thumbnail4\" src=\"https://mimo.app/i/lighthouse.png\"\n          onclick=\"setMainImage(4)\">\n        <img id=\"thumbnail5\" src=\"https://mimo.app/i/market.png\"\n          onclick=\"setMainImage(5)\">\n      </div>\n    </div>\n  </body>\n</html>"
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-content: center;\n}\n\n#thumbnailList img {\n  width: 15%;\n  height: auto;\n}\n\n#mainImage {\n  width: 50%;\n  height: auto;\n}\n\n.border {\n  border: 2px solid pink;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "function setMainImage(id) {\n  const mainImage = document.querySelector(\"#mainImage\");\n  const thumbnail = document.querySelector(\"#thumbnail\" + id);\n  const thumbnailSrc = thumbnail.getAttribute(\"src\");\n  mainImage.setAttribute(\"src\", thumbnailSrc);\n}",
+                  "solvedContent": null
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Step 6",
+            "id": 110813,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Nasza galeria jest teraz interaktywna, ale musimy zastosować obramowanie do klikniętej miniatury.\n\n1. Użyj odpowiedniej funkcji JavaScript, aby dodać klasę CSS `border` do wybranego elementu `thumbnail`.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <title></title>\n    <script type=\"text/javascript\" src=\"script.js\"></script>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div id=\"gallery\">\n      <div id=\"main\">\n        <img id=\"mainImage\" src=\"https://mimo.app/i/kittles.png\" />\n      </div>\n      <div id=\"thumbnailList\">\n        <img id=\"thumbnail1\" class=\"border\" src=\"https://mimo.app/i/kittles.png\"\n          onclick=\"setMainImage(1)\" />\n        <img id=\"thumbnail2\" src=\"https://mimo.app/i/babaganoosh.png\"\n          onclick=\"setMainImage(2)\" />\n        <img id=\"thumbnail3\" src=\"https://mimo.app/i/underwater.png\"\n          onclick=\"setMainImage(3)\" />\n        <img id=\"thumbnail4\" src=\"https://mimo.app/i/lighthouse.png\"\n          onclick=\"setMainImage(4)\" />\n        <img id=\"thumbnail5\" src=\"https://mimo.app/i/market.png\"\n          onclick=\"setMainImage(5)\" />\n      </div>\n    </div>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-content: center;\n}\n\n#thumbnailList img {\n  width: 15%;\n  height: auto;\n}\n\n#mainImage {\n  width: 50%;\n  height: auto;\n}\n\n.border {\n  border: 2px solid pink;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "function setMainImage(id) {\n  const mainImage = document.querySelector(\"#mainImage\");\n  const thumbnail = document.querySelector(\"#thumbnail\" + id);\n  const thumbnailSrc = thumbnail.getAttribute(\"src\");\n  mainImage.setAttribute(\"src\", thumbnailSrc);\n}",
+                  "solvedContent": "function setMainImage (id){\n  const mainImage = document.querySelector(\"#mainImage\");\n  const thumbnail = document.querySelector(\"#thumbnail\" + id);\n  const thumbnailSrc = thumbnail.getAttribute(\"src\");\n  mainImage.setAttribute(\"src\", thumbnailSrc);\n  thumbnail.classList.add(\"border\");\n}"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "Use `classList.add` to add the border."
+                }
+              ]
+            }
+          },
+          {
+            "title": "Step 7",
+            "id": 110814,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Kliknięcie miniatur dodaje obramowanie, ale nadal musimy usunąć istniejące obramowanie. W ramach ostatniego kroku tego projektu zajmijmy się napisaniem funkcji usuwającej klasę CSS `border` ze wszystkich elementów miniatur. Wywołamy tę funkcję przed dodaniem obramowania po kliknięciu miniatury.\n\n1. Na początku pliku `script.js` zadeklaruj funkcję o nazwie `clearBorders`, która nie przyjmuje żadnych parametrów.\n2. W treści funkcji utwórz zmienną o nazwie `elements` i użyj zapytania do dokumentu HTML, aby przechować odwołanie do wszystkich elementów z nazwą klasy `border`.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <title></title>\n    <script type=\"text/javascript\" src=\"script.js\"></script>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div id=\"gallery\">\n      <div id=\"main\">\n        <img id=\"mainImage\" src=\"https://mimo.app/i/kittles.png\" />\n      </div>\n      <div id=\"thumbnailList\">\n        <img id=\"thumbnail1\" class=\"border\" src=\"https://mimo.app/i/kittles.png\"\n          onclick=\"setMainImage(1)\" />\n        <img id=\"thumbnail2\" src=\"https://mimo.app/i/babaganoosh.png\"\n          onclick=\"setMainImage(2)\" />\n        <img id=\"thumbnail3\" src=\"https://mimo.app/i/underwater.png\"\n          onclick=\"setMainImage(3)\" />\n        <img id=\"thumbnail4\" src=\"https://mimo.app/i/lighthouse.png\"\n          onclick=\"setMainImage(4)\" />\n        <img id=\"thumbnail5\" src=\"https://mimo.app/i/market.png\"\n          onclick=\"setMainImage(5)\" />\n      </div>\n    </div>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-content: center;\n}\n\n#thumbnailList img {\n  width: 15%;\n  height: auto;\n}\n\n#mainImage {\n  width: 50%;\n  height: auto;\n}\n\n.border {\n  border: 2px solid pink;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "function setMainImage(id) {\n  const mainImage = document.querySelector(\"#mainImage\");\n  const thumbnail = document.querySelector(\"#thumbnail\" + id);\n  const thumbnailSrc = thumbnail.getAttribute(\"src\");\n  mainImage.setAttribute(\"src\", thumbnailSrc);\n  thumbnail.classList.add(\"border\");\n}",
+                  "solvedContent": "function clearBorders() {\n  const elements = document.getElementsByClassName(\"border\");\n}\n\nfunction setMainImage(id) {\n  const mainImage = document.querySelector(\"#mainImage\");\n  const thumbnail = document.querySelector(\"#thumbnail\" + id);\n  const thumbnailSrc = thumbnail.getAttribute(\"src\");\n  mainImage.setAttribute(\"src\", thumbnailSrc);\n  thumbnail.classList.add(\"border\");\n}"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Step 8",
+            "id": 110815,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Następnie, ponieważ `.getElementsByClassName` zwraca tablicę elementów, musisz przeiterować przez `elements` i usunąć klasę CSS `border` z każdego elementu.\n\n1. Napisz pętlę `for...of`, która iteruje przez tablicę `elements`, a każdy pojedynczy wpis tablicy nazywa się `element`.\n2. Następnie w treści pętli `for...of` usuń klasę CSS `border` z każdego `element`.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <title></title>\n    <script type=\"text/javascript\" src=\"script.js\"></script>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div id=\"gallery\">\n      <div id=\"main\">\n        <img id=\"mainImage\" src=\"https://mimo.app/i/kittles.png\" />\n      </div>\n      <div id=\"thumbnailList\">\n        <img id=\"thumbnail1\" class=\"border\" src=\"https://mimo.app/i/kittles.png\"\n          onclick=\"setMainImage(1)\" />\n        <img id=\"thumbnail2\" src=\"https://mimo.app/i/babaganoosh.png\"\n          onclick=\"setMainImage(2)\" />\n        <img id=\"thumbnail3\" src=\"https://mimo.app/i/underwater.png\"\n          onclick=\"setMainImage(3)\" />\n        <img id=\"thumbnail4\" src=\"https://mimo.app/i/lighthouse.png\"\n          onclick=\"setMainImage(4)\" />\n        <img id=\"thumbnail5\" src=\"https://mimo.app/i/market.png\"\n          onclick=\"setMainImage(5)\" />\n      </div>\n    </div>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-content: center;\n}\n\n#thumbnailList img {\n  width: 15%;\n  height: auto;\n}\n\n#mainImage {\n  width: 50%;\n  height: auto;\n}\n\n.border {\n  border: 2px solid pink;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "function clearBorders() {\n  const elements = document.getElementsByClassName(\"border\");\n}\n\nfunction setMainImage(id) {\n  const mainImage = document.querySelector(\"#mainImage\");\n  const thumbnail = document.querySelector(\"#thumbnail\" + id);\n  const thumbnailSrc = thumbnail.getAttribute(\"src\");\n  mainImage.setAttribute(\"src\", thumbnailSrc);\n  thumbnail.classList.add(\"border\");\n}",
+                  "solvedContent": "function clearBorders() {\n  const elements = document.getElementsByClassName(\"border\");\n  for (const element of elements) {\n    element.classList.remove(\"border\");\n  }\n}\n\nfunction setMainImage(id) {\n  const mainImage = document.querySelector(\"#mainImage\");\n  const thumbnail = document.querySelector(\"#thumbnail\" + id);\n  const thumbnailSrc = thumbnail.getAttribute(\"src\");\n  mainImage.setAttribute(\"src\", thumbnailSrc);\n  thumbnail.classList.add(\"border\");\n}"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "The `for...of` loop alternate syntax to iterate through an iterable object like an array, and looks like this:\n```\n for (const `element` of `elements`) {\n //instructions\n }\n```"
+                }
+              ]
+            }
+          },
+          {
+            "title": "Step 9",
+            "id": 110806,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Na koniec musimy uwzględnić funkcję `clearBorders()` w ciele funkcji `setMainImage()`, aby usunąć obramowania ze wszystkich miniatur tuż przed dodaniem obramowania do klikniętej miniatury.\n\n1. Wywołaj funkcję `clearBorders()` tuż przed dodaniem obramowania do klikniętej miniatury w ciele funkcji `setMainImage()`.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <title></title>\n    <script type=\"text/javascript\" src=\"script.js\"></script>\n    <link rel=\"stylesheet\" href=\"style.css\">\n  </head>\n  <body>\n    <div id=\"gallery\">\n      <div id=\"main\">\n        <img id=\"mainImage\" src=\"https://mimo.app/i/kittles.png\" />\n      </div>\n      <div id=\"thumbnailList\">\n        <img id=\"thumbnail1\" class=\"border\" src=\"https://mimo.app/i/kittles.png\"\n          onclick=\"setMainImage(1)\" />\n        <img id=\"thumbnail2\" src=\"https://mimo.app/i/babaganoosh.png\"\n          onclick=\"setMainImage(2)\" />\n        <img id=\"thumbnail3\" src=\"https://mimo.app/i/underwater.png\"\n          onclick=\"setMainImage(3)\" />\n        <img id=\"thumbnail4\" src=\"https://mimo.app/i/lighthouse.png\"\n          onclick=\"setMainImage(4)\" />\n        <img id=\"thumbnail5\" src=\"https://mimo.app/i/market.png\"\n          onclick=\"setMainImage(5)\" />\n      </div>\n    </div>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\n  display: flex;\n  flex-direction: row;\n  justify-content: center;\n  align-content: center;\n}\n\n#thumbnailList img {\n  width: 15%;\n  height: auto;\n}\n\n#mainImage {\n  width: 50%;\n  height: auto;\n}\n\n.border {\n  border: 2px solid pink;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "function clearBorders() {\n  const elements = document.getElementsByClassName(\"border\");\n  for (const element of elements) {\n    element.classList.remove(\"border\");\n  }\n}\n\nfunction setMainImage(id) {\n  const mainImage = document.querySelector(\"#mainImage\");\n  const thumbnail = document.querySelector(\"#thumbnail\" + id);\n  const thumbnailSrc = thumbnail.getAttribute(\"src\");\n  mainImage.setAttribute(\"src\", thumbnailSrc);\n  thumbnail.classList.add(\"border\");\n}",
+                  "solvedContent": "function clearBorders() {\n  const elements = document.getElementsByClassName(\"border\");\n  for (const element of elements) {\n    element.classList.remove(\"border\");\n  }\n}\n\nfunction setMainImage(id) {\n  const mainImage = document.querySelector(\"#mainImage\");\n  const thumbnail = document.querySelector(\"#thumbnail\" + id);\n  const thumbnailSrc = thumbnail.getAttribute(\"src\");\n  mainImage.setAttribute(\"src\", thumbnailSrc);\n  clearBorders();\n  thumbnail.classList.add(\"border\");\n}"
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

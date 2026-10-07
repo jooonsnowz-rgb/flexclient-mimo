@@ -1,0 +1,243 @@
+{
+  "tutorial": {
+    "id": 2435,
+    "version": 4,
+    "type": "guidedProjectOptional",
+    "isNew": false,
+    "codeLanguage": "python",
+    "title": "Envanteri Yönetme",
+    "descriptionContent": "Bir çevrim içi mağaza için özel bir ürün nesnesi oluşturmak üzere bir Python sınıfı kullanacağız.",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": "tutorial-2435-icon-banner.svg",
+    "chapters": [
+      {
+        "id": 14013,
+        "title": "Envanteri Yönetme",
+        "type": "practiceLevel1",
+        "lessons": [
+          {
+            "title": "Creating the class and constructor",
+            "id": 124305,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Çevrimiçi bir mağaza açmaya hazırlanırken, güçlü yerleşik metotlara ve tutarlı yapılara sahip ürün nesneleri oluşturmak için bir Python sınıfı kullanacağız.\n\nPython sınıfları, tek tip yapıya sahip birçok nesne üretmek için birer şablon gibi çalışır; aynı zamanda her bir ürün nesnesinin özelliklerini özelleştirmemize de olanak tanır. `Product` adlı bir sınıf oluşturarak başlayacağız.\n\n1. `Product` adlı bir sınıf oluştur.\n2. Sınıfın içinde bir kurucu metot oluştur.\n3. Kurucu metodun parantezleri içinde ilk parametre olarak `self` ayarla ve `name`, `price` ve `units` için ek parametreler ekle.\n4. Kurucu metodun içinde, aktarılan değerlerin her birini aynı ada sahip nesne özelliklerine atayacak kodu yaz.\n5. Kurucunun içinde `is_on_sale` adlı ek bir özelliği `False` değeriyle ayarla.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "",
+                  "solvedContent": "class Product:\n  def __init__(self, name, price, units):\n    self.name = name\n    self.price = price\n    self.units = units\n    self.is_on_sale = False"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "1. To create a class in Python, we start with the keyword `class` followed by the class name (with the first letter capitalized) followed by a colon: `class Class_Name:`.\n2. A class constructor method follows this format:\n```python\n def __init__(self, first_param_val, second_param_val, ...):\n  self.first_param = first_param_val\n  self.second_param = second_param_val\n  ...\n```"
+                }
+              ]
+            }
+          },
+          {
+            "title": "Creating a product instance",
+            "id": 124307,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Artık `Product` sınıfını oluşturduğumuza göre, çevrim içi mağazamızda satacağımız ürünlerden biri için bir nesne oluşturmak üzere onu kullanalım!\n\n1. `laptop` adında bir değişken oluştur.\n2. Bu değişken içinde `Product` sınıfının bir örneğini oluştur.\n3. `name` argümanı olarak `\"Dell Laptop\"` değerini ilet.\n4. `price` argümanı olarak `850` değerini ilet.\n5. `units` argümanı olarak `12` değerini ilet.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "class Product:\n  def __init__(self, name, price, units):\n    self.name = name\n    self.price = price\n    self.units = units\n    self.is_on_sale = False\n\n\n",
+                  "solvedContent": "class Product:\n  def __init__(self, name, price, units):\n    self.name = name\n    self.price = price\n    self.units = units\n    self.is_on_sale = False\n\nlaptop = Product(\"Dell Laptop\", 850, 12)\n"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "To create an instance of a class, we use this format:  `Class_Name(first_argument, second_argument, ...)`"
+                }
+              ]
+            }
+          },
+          {
+            "title": "The `describe` method",
+            "id": 124308,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "`laptop` nesnesini `Product` sınıfımızı kullanarak oluşturduğumuza göre, nesnenin diğer özelliklerini (`price`, `is_on_sale` vb.), `name` özelliğinin değerini yazdırdığımız şekilde kolayca yazdırabiliriz. Bu açıklayıcı bilgilerin yazdırılmasını yeniden kullanılabilir hâle getirmek için `Product` sınıfımızın içinde bir metot oluşturalım.\n\n1. Constructor metodundan sonra `describe` adında yeni bir metot ekle.\n2. Aşağıdaki satırları `describe()` metodunun içine kopyalayıp yapıştır ve boş süslü parantezlerin içine doğru sınıf özelliğini ekleyerek her birini tamamla: \n```python\nprint(f\"Product name: {}\")\nprint(f\"Product price: {}\")\nprint(f\"Available units: {}\")\nprint(f\"On sale? {}\")\nprint(\"-------------------------\")\n```\nArdından çalıştığını doğrulamak için yeni `describe()` metodunu `laptop` nesnesi üzerinde çağır!\n\n**Not: Yeni metot çağrıları eklerken bunları mevcut kodların altına yaz.**",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "class Product:\n  def __init__(self, name, price, units):\n    self.name = name\n    self.price = price\n    self.units = units\n    self.is_on_sale = False\n\nlaptop = Product(\"Dell Laptop\", 850, 12)\n# call your method here!`\n",
+                  "solvedContent": "class Product:\n  def __init__(self, name, price, units):\n    self.name = name\n    self.price = price\n    self.units = units\n    self.is_on_sale = False\n\n  def describe(self):\n    print(f\"Product name: {self.name}\")\n    print(f\"Product price: {self.price}\")\n    print(f\"Available units: {self.units}\")\n    print(f\"On sale? {self.is_on_sale}\")\n    print(\"-------------------------\")\n   \nlaptop = Product(\"Dell Laptop\", 850, 12)\nlaptop.describe()\n"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "1. To create a new method within a class, we use the following syntax: `def method_name(self, first_param_val, second_param_val, ...):`.\n2. We can access a property within a class method using `self.property_name`."
+                }
+              ]
+            }
+          },
+          {
+            "title": "The `add_units` method",
+            "id": 124309,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Şimdi bir ürünün stok miktarını artırmak için yeni bir metot ekleyeceğiz. Herhangi bir sayıda birim eklemeye izin vermek için bu metodu esnek hale getireceğiz.\n\n1. `describe()` metodundan sonra `units` parametresine sahip `add_units` adında yeni bir metot ekle.\n2. Bu yeni metodun içinde, `units` argümanının değerini ekleyerek `self.units` değerini güncelleyen kodu yaz.\n3. Ardından metodu `laptop` nesnesi üzerinde çağırıp `units` için `15` değerini vererek test et.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "class Product:\n  def __init__(self, name, price, units):\n    self.name = name\n    self.price = price\n    self.units = units\n    self.is_on_sale = False\n\n  def describe(self):\n    print(f\"Product name: {self.name}\")\n    print(f\"Product price: {self.price}\")\n    print(f\"Available units: {self.units}\")\n    print(f\"On sale? {self.is_on_sale}\")\n    print(\"-------------------------\")\n\n\n   \nlaptop = Product(\"Dell Laptop\", 850, 12)\nlaptop.describe()\n# call your method here!\nlaptop.describe()\n",
+                  "solvedContent": "class Product:\n  def __init__(self, name, price, units):\n    self.name = name\n    self.price = price\n    self.units = units\n    self.is_on_sale = False\n\n  def describe(self):\n    print(f\"Product name: {self.name}\")\n    print(f\"Product price: {self.price}\")\n    print(f\"Available units: {self.units}\")\n    print(f\"On sale? {self.is_on_sale}\")\n    print(\"-------------------------\")\n    \n  def add_units(self, units):\n    self.units += units\n\nlaptop = Product(\"Dell Laptop\", 850, 12)\nlaptop.describe()\nlaptop.add_units(15)\nlaptop.describe()"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "1. To create a new method within a class, we use the following syntax: `def method_name(self, first_param_val, second_param_val, ...):`.\n2. Remember that you can add to an existing property as follows: `self.property_name += value_to_add`. "
+                }
+              ]
+            }
+          },
+          {
+            "title": "The `reduce_units()` method",
+            "id": 124310,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Sırada, bir ürünün stok miktarını azaltmak için yeni bir metot ekleyeceğiz. Stok miktarının mevcut birim sayısına kadar azaltılabilmesi için bu metodu da esnek hâle getireceğiz.\n\n1. `add_units()` metodundan sonra `units` parametresine sahip, `reduce_units` adında yeni bir metot ekle.\n2. Bu yeni metodun içinde `self.units - units >= 0` koşulunu kontrol eden bir koşul ifadesi yaz.\n3. Koşul doğruysa, `units` argümanının değerini çıkararak `self.units` değerini güncelleyen kodu yaz.\n4. Koşul yanlışsa, şu dizeyi yazdıran kodu yaz: `\"Error: Not enough units in inventory.\"`\n5. `laptop` nesnesi üzerinde bu metodu çağırarak ve `units` için `10` geçirerek metodu test et.\n6. `laptop` nesnesi üzerinde metodu tekrar çağırarak ve `units` için `20` geçirerek metodun \"error\" sonucunu test et.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "class Product:\n  def __init__(self, name, price, units):\n    self.name = name\n    self.price = price\n    self.units = units\n    self.is_on_sale = False\n\n  def describe(self):\n    print(f\"Product name: {self.name}\")\n    print(f\"Product price: {self.price}\")\n    print(f\"Available units: {self.units}\")\n    print(f\"On sale? {self.is_on_sale}\")\n    print(\"-------------------------\")\n    \n  def add_units(self, units):\n    self.units += units\n\nlaptop = Product(\"Dell Laptop\", 850, 12)\nlaptop.describe()\nlaptop.add_units(15)\n# call your method here!\n# call your method the second time here!\nlaptop.describe()",
+                  "solvedContent": "class Product:\n  def __init__(self, name, price, units):\n    self.name = name\n    self.price = price\n    self.units = units\n    self.is_on_sale = False\n\n  def describe(self):\n    print(f\"Product name: {self.name}\")\n    print(f\"Product price: {self.price}\")\n    print(f\"Available units: {self.units}\")\n    print(f\"On sale? {self.is_on_sale}\")\n    print(\"-------------------------\")\n    \n  def add_units(self, units):\n    self.units += units\n  \n  def reduce_units(self, units):\n    if self.units - units >= 0:\n      self.units -= units\n    else:\n      print(\"Error: Not enough units in inventory.\")\n\nlaptop = Product(\"Dell Laptop\", 850, 12)\nlaptop.describe()\nlaptop.add_units(15)\nlaptop.reduce_units(10)\nlaptop.reduce_units(20)\nlaptop.describe()"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "1. To create a new method within a class, we use the following syntax: `def method_name(self, first_param_val, second_param_val, ...):`.\n2. Start by creating a conditional (if/else) statement with the condition `self.units - units >= 0`. If the condition is true, we can reduce the units like so: `self.units -= units`."
+                }
+              ]
+            }
+          },
+          {
+            "title": "The `reduce_price()` method",
+            "id": 124311,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Görünüşe göre envanterimizde çok fazla dizüstü bilgisayar var... Envanterimizi azaltmak için indirim yapalım!\n\n1. `reduce_units` metodundan sonra, `discount` parametresine sahip `reduce_price` adlı yeni bir metot ekle.\n2. `discount` değerinin, indirim miktarını ifade eden ve 1'den küçük bir ondalık değer olacağını unutma; örneğin 0.2 %20 indirim, 0.35 ise %35 indirim anlamına gelir vb.\n4. `reduce_price()` metodu içinde, `self.price` özelliğini `self.price * (1 - discount)` değerine eşit olacak şekilde güncelle.\n5. Ayrıca bu ürün artık indirime girdiği için `self.is_on_sale` değerini `True` olarak güncelle.\n6. Bu metodu, dizüstü bilgisayarın fiyatına %10 indirim uygulamak için `discount` değerine `0.1` vererek `laptop` nesnesi üzerinde çağırıp test et.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "class Product:\n  def __init__(self, name, price, units):\n    self.name = name\n    self.price = price\n    self.units = units\n    self.is_on_sale = False\n\n  def describe(self):\n    print(f\"Product name: {self.name}\")\n    print(f\"Product price: {self.price}\")\n    print(f\"Available units: {self.units}\")\n    print(f\"On sale? {self.is_on_sale}\")\n    print(\"-------------------------\")\n    \n  def add_units(self, units):\n    self.units += units\n  \n  def reduce_units(self, units):\n    if self.units - units >= 0:\n      self.units -= units\n    else:\n      print(\"Error: Not enough units in inventory.\")\n\n\n\nlaptop = Product(\"Dell Laptop\", 850, 12)\nlaptop.describe()\nlaptop.add_units(15)\nlaptop.reduce_units(10)\nlaptop.reduce_units(20)\n# call your method here!\nlaptop.describe()",
+                  "solvedContent": "class Product:\n  def __init__(self, name, price, units):\n    self.name = name\n    self.price = price\n    self.units = units\n    self.is_on_sale = False\n\n  def describe(self):\n    print(f\"Product name: {self.name}\")\n    print(f\"Product price: {self.price}\")\n    print(f\"Available units: {self.units}\")\n    print(f\"On sale? {self.is_on_sale}\")\n    print(\"-------------------------\")\n    \n  def add_units(self, units):\n    self.units += units\n  \n  def reduce_units(self, units):\n    if self.units - units >= 0:\n      self.units -= units\n    else:\n      print(\"Error: Not enough units in inventory.\")\n\n  def reduce_price(self, discount):\n    self.price = self.price * (1 - discount)\n    self.is_on_sale = True\n\nlaptop = Product(\"Dell Laptop\", 850, 12)\nlaptop.describe()\nlaptop.add_units(15)\nlaptop.reduce_units(10)\nlaptop.reduce_units(20)\nlaptop.reduce_price(0.1)\nlaptop.describe()"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "1. To create a new method within a class, we use the following syntax: `def method_name(self, first_param_val, second_param_val, ...):`."
+                }
+              ]
+            }
+          },
+          {
+            "title": "The `is_in_stock()` method",
+            "id": 124312,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "`Product` sınıfımıza bir ek metot daha ekleyelim; böylece bir ürünün stokta olup olmadığını kolayca kontrol edebiliriz.\n\n1. `reduce_price()` metodundan sonra `is_in_stock` adında yeni bir metot ekle.\n2. Bu yeni metodun içinde, ürün stoktaysa `True`, stokta değilse `False` döndürecek kodu yaz.\n\n`is_in_stock()` metodumuzu çağırmayı bir sonraki adıma kadar bekletelim!",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "class Product:\n  def __init__(self, name, price, units):\n    self.name = name\n    self.price = price\n    self.units = units\n    self.is_on_sale = False\n\n  def describe(self):\n    print(f\"Product name: {self.name}\")\n    print(f\"Product price: {self.price}\")\n    print(f\"Available units: {self.units}\")\n    print(f\"On sale? {self.is_on_sale}\")\n    print(\"-------------------------\")\n    \n  def add_units(self, units):\n    self.units += units\n  \n  def reduce_units(self, units):\n    if self.units - units >= 0:\n      self.units -= units\n    else:\n      print(\"Error: Not enough units in inventory.\")\n\n  def reduce_price(self, discount):\n    self.price = self.price * (1 - discount)\n    self.is_on_sale = True\n\nlaptop = Product(\"Dell Laptop\", 850, 12)\nlaptop.describe()\nlaptop.add_units(15)\nlaptop.reduce_units(10)\nlaptop.reduce_units(20)\nlaptop.reduce_price(0.1)\nlaptop.describe()",
+                  "solvedContent": "class Product:\n  def __init__(self, name, price, units):\n    self.name = name\n    self.price = price\n    self.units = units\n    self.is_on_sale = False\n\n  def describe(self):\n    print(f\"Product name: {self.name}\")\n    print(f\"Product price: {self.price}\")\n    print(f\"Available units: {self.units}\")\n    print(f\"On sale? {self.is_on_sale}\")\n    print(\"-------------------------\")\n    \n  def add_units(self, units):\n    self.units += units\n  \n  def reduce_units(self, units):\n    if self.units - units >= 0:\n      self.units -= units\n    else:\n      print(\"Error: Not enough units in inventory.\")\n\n  def reduce_price(self, discount):\n    self.price = self.price * (1 - discount)\n    self.is_on_sale = True\n\n  def is_in_stock(self):\n    return self.units > 0\n\nlaptop = Product(\"Dell Laptop\", 850, 12)\nlaptop.describe()\nlaptop.add_units(15)\nlaptop.reduce_units(10)\nlaptop.reduce_units(20)\nlaptop.reduce_price(0.1)\nlaptop.describe()"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "1. To create a new method within a class, we use the following syntax: `def method_name(self, first_param_val, second_param_val, ...):`.\n2. To determine whether a product is in stock, check whether the product's `unit` property is greater than 0.\n3. Remember to `return` the expression discussed in the step above! That way anytime this method is called, it will output a boolean value reflecting the status. "
+                }
+              ]
+            }
+          },
+          {
+            "title": "Updating the `describe()` method",
+            "id": 124315,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Önceki adımda `is_in_stock()` metodunu çağırmadığımızı fark etmiş olabilirsin. `is_in_stock()` bir özellik değil, bir metot olsa da ürünün adı, fiyatı vb. diğer açıklayıcı verilerle birlikte gruplanarak görülmesi yararlı olacak bir `True` veya `False` değeri döndürür. Bu bilgiyi `describe()` metodumuza ekleyelim!\n\n`describe()` metodunun sondan ikinci satırına yeni bir `print()` ifadesi ekleyelim: `print(f\"In stock? {}\")`\n\n1. Boş küme parantezlerini `is_in_stock()` metodunun çağrılmasından dönen değerle doldurarak `print()` ifadesini tamamla.\n2. `is_in_stock()` metodunun bir özellik değil, bir metot olduğunu unutma!\n\nArtık ürün nesnelerimizden biri üzerinde `describe()` metodunu her çağırdığımızda, bu değeri diğer ürün bilgileriyle birlikte yazdırılmış olarak göreceğiz! Harika iş!",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "class Product:\n  def __init__(self, name, price, units):\n    self.name = name\n    self.price = price\n    self.units = units\n    self.is_on_sale = False\n\n  def describe(self):\n    print(f\"Product name: {self.name}\")\n    print(f\"Product price: {self.price}\")\n    print(f\"Available units: {self.units}\")\n    print(f\"On sale? {self.is_on_sale}\")\n    print(f\"In stock? {}\")\n    print(\"-------------------------\")\n    \n  def add_units(self, units):\n    self.units += units\n  \n  def reduce_units(self, units):\n    if self.units - units >= 0:\n      self.units -= units\n    else:\n      print(\"Error: Not enough units in inventory.\")\n\n  def reduce_price(self, discount):\n    self.price = self.price * (1 - discount)\n    self.is_on_sale = True\n\n  def is_in_stock(self):\n    return self.units > 0\n\nlaptop = Product(\"Dell Laptop\", 850, 12)\nlaptop.describe()\nlaptop.add_units(15)\nlaptop.reduce_units(10)\nlaptop.reduce_units(20)\nlaptop.reduce_price(0.1)\nlaptop.describe()",
+                  "solvedContent": "class Product:\n  def __init__(self, name, price, units):\n    self.name = name\n    self.price = price\n    self.units = units\n    self.is_on_sale = False\n\n  def describe(self):\n    print(f\"Product name: {self.name}\")\n    print(f\"Product price: {self.price}\")\n    print(f\"Available units: {self.units}\")\n    print(f\"On sale? {self.is_on_sale}\")\n    print(f\"In stock? {self.is_in_stock()}\")\n    print(\"-------------------------\")\n    \n  def add_units(self, units):\n    self.units += units\n  \n  def reduce_units(self, units):\n    if self.units - units >= 0:\n      self.units -= units\n    else:\n      print(\"Error: Not enough units in inventory.\")\n\n  def reduce_price(self, discount):\n    self.price = self.price * (1 - discount)\n    self.is_on_sale = True\n\n  def is_in_stock(self):\n    return self.units > 0\n\nlaptop = Product(\"Dell Laptop\", 850, 12)\nlaptop.describe()\nlaptop.add_units(15)\nlaptop.reduce_units(10)\nlaptop.reduce_units(20)\nlaptop.reduce_price(0.1)\nlaptop.describe()"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "When calling a class method, use the syntax of `self.method_name()`, passing any necessary arguments into the parentheses."
+                }
+              ]
+            }
+          },
+          {
+            "title": "Project recap",
+            "id": 124306,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Bir ürün nesnesi için tutarlı yapı ve işlevsellik sağlayan bir taslak oluşturmak üzere Python sınıfını kullanırken harika iş çıkardın!\n\nBu proje sırasında kurucuya sahip bir sınıf oluşturdun, ürün bilgilerini açıklamak, envanterdeki birim sayısını artırmak ve azaltmak, ürün fiyatını düşürmek ve ürünün stokta olup olmadığını kontrol etmek için metotlar ekledin. Ardından sınıfının işlevselliğini test etmek için bir ürün örneği oluşturdun!\n\nŞimdi tamamlanmış proje kodunu deneme fırsatın var. Aşağıdakilerden birini veya birkaçını dene:\n- Aktarılan `units` değerinin bir sayı olduğunu doğrulamak için `add_units()` ve `reduce_units()` metotlarına kod ekle.\n- `discount` yüzdesinin 0 ile 1 arasında olduğundan emin olmak için `reduce_price()` metodunu değiştir.\n- Kullanılabilir ürün envanterinin toplam değerini hesaplayan bir metot uygula.\n- Ürünün fiyatını dolar işareti ve iki ondalık basamakla biçimlendirilmiş şekilde görüntülemek için `describe()` metodunu değiştir.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "class Product:\n  def __init__(self, name, price, units):\n    self.name = name\n    self.price = price\n    self.units = units\n    self.is_on_sale = False\n\n  def describe(self):\n    print(f\"Product name: {self.name}\")\n    print(f\"Product price: {self.price}\")\n    print(f\"Available units: {self.units}\")\n    print(f\"On sale? {self.is_on_sale}\")\n    print(f\"In stock? {self.is_in_stock()}\")\n    print(\"-------------------------\")\n    \n  def add_units(self, units):\n    self.units += units\n  \n  def reduce_units(self, units):\n    if self.units - units >= 0:\n      self.units -= units\n    else:\n      print(\"Error: Not enough units in inventory.\")\n\n  def reduce_price(self, discount):\n    self.price = self.price * (1 - discount)\n    self.is_on_sale = True\n\n  def is_in_stock(self):\n    return self.units > 0\n\nlaptop = Product(\"Dell Laptop\", 850, 12)\nlaptop.describe()\nlaptop.add_units(15)\nlaptop.reduce_units(10)\nlaptop.reduce_units(20)\nlaptop.reduce_price(0.1)\nlaptop.describe()",
+                  "solvedContent": "class Product:\n  def __init__(self, name, price, units):\n    self.name = name\n    self.price = price\n    self.units = units\n    self.is_on_sale = False\n\n  def describe(self):\n    print(f\"Product name: {self.name}\")\n    print(f\"Product price: {self.price}\")\n    print(f\"Available units: {self.units}\")\n    print(f\"On sale? {self.is_on_sale}\")\n    print(f\"In stock? {self.is_in_stock()}\")\n    print(\"-------------------------\")\n    \n  def add_units(self, units):\n    self.units += units\n  \n  def reduce_units(self, units):\n    if self.units - units >= 0:\n      self.units -= units\n    else:\n      print(\"Error: Not enough units in inventory.\")\n\n  def reduce_price(self, discount):\n    self.price = self.price * (1 - discount)\n    self.is_on_sale = True\n\n  def is_in_stock(self):\n    return self.units > 0\n\nlaptop = Product(\"Dell Laptop\", 850, 12)\nlaptop.describe()\nlaptop.add_units(15)\nlaptop.reduce_units(10)\nlaptop.reduce_units(20)\nlaptop.reduce_price(0.1)\nlaptop.describe()"
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

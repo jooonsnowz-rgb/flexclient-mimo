@@ -1,0 +1,123 @@
+{
+  "tutorial": {
+    "id": 4616,
+    "version": 1,
+    "type": "guidedProject",
+    "isNew": false,
+    "codeLanguage": "python",
+    "title": "Validator Pembacaan Sensor",
+    "descriptionContent": "Mengurai pembacaan sensor, menangani data yang hilang atau tidak valid dengan exception, dan memvalidasi nilai yang didukung",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": "tutorial-4616-icon-banner.svg",
+    "chapters": [
+      {
+        "id": 17824,
+        "title": "Bab #1",
+        "type": "practiceLevel3",
+        "lessons": [
+          {
+            "title": "Lesson #1",
+            "id": 152001,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Selamat datang di proyek **Validator Pembacaan Sensor**. Kita akan membersihkan data sensor dan menghitung rata-rata dari pembacaan yang valid.\n\n1. Sudah ada list dictionary yang berisi data di file `script.py`. Tetapkan list tersebut ke variabel bernama `readings`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "[\n    {\"sensor\": \"greenhouse\", \"value\": \"23.5\"},\n    {\"sensor\": \"freezer\", \"value\": \"not available\"},\n    {\"value\": \"18.0\"},\n    {\"sensor\": \"boiler\", \"value\": \"140\"},\n]",
+                  "solvedContent": "readings = [\n    {\"sensor\": \"greenhouse\", \"value\": \"23.5\"},\n    {\"sensor\": \"freezer\", \"value\": \"not available\"},\n    {\"value\": \"18.0\"},\n    {\"sensor\": \"boiler\", \"value\": \"140\"},\n]"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #2",
+            "id": 152002,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Sekarang, kita akan membuat fungsi yang mengubah satu pembacaan menjadi hasil yang berguna.\n\n1. Definisikan `parse_reading` dengan parameter `reading`.\n2. Dapatkan nama sensor menggunakan `reading[\"sensor\"]`, lalu simpan dalam variabel bernama `sensor`.\n3. Ubah nilai yang tersimpan menjadi angka dengan `float()`, lalu simpan dalam variabel bernama `value`.\n4. Kembalikan sensor dan nilai sebagai tuple.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "readings = [\n    {\"sensor\": \"greenhouse\", \"value\": \"23.5\"},\n    {\"sensor\": \"freezer\", \"value\": \"not available\"},\n    {\"value\": \"18.0\"},\n    {\"sensor\": \"boiler\", \"value\": \"140\"},\n]",
+                  "solvedContent": "readings = [\n    {\"sensor\": \"greenhouse\", \"value\": \"23.5\"},\n    {\"sensor\": \"freezer\", \"value\": \"not available\"},\n    {\"value\": \"18.0\"},\n    {\"sensor\": \"boiler\", \"value\": \"140\"},\n]\n\ndef parse_reading(reading):\n    sensor = reading[\"sensor\"]\n    value = float(reading[\"value\"])\n\n    return sensor, value"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #3",
+            "id": 152003,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Beberapa reading berisi data yang hilang atau tidak dapat digunakan. Gunakan penanganan exception agar satu reading yang bermasalah tidak menghentikan program.\n\n1. Di luar fungsi `parse_reading()`, buat variabel baru `valid_readings` yang berisi list kosong.\n2. Lakukan loop pada `readings`.\n   - Di dalam `try`, parse setiap reading dan tambahkan ke `valid_readings`.\n   - Tangkap `KeyError`, `TypeError`, dan `ValueError` secara bersamaan.\n   - Cetak error saat sebuah reading dilewati.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "readings = [\n    {\"sensor\": \"greenhouse\", \"value\": \"23.5\"},\n    {\"sensor\": \"freezer\", \"value\": \"not available\"},\n    {\"value\": \"18.0\"},\n    {\"sensor\": \"boiler\", \"value\": \"140\"},\n]\n\ndef parse_reading(reading):\n    sensor = reading[\"sensor\"]\n    value = float(reading[\"value\"])\n\n    return sensor, value",
+                  "solvedContent": "readings = [\n    {\"sensor\": \"greenhouse\", \"value\": \"23.5\"},\n    {\"sensor\": \"freezer\", \"value\": \"not available\"},\n    {\"value\": \"18.0\"},\n    {\"sensor\": \"boiler\", \"value\": \"140\"},\n]\n\ndef parse_reading(reading):\n    sensor = reading[\"sensor\"]\n    value = float(reading[\"value\"])\n\n    return sensor, value\n\nvalid_readings = []\n\nfor reading in readings:\n    try:\n        valid_readings.append(parse_reading(reading))\n    except (KeyError, TypeError, ValueError) as error:\n        print(f\"Skipped reading: {error}\")"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #4",
+            "id": 152004,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Nilai numerik masih bisa berada di luar rentang yang didukung. Tambahkan validasi sebelum mengembalikan pembacaan yang telah di-parse.\n\n1. Di fungsi `parse_reading()`, setelah mengakses data sensor dan nilai, periksa apakah `value` kurang dari `-50` atau lebih dari `100`.\n2. Jika ya, raise `ValueError` dengan `raise ValueError(f\"{sensor} reported an unsupported value.\")`.\n3. Blok `except` yang ada akan menangkap dan melaporkan error ini.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "readings = [\n    {\"sensor\": \"greenhouse\", \"value\": \"23.5\"},\n    {\"sensor\": \"freezer\", \"value\": \"not available\"},\n    {\"value\": \"18.0\"},\n    {\"sensor\": \"boiler\", \"value\": \"140\"},\n]\n\ndef parse_reading(reading):\n    sensor = reading[\"sensor\"]\n    value = float(reading[\"value\"])\n\n    return sensor, value\n\nvalid_readings = []\n\nfor reading in readings:\n    try:\n        valid_readings.append(parse_reading(reading))\n    except (KeyError, TypeError, ValueError) as error:\n        print(f\"Skipped reading: {error}\")",
+                  "solvedContent": "readings = [\n    {\"sensor\": \"greenhouse\", \"value\": \"23.5\"},\n    {\"sensor\": \"freezer\", \"value\": \"not available\"},\n    {\"value\": \"18.0\"},\n    {\"sensor\": \"boiler\", \"value\": \"140\"},\n]\n\ndef parse_reading(reading):\n    sensor = reading[\"sensor\"]\n    value = float(reading[\"value\"])\n\n    if value < -50 or value > 100:\n        raise ValueError(f\"{sensor} reported an unsupported value.\")\n\n    return sensor, value\n\nvalid_readings = []\n\nfor reading in readings:\n    try:\n        valid_readings.append(parse_reading(reading))\n    except (KeyError, TypeError, ValueError) as error:\n        print(f\"Skipped reading: {error}\")"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #5",
+            "id": 152005,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Kita akan menyelesaikannya dengan menghitung rata-rata hanya jika ada pembacaan yang valid.\n\n1. Di akhir skrip. periksa `valid_readings` dengan pernyataan `if`.\n2. Gunakan `sum(value for _, value in valid_readings)` untuk menjumlahkan nilai yang valid.\n3. Bagi total tersebut dengan `len(valid_readings)`.\n4. Cetak rata-rata dengan satu angka di belakang koma.\n5. Tambahkan pesan `else` untuk kasus ketika tidak ada pembacaan yang valid.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "readings = [\n    {\"sensor\": \"greenhouse\", \"value\": \"23.5\"},\n    {\"sensor\": \"freezer\", \"value\": \"not available\"},\n    {\"value\": \"18.0\"},\n    {\"sensor\": \"boiler\", \"value\": \"140\"},\n]\n\ndef parse_reading(reading):\n    sensor = reading[\"sensor\"]\n    value = float(reading[\"value\"])\n\n    if value < -50 or value > 100:\n        raise ValueError(f\"{sensor} reported an unsupported value.\")\n\n    return sensor, value\n\nvalid_readings = []\n\nfor reading in readings:\n    try:\n        valid_readings.append(parse_reading(reading))\n    except (KeyError, TypeError, ValueError) as error:\n        print(f\"Skipped reading: {error}\")",
+                  "solvedContent": "readings = [\n    {\"sensor\": \"greenhouse\", \"value\": \"23.5\"},\n    {\"sensor\": \"freezer\", \"value\": \"not available\"},\n    {\"value\": \"18.0\"},\n    {\"sensor\": \"boiler\", \"value\": \"140\"},\n]\n\ndef parse_reading(reading):\n    sensor = reading[\"sensor\"]\n    value = float(reading[\"value\"])\n\n    if value < -50 or value > 100:\n        raise ValueError(f\"{sensor} reported an unsupported value.\")\n\n    return sensor, value\n\nvalid_readings = []\n\nfor reading in readings:\n    try:\n        valid_readings.append(parse_reading(reading))\n    except (KeyError, TypeError, ValueError) as error:\n        print(f\"Skipped reading: {error}\")\n\nif valid_readings:\n    average = sum(value for _, value in valid_readings) / len(valid_readings)\n    print(f\"Average valid reading: {average:.1f}\")\nelse:\n    print(\"No valid readings available.\")"
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

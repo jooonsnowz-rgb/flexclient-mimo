@@ -1,0 +1,128 @@
+{
+  "tutorial": {
+    "id": 2646,
+    "version": 7,
+    "type": "guidedProject",
+    "isNew": false,
+    "codeLanguage": "node",
+    "title": "Rastgele Sayılar - 1. Bölüm",
+    "descriptionContent": "Elinde bozuk para veya zar yoksa yardımcı olabilecek bir arka uç oluştur.",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": "tutorial-2646-icon-banner.svg",
+    "chapters": [
+      {
+        "id": 14609,
+        "title": "Rastgele Sayılar - 1. Bölüm",
+        "type": "practiceLevel3",
+        "lessons": [
+          {
+            "title": "Lesson #1",
+            "id": 129321,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "**Rastgele Sayılar** projesine hoş geldin. Rastgele sayılar üreten basit bir sunucu uygulaması oluşturacağız.\n\nExpress sunucusunu kurarak başlayacağız.\n\n1. `express` adlı bir değişken tanımla ve `express` modülünü require et.\n2. `app` adlı bir değişken tanımla ve `express` fonksiyonunu çağırarak başlat.\n3. `port` adlı bir değişken tanımla ve ona `3000` değerini ata.\n4. Uygulamanın `port` değişkeniyle belirtilen portu dinlemesini sağlamak için `app` üzerinde `listen` fonksiyonunu kullan.\n5. Sunucumuzun düzgün çalıştığını anlamak için `listen` fonksiyonunun callback'i içinde konsola bir mesaj yazdır.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "",
+                  "solvedContent": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Give your hint a title",
+                  "content": "Give your hint some content"
+                }
+              ],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/",
+                "body": null
+              }
+            }
+          },
+          {
+            "title": "Lesson #2",
+            "id": 129323,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Bir yazı tura atışını simüle edecek bir rota oluşturarak başlıyoruz. `/coinFlip` yolundaki GET isteğini işlemek için `app` nesnesinin `get` metodunu kullanacağız.\n\n1. `/coinFlip` yolunda yeni bir uç nokta oluşturmak için `app.get` fonksiyonunu kullan.\n2. `req` ve `res` parametrelerini alan callback fonksiyonunun içinde, 0 veya 1 olacak rastgele bir sayı hesapla (yazı veya tura).\n3. `res` nesnesinin `json` metodunu kullanarak bir JSON nesnesiyle yanıt ver. Bu nesnede, yazı tura atışı 0 ise `result` değeri `\"Heads\"`, aksi takdirde `\"Tails\"` olsun.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});",
+                  "solvedContent": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});\n\napp.get('/coinFlip', function(req, res) {\n  const result = Math.floor(Math.random() * 2);\n  res.status(200).json({ result: result === 0 ? 'Heads' : 'Tails' });\n});"
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/coinFlip",
+                "body": null
+              }
+            }
+          },
+          {
+            "title": "Lesson #3",
+            "id": 129324,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Şimdi, altı yüzlü bir zar atmak için başka bir rota ekleyelim.\n\n1. Yazı tura örneğine benzer şekilde, `/diceRoll` yolunda bir `GET` rotası oluştur.\n2. Rastgele sayı hesaplamasını, 1 ile 6 (1 ve 6 dahil) arasında bir sonuç verecek şekilde güncelle.\n3. `result` değerinin rastgele atılan sayı olduğu JSON ile yanıt ver.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});\n\napp.get('/coinFlip', function(req, res) {\n  const result = Math.floor(Math.random() * 2);\n  res.status(200).json({ result: result === 0 ? 'Heads' : 'Tails' });\n});",
+                  "solvedContent": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});\n\napp.get('/coinFlip', function(req, res) {\n  const result = Math.floor(Math.random() * 2);\n  res.status(200).json({ result: result === 0 ? 'Heads' : 'Tails' });\n});\n\napp.get('/diceRoll', function(req, res) {\n  const result = Math.floor(Math.random() * 6) + 1;\n  res.status(200).json({ result: result });\n});"
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/diceRoll",
+                "body": null
+              }
+            }
+          },
+          {
+            "title": "Lesson #4",
+            "id": 129325,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Son olarak, 1 ile 100 arasında rastgele bir sayı oluşturacak bir route oluşturalım.\n\n1. '/randomNumber' yolunda başka bir `GET` route'u oluştur.\n2. Rastgele sayı hesaplamasını, sonuç 1 ile 100 arasında (1 ve 100 dahil) olacak şekilde değiştir.\n3. `result` değerinin rastgele oluşturulan sayı olduğu JSON yanıtı döndür.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});\n\napp.get('/coinFlip', function(req, res) {\n  const result = Math.floor(Math.random() * 2);\n  res.status(200).json({ result: result === 0 ? 'Heads' : 'Tails' });\n});\n\napp.get('/diceRoll', function(req, res) {\n  const result = Math.floor(Math.random() * 6) + 1;\n  res.status(200).json({ result: result });\n});",
+                  "solvedContent": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});\n\napp.get('/coinFlip', function(req, res) {\n  const result = Math.floor(Math.random() * 2);\n  res.status(200).json({ result: result === 0 ? 'Heads' : 'Tails' });\n});\n\napp.get('/diceRoll', function(req, res) {\n  const result = Math.floor(Math.random() * 6) + 1;\n  res.status(200).json({ result: result });\n});\n\napp.get('/randomNumber', function(req, res) {\n  const result = Math.floor(Math.random() * 100) + 1;\n  res.status(200).json({ result: result });\n});"
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/randomNumber",
+                "body": null
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

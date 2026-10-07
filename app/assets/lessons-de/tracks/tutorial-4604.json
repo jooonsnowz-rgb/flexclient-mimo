@@ -1,0 +1,178 @@
+{
+  "tutorial": {
+    "id": 4604,
+    "version": 1,
+    "type": "course",
+    "isNew": false,
+    "codeLanguage": "python",
+    "title": "Verwalten von Paketversionen",
+    "descriptionContent": "Kontrolliere Abhängigkeitsversionen und aktualisiere Pakete.",
+    "shortDescriptionContent": "Python-Lernende, die Pakete aus requirements.txt installieren können.",
+    "showInTrack": true,
+    "iconBanner": null,
+    "chapters": [
+      {
+        "id": 17792,
+        "title": "Warum Versionen wichtig sind",
+        "type": "practiceLevel1",
+        "lessons": [
+          {
+            "title": "Same Project, Different Result",
+            "id": 151810,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Alle, die das Tabellenprojekt ausführen, verwenden <code>requirements.txt</code>, um denselben Satz an Abhängigkeiten zu installieren.</p><p>Das Paket kann sich jedoch ändern. Wenn du (oder jemand anderes) später zurückkehrst, hat sich das installierte Paket möglicherweise geändert, was zu Problemen führen könnte.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Packages Change",
+            "id": 151811,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Pakete verändern sich im Laufe der Zeit, während Entwickler daran arbeiten. Neue Versionen können Fehlerbehebungen und Funktionen enthalten.</p><p>Sie können auch altes Verhalten als veraltet kennzeichnen oder abwärtsinkompatible Änderungen einführen.</p><code version=\"2\" codelang=\"text\" name=\"release_history.txt\" visible-if=\"always\"><content><text value=\"0.8.10: fixes\" /><text type=\"break\" /><text value=\"0.9.0: features and deprecations\" /></content></code></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Versions Affect Behavior",
+            "id": 151812,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Wenn unsere Umgebung die Version <code>0.8.10</code> verwendet und wir diese spezifische Version getestet haben, ist es eine gute Idee, sie in <code>requirements.txt</code> anzugeben.</p><p>Gib die Version an, indem du <code>==</code> und die Versionsnummer direkt neben dem Paketnamen hinzufügst.</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"tabulate==0.8.10\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"8\" endIndex=\"10\" /><option startIndex=\"10\" endIndex=\"16\" /><option correct=\"false\"><content><text value=\"=\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Wähle <code>==</code>, gefolgt von <code>0.8.10</code> aus.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Versions Affect Behavior - Copy",
+            "id": 151813,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Eine exakte Festlegung verwendet <code>==</code>, um eine bestimmte Paketversion zu verlangen.</p><p>Füge die fehlenden Zeichen hinzu, um für das Paket <code>tabulate</code> die Version 0.8.10 festzulegen.<br /></p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"tabulate==0.8.10\" /></content><interactions><interaction type=\"validatedInput\" isDefault=\"true\" startIndex=\"8\" endIndex=\"10\" /></interactions></code><p visible-if=\"wrong\">Gib <code>==</code> ein.</p></body></html>"
+          },
+          {
+            "title": "Recreate the Environment",
+            "id": 151814,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Wir müssen keine Versionsnummer angeben, aber wenn wir das tun, stellt <code>pip</code> sicher, dass bei jeder Ausführung von <code>pip install</code> die richtige Version installiert wird.</p><p>Das ist nützlich, wenn wir das Projekt von Grund auf neu ausführen und Kompatibilitätsprobleme vermeiden möchten.</p><code version=\"2\" codelang=\"bash\" name=\"script.sh\" visible-if=\"always\"><content><text value=\"pip install -r requirements.txt\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"0\" endIndex=\"3\" /><option startIndex=\"4\" endIndex=\"11\" /></options></interaction></interactions></code><p visible-if=\"wrong\">Wähle <code>pip</code>, gefolgt von <code>install</code> aus.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Wenn <code>requirements.txt</code> eine Version fixiert, fordert die Installation aus dieser Datei genau dieses Release von pip an.</p><p>Das ist nützlich, wenn wir das Projekt von Grund auf neu ausführen und Kompatibilitätsprobleme vermeiden möchten.</p><p>Erstelle die Umgebung aus <code>requirements.txt</code> neu.</p><code version=\"2\" codelang=\"bash\" name=\"script.sh\" visible-if=\"always\"><content><text value=\"pip install -r requirements.txt\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"0\" endIndex=\"3\" /><option startIndex=\"4\" endIndex=\"11\" /><option startIndex=\"12\" endIndex=\"14\" /><option startIndex=\"15\" endIndex=\"31\" /><option correct=\"false\"><content><text value=\"tabulate\" /></content></option><option correct=\"false\"><content><text value=\"import\" /></content></option><option correct=\"false\"><content><text value=\"requirements.py\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Wähle <code>pip</code>, gefolgt von <code>install</code>, <code>-r</code> und schließlich <code>requirements.txt</code> aus.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Pin Another Package",
+            "id": 151817,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Fixiere <code>requests</code> auf genau die Version <code>2.32.3</code>, damit deine Teammitglieder dieselbe Version installieren.</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"requests==2.23.3\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"0\" endIndex=\"8\" /><option startIndex=\"8\" endIndex=\"10\" /><option startIndex=\"10\" endIndex=\"16\" /></options></interaction></interactions></code><p visible-if=\"wrong\">Wähle <code>requests</code>, gefolgt von <code>==</code> und schließlich <code>2.23.3</code> aus.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Fixiere <code>requests</code> auf genau die Version <code>2.32.3</code>, damit deine Teammitglieder dieselbe Version installieren.</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"requests==\" /><text value=\"2.32\" class=\"number\" /><text value=\".\" /><text value=\"3\" class=\"number\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"0\" endIndex=\"8\" /><option startIndex=\"8\" endIndex=\"10\" /><option startIndex=\"10\" endIndex=\"16\" /><option correct=\"false\"><content><text value=\"&gt;=\" /></content></option><option correct=\"false\"><content><text value=\"&lt;=\" /></content></option><option correct=\"false\"><content><text value=\"&lt;\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Wähle <code>requests</code>, gefolgt von <code>==</code> und schließlich <code>2.32.3</code> aus.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Recall Package Changes",
+            "id": 151815,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Welche Paketänderung könnte dazu führen, dass das Verhalten des alten Projekts nicht mehr funktioniert?</p><selection multiple=\"multiple\"><item value=\"1\" correct=\"true\">Eine inkompatible Änderung in einer neuen Version<br /></item><item value=\"2\" correct=\"false\">Genau dieselbe Version erneut installieren</item></selection><p visible-if=\"wrong\">Eine inkompatible Änderung in einer neuen Version<br />.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Dein Projekt ruft eine Paketfunktion mit zwei Eingaben auf. Ein neues Release akzeptiert nur eine. Was solltest du vor dem Update prüfen?</p><selection multiple=\"multiple\"><item value=\"1\" correct=\"true\">Ob das Projekt seinen Aufruf ändern muss, damit er mit dem neuen Release funktioniert.</item><item value=\"2\" correct=\"false\">Nur ob der Paketname gleich geblieben ist. Seine Aufrufe müssen weiterhin funktionieren.</item><item value=\"3\" correct=\"false\">Nichts, weil eine neuere Version vorhandene Aufrufe immer beibehält.</item></selection><p visible-if=\"wrong\">Ob das Projekt seinen Aufruf ändern muss, damit er mit dem neuen Release funktioniert.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Identify the Version",
+            "id": 151816,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Welche genaue tabulate-Version wird pip aus dieser Requirements-Datei installieren?</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"tabulate==0.9.0\" /></content></code><selection multiple=\"multiple\"><item value=\"1\" correct=\"true\">0.9.0</item><item value=\"2\" correct=\"false\">0.8.10</item></selection><p visible-if=\"wrong\">Wähle 0.9.0 aus.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Du änderst die Datei zu <code>tabulate==0.8.10</code>. Auch <code>0.9.0</code> ist verfügbar. Welche Version fordert die geänderte Datei an?</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"tabulate==0.9.0\" /></content></code><selection multiple=\"multiple\"><item value=\"1\" correct=\"true\"><code>0.8.10</code></item><item value=\"2\" correct=\"false\"><code>0.9.0</code>, weil sie neuer ist.</item><item value=\"3\" correct=\"false\">Eine der beiden Versionen, weil beide zu tabulate gehören.</item></selection><p visible-if=\"wrong\">Wähle <code>0.8.10</code> aus.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Pin Another Package 2",
+            "id": 151818,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Verwende <code>==</code>, um <code>numpy</code> exakt auf die Version <code>2.5.2</code> festzulegen, damit deine Teammitglieder, KI-Agenten und dein zukünftiges Ich dieselbe Version installieren.</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"numpy==2.5.2\" /></content><interactions><interaction type=\"validatedInput\" isDefault=\"true\" startIndex=\"5\" endIndex=\"7\" /></interactions></code><p visible-if=\"wrong\">Gib <code>==</code> ein.</p></body></html>"
+          }
+        ]
+      },
+      {
+        "id": 17793,
+        "title": "Bereiche und gezielte Aktualisierungen",
+        "type": "practiceLevel1",
+        "lessons": [
+          {
+            "title": "Allow Compatible Updates",
+            "id": 151819,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Bei der Arbeit mit <code>pip</code> hält eine exakte Versionsfixierung eine Veröffentlichung fest, aber sie ermöglicht nicht, dass neuere Fehlerbehebungen automatisch installiert werden.</p><p>Ein Versionsbereich kann ausgewählte Aktualisierungen zulassen und gleichzeitig Grenzen festlegen. Sehen wir uns fortgeschrittenere Möglichkeiten zum Festlegen akzeptierter Versionen an.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Set a Lower Bound",
+            "id": 151821,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Mit <code>&gt;=</code> legen wir eine Untergrenze fest. Dadurch sind Versionen oberhalb einer angegebenen Version zulässig.</p><p>Vervollständige den Operator für die untere Versionsgrenze in <code>requirements.txt</code>, damit Versionen ab 0.8 zugelassen werden.</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"tabulate&gt;=0.8\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"8\" endIndex=\"10\" /><option correct=\"false\"><content><text value=\"==\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Wähle <code>&gt;=</code> aus.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Set an Upper Bound",
+            "id": 151822,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Mit <code>&lt;</code> legen wir eine obere Grenze fest. Sie schließt die angegebenen Versionen und alle neueren Versionen aus.</p><p>Vervollständige den Operator für die obere Grenze, um Versionen ab 1 auszuschließen.</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"tabulate&lt;1.0\" /></content><interactions><interaction type=\"validatedInput\" isDefault=\"true\" startIndex=\"8\" endIndex=\"9\" /></interactions></code><p visible-if=\"wrong\">Gib <code>&lt;</code> ein.</p></body></html>"
+          },
+          {
+            "title": "Read the Whole Range",
+            "id": 151823,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Mit einem Komma können wir eine Obergrenzen- und eine Untergrenzenregel verknüpfen, um nur Versionen in einem bestimmten Bereich zuzulassen.</p><p>Vervollständige den Code, um Versionen ab 0.8 bis ausschließlich 1 zuzulassen.</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"tabulate&gt;=0.8,&lt;1\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"13\" endIndex=\"14\" /><option correct=\"false\"><content><text value=\"&amp;\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Wähle <code>,</code> aus.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Ein Komma verbindet zwei Versionsregeln. Die Regel <code>&lt;</code> schließt ihren Grenzwert und alle neueren Versionen aus.</p><p>Erlaube für <code>tabulate</code> Version <code>0.8</code> und neuer, aber schließe Version <code>1</code> und höher aus.</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"tabulate&gt;=0.8,&lt;1\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"13\" endIndex=\"14\" /><option startIndex=\"8\" endIndex=\"10\" /><option startIndex=\"0\" endIndex=\"8\" /><option correct=\"false\"><content><text value=\"&gt;\" /></content></option><option correct=\"false\"><content><text value=\"==\" /></content></option><option correct=\"false\"><content><text value=\"&amp;\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Wähle <code>tabulate</code>, gefolgt von <code>&gt;=</code> und schließlich <code>,</code> aus.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Compare a Pin and a Range",
+            "id": 151824,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>In <code>requirements.txt</code> können wir für jedes Paket eine genaue Version oder einen Bereich angeben.</p><p>Stelle sicher, dass <code>numpy</code> immer Version 2.5.2 verwendet, und gib einen Bereich für <code>tabulate</code> an.</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"numpy==2.5.2\" /><text type=\"break\" /><text value=\"tabulate&gt;=0.8,&lt;1\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"21\" endIndex=\"26\" /><option startIndex=\"26\" endIndex=\"29\" /><option startIndex=\"5\" endIndex=\"12\" /></options></interaction></interactions></code><p visible-if=\"wrong\">Wähle <code>==2.5.2</code>, gefolgt von <code>&gt;=0.8</code> und schließlich <code>,&lt;1</code> aus.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>In <code>requirements.txt</code> können wir für jedes Paket eine genaue Version oder einen Bereich angeben.</p><p>Fixiere <code>numpy</code> auf <code>2.5.2</code>. Erlaube <code>tabulate</code> ab einschließlich <code>0.8</code> bis unter <code>1</code>.</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"numpy==2.5.2\" /><text type=\"break\" /><text value=\"tabulate&gt;=0.8,&lt;1\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"5\" endIndex=\"7\" /><option startIndex=\"21\" endIndex=\"23\" /><option startIndex=\"27\" endIndex=\"28\" /><option correct=\"false\"><content><text value=\"&gt;\" /></content></option><option correct=\"false\"><content><text value=\"&lt;=\" /></content></option><option correct=\"false\"><content><text value=\"=\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Wähle <code>==</code>, gefolgt von <code>&gt;=</code> und schließlich <code>&lt;</code> aus.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Choose for the Goal",
+            "id": 151825,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Vervollständige den Code, um einen Exact-Pin-Operator zu verwenden.</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"tabulate==0.8\" /></content><interactions><interaction type=\"validatedInput\" isDefault=\"true\" startIndex=\"8\" endIndex=\"10\" /></interactions></code><p visible-if=\"wrong\">Gib <code>==</code> ein.</p></body></html>"
+          },
+          {
+            "title": "Change One Dependency",
+            "id": 151826,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Erlaube nur Versionen unter 0.8 für das angegebene Paket.</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"tabulate&lt;0.8\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"8\" endIndex=\"9\" /><option correct=\"false\"><content><text value=\"&lt;=\" /></content></option><option correct=\"false\"><content><text value=\"&gt;\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Wähle <code>&lt;</code> aus.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Interpret a Range",
+            "id": 151827,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Welche Aussage entspricht diesem begrenzten Versionsbereich?</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"requests&gt;=1.2,&lt;2\" /></content></code><selection multiple=\"multiple\"><item value=\"1\" correct=\"true\">Installiere Version 1.2 oder neuer, aber niedriger als 2</item><item value=\"2\" correct=\"false\">Installiere nur Version 1.2</item></selection><p visible-if=\"wrong\">Installiere Version 1.2 oder neuer, aber niedriger als 2.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Du behältst den gezeigten Bereich. Eine neue Umgebung kann Version <code>1.1</code>, <code>1.2</code> oder <code>2</code> wählen. Welche erfüllt beide Regeln?</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"requests&gt;=1.2,&lt;2\" /></content></code><selection multiple=\"multiple\"><item value=\"1\" correct=\"true\"><code>1.2</code></item><item value=\"2\" correct=\"false\"><code>1.1</code></item><item value=\"3\" correct=\"false\"><code>2</code></item></selection><p visible-if=\"wrong\">Wähle <code>1.2</code> aus.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Write a Bounded Range",
+            "id": 151828,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Lege den Versionsbereich so fest, dass <code>requests</code> Version 2.30 oder neuer verwenden kann, aber unter Version 3 bleibt.<br /></p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"requests&gt;=2.30,&lt;3\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"8\" endIndex=\"17\" /><option correct=\"false\"><content><text value=\"&gt;2,&lt;=3\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Wähle <code>&gt;=2.30,&lt;3</code> aus.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Lege den Versionsbereich so fest, dass <code>requests</code> Version 2.30 oder neuer verwenden kann, aber unter Version 3 bleibt.<br/></p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"requests&gt;=2.30,&lt;3\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"8\" endIndex=\"10\" /><option startIndex=\"14\" endIndex=\"15\" /><option startIndex=\"15\" endIndex=\"16\" /><option correct=\"false\"><content><text value=\"&gt;\" /></content></option><option correct=\"false\"><content><text value=\"&lt;=\" /></content></option><option correct=\"false\"><content><text value=\"==\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Wähle <code>&gt;=</code>, gefolgt von <code>,</code> und schließlich <code>&lt;</code> aus.</p></body></html>",
+            "hardModeSelected": true
+          }
+        ]
+      }
+    ]
+  }
+}

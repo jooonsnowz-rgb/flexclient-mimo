@@ -1,0 +1,203 @@
+{
+  "tutorial": {
+    "id": 2665,
+    "version": 8,
+    "type": "guidedProject",
+    "isNew": false,
+    "codeLanguage": "python",
+    "title": "Narysuj kartę - część 1",
+    "descriptionContent": "W projekcie „Narysuj kartę” utworzysz wirtualną talię kart. Potasuj je, a następnie wyświetlaj je kolejno za pomocą grafiki ASCII.",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": "tutorial-2665-icon-banner.svg",
+    "chapters": [
+      {
+        "id": 14640,
+        "title": "Narysuj kartę - część 1",
+        "type": "practiceLevel3",
+        "lessons": [
+          {
+            "title": "Lesson #1",
+            "id": 129484,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Witaj w projekcie **Draw a Card**, w którym będziemy pracować z kartami cyfrowymi.\n\nZacznijmy od pierwszego kroku: utworzenia talii kart. W standardowej talii są 4 kolory i 13 rang. Utwórzmy te listy.\n\n1. Utwórz listę `suits` i dodaj do niej 4 różne kolory jako ciągi znaków: `[\"♥\", \"♦\", \"♣\", \"♠\"]`.\n2. Utwórz listę `ranks` i dodaj do niej 13 różnych rang jako ciągi znaków: `[\"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"10\", \"J\", \"Q\", \"K\", \"A\"]`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "",
+                  "solvedContent": "suits = [\"♥\", \"♦\", \"♣\", \"♠\"]\nranks = [\"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"10\", \"J\", \"Q\", \"K\", \"A\"]"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #2",
+            "id": 129485,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Następnie połączymy kolory i rangi, aby utworzyć talię 52 unikalnych kart. Użyjemy krotek do reprezentowania każdej karty.\n\n1. Utwórz pustą listę o nazwie `deck`, która będzie przechowywać wszystkie karty.\n2. Użyj pętli for, aby iterować po każdym kolorze, a wewnątrz niej kolejnej pętli for, aby iterować po każdej randze.\n3. Dodaj każdą kombinację koloru i rangi jako krotkę do listy `deck`.\n4. Wyświetl `deck`, aby zobaczyć wszystkie kombinacje kart.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "suits = [\"♥\", \"♦\", \"♣\", \"♠\"]\nranks = [\"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"10\", \"J\", \"Q\", \"K\", \"A\"]",
+                  "solvedContent": "suits = [\"♥\", \"♦\", \"♣\", \"♠\"]\nranks = [\"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"10\", \"J\", \"Q\", \"K\", \"A\"]\ndeck = []\n\nfor suit in suits:\n  for rank in ranks:\n    deck.append((suit, rank))\n\nprint(deck)"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #3",
+            "id": 129486,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Karty powinny być dobierane losowo. W tym celu musimy potasować talię.\n\n1. Zaimportuj moduł `random` na początku skryptu w Pythonie.\n2. Użyj `random.shuffle(deck)`, aby potasować talię przed jej wyświetleniem.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "suits = [\"♥\", \"♦\", \"♣\", \"♠\"]\nranks = [\"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"10\", \"J\", \"Q\", \"K\", \"A\"]\ndeck = []\n\nfor suit in suits:\n  for rank in ranks:\n    deck.append((suit, rank))\n\nprint(deck)",
+                  "solvedContent": "import random\n\nsuits = [\"♥\", \"♦\", \"♣\", \"♠\"]\nranks = [\"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"10\", \"J\", \"Q\", \"K\", \"A\"]\ndeck = []\n\nfor suit in suits:\n  for rank in ranks:\n    deck.append((suit, rank))\n\nrandom.shuffle(deck)\nprint(deck)"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #4",
+            "id": 129487,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Mamy już kod, który generuje talię i ją tasuje. Umieśćmy kod tworzący talię w funkcji, aby można było go ponownie używać.\n\n1. Utwórz funkcję o nazwie `create_deck`, która nie przyjmuje żadnych parametrów.\n   - Przenieś cały swój kod, z wyjątkiem instrukcji importu, do nowo utworzonej funkcji.\n   - Niech funkcja zwraca `deck`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "import random\n\nsuits = [\"♥\", \"♦\", \"♣\", \"♠\"]\nranks = [\"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"10\", \"J\", \"Q\", \"K\", \"A\"]\ndeck = []\n\nfor suit in suits:\n  for rank in ranks:\n    deck.append((suit, rank))\n\nrandom.shuffle(deck)\nprint(deck)",
+                  "solvedContent": "import random\n\ndef create_deck():\n  suits = [\"♥\", \"♦\", \"♣\", \"♠\"]\n  ranks = [\"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"10\", \"J\", \"Q\", \"K\", \"A\"]\n  deck = []\n\n  for suit in suits:\n    for rank in ranks:\n      deck.append((suit, rank))\n\n  random.shuffle(deck)\n  return deck"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #5",
+            "id": 129488,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Utwórzmy funkcję do dobierania karty z talii.\n\n1. Zdefiniuj nową funkcję o nazwie `draw_card`, która przyjmuje `deck` jako parametr.\n2. Wewnątrz `draw_card` utwórz zmienną `hand` i ustaw ją na ostatni element listy `deck`.\n3. Następnie usuń ostatni element z `deck`. Skoro właśnie go dobraliśmy, powinniśmy usunąć go z talii.\n4. Zwróć krotkę, w której pierwszą wartością będzie `hand`, a drugą zaktualizowane `deck`.\n5. Obie zmienne zwracane jako część krotki powinny być listami. Jedna powinna zawierać jeden element, a druga 51.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "import random\n\ndef create_deck():\n  suits = [\"♥\", \"♦\", \"♣\", \"♠\"]\n  ranks = [\"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"10\", \"J\", \"Q\", \"K\", \"A\"]\n  deck = []\n\n  for suit in suits:\n    for rank in ranks:\n      deck.append((suit, rank))\n\n  random.shuffle(deck)\n  return deck",
+                  "solvedContent": "import random\n\ndef draw_card(deck):\n  hand = deck.pop()\n  return [hand], deck\n\ndef create_deck():\n  suits = [\"♥\", \"♦\", \"♣\", \"♠\"]\n  ranks = [\"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"10\", \"J\", \"Q\", \"K\", \"A\"]\n  deck = []\n\n  for suit in suits:\n    for rank in ranks:\n      deck.append((suit, rank))\n\n  random.shuffle(deck)\n  return deck"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #6",
+            "id": 129489,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Czas wykorzystać te funkcje.\n\n1. Poza definicjami funkcji utwórz zmienną `deck` i przypisz jej wartość zwracaną przez funkcję `create_deck`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "import random\n\ndef draw_card(deck):\n  hand = deck.pop()\n  return [hand], deck\n\ndef create_deck():\n  suits = [\"♥\", \"♦\", \"♣\", \"♠\"]\n  ranks = [\"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"10\", \"J\", \"Q\", \"K\", \"A\"]\n  deck = []\n\n  for suit in suits:\n    for rank in ranks:\n      deck.append((suit, rank))\n\n  random.shuffle(deck)\n  return deck",
+                  "solvedContent": "import random\n\ndef draw_card(deck):\n  hand = deck.pop()\n  return [hand], deck\n\ndef create_deck():\n  suits = [\"♥\", \"♦\", \"♣\", \"♠\"]\n  ranks = [\"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"10\", \"J\", \"Q\", \"K\", \"A\"]\n  deck = []\n\n  for suit in suits:\n    for rank in ranks:\n      deck.append((suit, rank))\n\n  random.shuffle(deck)\n  return deck\n\ndeck = create_deck()"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #6 - Copy",
+            "id": 129491,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Dobieraj karty, aż talia będzie pusta.\n\n1. Utwórz pętlę `while`, która będzie działać tak długo, jak długo w talii pozostaną karty.\n2. Wewnątrz pętli wywołaj `draw_card(deck)`, aby dobrać kartę i zaktualizować talię.\n3. Utwórz dwie zmienne: `hand` i `deck`, którym przypiszesz wartości zwrócone przez `draw_card`.\n4. W każdej iteracji pętli wyświetl dobraną kartę.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "import random\n\ndef draw_card(deck):\n  hand = deck.pop()\n  return [hand], deck\n\ndef create_deck():\n  suits = [\"♥\", \"♦\", \"♣\", \"♠\"]\n  ranks = [\"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"10\", \"J\", \"Q\", \"K\", \"A\"]\n  deck = []\n\n  for suit in suits:\n    for rank in ranks:\n      deck.append((suit, rank))\n\n  random.shuffle(deck)\n  return deck\n\ndeck = create_deck()",
+                  "solvedContent": "import random\n\ndef draw_card(deck):\n  hand = deck.pop()\n  return [hand], deck\n\ndef create_deck():\n  suits = [\"♥\", \"♦\", \"♣\", \"♠\"]\n  ranks = [\"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"10\", \"J\", \"Q\", \"K\", \"A\"]\n  deck = []\n\n  for suit in suits:\n    for rank in ranks:\n      deck.append((suit, rank))\n\n  random.shuffle(deck)\n  return deck\n\ndeck = create_deck()\nwhile len(deck) > 0:\n  hand, deck = draw_card(deck)\n  print(hand[0])"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #6 - Copy - Copy",
+            "id": 129493,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Uczyńmy nasz skrypt bardziej interaktywnym i pozwólmy użytkownikowi decydować, kiedy dobrać następną kartę.\n\n1. Na początku bloku pętli `while` dodaj funkcję `input`, aby zaczekać, aż użytkownik naciśnie Enter przed dobraniem karty.\n   - Dodaj coś w rodzaju `\"Press Enter to draw the next card\"` jako tekst zachęty funkcji `input`.\n   - Nie musisz nigdzie zapisywać danych wejściowych, ponieważ nie są nam potrzebne. Funkcja `input` zaczeka, aż użytkownik naciśnie Enter, a następnie pętla `while` będzie kontynuować wykonywanie i dobierze następną kartę.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "import random\n\ndef draw_card(deck):\n  hand = deck.pop()\n  return [hand], deck\n\ndef create_deck():\n  suits = [\"♥\", \"♦\", \"♣\", \"♠\"]\n  ranks = [\"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"10\", \"J\", \"Q\", \"K\", \"A\"]\n  deck = []\n\n  for suit in suits:\n    for rank in ranks:\n      deck.append((suit, rank))\n\n  random.shuffle(deck)\n  return deck\n\ndeck = create_deck()\nwhile len(deck) > 0:\n  hand, deck = draw_card(deck)\n  print(hand[0])",
+                  "solvedContent": "import random\n\ndef draw_card(deck):\n  hand = deck.pop()\n  return [hand], deck\n\ndef create_deck():\n  suits = [\"♥\", \"♦\", \"♣\", \"♠\"]\n  ranks = [\"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"10\", \"J\", \"Q\", \"K\", \"A\"]\n  deck = []\n\n  for suit in suits:\n    for rank in ranks:\n      deck.append((suit, rank))\n\n  random.shuffle(deck)\n  return deck\n\ndeck = create_deck()\nwhile len(deck) > 0:\n  input(\"Press Enter to draw the next card\")\n  hand, deck = draw_card(deck)\n  print(hand[0])"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #6 - Copy - Copy",
+            "id": 129492,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Po wyczerpaniu kart chcemy poinformować, że nie ma już żadnych kart.\n\n1. Wyświetl komunikat po zakończeniu pętli: 'Nie ma już kart'.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "import random\n\ndef draw_card(deck):\n  hand = deck.pop()\n  return [hand], deck\n\ndef create_deck():\n  suits = [\"♥\", \"♦\", \"♣\", \"♠\"]\n  ranks = [\"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"10\", \"J\", \"Q\", \"K\", \"A\"]\n  deck = []\n\n  for suit in suits:\n    for rank in ranks:\n      deck.append((suit, rank))\n\n  random.shuffle(deck)\n  return deck\n\ndeck = create_deck()\nwhile len(deck) > 0:\n  input(\"Press Enter to draw the next card\")\n  hand, deck = draw_card(deck)\n  print(hand[0])",
+                  "solvedContent": "import random\n\ndef draw_card(deck):\n  hand = deck.pop()\n  return [hand], deck\n\ndef create_deck():\n  suits = [\"♥\", \"♦\", \"♣\", \"♠\"]\n  ranks = [\"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"10\", \"J\", \"Q\", \"K\", \"A\"]\n  deck = []\n\n  for suit in suits:\n    for rank in ranks:\n      deck.append((suit, rank))\n\n  random.shuffle(deck)\n  return deck\n\ndeck = create_deck()\nwhile len(deck) > 0:\n  input(\"Press Enter to draw the next card\")\n  hand, deck = draw_card(deck)\n  print(hand[0])\n\nprint(\"We are out of cards\")"
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

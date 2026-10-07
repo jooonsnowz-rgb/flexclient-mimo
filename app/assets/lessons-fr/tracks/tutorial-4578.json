@@ -1,0 +1,103 @@
+{
+  "tutorial": {
+    "id": 4578,
+    "version": 2,
+    "type": "guidedProject",
+    "isNew": false,
+    "codeLanguage": "python",
+    "title": "Crypto Craze - Partie 2",
+    "descriptionContent": "Dans la partie 2, nous faisons en sorte que l'application affiche plusieurs prix de crypto de manière plus claire sans répéter le même code encore et encore.",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": "tutorial-4578-icon-banner.svg",
+    "chapters": [
+      {
+        "id": 17736,
+        "title": "Chapitre #1",
+        "type": "practiceLevel3",
+        "lessons": [
+          {
+            "title": "Lesson #1",
+            "id": 151363,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Bienvenue dans le projet Crypto Craze. Dans la partie 2, nous allons examiner plusieurs monnaies et comment rendre notre fonction réutilisable.\n\nCommençons par rendre notre fonction réutilisable en passant la monnaie que nous voulons utiliser.\n\n1. Mets à jour `get_crypto_price()` pour accepter un paramètre appelé `coin_id`.\n2. Déplace `url` à l'intérieur de la fonction et construis-le avec une f-string : `f\"https://crypto-craze.mimo.dev/api/coins/{coin_id}\"`.\n3. Supprime la vieille variable `url` de niveau supérieur.\n4. Passe le paramètre `\"bitcoin\"` à la fonction `get_crypto_price` lors de son appel.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "app.py",
+                  "codeLanguage": "python",
+                  "content": "import requests\nimport os\n\napi_key = os.getenv(\"MIMO_CRYPTO_CRAZE_API_KEY\")\nurl = \"https://crypto-craze.mimo.dev/api/coins/bitcoin\"\nheaders = {\"api-key\": api_key}\n\ndef get_crypto_price():\n    response = requests.get(url, headers=headers)\n    return response.json()\n\ncrypto = get_crypto_price()\n\nsymbol = crypto.get(\"symbol\")\nprice_usd = crypto.get(\"priceUsd\")\n\nprint(symbol)\nprint(price_usd)",
+                  "solvedContent": "import requests\nimport os\n\napi_key = os.getenv(\"MIMO_CRYPTO_CRAZE_API_KEY\")\nheaders = {\"api-key\": api_key}\n\ndef get_crypto_price(coin_id):\n    url = f\"https://crypto-craze.mimo.dev/api/coins/{coin_id}\"\n    response = requests.get(url, headers=headers)\n    return response.json()\n\ncrypto = get_crypto_price(\"bitcoin\")\n\nsymbol = crypto.get(\"symbol\")\nprice_usd = crypto.get(\"priceUsd\")\n\nprint(symbol)\nprint(price_usd)"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #2",
+            "id": 151364,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Maintenant que `get_crypto_price(coin_id)` nécessite une entrée, utilisons-le pour récupérer un autre coin.\n\n1. Remplace l'argument dans `get_crypto_price(\"bitcoin\")` par `\"ethereum\"`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "app.py",
+                  "codeLanguage": "python",
+                  "content": "import requests\nimport os\n\napi_key = os.getenv(\"MIMO_CRYPTO_CRAZE_API_KEY\")\nheaders = {\"api-key\": api_key}\n\ndef get_crypto_price(coin_id):\n    url = f\"https://crypto-craze.mimo.dev/api/coins/{coin_id}\"\n    response = requests.get(url, headers=headers)\n    return response.json()\n\ncrypto = get_crypto_price(\"bitcoin\")\n\nsymbol = crypto.get(\"symbol\")\nprice_usd = crypto.get(\"priceUsd\")\n\nprint(symbol)\nprint(price_usd)",
+                  "solvedContent": "import requests\nimport os\n\napi_key = os.getenv(\"MIMO_CRYPTO_CRAZE_API_KEY\")\nheaders = {\"api-key\": api_key}\n\ndef get_crypto_price(coin_id):\n    url = f\"https://crypto-craze.mimo.dev/api/coins/{coin_id}\"\n    response = requests.get(url, headers=headers)\n    return response.json()\n\ncrypto = get_crypto_price(\"ethereum\")\n\nsymbol = crypto.get(\"symbol\")\nprice_usd = crypto.get(\"priceUsd\")\n\nprint(symbol)\nprint(price_usd)"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #3",
+            "id": 151365,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Nous voulons éviter de répéter la logique d'impression en la mettant dans une fonction.\n\n1. Crée une fonction nommée `print_crypto_price(crypto)`.\n2. Déplace `symbol = crypto.get(\"symbol\")` et `price_usd = crypto.get(\"priceUsd\")` à l'intérieur.\n3. Déplace `print(symbol)` et `print(price_usd)` à l'intérieur.\n4. Appelle `print_crypto_price(crypto)` après avoir récupéré la pièce.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "app.py",
+                  "codeLanguage": "python",
+                  "content": "import requests\nimport os\n\napi_key = os.getenv(\"MIMO_CRYPTO_CRAZE_API_KEY\")\nheaders = {\"api-key\": api_key}\n\ndef get_crypto_price(coin_id):\n    url = f\"https://crypto-craze.mimo.dev/api/coins/{coin_id}\"\n    response = requests.get(url, headers=headers)\n    return response.json()\n\ncrypto = get_crypto_price(\"ethereum\")\n\nsymbol = crypto.get(\"symbol\")\nprice_usd = crypto.get(\"priceUsd\")\n\nprint(symbol)\nprint(price_usd)",
+                  "solvedContent": "import requests\nimport os\n\napi_key = os.getenv(\"MIMO_CRYPTO_CRAZE_API_KEY\")\nheaders = {\"api-key\": api_key}\n\ndef get_crypto_price(coin_id):\n    url = f\"https://crypto-craze.mimo.dev/api/coins/{coin_id}\"\n    response = requests.get(url, headers=headers)\n    return response.json()\n\ndef print_crypto_price(crypto):\n    symbol = crypto.get(\"symbol\")\n    price_usd = crypto.get(\"priceUsd\")\n\n    print(symbol)\n    print(price_usd)\n\ncrypto = get_crypto_price(\"ethereum\")\nprint_crypto_price(crypto)"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #4",
+            "id": 151366,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Pour finaliser le projet, nous pouvons imprimer plusieurs prix de cryptomonnaies en réutilisant nos deux fonctions.\n\n1. Récupérer et imprimer `\"bitcoin\"`.\n2. Récupérer et imprimer `\"ethereum\"`.\n3. Récupérer et imprimer `\"solana\"`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "app.py",
+                  "codeLanguage": "python",
+                  "content": "import requests\nimport os\n\napi_key = os.getenv(\"MIMO_CRYPTO_CRAZE_API_KEY\")\nheaders = {\"api-key\": api_key}\n\ndef get_crypto_price(coin_id):\n    url = f\"https://crypto-craze.mimo.dev/api/coins/{coin_id}\"\n    response = requests.get(url, headers=headers)\n    return response.json()\n\ndef print_crypto_price(crypto):\n    symbol = crypto.get(\"symbol\")\n    price_usd = crypto.get(\"priceUsd\")\n\n    print(symbol)\n    print(price_usd)\n\ncrypto = get_crypto_price(\"ethereum\")\nprint_crypto_price(crypto)",
+                  "solvedContent": "import requests\nimport os\n\napi_key = os.getenv(\"MIMO_CRYPTO_CRAZE_API_KEY\")\nheaders = {\"api-key\": api_key}\n\ndef get_crypto_price(coin_id):\n    url = f\"https://crypto-craze.mimo.dev/api/coins/{coin_id}\"\n    response = requests.get(url, headers=headers)\n    return response.json()\n\ndef print_crypto_price(crypto):\n    symbol = crypto.get(\"symbol\")\n    price_usd = crypto.get(\"priceUsd\")\n\n    print(symbol)\n    print(price_usd)\n\ncrypto = get_crypto_price(\"bitcoin\")\nprint_crypto_price(crypto)\n\ncrypto = get_crypto_price(\"ethereum\")\nprint_crypto_price(crypto)\n\ncrypto = get_crypto_price(\"solana\")\nprint_crypto_price(crypto)"
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

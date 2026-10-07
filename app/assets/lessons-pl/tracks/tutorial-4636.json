@@ -1,0 +1,105 @@
+{
+  "tutorial": {
+    "id": 4636,
+    "version": 1,
+    "type": "practiceOptional",
+    "isNew": false,
+    "codeLanguage": "python",
+    "title": "Parametry żądania",
+    "descriptionContent": "Przenoś umiejętności związane z parametrami żądań do trudniejszych kontekstów i samodzielnych zadań w Pythonie.",
+    "shortDescriptionContent": "Osoby uczące się języka Python, które chcą dodatkowo poćwiczyć wysyłanie żądańೇಟ",
+    "showInTrack": true,
+    "iconBanner": null,
+    "chapters": [
+      {
+        "id": 17866,
+        "title": "Wyzwania dotyczące parametrów żądania",
+        "type": "practiceLevel3",
+        "lessons": [
+          {
+            "title": "Choose the request shape",
+            "id": 152308,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Panel potrzebuje raportu <code>4</code> z projektu <code>9</code>. Która ścieżka używa zagnieżdżonych parametrów trasy?</p><selection multiple=\"multiple\"><item value=\"1\" correct=\"true\"><code>/projects/9/reports/4</code></item><item value=\"2\" correct=\"false\"><code>/projects?projectId=9&amp;reportId=4</code></item><item value=\"3\" correct=\"false\"><code>/projects/4/reports/9</code></item><item value=\"4\" correct=\"false\"><code>/projects/9/4</code></item></selection><p visible-if=\"wrong\">Koniecznie wybierz <code>/projects/9/reports/4</code>.</p></body></html>"
+          },
+          {
+            "title": "Build a focused query",
+            "id": 152309,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Adres URL już filtruje elementy według <code>category=book</code>. Dodaj <code>owner=maya</code> jako drugi parametr zapytania.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"url = \" /><text value=\"&quot;https://things.mimo.dev/api/things?category=book&amp;owner=maya&quot;\" class=\"string\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"55\" endIndex=\"66\" /><option correct=\"false\"><content><text value=\"?owner=maya\" /></content></option><option correct=\"false\"><content><text value=\"/owner/maya\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Koniecznie wybierz <code>&amp;owner=maya</code>.</p></body></html>"
+          },
+          {
+            "title": "Combine dictionary filters",
+            "id": 152310,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Słownik już filtruje książki według gatunku. Dodaj drugi wpis dla formatu <code>ebook</code>.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"filters = {\" /><text value=\"&quot;genre&quot;\" class=\"string\" /><text value=\": \" /><text value=\"&quot;mystery&quot;\" class=\"string\" /><text value=\", \" /><text value=\"&quot;format&quot;\" class=\"string\" /><text value=\": \" /><text value=\"&quot;ebook&quot;\" class=\"string\" /><text value=\"}\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"31\" endIndex=\"39\" /><option startIndex=\"41\" endIndex=\"48\" /><option correct=\"false\"><content><text value=\"&quot;genre&quot;\" /></content></option><option correct=\"false\"><content><text value=\"&quot;paper&quot;\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Koniecznie wybierz <code>\"format\"</code>, a następnie <code>\"ebook\"</code>.</p></body></html>"
+          },
+          {
+            "title": "Send a filtered request",
+            "id": 152311,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Użyj `requests.get()`, aby wysłać żądanie do `url`. Przekaż słownik `filters` za pomocą `params`, a zwróconą odpowiedź zapisz w `response`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "import requests\n\nurl = \"https://things.mimo.dev/api/things\"\nfilters = {\"category\": \"home\", \"owner\": \"Maya\"}\n",
+                  "solvedContent": "import requests\n\nurl = \"https://things.mimo.dev/api/things\"\nfilters = {\"category\": \"home\", \"owner\": \"Maya\"}\nresponse = requests.get(url, params=filters)\n"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Predict the filtered URL",
+            "id": 152312,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Jaki adres URL tworzy <code>requests.get()</code> na podstawie tego słownika?</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"import\" class=\"keyword\" /><text value=\" requests\" /><text type=\"break\" /><text type=\"break\" /><text value=\"url = \" /><text value=\"&quot;https://things.mimo.dev/api/things&quot;\" class=\"string\" /><text type=\"break\" /><text value=\"filters = {\" /><text value=\"&quot;category&quot;\" class=\"string\" /><text value=\": \" /><text value=\"&quot;tool&quot;\" class=\"string\" /><text value=\", \" /><text value=\"&quot;status&quot;\" class=\"string\" /><text value=\": \" /><text value=\"&quot;active&quot;\" class=\"string\" /><text value=\"}\" /><text type=\"break\" /><text value=\"response = requests.get(url, params=filters)\" /></content></code><selection multiple=\"multiple\"><item value=\"1\" correct=\"true\"><code>https://things.mimo.dev/api/things?category=tool&amp;status=active</code></item><item value=\"2\" correct=\"false\"><code>https://things.mimo.dev/api/things/category/tool/status/active</code></item><item value=\"3\" correct=\"false\"><code>https://things.mimo.dev/api/things?category=tool?status=active</code></item><item value=\"4\" correct=\"false\"><code>https://things.mimo.dev/api/things?tool=category&amp;active=status</code></item></selection><p visible-if=\"wrong\">Koniecznie wybierz <code>https://things.mimo.dev/api/things?category=tool&amp;status=active</code>.</p></body></html>"
+          },
+          {
+            "title": "Arrange a nested route",
+            "id": 152313,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Umieść <code>shelf_id</code> po <code>/shelves</code> i <code>book_id</code> po <code>/books</code>.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"shelf_id = \" /><text value=\"8\" class=\"number\" /><text type=\"break\" /><text value=\"book_id = \" /><text value=\"5\" class=\"number\" /><text type=\"break\" /><text value=\"path = \" /><text value=\"f&quot;/shelves/\" /><text value=\"{shelf_id}\" class=\"subst\" /><text value=\"/books/\" /><text value=\"{book_id}\" class=\"subst\" /><text value=\"&quot;\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"43\" endIndex=\"53\" /><option startIndex=\"60\" endIndex=\"69\" /><option correct=\"false\"><content><text value=\"{book_id}\" /></content></option><option correct=\"false\"><content><text value=\"{shelf_id}\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Koniecznie wybierz <code>{shelf_id}</code>, a następnie <code>{book_id}</code>.</p></body></html>"
+          },
+          {
+            "title": "Build a nested request path",
+            "id": 152314,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Zbuduj `path` za pomocą f-stringa, aby identyfikował raport `4` z projektu `9` jako `/projects/9/reports/4`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "project_id = 9\nreport_id = 4\npath = \"\"\n",
+                  "solvedContent": "project_id = 9\nreport_id = 4\npath = f\"/projects/{project_id}/reports/{report_id}\"\n"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Distinguish request parameters",
+            "id": 152315,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>To żądanie dotyczy członka <code>2</code> z zespołu <code>5</code> i filtruje aktywnych członków. Jaki adres URL wysyła?</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"import\" class=\"keyword\" /><text value=\" requests\" /><text type=\"break\" /><text type=\"break\" /><text value=\"url = \" /><text value=\"&quot;https://things.mimo.dev/api/teams/5/members/2&quot;\" class=\"string\" /><text type=\"break\" /><text value=\"filters = {\" /><text value=\"&quot;active&quot;\" class=\"string\" /><text value=\": \" /><text value=\"&quot;true&quot;\" class=\"string\" /><text value=\"}\" /><text type=\"break\" /><text value=\"response = requests.get(url, params=filters)\" /></content></code><selection multiple=\"multiple\"><item value=\"1\" correct=\"true\"><code>https://things.mimo.dev/api/teams/5/members/2?active=true</code></item><item value=\"2\" correct=\"false\"><code>https://things.mimo.dev/api/teams?teamId=5&amp;memberId=2&amp;active=true</code></item><item value=\"3\" correct=\"false\"><code>https://things.mimo.dev/api/teams/5/members/2/active/true</code></item><item value=\"4\" correct=\"false\"><code>https://things.mimo.dev/api/teams/2/members/5?active=true</code></item></selection><p visible-if=\"wrong\">Koniecznie wybierz <code>https://things.mimo.dev/api/teams/5/members/2?active=true</code>.</p></body></html>"
+          }
+        ]
+      }
+    ]
+  }
+}

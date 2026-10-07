@@ -1,0 +1,268 @@
+{
+  "tutorial": {
+    "id": 2399,
+    "version": 7,
+    "type": "guidedProjectOptional",
+    "isNew": false,
+    "codeLanguage": "python",
+    "title": "Banka İşlemlerini Analiz Etme",
+    "descriptionContent": "Banka işlem verilerini analiz etmek için Python liste üreteçlerini kullan",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": "tutorial-2399-icon-banner.svg",
+    "chapters": [
+      {
+        "id": 13895,
+        "title": "Banka İşlemlerini Analiz Etme",
+        "type": "practiceLevel1",
+        "lessons": [
+          {
+            "title": "Starter code",
+            "id": 123736,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Liste kavramaları ve dilim gösterimi hakkındaki bilgini, bir banka hesabına yapılan para yatırma ve çekme işlemlerinin listesini analiz ederken kullanmaya başlayalım!\n\nÖncelikle başlangıç kodumuzu tanıyalım. `transactions_in_cents` listesindeki her işlem, ABD senti cinsinden ifade edilir. Liste hem pozitif işlemler (para yatırma) hem de negatif işlemler (para çekme) içerir.\n\n1. Konsola `\"Transactions (cents):\"` metnini yazdırarak başlayalım.\n2. Ardından `transactions_in_cents` değişkeninin değerini konsola yazdır.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "transactions_in_cents = [1000, -450, 7500, -3475, 13000, -8150, 25000, -850, 0, -1125, -600, 102550, -25025, 6500, -3850, -2500, 1875, 4000]\n",
+                  "solvedContent": "transactions_in_cents = [1000, -450, 7500, -3475, 13000, -8150, 25000, -850, 0, -1125, -600, 102550, -25025, 6500, -3850, -2500, 1875, 4000]\nprint(\"Transactions (cents):\")\nprint(transactions_in_cents)"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "We can use the built-in Python `print()` function as follows: \n- `print(variable_to_print)` or\n- `print(\"text to print\")`\n\nNote: you can use f-strings within calls to the `print()` function, too!"
+                }
+              ]
+            }
+          },
+          {
+            "title": "Converting to dollars",
+            "id": 123660,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Sırada, dahil edilen verilerin anlaşılmasını kolaylaştırmak için işlemlerimizi sentten dolara dönüştüreceğiz.\n\n1. `transactions` adında bir değişken oluştur.\n2. Bu değişkenin içinde, `transactions_in_cents` içindeki her işlemi 100'e bölmek için liste kavrayışı kullan.\n3. (İsteğe bağlı) Kodunun beklendiği gibi çalıştığını doğrulamak için yeni `transactions` değişkeninin değerini bir etiketle birlikte yazdırmayı düşün:\n```python\nprint(\"Transactions (dollars):\")\nprint(transactions)\n```",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "transactions_in_cents = [1000, -450, 7500, -3475, 13000, -8150, 25000, -850, 0, -1125, -600, 102550, -25025, 6500, -3850, -2500, 1875, 4000]\nprint(\"Transactions (cents):\")\nprint(transactions_in_cents)",
+                  "solvedContent": "transactions_in_cents = [1000, -450, 7500, -3475, 13000, -8150, 25000, -850, 0, -1125, -600, 102550, -25025, 6500, -3850, -2500, 1875, 4000]\nprint(\"Transactions (cents):\")\nprint(transactions_in_cents)\n\ntransactions = [transaction / 100 for transaction in transactions_in_cents]\nprint(\"Transactions (dollars):\")\nprint(transactions)"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "1. To create a basic list comprehension, we use the following syntax: `[x for x in list_name]`.\n2. To alter the elements in the newly-created list, specify the desired transformation within the list comprehension, like this: `[x * 5 for x in list_name]` (this example would generate a new list with each element from the original list multiplied by 5).\n3. For our code, we'll use `[transaction / 100 for transaction in transactions_in_cents]` to generate the new list. \n4. Be sure to store this code within a variable called `transactions`!"
+                }
+              ]
+            }
+          },
+          {
+            "title": "Sorting in ascending order",
+            "id": 123663,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Sırada, işlemlerimizi artan düzende (en küçükten en büyüğe) sıralayacağız.\n\n1. `transactions` listesinde yerleşik `.sort()` liste metodunu çağır.\n2. Bunu depolamak için yeni bir değişken oluşturmana gerek yok; `.sort()` mevcut listeyi senin için değiştirir!\n3. (İsteğe bağlı) Kodunun beklendiği gibi çalıştığını doğrulamak için güncellenmiş `transactions` değişkeninin değerini bir etiketle birlikte yazdırmayı düşün:\n```python\nprint(\"Sorted Transactions:\")\nprint(transactions)\n```",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "transactions_in_cents = [1000, -450, 7500, -3475, 13000, -8150, 25000, -850, 0, -1125, -600, 102550, -25025, 6500, -3850, -2500, 1875, 4000]\nprint(\"Transactions (cents):\")\nprint(transactions_in_cents)\n\ntransactions = [transaction / 100 for transaction in transactions_in_cents]\nprint(\"Transactions (dollars):\")\nprint(transactions)\n\n\n\n",
+                  "solvedContent": "transactions_in_cents = [1000, -450, 7500, -3475, 13000, -8150, 25000, -850, 0, -1125, -600, 102550, -25025, 6500, -3850, -2500, 1875, 4000]\nprint(\"Transactions (cents):\")\nprint(transactions_in_cents)\n\ntransactions = [transaction / 100 for transaction in transactions_in_cents]\nprint(\"Transactions (dollars):\")\nprint(transactions)\n\ntransactions.sort()\nprint(\"Sorted Transactions:\")\nprint(transactions)\n\n"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "To sort a list in ascending order, we use this syntax: `list_name.sort()`\n\nBonus: since ascending is the default sort order, we don't need to pass any additional arguments into the `.sort()` method!"
+                }
+              ]
+            }
+          },
+          {
+            "title": "Filtering into deposits and withdrawals",
+            "id": 123664,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Şimdi, para yatırma işlemlerini (sadece pozitif sayıları!) ve para çekme işlemlerini (sadece negatif sayıları!) içerecek şekilde filtrelenmiş yeni listeler oluşturmak için liste comprehension'larını kullanalım.\n\n1. `deposits` ve `withdrawals` adında iki yeni değişken oluştur.\n2. `deposits` içinde, 0'a eşit veya 0'dan büyük işlemlerden oluşan filtrelenmiş bir liste oluşturmak için bir liste comprehension'ı yaz.\n3. `withdrawals` içinde, 0'dan küçük işlemlerden oluşan filtrelenmiş bir liste oluşturmak için bir liste comprehension'ı yaz.\n4. (İsteğe bağlı) Kodunun beklendiği gibi çalıştığını doğrulamak için yeni `deposits` ve `withdrawals` değişkenlerinin değerlerini açıklayıcı etiketlerle birlikte yazdırmayı düşün:\n```python\nprint(\"Deposits:\")\nprint(deposits)\nprint(\"Withdrawals:\")\nprint(withdrawals)\n```",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "transactions_in_cents = [1000, -450, 7500, -3475, 13000, -8150, 25000, -850, 0, -1125, -600, 102550, -25025, 6500, -3850, -2500, 1875, 4000]\nprint(\"Transactions (cents):\")\nprint(transactions_in_cents)\n\ntransactions = [transaction / 100 for transaction in transactions_in_cents]\nprint(\"Transactions (dollars):\")\nprint(transactions)\n\ntransactions.sort()\nprint(\"Sorted Transactions:\")\nprint(transactions)\n\n\n",
+                  "solvedContent": "transactions_in_cents = [1000, -450, 7500, -3475, 13000, -8150, 25000, -850, 0, -1125, -600, 102550, -25025, 6500, -3850, -2500, 1875, 4000]\nprint(\"Transactions (cents):\")\nprint(transactions_in_cents)\n\ntransactions = [transaction / 100 for transaction in transactions_in_cents]\nprint(\"Transactions (dollars):\")\nprint(transactions)\n\ntransactions.sort()\nprint(\"Sorted Transactions:\")\nprint(transactions)\n\ndeposits = [transaction for transaction in transactions if transaction >= 0]\nwithdrawals = [transaction for transaction in transactions if transaction < 0]\n\nprint(\"Deposits:\")\nprint(deposits)\nprint(\"Withdrawals:\")\nprint(withdrawals)"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "To generate a filtered list with a list comprehension, you'll use an if statement after the for portion of your list comprehension: `x for x in list_name if condition_here`."
+                }
+              ]
+            }
+          },
+          {
+            "title": "Creating `invertNegativeNum` function",
+            "id": 123665,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Şimdi negatif sayıları (para çekme işlemlerini) pozitif eşdeğerlerine dönüştürmek için kullanabileceğimiz bir fonksiyon oluşturacağız. `invert_negative_num` adındaki bu fonksiyon bir sayı alacak ve girilen sayının -1 ile çarpılması sonucunu döndürecek.\n\n1. `invert_negative_num` adında bir fonksiyon tanımla.\n2. Fonksiyonuna `negative_num` adında bir parametre ver.\n3. Fonksiyonunun içinde `positive_num` adında yeni bir değişken oluştur.\n4. Bu değişkenin içinde `negative_num` değerini `-1` ile çarp.\n5. Fonksiyonunun son satırında `positive_num` değerini döndür.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "transactions_in_cents = [1000, -450, 7500, -3475, 13000, -8150, 25000, -850, 0, -1125, -600, 102550, -25025, 6500, -3850, -2500, 1875, 4000]\nprint(\"Transactions (cents):\")\nprint(transactions_in_cents)\n\ntransactions = [transaction / 100 for transaction in transactions_in_cents]\nprint(\"Transactions (dollars):\")\nprint(transactions)\n\ntransactions.sort()\nprint(\"Sorted Transactions:\")\nprint(transactions)\n\ndeposits = [transaction for transaction in transactions if transaction >= 0]\nwithdrawals = [transaction for transaction in transactions if transaction < 0]\n\nprint(\"Deposits:\")\nprint(deposits)\nprint(\"Withdrawals:\")\nprint(withdrawals)\n\n",
+                  "solvedContent": "transactions_in_cents = [1000, -450, 7500, -3475, 13000, -8150, 25000, -850, 0, -1125, -600, 102550, -25025, 6500, -3850, -2500, 1875, 4000]\nprint(\"Transactions (cents):\")\nprint(transactions_in_cents)\n\ntransactions = [transaction / 100 for transaction in transactions_in_cents]\nprint(\"Transactions (dollars):\")\nprint(transactions)\n\ntransactions.sort()\nprint(\"Sorted Transactions:\")\nprint(transactions)\n\ndeposits = [transaction for transaction in transactions if transaction >= 0]\nwithdrawals = [transaction for transaction in transactions if transaction < 0]\n\nprint(\"Deposits:\")\nprint(deposits)\nprint(\"Withdrawals:\")\nprint(withdrawals)\n\ndef invert_negative_num(negative_num):\n    positive_num = negative_num * -1\n    return positive_num"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "Creating a function with a return value follows this format:\n```python\ndef function_name(param_1, param_2):\n    # code any function logic in this nested block\n    # reminder: parameters are optionally used to represent values passed into the function call\n    return return_value\n```"
+                }
+              ]
+            }
+          },
+          {
+            "title": "Converting withdrawals to positives",
+            "id": 123666,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Şimdi `invertNegativeNum` fonksiyonumuzu kullanarak `withdrawals` listesindeki her tutarı tek seferde pozitif bir sayıya dönüştürelim!\n\n1. Mevcut `withdrawals` değişkenimizi yeni bir liste üreteciyle eşitle.\n2. Bu liste üretecinin içinde, mevcut her withdrawal için `invert_negative_number` fonksiyonumuzu çağır.\n3. (İsteğe bağlı) Kodunun beklendiği gibi çalıştığını doğrulamak için güncellenmiş `withdrawals` değişkeninin değerini bir etiketle birlikte yazdırmayı düşün:\n```python\nprint(\"Withdrawals (positive values):\")\nprint(withdrawals)\n```",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "transactions_in_cents = [1000, -450, 7500, -3475, 13000, -8150, 25000, -850, 0, -1125, -600, 102550, -25025, 6500, -3850, -2500, 1875, 4000]\nprint(\"Transactions (cents):\")\nprint(transactions_in_cents)\n\ntransactions = [transaction / 100 for transaction in transactions_in_cents]\nprint(\"Transactions (dollars):\")\nprint(transactions)\n\ntransactions.sort()\nprint(\"Sorted Transactions:\")\nprint(transactions)\n\ndeposits = [transaction for transaction in transactions if transaction >= 0]\nwithdrawals = [transaction for transaction in transactions if transaction < 0]\n\nprint(\"Deposits:\")\nprint(deposits)\nprint(\"Withdrawals:\")\nprint(withdrawals)\n\ndef invert_negative_num(negative_num):\n    positive_num = negative_num * -1\n    return positive_num\n\n",
+                  "solvedContent": "transactions_in_cents = [1000, -450, 7500, -3475, 13000, -8150, 25000, -850, 0, -1125, -600, 102550, -25025, 6500, -3850, -2500, 1875, 4000]\nprint(\"Transactions (cents):\")\nprint(transactions_in_cents)\n\ntransactions = [transaction / 100 for transaction in transactions_in_cents]\nprint(\"Transactions (dollars):\")\nprint(transactions)\n\ntransactions.sort()\nprint(\"Sorted Transactions:\")\nprint(transactions)\n\ndeposits = [transaction for transaction in transactions if transaction >= 0]\nwithdrawals = [transaction for transaction in transactions if transaction < 0]\n\nprint(\"Deposits:\")\nprint(deposits)\nprint(\"Withdrawals:\")\nprint(withdrawals)\n\ndef invert_negative_num(negative_num):\n    positive_num = negative_num * -1\n    return positive_num\n\nwithdrawals = [invert_negative_num(withdrawal) for withdrawal in withdrawals]\nprint(\"Withdrawals (positive values):\")\nprint(withdrawals)"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "Use this code inside the list comprehension's square brackets:\n```Python\ninvert_negative_num(withdrawal) for withdrawal in withdrawals\n``` "
+                }
+              ]
+            }
+          },
+          {
+            "title": "Determining largest  withdrawals",
+            "id": 123667,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Harcamalarımızı daha iyi anlamamıza yardımcı olmak (ve liste dilimleme gösterimiyle daha fazla pratik yapmak) için en büyük beş para çekme işlemini içeren yeni bir liste oluşturacak kodu yazalım.\n\n1. `largest_withdrawals` adlı yeni bir değişken oluştur.\n2. Bu değişkenin içinde, `withdrawals` listesinin ilk beş öğesini içeren yeni bir liste oluşturmak için liste dilimleme gösterimini kullan.\n3. `withdrawals` listesini önceden sıralamana gerek yok; en büyük para çekme işlemlerinin başta olacak şekilde zaten sıralandığını göreceksin!\n4. (İsteğe bağlı) Kodunun beklendiği gibi çalıştığını doğrulamak için `largest_withdrawals` değişkeninin değerini bir etiketle birlikte yazdırmayı düşün:\n```python\nprint(\"Largest Withdrawals:\")\nprint(largest_withdrawals)\n```",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "transactions_in_cents = [1000, -450, 7500, -3475, 13000, -8150, 25000, -850, 0, -1125, -600, 102550, -25025, 6500, -3850, -2500, 1875, 4000]\nprint(\"Transactions (cents):\")\nprint(transactions_in_cents)\n\ntransactions = [transaction / 100 for transaction in transactions_in_cents]\nprint(\"Transactions (dollars):\")\nprint(transactions)\n\ntransactions.sort()\nprint(\"Sorted Transactions:\")\nprint(transactions)\n\ndeposits = [transaction for transaction in transactions if transaction >= 0]\nwithdrawals = [transaction for transaction in transactions if transaction < 0]\n\nprint(\"Deposits:\")\nprint(deposits)\nprint(\"Withdrawals:\")\nprint(withdrawals)\n\ndef invert_negative_num(negative_num):\n    positive_num = negative_num * -1\n    return positive_num\n\nwithdrawals = [invert_negative_num(withdrawal) for withdrawal in withdrawals]\nprint(\"Withdrawals (positive values):\")\nprint(withdrawals)\n\n",
+                  "solvedContent": "transactions_in_cents = [1000, -450, 7500, -3475, 13000, -8150, 25000, -850, 0, -1125, -600, 102550, -25025, 6500, -3850, -2500, 1875, 4000]\nprint(\"Transactions (cents):\")\nprint(transactions_in_cents)\n\ntransactions = [transaction / 100 for transaction in transactions_in_cents]\nprint(\"Transactions (dollars):\")\nprint(transactions)\n\ntransactions.sort()\nprint(\"Sorted Transactions:\")\nprint(transactions)\n\ndeposits = [transaction for transaction in transactions if transaction >= 0]\nwithdrawals = [transaction for transaction in transactions if transaction < 0]\n\nprint(\"Deposits:\")\nprint(deposits)\nprint(\"Withdrawals:\")\nprint(withdrawals)\n\ndef invert_negative_num(negative_num):\n    positive_num = negative_num * -1\n    return positive_num\n\nwithdrawals = [invert_negative_num(withdrawal) for withdrawal in withdrawals]\nprint(\"Withdrawals (positive values):\")\nprint(withdrawals)\n\nlargest_withdrawals = withdrawals[:5]\nprint(\"Largest Withdrawals:\")\nprint(largest_withdrawals)\n"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "1. Remember the syntax of list slicing: `list_name[start:stop:step]`\n2. You'll start by specifying the list you wish to slice from (`withdrawals`), followed by square brackets.\n3. Inside the square brackets, the first number specifies the index to **start** the slice at; this value can also be omitted if you wish to start at the beginning of the list. Don't forget Python indexing starts at 0!\n4. After the first colon, the second number corresponds to the index you wish to **stop** at. Remember that the value included at the **stop** index is *not* included in the slice.\n5. In this case, we don't need to specify **step**, as we want our slice to contain five consecutive withdrawal amounts.\n6. That gives us two ways to slice it: `withdrawals[:5]` or `withdrawals[0:5]`!"
+                }
+              ]
+            }
+          },
+          {
+            "title": "Averaging deposits and withdrawals",
+            "id": 123668,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Finansal kalıplarımızı daha iyi anlamak için ortalama para yatırma ve çekme tutarlarımızı hesaplayalım. Bu ortalamalarla kayan noktalı ondalık sayılar olarak başlayıp bunları tam sayılara dönüştüreceğiz.\n\n1. `average_deposit` ve `average_withdrawal` adında iki yeni değişken oluştur.\n2. Her yeni değişkende, ilgili listedeki işlem tutarlarının toplamını al ve bunu listenin uzunluğuna böl.\n3. Şimdi mevcut değişkenleri kullanarak her iki ortalamayı da tür dönüştürme ile `float` türünden `int` türüne dönüştürelim.\n4. (İsteğe bağlı) Kodunun beklendiği gibi çalıştığını doğrulamak için yeni `average_deposit` ve `average_withdrawal` değişkenlerinin değerlerini eşlik eden etiketlerle birlikte yazdırmayı düşün:\n```python\nprint(\"Average Deposit (int):\")\nprint(average_deposit)\nprint(\"Average Withdrawal (int):\")\nprint(average_withdrawal)\n```",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "transactions_in_cents = [1000, -450, 7500, -3475, 13000, -8150, 25000, -850, 0, -1125, -600, 102550, -25025, 6500, -3850, -2500, 1875, 4000]\nprint(\"Transactions (cents):\")\nprint(transactions_in_cents)\n\ntransactions = [transaction / 100 for transaction in transactions_in_cents]\nprint(\"Transactions (dollars):\")\nprint(transactions)\n\ntransactions.sort()\nprint(\"Sorted Transactions:\")\nprint(transactions)\n\ndeposits = [transaction for transaction in transactions if transaction >= 0]\nwithdrawals = [transaction for transaction in transactions if transaction < 0]\n\nprint(\"Deposits:\")\nprint(deposits)\nprint(\"Withdrawals:\")\nprint(withdrawals)\n\ndef invert_negative_num(negative_num):\n    positive_num = negative_num * -1\n    return positive_num\n\nwithdrawals = [invert_negative_num(withdrawal) for withdrawal in withdrawals]\nprint(\"Withdrawals (positive values):\")\nprint(withdrawals)\n\nlargest_withdrawals = withdrawals[:5]\nprint(\"Largest Withdrawals:\")\nprint(largest_withdrawals)\n\n",
+                  "solvedContent": "transactions_in_cents = [1000, -450, 7500, -3475, 13000, -8150, 25000, -850, 0, -1125, -600, 102550, -25025, 6500, -3850, -2500, 1875, 4000]\nprint(\"Transactions (cents):\")\nprint(transactions_in_cents)\n\ntransactions = [transaction / 100 for transaction in transactions_in_cents]\nprint(\"Transactions (dollars):\")\nprint(transactions)\n\ntransactions.sort()\nprint(\"Sorted Transactions:\")\nprint(transactions)\n\ndeposits = [transaction for transaction in transactions if transaction >= 0]\nwithdrawals = [transaction for transaction in transactions if transaction < 0]\n\nprint(\"Deposits:\")\nprint(deposits)\nprint(\"Withdrawals:\")\nprint(withdrawals)\n\ndef invert_negative_num(negative_num):\n    positive_num = negative_num * -1\n    return positive_num\n\nwithdrawals = [invert_negative_num(withdrawal) for withdrawal in withdrawals]\nprint(\"Withdrawals (positive values):\")\nprint(withdrawals)\n\nlargest_withdrawals = withdrawals[:5]\nprint(\"Largest Withdrawals:\")\nprint(largest_withdrawals)\n\naverage_deposit = sum(deposits) / len(deposits)\naverage_withdrawal = sum(withdrawals) / len(withdrawals)\n\naverage_deposit = int(average_deposit)\naverage_withdrawal = int(average_withdrawal)\n\nprint(\"Average Deposit (int):\")\nprint(average_deposit)\nprint(\"Average Withdrawal (int):\")\nprint(average_withdrawal)"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "1. To calculate the value of `average_deposit`, use the following formula: `sum(deposits) / len(deposits)`.\n2. Then, to convert this value from a floating-point decimal into an integer, you can use type casting: `average_deposit = int(average_deposit)`. \n3. Reminder that casting a decimal to an integer does not round the number up or down, but instead just gives us the integer value to the left of the decimal point, omitting any decimal digits."
+                }
+              ]
+            }
+          },
+          {
+            "title": "Calculating account balance",
+            "id": 123669,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Son bir şey: `transactions` dizisindeki tüm değerleri toplayarak mevcut hesap bakiyemizi belirleyelim!\n\n1. `balance` adında yeni bir değişken oluştur.\n2. Ne kadar harcayabileceğimizi belirlemek için bu yeni değişkende `transactions` listesinin toplamını hesapla!\n3. (İsteğe bağlı) Kodunun beklendiği gibi çalıştığını doğrulamak için `balance` değişkeninin değerini bir etiketle birlikte yazdırmayı düşünebilirsin:\n```python\nprint(\"Balance:\")\nprint(balance)\n```",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "transactions_in_cents = [1000, -450, 7500, -3475, 13000, -8150, 25000, -850, 0, -1125, -600, 102550, -25025, 6500, -3850, -2500, 1875, 4000]\nprint(\"Transactions (cents):\")\nprint(transactions_in_cents)\n\ntransactions = [transaction / 100 for transaction in transactions_in_cents]\nprint(\"Transactions (dollars):\")\nprint(transactions)\n\ntransactions.sort()\nprint(\"Sorted Transactions:\")\nprint(transactions)\n\ndeposits = [transaction for transaction in transactions if transaction >= 0]\nwithdrawals = [transaction for transaction in transactions if transaction < 0]\n\nprint(\"Deposits:\")\nprint(deposits)\nprint(\"Withdrawals:\")\nprint(withdrawals)\n\ndef invert_negative_num(negative_num):\n    positive_num = negative_num * -1\n    return positive_num\n\nwithdrawals = [invert_negative_num(withdrawal) for withdrawal in withdrawals]\nprint(\"Withdrawals (positive values):\")\nprint(withdrawals)\n\nlargest_withdrawals = withdrawals[:5]\nprint(\"Largest Withdrawals:\")\nprint(largest_withdrawals)\n\naverage_deposit = sum(deposits) / len(deposits)\naverage_withdrawal = sum(withdrawals) / len(withdrawals)\n\naverage_deposit = int(average_deposit)\naverage_withdrawal = int(average_withdrawal)\n\nprint(\"Average Deposit (int):\")\nprint(average_deposit)\nprint(\"Average Withdrawal (int):\")\nprint(average_withdrawal)\n\n",
+                  "solvedContent": "transactions_in_cents = [1000, -450, 7500, -3475, 13000, -8150, 25000, -850, 0, -1125, -600, 102550, -25025, 6500, -3850, -2500, 1875, 4000]\nprint(\"Transactions (cents):\")\nprint(transactions_in_cents)\n\ntransactions = [transaction / 100 for transaction in transactions_in_cents]\nprint(\"Transactions (dollars):\")\nprint(transactions)\n\ntransactions.sort()\nprint(\"Sorted Transactions:\")\nprint(transactions)\n\ndeposits = [transaction for transaction in transactions if transaction >= 0]\nwithdrawals = [transaction for transaction in transactions if transaction < 0]\n\nprint(\"Deposits:\")\nprint(deposits)\nprint(\"Withdrawals:\")\nprint(withdrawals)\n\ndef invert_negative_num(negative_num):\n    positive_num = negative_num * -1\n    return positive_num\n\nwithdrawals = [invert_negative_num(withdrawal) for withdrawal in withdrawals]\nprint(\"Withdrawals (positive values):\")\nprint(withdrawals)\n\nlargest_withdrawals = withdrawals[:5]\nprint(\"Largest Withdrawals:\")\nprint(largest_withdrawals)\n\naverage_deposit = sum(deposits) / len(deposits)\naverage_withdrawal = sum(withdrawals) / len(withdrawals)\n\naverage_deposit = int(average_deposit)\naverage_withdrawal = int(average_withdrawal)\n\nprint(\"Average Deposit (int):\")\nprint(average_deposit)\nprint(\"Average Withdrawal (int):\")\nprint(average_withdrawal)\n\nbalance = sum(transactions)\nprint(\"Balance:\")\nprint(balance)"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "Set a new variable `balance` equal to `sum(transactions)`."
+                }
+              ]
+            }
+          },
+          {
+            "title": "Project recap",
+            "id": 123735,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Bankacılık işlemlerini düzenlemek ve analiz etmek için sürekli gelişen Python becerilerini kullanarak harika bir iş çıkardın!\n\nBu proje sırasında işlemleri sentlerden dolarlara dönüştürdün, bunları sıraladın, para yatırma işlemlerinin, para çekme işlemlerinin ve en yüksek tutarlı para çekme işlemlerinin yeni listelerini oluşturdun, ayrıca ortalama işlem tutarlarını ve son hesap bakiyesini hesapladın. Bu süreçte, değiştirilmiş ve filtrelenmiş listeler oluşturmak için liste kavramalarını kullandın, tür dönüştürme ve dilim gösterimi pratiği yaptın.\n\nŞimdi tamamlanmış proje kodunu deneme fırsatın var. Aşağıdakilerden birini veya birkaçını dene:\n- Toplam işlem sayısını hesapla\n- Her işlemden sonraki güncel bakiyeyi takip etmek için yeni bir liste oluştur\n- Kendisine aktarılan `min` ve `max` değerleri arasındaki tüm işlemleri yazdıran bir fonksiyon yaz",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "transactions_in_cents = [1000, -450, 7500, -3475, 13000, -8150, 25000, -850, 0, -1125, -600, 102550, -25025, 6500, -3850, -2500, 1875, 4000]\nprint(\"Transactions (cents):\")\nprint(transactions_in_cents)\n\ntransactions = [transaction / 100 for transaction in transactions_in_cents]\nprint(\"Transactions (dollars):\")\nprint(transactions)\n\ntransactions.sort()\nprint(\"Sorted Transactions:\")\nprint(transactions)\n\ndeposits = [transaction for transaction in transactions if transaction >= 0]\nwithdrawals = [transaction for transaction in transactions if transaction < 0]\n\nprint(\"Deposits:\")\nprint(deposits)\nprint(\"Withdrawals:\")\nprint(withdrawals)\n\ndef invert_negative_num(negative_num):\n    positive_num = negative_num * -1\n    return positive_num\n\nwithdrawals = [invert_negative_num(withdrawal) for withdrawal in withdrawals]\nprint(\"Withdrawals (positive values):\")\nprint(withdrawals)\n\nlargest_withdrawals = withdrawals[:5]\nprint(\"Largest Withdrawals:\")\nprint(largest_withdrawals)\n\naverage_deposit = sum(deposits) / len(deposits)\naverage_withdrawal = sum(withdrawals) / len(withdrawals)\n\naverage_deposit = int(average_deposit)\naverage_withdrawal = int(average_withdrawal)\n\nprint(\"Average Deposit (int):\")\nprint(average_deposit)\nprint(\"Average Withdrawal (int):\")\nprint(average_withdrawal)\n\nbalance = sum(transactions)\nprint(\"Balance:\")\nprint(balance)",
+                  "solvedContent": "transactions_in_cents = [1000, -450, 7500, -3475, 13000, -8150, 25000, -850, 0, -1125, -600, 102550, -25025, 6500, -3850, -2500, 1875, 4000]\nprint(\"Transactions (cents):\")\nprint(transactions_in_cents)\n\ntransactions = [transaction / 100 for transaction in transactions_in_cents]\nprint(\"Transactions (dollars):\")\nprint(transactions)\n\ntransactions.sort()\nprint(\"Sorted Transactions:\")\nprint(transactions)\n\ndeposits = [transaction for transaction in transactions if transaction >= 0]\nwithdrawals = [transaction for transaction in transactions if transaction < 0]\n\nprint(\"Deposits:\")\nprint(deposits)\nprint(\"Withdrawals:\")\nprint(withdrawals)\n\ndef invert_negative_num(negative_num):\n    positive_num = negative_num * -1\n    return positive_num\n\nwithdrawals = [invert_negative_num(withdrawal) for withdrawal in withdrawals]\nprint(\"Withdrawals (positive values):\")\nprint(withdrawals)\n\nlargest_withdrawals = withdrawals[:5]\nprint(\"Largest Withdrawals:\")\nprint(largest_withdrawals)\n\naverage_deposit = sum(deposits) / len(deposits)\naverage_withdrawal = sum(withdrawals) / len(withdrawals)\n\naverage_deposit = int(average_deposit)\naverage_withdrawal = int(average_withdrawal)\n\nprint(\"Average Deposit (int):\")\nprint(average_deposit)\nprint(\"Average Withdrawal (int):\")\nprint(average_withdrawal)\n\nbalance = sum(transactions)\nprint(\"Balance:\")\nprint(balance)"
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

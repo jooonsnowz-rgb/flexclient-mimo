@@ -1,0 +1,105 @@
+{
+  "tutorial": {
+    "id": 4630,
+    "version": 1,
+    "type": "practiceOptional",
+    "isNew": false,
+    "codeLanguage": "python",
+    "title": "Introducción a las API",
+    "descriptionContent": "Aplica tus conocimientos sobre solicitudes a la API en tareas de Python con menos orientación.",
+    "shortDescriptionContent": "Estudiantes de Python que quieran practicar más con API.",
+    "showInTrack": true,
+    "iconBanner": null,
+    "chapters": [
+      {
+        "id": 17857,
+        "title": "Aplicación de flujos de trabajo de API",
+        "type": "practiceLevel3",
+        "lessons": [
+          {
+            "title": "Plan a Forecast Request",
+            "id": 152203,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Un panel solo necesita el pronóstico actual de <code>/forecasts/vienna</code>. ¿Qué plan de solicitud coincide con la tarea?</p><selection multiple=\"multiple\"><item value=\"1\" correct=\"true\">Envía una solicitud <code>GET</code> al endpoint sin un cuerpo de solicitud</item><item value=\"2\" correct=\"false\">Envía una solicitud <code>POST</code> con un nuevo pronóstico</item><item value=\"3\" correct=\"false\">Envía una solicitud <code>PATCH</code> con un campo modificado</item><item value=\"4\" correct=\"false\">Envía una solicitud <code>DELETE</code> al endpoint</item></selection><p visible-if=\"wrong\">Envía una solicitud <code>GET</code> al endpoint sin un cuerpo de solicitud.</p></body></html>"
+          },
+          {
+            "title": "Finish a GET Call",
+            "id": 152204,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Completa el método request que recupera el pronóstico de <code>url</code>.</p><code version=\"2\" codelang=\"python\" name=\"forecast.py\" visible-if=\"always\"><content><text value=\"import\" class=\"keyword\" /><text value=\" requests\" /><text type=\"break\" /><text type=\"break\" /><text value=\"url = \" /><text value=\"&quot;https://api.example.com/forecasts/vienna&quot;\" class=\"string\" /><text type=\"break\" /><text value=\"response = requests.get(url)\" /></content><interactions><interaction type=\"validatedInput\" isDefault=\"true\" startIndex=\"86\" endIndex=\"89\" /></interactions></code><p visible-if=\"wrong\">Asegúrese de elegir <code>get</code>.</p></body></html>"
+          },
+          {
+            "title": "Extract Forecast Data",
+            "id": 152205,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Completa el código para acceder al valor del pronóstico del diccionario usando la clave <code>\"temperature\"</code>.</p><code version=\"2\" codelang=\"python\" name=\"forecast.py\" visible-if=\"always\"><content><text value=\"data = response.json()\" /><text type=\"break\" /><text value=\"temperature = data[\" /><text value=\"&quot;temperature&quot;\" class=\"string\" /><text value=\"]\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"37\" endIndex=\"41\" /><option startIndex=\"41\" endIndex=\"42\" /><option startIndex=\"42\" endIndex=\"55\" /><option startIndex=\"55\" endIndex=\"56\" /><option correct=\"false\"><content><text value=\"{\" /></content></option><option correct=\"false\"><content><text value=\"}\" /></content></option><option correct=\"false\"><content><text value=\"&quot;key&quot;:\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Asegúrese de elegir <code>data</code> seguido de <code>[</code> y luego <code>\"temperature\"</code>, <code>]</code>.</p></body></html>"
+          },
+          {
+            "title": "Check a Failed Response",
+            "id": 152206,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>El endpoint devuelve el código de estado <code>404</code>. ¿Qué línea genera un error HTTP antes de que el programa analice el JSON?</p><selection multiple=\"multiple\"><item value=\"1\" correct=\"true\"><code>response.raise_for_status()</code></item><item value=\"2\" correct=\"false\"><code>response.status_code</code></item><item value=\"3\" correct=\"false\"><code>response.json()</code></item><item value=\"4\" correct=\"false\"><code>requests.HTTPError</code></item></selection><p visible-if=\"wrong\">Asegúrese de elegir <code>response.raise_for_status()</code>.</p></body></html>"
+          },
+          {
+            "title": "Create a Reading",
+            "id": 152207,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Completa la llamada que crea una lectura del sensor y envía <code>data</code> como JSON.</p><code version=\"2\" codelang=\"python\" name=\"reading.py\" visible-if=\"always\"><content><text value=\"data = {\" /><text value=\"&quot;value&quot;\" class=\"string\" /><text value=\": \" /><text value=\"18\" class=\"number\" /><text value=\"}\" /><text type=\"break\" /><text value=\"response = requests.post(url, json=data)\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"41\" endIndex=\"45\" /><option startIndex=\"51\" endIndex=\"60\" /><option correct=\"false\"><content><text value=\"get\" /></content></option><option correct=\"false\"><content><text value=\"data=json\" /></content></option><option correct=\"false\"><content><text value=\"delete\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Asegúrese de elegir <code>post</code> seguido de <code>json=data</code>.</p></body></html>"
+          },
+          {
+            "title": "Replace or Update?",
+            "id": 152208,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Una API de configuración almacena un perfil completo. Cambia solo el campo <code>theme</code> y mantén todos los demás campos sin cambios. Qué método encaja?</p><selection multiple=\"multiple\"><item value=\"1\" correct=\"true\"><code>PATCH</code></item><item value=\"2\" correct=\"false\"><code>PUT</code></item><item value=\"3\" correct=\"false\"><code>POST</code></item><item value=\"4\" correct=\"false\"><code>DELETE</code></item></selection><p visible-if=\"wrong\">Asegúrese de elegir <code>PATCH</code>.</p></body></html>"
+          },
+          {
+            "title": "Build a Safe Lookup",
+            "id": 152209,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Completa `load_character()` para que envíe una solicitud `GET` a la URL proporcionada, genere un error HTTP si la respuesta no es satisfactoria y devuelva el nombre del personaje a partir del JSON analizado.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "import requests\n\ndef load_character():\n  url = \"https://api.example.com/characters/7\"\n  data = response.json()\n  return data[\"name\"]\n",
+                  "solvedContent": "import requests\n\ndef load_character():\n  url = \"https://api.example.com/characters/7\"\n  response = requests.get(url)\n  response.raise_for_status()\n  data = response.json()\n  return data[\"name\"]\n"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Build an API Editor",
+            "id": 152210,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Completa `update_profile()` para que envíe el nombre de usuario proporcionado como una actualización JSON a la URL del perfil, genere un error HTTP si la respuesta no es exitosa y devuelva el nombre de usuario (clave `\"username\"`) del JSON analizado.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "import requests\n\ndef update_profile():\n  url = \"https://api.example.com/profiles/12\"\n  data = {\"username\": \"nova_coder\"}\n  response = requests.patch(url, json=data)\n  response.raise_for_status()\n  return \"\"\n",
+                  "solvedContent": "import requests\n\ndef update_profile():\n  url = \"https://api.example.com/profiles/12\"\n  data = {\"username\": \"nova_coder\"}\n  response = requests.patch(url, json=data)\n  response.raise_for_status()\n  result = response.json()\n  return result[\"username\"]\n"
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

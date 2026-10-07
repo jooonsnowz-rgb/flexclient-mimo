@@ -1,0 +1,103 @@
+{
+  "tutorial": {
+    "id": 4578,
+    "version": 2,
+    "type": "guidedProject",
+    "isNew": false,
+    "codeLanguage": "python",
+    "title": "Crypto Craze - Part 2",
+    "descriptionContent": "In part 2, we make the app display several crypto prices more cleanly without repeating the same code over and over",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": "tutorial-4578-icon-banner.svg",
+    "chapters": [
+      {
+        "id": 17736,
+        "title": "Chapter #1",
+        "type": "practiceLevel3",
+        "lessons": [
+          {
+            "title": "Lesson #1",
+            "id": 151363,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Welcome back to the Crypto Craze project. In part 2, we'll look at multiple coins and how to make our function reusable.\n\nLet's start by making our function reusable by passing in the coin we want to use.\n\n1. Update `get_crypto_price()` to accept a parameter called `coin_id`.\n2. Move `url` inside the function and build it with an f-string: `f\"https://crypto-craze.mimo.dev/api/coins/{coin_id}\"`.\n3. Remove the old top-level `url` variable.\n4. Pass the parameter `\"bitcoin\"` to the `get_crypto_price` function when calling it.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "app.py",
+                  "codeLanguage": "python",
+                  "content": "import requests\nimport os\n\napi_key = os.getenv(\"MIMO_CRYPTO_CRAZE_API_KEY\")\nurl = \"https://crypto-craze.mimo.dev/api/coins/bitcoin\"\nheaders = {\"api-key\": api_key}\n\ndef get_crypto_price():\n    response = requests.get(url, headers=headers)\n    return response.json()\n\ncrypto = get_crypto_price()\n\nsymbol = crypto.get(\"symbol\")\nprice_usd = crypto.get(\"priceUsd\")\n\nprint(symbol)\nprint(price_usd)",
+                  "solvedContent": "import requests\nimport os\n\napi_key = os.getenv(\"MIMO_CRYPTO_CRAZE_API_KEY\")\nheaders = {\"api-key\": api_key}\n\ndef get_crypto_price(coin_id):\n    url = f\"https://crypto-craze.mimo.dev/api/coins/{coin_id}\"\n    response = requests.get(url, headers=headers)\n    return response.json()\n\ncrypto = get_crypto_price(\"bitcoin\")\n\nsymbol = crypto.get(\"symbol\")\nprice_usd = crypto.get(\"priceUsd\")\n\nprint(symbol)\nprint(price_usd)"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #2",
+            "id": 151364,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Now that `get_crypto_price(coin_id)` needs an input, let's use it to fetch a different coin.\n\n1. Replace the argument in `get_crypto_price(\"bitcoin\")` with `\"ethereum\"`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "app.py",
+                  "codeLanguage": "python",
+                  "content": "import requests\nimport os\n\napi_key = os.getenv(\"MIMO_CRYPTO_CRAZE_API_KEY\")\nheaders = {\"api-key\": api_key}\n\ndef get_crypto_price(coin_id):\n    url = f\"https://crypto-craze.mimo.dev/api/coins/{coin_id}\"\n    response = requests.get(url, headers=headers)\n    return response.json()\n\ncrypto = get_crypto_price(\"bitcoin\")\n\nsymbol = crypto.get(\"symbol\")\nprice_usd = crypto.get(\"priceUsd\")\n\nprint(symbol)\nprint(price_usd)",
+                  "solvedContent": "import requests\nimport os\n\napi_key = os.getenv(\"MIMO_CRYPTO_CRAZE_API_KEY\")\nheaders = {\"api-key\": api_key}\n\ndef get_crypto_price(coin_id):\n    url = f\"https://crypto-craze.mimo.dev/api/coins/{coin_id}\"\n    response = requests.get(url, headers=headers)\n    return response.json()\n\ncrypto = get_crypto_price(\"ethereum\")\n\nsymbol = crypto.get(\"symbol\")\nprice_usd = crypto.get(\"priceUsd\")\n\nprint(symbol)\nprint(price_usd)"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #3",
+            "id": 151365,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "We want to avoid repeating the printing logic by putting it into a function.\n\n1. Create a function named `print_crypto_price(crypto)`.\n2. Move `symbol = crypto.get(\"symbol\")` and `price_usd = crypto.get(\"priceUsd\")` into it.\n3. Move `print(symbol)` and `print(price_usd)` into it.\n4. Call `print_crypto_price(crypto)` after fetching the coin.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "app.py",
+                  "codeLanguage": "python",
+                  "content": "import requests\nimport os\n\napi_key = os.getenv(\"MIMO_CRYPTO_CRAZE_API_KEY\")\nheaders = {\"api-key\": api_key}\n\ndef get_crypto_price(coin_id):\n    url = f\"https://crypto-craze.mimo.dev/api/coins/{coin_id}\"\n    response = requests.get(url, headers=headers)\n    return response.json()\n\ncrypto = get_crypto_price(\"ethereum\")\n\nsymbol = crypto.get(\"symbol\")\nprice_usd = crypto.get(\"priceUsd\")\n\nprint(symbol)\nprint(price_usd)",
+                  "solvedContent": "import requests\nimport os\n\napi_key = os.getenv(\"MIMO_CRYPTO_CRAZE_API_KEY\")\nheaders = {\"api-key\": api_key}\n\ndef get_crypto_price(coin_id):\n    url = f\"https://crypto-craze.mimo.dev/api/coins/{coin_id}\"\n    response = requests.get(url, headers=headers)\n    return response.json()\n\ndef print_crypto_price(crypto):\n    symbol = crypto.get(\"symbol\")\n    price_usd = crypto.get(\"priceUsd\")\n\n    print(symbol)\n    print(price_usd)\n\ncrypto = get_crypto_price(\"ethereum\")\nprint_crypto_price(crypto)"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #4",
+            "id": 151366,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "To finalize the project, we can print multiple coin prices by reusing our two functions.\n\n1. Fetch and print `\"bitcoin\"`.\n2. Fetch and print `\"ethereum\"`.\n3. Fetch and print `\"solana\"`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "app.py",
+                  "codeLanguage": "python",
+                  "content": "import requests\nimport os\n\napi_key = os.getenv(\"MIMO_CRYPTO_CRAZE_API_KEY\")\nheaders = {\"api-key\": api_key}\n\ndef get_crypto_price(coin_id):\n    url = f\"https://crypto-craze.mimo.dev/api/coins/{coin_id}\"\n    response = requests.get(url, headers=headers)\n    return response.json()\n\ndef print_crypto_price(crypto):\n    symbol = crypto.get(\"symbol\")\n    price_usd = crypto.get(\"priceUsd\")\n\n    print(symbol)\n    print(price_usd)\n\ncrypto = get_crypto_price(\"ethereum\")\nprint_crypto_price(crypto)",
+                  "solvedContent": "import requests\nimport os\n\napi_key = os.getenv(\"MIMO_CRYPTO_CRAZE_API_KEY\")\nheaders = {\"api-key\": api_key}\n\ndef get_crypto_price(coin_id):\n    url = f\"https://crypto-craze.mimo.dev/api/coins/{coin_id}\"\n    response = requests.get(url, headers=headers)\n    return response.json()\n\ndef print_crypto_price(crypto):\n    symbol = crypto.get(\"symbol\")\n    price_usd = crypto.get(\"priceUsd\")\n\n    print(symbol)\n    print(price_usd)\n\ncrypto = get_crypto_price(\"bitcoin\")\nprint_crypto_price(crypto)\n\ncrypto = get_crypto_price(\"ethereum\")\nprint_crypto_price(crypto)\n\ncrypto = get_crypto_price(\"solana\")\nprint_crypto_price(crypto)"
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

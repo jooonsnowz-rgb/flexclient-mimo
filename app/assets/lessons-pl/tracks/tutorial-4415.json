@@ -1,0 +1,135 @@
+{
+  "tutorial": {
+    "id": 4415,
+    "version": 1,
+    "type": "course",
+    "isNew": false,
+    "codeLanguage": "javascript",
+    "title": "Dodawanie i usuwanie z tablic",
+    "descriptionContent": "Dowiedz się, jak dodawać i usuwać wartości w tablicy.",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": null,
+    "chapters": [
+      {
+        "id": 17441,
+        "title": "Metody tablicowe",
+        "type": "practiceLevel1",
+        "lessons": [
+          {
+            "title": "Lesson #1",
+            "id": 147916,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Dowiedz się, jak dodawać i usuwać wartości za pomocą tablic. W tym prostym interfejsie HUD gry używamy tablicy do dodawania i usuwania przedmiotów z ekwipunku.</p><webview version=\"2\" visible-if=\"always\" content=\"&lt;!DOCTYPE html&gt;&#xA;&lt;html lang=&quot;en&quot;&gt;&#xA;&lt;head&gt;&#xA;    &lt;meta charset=&quot;UTF-8&quot;&gt;&#xA;    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;&#xA;    &lt;title&gt;Game Inventory&lt;/title&gt;&#xA;    &lt;style&gt;&#xA;        body {&#xA;            font-family: Arial, sans-serif;&#xA;            display: flex;&#xA;            justify-content: center;&#xA;            align-items: center;&#xA;            margin: 0;&#xA;            background-color: #0f1220;&#xA;            color: #e9ecff;&#xA;        }&#xA;        .hud {&#xA;            background-color: rgba(255,255,255,0.06);&#xA;            padding: 20px;&#xA;            border-radius: 10px;&#xA;            margin: 24px auto;&#xA;            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);&#xA;            min-width: 320px;&#xA;        }&#xA;        h1 {&#xA;            font-size: 20px;&#xA;            margin: 0 0 12px 0;&#xA;        }&#xA;        .row {&#xA;            display: flex;&#xA;            gap: 10px;&#xA;            margin-bottom: 10px;&#xA;            align-items: center;&#xA;        }&#xA;        .label {&#xA;            font-size: 12px;&#xA;            opacity: 0.8;&#xA;            width: 90px;&#xA;        }&#xA;        .chip {&#xA;            display: inline-flex;&#xA;            align-items: center;&#xA;            gap: 8px;&#xA;            padding: 8px 10px;&#xA;            border-radius: 999px;&#xA;            background: rgba(255,255,255,0.08);&#xA;            border: 1px solid rgba(255,255,255,0.12);&#xA;            margin: 6px 6px 0 0;&#xA;            cursor: pointer;&#xA;            user-select: none;&#xA;        }&#xA;        .chip.equipped {&#xA;            background: rgba(122, 255, 186, 0.12);&#xA;            border-color: rgba(122, 255, 186, 0.35);&#xA;        }&#xA;        .hint {&#xA;            font-size: 12px;&#xA;            opacity: 0.8;&#xA;            margin-top: 10px;&#xA;        }&#xA;        .stats {&#xA;            font-size: 12px;&#xA;            opacity: 0.9;&#xA;        }&#xA;        button {&#xA;            background: rgba(255,255,255,0.1);&#xA;            color: #e9ecff;&#xA;            border: 1px solid rgba(255,255,255,0.18);&#xA;            border-radius: 8px;&#xA;            padding: 8px 10px;&#xA;            cursor: pointer;&#xA;        }&#xA;        button:hover {&#xA;            background: rgba(255,255,255,0.14);&#xA;        }&#xA;    &lt;/style&gt;&#xA;&lt;/head&gt;&#xA;&lt;body&gt;&#xA;    &lt;div class=&quot;hud&quot;&gt;&#xA;        &lt;h1&gt;Inventory&lt;/h1&gt;&#xA;        &lt;div class=&quot;row stats&quot;&gt;&#xA;            &lt;div class=&quot;label&quot;&gt;Health&lt;/div&gt;&#xA;            &lt;div id=&quot;health&quot;&gt;100&lt;/div&gt;&#xA;            &lt;div style=&quot;margin-left:auto&quot; class=&quot;label&quot;&gt;Score&lt;/div&gt;&#xA;            &lt;div id=&quot;score&quot;&gt;0&lt;/div&gt;&#xA;        &lt;/div&gt;&#xA;        &lt;div class=&quot;row&quot;&gt;&#xA;            &lt;button id=&quot;add&quot;&gt;Pick up item&lt;/button&gt;&#xA;            &lt;button id=&quot;remove&quot;&gt;Drop last item&lt;/button&gt;&#xA;        &lt;/div&gt;&#xA;        &lt;div id=&quot;items&quot;&gt;&lt;/div&gt;&#xA;        &lt;div class=&quot;hint&quot;&gt;Click an item to equip/unequip.&lt;/div&gt;&#xA;    &lt;/div&gt;&#xA;&#xA;    &lt;script&gt;&#xA;        document.addEventListener(&quot;DOMContentLoaded&quot;, function() {&#xA;            let inventory = [&quot;Potion&quot;, &quot;Key&quot;, &quot;Bomb&quot;, &quot;Coin&quot;];&#xA;            let equipped = {};&#xA;            const itemPool = [&quot;Potion&quot;, &quot;Key&quot;, &quot;Bomb&quot;, &quot;Coin&quot;, &quot;Shield&quot;, &quot;Gem&quot;];&#xA;&#xA;            const itemsEl = document.getElementById(&quot;items&quot;);&#xA;            const addBtn = document.getElementById(&quot;add&quot;);&#xA;            const removeBtn = document.getElementById(&quot;remove&quot;);&#xA;&#xA;            function render() {&#xA;                itemsEl.innerHTML = &quot;&quot;;&#xA;                inventory.forEach((name, index) =&gt; {&#xA;                    const chip = document.createElement(&quot;div&quot;);&#xA;                    chip.className = &quot;chip&quot; + (equipped[index] ? &quot; equipped&quot; : &quot;&quot;);&#xA;                    chip.textContent = name;&#xA;                    chip.addEventListener(&quot;click&quot;, () =&gt; {&#xA;                        equipped[index] = !equipped[index];&#xA;                        render();&#xA;                    });&#xA;                    itemsEl.appendChild(chip);&#xA;                });&#xA;            }&#xA;&#xA;            addBtn.addEventListener(&quot;click&quot;, () =&gt; {&#xA;                const next = itemPool[Math.floor(Math.random() * itemPool.length)];&#xA;                inventory.push(next);&#xA;                render();&#xA;            });&#xA;&#xA;            removeBtn.addEventListener(&quot;click&quot;, () =&gt; {&#xA;                inventory.pop();&#xA;                render();&#xA;            });&#xA;&#xA;            render();&#xA;        });&#xA;    &lt;/script&gt;&#xA;&lt;/body&gt;&#xA;&lt;/html&gt;\" /></body></html>"
+          },
+          {
+            "title": "Lesson #2",
+            "id": 147917,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Aby dodać wartość taką jak <code>\"Health Potion\"</code> do tablicy, wpisz nazwę tablicy <code>inventory</code>, a następnie kropkę <code>.</code> i metodę tablicy <code>push(\"Health Potion\")</code>.</p><code name=\"script.js\" version=\"2\" codelang=\"javascript\"><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"52\" endIndex=\"61\" /><option startIndex=\"61\" endIndex=\"62\" /><option startIndex=\"62\" endIndex=\"83\" /></options></interaction></interactions><content><text value=\"const\" class=\"keyword\" /><text value=\" inventory = [\" /><text value=\"&quot;Wooden Sword&quot;\" class=\"string\" /><text value=\", \" /><text value=\"&quot;Small Shield&quot;\" class=\"string\" /><text value=\"];\" /><text type=\"break\" /><text value=\"inventory.push(\" /><text value=\"&quot;Health Potion&quot;\" class=\"string\" /><text value=\");\" /><text type=\"break\" /><text value=\"console\" class=\"built_in\" /><text value=\".log(inventory);\" /></content></code><p visible-if=\"wrong\">Koniecznie wybierz <code>inventory</code>, następnie <code>.</code> i na końcu <code>push(\"Health Potion\")</code>.</p></body></html>"
+          },
+          {
+            "title": "Lesson #3",
+            "id": 147918,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Dodanie wartości za pomocą metody <code>.push()</code> umieszcza ją na końcu tablicy.</p><code name=\"script.js\" version=\"2\" codelang=\"javascript\"><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option correct=\"false\"><content><text value=\"Health Potion\" /></content></option><option startIndex=\"67\" endIndex=\"82\" /></options></interaction></interactions><content><text value=\"const\" class=\"keyword\" /><text value=\" inventory = [\" /><text value=\"&quot;Wooden Sword&quot;\" class=\"string\" /><text value=\", \" /><text value=\"&quot;Small Shield&quot;\" class=\"string\" /><text value=\"];\" /><text type=\"break\" /><text value=\"inventory.push(\" /><text value=\"&quot;Health Potion&quot;\" class=\"string\" /><text value=\");\" /><text type=\"break\" /><text value=\"console\" class=\"built_in\" /><text value=\".log(inventory);\" /></content></code><p visible-if=\"wrong\">Koniecznie wybierz <code>\"Health Potion\"</code>.</p></body></html>"
+          },
+          {
+            "title": "Lesson #4",
+            "id": 147919,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Możesz dodać wiele wartości za pomocą <code>.push()</code>, oddzielając je przecinkiem <code>,</code>.</p><code name=\"script.js\" version=\"2\" codelang=\"javascript\"><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option correct=\"false\"><content><text value=\"&quot;&quot;\" /></content></option><option startIndex=\"82\" endIndex=\"83\" /></options></interaction></interactions><content><text value=\"const\" class=\"keyword\" /><text value=\" inventory = [\" /><text value=\"&quot;Wooden Sword&quot;\" class=\"string\" /><text value=\", \" /><text value=\"&quot;Small Shield&quot;\" class=\"string\" /><text value=\"];\" /><text type=\"break\" /><text value=\"inventory.push(\" /><text value=\"&quot;Health Potion&quot;\" class=\"string\" /><text value=\", \" /><text value=\"&quot;Mana Potion&quot;\" class=\"string\" /><text value=\");\" /><text type=\"break\" /><text value=\"console\" class=\"built_in\" /><text value=\".log(inventory);\" /></content></code><p visible-if=\"wrong\">Koniecznie wybierz <code>,</code>.</p></body></html>"
+          },
+          {
+            "title": "Lesson #5",
+            "id": 147920,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Aby usunąć ostatni element tablicy, wpisz nazwę tablicy <code>inventory</code>, kropkę <code>.</code> oraz metodę tablicy <code>pop()</code>.</p><code name=\"script.js\" version=\"2\" codelang=\"javascript\"><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option correct=\"false\"><content><text value=\"push\" /></content></option><option startIndex=\"52\" endIndex=\"61\" /><option startIndex=\"61\" endIndex=\"62\" /><option startIndex=\"62\" endIndex=\"65\" /><option startIndex=\"65\" endIndex=\"66\" /><option startIndex=\"66\" endIndex=\"67\" /></options></interaction></interactions><content><text value=\"const\" class=\"keyword\" /><text value=\" inventory = [\" /><text value=\"&quot;Wooden Sword&quot;\" class=\"string\" /><text value=\", \" /><text value=\"&quot;Small Shield&quot;\" class=\"string\" /><text value=\"];\" /><text type=\"break\" /><text value=\"inventory.pop();\" /><text type=\"break\" /><text value=\"console\" class=\"built_in\" /><text value=\".log(inventory);\" /></content></code><p visible-if=\"wrong\">Koniecznie wybierz <code>inventory</code>, następnie <code>.</code>, a potem <code>pop</code>, <code>(</code>, <code>)</code>.</p></body></html>"
+          },
+          {
+            "title": "Lesson #6",
+            "id": 147921,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Gdy przypisujemy <code>inventory.pop()</code> do zmiennej, zmienna przechowuje wartość, którą usuwamy.</p><code name=\"script.js\" version=\"2\" codelang=\"javascript\"><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option correct=\"false\"><content><text value=\":\" /></content></option><option startIndex=\"56\" endIndex=\"67\" /><option startIndex=\"68\" endIndex=\"69\" /></options></interaction></interactions><content><text value=\"const\" class=\"keyword\" /><text value=\" inventory = [\" /><text value=\"&quot;Wooden Sword&quot;\" class=\"string\" /><text value=\", \" /><text value=\"&quot;Small Shield&quot;\" class=\"string\" /><text value=\"];\" /><text type=\"break\" /><text value=\"let\" class=\"keyword\" /><text value=\" droppedItem = inventory.pop();\" /><text type=\"break\" /><text value=\"console\" class=\"built_in\" /><text value=\".log(droppedItem);\" /></content></code><p visible-if=\"wrong\">Koniecznie wybierz <code>droppedItem</code>, a następnie <code>=</code>.</p></body></html>"
+          },
+          {
+            "title": "Lesson #7",
+            "id": 147922,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Jakiej metody używamy do dodania wartości do tablicy?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\"><code>.push()</code></item><item value=\"2\" correct=\"false\"><code>.pop()</code></item></selection><p visible-if=\"wrong\">Koniecznie wybierz <code>.push()</code>.</p></body></html>"
+          },
+          {
+            "title": "Lesson #8",
+            "id": 147923,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Dokąd trafia nowa wartość dodana za pomocą <code>.push()</code>?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\">Na końcu tablicy</item><item value=\"2\" correct=\"false\">Na początku tablicy</item></selection><p visible-if=\"wrong\">Na końcu tablicy.</p></body></html>"
+          },
+          {
+            "title": "Lesson #9",
+            "id": 147924,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Ile wartości możemy dodać do tablicy za pomocą <code>.push()</code>?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\">Tak wiele, ile chcemy</item><item value=\"2\" correct=\"false\">Tylko jedna wartość naraz</item></selection><p visible-if=\"wrong\">Tak wiele, ile chcemy.</p></body></html>"
+          },
+          {
+            "title": "Lesson #10",
+            "id": 147925,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Jakiej metody używamy do usunięcia ostatniego elementu tablicy?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\"><code>.pop()</code></item><item value=\"2\" correct=\"false\"><code>.push()</code></item></selection><p visible-if=\"wrong\">Koniecznie wybierz <code>.pop()</code>.</p></body></html>"
+          },
+          {
+            "title": "Lesson #11",
+            "id": 147926,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Jak możemy zapisać wartość usuniętą przez <code>.pop()</code>?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\">Przechowując ją w zmiennej</item><item value=\"2\" correct=\"false\">Nie możemy tego zapisać, ponieważ <code>.pop()</code> nie zwraca wartości</item></selection><p visible-if=\"wrong\">Przechowując ją w zmiennej.</p></body></html>"
+          },
+          {
+            "title": "Lesson #12",
+            "id": 147927,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Dodaj <code>\"Goblin\"</code> do tablicy aktywnych przeciwników.</p><code name=\"script.js\" version=\"2\" codelang=\"javascript\"><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option correct=\"false\"><content><text value=\".pop()\" /></content></option><option startIndex=\"40\" endIndex=\"53\" /><option startIndex=\"53\" endIndex=\"68\" /></options></interaction></interactions><content><text value=\"const\" class=\"keyword\" /><text value=\" activeEnemies = [\" /><text value=\"&quot;Slime&quot;\" class=\"string\" /><text value=\", \" /><text value=\"&quot;Bat&quot;\" class=\"string\" /><text value=\"];\" /><text type=\"break\" /><text value=\"activeEnemies.push(\" /><text value=\"&quot;Goblin&quot;\" class=\"string\" /><text value=\");\" /><text type=\"break\" /><text value=\"console\" class=\"built_in\" /><text value=\".log(activeEnemies);\" /></content></code><p visible-if=\"wrong\">Koniecznie wybierz <code>activeEnemies</code>, a następnie <code>.push(\"Goblin\")</code>.</p></body></html>"
+          },
+          {
+            "title": "Lesson #13",
+            "id": 147928,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Dodaj <code>\"Shield\"</code> na końcu tablicy, wpisując kod <code>.push(\"Shield\")</code>.</p><code name=\"script.js\" version=\"2\" codelang=\"javascript\"><interactions><interaction type=\"validatedInput\" startIndex=\"34\" endIndex=\"49\" isDefault=\"true\" /></interactions><content><text value=\"const\" class=\"keyword\" /><text value=\" loot = [\" /><text value=\"&quot;Coin&quot;\" class=\"string\" /><text value=\", \" /><text value=\"&quot;Gem&quot;\" class=\"string\" /><text value=\"];\" /><text type=\"break\" /><text value=\"loot.push(\" /><text value=\"&quot;Shield&quot;\" class=\"string\" /><text value=\");\" /><text type=\"break\" /><text value=\"console\" class=\"built_in\" /><text value=\".log(loot);}\" /></content></code><p visible-if=\"wrong\">Koniecznie wpisz <code>.push(\"Shield\")</code>.</p></body></html>"
+          },
+          {
+            "title": "Lesson #14",
+            "id": 147929,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Dodaj na końcu tablicy najpierw <code>2</code>, a następnie <code>500</code>.</p><code name=\"script.js\" version=\"2\" codelang=\"javascript\"><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option correct=\"false\"><content><text value=\":\" /></content></option><option startIndex=\"47\" endIndex=\"48\" /><option startIndex=\"48\" endIndex=\"49\" /><option startIndex=\"51\" endIndex=\"54\" /><option startIndex=\"54\" endIndex=\"55\" /></options></interaction></interactions><content><text value=\"const\" class=\"keyword\" /><text value=\" scoreEvents = [\" /><text value=\"-100\" class=\"number\" /><text value=\", \" /><text value=\"5\" class=\"number\" /><text value=\"];\" /><text type=\"break\" /><text value=\"scoreEvents.push(\" /><text value=\"2\" class=\"number\" /><text value=\", \" /><text value=\"500\" class=\"number\" /><text value=\");\" /><text type=\"break\" /><text value=\"console\" class=\"built_in\" /><text value=\".log(scoreEvents);\" /></content></code><p visible-if=\"wrong\">Koniecznie wybierz <code>(</code>, następnie <code>2</code>, a potem <code>500</code>, <code>)</code>.</p></body></html>"
+          },
+          {
+            "title": "Lesson #15",
+            "id": 147930,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Usuń wartość <code>true</code> z końca tablicy za pomocą kodu <code>.pop()</code>.</p><code name=\"script.js\" version=\"2\" codelang=\"javascript\"><interactions><interaction type=\"validatedInput\" startIndex=\"57\" endIndex=\"63\" isDefault=\"true\" /></interactions><content><text value=\"const\" class=\"keyword\" /><text value=\" doorsUnlocked = [\" /><text value=\"false\" class=\"literal\" /><text value=\", \" /><text value=\"false\" class=\"literal\" /><text value=\", \" /><text value=\"true\" class=\"literal\" /><text value=\"];\" /><text type=\"break\" /><text value=\"doorsUnlocked.pop();\" /><text type=\"break\" /><text value=\"console\" class=\"built_in\" /><text value=\".log(doorsUnlocked);}\" /></content></code><p visible-if=\"wrong\">Koniecznie wpisz <code>.pop()</code>.</p></body></html>"
+          },
+          {
+            "title": "Lesson #16",
+            "id": 147931,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Usuń i wyświetl ostatnią wartość tablicy, tworząc zmienną i ustawiając jej wartość na <code>levels.pop()</code>.</p><code name=\"script.js\" version=\"2\" codelang=\"javascript\"><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"42\" endIndex=\"54\" /><option startIndex=\"55\" endIndex=\"56\" /><option startIndex=\"57\" endIndex=\"69\" /><option startIndex=\"69\" endIndex=\"70\" /></options></interaction></interactions><content><text value=\"const\" class=\"keyword\" /><text value=\" levels = [\" /><text value=\"&quot;Forest&quot;\" class=\"string\" /><text value=\", \" /><text value=\"&quot;Dungeon&quot;\" class=\"string\" /><text value=\"];\" /><text type=\"break\" /><text value=\"let\" class=\"keyword\" /><text value=\" currentLevel = levels.pop();\" /><text type=\"break\" /><text value=\"console\" class=\"built_in\" /><text value=\".log(currentLevel);\" /></content></code><p visible-if=\"wrong\">Koniecznie wybierz <code>currentLevel</code>, następnie <code>=</code>, a potem <code>levels.pop()</code>, <code>;</code>.</p></body></html>"
+          }
+        ]
+      }
+    ]
+  }
+}

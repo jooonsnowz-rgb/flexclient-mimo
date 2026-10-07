@@ -1,0 +1,425 @@
+{
+  "tutorial": {
+    "id": 1846,
+    "version": 19,
+    "type": "guidedProjectOptional",
+    "isNew": false,
+    "codeLanguage": "javascript",
+    "title": "Ocean World Bilet Satış Web Sayfası",
+    "descriptionContent": "Ocean World için bilet satış web sayfası oluşturarak JavaScript olaylarını öğren 马会",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": "tutorial-1846-icon-banner.svg",
+    "chapters": [
+      {
+        "id": 12237,
+        "title": "Bilet Satış Web Sayfası",
+        "type": "practiceLevel3",
+        "lessons": [
+          {
+            "title": "Intro",
+            "id": 111189,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "JavaScript olaylarını, Ocean World için bir bilet satış web sayfası oluşturarak öğrenelim.\n\nHTML dosyası senin için zaten hazırlandı. Kodu incele ve çıktıyı da kontrol et.\n\n`ocean` kimliğine sahip bir `div` var. Bu `div`in içinde bir başlık, bir paragraf, iki düğme, iki `div` ve beş görsel bulunuyor.\n\nİlk iç `div` açıklamayı içeriyor. İkinci iç `div` ise bir form içeriyor.\n\nSayfaya stil veren sağlanan CSS koduna da göz at.",
+              "preselectedFileIndex": 1,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <link href=\"style.css\" rel=\"stylesheet\" type=\"text/css\" />\n  </head>\n  <body>\n    <div id=\"ocean\">\n      <h1>OCEAN WORLD<span id=\"show\"> the show</span></h1>\n      <p>DIVE INTO THE WORLD OF UNKNOWN</p>\n      <button id=\"getinfo\">GET INFORMATION</button>\n      <button id=\"book\">BOOK TICKETS</button>\n      <div id=\"info\">\n        <h3>ABOUT</h3> The show features a documentary exploring the lives and\n        depths under the sea. Divers go to extreme depths filming and\n        researching. <h3>HOW TO WATCH</h3> Watch it on our OTT platform or visit\n        your nearby cinemas.\n      </div>\n      <div id=\"form\">\n        <h3>BOOK YOUR TICKET!</h3>\n        <label for=\"tickets\">Tickets: </label><br>\n        <input type=\"number\" id=\"tickets\"><br>\n        <label for=\"email\">Email: </label><br>\n        <input type=\"email\" id=\"email\" name=\"email\"><br>\n        <label for=\"preference\">Preference: </label><br>\n        <select id=\"preference\">\n          <option value=\"basic\">Basic Seat - 5$</option>\n          <option value=\"premium\">Premium Seat - 10$</option>\n          <option value=\"luxury\">Luxury Seat - 15$</option>\n        </select><br>\n        <button type=\"submit\" style=\"margin:10px\">BOOK</button>\n      </div>\n      <img src=\"https://mimo.app/i/whale.png\" id=\"whale\">\n      <img src=\"https://mimo.app/i/octopus.png\" id=\"octopus\">\n      <img src=\"https://mimo.app/i/crab.png\" class=\"crabfish\">\n      <img src=\"https://mimo.app/i/jellyfish.png\" id=\"jellyfish\"><br>\n      <img src=\"https://mimo.app/i/fish.png\" class=\"crabfish\">\n    </div>\n    <script src=\"script.js\"></script>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\r\n  background-color: aquamarine;\r\n  overflow: scroll;\r\n  font-family: 'Trebuchet MS', sans-serif;\r\n}\r\n\r\n#ocean {\r\n  background-color: aquamarine;\r\n  height: 1200px;\r\n  text-align: center;\r\n}\r\n\r\nh1 {\r\n  margin: 50px;\r\n  padding: 10px;\r\n  color: whitesmoke;\r\n  font-size: 100px;\r\n}\r\n\r\n#show {\r\n  font-size: 50px;\r\n  color: darkturquoise;\r\n}\r\n\r\np {\r\n  color: whitesmoke;\r\n}\r\n\r\n#info {\r\n  background-color: whitesmoke;\r\n  padding: 10px;\r\n  margin: 20px;\r\n  color: darkslategray !important;\r\n  visibility: hidden;\r\n}\r\n\r\n#form {\r\n  background-color: whitesmoke;\r\n  padding: 10px;\r\n  margin: 20px;\r\n  color: darkslategray !important;\r\n  visibility: hidden;\r\n}\r\n\r\nbutton {\r\n  color: whitesmoke;\r\n  background-color: darkturquoise;\r\n  border: none;\r\n  padding: 10px;\r\n  font-weight: bold;\r\n  font-size: 20px;\r\n}\r\n\r\n#whale {\r\n  width: 20%;\r\n  transform: rotate(-10deg);\r\n  position: fixed;\r\n  bottom: 0;\r\n  right: 0;\r\n}\r\n\r\n#octopus {\r\n  width: 20%;\r\n  transform: rotate(10deg);\r\n  position: fixed;\r\n  bottom: 0;\r\n  left: 0;\r\n}\r\n\r\n#jellyfish {\r\n  width: 10%;\r\n  transform: rotate(60deg);\r\n}\r\n\r\n.crabfish {\r\n  width: 10%;\r\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "",
+                  "solvedContent": null
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "AddEventListener",
+            "id": 111190,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Harika! Şimdi, kullanıcı başlığa tıkladığında renginin değişmesi için bir olay dinleyicisi ekleyelim.\n\n1. `h1` öğesini `querySelector` kullanarak al ve `h1` adlı bir değişkende sakla.\n2. `addEventListener` kullan ve parametreleri olarak `\"click\"` ile `changeColor` değerlerini geçir. Burada `\"click\"`, olay türünü belirtir ve `changeColor`, olay tarafından çağrılan fonksiyondur.\n3. `changeColor` adlı boş bir fonksiyon yaz.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <link href=\"style.css\" rel=\"stylesheet\" type=\"text/css\" />\n  </head>\n  <body>\n    <div id=\"ocean\">\n      <h1>OCEAN WORLD<span id=\"show\"> the show</span></h1>\n      <p>DIVE INTO THE WORLD OF UNKNOWN</p>\n      <button id=\"getinfo\">GET INFORMATION</button>\n      <button id=\"book\">BOOK TICKETS</button>\n      <div id=\"info\">\n        <h3>ABOUT</h3> The show features a documentary exploring the lives and\n        depths under the sea. Divers go to extreme depths filming and\n        researching. <h3>HOW TO WATCH</h3> Watch it on our OTT platform or visit\n        your nearby cinemas.\n      </div>\n      <div id=\"form\">\n        <h3>BOOK YOUR TICKET!</h3>\n        <label for=\"tickets\">Tickets: </label><br>\n        <input type=\"number\" id=\"tickets\"><br>\n        <label for=\"email\">Email: </label><br>\n        <input type=\"email\" id=\"email\" name=\"email\"><br>\n        <label for=\"preference\">Preference: </label><br>\n        <select id=\"preference\">\n          <option value=\"basic\">Basic Seat - 5$</option>\n          <option value=\"premium\">Premium Seat - 10$</option>\n          <option value=\"luxury\">Luxury Seat - 15$</option>\n        </select><br>\n        <button type=\"submit\" style=\"margin:10px\">BOOK</button>\n      </div>\n      <img src=\"https://mimo.app/i/whale.png\" id=\"whale\">\n      <img src=\"https://mimo.app/i/octopus.png\" id=\"octopus\">\n      <img src=\"https://mimo.app/i/crab.png\" class=\"crabfish\">\n      <img src=\"https://mimo.app/i/jellyfish.png\" id=\"jellyfish\"><br>\n      <img src=\"https://mimo.app/i/fish.png\" class=\"crabfish\">\n    </div>\n    <script src=\"script.js\"></script>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\r\n  background-color: aquamarine;\r\n  overflow: scroll;\r\n  font-family: 'Trebuchet MS', sans-serif;\r\n}\r\n\r\n#ocean {\r\n  background-color: aquamarine;\r\n  height: 1200px;\r\n  text-align: center;\r\n}\r\n\r\nh1 {\r\n  margin: 50px;\r\n  padding: 10px;\r\n  color: whitesmoke;\r\n  font-size: 100px;\r\n}\r\n\r\n#show {\r\n  font-size: 50px;\r\n  color: darkturquoise;\r\n}\r\n\r\np {\r\n  color: whitesmoke;\r\n}\r\n\r\n#info {\r\n  background-color: whitesmoke;\r\n  padding: 10px;\r\n  margin: 20px;\r\n  color: darkslategray !important;\r\n  visibility: hidden;\r\n}\r\n\r\n#form {\r\n  background-color: whitesmoke;\r\n  padding: 10px;\r\n  margin: 20px;\r\n  color: darkslategray !important;\r\n  visibility: hidden;\r\n}\r\n\r\nbutton {\r\n  color: whitesmoke;\r\n  background-color: darkturquoise;\r\n  border: none;\r\n  padding: 10px;\r\n  font-weight: bold;\r\n  font-size: 20px;\r\n}\r\n\r\n#whale {\r\n  width: 20%;\r\n  transform: rotate(-10deg);\r\n  position: fixed;\r\n  bottom: 0;\r\n  right: 0;\r\n}\r\n\r\n#octopus {\r\n  width: 20%;\r\n  transform: rotate(10deg);\r\n  position: fixed;\r\n  bottom: 0;\r\n  left: 0;\r\n}\r\n\r\n#jellyfish {\r\n  width: 10%;\r\n  transform: rotate(60deg);\r\n}\r\n\r\n.crabfish {\r\n  width: 10%;\r\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "",
+                  "solvedContent": "const h1 = document.querySelector(\"h1\");\r\nh1.addEventListener(\"click\", changeColor);\r\n\r\nfunction changeColor() {}"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "1. To use `querySelector`, the syntax is `document.querySelector(\"selector\")`.\n2. The syntax for `addEventListener` for a `\"click\"` event is `element.addEventListener(\"click\", functionName)`."
+                }
+              ]
+            }
+          },
+          {
+            "title": "Add function",
+            "id": 111191,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Şimdi `changeColor` işlevselliğini ekleyelim.\n\n1. `changeColor()` fonksiyonunun içine, `h1` öğesinin rengini `darkturquoise` olarak değiştiren sözdizimini ekle.\n2. Kodu çalıştır ve `OCEAN WORLD` kelimelerine tıklayarak bu fonksiyonu test et.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <link href=\"style.css\" rel=\"stylesheet\" type=\"text/css\" />\n  </head>\n  <body>\n    <div id=\"ocean\">\n      <h1>OCEAN WORLD<span id=\"show\"> the show</span></h1>\n      <p>DIVE INTO THE WORLD OF UNKNOWN</p>\n      <button id=\"getinfo\">GET INFORMATION</button>\n      <button id=\"book\">BOOK TICKETS</button>\n      <div id=\"info\">\n        <h3>ABOUT</h3> The show features a documentary exploring the lives and\n        depths under the sea. Divers go to extreme depths filming and\n        researching. <h3>HOW TO WATCH</h3> Watch it on our OTT platform or visit\n        your nearby cinemas.\n      </div>\n      <div id=\"form\">\n        <h3>BOOK YOUR TICKET!</h3>\n        <label for=\"tickets\">Tickets: </label><br>\n        <input type=\"number\" id=\"tickets\"><br>\n        <label for=\"email\">Email: </label><br>\n        <input type=\"email\" id=\"email\" name=\"email\"><br>\n        <label for=\"preference\">Preference: </label><br>\n        <select id=\"preference\">\n          <option value=\"basic\">Basic Seat - 5$</option>\n          <option value=\"premium\">Premium Seat - 10$</option>\n          <option value=\"luxury\">Luxury Seat - 15$</option>\n        </select><br>\n        <button type=\"submit\" style=\"margin:10px\">BOOK</button>\n      </div>\n      <img src=\"https://mimo.app/i/whale.png\" id=\"whale\">\n      <img src=\"https://mimo.app/i/octopus.png\" id=\"octopus\">\n      <img src=\"https://mimo.app/i/crab.png\" class=\"crabfish\">\n      <img src=\"https://mimo.app/i/jellyfish.png\" id=\"jellyfish\"><br>\n      <img src=\"https://mimo.app/i/fish.png\" class=\"crabfish\">\n    </div>\n    <script src=\"script.js\"></script>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\r\n  background-color: aquamarine;\r\n  overflow: scroll;\r\n  font-family: 'Trebuchet MS', sans-serif;\r\n}\r\n\r\n#ocean {\r\n  background-color: aquamarine;\r\n  height: 1200px;\r\n  text-align: center;\r\n}\r\n\r\nh1 {\r\n  margin: 50px;\r\n  padding: 10px;\r\n  color: whitesmoke;\r\n  font-size: 100px;\r\n}\r\n\r\n#show {\r\n  font-size: 50px;\r\n  color: darkturquoise;\r\n}\r\n\r\np {\r\n  color: whitesmoke;\r\n}\r\n\r\n#info {\r\n  background-color: whitesmoke;\r\n  padding: 10px;\r\n  margin: 20px;\r\n  color: darkslategray !important;\r\n  visibility: hidden;\r\n}\r\n\r\n#form {\r\n  background-color: whitesmoke;\r\n  padding: 10px;\r\n  margin: 20px;\r\n  color: darkslategray !important;\r\n  visibility: hidden;\r\n}\r\n\r\nbutton {\r\n  color: whitesmoke;\r\n  background-color: darkturquoise;\r\n  border: none;\r\n  padding: 10px;\r\n  font-weight: bold;\r\n  font-size: 20px;\r\n}\r\n\r\n#whale {\r\n  width: 20%;\r\n  transform: rotate(-10deg);\r\n  position: fixed;\r\n  bottom: 0;\r\n  right: 0;\r\n}\r\n\r\n#octopus {\r\n  width: 20%;\r\n  transform: rotate(10deg);\r\n  position: fixed;\r\n  bottom: 0;\r\n  left: 0;\r\n}\r\n\r\n#jellyfish {\r\n  width: 10%;\r\n  transform: rotate(60deg);\r\n}\r\n\r\n.crabfish {\r\n  width: 10%;\r\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "const h1 = document.querySelector(\"h1\");\r\nh1.addEventListener(\"click\", changeColor);\r\n\r\nfunction changeColor() {}",
+                  "solvedContent": "const h1 = document.querySelector(\"h1\");\r\nh1.addEventListener(\"click\", changeColor);\r\n\r\nfunction changeColor() {\r\n  h1.style.color = \"darkturquoise\";\r\n}"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "1. The syntax to define a function is:\n```javascript\nfunction fnName(){\n   //statements\n}\n```\n2. To change the color of an element via JavaScript code, use `style.color`."
+                }
+              ]
+            }
+          },
+          {
+            "title": "RemoveEventListener",
+            "id": 111192,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Tıpkı bir olay ekleyebildiğimiz gibi, `removeEventListener` kullanarak bir olayı kaldırabiliriz.\n\n1. `h1` için mevcut olayı kaldırmak üzere `removeEventListener` kullan.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <link href=\"style.css\" rel=\"stylesheet\" type=\"text/css\" />\n  </head>\n  <body>\n    <div id=\"ocean\">\n      <h1>OCEAN WORLD<span id=\"show\"> the show</span></h1>\n      <p>DIVE INTO THE WORLD OF UNKNOWN</p>\n      <button id=\"getinfo\">GET INFORMATION</button>\n      <button id=\"book\">BOOK TICKETS</button>\n      <div id=\"info\">\n        <h3>ABOUT</h3> The show features a documentary exploring the lives and\n        depths under the sea. Divers go to extreme depths filming and\n        researching. <h3>HOW TO WATCH</h3> Watch it on our OTT platform or visit\n        your nearby cinemas.\n      </div>\n      <div id=\"form\">\n        <h3>BOOK YOUR TICKET!</h3>\n        <label for=\"tickets\">Tickets: </label><br>\n        <input type=\"number\" id=\"tickets\"><br>\n        <label for=\"email\">Email: </label><br>\n        <input type=\"email\" id=\"email\" name=\"email\"><br>\n        <label for=\"preference\">Preference: </label><br>\n        <select id=\"preference\">\n          <option value=\"basic\">Basic Seat - 5$</option>\n          <option value=\"premium\">Premium Seat - 10$</option>\n          <option value=\"luxury\">Luxury Seat - 15$</option>\n        </select><br>\n        <button type=\"submit\" style=\"margin:10px\">BOOK</button>\n      </div>\n      <img src=\"https://mimo.app/i/whale.png\" id=\"whale\">\n      <img src=\"https://mimo.app/i/octopus.png\" id=\"octopus\">\n      <img src=\"https://mimo.app/i/crab.png\" class=\"crabfish\">\n      <img src=\"https://mimo.app/i/jellyfish.png\" id=\"jellyfish\"><br>\n      <img src=\"https://mimo.app/i/fish.png\" class=\"crabfish\">\n    </div>\n    <script src=\"script.js\"></script>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\r\n  background-color: aquamarine;\r\n  overflow: scroll;\r\n  font-family: 'Trebuchet MS', sans-serif;\r\n}\r\n\r\n#ocean {\r\n  background-color: aquamarine;\r\n  height: 1200px;\r\n  text-align: center;\r\n}\r\n\r\nh1 {\r\n  margin: 50px;\r\n  padding: 10px;\r\n  color: whitesmoke;\r\n  font-size: 100px;\r\n}\r\n\r\n#show {\r\n  font-size: 50px;\r\n  color: darkturquoise;\r\n}\r\n\r\np {\r\n  color: whitesmoke;\r\n}\r\n\r\n#info {\r\n  background-color: whitesmoke;\r\n  padding: 10px;\r\n  margin: 20px;\r\n  color: darkslategray !important;\r\n  visibility: hidden;\r\n}\r\n\r\n#form {\r\n  background-color: whitesmoke;\r\n  padding: 10px;\r\n  margin: 20px;\r\n  color: darkslategray !important;\r\n  visibility: hidden;\r\n}\r\n\r\nbutton {\r\n  color: whitesmoke;\r\n  background-color: darkturquoise;\r\n  border: none;\r\n  padding: 10px;\r\n  font-weight: bold;\r\n  font-size: 20px;\r\n}\r\n\r\n#whale {\r\n  width: 20%;\r\n  transform: rotate(-10deg);\r\n  position: fixed;\r\n  bottom: 0;\r\n  right: 0;\r\n}\r\n\r\n#octopus {\r\n  width: 20%;\r\n  transform: rotate(10deg);\r\n  position: fixed;\r\n  bottom: 0;\r\n  left: 0;\r\n}\r\n\r\n#jellyfish {\r\n  width: 10%;\r\n  transform: rotate(60deg);\r\n}\r\n\r\n.crabfish {\r\n  width: 10%;\r\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "const h1 = document.querySelector(\"h1\");\r\nh1.addEventListener(\"click\", changeColor);\r\n\r\nfunction changeColor() {\r\n  h1.style.color = \"darkturquoise\";\r\n}",
+                  "solvedContent": "const h1 = document.querySelector(\"h1\");\r\nh1.addEventListener(\"click\", changeColor);\r\n\r\nfunction changeColor() {\r\n  h1.style.color = \"darkturquoise\";\r\n}\r\nh1.removeEventListener(\"click\", changeColor);"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "The syntax for using `removeEventListener` is: `element.removeEventListener(\"event\", functionName);`."
+                }
+              ]
+            }
+          },
+          {
+            "title": "Get \"Ocean\" Div",
+            "id": 111193,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "`#ocean` `div` öğesi için birkaç olay ayarlama zamanı.\n\nSayfayı (`body` öğesini) kaydırdığımızda sayfanın ve `div` öğesinin rengi güzel bir deniz yeşili gradyanına dönüşse nasıl olur? Arka planımız gerçek okyanus gibi görünebilir!\n\nÖncelikle `body` öğesini ve `div` öğesini almamız gerekecek.\n\n1. `#ocean` `div` öğesini almak için `getElementById` veya `querySelector` kullan ve bunu `div` adlı bir değişkende sakla.\n2. `body` öğesini seçmek için istediğin yöntemi kullan ve değeri `body` adlı yeni bir değişkende sakla.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <link href=\"style.css\" rel=\"stylesheet\" type=\"text/css\" />\n  </head>\n  <body>\n    <div id=\"ocean\">\n      <h1>OCEAN WORLD<span id=\"show\"> the show</span></h1>\n      <p>DIVE INTO THE WORLD OF UNKNOWN</p>\n      <button id=\"getinfo\">GET INFORMATION</button>\n      <button id=\"book\">BOOK TICKETS</button>\n      <div id=\"info\">\n        <h3>ABOUT</h3> The show features a documentary exploring the lives and\n        depths under the sea. Divers go to extreme depths filming and\n        researching. <h3>HOW TO WATCH</h3> Watch it on our OTT platform or visit\n        your nearby cinemas.\n      </div>\n      <div id=\"form\">\n        <h3>BOOK YOUR TICKET!</h3>\n        <label for=\"tickets\">Tickets: </label><br>\n        <input type=\"number\" id=\"tickets\"><br>\n        <label for=\"email\">Email: </label><br>\n        <input type=\"email\" id=\"email\" name=\"email\"><br>\n        <label for=\"preference\">Preference: </label><br>\n        <select id=\"preference\">\n          <option value=\"basic\">Basic Seat - 5$</option>\n          <option value=\"premium\">Premium Seat - 10$</option>\n          <option value=\"luxury\">Luxury Seat - 15$</option>\n        </select><br>\n        <button type=\"submit\" style=\"margin:10px\">BOOK</button>\n      </div>\n      <img src=\"https://mimo.app/i/whale.png\" id=\"whale\">\n      <img src=\"https://mimo.app/i/octopus.png\" id=\"octopus\">\n      <img src=\"https://mimo.app/i/crab.png\" class=\"crabfish\">\n      <img src=\"https://mimo.app/i/jellyfish.png\" id=\"jellyfish\"><br>\n      <img src=\"https://mimo.app/i/fish.png\" class=\"crabfish\">\n    </div>\n    <script src=\"script.js\"></script>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\r\n  background-color: aquamarine;\r\n  overflow: scroll;\r\n  font-family: 'Trebuchet MS', sans-serif;\r\n}\r\n\r\n#ocean {\r\n  background-color: aquamarine;\r\n  height: 1200px;\r\n  text-align: center;\r\n}\r\n\r\nh1 {\r\n  margin: 50px;\r\n  padding: 10px;\r\n  color: whitesmoke;\r\n  font-size: 100px;\r\n}\r\n\r\n#show {\r\n  font-size: 50px;\r\n  color: darkturquoise;\r\n}\r\n\r\np {\r\n  color: whitesmoke;\r\n}\r\n\r\n#info {\r\n  background-color: whitesmoke;\r\n  padding: 10px;\r\n  margin: 20px;\r\n  color: darkslategray !important;\r\n  visibility: hidden;\r\n}\r\n\r\n#form {\r\n  background-color: whitesmoke;\r\n  padding: 10px;\r\n  margin: 20px;\r\n  color: darkslategray !important;\r\n  visibility: hidden;\r\n}\r\n\r\nbutton {\r\n  color: whitesmoke;\r\n  background-color: darkturquoise;\r\n  border: none;\r\n  padding: 10px;\r\n  font-weight: bold;\r\n  font-size: 20px;\r\n}\r\n\r\n#whale {\r\n  width: 20%;\r\n  transform: rotate(-10deg);\r\n  position: fixed;\r\n  bottom: 0;\r\n  right: 0;\r\n}\r\n\r\n#octopus {\r\n  width: 20%;\r\n  transform: rotate(10deg);\r\n  position: fixed;\r\n  bottom: 0;\r\n  left: 0;\r\n}\r\n\r\n#jellyfish {\r\n  width: 10%;\r\n  transform: rotate(60deg);\r\n}\r\n\r\n.crabfish {\r\n  width: 10%;\r\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "const h1 = document.querySelector(\"h1\");\r\nh1.addEventListener(\"click\", changeColor);\r\n\r\nfunction changeColor() {\r\n  h1.style.color = \"darkturquoise\";\r\n}\r\nh1.removeEventListener(\"click\", changeColor);",
+                  "solvedContent": "const h1 = document.querySelector(\"h1\");\r\nh1.addEventListener(\"click\", changeColor);\r\n\r\nfunction changeColor() {\r\n  h1.style.color = \"darkturquoise\";\r\n}\r\nh1.removeEventListener(\"click\", changeColor);\r\nconst div = document.getElementById(\"ocean\");\r\nconst body = document.body;"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "If you're using `querySelector`, make sure that you use \"#\" to get the `div` since `#ocean` is an ID selector."
+                }
+              ]
+            }
+          },
+          {
+            "title": "Set backgrounds",
+            "id": 111195,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Gerekli öğelere sahip olduğumuza göre, kullanıcının sayfayı kaydırdığında `body` ve `#ocean` `div` öğesinin rengini değiştirebilecek bir şeye ihtiyacımız var.\n\nBu olayı oluşturmak için `onscroll` kullanabiliriz. `onscroll` olayı, bir öğenin kaydırma çubuğu kullanıcı tarafından kullanıldığında tetiklenir.\n\n1. `body` değişkeninde `onscroll` olayını kullan ve ona anonim bir fonksiyonun değerini ata.\n2. Fonksiyonun içinde, `body` öğesinin `background` özelliğini `#b2f0f1` olarak değiştir.\n3. `div` öğesinin `background` özelliğini `#b2f0f1` olarak değiştir.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <link href=\"style.css\" rel=\"stylesheet\" type=\"text/css\" />\n  </head>\n  <body>\n    <div id=\"ocean\">\n      <h1>OCEAN WORLD<span id=\"show\"> the show</span></h1>\n      <p>DIVE INTO THE WORLD OF UNKNOWN</p>\n      <button id=\"getinfo\">GET INFORMATION</button>\n      <button id=\"book\">BOOK TICKETS</button>\n      <div id=\"info\">\n        <h3>ABOUT</h3> The show features a documentary exploring the lives and\n        depths under the sea. Divers go to extreme depths filming and\n        researching. <h3>HOW TO WATCH</h3> Watch it on our OTT platform or visit\n        your nearby cinemas.\n      </div>\n      <div id=\"form\">\n        <h3>BOOK YOUR TICKET!</h3>\n        <label for=\"tickets\">Tickets: </label><br>\n        <input type=\"number\" id=\"tickets\"><br>\n        <label for=\"email\">Email: </label><br>\n        <input type=\"email\" id=\"email\" name=\"email\"><br>\n        <label for=\"preference\">Preference: </label><br>\n        <select id=\"preference\">\n          <option value=\"basic\">Basic Seat - 5$</option>\n          <option value=\"premium\">Premium Seat - 10$</option>\n          <option value=\"luxury\">Luxury Seat - 15$</option>\n        </select><br>\n        <button type=\"submit\" style=\"margin:10px\">BOOK</button>\n      </div>\n      <img src=\"https://mimo.app/i/whale.png\" id=\"whale\">\n      <img src=\"https://mimo.app/i/octopus.png\" id=\"octopus\">\n      <img src=\"https://mimo.app/i/crab.png\" class=\"crabfish\">\n      <img src=\"https://mimo.app/i/jellyfish.png\" id=\"jellyfish\"><br>\n      <img src=\"https://mimo.app/i/fish.png\" class=\"crabfish\">\n    </div>\n    <script src=\"script.js\"></script>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\r\n  background-color: aquamarine;\r\n  overflow: scroll;\r\n  font-family: 'Trebuchet MS', sans-serif;\r\n}\r\n\r\n#ocean {\r\n  background-color: aquamarine;\r\n  height: 1200px;\r\n  text-align: center;\r\n}\r\n\r\nh1 {\r\n  margin: 50px;\r\n  padding: 10px;\r\n  color: whitesmoke;\r\n  font-size: 100px;\r\n}\r\n\r\n#show {\r\n  font-size: 50px;\r\n  color: darkturquoise;\r\n}\r\n\r\np {\r\n  color: whitesmoke;\r\n}\r\n\r\n#info {\r\n  background-color: whitesmoke;\r\n  padding: 10px;\r\n  margin: 20px;\r\n  color: darkslategray !important;\r\n  visibility: hidden;\r\n}\r\n\r\n#form {\r\n  background-color: whitesmoke;\r\n  padding: 10px;\r\n  margin: 20px;\r\n  color: darkslategray !important;\r\n  visibility: hidden;\r\n}\r\n\r\nbutton {\r\n  color: whitesmoke;\r\n  background-color: darkturquoise;\r\n  border: none;\r\n  padding: 10px;\r\n  font-weight: bold;\r\n  font-size: 20px;\r\n}\r\n\r\n#whale {\r\n  width: 20%;\r\n  transform: rotate(-10deg);\r\n  position: fixed;\r\n  bottom: 0;\r\n  right: 0;\r\n}\r\n\r\n#octopus {\r\n  width: 20%;\r\n  transform: rotate(10deg);\r\n  position: fixed;\r\n  bottom: 0;\r\n  left: 0;\r\n}\r\n\r\n#jellyfish {\r\n  width: 10%;\r\n  transform: rotate(60deg);\r\n}\r\n\r\n.crabfish {\r\n  width: 10%;\r\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "const h1 = document.querySelector(\"h1\");\r\nh1.addEventListener(\"click\", changeColor);\r\n\r\nfunction changeColor() {\r\n  h1.style.color = \"darkturquoise\";\r\n}\r\nh1.removeEventListener(\"click\", changeColor);\r\nconst body = document.body;\r\nconst div = document.getElementById(\"ocean\");\r\n",
+                  "solvedContent": "const h1 = document.querySelector(\"h1\");\r\nh1.addEventListener(\"click\", changeColor);\r\n\r\nfunction changeColor() {\r\n  h1.style.color = \"darkturquoise\";\r\n}\r\nh1.removeEventListener(\"click\", changeColor);\r\nconst body = document.body;\r\nconst div = document.getElementById(\"ocean\");\r\nbody.onscroll = function() {\r\n  body.style.backgroundColor = \"#b2f0f1\";\r\n  div.style.backgroundColor = \"#b2f0f1\";\r\n};"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "Use the following code to set `body.onscroll` to an anonymous function:\n```javascript\nbody.onscroll = function( ) { \n\n} ;\n```\nUse the following code to change the `background-color` style for the `body. The same can be applied to the `div`:\n```javascript\nbody.style.backgroundColor = #yourcolorhere;\n```"
+                }
+              ]
+            }
+          },
+          {
+            "title": "Get button and info div",
+            "id": 111196,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "`#form` `div` ve `#info` `div` öğelerini göremediğimizi fark etmiş olabilirsin. Bunun nedeni, CSS'imizde görünürlüklerinin `hidden` olarak ayarlanmış olmasıdır.\n\nBu öğeleri gizlememizin nedeni, yalnızca ilgili düğmelerine tıklandıktan sonra görünür olmalarını sağlamaktır. Yani kullanıcı `GET INFORMATION` düğmesine tıklarsa `#info` `div` görünür hale gelmelidir. Benzer şekilde, kullanıcı `BOOK TICKETS` düğmesine tıkladığında `#form div` görünür hale gelmelidir.\n\n`#info` div'iyle başlayalım.\n\n1. `#info` `div` öğesini almak için `getElementById` veya `querySelector` kullan ve bunu `infodiv` adlı bir değişkende sakla.\n2. `#getinfo` `button` öğesini almak için `getElementById` veya `querySelector` kullan ve bunu `infobtn` adlı bir değişkende sakla.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <link href=\"style.css\" rel=\"stylesheet\" type=\"text/css\" />\n  </head>\n  <body>\n    <div id=\"ocean\">\n      <h1>OCEAN WORLD<span id=\"show\"> the show</span></h1>\n      <p>DIVE INTO THE WORLD OF UNKNOWN</p>\n      <button id=\"getinfo\">GET INFORMATION</button>\n      <button id=\"book\">BOOK TICKETS</button>\n      <div id=\"info\">\n        <h3>ABOUT</h3> The show features a documentary exploring the lives and\n        depths under the sea. Divers go to extreme depths filming and\n        researching. <h3>HOW TO WATCH</h3> Watch it on our OTT platform or visit\n        your nearby cinemas.\n      </div>\n      <div id=\"form\">\n        <h3>BOOK YOUR TICKET!</h3>\n        <label for=\"tickets\">Tickets: </label><br>\n        <input type=\"number\" id=\"tickets\"><br>\n        <label for=\"email\">Email: </label><br>\n        <input type=\"email\" id=\"email\" name=\"email\"><br>\n        <label for=\"preference\">Preference: </label><br>\n        <select id=\"preference\">\n          <option value=\"basic\">Basic Seat - 5$</option>\n          <option value=\"premium\">Premium Seat - 10$</option>\n          <option value=\"luxury\">Luxury Seat - 15$</option>\n        </select><br>\n        <button type=\"submit\" style=\"margin:10px\">BOOK</button>\n      </div>\n      <img src=\"https://mimo.app/i/whale.png\" id=\"whale\">\n      <img src=\"https://mimo.app/i/octopus.png\" id=\"octopus\">\n      <img src=\"https://mimo.app/i/crab.png\" class=\"crabfish\">\n      <img src=\"https://mimo.app/i/jellyfish.png\" id=\"jellyfish\"><br>\n      <img src=\"https://mimo.app/i/fish.png\" class=\"crabfish\">\n    </div>\n    <script src=\"script.js\"></script>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\r\n  background-color: aquamarine;\r\n  overflow: scroll;\r\n  font-family: 'Trebuchet MS', sans-serif;\r\n}\r\n\r\n#ocean {\r\n  background-color: aquamarine;\r\n  height: 1200px;\r\n  text-align: center;\r\n}\r\n\r\nh1 {\r\n  margin: 50px;\r\n  padding: 10px;\r\n  color: whitesmoke;\r\n  font-size: 100px;\r\n}\r\n\r\n#show {\r\n  font-size: 50px;\r\n  color: darkturquoise;\r\n}\r\n\r\np {\r\n  color: whitesmoke;\r\n}\r\n\r\n#info {\r\n  background-color: whitesmoke;\r\n  padding: 10px;\r\n  margin: 20px;\r\n  color: darkslategray !important;\r\n  visibility: hidden;\r\n}\r\n\r\n#form {\r\n  background-color: whitesmoke;\r\n  padding: 10px;\r\n  margin: 20px;\r\n  color: darkslategray !important;\r\n  visibility: hidden;\r\n}\r\n\r\nbutton {\r\n  color: whitesmoke;\r\n  background-color: darkturquoise;\r\n  border: none;\r\n  padding: 10px;\r\n  font-weight: bold;\r\n  font-size: 20px;\r\n}\r\n\r\n#whale {\r\n  width: 20%;\r\n  transform: rotate(-10deg);\r\n  position: fixed;\r\n  bottom: 0;\r\n  right: 0;\r\n}\r\n\r\n#octopus {\r\n  width: 20%;\r\n  transform: rotate(10deg);\r\n  position: fixed;\r\n  bottom: 0;\r\n  left: 0;\r\n}\r\n\r\n#jellyfish {\r\n  width: 10%;\r\n  transform: rotate(60deg);\r\n}\r\n\r\n.crabfish {\r\n  width: 10%;\r\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "const h1 = document.querySelector(\"h1\");\r\nh1.addEventListener(\"click\", changeColor);\r\n\r\nfunction changeColor() {\r\n  h1.style.color = \"darkturquoise\";\r\n}\r\nh1.removeEventListener(\"click\", changeColor);\r\nconst body = document.body;\r\nconst div = document.getElementById(\"ocean\");\r\nbody.onscroll = function() {\r\n  body.style.backgroundColor = \"#b2f0f1\";\r\n  div.style.backgroundColor = \"#b2f0f1\";\r\n};",
+                  "solvedContent": "const h1 = document.querySelector(\"h1\");\r\nh1.addEventListener(\"click\", changeColor);\r\n\r\nfunction changeColor() {\r\n  h1.style.color = \"darkturquoise\";\r\n}\r\nh1.removeEventListener(\"click\", changeColor);\r\nconst body = document.body;\r\nconst div = document.getElementById(\"ocean\");\r\nbody.onscroll = function() {\r\n  body.style.backgroundColor = \"#b2f0f1\";\r\n  div.style.backgroundColor = \"#b2f0f1\";\r\n};\r\nconst infobtn = document.getElementById(\"getinfo\");\r\nconst infodiv = document.getElementById(\"info\");"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "If you are using `querySelector`, make sure that you use \"#\" to get elements with id selectors."
+                }
+              ]
+            }
+          },
+          {
+            "title": "Set onclick",
+            "id": 111197,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Artık gerekli öğelere sahip olduğumuza göre, kullanıcı `GET INFORMATION` düğmesine tıkladığında `#info` `div` öğesinin görünürlüğünü değiştirebilecek bir şeye ihtiyacımız var.\n\nBu olayı oluşturmak için `onclick` kullanabiliriz. `onclick` olayı, bir öğeye tıklandığında tetiklenir.\n\n1. `infobtn` değişkeninde `onclick` özelliğini, `infodiv` öğesinin `visibility` değerini `visible` olarak değiştiren anonim bir fonksiyona ayarla.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <link href=\"style.css\" rel=\"stylesheet\" type=\"text/css\" />\n  </head>\n  <body>\n    <div id=\"ocean\">\n      <h1>OCEAN WORLD<span id=\"show\"> the show</span></h1>\n      <p>DIVE INTO THE WORLD OF UNKNOWN</p>\n      <button id=\"getinfo\">GET INFORMATION</button>\n      <button id=\"book\">BOOK TICKETS</button>\n      <div id=\"info\">\n        <h3>ABOUT</h3> The show features a documentary exploring the lives and\n        depths under the sea. Divers go to extreme depths filming and\n        researching. <h3>HOW TO WATCH</h3> Watch it on our OTT platform or visit\n        your nearby cinemas.\n      </div>\n      <div id=\"form\">\n        <h3>BOOK YOUR TICKET!</h3>\n        <label for=\"tickets\">Tickets: </label><br>\n        <input type=\"number\" id=\"tickets\"><br>\n        <label for=\"email\">Email: </label><br>\n        <input type=\"email\" id=\"email\" name=\"email\"><br>\n        <label for=\"preference\">Preference: </label><br>\n        <select id=\"preference\">\n          <option value=\"basic\">Basic Seat - 5$</option>\n          <option value=\"premium\">Premium Seat - 10$</option>\n          <option value=\"luxury\">Luxury Seat - 15$</option>\n        </select><br>\n        <button type=\"submit\" style=\"margin:10px\">BOOK</button>\n      </div>\n      <img src=\"https://mimo.app/i/whale.png\" id=\"whale\">\n      <img src=\"https://mimo.app/i/octopus.png\" id=\"octopus\">\n      <img src=\"https://mimo.app/i/crab.png\" class=\"crabfish\">\n      <img src=\"https://mimo.app/i/jellyfish.png\" id=\"jellyfish\"><br>\n      <img src=\"https://mimo.app/i/fish.png\" class=\"crabfish\">\n    </div>\n    <script src=\"script.js\"></script>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\r\n  background-color: aquamarine;\r\n  overflow: scroll;\r\n  font-family: 'Trebuchet MS', sans-serif;\r\n}\r\n\r\n#ocean {\r\n  background-color: aquamarine;\r\n  height: 1200px;\r\n  text-align: center;\r\n}\r\n\r\nh1 {\r\n  margin: 50px;\r\n  padding: 10px;\r\n  color: whitesmoke;\r\n  font-size: 100px;\r\n}\r\n\r\n#show {\r\n  font-size: 50px;\r\n  color: darkturquoise;\r\n}\r\n\r\np {\r\n  color: whitesmoke;\r\n}\r\n\r\n#info {\r\n  background-color: whitesmoke;\r\n  padding: 10px;\r\n  margin: 20px;\r\n  color: darkslategray !important;\r\n  visibility: hidden;\r\n}\r\n\r\n#form {\r\n  background-color: whitesmoke;\r\n  padding: 10px;\r\n  margin: 20px;\r\n  color: darkslategray !important;\r\n  visibility: hidden;\r\n}\r\n\r\nbutton {\r\n  color: whitesmoke;\r\n  background-color: darkturquoise;\r\n  border: none;\r\n  padding: 10px;\r\n  font-weight: bold;\r\n  font-size: 20px;\r\n}\r\n\r\n#whale {\r\n  width: 20%;\r\n  transform: rotate(-10deg);\r\n  position: fixed;\r\n  bottom: 0;\r\n  right: 0;\r\n}\r\n\r\n#octopus {\r\n  width: 20%;\r\n  transform: rotate(10deg);\r\n  position: fixed;\r\n  bottom: 0;\r\n  left: 0;\r\n}\r\n\r\n#jellyfish {\r\n  width: 10%;\r\n  transform: rotate(60deg);\r\n}\r\n\r\n.crabfish {\r\n  width: 10%;\r\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "const h1 = document.querySelector(\"h1\");\r\nh1.addEventListener(\"click\", changeColor);\r\n\r\nfunction changeColor() {\r\n  h1.style.color = \"darkturquoise\";\r\n}\r\nh1.removeEventListener(\"click\", changeColor);\r\nconst body = document.body;\r\nconst div = document.getElementById(\"ocean\");\r\nbody.onscroll = function() {\r\n  body.style.backgroundColor = \"#b2f0f1\";\r\n  div.style.backgroundColor = \"#b2f0f1\";\r\n};\r\nconst infobtn = document.getElementById(\"getinfo\");\r\nconst infodiv = document.getElementById(\"info\");",
+                  "solvedContent": "const h1 = document.querySelector(\"h1\");\r\nh1.addEventListener(\"click\", changeColor);\r\n\r\nfunction changeColor() {\r\n  h1.style.color = \"darkturquoise\";\r\n}\r\nh1.removeEventListener(\"click\", changeColor);\r\nconst body = document.body;\r\nconst div = document.getElementById(\"ocean\");\r\nbody.onscroll = function() {\r\n  body.style.backgroundColor = \"#b2f0f1\";\r\n  div.style.backgroundColor = \"#b2f0f1\";\r\n};\r\nconst infobtn = document.getElementById(\"getinfo\");\r\nconst infodiv = document.getElementById(\"info\");\r\ninfobtn.onclick = function() {\r\n  infodiv.style.visibility = \"visible\";\r\n};"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "Use `element.style.visibility` to change `visibility` value."
+                }
+              ]
+            }
+          },
+          {
+            "title": "Set onclick 2",
+            "id": 111198,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Şimdi aynı işlemi `BOOK TICKETS` düğmesi ve `#form` `div` öğesi için yapalım.\n\n1. `querySelector` veya `getElementById` kullanarak `#book` `button` öğesini ve `#form` `div` öğesini al ve bunları sırasıyla `bookbtn` ve `bookdiv` adlı değişkenlerde sakla.\n2. `bookbtn` üzerindeki `onclick` özelliğini, `bookdiv` öğesinin `visibility` değerini `visible` olarak değiştiren anonim bir fonksiyona ayarla.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <link href=\"style.css\" rel=\"stylesheet\" type=\"text/css\" />\n  </head>\n  <body>\n    <div id=\"ocean\">\n      <h1>OCEAN WORLD<span id=\"show\"> the show</span></h1>\n      <p>DIVE INTO THE WORLD OF UNKNOWN</p>\n      <button id=\"getinfo\">GET INFORMATION</button>\n      <button id=\"book\">BOOK TICKETS</button>\n      <div id=\"info\">\n        <h3>ABOUT</h3> The show features a documentary exploring the lives and\n        depths under the sea. Divers go to extreme depths filming and\n        researching. <h3>HOW TO WATCH</h3> Watch it on our OTT platform or visit\n        your nearby cinemas.\n      </div>\n      <div id=\"form\">\n        <h3>BOOK YOUR TICKET!</h3>\n        <label for=\"tickets\">Tickets: </label><br>\n        <input type=\"number\" id=\"tickets\"><br>\n        <label for=\"email\">Email: </label><br>\n        <input type=\"email\" id=\"email\" name=\"email\"><br>\n        <label for=\"preference\">Preference: </label><br>\n        <select id=\"preference\">\n          <option value=\"basic\">Basic Seat - 5$</option>\n          <option value=\"premium\">Premium Seat - 10$</option>\n          <option value=\"luxury\">Luxury Seat - 15$</option>\n        </select><br>\n        <button type=\"submit\" style=\"margin:10px\">BOOK</button>\n      </div>\n      <img src=\"https://mimo.app/i/whale.png\" id=\"whale\">\n      <img src=\"https://mimo.app/i/octopus.png\" id=\"octopus\">\n      <img src=\"https://mimo.app/i/crab.png\" class=\"crabfish\">\n      <img src=\"https://mimo.app/i/jellyfish.png\" id=\"jellyfish\"><br>\n      <img src=\"https://mimo.app/i/fish.png\" class=\"crabfish\">\n    </div>\n    <script src=\"script.js\"></script>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\r\n  background-color: aquamarine;\r\n  overflow: scroll;\r\n  font-family: 'Trebuchet MS', sans-serif;\r\n}\r\n\r\n#ocean {\r\n  background-color: aquamarine;\r\n  height: 1200px;\r\n  text-align: center;\r\n}\r\n\r\nh1 {\r\n  margin: 50px;\r\n  padding: 10px;\r\n  color: whitesmoke;\r\n  font-size: 100px;\r\n}\r\n\r\n#show {\r\n  font-size: 50px;\r\n  color: darkturquoise;\r\n}\r\n\r\np {\r\n  color: whitesmoke;\r\n}\r\n\r\n#info {\r\n  background-color: whitesmoke;\r\n  padding: 10px;\r\n  margin: 20px;\r\n  color: darkslategray !important;\r\n  visibility: hidden;\r\n}\r\n\r\n#form {\r\n  background-color: whitesmoke;\r\n  padding: 10px;\r\n  margin: 20px;\r\n  color: darkslategray !important;\r\n  visibility: hidden;\r\n}\r\n\r\nbutton {\r\n  color: whitesmoke;\r\n  background-color: darkturquoise;\r\n  border: none;\r\n  padding: 10px;\r\n  font-weight: bold;\r\n  font-size: 20px;\r\n}\r\n\r\n#whale {\r\n  width: 20%;\r\n  transform: rotate(-10deg);\r\n  position: fixed;\r\n  bottom: 0;\r\n  right: 0;\r\n}\r\n\r\n#octopus {\r\n  width: 20%;\r\n  transform: rotate(10deg);\r\n  position: fixed;\r\n  bottom: 0;\r\n  left: 0;\r\n}\r\n\r\n#jellyfish {\r\n  width: 10%;\r\n  transform: rotate(60deg);\r\n}\r\n\r\n.crabfish {\r\n  width: 10%;\r\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "const h1 = document.querySelector(\"h1\");\r\nh1.addEventListener(\"click\", changeColor);\r\n\r\nfunction changeColor() {\r\n  h1.style.color = \"darkturquoise\";\r\n}\r\nh1.removeEventListener(\"click\", changeColor);\r\nconst body = document.body;\r\nconst div = document.getElementById(\"ocean\");\r\nbody.onscroll = function() {\r\n  body.style.backgroundColor = \"#b2f0f1\";\r\n  div.style.backgroundColor = \"#b2f0f1\";\r\n};\r\nconst infobtn = document.getElementById(\"getinfo\");\r\nconst infodiv = document.getElementById(\"info\");\r\ninfobtn.onclick = function() {\r\n  infodiv.style.visibility = \"visible\";\r\n};",
+                  "solvedContent": "const h1 = document.querySelector(\"h1\");\r\nh1.addEventListener(\"click\", changeColor);\r\n\r\nfunction changeColor() {\r\n  h1.style.color = \"darkturquoise\";\r\n}\r\nh1.removeEventListener(\"click\", changeColor);\r\nconst body = document.body;\r\nconst div = document.getElementById(\"ocean\");\r\nbody.onscroll = function() {\r\n  body.style.backgroundColor = \"#b2f0f1\";\r\n  div.style.backgroundColor = \"#b2f0f1\";\r\n};\r\nconst infobtn = document.getElementById(\"getinfo\");\r\nconst infodiv = document.getElementById(\"info\");\r\ninfobtn.onclick = function() {\r\n  infodiv.style.visibility = \"visible\";\r\n};\r\nconst bookbtn = document.getElementById(\"book\");\r\nconst bookdiv = document.getElementById(\"form\");\r\nbookbtn.onclick = function() {\r\n  bookdiv.style.visibility = \"visible\";\r\n};"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "Refer to the previous code for reference. "
+                }
+              ]
+            }
+          },
+          {
+            "title": "Set oninput",
+            "id": 111199,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Web sayfamız oldukça iyi çalışıyor, ancak kullanıcı formu doldururken bilgilerini doğrulaması için bir uyarı alsa ne olur? Bunu `tickets` giriş alanıyla deneyelim.\n\nKullanıcı bir forma değer girdiğinde bir eylemi tetiklemek için `oninput` kullan.\n\n1. `querySelector` veya `getElementById` kullanarak `#tickets` `input` öğesini seç ve onu `tickets` adlı bir değişkende sakla.\n2. `index.html` dosyasında 31. satırda son `button` etiketinden sonra boş bir `h4` etiketi ekle.\n3. `querySelector` kullanarak `h4` öğesini seç ve onu `h4` adlı bir değişkende sakla.\n4. `tickets` üzerinde `oninput` özelliğini, `h4` değişkeninin iç metnini `\"You are purchasing \" + tickets.value + \" tickets.\"` olarak değiştiren anonim bir fonksiyona ayarla.\n5. Kodunu çalıştır ve forma bir bilet sayısı girerek bu işlevi test et.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <link href=\"style.css\" rel=\"stylesheet\" type=\"text/css\" />\n  </head>\n  <body>\n    <div id=\"ocean\">\n      <h1>OCEAN WORLD<span id=\"show\"> the show</span></h1>\n      <p>DIVE INTO THE WORLD OF UNKNOWN</p>\n      <button id=\"getinfo\">GET INFORMATION</button>\n      <button id=\"book\">BOOK TICKETS</button>\n      <div id=\"info\">\n        <h3>ABOUT</h3> The show features a documentary exploring the lives and\n        depths under the sea. Divers go to extreme depths filming and\n        researching. <h3>HOW TO WATCH</h3> Watch it on our OTT platform or visit\n        your nearby cinemas.\n      </div>\n      <div id=\"form\">\n        <h3>BOOK YOUR TICKET!</h3>\n        <label for=\"tickets\">Tickets: </label><br>\n        <input type=\"number\" id=\"tickets\"><br>\n        <label for=\"email\">Email: </label><br>\n        <input type=\"email\" id=\"email\" name=\"email\"><br>\n        <label for=\"preference\">Preference: </label><br>\n        <select id=\"preference\">\n          <option value=\"basic\">Basic Seat - 5$</option>\n          <option value=\"premium\">Premium Seat - 10$</option>\n          <option value=\"luxury\">Luxury Seat - 15$</option>\n        </select><br>\n        <button type=\"submit\" style=\"margin:10px\">BOOK</button>\n      </div>\n      <img src=\"https://mimo.app/i/whale.png\" id=\"whale\">\n      <img src=\"https://mimo.app/i/octopus.png\" id=\"octopus\">\n      <img src=\"https://mimo.app/i/crab.png\" class=\"crabfish\">\n      <img src=\"https://mimo.app/i/jellyfish.png\" id=\"jellyfish\"><br>\n      <img src=\"https://mimo.app/i/fish.png\" class=\"crabfish\">\n    </div>\n    <script src=\"script.js\"></script>\n  </body>\n</html>",
+                  "solvedContent": "<!doctype html>\n<html>\n  <head>\n    <link href=\"style.css\" rel=\"stylesheet\" type=\"text/css\" />\n  </head>\n  <body>\n    <div id=\"ocean\">\n      <h1>OCEAN WORLD<span id=\"show\"> the show</span></h1>\n      <p>DIVE INTO THE WORLD OF UNKNOWN</p>\n      <button id=\"getinfo\">GET INFORMATION</button>\n      <button id=\"book\">BOOK TICKETS</button>\n      <div id=\"info\">\n        <h3>ABOUT</h3> The show features a documentary exploring the lives and\n        depths under the sea. Divers go to extreme depths filming and\n        researching. <h3>HOW TO WATCH</h3> Watch it on our OTT platform or visit\n        your nearby cinemas.\n      </div>\n      <div id=\"form\">\n        <h3>BOOK YOUR TICKET!</h3>\n        <label for=\"tickets\">Tickets: </label><br>\n        <input type=\"number\" id=\"tickets\"><br>\n        <label for=\"email\">Email: </label><br>\n        <input type=\"email\" id=\"email\" name=\"email\"><br>\n        <label for=\"preference\">Preference: </label><br>\n        <select id=\"preference\">\n          <option value=\"basic\">Basic Seat - 5$</option>\n          <option value=\"premium\">Premium Seat - 10$</option>\n          <option value=\"luxury\">Luxury Seat - 15$</option>\n        </select><br>\n        <button type=\"submit\" style=\"margin:10px\">BOOK</button>\n        <h4></h4>\n      </div>\n      <img src=\"https://mimo.app/i/whale.png\" id=\"whale\">\n      <img src=\"https://mimo.app/i/octopus.png\" id=\"octopus\">\n      <img src=\"https://mimo.app/i/crab.png\" class=\"crabfish\">\n      <img src=\"https://mimo.app/i/jellyfish.png\" id=\"jellyfish\"><br>\n      <img src=\"https://mimo.app/i/fish.png\" class=\"crabfish\">\n    </div>\n    <script src=\"script.js\"></script>\n  </body>\n</html>"
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\r\n  background-color: aquamarine;\r\n  overflow: scroll;\r\n  font-family: 'Trebuchet MS', sans-serif;\r\n}\r\n\r\n#ocean {\r\n  background-color: aquamarine;\r\n  height: 1200px;\r\n  text-align: center;\r\n}\r\n\r\nh1 {\r\n  margin: 50px;\r\n  padding: 10px;\r\n  color: whitesmoke;\r\n  font-size: 100px;\r\n}\r\n\r\n#show {\r\n  font-size: 50px;\r\n  color: darkturquoise;\r\n}\r\n\r\np {\r\n  color: whitesmoke;\r\n}\r\n\r\n#info {\r\n  background-color: whitesmoke;\r\n  padding: 10px;\r\n  margin: 20px;\r\n  color: darkslategray !important;\r\n  visibility: hidden;\r\n}\r\n\r\n#form {\r\n  background-color: whitesmoke;\r\n  padding: 10px;\r\n  margin: 20px;\r\n  color: darkslategray !important;\r\n  visibility: hidden;\r\n}\r\n\r\nbutton {\r\n  color: whitesmoke;\r\n  background-color: darkturquoise;\r\n  border: none;\r\n  padding: 10px;\r\n  font-weight: bold;\r\n  font-size: 20px;\r\n}\r\n\r\n#whale {\r\n  width: 20%;\r\n  transform: rotate(-10deg);\r\n  position: fixed;\r\n  bottom: 0;\r\n  right: 0;\r\n}\r\n\r\n#octopus {\r\n  width: 20%;\r\n  transform: rotate(10deg);\r\n  position: fixed;\r\n  bottom: 0;\r\n  left: 0;\r\n}\r\n\r\n#jellyfish {\r\n  width: 10%;\r\n  transform: rotate(60deg);\r\n}\r\n\r\n.crabfish {\r\n  width: 10%;\r\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "const h1 = document.querySelector(\"h1\");\r\nh1.addEventListener(\"click\", changeColor);\r\n\r\nfunction changeColor() {\r\n  h1.style.color = \"darkturquoise\";\r\n}\r\nh1.removeEventListener(\"click\", changeColor);\r\nconst body = document.body;\r\nconst div = document.getElementById(\"ocean\");\r\nbody.onscroll = function() {\r\n  body.style.backgroundColor = \"#b2f0f1\";\r\n  div.style.backgroundColor = \"#b2f0f1\";\r\n};\r\nconst infobtn = document.getElementById(\"getinfo\");\r\nconst infodiv = document.getElementById(\"info\");\r\ninfobtn.onclick = function() {\r\n  infodiv.style.visibility = \"visible\";\r\n};\r\nconst bookbtn = document.getElementById(\"book\");\r\nconst bookdiv = document.getElementById(\"form\");\r\nbookbtn.onclick = function() {\r\n  bookdiv.style.visibility = \"visible\";\r\n};",
+                  "solvedContent": "const h1 = document.querySelector(\"h1\");\r\nh1.addEventListener(\"click\", changeColor);\r\n\r\nfunction changeColor() {\r\n  h1.style.color = \"darkturquoise\";\r\n}\r\nh1.removeEventListener(\"click\", changeColor);\r\nconst body = document.body;\r\nconst div = document.getElementById(\"ocean\");\r\nbody.onscroll = function() {\r\n  body.style.backgroundColor = \"#b2f0f1\";\r\n  div.style.backgroundColor = \"#b2f0f1\";\r\n};\r\nconst infobtn = document.getElementById(\"getinfo\");\r\nconst infodiv = document.getElementById(\"info\");\r\ninfobtn.onclick = function() {\r\n  infodiv.style.visibility = \"visible\";\r\n};\r\nconst bookbtn = document.getElementById(\"book\");\r\nconst bookdiv = document.getElementById(\"form\");\r\nbookbtn.onclick = function() {\r\n  bookdiv.style.visibility = \"visible\";\r\n};\r\nconst tickets = document.getElementById(\"tickets\");\r\nconst h4 = document.querySelector(\"h4\");\r\ntickets.oninput = function() {\r\n  h4.innerText = \"You are purchasing \" + tickets.value + \" tickets.\";\r\n};"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "To access an input field's value, use `element.value`. The alert should be structured like this:\n\n```\nalert(\"text \" + var.value);\n```"
+                }
+              ]
+            }
+          },
+          {
+            "title": "Set onchange",
+            "id": 111200,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Kullanıcılar artık bilet sayısını girdiklerinde bir mesaj alıyor, peki bir formdaki mevcut bir değeri değiştirirlerse ne olacak? Koltuk tercihi için açılır listeyle benzer bir şey yapalım.\n\nKullanıcı bir formdaki değeri değiştirdiğinde bir eylemi tetiklemek için `onchange` kullan.\n\n1. `querySelector` veya `getElementById` kullanarak `select` öğesinin `#preference` ID'sini seç ve bunu `preference` adlı bir değişkende sakla.\n2. `index.html` dosyasında 32. satırda, ilk `h4` etiketinden sonra `secondH4` ID'sine sahip bir `h4` etiketi ekle.\n3. ID'si `secondH4` olan ikinci `h4` öğesini seç ve bunu `secondH4` adlı bir değişkende sakla.\n4. `preference` üzerine, `secondH4` öğesinin `innerText` değerini `\"Your preference is : \" + preference.value` olarak değiştiren anonim bir fonksiyonla `onchange` tanımla.\n5. Kodunu çalıştır ve formdaki koltuk tercihini değiştirerek bu işlevi test et.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <link href=\"style.css\" rel=\"stylesheet\" type=\"text/css\" />\n  </head>\n  <body>\n    <div id=\"ocean\">\n      <h1>OCEAN WORLD<span id=\"show\"> the show</span></h1>\n      <p>DIVE INTO THE WORLD OF UNKNOWN</p>\n      <button id=\"getinfo\">GET INFORMATION</button>\n      <button id=\"book\">BOOK TICKETS</button>\n      <div id=\"info\">\n        <h3>ABOUT</h3> The show features a documentary exploring the lives and\n        depths under the sea. Divers go to extreme depths filming and\n        researching. <h3>HOW TO WATCH</h3> Watch it on our OTT platform or visit\n        your nearby cinemas.\n      </div>\n      <div id=\"form\">\n        <h3>BOOK YOUR TICKET!</h3>\n        <label for=\"tickets\">Tickets: </label><br>\n        <input type=\"number\" id=\"tickets\"><br>\n        <label for=\"email\">Email: </label><br>\n        <input type=\"email\" id=\"email\" name=\"email\"><br>\n        <label for=\"preference\">Preference: </label><br>\n        <select id=\"preference\">\n          <option value=\"basic\">Basic Seat - 5$</option>\n          <option value=\"premium\">Premium Seat - 10$</option>\n          <option value=\"luxury\">Luxury Seat - 15$</option>\n        </select><br>\n        <button type=\"submit\" style=\"margin:10px\">BOOK</button>\n        <h4></h4>\n      </div>\n      <img src=\"https://mimo.app/i/whale.png\" id=\"whale\">\n      <img src=\"https://mimo.app/i/octopus.png\" id=\"octopus\">\n      <img src=\"https://mimo.app/i/crab.png\" class=\"crabfish\">\n      <img src=\"https://mimo.app/i/jellyfish.png\" id=\"jellyfish\"><br>\n      <img src=\"https://mimo.app/i/fish.png\" class=\"crabfish\">\n    </div>\n    <script src=\"script.js\"></script>\n  </body>\n</html>",
+                  "solvedContent": "<!doctype html>\n<html>\n  <head>\n    <link href=\"style.css\" rel=\"stylesheet\" type=\"text/css\" />\n  </head>\n  <body>\n    <div id=\"ocean\">\n      <h1>OCEAN WORLD<span id=\"show\"> the show</span></h1>\n      <p>DIVE INTO THE WORLD OF UNKNOWN</p>\n      <button id=\"getinfo\">GET INFORMATION</button>\n      <button id=\"book\">BOOK TICKETS</button>\n      <div id=\"info\">\n        <h3>ABOUT</h3> The show features a documentary exploring the lives and\n        depths under the sea. Divers go to extreme depths filming and\n        researching. <h3>HOW TO WATCH</h3> Watch it on our OTT platform or visit\n        your nearby cinemas.\n      </div>\n      <div id=\"form\">\n        <h3>BOOK YOUR TICKET!</h3>\n        <label for=\"tickets\">Tickets: </label><br>\n        <input type=\"number\" id=\"tickets\"><br>\n        <label for=\"email\">Email: </label><br>\n        <input type=\"email\" id=\"email\" name=\"email\"><br>\n        <label for=\"preference\">Preference: </label><br>\n        <select id=\"preference\">\n          <option value=\"basic\">Basic Seat - 5$</option>\n          <option value=\"premium\">Premium Seat - 10$</option>\n          <option value=\"luxury\">Luxury Seat - 15$</option>\n        </select><br>\n        <button type=\"submit\" style=\"margin:10px\">BOOK</button>\n        <h4></h4>\n        <h4 id=\"secondH4\"></h4>\n      </div>\n      <img src=\"https://mimo.app/i/whale.png\" id=\"whale\">\n      <img src=\"https://mimo.app/i/octopus.png\" id=\"octopus\">\n      <img src=\"https://mimo.app/i/crab.png\" class=\"crabfish\">\n      <img src=\"https://mimo.app/i/jellyfish.png\" id=\"jellyfish\"><br>\n      <img src=\"https://mimo.app/i/fish.png\" class=\"crabfish\">\n    </div>\n    <script src=\"script.js\"></script>\n  </body>\n</html>"
+                },
+                {
+                  "name": "style.css",
+                  "codeLanguage": "css",
+                  "content": "body {\r\n  background-color: aquamarine;\r\n  overflow: scroll;\r\n  font-family: 'Trebuchet MS', sans-serif;\r\n}\r\n\r\n#ocean {\r\n  background-color: aquamarine;\r\n  height: 1200px;\r\n  text-align: center;\r\n}\r\n\r\nh1 {\r\n  margin: 50px;\r\n  padding: 10px;\r\n  color: whitesmoke;\r\n  font-size: 100px;\r\n}\r\n\r\n#show {\r\n  font-size: 50px;\r\n  color: darkturquoise;\r\n}\r\n\r\np {\r\n  color: whitesmoke;\r\n}\r\n\r\n#info {\r\n  background-color: whitesmoke;\r\n  padding: 10px;\r\n  margin: 20px;\r\n  color: darkslategray !important;\r\n  visibility: hidden;\r\n}\r\n\r\n#form {\r\n  background-color: whitesmoke;\r\n  padding: 10px;\r\n  margin: 20px;\r\n  color: darkslategray !important;\r\n  visibility: hidden;\r\n}\r\n\r\nbutton {\r\n  color: whitesmoke;\r\n  background-color: darkturquoise;\r\n  border: none;\r\n  padding: 10px;\r\n  font-weight: bold;\r\n  font-size: 20px;\r\n}\r\n\r\n#whale {\r\n  width: 20%;\r\n  transform: rotate(-10deg);\r\n  position: fixed;\r\n  bottom: 0;\r\n  right: 0;\r\n}\r\n\r\n#octopus {\r\n  width: 20%;\r\n  transform: rotate(10deg);\r\n  position: fixed;\r\n  bottom: 0;\r\n  left: 0;\r\n}\r\n\r\n#jellyfish {\r\n  width: 10%;\r\n  transform: rotate(60deg);\r\n}\r\n\r\n.crabfish {\r\n  width: 10%;\r\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "const h1 = document.querySelector(\"h1\");\r\nh1.addEventListener(\"click\", changeColor);\r\n\r\nfunction changeColor() {\r\n  h1.style.color = \"darkturquoise\";\r\n}\r\nh1.removeEventListener(\"click\", changeColor);\r\nconst body = document.body;\r\nconst div = document.getElementById(\"ocean\");\r\nbody.onscroll = function() {\r\n  body.style.backgroundColor = \"#b2f0f1\";\r\n  div.style.backgroundColor = \"#b2f0f1\";\r\n};\r\nconst infobtn = document.getElementById(\"getinfo\");\r\nconst infodiv = document.getElementById(\"info\");\r\ninfobtn.onclick = function() {\r\n  infodiv.style.visibility = \"visible\";\r\n};\r\nconst bookbtn = document.getElementById(\"book\");\r\nconst bookdiv = document.getElementById(\"form\");\r\nbookbtn.onclick = function() {\r\n  bookdiv.style.visibility = \"visible\";\r\n};\r\nconst tickets = document.getElementById(\"tickets\");\r\nconst h4 = document.querySelector(\"h4\");\r\ntickets.oninput = function() {\r\n  h4.innerText = \"You are purchasing \" + tickets.value + \" tickets.\";\r\n};",
+                  "solvedContent": "const h1 = document.querySelector(\"h1\");\r\nh1.addEventListener(\"click\", changeColor);\r\n\r\nfunction changeColor() {\r\n  h1.style.color = \"darkturquoise\";\r\n}\r\nh1.removeEventListener(\"click\", changeColor);\r\nconst body = document.body;\r\nconst div = document.getElementById(\"ocean\");\r\nbody.onscroll = function() {\r\n  body.style.backgroundColor = \"#b2f0f1\";\r\n  div.style.backgroundColor = \"#b2f0f1\";\r\n};\r\nconst infobtn = document.getElementById(\"getinfo\");\r\nconst infodiv = document.getElementById(\"info\");\r\ninfobtn.onclick = function() {\r\n  infodiv.style.visibility = \"visible\";\r\n};\r\nconst bookbtn = document.getElementById(\"book\");\r\nconst bookdiv = document.getElementById(\"form\");\r\nbookbtn.onclick = function() {\r\n  bookdiv.style.visibility = \"visible\";\r\n};\r\nconst tickets = document.getElementById(\"tickets\");\r\nconst h4 = document.querySelector(\"h4\");\r\ntickets.oninput = function() {\r\n  h4.innerText = \"You are purchasing \" + tickets.value + \" tickets.\";\r\n};\r\nconst preference = document.getElementById(\"preference\");\r\nconst secondH4 = document.getElementById(\"secondH4\");\r\npreference.onchange = function() {\r\n  secondH4.innerText = \"Your preference is : \" + preference.value;\r\n};"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "To access an input field's value, use `element.value`."
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

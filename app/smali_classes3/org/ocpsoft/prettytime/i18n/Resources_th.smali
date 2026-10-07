@@ -1,0 +1,1833 @@
+.class public Lorg/ocpsoft/prettytime/i18n/Resources_th;
+.super Ljava/util/ListResourceBundle;
+.source "r8-map-id-1f727e275a08ce64a20d04e23955c803c09eee16123e99f4b75a65a9479c9615"
+
+
+# static fields
+.field public static final a:[[Ljava/lang/Object;
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .locals 93
+
+    .line 1
+    const-string v0, "CenturyPattern"
+
+    .line 2
+    .line 3
+    const-string v1, "%n %u"
+
+    .line 4
+    .line 5
+    filled-new-array {v0, v1}, [Ljava/lang/Object;
+
+    .line 6
+    .line 7
+    .line 8
+    move-result-object v2
+
+    .line 9
+    const-string v0, "CenturyFuturePrefix"
+
+    .line 10
+    .line 11
+    const-string v3, ""
+
+    .line 12
+    .line 13
+    filled-new-array {v0, v3}, [Ljava/lang/Object;
+
+    .line 14
+    .line 15
+    .line 16
+    move-result-object v0
+
+    .line 17
+    const-string v4, "CenturyFutureSuffix"
+
+    .line 18
+    .line 19
+    const-string v5, "\u0e15\u0e48\u0e2d\u0e08\u0e32\u0e01\u0e19\u0e35\u0e49"
+
+    .line 20
+    .line 21
+    filled-new-array {v4, v5}, [Ljava/lang/Object;
+
+    .line 22
+    .line 23
+    .line 24
+    move-result-object v4
+
+    .line 25
+    const-string v6, "CenturyPastPrefix"
+
+    .line 26
+    .line 27
+    filled-new-array {v6, v3}, [Ljava/lang/Object;
+
+    .line 28
+    .line 29
+    .line 30
+    move-result-object v6
+
+    .line 31
+    const-string v7, "CenturyPastSuffix"
+
+    .line 32
+    .line 33
+    const-string v8, "\u0e01\u0e48\u0e2d\u0e19"
+
+    .line 34
+    .line 35
+    filled-new-array {v7, v8}, [Ljava/lang/Object;
+
+    .line 36
+    .line 37
+    .line 38
+    move-result-object v7
+
+    .line 39
+    const-string v9, "CenturySingularName"
+
+    .line 40
+    .line 41
+    const-string v10, "\u0e28\u0e15\u0e27\u0e23\u0e23\u0e29"
+
+    .line 42
+    .line 43
+    filled-new-array {v9, v10}, [Ljava/lang/Object;
+
+    .line 44
+    .line 45
+    .line 46
+    move-result-object v9
+
+    .line 47
+    const-string v11, "CenturyPluralName"
+
+    .line 48
+    .line 49
+    filled-new-array {v11, v10}, [Ljava/lang/Object;
+
+    .line 50
+    .line 51
+    .line 52
+    move-result-object v10
+
+    .line 53
+    const-string v11, "DayPattern"
+
+    .line 54
+    .line 55
+    filled-new-array {v11, v1}, [Ljava/lang/Object;
+
+    .line 56
+    .line 57
+    .line 58
+    move-result-object v11
+
+    .line 59
+    const-string v12, "DayFuturePrefix"
+
+    .line 60
+    .line 61
+    filled-new-array {v12, v3}, [Ljava/lang/Object;
+
+    .line 62
+    .line 63
+    .line 64
+    move-result-object v12
+
+    .line 65
+    const-string v13, "DayFutureSuffix"
+
+    .line 66
+    .line 67
+    const-string v14, "\u0e15\u0e48\u0e2d\u0e08\u0e32\u0e01\u0e19\u0e35\u0e49\u0e35\u0e49"
+
+    .line 68
+    .line 69
+    filled-new-array {v13, v14}, [Ljava/lang/Object;
+
+    .line 70
+    .line 71
+    .line 72
+    move-result-object v13
+
+    .line 73
+    const-string v15, "DayPastPrefix"
+
+    .line 74
+    .line 75
+    filled-new-array {v15, v3}, [Ljava/lang/Object;
+
+    .line 76
+    .line 77
+    .line 78
+    move-result-object v15
+
+    .line 79
+    move-object/from16 v16, v0
+
+    .line 80
+    .line 81
+    const-string v0, "DayPastSuffix"
+
+    .line 82
+    .line 83
+    filled-new-array {v0, v8}, [Ljava/lang/Object;
+
+    .line 84
+    .line 85
+    .line 86
+    move-result-object v0
+
+    .line 87
+    move-object/from16 v17, v0
+
+    .line 88
+    .line 89
+    const-string v0, "DaySingularName"
+
+    .line 90
+    .line 91
+    move-object/from16 v18, v2
+
+    .line 92
+    .line 93
+    const-string v2, "\u0e27\u0e31\u0e19"
+
+    .line 94
+    .line 95
+    filled-new-array {v0, v2}, [Ljava/lang/Object;
+
+    .line 96
+    .line 97
+    .line 98
+    move-result-object v0
+
+    .line 99
+    move-object/from16 v19, v0
+
+    .line 100
+    .line 101
+    const-string v0, "DayPluralName"
+
+    .line 102
+    .line 103
+    filled-new-array {v0, v2}, [Ljava/lang/Object;
+
+    .line 104
+    .line 105
+    .line 106
+    move-result-object v0
+
+    .line 107
+    const-string v2, "DecadePattern"
+
+    .line 108
+    .line 109
+    filled-new-array {v2, v1}, [Ljava/lang/Object;
+
+    .line 110
+    .line 111
+    .line 112
+    move-result-object v2
+
+    .line 113
+    move-object/from16 v20, v0
+
+    .line 114
+    .line 115
+    const-string v0, "DecadeFuturePrefix"
+
+    .line 116
+    .line 117
+    filled-new-array {v0, v3}, [Ljava/lang/Object;
+
+    .line 118
+    .line 119
+    .line 120
+    move-result-object v0
+
+    .line 121
+    move-object/from16 v21, v0
+
+    .line 122
+    .line 123
+    const-string v0, "DecadeFutureSuffix"
+
+    .line 124
+    .line 125
+    filled-new-array {v0, v5}, [Ljava/lang/Object;
+
+    .line 126
+    .line 127
+    .line 128
+    move-result-object v0
+
+    .line 129
+    move-object/from16 v22, v0
+
+    .line 130
+    .line 131
+    const-string v0, "DecadePastPrefix"
+
+    .line 132
+    .line 133
+    filled-new-array {v0, v3}, [Ljava/lang/Object;
+
+    .line 134
+    .line 135
+    .line 136
+    move-result-object v0
+
+    .line 137
+    move-object/from16 v23, v0
+
+    .line 138
+    .line 139
+    const-string v0, "DecadePastSuffix"
+
+    .line 140
+    .line 141
+    filled-new-array {v0, v8}, [Ljava/lang/Object;
+
+    .line 142
+    .line 143
+    .line 144
+    move-result-object v0
+
+    .line 145
+    move-object/from16 v24, v0
+
+    .line 146
+    .line 147
+    const-string v0, "DecadeSingularName"
+
+    .line 148
+    .line 149
+    move-object/from16 v25, v2
+
+    .line 150
+    .line 151
+    const-string v2, "\u0e17\u0e28\u0e27\u0e23\u0e23\u0e29"
+
+    .line 152
+    .line 153
+    filled-new-array {v0, v2}, [Ljava/lang/Object;
+
+    .line 154
+    .line 155
+    .line 156
+    move-result-object v0
+
+    .line 157
+    move-object/from16 v26, v0
+
+    .line 158
+    .line 159
+    const-string v0, "DecadePluralName"
+
+    .line 160
+    .line 161
+    filled-new-array {v0, v2}, [Ljava/lang/Object;
+
+    .line 162
+    .line 163
+    .line 164
+    move-result-object v0
+
+    .line 165
+    const-string v2, "HourPattern"
+
+    .line 166
+    .line 167
+    filled-new-array {v2, v1}, [Ljava/lang/Object;
+
+    .line 168
+    .line 169
+    .line 170
+    move-result-object v2
+
+    .line 171
+    move-object/from16 v27, v0
+
+    .line 172
+    .line 173
+    const-string v0, "HourFuturePrefix"
+
+    .line 174
+    .line 175
+    filled-new-array {v0, v3}, [Ljava/lang/Object;
+
+    .line 176
+    .line 177
+    .line 178
+    move-result-object v0
+
+    .line 179
+    move-object/from16 v28, v0
+
+    .line 180
+    .line 181
+    const-string v0, "HourFutureSuffix"
+
+    .line 182
+    .line 183
+    filled-new-array {v0, v5}, [Ljava/lang/Object;
+
+    .line 184
+    .line 185
+    .line 186
+    move-result-object v0
+
+    .line 187
+    move-object/from16 v29, v0
+
+    .line 188
+    .line 189
+    const-string v0, "HourPastPrefix"
+
+    .line 190
+    .line 191
+    filled-new-array {v0, v3}, [Ljava/lang/Object;
+
+    .line 192
+    .line 193
+    .line 194
+    move-result-object v0
+
+    .line 195
+    move-object/from16 v30, v0
+
+    .line 196
+    .line 197
+    const-string v0, "HourPastSuffix"
+
+    .line 198
+    .line 199
+    filled-new-array {v0, v8}, [Ljava/lang/Object;
+
+    .line 200
+    .line 201
+    .line 202
+    move-result-object v0
+
+    .line 203
+    move-object/from16 v31, v0
+
+    .line 204
+    .line 205
+    const-string v0, "HourSingularName"
+
+    .line 206
+    .line 207
+    move-object/from16 v32, v2
+
+    .line 208
+    .line 209
+    const-string v2, "\u0e0a\u0e31\u0e48\u0e27\u0e42\u0e21\u0e07"
+
+    .line 210
+    .line 211
+    filled-new-array {v0, v2}, [Ljava/lang/Object;
+
+    .line 212
+    .line 213
+    .line 214
+    move-result-object v0
+
+    .line 215
+    move-object/from16 v33, v0
+
+    .line 216
+    .line 217
+    const-string v0, "HourPluralName"
+
+    .line 218
+    .line 219
+    filled-new-array {v0, v2}, [Ljava/lang/Object;
+
+    .line 220
+    .line 221
+    .line 222
+    move-result-object v0
+
+    .line 223
+    const-string v2, "JustNowPattern"
+
+    .line 224
+    .line 225
+    move-object/from16 v34, v0
+
+    .line 226
+    .line 227
+    const-string v0, "%u"
+
+    .line 228
+    .line 229
+    filled-new-array {v2, v0}, [Ljava/lang/Object;
+
+    .line 230
+    .line 231
+    .line 232
+    move-result-object v0
+
+    .line 233
+    const-string v2, "JustNowFuturePrefix"
+
+    .line 234
+    .line 235
+    filled-new-array {v2, v3}, [Ljava/lang/Object;
+
+    .line 236
+    .line 237
+    .line 238
+    move-result-object v2
+
+    .line 239
+    move-object/from16 v35, v0
+
+    .line 240
+    .line 241
+    const-string v0, "JustNowFutureSuffix"
+
+    .line 242
+    .line 243
+    move-object/from16 v36, v2
+
+    .line 244
+    .line 245
+    const-string v2, "\u0e0a\u0e31\u0e48\u0e27\u0e02\u0e13\u0e30\u0e15\u0e48\u0e2d\u0e08\u0e32\u0e01\u0e19\u0e35\u0e49\u0e49\u0e35\u0e49\u0e49"
+
+    .line 246
+    .line 247
+    filled-new-array {v0, v2}, [Ljava/lang/Object;
+
+    .line 248
+    .line 249
+    .line 250
+    move-result-object v0
+
+    .line 251
+    const-string v2, "JustNowPastPrefix"
+
+    .line 252
+    .line 253
+    move-object/from16 v37, v0
+
+    .line 254
+    .line 255
+    const-string v0, "\u0e0a\u0e31\u0e48\u0e27\u0e02\u0e13\u0e30\u0e01\u0e48\u0e2d\u0e19"
+
+    .line 256
+    .line 257
+    filled-new-array {v2, v0}, [Ljava/lang/Object;
+
+    .line 258
+    .line 259
+    .line 260
+    move-result-object v0
+
+    .line 261
+    const-string v2, "JustNowPastSuffix"
+
+    .line 262
+    .line 263
+    filled-new-array {v2, v3}, [Ljava/lang/Object;
+
+    .line 264
+    .line 265
+    .line 266
+    move-result-object v2
+
+    .line 267
+    move-object/from16 v38, v0
+
+    .line 268
+    .line 269
+    const-string v0, "JustNowSingularName"
+
+    .line 270
+    .line 271
+    filled-new-array {v0, v3}, [Ljava/lang/Object;
+
+    .line 272
+    .line 273
+    .line 274
+    move-result-object v0
+
+    .line 275
+    move-object/from16 v39, v0
+
+    .line 276
+    .line 277
+    const-string v0, "JustNowPluralName"
+
+    .line 278
+    .line 279
+    filled-new-array {v0, v3}, [Ljava/lang/Object;
+
+    .line 280
+    .line 281
+    .line 282
+    move-result-object v0
+
+    .line 283
+    move-object/from16 v40, v0
+
+    .line 284
+    .line 285
+    const-string v0, "MillenniumPattern"
+
+    .line 286
+    .line 287
+    filled-new-array {v0, v1}, [Ljava/lang/Object;
+
+    .line 288
+    .line 289
+    .line 290
+    move-result-object v0
+
+    .line 291
+    move-object/from16 v41, v0
+
+    .line 292
+    .line 293
+    const-string v0, "MillenniumFuturePrefix"
+
+    .line 294
+    .line 295
+    filled-new-array {v0, v3}, [Ljava/lang/Object;
+
+    .line 296
+    .line 297
+    .line 298
+    move-result-object v0
+
+    .line 299
+    move-object/from16 v42, v0
+
+    .line 300
+    .line 301
+    const-string v0, "MillenniumFutureSuffix"
+
+    .line 302
+    .line 303
+    filled-new-array {v0, v5}, [Ljava/lang/Object;
+
+    .line 304
+    .line 305
+    .line 306
+    move-result-object v0
+
+    .line 307
+    move-object/from16 v43, v0
+
+    .line 308
+    .line 309
+    const-string v0, "MillenniumPastPrefix"
+
+    .line 310
+    .line 311
+    filled-new-array {v0, v3}, [Ljava/lang/Object;
+
+    .line 312
+    .line 313
+    .line 314
+    move-result-object v0
+
+    .line 315
+    move-object/from16 v44, v0
+
+    .line 316
+    .line 317
+    const-string v0, "MillenniumPastSuffix"
+
+    .line 318
+    .line 319
+    filled-new-array {v0, v8}, [Ljava/lang/Object;
+
+    .line 320
+    .line 321
+    .line 322
+    move-result-object v0
+
+    .line 323
+    move-object/from16 v45, v0
+
+    .line 324
+    .line 325
+    const-string v0, "MillenniumSingularName"
+
+    .line 326
+    .line 327
+    move-object/from16 v46, v2
+
+    .line 328
+    .line 329
+    const-string v2, "\u0e23\u0e2d\u0e1a\u0e1e\u0e31\u0e19\u0e1b\u0e35"
+
+    .line 330
+    .line 331
+    filled-new-array {v0, v2}, [Ljava/lang/Object;
+
+    .line 332
+    .line 333
+    .line 334
+    move-result-object v0
+
+    .line 335
+    move-object/from16 v47, v0
+
+    .line 336
+    .line 337
+    const-string v0, "MillenniumPluralName"
+
+    .line 338
+    .line 339
+    filled-new-array {v0, v2}, [Ljava/lang/Object;
+
+    .line 340
+    .line 341
+    .line 342
+    move-result-object v0
+
+    .line 343
+    const-string v2, "MillisecondPattern"
+
+    .line 344
+    .line 345
+    filled-new-array {v2, v1}, [Ljava/lang/Object;
+
+    .line 346
+    .line 347
+    .line 348
+    move-result-object v2
+
+    .line 349
+    move-object/from16 v48, v0
+
+    .line 350
+    .line 351
+    const-string v0, "MillisecondFuturePrefix"
+
+    .line 352
+    .line 353
+    filled-new-array {v0, v3}, [Ljava/lang/Object;
+
+    .line 354
+    .line 355
+    .line 356
+    move-result-object v0
+
+    .line 357
+    move-object/from16 v49, v0
+
+    .line 358
+    .line 359
+    const-string v0, "MillisecondFutureSuffix"
+
+    .line 360
+    .line 361
+    filled-new-array {v0, v5}, [Ljava/lang/Object;
+
+    .line 362
+    .line 363
+    .line 364
+    move-result-object v0
+
+    .line 365
+    move-object/from16 v50, v0
+
+    .line 366
+    .line 367
+    const-string v0, "MillisecondPastPrefix"
+
+    .line 368
+    .line 369
+    filled-new-array {v0, v3}, [Ljava/lang/Object;
+
+    .line 370
+    .line 371
+    .line 372
+    move-result-object v0
+
+    .line 373
+    move-object/from16 v51, v0
+
+    .line 374
+    .line 375
+    const-string v0, "MillisecondPastSuffix"
+
+    .line 376
+    .line 377
+    filled-new-array {v0, v8}, [Ljava/lang/Object;
+
+    .line 378
+    .line 379
+    .line 380
+    move-result-object v0
+
+    .line 381
+    move-object/from16 v52, v0
+
+    .line 382
+    .line 383
+    const-string v0, "MillisecondSingularName"
+
+    .line 384
+    .line 385
+    move-object/from16 v53, v2
+
+    .line 386
+    .line 387
+    const-string v2, "\u0e2b\u0e19\u0e36\u0e48\u0e07\u0e43\u0e19\u0e1e\u0e31\u0e19\u0e02\u0e2d\u0e07\u0e27\u0e34\u0e19\u0e32\u0e17\u0e35"
+
+    .line 388
+    .line 389
+    filled-new-array {v0, v2}, [Ljava/lang/Object;
+
+    .line 390
+    .line 391
+    .line 392
+    move-result-object v0
+
+    .line 393
+    move-object/from16 v54, v0
+
+    .line 394
+    .line 395
+    const-string v0, "MillisecondPluralName"
+
+    .line 396
+    .line 397
+    filled-new-array {v0, v2}, [Ljava/lang/Object;
+
+    .line 398
+    .line 399
+    .line 400
+    move-result-object v0
+
+    .line 401
+    const-string v2, "MinutePattern"
+
+    .line 402
+    .line 403
+    filled-new-array {v2, v1}, [Ljava/lang/Object;
+
+    .line 404
+    .line 405
+    .line 406
+    move-result-object v2
+
+    .line 407
+    move-object/from16 v55, v0
+
+    .line 408
+    .line 409
+    const-string v0, "MinuteFuturePrefix"
+
+    .line 410
+    .line 411
+    filled-new-array {v0, v3}, [Ljava/lang/Object;
+
+    .line 412
+    .line 413
+    .line 414
+    move-result-object v0
+
+    .line 415
+    move-object/from16 v56, v0
+
+    .line 416
+    .line 417
+    const-string v0, "MinuteFutureSuffix"
+
+    .line 418
+    .line 419
+    filled-new-array {v0, v14}, [Ljava/lang/Object;
+
+    .line 420
+    .line 421
+    .line 422
+    move-result-object v0
+
+    .line 423
+    move-object/from16 v57, v0
+
+    .line 424
+    .line 425
+    const-string v0, "MinutePastPrefix"
+
+    .line 426
+    .line 427
+    filled-new-array {v0, v3}, [Ljava/lang/Object;
+
+    .line 428
+    .line 429
+    .line 430
+    move-result-object v0
+
+    .line 431
+    move-object/from16 v58, v0
+
+    .line 432
+    .line 433
+    const-string v0, "MinutePastSuffix"
+
+    .line 434
+    .line 435
+    filled-new-array {v0, v8}, [Ljava/lang/Object;
+
+    .line 436
+    .line 437
+    .line 438
+    move-result-object v0
+
+    .line 439
+    move-object/from16 v59, v0
+
+    .line 440
+    .line 441
+    const-string v0, "MinuteSingularName"
+
+    .line 442
+    .line 443
+    move-object/from16 v60, v2
+
+    .line 444
+    .line 445
+    const-string v2, "\u0e19\u0e32\u0e17\u0e35"
+
+    .line 446
+    .line 447
+    filled-new-array {v0, v2}, [Ljava/lang/Object;
+
+    .line 448
+    .line 449
+    .line 450
+    move-result-object v0
+
+    .line 451
+    move-object/from16 v61, v0
+
+    .line 452
+    .line 453
+    const-string v0, "MinutePluralName"
+
+    .line 454
+    .line 455
+    filled-new-array {v0, v2}, [Ljava/lang/Object;
+
+    .line 456
+    .line 457
+    .line 458
+    move-result-object v0
+
+    .line 459
+    const-string v2, "MonthPattern"
+
+    .line 460
+    .line 461
+    filled-new-array {v2, v1}, [Ljava/lang/Object;
+
+    .line 462
+    .line 463
+    .line 464
+    move-result-object v2
+
+    .line 465
+    move-object/from16 v62, v0
+
+    .line 466
+    .line 467
+    const-string v0, "MonthFuturePrefix"
+
+    .line 468
+    .line 469
+    filled-new-array {v0, v3}, [Ljava/lang/Object;
+
+    .line 470
+    .line 471
+    .line 472
+    move-result-object v0
+
+    .line 473
+    move-object/from16 v63, v0
+
+    .line 474
+    .line 475
+    const-string v0, "MonthFutureSuffix"
+
+    .line 476
+    .line 477
+    filled-new-array {v0, v5}, [Ljava/lang/Object;
+
+    .line 478
+    .line 479
+    .line 480
+    move-result-object v0
+
+    .line 481
+    move-object/from16 v64, v0
+
+    .line 482
+    .line 483
+    const-string v0, "MonthPastPrefix"
+
+    .line 484
+    .line 485
+    filled-new-array {v0, v3}, [Ljava/lang/Object;
+
+    .line 486
+    .line 487
+    .line 488
+    move-result-object v0
+
+    .line 489
+    move-object/from16 v65, v0
+
+    .line 490
+    .line 491
+    const-string v0, "MonthPastSuffix"
+
+    .line 492
+    .line 493
+    filled-new-array {v0, v8}, [Ljava/lang/Object;
+
+    .line 494
+    .line 495
+    .line 496
+    move-result-object v0
+
+    .line 497
+    move-object/from16 v66, v0
+
+    .line 498
+    .line 499
+    const-string v0, "MonthSingularName"
+
+    .line 500
+    .line 501
+    move-object/from16 v67, v2
+
+    .line 502
+    .line 503
+    const-string v2, "\u0e40\u0e14\u0e37\u0e2d\u0e19"
+
+    .line 504
+    .line 505
+    filled-new-array {v0, v2}, [Ljava/lang/Object;
+
+    .line 506
+    .line 507
+    .line 508
+    move-result-object v0
+
+    .line 509
+    move-object/from16 v68, v0
+
+    .line 510
+    .line 511
+    const-string v0, "MonthPluralName"
+
+    .line 512
+    .line 513
+    filled-new-array {v0, v2}, [Ljava/lang/Object;
+
+    .line 514
+    .line 515
+    .line 516
+    move-result-object v0
+
+    .line 517
+    const-string v2, "SecondPattern"
+
+    .line 518
+    .line 519
+    filled-new-array {v2, v1}, [Ljava/lang/Object;
+
+    .line 520
+    .line 521
+    .line 522
+    move-result-object v2
+
+    .line 523
+    move-object/from16 v69, v0
+
+    .line 524
+    .line 525
+    const-string v0, "SecondFuturePrefix"
+
+    .line 526
+    .line 527
+    filled-new-array {v0, v3}, [Ljava/lang/Object;
+
+    .line 528
+    .line 529
+    .line 530
+    move-result-object v0
+
+    .line 531
+    move-object/from16 v70, v0
+
+    .line 532
+    .line 533
+    const-string v0, "SecondFutureSuffix"
+
+    .line 534
+    .line 535
+    filled-new-array {v0, v5}, [Ljava/lang/Object;
+
+    .line 536
+    .line 537
+    .line 538
+    move-result-object v0
+
+    .line 539
+    move-object/from16 v71, v0
+
+    .line 540
+    .line 541
+    const-string v0, "SecondPastPrefix"
+
+    .line 542
+    .line 543
+    filled-new-array {v0, v3}, [Ljava/lang/Object;
+
+    .line 544
+    .line 545
+    .line 546
+    move-result-object v0
+
+    .line 547
+    move-object/from16 v72, v0
+
+    .line 548
+    .line 549
+    const-string v0, "SecondPastSuffix"
+
+    .line 550
+    .line 551
+    filled-new-array {v0, v8}, [Ljava/lang/Object;
+
+    .line 552
+    .line 553
+    .line 554
+    move-result-object v0
+
+    .line 555
+    move-object/from16 v73, v0
+
+    .line 556
+    .line 557
+    const-string v0, "SecondSingularName"
+
+    .line 558
+    .line 559
+    move-object/from16 v74, v2
+
+    .line 560
+    .line 561
+    const-string v2, "\u0e27\u0e34\u0e19\u0e32\u0e17\u0e35"
+
+    .line 562
+    .line 563
+    filled-new-array {v0, v2}, [Ljava/lang/Object;
+
+    .line 564
+    .line 565
+    .line 566
+    move-result-object v0
+
+    .line 567
+    move-object/from16 v75, v0
+
+    .line 568
+    .line 569
+    const-string v0, "SecondPluralName"
+
+    .line 570
+    .line 571
+    filled-new-array {v0, v2}, [Ljava/lang/Object;
+
+    .line 572
+    .line 573
+    .line 574
+    move-result-object v0
+
+    .line 575
+    const-string v2, "WeekPattern"
+
+    .line 576
+    .line 577
+    filled-new-array {v2, v1}, [Ljava/lang/Object;
+
+    .line 578
+    .line 579
+    .line 580
+    move-result-object v2
+
+    .line 581
+    move-object/from16 v76, v0
+
+    .line 582
+    .line 583
+    const-string v0, "WeekFuturePrefix"
+
+    .line 584
+    .line 585
+    filled-new-array {v0, v3}, [Ljava/lang/Object;
+
+    .line 586
+    .line 587
+    .line 588
+    move-result-object v0
+
+    .line 589
+    move-object/from16 v77, v0
+
+    .line 590
+    .line 591
+    const-string v0, "WeekFutureSuffix"
+
+    .line 592
+    .line 593
+    filled-new-array {v0, v14}, [Ljava/lang/Object;
+
+    .line 594
+    .line 595
+    .line 596
+    move-result-object v0
+
+    .line 597
+    const-string v14, "WeekPastPrefix"
+
+    .line 598
+    .line 599
+    filled-new-array {v14, v3}, [Ljava/lang/Object;
+
+    .line 600
+    .line 601
+    .line 602
+    move-result-object v14
+
+    .line 603
+    move-object/from16 v78, v0
+
+    .line 604
+    .line 605
+    const-string v0, "WeekPastSuffix"
+
+    .line 606
+    .line 607
+    filled-new-array {v0, v8}, [Ljava/lang/Object;
+
+    .line 608
+    .line 609
+    .line 610
+    move-result-object v0
+
+    .line 611
+    move-object/from16 v79, v0
+
+    .line 612
+    .line 613
+    const-string v0, "WeekSingularName"
+
+    .line 614
+    .line 615
+    move-object/from16 v80, v2
+
+    .line 616
+    .line 617
+    const-string v2, "\u0e2d\u0e32\u0e17\u0e34\u0e15\u0e22\u0e4c"
+
+    .line 618
+    .line 619
+    filled-new-array {v0, v2}, [Ljava/lang/Object;
+
+    .line 620
+    .line 621
+    .line 622
+    move-result-object v0
+
+    .line 623
+    move-object/from16 v81, v0
+
+    .line 624
+    .line 625
+    const-string v0, "WeekPluralName"
+
+    .line 626
+    .line 627
+    filled-new-array {v0, v2}, [Ljava/lang/Object;
+
+    .line 628
+    .line 629
+    .line 630
+    move-result-object v0
+
+    .line 631
+    const-string v2, "YearPattern"
+
+    .line 632
+    .line 633
+    filled-new-array {v2, v1}, [Ljava/lang/Object;
+
+    .line 634
+    .line 635
+    .line 636
+    move-result-object v1
+
+    .line 637
+    const-string v2, "YearFuturePrefix"
+
+    .line 638
+    .line 639
+    filled-new-array {v2, v3}, [Ljava/lang/Object;
+
+    .line 640
+    .line 641
+    .line 642
+    move-result-object v2
+
+    .line 643
+    move-object/from16 v82, v0
+
+    .line 644
+    .line 645
+    const-string v0, "YearFutureSuffix"
+
+    .line 646
+    .line 647
+    filled-new-array {v0, v5}, [Ljava/lang/Object;
+
+    .line 648
+    .line 649
+    .line 650
+    move-result-object v0
+
+    .line 651
+    const-string v5, "YearPastPrefix"
+
+    .line 652
+    .line 653
+    filled-new-array {v5, v3}, [Ljava/lang/Object;
+
+    .line 654
+    .line 655
+    .line 656
+    move-result-object v5
+
+    .line 657
+    move-object/from16 v83, v0
+
+    .line 658
+    .line 659
+    const-string v0, "YearPastSuffix"
+
+    .line 660
+    .line 661
+    filled-new-array {v0, v8}, [Ljava/lang/Object;
+
+    .line 662
+    .line 663
+    .line 664
+    move-result-object v0
+
+    .line 665
+    const-string v8, "YearSingularName"
+
+    .line 666
+    .line 667
+    move-object/from16 v84, v0
+
+    .line 668
+    .line 669
+    const-string v0, "\u0e1b\u0e35"
+
+    .line 670
+    .line 671
+    filled-new-array {v8, v0}, [Ljava/lang/Object;
+
+    .line 672
+    .line 673
+    .line 674
+    move-result-object v8
+
+    .line 675
+    move-object/from16 v85, v1
+
+    .line 676
+    .line 677
+    const-string v1, "YearPluralName"
+
+    .line 678
+    .line 679
+    filled-new-array {v1, v0}, [Ljava/lang/Object;
+
+    .line 680
+    .line 681
+    .line 682
+    move-result-object v0
+
+    .line 683
+    const-string v1, "AbstractTimeUnitPattern"
+
+    .line 684
+    .line 685
+    filled-new-array {v1, v3}, [Ljava/lang/Object;
+
+    .line 686
+    .line 687
+    .line 688
+    move-result-object v86
+
+    .line 689
+    const-string v1, "AbstractTimeUnitFuturePrefix"
+
+    .line 690
+    .line 691
+    filled-new-array {v1, v3}, [Ljava/lang/Object;
+
+    .line 692
+    .line 693
+    .line 694
+    move-result-object v87
+
+    .line 695
+    const-string v1, "AbstractTimeUnitFutureSuffix"
+
+    .line 696
+    .line 697
+    filled-new-array {v1, v3}, [Ljava/lang/Object;
+
+    .line 698
+    .line 699
+    .line 700
+    move-result-object v88
+
+    .line 701
+    const-string v1, "AbstractTimeUnitPastPrefix"
+
+    .line 702
+    .line 703
+    filled-new-array {v1, v3}, [Ljava/lang/Object;
+
+    .line 704
+    .line 705
+    .line 706
+    move-result-object v89
+
+    .line 707
+    const-string v1, "AbstractTimeUnitPastSuffix"
+
+    .line 708
+    .line 709
+    filled-new-array {v1, v3}, [Ljava/lang/Object;
+
+    .line 710
+    .line 711
+    .line 712
+    move-result-object v90
+
+    .line 713
+    const-string v1, "AbstractTimeUnitSingularName"
+
+    .line 714
+    .line 715
+    filled-new-array {v1, v3}, [Ljava/lang/Object;
+
+    .line 716
+    .line 717
+    .line 718
+    move-result-object v91
+
+    .line 719
+    const-string v1, "AbstractTimeUnitPluralName"
+
+    .line 720
+    .line 721
+    filled-new-array {v1, v3}, [Ljava/lang/Object;
+
+    .line 722
+    .line 723
+    .line 724
+    move-result-object v92
+
+    .line 725
+    move-object/from16 v3, v82
+
+    .line 726
+    .line 727
+    move-object/from16 v82, v5
+
+    .line 728
+    .line 729
+    move-object v5, v6
+
+    .line 730
+    move-object v6, v7
+
+    .line 731
+    move-object v7, v9
+
+    .line 732
+    move-object v9, v11
+
+    .line 733
+    move-object v11, v13
+
+    .line 734
+    move-object/from16 v13, v17
+
+    .line 735
+    .line 736
+    move-object/from16 v17, v21
+
+    .line 737
+    .line 738
+    move-object/from16 v21, v26
+
+    .line 739
+    .line 740
+    move-object/from16 v26, v30
+
+    .line 741
+    .line 742
+    move-object/from16 v30, v35
+
+    .line 743
+    .line 744
+    move-object/from16 v35, v39
+
+    .line 745
+    .line 746
+    move-object/from16 v39, v43
+
+    .line 747
+    .line 748
+    move-object/from16 v43, v48
+
+    .line 749
+    .line 750
+    move-object/from16 v48, v52
+
+    .line 751
+    .line 752
+    move-object/from16 v52, v56
+
+    .line 753
+    .line 754
+    move-object/from16 v56, v61
+
+    .line 755
+    .line 756
+    move-object/from16 v61, v65
+
+    .line 757
+    .line 758
+    move-object/from16 v65, v74
+
+    .line 759
+    .line 760
+    move-object/from16 v74, v78
+
+    .line 761
+    .line 762
+    move-object/from16 v78, v3
+
+    .line 763
+    .line 764
+    move-object/from16 v3, v84
+
+    .line 765
+    .line 766
+    move-object/from16 v84, v8
+
+    .line 767
+    .line 768
+    move-object v8, v10
+
+    .line 769
+    move-object v10, v12
+
+    .line 770
+    move-object v12, v15
+
+    .line 771
+    move-object/from16 v15, v20
+
+    .line 772
+    .line 773
+    move-object/from16 v20, v24
+
+    .line 774
+    .line 775
+    move-object/from16 v24, v28
+
+    .line 776
+    .line 777
+    move-object/from16 v28, v33
+
+    .line 778
+    .line 779
+    move-object/from16 v33, v38
+
+    .line 780
+    .line 781
+    move-object/from16 v38, v42
+
+    .line 782
+    .line 783
+    move-object/from16 v42, v47
+
+    .line 784
+    .line 785
+    move-object/from16 v47, v51
+
+    .line 786
+    .line 787
+    move-object/from16 v51, v60
+
+    .line 788
+    .line 789
+    move-object/from16 v60, v64
+
+    .line 790
+    .line 791
+    move-object/from16 v64, v69
+
+    .line 792
+    .line 793
+    move-object/from16 v69, v73
+
+    .line 794
+    .line 795
+    move-object/from16 v73, v77
+
+    .line 796
+    .line 797
+    move-object/from16 v77, v81
+
+    .line 798
+    .line 799
+    move-object/from16 v81, v83
+
+    .line 800
+    .line 801
+    move-object/from16 v83, v3
+
+    .line 802
+    .line 803
+    move-object/from16 v3, v16
+
+    .line 804
+    .line 805
+    move-object/from16 v16, v25
+
+    .line 806
+    .line 807
+    move-object/from16 v25, v29
+
+    .line 808
+    .line 809
+    move-object/from16 v29, v34
+
+    .line 810
+    .line 811
+    move-object/from16 v34, v46
+
+    .line 812
+    .line 813
+    move-object/from16 v46, v50
+
+    .line 814
+    .line 815
+    move-object/from16 v50, v55
+
+    .line 816
+    .line 817
+    move-object/from16 v55, v59
+
+    .line 818
+    .line 819
+    move-object/from16 v59, v63
+
+    .line 820
+    .line 821
+    move-object/from16 v63, v68
+
+    .line 822
+    .line 823
+    move-object/from16 v68, v72
+
+    .line 824
+    .line 825
+    move-object/from16 v72, v80
+
+    .line 826
+    .line 827
+    move-object/from16 v80, v2
+
+    .line 828
+    .line 829
+    move-object/from16 v2, v18
+
+    .line 830
+    .line 831
+    move-object/from16 v18, v22
+
+    .line 832
+    .line 833
+    move-object/from16 v22, v27
+
+    .line 834
+    .line 835
+    move-object/from16 v27, v31
+
+    .line 836
+    .line 837
+    move-object/from16 v31, v36
+
+    .line 838
+    .line 839
+    move-object/from16 v36, v40
+
+    .line 840
+    .line 841
+    move-object/from16 v40, v44
+
+    .line 842
+    .line 843
+    move-object/from16 v44, v53
+
+    .line 844
+    .line 845
+    move-object/from16 v53, v57
+
+    .line 846
+    .line 847
+    move-object/from16 v57, v62
+
+    .line 848
+    .line 849
+    move-object/from16 v62, v66
+
+    .line 850
+    .line 851
+    move-object/from16 v66, v70
+
+    .line 852
+    .line 853
+    move-object/from16 v70, v75
+
+    .line 854
+    .line 855
+    move-object/from16 v75, v14
+
+    .line 856
+    .line 857
+    move-object/from16 v14, v19
+
+    .line 858
+    .line 859
+    move-object/from16 v19, v23
+
+    .line 860
+    .line 861
+    move-object/from16 v23, v32
+
+    .line 862
+    .line 863
+    move-object/from16 v32, v37
+
+    .line 864
+    .line 865
+    move-object/from16 v37, v41
+
+    .line 866
+    .line 867
+    move-object/from16 v41, v45
+
+    .line 868
+    .line 869
+    move-object/from16 v45, v49
+
+    .line 870
+    .line 871
+    move-object/from16 v49, v54
+
+    .line 872
+    .line 873
+    move-object/from16 v54, v58
+
+    .line 874
+    .line 875
+    move-object/from16 v58, v67
+
+    .line 876
+    .line 877
+    move-object/from16 v67, v71
+
+    .line 878
+    .line 879
+    move-object/from16 v71, v76
+
+    .line 880
+    .line 881
+    move-object/from16 v76, v79
+
+    .line 882
+    .line 883
+    move-object/from16 v79, v85
+
+    .line 884
+    .line 885
+    move-object/from16 v85, v0
+
+    .line 886
+    .line 887
+    filled-new-array/range {v2 .. v92}, [[Ljava/lang/Object;
+
+    .line 888
+    .line 889
+    .line 890
+    move-result-object v0
+
+    .line 891
+    sput-object v0, Lorg/ocpsoft/prettytime/i18n/Resources_th;->a:[[Ljava/lang/Object;
+
+    .line 892
+    .line 893
+    return-void
+.end method
+
+.method public constructor <init>()V
+    .locals 0
+
+    .line 1
+    invoke-direct {p0}, Ljava/util/ListResourceBundle;-><init>()V
+
+    .line 2
+    .line 3
+    .line 4
+    return-void
+.end method
+
+
+# virtual methods
+.method public final getContents()[[Ljava/lang/Object;
+    .locals 0
+
+    .line 1
+    sget-object p0, Lorg/ocpsoft/prettytime/i18n/Resources_th;->a:[[Ljava/lang/Object;
+
+    .line 2
+    .line 3
+    return-object p0
+.end method

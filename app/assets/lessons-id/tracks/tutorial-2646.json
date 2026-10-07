@@ -1,0 +1,128 @@
+{
+  "tutorial": {
+    "id": 2646,
+    "version": 7,
+    "type": "guidedProject",
+    "isNew": false,
+    "codeLanguage": "node",
+    "title": "Bilangan Acak - Bagian 1",
+    "descriptionContent": "Membuat backend yang bisa membantu kalau kamu tidak punya koin atau dadu siap digunakan",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": "tutorial-2646-icon-banner.svg",
+    "chapters": [
+      {
+        "id": 14609,
+        "title": "Bilangan Acak - Bagian 1",
+        "type": "practiceLevel3",
+        "lessons": [
+          {
+            "title": "Lesson #1",
+            "id": 129321,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Selamat datang di proyek **Random Numbers**. Kita akan membuat aplikasi server sederhana yang menghasilkan angka acak.\n\nKita akan mulai dengan menyiapkan server Express.\n\n1. Deklarasikan variabel `express` dan lakukan require pada modul `express`.\n2. Deklarasikan variabel `app` dan inisialisasikan dengan memanggil fungsi `express`.\n3. Deklarasikan variabel `port` dan tetapkan nilainya `3000`.\n4. Gunakan fungsi `listen` pada `app` agar aplikasi mendengarkan port yang ditentukan oleh variabel `port`.\n5. Catat pesan ke console di dalam callback fungsi `listen` agar kita tahu server berjalan dengan baik.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "",
+                  "solvedContent": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Give your hint a title",
+                  "content": "Give your hint some content"
+                }
+              ],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/",
+                "body": null
+              }
+            }
+          },
+          {
+            "title": "Lesson #2",
+            "id": 129323,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Kita mulai dengan membuat route yang akan menyimulasikan pelemparan koin. Kita akan menggunakan method `get` dari `app` untuk menangani request GET di path `/coinFlip`.\n\n1. Gunakan fungsi `app.get` untuk membuat endpoint baru di `/coinFlip`.\n2. Di dalam fungsi callback (yang menerima parameter `req` dan `res`), hitung angka acak yang berupa 0 atau 1 (heads atau tails).\n3. Berikan respons berupa objek JSON menggunakan method `json` dari `res`, dengan `result` bernilai `\"Heads\"` jika hasil pelemparan koin adalah 0 dan `\"Tails\"` jika tidak.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});",
+                  "solvedContent": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});\n\napp.get('/coinFlip', function(req, res) {\n  const result = Math.floor(Math.random() * 2);\n  res.status(200).json({ result: result === 0 ? 'Heads' : 'Tails' });\n});"
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/coinFlip",
+                "body": null
+              }
+            }
+          },
+          {
+            "title": "Lesson #3",
+            "id": 129324,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Sekarang, tambahkan route lain untuk melempar dadu bersisi enam.\n\n1. Mirip dengan pelemparan koin, buat route `GET` di path `/diceRoll`.\n2. Perbarui perhitungan angka acak agar menghasilkan angka antara 1 dan 6 (inklusif).\n3. Berikan respons dalam JSON dengan `result` sebagai angka hasil lemparan acak.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});\n\napp.get('/coinFlip', function(req, res) {\n  const result = Math.floor(Math.random() * 2);\n  res.status(200).json({ result: result === 0 ? 'Heads' : 'Tails' });\n});",
+                  "solvedContent": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});\n\napp.get('/coinFlip', function(req, res) {\n  const result = Math.floor(Math.random() * 2);\n  res.status(200).json({ result: result === 0 ? 'Heads' : 'Tails' });\n});\n\napp.get('/diceRoll', function(req, res) {\n  const result = Math.floor(Math.random() * 6) + 1;\n  res.status(200).json({ result: result });\n});"
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/diceRoll",
+                "body": null
+              }
+            }
+          },
+          {
+            "title": "Lesson #4",
+            "id": 129325,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Terakhir, mari buat sebuah route yang akan menghasilkan angka acak antara 1 dan 100.\n\n1. Buat route `GET` lainnya pada path '/randomNumber'.\n2. Ubah perhitungan angka acak agar memberikan hasil antara 1 dan 100 (inklusif).\n3. Berikan respons berupa JSON dengan `result` sebagai angka yang dihasilkan secara acak.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});\n\napp.get('/coinFlip', function(req, res) {\n  const result = Math.floor(Math.random() * 2);\n  res.status(200).json({ result: result === 0 ? 'Heads' : 'Tails' });\n});\n\napp.get('/diceRoll', function(req, res) {\n  const result = Math.floor(Math.random() * 6) + 1;\n  res.status(200).json({ result: result });\n});",
+                  "solvedContent": "const express = require('express');\nconst app = express();\nconst port = 3000;\n\napp.listen(port, function() {\n  console.log(`App is listening on port ${port}`);\n});\n\napp.get('/coinFlip', function(req, res) {\n  const result = Math.floor(Math.random() * 2);\n  res.status(200).json({ result: result === 0 ? 'Heads' : 'Tails' });\n});\n\napp.get('/diceRoll', function(req, res) {\n  const result = Math.floor(Math.random() * 6) + 1;\n  res.status(200).json({ result: result });\n});\n\napp.get('/randomNumber', function(req, res) {\n  const result = Math.floor(Math.random() * 100) + 1;\n  res.status(200).json({ result: result });\n});"
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "GET",
+                "path": "/randomNumber",
+                "body": null
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

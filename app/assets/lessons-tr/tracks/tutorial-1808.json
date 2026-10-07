@@ -1,0 +1,223 @@
+{
+  "tutorial": {
+    "id": 1808,
+    "version": 8,
+    "type": "guidedProjectOptional",
+    "isNew": false,
+    "codeLanguage": "javascript",
+    "title": "Otomatik Bankacılık",
+    "descriptionContent": "Döngüleri kullanarak müşteri makbuzu programı oluşturmayı öğren",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": "tutorial-1808-icon-banner.svg",
+    "chapters": [
+      {
+        "id": 12027,
+        "title": "Ok Fonksiyonları - Otomatik Bankacılık",
+        "type": "practiceLevel3",
+        "lessons": [
+          {
+            "title": "Step 1",
+            "id": 109633,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Bir banka müdürü elektronik bir bankacılık sisteminin prototipini oluşturdu, ancak bazı iyileştirmeler arıyor. Kodunu iyileştirmen ve bazı ek özellikler geliştirmen için seni danışman olarak işe aldı.\n\nÖncelikle, sağlanan koda aşina olalım: Kodda\n- başlangıç bakiyesini depolamak için bir `accountBalance` değişkeni,\n- hesaba bir miktar yatırmak için bir `deposit(amount)` fonksiyonu,\n- hesaptan bir miktar çekmek için bir `withdraw(amount)` fonksiyonu,\n- mevcut hesap bakiyesi hakkında bir mesaj döndürmek için bir `balance` fonksiyonu,\n- özel bir selamlama mesajı döndürmek için bir `greeting(name)` fonksiyonu\n- ve programın işlevselliğini test etmek için bir dizi fonksiyon çağrısı var.\n\nProgramı şimdi çalıştırmayı denersen birkaç sorun olduğunu fark edebilirsin. Banka müdürünün istediği gibi, fonksiyonlarını ok fonksiyonlarına dönüştürecek ve ek PIN güvenliğini uygulayacağız. Ayrıca kredili mevduatı önlemek için `withdraw()` fonksiyonunu düzeltmemiz gerekecek. Ancak adım adım ilerleyelim.\n\n1. Parametrelerini ve gövdesini aynı tutarak `deposit()` fonksiyonunu bir ok fonksiyonuna dönüştür. Ok fonksiyonunu bir sabitte ( `const` ) depolamalısın.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "index.js",
+                  "codeLanguage": "javascript",
+                  "content": "let accountBalance = 6500;\n\nfunction deposit(amount) {\n  console.log(\"Depositing: $\" + amount);\n  accountBalance += amount;\n  return true;\n}\n\nfunction withdraw(amount) {\n  console.log(\"Withdrawing: $\" + amount);\n  accountBalance -= amount;\n  return true;\n}\n\nfunction balance() {\n  return \"Your balance is currently: $\" + accountBalance;\n}\n\nfunction greeting(name) {\n  return \"Welcome to your automated banking portal, \" + name + \".\";\n}\nconsole.log(greeting(\"Jane\"));\nconsole.log(balance());\nif (deposit(50)) {\n  console.log(balance());\n}\nif (withdraw(1200)) {\n  console.log(balance());\n}\nif (withdraw(6600)) {\n  console.log(balance());\n}",
+                  "solvedContent": "let accountBalance = 6500;\nconst deposit = (amount) => {\n  console.log(\"Depositing: $\" + amount);\n  accountBalance += amount;\n  return true;\n};\n\nfunction withdraw(amount) {\n  console.log(\"Withdrawing: $\" + amount);\n  accountBalance -= amount;\n  return true;\n}\n\nfunction balance() {\n  return \"Your balance is currently: $\" + accountBalance;\n}\n\nfunction greeting(name) {\n  return \"Welcome to your automated banking portal, \" + name + \".\";\n}\nconsole.log(greeting(\"Jane\"));\nconsole.log(balance());\nif (deposit(50)) {\n  console.log(balance());\n}\nif (withdraw(1200)) {\n  console.log(balance());\n}\nif (withdraw(6600)) {\n  console.log(balance());\n}"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Step 2",
+            "id": 109637,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Şimdi `withdraw()` fonksiyonuyla devam edelim.\n\n1. `withdraw()` fonksiyonunu, parametrelerini ve gövdesini aynı tutarak bir ok fonksiyonuna dönüştür. Ok fonksiyonunu bir sabitte ( `const` ) saklamalısın.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "index.js",
+                  "codeLanguage": "javascript",
+                  "content": "let accountBalance = 6500;\nconst deposit = (amount) => {\n  console.log(\"Depositing: $\" + amount);\n  accountBalance += amount;\n  return true;\n};\n\nfunction withdraw(amount) {\n  console.log(\"Withdrawing: $\" + amount);\n  accountBalance -= amount;\n  return true;\n}\n\nfunction balance() {\n  return \"Your balance is currently: $\" + accountBalance;\n}\n\nfunction greeting(name) {\n  return \"Welcome to your automated banking portal, \" + name + \".\";\n}\nconsole.log(greeting(\"Jane\"));\nconsole.log(balance());\nif (deposit(50)) {\n  console.log(balance());\n}\nif (withdraw(1200)) {\n  console.log(balance());\n}\nif (withdraw(6600)) {\n  console.log(balance());\n}",
+                  "solvedContent": "let accountBalance = 6500;\nconst deposit = (amount) => {\n  console.log(\"Depositing: $\" + amount);\n  accountBalance += amount;\n  return true;\n};\nconst withdraw = (amount) => {\n  console.log(\"Withdrawing: $\" + amount);\n  accountBalance -= amount;\n  return true;\n};\n\nfunction balance() {\n  return \"Your balance is currently: $\" + accountBalance;\n}\n\nfunction greeting(name) {\n  return \"Welcome to your automated banking portal, \" + name + \".\";\n}\nconsole.log(greeting(\"Jane\"));\nconsole.log(balance());\nif (deposit(50)) {\n  console.log(balance());\n}\nif (withdraw(1200)) {\n  console.log(balance());\n}\nif (withdraw(6600)) {\n  console.log(balance());\n}"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Step 3",
+            "id": 109627,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Aynı işlemi `balance()` ve `greeting()` fonksiyonlarıyla da yap ve bunları çok satırlı ok fonksiyonlarına dönüştür.\n\n1. `balance()` fonksiyonunu, fonksiyon gövdesini aynı tutarak çok satırlı bir ok fonksiyonuna dönüştür. Ok fonksiyonunu bir sabitte ( `const` ) saklamalısın.\n2. `greeting()` fonksiyonunu, fonksiyon parametresini ve gövdesini aynı tutarak çok satırlı bir ok fonksiyonuna dönüştür. Bu kez de ok fonksiyonunu bir sabitte ( `const` ) saklamalısın.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "index.js",
+                  "codeLanguage": "javascript",
+                  "content": "let accountBalance = 6500;\nconst deposit = (amount) => {\n  console.log(\"Depositing: $\" + amount);\n  accountBalance += amount;\n  return true;\n}\nconst withdraw = (amount) => {\n  console.log(\"Withdrawing: $\" + amount);\n  accountBalance -= amount;\n  return true;\n}\n\nfunction balance() {\n  return \"Your balance is currently: $\" + accountBalance;\n}\n\nfunction greeting(name) {\n  return \"Welcome to your automated banking portal, \" + name + \".\";\n}\nconsole.log(greeting(\"Jane\"));\nconsole.log(balance());\nif (deposit(50)) {\n  console.log(balance());\n}\nif (withdraw(1200)) {\n  console.log(balance());\n}\nif (withdraw(6600)) {\n  console.log(balance());\n}",
+                  "solvedContent": "let accountBalance = 6500;\nconst deposit = (amount) => {\n  console.log(\"Depositing: $\" + amount);\n  accountBalance += amount;\n  return true;\n};\nconst withdraw = (amount) => {\n  console.log(\"Withdrawing: $\" + amount);\n  accountBalance -= amount;\n  return true;\n};\nconst balance = () => {\n  return \"Your balance is currently: $\" + accountBalance;\n};\nconst greeting = (name) => {\n  return \"Welcome to your automated banking portal, \" + name + \".\";\n};\nconsole.log(greeting(\"Jane\"));\nconsole.log(balance());\nif (deposit(50)) {\n  console.log(balance());\n}\nif (withdraw(1200)) {\n  console.log(balance());\n}\nif (withdraw(6600)) {\n  console.log(balance());\n}"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Step 4",
+            "id": 109638,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Bu müşteri için beklentilerin ötesine geçmek istiyoruz. `balance()` ve `greeting()` ok fonksiyonlarını daha da kısa hâle getirip kısa gösterimli ok fonksiyonlarına dönüştürelim. Ok fonksiyonlarının parametreleri ve gövdeleri aynı kalmalı.\n\n1. `balance()` ok fonksiyonunu kısa gösterimli bir ok fonksiyonuna dönüştür. Ok fonksiyonunu bir sabitte sakla.\n2. `greeting()` ok fonksiyonunu kısa gösterimli bir ok fonksiyonuna dönüştür. Ok fonksiyonunu bir sabitte sakla.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "index.js",
+                  "codeLanguage": "javascript",
+                  "content": "let accountBalance = 6500;\nconst deposit = (amount) => {\n  console.log(\"Depositing: $\" + amount);\n  accountBalance += amount;\n  return true;\n};\nconst withdraw = (amount) => {\n  console.log(\"Withdrawing: $\" + amount);\n  accountBalance -= amount;\n  return true;\n};\nconst balance = () => {\n  return \"Your balance is currently: $\" + accountBalance;\n};\nconst greeting = (name) => {\n  return \"Welcome to your automated banking portal, \" + name + \".\";\n};\nconsole.log(greeting(\"Jane\"));\nconsole.log(balance());\nif (deposit(50)) {\n  console.log(balance());\n}\nif (withdraw(1200)) {\n  console.log(balance());\n}\nif (withdraw(6600)) {\n  console.log(balance());\n}",
+                  "solvedContent": "let accountBalance = 6500;\nconst deposit = (amount) => {\n  console.log(\"Depositing: $\" + amount);\n  accountBalance += amount;\n  return true;\n};\nconst withdraw = (amount) => {\n  console.log(\"Withdrawing: $\" + amount);\n  accountBalance -= amount;\n  return true;\n};\nconst balance = () => \"Your balance is currently: $\" + accountBalance;\nconst greeting = (name) => \"Welcome to your automated banking portal, \" + name +\n  \".\";\nconsole.log(greeting(\"Jane\"));\nconsole.log(balance());\nif (deposit(50)) {\n  console.log(balance());\n}\nif (withdraw(1200)) {\n  console.log(balance());\n}\nif (withdraw(6600)) {\n  console.log(balance());\n}"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Step 5",
+            "id": 109631,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Sıradaki istemci isteği üzerinde çalışalım: PIN işlevi. Gösterim amacıyla bu fonksiyon, `inputPin` değerinin `1568` sayısıyla eşleşip eşleşmediğine bağlı olarak bir boolean değer döndürmelidir.\n\n1. `inputPin` adlı bir parametre alan, `pin` adında kısa sözdizimli bir arrow fonksiyonu yaz. Fonksiyon, `inputPin` değerinin `1568` olup olmadığını kontrol etmeli ve buna göre bir boolean değer döndürmelidir.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "index.js",
+                  "codeLanguage": "javascript",
+                  "content": "let accountBalance = 6500;\nconst deposit = (amount) => {\n  console.log(\"Depositing: $\" + amount);\n  accountBalance += amount;\n  return true;\n};\nconst withdraw = (amount) => {\n  console.log(\"Withdrawing: $\" + amount);\n  accountBalance -= amount;\n  return true;\n};\nconst balance = () => \"Your balance is currently: $\" + accountBalance;\nconst greeting = (name) => \"Welcome to your automated banking portal, \" + name +\n  \".\";\nconsole.log(greeting(\"Jane\"));\nconsole.log(balance());\nif (deposit(50)) {\n  console.log(balance());\n}\nif (withdraw(1200)) {\n  console.log(balance());\n}\nif (withdraw(6600)) {\n  console.log(balance());\n}",
+                  "solvedContent": "let accountBalance = 6500;\nconst deposit = (amount) => {\n  console.log(\"Depositing: $\" + amount);\n  accountBalance += amount;\n  return true;\n};\nconst withdraw = (amount) => {\n  console.log(\"Withdrawing: $\" + amount);\n  accountBalance -= amount;\n  return true;\n};\nconst balance = () => \"Your balance is currently: $\" + accountBalance;\nconst greeting = (name) => \"Welcome to your automated banking portal, \" + name +\n  \".\";\nconst pin = (inputPin) => inputPin == 1568;\nconsole.log(greeting(\"Jane\"));\nconsole.log(balance());\nif (deposit(50)) {\n  console.log(balance());\n}\nif (withdraw(1200)) {\n  console.log(balance());\n}\nif (withdraw(6600)) {\n  console.log(balance());\n}"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Step 6",
+            "id": 109632,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Bir ok fonksiyonu daha yazalım; bu fonksiyon, kullanıcıların hesap bakiyelerini aşmasını önlemeye yardımcı olacak. Bir kullanıcının hesap bakiyesinin, talep edilen para çekme tutarını aşıp aşmadığını kontrol edecek.\n\n1. `withdrawalAmt` parametresini alan ve `checkMinBalance` adlı kısaltılmış bir ok fonksiyonu yaz. Ok fonksiyonu, `withdrawalAmt` değerinin `accountBalance` değerinden küçük olup olmadığının boolean sonucunu döndürmeli (kullanıcı para çekebiliyorsa `true`, aksi takdirde `false`). Ok fonksiyonunu bir sabitte sakla.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "index.js",
+                  "codeLanguage": "javascript",
+                  "content": "let accountBalance = 6500;\nconst deposit = (amount) => {\n  console.log(\"Depositing: $\" + amount);\n  accountBalance += amount;\n  return true;\n};\nconst withdraw = (amount) => {\n  console.log(\"Withdrawing: $\" + amount);\n  accountBalance -= amount;\n  return true;\n};\nconst balance = () => \"Your balance is currently: $\" + accountBalance;\nconst greeting = (name) => \"Welcome to your automated banking portal, \" + name +\n  \".\";\nconst pin = (inputPin) => inputPin == 1568;\nconsole.log(greeting(\"Jane\"));\nconsole.log(balance());\nif (deposit(50)) {\n  console.log(balance());\n}\nif (withdraw(1200)) {\n  console.log(balance());\n}\nif (withdraw(6600)) {\n  console.log(balance());\n}",
+                  "solvedContent": "let accountBalance = 6500;\nconst deposit = (amount) => {\n  console.log(\"Depositing: $\" + amount);\n  accountBalance += amount;\n  return true;\n};\nconst withdraw = (amount) => {\n  console.log(\"Withdrawing: $\" + amount);\n  accountBalance -= amount;\n  return true;\n};\nconst balance = () => \"Your balance is currently: $\" + accountBalance;\nconst greeting = (name) => \"Welcome to your automated banking portal, \" + name +\n  \".\";\nconst pin = (inputPin) => inputPin == 1568;\nconst checkMinBalance = (withdrawalAmt) => withdrawalAmt < accountBalance;\nconsole.log(greeting(\"Jane\"));\nconsole.log(balance());\nif (deposit(50)) {\n  console.log(balance());\n}\nif (withdraw(1200)) {\n  console.log(balance());\n}\nif (withdraw(6600)) {\n  console.log(balance());\n}"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Step 7",
+            "id": 109628,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Şimdi kodladığımız `pin()` fonksiyonunu dahil etmemiz gerekiyor. Bu parametre üzerinden bir boolean değeri geçirecek ve ardından `pinCheck` parametresine bağlı olarak `deposit` işleminin gerçekleşmesine izin vermek veya işlemi engellemek için bir `if` ifadesi kullanacağız.\n\n1. Öncelikle, `deposit()` fonksiyon tanımına `pinCheck` adlı bir parametre ekle.\n2. Ardından, `pinCheck` parametresine göre tetiklenen bir `if` ifadesini `deposit()` fonksiyon gövdesine ekle. `if` ifadesinin gövdesi, mevcut fonksiyon gövdesindeki tüm kodu içermeli ve para yatırma işlemi başarılıysa `true` döndürmeli.\n3. Son olarak, aksi durumda (`pinCheck` geçerli olmadığında ve para yatırma işlemi başarısız olduğunda) `false` döndüren bir `else` ifadesi ekle.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "index.js",
+                  "codeLanguage": "javascript",
+                  "content": "let accountBalance = 6500;\nconst deposit = (amount) => {\n  console.log(\"Depositing: $\" + amount);\n  accountBalance += amount;\n  return true;\n};\nconst withdraw = (amount) => {\n  console.log(\"Withdrawing: $\" + amount);\n  accountBalance -= amount;\n  return true;\n};\nconst balance = () => \"Your balance is currently: $\" + accountBalance;\nconst greeting = (name) => \"Welcome to your automated banking portal, \" + name +\n  \".\";\nconst pin = (inputPin) => inputPin == 1568;\nconst checkMinBalance = (withdrawalAmt) => withdrawalAmt < accountBalance;\nconsole.log(greeting(\"Jane\"));\nconsole.log(balance());\nif (deposit(50)) {\n  console.log(balance());\n}\nif (withdraw(1200)) {\n  console.log(balance());\n}\nif (withdraw(6600)) {\n  console.log(balance());\n}",
+                  "solvedContent": "let accountBalance = 6500;\nconst deposit = (amount, pinCheck) => {\n  if (pinCheck) {\n    console.log(\"Depositing: $\" + amount);\n    accountBalance += amount;\n    return true;\n  } else {\n    return false;\n  }\n};\nconst withdraw = (amount) => {\n  console.log(\"Withdrawing: $\" + amount);\n  accountBalance -= amount;\n  return true;\n};\nconst balance = () => \"Your balance is currently: $\" + accountBalance;\nconst greeting = (name) => \"Welcome to your automated banking portal, \" + name +\n  \".\";\nconst pin = (inputPin) => inputPin == 1568;\nconst checkMinBalance = (withdrawalAmt) => withdrawalAmt < accountBalance;\nconsole.log(greeting(\"Jane\"));\nconsole.log(balance());\nif (deposit(50)) {\n  console.log(balance());\n}\nif (withdraw(1200)) {\n  console.log(balance());\n}\nif (withdraw(6600)) {\n  console.log(balance());\n}"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Step 8",
+            "id": 109629,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Şimdi aynı `pinCheck` işlevini `withdraw()` fonksiyonuna eklememiz gerekiyor. Ardından, bu parametreyi kontrol eden ve para çekme işlemini uygun şekilde yetkilendiren (veya reddeden) bir `if` ifadesi ekleyeceğiz.\n\n1. Öncelikle, `withdraw()` fonksiyon tanımına `pinCheck` adında bir parametre ekle.\n2. Ardından, `withdraw()` fonksiyon gövdesine `pinCheck` parametresine göre çalışan bir `if` ifadesi ekle. `if` ifadesinin gövdesi, mevcut fonksiyon gövdesi kodunun tamamını içermeli ve para çekme işlemi başarılıysa `true` döndürmeli.\n3. Son olarak, aksi durumda ( `pinCheck` geçerli olmadığında ve para çekme işlemi başarısız olduğunda) `false` döndüren bir `else` ifadesi ekle.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "index.js",
+                  "codeLanguage": "javascript",
+                  "content": "let accountBalance = 6500;\nconst deposit = (amount, pinCheck) => {\n  if (pinCheck) {\n    console.log(\"Depositing: $\" + amount);\n    accountBalance += amount;\n    return true;\n  } else {\n    return false;\n  }\n};\nconst withdraw = (amount) => {\n  console.log(\"Withdrawing: $\" + amount);\n  accountBalance -= amount;\n  return true;\n};\nconst balance = () => \"Your balance is currently: $\" + accountBalance;\nconst greeting = (name) => \"Welcome to your automated banking portal, \" + name +\n  \".\";\nconst pin = (inputPin) => inputPin == 1568;\nconst checkMinBalance = (withdrawalAmt) => withdrawalAmt < accountBalance;\nconsole.log(greeting(\"Jane\"));\nconsole.log(balance());\nif (deposit(50)) {\n  console.log(balance());\n}\nif (withdraw(1200)) {\n  console.log(balance());\n}\nif (withdraw(6600)) {\n  console.log(balance());\n}",
+                  "solvedContent": "let accountBalance = 6500;\nconst deposit = (amount, pinCheck) => {\n  if (pinCheck) {\n    console.log(\"Depositing: $\" + amount);\n    accountBalance += amount;\n    return true;\n  } else {\n    return false;\n  }\n};\nconst withdraw = (amount, pinCheck) => {\n  if (pinCheck) {\n    console.log(\"Withdrawing: $\" + amount);\n    accountBalance -= amount;\n    return true;\n  } else {\n    return false;\n  }\n};\nconst balance = () => \"Your balance is currently: $\" + accountBalance;\nconst greeting = (name) => \"Welcome to your automated banking portal, \" + name +\n  \".\";\nconst pin = (inputPin) => inputPin == 1568;\nconst checkMinBalance = (withdrawalAmt) => withdrawalAmt < accountBalance;\nconsole.log(greeting(\"Jane\"));\nconsole.log(balance());\nif (deposit(50)) {\n  console.log(balance());\n}\nif (withdraw(1200)) {\n  console.log(balance());\n}\nif (withdraw(6600)) {\n  console.log(balance());\n}"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Step 9",
+            "id": 109634,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Son olarak, daha önce kodladığımız `checkMinBalance()` ok fonksiyonunu ekleyelim. `if` ifadesi yalnızca `checkMinBalance()` ve `pinCheck` değerlerinin ikisi de `true` olduğunda başarılı olmalı.\n\n1. `checkMinBalance()` fonksiyon çağrısını `withdraw` fonksiyonunun `if` ifadesindeki koşula ekle. Doğru parametreyi eklediğinden emin ol.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "index.js",
+                  "codeLanguage": "javascript",
+                  "content": "let accountBalance = 6500;\nconst deposit = (amount, pinCheck) => {\n  if (pinCheck) {\n    console.log(\"Depositing: $\" + amount);\n    accountBalance += amount;\n    return true;\n  } else {\n    return false;\n  }\n};\nconst withdraw = (amount, pinCheck) => {\n  if (pinCheck) {\n    console.log(\"Withdrawing: $\" + amount);\n    accountBalance -= amount;\n    return true;\n  } else {\n    return false;\n  }\n};\nconst balance = () => \"Your balance is currently: $\" + accountBalance;\nconst greeting = (name) => \"Welcome to your automated banking portal, \" + name +\n  \".\";\nconst pin = (inputPin) => inputPin == 1568;\nconst checkMinBalance = (withdrawalAmt) => withdrawalAmt < accountBalance;\nconsole.log(greeting(\"Jane\"));\nconsole.log(balance());\nif (deposit(50)) {\n  console.log(balance());\n}\nif (withdraw(1200)) {\n  console.log(balance());\n}\nif (withdraw(6600)) {\n  console.log(balance());\n}",
+                  "solvedContent": "let accountBalance = 6500;\nconst deposit = (amount, pinCheck) => {\n  if (pinCheck) {\n    console.log(\"Depositing: $\" + amount);\n    accountBalance += amount;\n    return true;\n  } else {\n    return false;\n  }\n};\nconst withdraw = (amount, pinCheck) => {\n  if (pinCheck && checkMinBalance(amount)) {\n    console.log(\"Withdrawing: $\" + amount);\n    accountBalance -= amount;\n    return true;\n  } else {\n    return false;\n  }\n};\nconst balance = () => \"Your balance is currently: $\" + accountBalance;\nconst greeting = (name) => \"Welcome to your automated banking portal, \" + name +\n  \".\";\nconst pin = (inputPin) => inputPin == 1568;\nconst checkMinBalance = (withdrawalAmt) => withdrawalAmt < accountBalance;\nconsole.log(greeting(\"Jane\"));\nconsole.log(balance());\nif (deposit(50)) {\n  console.log(balance());\n}\nif (withdraw(1200)) {\n  console.log(balance());\n}\nif (withdraw(6600)) {\n  console.log(balance());\n}"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Step 10",
+            "id": 109635,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Programu şimdi çalıştırmak yalnızca karşılama mesajını ve mevcut bakiyeyi gösteriyor. İşlemi yetkilendirmek için `pin()` fonksiyonunu sağlamadığımızdan test işlemlerinin hiçbiri çalışmıyor. Kimlik doğrulama sistemimizin çalıştığını biliyoruz!\n\nŞimdi `pin` arrow fonksiyonu çağrısını çağırıp sonucunu geçirerek `pinCheck` parametresinin gereksinimini karşılayacak şekilde `withdraw()` ve `deposit()` fonksiyon çağrılarını değiştireceğiz. İşin bittiğinde kodunu çalıştırmak, 50$'lık para yatırma ve 1200$'lık para çekme işlemlerinin başarılı olduğunu, ancak 6600$'lık para çekme işleminin başarısız olduğunu göstermeli.\n\n1. `pin()` fonksiyonunun ikinci parametre olarak çağrılması için `deposit()` fonksiyon çağrısını değiştir. İşlemi yetkilendirmek üzere doğru PIN'i sağla.\n2. Ardından aşağıdaki iki `withdrawal()` fonksiyon çağrısını da aynı şekilde değiştir.\n3. Çalışmanı kontrol etmek için programı çalıştır!",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "index.js",
+                  "codeLanguage": "javascript",
+                  "content": "let accountBalance = 6500;\nconst deposit = (amount, pinCheck) => {\n  if (pinCheck) {\n    console.log(\"Depositing: $\" + amount);\n    accountBalance += amount;\n    return true;\n  } else {\n    return false;\n  }\n};\nconst withdraw = (amount, pinCheck) => {\n  if (pinCheck && checkMinBalance(amount)) {\n    console.log(\"Withdrawing: $\" + amount);\n    accountBalance -= amount;\n    return true;\n  } else {\n    return false;\n  }\n};\nconst balance = () => \"Your balance is currently: $\" + accountBalance;\nconst greeting = (name) => \"Welcome to your automated banking portal, \" + name +\n  \".\";\nconst pin = (inputPin) => inputPin == 1568;\nconst checkMinBalance = (withdrawalAmt) => withdrawalAmt < accountBalance;\nconsole.log(greeting(\"Jane\"));\nconsole.log(balance());\nif (deposit(50)) {\n  console.log(balance());\n}\nif (withdraw(1200)) {\n  console.log(balance());\n}\nif (withdraw(6600)) {\n  console.log(balance());\n}",
+                  "solvedContent": "let accountBalance = 6500;\nconst deposit = (amount, pinCheck) => {\n  if (pinCheck) {\n    console.log(\"Depositing: $\" + amount);\n    accountBalance += amount;\n    return true;\n  } else {\n    return false;\n  }\n};\nconst withdraw = (amount, pinCheck) => {\n  if (pinCheck && checkMinBalance(amount)) {\n    console.log(\"Withdrawing: $\" + amount);\n    accountBalance -= amount;\n    return true;\n  } else {\n    return false;\n  }\n};\nconst balance = () => \"Your balance is currently: $\" + accountBalance;\nconst greeting = (name) => \"Welcome to your automated banking portal, \" + name +\n  \".\";\nconst pin = (inputPin) => inputPin == 1568;\nconst checkMinBalance = (withdrawalAmt) => withdrawalAmt < accountBalance;\nconsole.log(greeting(\"Jane\"));\nconsole.log(balance());\nif (deposit(50, pin(1568))) {\n  console.log(balance());\n}\nif (withdraw(1200, pin(1568))) {\n  console.log(balance());\n}\nif (withdraw(6600, pin(1568))) {\n  console.log(balance());\n}"
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

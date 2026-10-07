@@ -1,0 +1,528 @@
+{
+  "tutorial": {
+    "id": 4587,
+    "version": 1,
+    "type": "guidedProject",
+    "isNew": false,
+    "codeLanguage": "jsx",
+    "title": "Вокруг света - Часть 3",
+    "descriptionContent": "В третьей части ты обновишь front-end, чтобы превратить его в играбельную игру.",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": "tutorial-4587-icon-banner.svg",
+    "chapters": [
+      {
+        "id": 17754,
+        "title": "Вокруг света - Часть 3",
+        "type": "practiceLevel3",
+        "lessons": [
+          {
+            "title": "Lesson #1",
+            "id": 151496,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Добро пожаловать обратно в проект **Around the World Project**. В этой последней части мы превращаем приложение в настоящую игру.\n\nЦель игры — угадать, где находится данный аэропорт. Чем ближе ты угадаешь, тем лучше. Чтобы это работало, нам нужно рассчитать расстояние между предположением и фактическим местоположением аэропорта.\n\nСначала нам нужно создать основные помощники для расчета расстояний по Земле.\n\n1. В файле `distance.js` создай новую переменную для радиуса Земли в километрах `EARTH_RADIUS_KM`. Установи её значение на `6371`.\n2. Добавь функцию `toRadians`, которая принимает один параметр `degrees` и преобразует градусы в радианы, вычисляя `degrees * (Math.PI / 180)`.",
+              "preselectedFileIndex": 5,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <script type=\"module\" src=\"./index.js\"></script>\n    <link rel=\"stylesheet\" href=\"./index.css\" />\n    <link\n      rel=\"stylesheet\"\n      href=\"https://unpkg.com/leaflet@1.9.4/dist/leaflet.css\"\n    />\n    <script src=\"https://unpkg.com/leaflet@1.9.4/dist/leaflet.js\"></script>\n    <title>Around the World</title>\n  </head>\n  <body>\n    <div id=\"root\">loading</div>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "index.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React from \"react\";\nimport { createRoot } from \"react-dom/client\";\nimport App from \"./App\";\n\nconst rootElement = document.getElementById(\"root\");\nconst root = createRoot(rootElement);\nroot.render(<App />);",
+                  "solvedContent": null
+                },
+                {
+                  "name": "App.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React, { useEffect, useState } from \"react\";\nimport AirportMap from \"./AirportMap\";\nimport \"./App.css\";\n\nconst App = () => {\n  const [airport, setAirport] = useState(null);\n\n  async function loadRandomAirport() {\n    const response = await fetch(\n      \"https://airports.mimo.dev/api/random-airport\",\n    );\n    const data = await response.json();\n    setAirport(data);\n  }\n\n  useEffect(() => {\n    loadRandomAirport();\n  }, []);\n\n  return <AirportMap airport={airport} />;\n};\n\nexport default App;",
+                  "solvedContent": null
+                },
+                {
+                  "name": "App.css",
+                  "codeLanguage": "css",
+                  "content": ".map {\n  height: 40vh;\n  margin: 20px;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "AirportMap.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React, { useEffect } from \"react\";\n\nconst AirportMap = ({ airport }) => {\n  useEffect(() => {\n    if (!airport) return;\n\n    const L = window.L;\n    const position = [airport.latitude_deg, airport.longitude_deg];\n\n    const map = L.map(\"map\").setView(position, 2);\n\n    L.tileLayer(\"https://tile.openstreetmap.org/{z}/{x}/{y}.png\").addTo(map);\n\n    L.marker(position).addTo(map);\n    \n    return () => map.remove();\n  }, [airport]);\n\n  return <div id=\"map\" className=\"map\" />;\n};\n\nexport default AirportMap;",
+                  "solvedContent": null
+                },
+                {
+                  "name": "distance.js",
+                  "codeLanguage": "javascript",
+                  "content": "",
+                  "solvedContent": "const EARTH_RADIUS_KM = 6371;\nconst toRadians = (degrees) => degrees * (Math.PI / 180);"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #2",
+            "id": 151497,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Теперь нам нужно фактически рассчитать расстояние между предположением и аэропортом, используя формулу гаверсинуса.\n\nЭто немного сложно. Следуй нашим инструкциям и попробуй сам, или, если хочешь, посмотри нашу подсказку и просто скопируй код.\n\n1. Создай и экспортируй функцию с именем `getDistanceInKm`.\n2. Дай функции два параметра: `guess` и `airport`.\n3. Получи предполагаемую широту из `guess.latitude` и широту аэропорта из `airport.latitude_deg`.\n4. Преобразуй оба значения широты из градусов в радианы, передав их в существующую функцию `toRadians`.\n5. Сохрани преобразованные значения широты отдельно, чтобы ты мог использовать их позже в вычислениях.\n6. Вычисли разницу широт, вычитая предполагаемую широту в радианах из широты аэропорта в радианах.\n7. Получи предполагаемую долготу из `guess.longitude`.\n8. Получи долготу аэропорта из `airport.longitude_deg`.\n9. Вычисли разницу долгот, вычитая предполагаемую долготу из долготы аэропорта.\n10. Преобразуй разницу долгот в радианы, используя функцию `toRadians`.\n11. Используй формулу гаверсинуса для вычисления расстояния:\n    - Раздели разницу широт на `2`.\n    - Найди её синус, используя `Math.sin`.\n    - Возведи результат в квадрат.\n    - Раздели разницу долгот на `2`.\n    - Найди её синус, используя `Math.sin`.\n    - Возведи результат в квадрат.\n    - Найди косинус обоих значений широты, используя `Math.cos`.\n    - Умножь квадрат разницы долгот на оба значения косинуса.\n    - Сложи результаты широты и долготы.\n12. Возьми квадратный корень из результата гаверсинуса, используя `Math.sqrt`.\n13. Передай это значение в `Math.asin`, чтобы вычислить угловое расстояние.\n14. Умножь угловое расстояние на `2`.\n15. Умножь этот результат на `EARTH_RADIUS_KM`, чтобы преобразовать расстояние в километры.\n16. Округли итоговое расстояние до ближайшего целого километра, используя `Math.round`.\n17. Верни округленное расстояние из функции.",
+              "preselectedFileIndex": 5,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <script type=\"module\" src=\"./index.js\"></script>\n    <link rel=\"stylesheet\" href=\"./index.css\" />\n    <link\n      rel=\"stylesheet\"\n      href=\"https://unpkg.com/leaflet@1.9.4/dist/leaflet.css\"\n    />\n    <script src=\"https://unpkg.com/leaflet@1.9.4/dist/leaflet.js\"></script>\n    <title>Around the World</title>\n  </head>\n  <body>\n    <div id=\"root\">loading</div>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "index.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React from \"react\";\nimport { createRoot } from \"react-dom/client\";\nimport App from \"./App\";\n\nconst rootElement = document.getElementById(\"root\");\nconst root = createRoot(rootElement);\nroot.render(<App />);",
+                  "solvedContent": null
+                },
+                {
+                  "name": "App.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React, { useEffect, useState } from \"react\";\nimport AirportMap from \"./AirportMap\";\nimport \"./App.css\";\n\nconst App = () => {\n  const [airport, setAirport] = useState(null);\n\n  async function loadRandomAirport() {\n    const response = await fetch(\n      \"https://airports.mimo.dev/api/random-airport\",\n    );\n    const data = await response.json();\n    setAirport(data);\n  }\n\n  useEffect(() => {\n    loadRandomAirport();\n  }, []);\n\n  return <AirportMap airport={airport} />;\n};\n\nexport default App;",
+                  "solvedContent": null
+                },
+                {
+                  "name": "App.css",
+                  "codeLanguage": "css",
+                  "content": ".map {\n  height: 40vh;\n  margin: 20px;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "AirportMap.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React, { useEffect } from \"react\";\n\nconst AirportMap = ({ airport }) => {\n  useEffect(() => {\n    if (!airport) return;\n\n    const L = window.L;\n    const position = [airport.latitude_deg, airport.longitude_deg];\n\n    const map = L.map(\"map\").setView(position, 2);\n\n    L.tileLayer(\"https://tile.openstreetmap.org/{z}/{x}/{y}.png\").addTo(map);\n\n    L.marker(position).addTo(map);\n    \n    return () => map.remove();\n  }, [airport]);\n\n  return <div id=\"map\" className=\"map\" />;\n};\n\nexport default AirportMap;",
+                  "solvedContent": null
+                },
+                {
+                  "name": "distance.js",
+                  "codeLanguage": "javascript",
+                  "content": "const EARTH_RADIUS_KM = 6371;\nconst toRadians = (degrees) => degrees * (Math.PI / 180);",
+                  "solvedContent": "const EARTH_RADIUS_KM = 6371;\nconst toRadians = (degrees) => degrees * (Math.PI / 180);\n\nexport function getDistanceInKm(guess, airport) {\n  const lat1 = toRadians(guess.latitude);\n  const lat2 = toRadians(airport.latitude_deg);\n  const deltaLat = lat2 - lat1;\n  const deltaLon = toRadians(airport.longitude_deg - guess.longitude);\n  const haversine =\n    Math.sin(deltaLat / 2) ** 2 +\n    Math.cos(lat1) * Math.cos(lat2) * Math.sin(deltaLon / 2) ** 2;\n  return Math.round(2 * EARTH_RADIUS_KM * Math.asin(Math.sqrt(haversine)));\n}"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Show me the code",
+                  "content": "```js\nexport function getDistanceInKm(guess, airport) {\n  const lat1 = toRadians(guess.latitude);\n  const lat2 = toRadians(airport.latitude_deg);\n  const deltaLat = lat2 - lat1;\n  const deltaLon = toRadians(airport.longitude_deg - guess.longitude);\n  const haversine =\n    Math.sin(deltaLat / 2) ** 2 +\n    Math.cos(lat1) * Math.cos(lat2) * Math.sin(deltaLon / 2) ** 2;\n  return Math.round(2 * EARTH_RADIUS_KM * Math.asin(Math.sqrt(haversine)));\n}\n```"
+                }
+              ]
+            }
+          },
+          {
+            "title": "Lesson #6",
+            "id": 151501,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Прежде чем мы начнем работать с расчетом расстояния, давай зададим игроку видимый вопрос.\n\n1. В файле `App.jsx` оберни единственную возвращаемую карту в React фрагмент.\n2. В дополнение к возврату компонента `AirportMap`, также сделай следующее: когда `airport` существует, отображай его имя внутри `h1`, сформулированного как вопрос: *Где находится Vienna International Airport?*\n3. Присвой заголовку класс `prompt`.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <script type=\"module\" src=\"./index.js\"></script>\n    <link rel=\"stylesheet\" href=\"./index.css\" />\n    <link\n      rel=\"stylesheet\"\n      href=\"https://unpkg.com/leaflet@1.9.4/dist/leaflet.css\"\n    />\n    <script src=\"https://unpkg.com/leaflet@1.9.4/dist/leaflet.js\"></script>\n    <title>Around the World</title>\n  </head>\n  <body>\n    <div id=\"root\">loading</div>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "index.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React from \"react\";\nimport { createRoot } from \"react-dom/client\";\nimport App from \"./App\";\n\nconst rootElement = document.getElementById(\"root\");\nconst root = createRoot(rootElement);\nroot.render(<App />);",
+                  "solvedContent": null
+                },
+                {
+                  "name": "App.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React, { useEffect, useState } from \"react\";\nimport AirportMap from \"./AirportMap\";\nimport \"./App.css\";\n\nconst App = () => {\n  const [airport, setAirport] = useState(null);\n\n  async function loadRandomAirport() {\n    const response = await fetch(\n      \"https://airports.mimo.dev/api/random-airport\",\n    );\n    const data = await response.json();\n    setAirport(data);\n  }\n\n  useEffect(() => {\n    loadRandomAirport();\n  }, []);\n\n  return <AirportMap airport={airport} />;\n};\n\nexport default App;",
+                  "solvedContent": "import React, { useEffect, useState } from \"react\";\nimport AirportMap from \"./AirportMap\";\nimport \"./App.css\";\n\nconst App = () => {\n  const [airport, setAirport] = useState(null);\n\n  async function loadRandomAirport() {\n    const response = await fetch(\n      \"https://airports.mimo.dev/api/random-airport\",\n    );\n    const data = await response.json();\n    setAirport(data);\n  }\n\n  useEffect(() => {\n    loadRandomAirport();\n  }, []);\n\n  return (\n    <>\n      {airport && <h1 className=\"prompt\">Where is {airport.name}?</h1>}\n      <AirportMap airport={airport} />\n    </>\n  );\n};\n\nexport default App;\n"
+                },
+                {
+                  "name": "App.css",
+                  "codeLanguage": "css",
+                  "content": ".map {\n  height: 40vh;\n  margin: 20px;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "AirportMap.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React, { useEffect } from \"react\";\n\nconst AirportMap = ({ airport }) => {\n  useEffect(() => {\n    if (!airport) return;\n\n    const L = window.L;\n    const position = [airport.latitude_deg, airport.longitude_deg];\n\n    const map = L.map(\"map\").setView(position, 2);\n\n    L.tileLayer(\"https://tile.openstreetmap.org/{z}/{x}/{y}.png\").addTo(map);\n\n    L.marker(position).addTo(map);\n    \n    return () => map.remove();\n  }, [airport]);\n\n  return <div id=\"map\" className=\"map\" />;\n};\n\nexport default AirportMap;",
+                  "solvedContent": null
+                },
+                {
+                  "name": "distance.js",
+                  "codeLanguage": "javascript",
+                  "content": "const EARTH_RADIUS_KM = 6371;\nconst toRadians = (degrees) => degrees * (Math.PI / 180);\n\nexport function getDistanceInKm(guess, airport) {\n  const lat1 = toRadians(guess.latitude);\n  const lat2 = toRadians(airport.latitude_deg);\n  const deltaLat = lat2 - lat1;\n  const deltaLon = toRadians(airport.longitude_deg - guess.longitude);\n  const haversine =\n    Math.sin(deltaLat / 2) ** 2 +\n    Math.cos(lat1) * Math.cos(lat2) * Math.sin(deltaLon / 2) ** 2;\n  return Math.round(2 * EARTH_RADIUS_KM * Math.asin(Math.sqrt(haversine)));\n}",
+                  "solvedContent": null
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #3",
+            "id": 151498,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Далее подготовим приложение для хранения предположения на карте.\n\n1. В `App.jsx` импортируй `getDistanceInKm` из `./distance`.\n2. Добавь переменную состояния `guess` вместе с `setGuess` с начальным значением `null`.\n3. После сохранения аэропорта в функции `loadRandomAirport`, сбрось `guess` на `null`.\n4. Под хуком `useEffect` создай переменную `distance`. Установи `distance` в результат `getDistanceInKm(guess, airport)`, когда и `guess`, и `airport` имеют значения. В противном случае установи его в `null`.\n5. Когда `distance` не равен `null`, отобрази его в абзаце с классом `result`.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <script type=\"module\" src=\"./index.js\"></script>\n    <link rel=\"stylesheet\" href=\"./index.css\" />\n    <link\n      rel=\"stylesheet\"\n      href=\"https://unpkg.com/leaflet@1.9.4/dist/leaflet.css\"\n    />\n    <script src=\"https://unpkg.com/leaflet@1.9.4/dist/leaflet.js\"></script>\n    <title>Around the World</title>\n  </head>\n  <body>\n    <div id=\"root\">loading</div>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "index.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React from \"react\";\nimport { createRoot } from \"react-dom/client\";\nimport App from \"./App\";\n\nconst rootElement = document.getElementById(\"root\");\nconst root = createRoot(rootElement);\nroot.render(<App />);",
+                  "solvedContent": null
+                },
+                {
+                  "name": "App.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React, { useEffect, useState } from \"react\";\nimport AirportMap from \"./AirportMap\";\nimport \"./App.css\";\n\nconst App = () => {\n  const [airport, setAirport] = useState(null);\n\n  async function loadRandomAirport() {\n    const response = await fetch(\n      \"https://airports.mimo.dev/api/random-airport\",\n    );\n    const data = await response.json();\n    setAirport(data);\n  }\n\n  useEffect(() => {\n    loadRandomAirport();\n  }, []);\n\n  return (\n    <>\n      {airport && <h1 className=\"prompt\">Where is {airport.name}?</h1>}\n      <AirportMap airport={airport} />\n    </>\n  );\n};\n\nexport default App;\n",
+                  "solvedContent": "import React, { useEffect, useState } from \"react\";\nimport AirportMap from \"./AirportMap\";\nimport { getDistanceInKm } from \"./distance\";\nimport \"./App.css\";\n\nconst App = () => {\n  const [airport, setAirport] = useState(null);\n  const [guess, setGuess] = useState(null);\n\n  async function loadRandomAirport() {\n    const response = await fetch(\n      \"https://airports.mimo.dev/api/random-airport\",\n    );\n    const data = await response.json();\n    setAirport(data);\n    setGuess(null);\n  }\n\n  useEffect(() => {\n    loadRandomAirport();\n  }, []);\n\n  const distance = guess && airport && getDistanceInKm(guess, airport);\n\n  return (\n    <>\n      {airport && (\n        <>\n          <h1 className=\"prompt\">Where is {airport.name}?</h1>\n          {distance !== null && (\n            <p className=\"result\">\n              The airport is <strong>{distance.toLocaleString()} km</strong>{\" \"}\n              from your guess.\n            </p>\n          )}\n        </>\n      )}\n      <AirportMap airport={airport} />\n    </>\n  );\n};\n\nexport default App;\n"
+                },
+                {
+                  "name": "App.css",
+                  "codeLanguage": "css",
+                  "content": ".map {\n  height: 40vh;\n  margin: 20px;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "AirportMap.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React, { useEffect } from \"react\";\n\nconst AirportMap = ({ airport }) => {\n  useEffect(() => {\n    if (!airport) return;\n\n    const L = window.L;\n    const position = [airport.latitude_deg, airport.longitude_deg];\n\n    const map = L.map(\"map\").setView(position, 2);\n\n    L.tileLayer(\"https://tile.openstreetmap.org/{z}/{x}/{y}.png\").addTo(map);\n\n    L.marker(position).addTo(map);\n    \n    return () => map.remove();\n  }, [airport]);\n\n  return <div id=\"map\" className=\"map\" />;\n};\n\nexport default AirportMap;",
+                  "solvedContent": null
+                },
+                {
+                  "name": "distance.js",
+                  "codeLanguage": "javascript",
+                  "content": "const EARTH_RADIUS_KM = 6371;\nconst toRadians = (degrees) => degrees * (Math.PI / 180);\n\nexport function getDistanceInKm(guess, airport) {\n  const lat1 = toRadians(guess.latitude);\n  const lat2 = toRadians(airport.latitude_deg);\n  const deltaLat = lat2 - lat1;\n  const deltaLon = toRadians(airport.longitude_deg - guess.longitude);\n  const haversine =\n    Math.sin(deltaLat / 2) ** 2 +\n    Math.cos(lat1) * Math.cos(lat2) * Math.sin(deltaLon / 2) ** 2;\n  return Math.round(2 * EARTH_RADIUS_KM * Math.asin(Math.sqrt(haversine)));\n}",
+                  "solvedContent": null
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #8",
+            "id": 151503,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Теперь нам нужно подключить элементы управления игрой к карте.\n\n1. В `App.jsx` передай `guess` и `setGuess` в `AirportMap`, используя пропсы `guess` и `onGuess`.\n2. В `AirportMap.jsx` прими новые пропсы `guess` и `onGuess`. Деструктурируй их напрямую.\n3. Сделай `useEffect` зависимым не только от `airport`, но и от `guess`.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <script type=\"module\" src=\"./index.js\"></script>\n    <link rel=\"stylesheet\" href=\"./index.css\" />\n    <link\n      rel=\"stylesheet\"\n      href=\"https://unpkg.com/leaflet@1.9.4/dist/leaflet.css\"\n    />\n    <script src=\"https://unpkg.com/leaflet@1.9.4/dist/leaflet.js\"></script>\n    <title>Around the World</title>\n  </head>\n  <body>\n    <div id=\"root\">loading</div>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "index.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React from \"react\";\nimport { createRoot } from \"react-dom/client\";\nimport App from \"./App\";\n\nconst rootElement = document.getElementById(\"root\");\nconst root = createRoot(rootElement);\nroot.render(<App />);",
+                  "solvedContent": null
+                },
+                {
+                  "name": "App.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React, { useEffect, useState } from \"react\";\nimport AirportMap from \"./AirportMap\";\nimport { getDistanceInKm } from \"./distance\";\nimport \"./App.css\";\n\nconst App = () => {\n  const [airport, setAirport] = useState(null);\n  const [guess, setGuess] = useState(null);\n\n  async function loadRandomAirport() {\n    const response = await fetch(\n      \"https://airports.mimo.dev/api/random-airport\",\n    );\n    const data = await response.json();\n    setAirport(data);\n    setGuess(null);\n  }\n\n  useEffect(() => {\n    loadRandomAirport();\n  }, []);\n\n  const distance = guess && airport && getDistanceInKm(guess, airport);\n\n  return (\n    <>\n      {airport && (\n        <>\n          <h1 className=\"prompt\">Where is {airport.name}?</h1>\n          {distance !== null && (\n            <p className=\"result\">\n              The airport is <strong>{distance.toLocaleString()} km</strong>{\" \"}\n              from your guess.\n            </p>\n          )}\n        </>\n      )}\n      <AirportMap airport={airport} />\n    </>\n  );\n};\n\nexport default App;\n",
+                  "solvedContent": "import React, { useEffect, useState } from \"react\";\nimport AirportMap from \"./AirportMap\";\nimport { getDistanceInKm } from \"./distance\";\nimport \"./App.css\";\n\nconst App = () => {\n  const [airport, setAirport] = useState(null);\n  const [guess, setGuess] = useState(null);\n\n  async function loadRandomAirport() {\n    const response = await fetch(\n      \"https://airports.mimo.dev/api/random-airport\",\n    );\n    const data = await response.json();\n    setAirport(data);\n    setGuess(null);\n  }\n\n  useEffect(() => {\n    loadRandomAirport();\n  }, []);\n\n  const distance = guess && airport && getDistanceInKm(guess, airport);\n\n  return (\n    <>\n      {airport && (\n        <>\n          <h1 className=\"prompt\">Where is {airport.name}?</h1>\n          {distance !== null && (\n            <p className=\"result\">\n              The airport is <strong>{distance.toLocaleString()} km</strong>{\" \"}\n              from your guess.\n            </p>\n          )}\n        </>\n      )}\n      <AirportMap airport={airport} guess={guess} onGuess={setGuess} />\n    </>\n  );\n};\n\nexport default App;\n"
+                },
+                {
+                  "name": "App.css",
+                  "codeLanguage": "css",
+                  "content": ".map {\n  height: 40vh;\n  margin: 20px;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "AirportMap.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React, { useEffect } from \"react\";\n\nconst AirportMap = ({ airport }) => {\n  useEffect(() => {\n    if (!airport) return;\n\n    const L = window.L;\n    const position = [airport.latitude_deg, airport.longitude_deg];\n\n    const map = L.map(\"map\").setView(position, 2);\n\n    L.tileLayer(\"https://tile.openstreetmap.org/{z}/{x}/{y}.png\").addTo(map);\n\n    L.marker(position).addTo(map);\n\n    return () => map.remove();\n  }, [airport]);\n\n  return <div id=\"map\" className=\"map\" />;\n};\n\nexport default AirportMap;\n",
+                  "solvedContent": "import React, { useEffect } from \"react\";\n\nconst AirportMap = ({ airport, guess, onGuess }) => {\n  useEffect(() => {\n    if (!airport) return;\n\n    const L = window.L;\n    const position = [airport.latitude_deg, airport.longitude_deg];\n\n    const map = L.map(\"map\").setView(position, 2);\n\n    L.tileLayer(\"https://tile.openstreetmap.org/{z}/{x}/{y}.png\").addTo(map);\n\n    L.marker(position).addTo(map);\n\n    return () => {\n      map.remove();\n    };\n  }, [airport, guess]);\n\n  return <div id=\"map\" className=\"map\" />;\n};\n\nexport default AirportMap;\n"
+                },
+                {
+                  "name": "distance.js",
+                  "codeLanguage": "javascript",
+                  "content": "const EARTH_RADIUS_KM = 6371;\nconst toRadians = (degrees) => degrees * (Math.PI / 180);\n\nexport function getDistanceInKm(guess, airport) {\n  const lat1 = toRadians(guess.latitude);\n  const lat2 = toRadians(airport.latitude_deg);\n  const deltaLat = lat2 - lat1;\n  const deltaLon = toRadians(airport.longitude_deg - guess.longitude);\n  const haversine =\n    Math.sin(deltaLat / 2) ** 2 +\n    Math.cos(lat1) * Math.cos(lat2) * Math.sin(deltaLon / 2) ** 2;\n  return Math.round(2 * EARTH_RADIUS_KM * Math.asin(Math.sqrt(haversine)));\n}",
+                  "solvedContent": null
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #10",
+            "id": 151505,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Вместо отображения аэропорта, мы хотим скрыть его и показать пустую карту, которая принимает предположения.\n\nПосле этого шага ты уже должен иметь возможность кликнуть по карте, чтобы увидеть рассчитанное расстояние между твоим предположением и фактическим местоположением аэропорта.\n\n1. Удали код, где ты получаешь позицию, используя широту и долготу аэропорта.\n2. Вместо установки вида карты на позицию аэропорта, установи его на общий `[0, 0], 0`, чтобы показать уменьшенную версию нашего мира.\n3. Удали `L.marker(position).addTo(map)`\n4. Слушай события `click` в Leaflet, используя `map.on(\"click\", (event) => {})`\n5. Передай кликнутую широту `event.latlng.lat` и долготу `event.latlng.lng` в `onGuess` внутри колбэка:\n   ```jsx\n   onGuess({\n        latitude: event.latlng.lat,\n        longitude: event.latlng.lng,\n      })\n   ```",
+              "preselectedFileIndex": 4,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <script type=\"module\" src=\"./index.js\"></script>\n    <link rel=\"stylesheet\" href=\"./index.css\" />\n    <link\n      rel=\"stylesheet\"\n      href=\"https://unpkg.com/leaflet@1.9.4/dist/leaflet.css\"\n    />\n    <script src=\"https://unpkg.com/leaflet@1.9.4/dist/leaflet.js\"></script>\n    <title>Around the World</title>\n  </head>\n  <body>\n    <div id=\"root\">loading</div>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "index.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React from \"react\";\nimport { createRoot } from \"react-dom/client\";\nimport App from \"./App\";\n\nconst rootElement = document.getElementById(\"root\");\nconst root = createRoot(rootElement);\nroot.render(<App />);",
+                  "solvedContent": null
+                },
+                {
+                  "name": "App.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React, { useEffect, useState } from \"react\";\nimport AirportMap from \"./AirportMap\";\nimport { getDistanceInKm } from \"./distance\";\nimport \"./App.css\";\n\nconst App = () => {\n  const [airport, setAirport] = useState(null);\n  const [guess, setGuess] = useState(null);\n\n  async function loadRandomAirport() {\n    const response = await fetch(\n      \"https://airports.mimo.dev/api/random-airport\",\n    );\n    const data = await response.json();\n    setAirport(data);\n    setGuess(null);\n  }\n\n  useEffect(() => {\n    loadRandomAirport();\n  }, []);\n\n  const distance = guess && airport && getDistanceInKm(guess, airport);\n\n  return (\n    <>\n      {airport && (\n        <>\n          <h1 className=\"prompt\">Where is {airport.name}?</h1>\n          {distance !== null && (\n            <p className=\"result\">\n              The airport is <strong>{distance.toLocaleString()} km</strong>{\" \"}\n              from your guess.\n            </p>\n          )}\n        </>\n      )}\n      <AirportMap airport={airport} guess={guess} onGuess={setGuess} />\n    </>\n  );\n};\n\nexport default App;\n",
+                  "solvedContent": null
+                },
+                {
+                  "name": "App.css",
+                  "codeLanguage": "css",
+                  "content": ".map {\n  height: 40vh;\n  margin: 20px;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "AirportMap.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React, { useEffect } from \"react\";\n\nconst AirportMap = ({ airport, guess, onGuess }) => {\n  useEffect(() => {\n    if (!airport) return;\n\n    const L = window.L;\n    const position = [airport.latitude_deg, airport.longitude_deg];\n\n    const map = L.map(\"map\").setView(position, 2);\n\n    L.tileLayer(\"https://tile.openstreetmap.org/{z}/{x}/{y}.png\").addTo(map);\n\n    L.marker(position).addTo(map);\n\n    return () => {\n      map.remove();\n    };\n  }, [airport, guess]);\n\n  return <div id=\"map\" className=\"map\" />;\n};\n\nexport default AirportMap;\n",
+                  "solvedContent": "import React, { useEffect } from \"react\";\n\nconst AirportMap = ({ airport, guess, onGuess }) => {\n  useEffect(() => {\n    if (!airport) return;\n\n    const L = window.L;\n\n    const map = L.map(\"map\").setView([0, 0], 0);\n    L.tileLayer(\"https://tile.openstreetmap.org/{z}/{x}/{y}.png\").addTo(map);\n    map.on(\"click\", (event) => {\n      onGuess({\n        latitude: event.latlng.lat,\n        longitude: event.latlng.lng,\n      });\n    });\n\n    return () => {\n      map.remove();\n    };\n  }, [airport, guess]);\n\n  return <div id=\"map\" className=\"map\" />;\n};\n\nexport default AirportMap;\n"
+                },
+                {
+                  "name": "distance.js",
+                  "codeLanguage": "javascript",
+                  "content": "const EARTH_RADIUS_KM = 6371;\nconst toRadians = (degrees) => degrees * (Math.PI / 180);\n\nexport function getDistanceInKm(guess, airport) {\n  const lat1 = toRadians(guess.latitude);\n  const lat2 = toRadians(airport.latitude_deg);\n  const deltaLat = lat2 - lat1;\n  const deltaLon = toRadians(airport.longitude_deg - guess.longitude);\n  const haversine =\n    Math.sin(deltaLat / 2) ** 2 +\n    Math.cos(lat1) * Math.cos(lat2) * Math.sin(deltaLon / 2) ** 2;\n  return Math.round(2 * EARTH_RADIUS_KM * Math.asin(Math.sqrt(haversine)));\n}",
+                  "solvedContent": null
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #11",
+            "id": 151506,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Наконец, нам нужно показать ответ после того, как игрок сделает предположение. Сначала мы хотим показать игрокам фактическое расположение аэропортов.\n\n1. Внутри существующего `useEffect` создайте переменную с именем `airportMarker`.\n2. Установите ее начальное значение в `null`.\n3. После обработчика кликов по карте добавьте условие, которое проверяет, имеет ли `guess` значение.\n4. Внутри этого условия создайте массив с именем `airportPosition` и добавьте координаты аэропорта в `airportPosition`, используя:\n   - `airport.latitude_deg`\n   - `airport.longitude_deg`\n5. Создайте маркер Leaflet на `airportPosition`, написав `L.marker(airportPosition)`.\n6. Добавьте маркер на существующую карту, добавив `.addTo(map)` к маркеру.\n7. Прикрепите всплывающее окно к маркеру, которое отображает `airport.name`, написав `.bindPopup(airport.name)`.\n8. Сразу откройте всплывающее окно, чтобы имя аэропорта стало видно после того, как игрок сделает предположение, с помощью `.openPopup();`.\n9. Сохраните созданный маркер в переменной `airportMarker`.\n10. Обновите функцию очистки, возвращаемую эффектом, чтобы удалить маркер аэропорта, когда он существует.",
+              "preselectedFileIndex": 4,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <script type=\"module\" src=\"./index.js\"></script>\n    <link rel=\"stylesheet\" href=\"./index.css\" />\n    <link\n      rel=\"stylesheet\"\n      href=\"https://unpkg.com/leaflet@1.9.4/dist/leaflet.css\"\n    />\n    <script src=\"https://unpkg.com/leaflet@1.9.4/dist/leaflet.js\"></script>\n    <title>Around the World</title>\n  </head>\n  <body>\n    <div id=\"root\">loading</div>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "index.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React from \"react\";\nimport { createRoot } from \"react-dom/client\";\nimport App from \"./App\";\n\nconst rootElement = document.getElementById(\"root\");\nconst root = createRoot(rootElement);\nroot.render(<App />);",
+                  "solvedContent": null
+                },
+                {
+                  "name": "App.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React, { useEffect, useState } from \"react\";\nimport AirportMap from \"./AirportMap\";\nimport { getDistanceInKm } from \"./distance\";\nimport \"./App.css\";\n\nconst App = () => {\n  const [airport, setAirport] = useState(null);\n  const [guess, setGuess] = useState(null);\n\n  async function loadRandomAirport() {\n    const response = await fetch(\n      \"https://airports.mimo.dev/api/random-airport\",\n    );\n    const data = await response.json();\n    setAirport(data);\n    setGuess(null);\n  }\n\n  useEffect(() => {\n    loadRandomAirport();\n  }, []);\n\n  const distance = guess && airport && getDistanceInKm(guess, airport);\n\n  return (\n    <>\n      {airport && (\n        <>\n          <h1 className=\"prompt\">Where is {airport.name}?</h1>\n          {distance !== null && (\n            <p className=\"result\">\n              The airport is <strong>{distance.toLocaleString()} km</strong>{\" \"}\n              from your guess.\n            </p>\n          )}\n        </>\n      )}\n      <AirportMap airport={airport} guess={guess} onGuess={setGuess} />\n    </>\n  );\n};\n\nexport default App;\n",
+                  "solvedContent": null
+                },
+                {
+                  "name": "App.css",
+                  "codeLanguage": "css",
+                  "content": ".map {\n  height: 40vh;\n  margin: 20px;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "AirportMap.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React, { useEffect } from \"react\";\n\nconst AirportMap = ({ airport, guess, onGuess }) => {\n  useEffect(() => {\n    if (!airport) return;\n\n    const L = window.L;\n\n    const map = L.map(\"map\").setView([0, 0], 0);\n    L.tileLayer(\"https://tile.openstreetmap.org/{z}/{x}/{y}.png\").addTo(map);\n    map.on(\"click\", (event) => {\n      onGuess({\n        latitude: event.latlng.lat,\n        longitude: event.latlng.lng,\n      });\n    });\n\n    return () => {\n      map.remove();\n    };\n  }, [airport, guess]);\n\n  return <div id=\"map\" className=\"map\" />;\n};\n\nexport default AirportMap;\n",
+                  "solvedContent": "import React, { useEffect } from \"react\";\n\nconst AirportMap = ({ airport, guess, onGuess }) => {\n  useEffect(() => {\n    if (!airport) return;\n\n    const L = window.L;\n\n    const map = L.map(\"map\").setView([0, 0], 0);\n    L.tileLayer(\"https://tile.openstreetmap.org/{z}/{x}/{y}.png\").addTo(map);\n    map.on(\"click\", (event) => {\n      onGuess({\n        latitude: event.latlng.lat,\n        longitude: event.latlng.lng,\n      });\n    });\n\n    let airportMarker = null;\n\n    if (guess) {\n      const airportPosition = [airport.latitude_deg, airport.longitude_deg];\n\n      airportMarker = L.marker(airportPosition)\n        .addTo(map)\n        .bindPopup(airport.name)\n        .openPopup();\n    }\n\n    return () => {\n      if (airportMarker) {\n        airportMarker.remove();\n      }\n\n      map.remove();\n    };\n  }, [airport, guess]);\n\n  return <div id=\"map\" className=\"map\" />;\n};\n\nexport default AirportMap;\n"
+                },
+                {
+                  "name": "distance.js",
+                  "codeLanguage": "javascript",
+                  "content": "const EARTH_RADIUS_KM = 6371;\nconst toRadians = (degrees) => degrees * (Math.PI / 180);\n\nexport function getDistanceInKm(guess, airport) {\n  const lat1 = toRadians(guess.latitude);\n  const lat2 = toRadians(airport.latitude_deg);\n  const deltaLat = lat2 - lat1;\n  const deltaLon = toRadians(airport.longitude_deg - guess.longitude);\n  const haversine =\n    Math.sin(deltaLat / 2) ** 2 +\n    Math.cos(lat1) * Math.cos(lat2) * Math.sin(deltaLon / 2) ** 2;\n  return Math.round(2 * EARTH_RADIUS_KM * Math.asin(Math.sqrt(haversine)));\n}",
+                  "solvedContent": null
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #12",
+            "id": 151507,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Теперь мы раскрываем ответ, но хорошим следующим шагом будет также показать предположение игрока, чтобы он мог визуально сравнить два местоположения.\n\n1. Рядом с `airportMarker` создайте другую переменную под названием `guessMarker` и установите начальное значение `null`.\n2. Внутри существующего блока `if (guess)` создайте массив `guessPosition` и добавьте в него угаданные координаты, используя:\n   - `guess.latitude`\n   - `guess.longitude`\n3. Создайте маркер Leaflet `L.marker` в `guessPosition` и присвойте его `guessMarker`. Также вызовите `addTo(map)`, чтобы добавить маркер на карту.\n4. Используйте `map.fitBounds()` с `guessPosition` и `airportPosition`, чтобы оба маркера были видны, и добавьте отступы к границам, чтобы маркеры не появлялись прямо у краев карты: `map.fitBounds([guessPosition, airportPosition], { padding: [40, 40] });`\n5. В функции очистки проверьте, существует ли `guessMarker`. Удалите маркер предположения, если он существует.",
+              "preselectedFileIndex": 4,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <script type=\"module\" src=\"./index.js\"></script>\n    <link rel=\"stylesheet\" href=\"./index.css\" />\n    <link\n      rel=\"stylesheet\"\n      href=\"https://unpkg.com/leaflet@1.9.4/dist/leaflet.css\"\n    />\n    <script src=\"https://unpkg.com/leaflet@1.9.4/dist/leaflet.js\"></script>\n    <title>Around the World</title>\n  </head>\n  <body>\n    <div id=\"root\">loading</div>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "index.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React from \"react\";\nimport { createRoot } from \"react-dom/client\";\nimport App from \"./App\";\n\nconst rootElement = document.getElementById(\"root\");\nconst root = createRoot(rootElement);\nroot.render(<App />);",
+                  "solvedContent": null
+                },
+                {
+                  "name": "App.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React, { useEffect, useState } from \"react\";\nimport AirportMap from \"./AirportMap\";\nimport { getDistanceInKm } from \"./distance\";\nimport \"./App.css\";\n\nconst App = () => {\n  const [airport, setAirport] = useState(null);\n  const [guess, setGuess] = useState(null);\n\n  async function loadRandomAirport() {\n    const response = await fetch(\n      \"https://airports.mimo.dev/api/random-airport\",\n    );\n    const data = await response.json();\n    setAirport(data);\n    setGuess(null);\n  }\n\n  useEffect(() => {\n    loadRandomAirport();\n  }, []);\n\n  const distance = guess && airport && getDistanceInKm(guess, airport);\n\n  return (\n    <>\n      {airport && (\n        <>\n          <h1 className=\"prompt\">Where is {airport.name}?</h1>\n          {distance !== null && (\n            <p className=\"result\">\n              The airport is <strong>{distance.toLocaleString()} km</strong>{\" \"}\n              from your guess.\n            </p>\n          )}\n        </>\n      )}\n      <AirportMap airport={airport} guess={guess} onGuess={setGuess} />\n    </>\n  );\n};\n\nexport default App;\n",
+                  "solvedContent": null
+                },
+                {
+                  "name": "App.css",
+                  "codeLanguage": "css",
+                  "content": ".map {\n  height: 40vh;\n  margin: 20px;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "AirportMap.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React, { useEffect } from \"react\";\n\nconst AirportMap = ({ airport, guess, onGuess }) => {\n  useEffect(() => {\n    if (!airport) return;\n\n    const L = window.L;\n\n    const map = L.map(\"map\").setView([0, 0], 0);\n    L.tileLayer(\"https://tile.openstreetmap.org/{z}/{x}/{y}.png\").addTo(map);\n    map.on(\"click\", (event) => {\n      onGuess({\n        latitude: event.latlng.lat,\n        longitude: event.latlng.lng,\n      });\n    });\n\n    let airportMarker = null;\n\n    if (guess) {\n      const airportPosition = [airport.latitude_deg, airport.longitude_deg];\n\n      airportMarker = L.marker(airportPosition)\n        .addTo(map)\n        .bindPopup(airport.name)\n        .openPopup();\n    }\n\n    return () => {\n      if (airportMarker) {\n        airportMarker.remove();\n      }\n\n      map.remove();\n    };\n  }, [airport, guess]);\n\n  return <div id=\"map\" className=\"map\" />;\n};\n\nexport default AirportMap;\n",
+                  "solvedContent": "import React, { useEffect } from \"react\";\n\nconst AirportMap = ({ airport, guess, onGuess }) => {\n  useEffect(() => {\n    if (!airport) return;\n\n    const L = window.L;\n\n    const map = L.map(\"map\").setView([0, 0], 0);\n    L.tileLayer(\"https://tile.openstreetmap.org/{z}/{x}/{y}.png\").addTo(map);\n    map.on(\"click\", (event) => {\n      onGuess({\n        latitude: event.latlng.lat,\n        longitude: event.latlng.lng,\n      });\n    });\n\n    let airportMarker = null;\n    let guessMarker = null;\n\n    if (guess) {\n      const guessPosition = [guess.latitude, guess.longitude];\n      const airportPosition = [airport.latitude_deg, airport.longitude_deg];\n\n      airportMarker = L.marker(airportPosition)\n        .addTo(map)\n        .bindPopup(airport.name)\n        .openPopup();\n      guessMarker = L.marker(guessPosition)\n        .addTo(map)\n      map.fitBounds([guessPosition, airportPosition], { padding: [40, 40] });\n    }\n\n    return () => {\n      if (airportMarker) {\n        airportMarker.remove();\n      }\n\n      if (guessMarker) {\n        guessMarker.remove();\n      }\n      map.remove();\n    };\n  }, [airport, guess]);\n\n  return <div id=\"map\" className=\"map\" />;\n};\n\nexport default AirportMap;\n"
+                },
+                {
+                  "name": "distance.js",
+                  "codeLanguage": "javascript",
+                  "content": "const EARTH_RADIUS_KM = 6371;\nconst toRadians = (degrees) => degrees * (Math.PI / 180);\n\nexport function getDistanceInKm(guess, airport) {\n  const lat1 = toRadians(guess.latitude);\n  const lat2 = toRadians(airport.latitude_deg);\n  const deltaLat = lat2 - lat1;\n  const deltaLon = toRadians(airport.longitude_deg - guess.longitude);\n  const haversine =\n    Math.sin(deltaLat / 2) ** 2 +\n    Math.cos(lat1) * Math.cos(lat2) * Math.sin(deltaLon / 2) ** 2;\n  return Math.round(2 * EARTH_RADIUS_KM * Math.asin(Math.sqrt(haversine)));\n}",
+                  "solvedContent": null
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #13",
+            "id": 151508,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Теперь мы хотим нарисовать линию между догадкой и аэропортом, чтобы лучше визуализировать расстояние.\n\n1. Рядом с `airportMarker` и `guessMarker` создайте другую переменную под названием `line` и установите начальное значение `null`.\n2. Внутри существующего блока `if (guess)` создайте полилинию Leaflet после создания обоих маркеров и присвойте её `line`, используя `guessPosition` и `airportPosition`: `L.polyline([guessPosition, airportPosition]).addTo(map)`.\n3. Добавьте полилинию на существующую карту, используя `.addTo(map)`.\n4. Обновите функцию очистки, чтобы проверить, существует ли `line`, и удалить линию, если она существует.",
+              "preselectedFileIndex": 4,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <script type=\"module\" src=\"./index.js\"></script>\n    <link rel=\"stylesheet\" href=\"./index.css\" />\n    <link\n      rel=\"stylesheet\"\n      href=\"https://unpkg.com/leaflet@1.9.4/dist/leaflet.css\"\n    />\n    <script src=\"https://unpkg.com/leaflet@1.9.4/dist/leaflet.js\"></script>\n    <title>Around the World</title>\n  </head>\n  <body>\n    <div id=\"root\">loading</div>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "index.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React from \"react\";\nimport { createRoot } from \"react-dom/client\";\nimport App from \"./App\";\n\nconst rootElement = document.getElementById(\"root\");\nconst root = createRoot(rootElement);\nroot.render(<App />);",
+                  "solvedContent": null
+                },
+                {
+                  "name": "App.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React, { useEffect, useState } from \"react\";\nimport AirportMap from \"./AirportMap\";\nimport { getDistanceInKm } from \"./distance\";\nimport \"./App.css\";\n\nconst App = () => {\n  const [airport, setAirport] = useState(null);\n  const [guess, setGuess] = useState(null);\n\n  async function loadRandomAirport() {\n    const response = await fetch(\n      \"https://airports.mimo.dev/api/random-airport\",\n    );\n    const data = await response.json();\n    setAirport(data);\n    setGuess(null);\n  }\n\n  useEffect(() => {\n    loadRandomAirport();\n  }, []);\n\n  const distance = guess && airport && getDistanceInKm(guess, airport);\n\n  return (\n    <>\n      {airport && (\n        <>\n          <h1 className=\"prompt\">Where is {airport.name}?</h1>\n          {distance !== null && (\n            <p className=\"result\">\n              The airport is <strong>{distance.toLocaleString()} km</strong>{\" \"}\n              from your guess.\n            </p>\n          )}\n        </>\n      )}\n      <AirportMap airport={airport} guess={guess} onGuess={setGuess} />\n    </>\n  );\n};\n\nexport default App;\n",
+                  "solvedContent": null
+                },
+                {
+                  "name": "App.css",
+                  "codeLanguage": "css",
+                  "content": ".map {\n  height: 40vh;\n  margin: 20px;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "AirportMap.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React, { useEffect } from \"react\";\n\nconst AirportMap = ({ airport, guess, onGuess }) => {\n  useEffect(() => {\n    if (!airport) return;\n\n    const L = window.L;\n\n    const map = L.map(\"map\").setView([0, 0], 0);\n    L.tileLayer(\"https://tile.openstreetmap.org/{z}/{x}/{y}.png\").addTo(map);\n    map.on(\"click\", (event) => {\n      onGuess({\n        latitude: event.latlng.lat,\n        longitude: event.latlng.lng,\n      });\n    });\n\n    let airportMarker = null;\n    let guessMarker = null;\n\n    if (guess) {\n      const guessPosition = [guess.latitude, guess.longitude];\n      const airportPosition = [airport.latitude_deg, airport.longitude_deg];\n\n      airportMarker = L.marker(airportPosition)\n        .addTo(map)\n        .bindPopup(airport.name)\n        .openPopup();\n      guessMarker = L.marker(guessPosition)\n        .addTo(map)\n      map.fitBounds([guessPosition, airportPosition], { padding: [40, 40] });\n    }\n\n    return () => {\n      if (airportMarker) {\n        airportMarker.remove();\n      }\n\n      if (guessMarker) {\n        guessMarker.remove();\n      }\n      map.remove();\n    };\n  }, [airport, guess]);\n\n  return <div id=\"map\" className=\"map\" />;\n};\n\nexport default AirportMap;\n",
+                  "solvedContent": "import React, { useEffect } from \"react\";\n\nconst AirportMap = ({ airport, guess, onGuess }) => {\n  useEffect(() => {\n    if (!airport) return;\n\n    const L = window.L;\n\n    const map = L.map(\"map\").setView([0, 0], 0);\n    L.tileLayer(\"https://tile.openstreetmap.org/{z}/{x}/{y}.png\").addTo(map);\n    map.on(\"click\", (event) => {\n      onGuess({\n        latitude: event.latlng.lat,\n        longitude: event.latlng.lng,\n      });\n    });\n\n    let airportMarker = null;\n    let guessMarker = null;\n    let line = null;\n\n    if (guess) {\n      const guessPosition = [guess.latitude, guess.longitude];\n      const airportPosition = [airport.latitude_deg, airport.longitude_deg];\n\n      airportMarker = L.marker(airportPosition)\n        .addTo(map)\n        .bindPopup(airport.name)\n        .openPopup();\n      guessMarker = L.marker(guessPosition)\n        .addTo(map);\n      line = L.polyline([guessPosition, airportPosition]).addTo(map);\n      map.fitBounds([guessPosition, airportPosition], { padding: [40, 40] });\n    }\n\n    return () => {\n      if (airportMarker) {\n        airportMarker.remove();\n      }\n\n      if (guessMarker) {\n        guessMarker.remove();\n      }\n\n      if (line) {\n        line.remove();\n      }\n\n      map.remove();\n    };\n  }, [airport, guess]);\n\n  return <div id=\"map\" className=\"map\" />;\n};\n\nexport default AirportMap;"
+                },
+                {
+                  "name": "distance.js",
+                  "codeLanguage": "javascript",
+                  "content": "const EARTH_RADIUS_KM = 6371;\nconst toRadians = (degrees) => degrees * (Math.PI / 180);\n\nexport function getDistanceInKm(guess, airport) {\n  const lat1 = toRadians(guess.latitude);\n  const lat2 = toRadians(airport.latitude_deg);\n  const deltaLat = lat2 - lat1;\n  const deltaLon = toRadians(airport.longitude_deg - guess.longitude);\n  const haversine =\n    Math.sin(deltaLat / 2) ** 2 +\n    Math.cos(lat1) * Math.cos(lat2) * Math.sin(deltaLon / 2) ** 2;\n  return Math.round(2 * EARTH_RADIUS_KM * Math.asin(Math.sqrt(haversine)));\n}",
+                  "solvedContent": null
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #13 - Copy",
+            "id": 151509,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Поздравляю! Мы на самом финише этого проекта. На последнем этапе нашей игры мы хотим позволить игрокам играть более одного раза.\n\n1. Добавь кнопку `Next airport`.\n2. Вызови `loadRandomAirport`, когда кнопка будет нажата.",
+              "preselectedFileIndex": 2,
+              "hasVisualOutput": true,
+              "files": [
+                {
+                  "name": "index.html",
+                  "codeLanguage": "html",
+                  "content": "<!doctype html>\n<html>\n  <head>\n    <script type=\"module\" src=\"./index.js\"></script>\n    <link rel=\"stylesheet\" href=\"./index.css\" />\n    <link\n      rel=\"stylesheet\"\n      href=\"https://unpkg.com/leaflet@1.9.4/dist/leaflet.css\"\n    />\n    <script src=\"https://unpkg.com/leaflet@1.9.4/dist/leaflet.js\"></script>\n    <title>Around the World</title>\n  </head>\n  <body>\n    <div id=\"root\">loading</div>\n  </body>\n</html>",
+                  "solvedContent": null
+                },
+                {
+                  "name": "index.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React from \"react\";\nimport { createRoot } from \"react-dom/client\";\nimport App from \"./App\";\n\nconst rootElement = document.getElementById(\"root\");\nconst root = createRoot(rootElement);\nroot.render(<App />);",
+                  "solvedContent": null
+                },
+                {
+                  "name": "App.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React, { useEffect, useState } from \"react\";\nimport AirportMap from \"./AirportMap\";\nimport { getDistanceInKm } from \"./distance\";\nimport \"./App.css\";\n\nconst App = () => {\n  const [airport, setAirport] = useState(null);\n  const [guess, setGuess] = useState(null);\n\n  async function loadRandomAirport() {\n    const response = await fetch(\n      \"https://airports.mimo.dev/api/random-airport\",\n    );\n    const data = await response.json();\n    setAirport(data);\n    setGuess(null);\n  }\n\n  useEffect(() => {\n    loadRandomAirport();\n  }, []);\n\n  const distance = guess && airport && getDistanceInKm(guess, airport);\n\n  return (\n    <>\n      {airport && (\n        <>\n          <h1 className=\"prompt\">Where is {airport.name}?</h1>\n          {distance !== null && (\n            <p className=\"result\">\n              The airport is <strong>{distance.toLocaleString()} km</strong>{\" \"}\n              from your guess.\n            </p>\n          )}\n        </>\n      )}\n      <AirportMap airport={airport} guess={guess} onGuess={setGuess} />\n    </>\n  );\n};\n\nexport default App;\n",
+                  "solvedContent": "import React, { useEffect, useState } from \"react\";\nimport AirportMap from \"./AirportMap\";\nimport { getDistanceInKm } from \"./distance\";\nimport \"./App.css\";\n\nconst App = () => {\n  const [airport, setAirport] = useState(null);\n  const [guess, setGuess] = useState(null);\n\n  async function loadRandomAirport() {\n    const response = await fetch(\n      \"https://airports.mimo.dev/api/random-airport\",\n    );\n    const data = await response.json();\n    setAirport(data);\n    setGuess(null);\n  }\n\n  useEffect(() => {\n    loadRandomAirport();\n  }, []);\n\n  const distance = guess && airport && getDistanceInKm(guess, airport);\n\n  return (\n    <>\n      {airport && (\n        <>\n          <h1 className=\"prompt\">Where is {airport.name}?</h1>\n          {distance !== null && (\n            <p className=\"result\">\n              The airport is <strong>{distance.toLocaleString()} km</strong>{\" \"}\n              from your guess.\n            </p>\n          )}\n        </>\n      )}\n      <AirportMap airport={airport} guess={guess} onGuess={setGuess} />\n      <button onClick={loadRandomAirport}>\n        Next airport\n      </button>\n    </>\n  );\n};\n\nexport default App;\n"
+                },
+                {
+                  "name": "App.css",
+                  "codeLanguage": "css",
+                  "content": ".map {\n  height: 40vh;\n  margin: 20px;\n}",
+                  "solvedContent": null
+                },
+                {
+                  "name": "AirportMap.jsx",
+                  "codeLanguage": "jsx",
+                  "content": "import React, { useEffect } from \"react\";\n\nconst AirportMap = ({ airport, guess, onGuess }) => {\n  useEffect(() => {\n    if (!airport) return;\n\n    const L = window.L;\n\n    const map = L.map(\"map\").setView([0, 0], 0);\n    L.tileLayer(\"https://tile.openstreetmap.org/{z}/{x}/{y}.png\").addTo(map);\n    map.on(\"click\", (event) => {\n      onGuess({\n        latitude: event.latlng.lat,\n        longitude: event.latlng.lng,\n      });\n    });\n\n    let airportMarker = null;\n    let guessMarker = null;\n    let line = null;\n\n    if (guess) {\n      const guessPosition = [guess.latitude, guess.longitude];\n      const airportPosition = [airport.latitude_deg, airport.longitude_deg];\n\n      airportMarker = L.marker(airportPosition)\n        .addTo(map)\n        .bindPopup(airport.name)\n        .openPopup();\n      guessMarker = L.marker(guessPosition)\n        .addTo(map);\n      line = L.polyline([guessPosition, airportPosition]).addTo(map);\n      map.fitBounds([guessPosition, airportPosition], { padding: [40, 40] });\n    }\n\n    return () => {\n      if (airportMarker) {\n        airportMarker.remove();\n      }\n\n      if (guessMarker) {\n        guessMarker.remove();\n      }\n\n      if (line) {\n        line.remove();\n      }\n\n      map.remove();\n    };\n  }, [airport, guess]);\n\n  return <div id=\"map\" className=\"map\" />;\n};\n\nexport default AirportMap;",
+                  "solvedContent": null
+                },
+                {
+                  "name": "distance.js",
+                  "codeLanguage": "javascript",
+                  "content": "const EARTH_RADIUS_KM = 6371;\nconst toRadians = (degrees) => degrees * (Math.PI / 180);\n\nexport function getDistanceInKm(guess, airport) {\n  const lat1 = toRadians(guess.latitude);\n  const lat2 = toRadians(airport.latitude_deg);\n  const deltaLat = lat2 - lat1;\n  const deltaLon = toRadians(airport.longitude_deg - guess.longitude);\n  const haversine =\n    Math.sin(deltaLat / 2) ** 2 +\n    Math.cos(lat1) * Math.cos(lat2) * Math.sin(deltaLon / 2) ** 2;\n  return Math.round(2 * EARTH_RADIUS_KM * Math.asin(Math.sqrt(haversine)));\n}",
+                  "solvedContent": null
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

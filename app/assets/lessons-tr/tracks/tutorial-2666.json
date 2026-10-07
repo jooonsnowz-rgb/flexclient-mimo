@@ -1,0 +1,103 @@
+{
+  "tutorial": {
+    "id": 2666,
+    "version": 8,
+    "type": "guidedProject",
+    "isNew": false,
+    "codeLanguage": "python",
+    "title": "Bir Kart Çiz - 2. Bölüm",
+    "descriptionContent": "İkinci bölümde kaç kart çekeceğini seçerek kontrolü ele al ve kart oyununu daha da ilgi çekici hale getir.",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": "tutorial-2666-icon-banner.svg",
+    "chapters": [
+      {
+        "id": 14641,
+        "title": "Bir Kart Çiz - 2. Bölüm",
+        "type": "practiceLevel3",
+        "lessons": [
+          {
+            "title": "Lesson #1",
+            "id": 129494,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "**Draw a Card** projesinin ikinci kısmına tekrar hoş geldin. Kullanıcının kaç kart çekmek istediğini seçmesine izin verecek ve bu kartları gerçekten konsola çekeceğiz.\n\n1. `draw_card` fonksiyonunu güncelle\n   - `draw_card` fonksiyonuna, desteden çekmek istediğimiz kart sayısını belirten ikinci bir parametre ekle.\n   - Bu bilgiyi, bu kadar kartı `hand` değişkenine kaydetmek ve desteden bu kadar kartı kaldırmak için kullan.\n   - `return` ifadesini olduğu gibi bırak.\n2. Şimdilik işlevselliği aynı tutmak için, `while` döngüsünün içinden `draw_card` fonksiyonunu çağırırken ikinci argüman olarak `1` geçir.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "import random\n\ndef draw_card(deck):\n  hand = deck.pop()\n  return [hand], deck\n\ndef create_deck():\n  suits = [\"♥\", \"♦\", \"♣\", \"♠\"]\n  ranks = [\"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"10\", \"J\", \"Q\", \"K\", \"A\"]\n  deck = []\n\n  for suit in suits:\n    for rank in ranks:\n      deck.append((suit, rank))\n\n  random.shuffle(deck)\n  return deck\n\ndeck = create_deck()\nwhile len(deck) > 0:\n  input(\"Press Enter to draw the next card\")\n  hand, deck = draw_card(deck)\n  print(hand[0])\n\nprint(\"We are out of cards\")",
+                  "solvedContent": "import random\n\ndef draw_card(deck, num_cards):\n  hand = []\n  for _ in range(num_cards):\n    if deck:\n      hand.append(deck.pop())\n    else:\n      break\n  return hand, deck\n\ndef create_deck():\n  suits = [\"♥\", \"♦\", \"♣\", \"♠\"]\n  ranks = [\"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"10\", \"J\", \"Q\", \"K\", \"A\"]\n  deck = []\n\n  for suit in suits:\n    for rank in ranks:\n      deck.append((suit, rank))\n\n  random.shuffle(deck)\n  return deck\n\ndeck = create_deck()\nwhile len(deck) > 0:\n  input(\"Press Enter to draw the next card\")\n  hand, deck = draw_card(deck, 1)\n  print(hand[0])\n\nprint(\"We are out of cards\")"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #2",
+            "id": 129495,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Programın ana döngüsünü, kullanıcının aynı anda kaç kart çekeceğini belirtebilmesini sağlayacak şekilde değiştirelim.\n\n1. `input` çağrısını, kullanıcıya kaç kart çekmek istediğini soracak şekilde değiştir. Kullanıcının girdisini bir tamsayıya dönüştür ve `num_cards` adlı bir değişkene ata.\n2. Bunun ardından, çekilecek kart sayısını yansıtacak şekilde `draw_card` fonksiyon çağrısını `1` yerine bağımsız değişken olarak `num_cards` alacak şekilde değiştir.\n3. Destede hâlâ mevcut olan kart sayısından daha fazla kartın çekilmemesini sağlayan bir kontrol ekle.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "import random\n\ndef draw_card(deck, num_cards):\n  hand = []\n  for _ in range(num_cards):\n    if deck:\n      hand.append(deck.pop())\n    else:\n      break\n  return hand, deck\n\ndef create_deck():\n  suits = [\"♥\", \"♦\", \"♣\", \"♠\"]\n  ranks = [\"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"10\", \"J\", \"Q\", \"K\", \"A\"]\n  deck = []\n\n  for suit in suits:\n    for rank in ranks:\n      deck.append((suit, rank))\n\n  random.shuffle(deck)\n  return deck\n\ndeck = create_deck()\nwhile len(deck) > 0:\n  input(\"Press Enter to draw the next card\")\n  hand, deck = draw_card(deck, 1)\n  print(hand[0])\n\nprint(\"We are out of cards\")",
+                  "solvedContent": "import random\n\ndef draw_card(deck, num_cards):\n  hand = []\n  for _ in range(num_cards):\n    if deck:\n      hand.append(deck.pop())\n    else:\n      break\n  return hand, deck\n\ndef create_deck():\n  suits = [\"♥\", \"♦\", \"♣\", \"♠\"]\n  ranks = [\"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"10\", \"J\", \"Q\", \"K\", \"A\"]\n  deck = []\n\n  for suit in suits:\n    for rank in ranks:\n      deck.append((suit, rank))\n\n  random.shuffle(deck)\n  return deck\n\ndeck = create_deck()\nwhile len(deck) > 0:\n  num_cards = int(input(\"How many cards do you want to draw? \"))\n  hand, deck = draw_card(deck, num_cards)\n  print(hand[0])\n\nprint(\"We are out of cards\")"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #4",
+            "id": 129497,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Her kartı tek tek yazdıralım.\n\n1. `while` döngüsünün üstünde, `card` adında bir parametre kabul eden yeni bir `show_card` fonksiyonu oluştur. Fonksiyonun yapacağı tek şey, kendisine geçirilen argümanı yazdırmak olsun.\n2. `while` döngüsünün içinde, kartı daha önce yazdırmak için kullanılan `print` ifadesini sil.\n3. Bunun yerine, `hand` içindeki her öğe için `show_card` fonksiyonunu çağır.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "import random\n\ndef draw_card(deck, num_cards):\n  hand = []\n  for _ in range(num_cards):\n    if deck:\n      hand.append(deck.pop())\n    else:\n      break\n  return hand, deck\n\ndef create_deck():\n  suits = [\"♥\", \"♦\", \"♣\", \"♠\"]\n  ranks = [\"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"10\", \"J\", \"Q\", \"K\", \"A\"]\n  deck = []\n\n  for suit in suits:\n    for rank in ranks:\n      deck.append((suit, rank))\n\n  random.shuffle(deck)\n  return deck\n\ndeck = create_deck()\nwhile len(deck) > 0:\n  num_cards = int(input(\"How many cards do you want to draw? \"))\n  hand, deck = draw_card(deck, num_cards)\n  print(hand[0])\n\nprint(\"We are out of cards\")",
+                  "solvedContent": "import random\n\ndef draw_card(deck, num_cards):\n  hand = []\n  for _ in range(num_cards):\n    if deck:\n      hand.append(deck.pop())\n    else:\n      break\n  return hand, deck\n\ndef create_deck():\n  suits = [\"♥\", \"♦\", \"♣\", \"♠\"]\n  ranks = [\"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"10\", \"J\", \"Q\", \"K\", \"A\"]\n  deck = []\n\n  for suit in suits:\n    for rank in ranks:\n      deck.append((suit, rank))\n\n  random.shuffle(deck)\n  return deck\n\ndef show_card(card):\n  print(card)\n\ndeck = create_deck()\nwhile len(deck) > 0:\n  num_cards = int(input(\"How many cards do you want to draw? \"))\n  hand, deck = draw_card(deck, num_cards)\n  for card in hand:\n    show_card(card)\n\nprint(\"We are out of cards\")"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #3",
+            "id": 129496,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Projenin son adımı olarak, yeni oluşturduğun `show_card` fonksiyonunu kartları güzel bir şekilde görüntüleyecek şekilde güncelliyoruz. Bir kartın ASCII gösterimini yazdırmasını istiyoruz.\n\n1. `show_card` fonksiyonunu güncelle:\n   - Kendisine geçirilen `card` parametresini yazdıran `print` fonksiyonunu sil.\n   - Bunun yerine aşağıdaki kodu kopyala veya kendi zevkine uyacak şekilde değiştir:\n   ```Python\n   space = \" \"\n   if len(card[1]) == 2:\n     space = \"\"\n   print (f\"\"\"\n   +-------+\n   |{card[1]}     {space}|\n   |       |\n   |   {card[0]}   |\n   |       |\n   |{space}     {card[1]}|\n   +-------+\n   \"\"\")\n   ```\n\nBu kod, kartın türünü ortada; değerini ise sol üstte ve sağ altta yazdırır. Ayrıca kartın tüm farklı değerlerde düzgün görünmesi için `10` dışındaki tüm değerler için bir ek boşluk ekler.\n\nKodla istediğin gibi oynamaktan ve onu kendi zevkine göre uyarlamaktan çekinme.\n\nSomut kart çıktısı için test bulunmuyor. Hazır olduğunda projeyi tamamlayabilirsin.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "import random\n\ndef draw_card(deck, num_cards):\n  hand = []\n  for _ in range(num_cards):\n    if deck:\n      hand.append(deck.pop())\n    else:\n      break\n  return hand, deck\n\ndef create_deck():\n  suits = [\"♥\", \"♦\", \"♣\", \"♠\"]\n  ranks = [\"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"10\", \"J\", \"Q\", \"K\", \"A\"]\n  deck = []\n\n  for suit in suits:\n    for rank in ranks:\n      deck.append((suit, rank))\n\n  random.shuffle(deck)\n  return deck\n\ndef show_card(card):\n  print(card)\n\ndeck = create_deck()\nwhile len(deck) > 0:\n  num_cards = int(input(\"How many cards do you want to draw? \"))\n  hand, deck = draw_card(deck, num_cards)\n  for card in hand:\n    show_card(card)\n\nprint(\"We are out of cards\")",
+                  "solvedContent": "import random\n\ndef draw_card(deck, num_cards):\n  hand = []\n  for _ in range(num_cards):\n    if deck:\n      hand.append(deck.pop())\n    else:\n      break\n  return hand, deck\n\ndef create_deck():\n  suits = [\"♥\", \"♦\", \"♣\", \"♠\"]\n  ranks = [\"2\", \"3\", \"4\", \"5\", \"6\", \"7\", \"8\", \"9\", \"10\", \"J\", \"Q\", \"K\", \"A\"]\n  deck = []\n\n  for suit in suits:\n    for rank in ranks:\n      deck.append((suit, rank))\n\n  random.shuffle(deck)\n  return deck\n\ndef show_card(card):\n  space = \" \"\n  if len(card[1]) == 2:\n    space = \"\"\n  print (f\"\"\"\n      +-------+\n      |{card[1]}     {space}|\n      |       |\n      |   {card[0]}   |\n      |       |\n      |{space}     {card[1]}|\n      +-------+\n      \"\"\")\n\ndeck = create_deck()\nwhile len(deck) > 0:\n  num_cards = int(input(\"How many cards do you want to draw? \"))\n  hand, deck = draw_card(deck, num_cards)\n  for card in hand:\n    show_card(card)\n\nprint(\"We are out of cards\")"
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,218 @@
+{
+  "tutorial": {
+    "id": 1948,
+    "version": 9,
+    "type": "guidedProjectOptional",
+    "isNew": false,
+    "codeLanguage": "javascript",
+    "title": "Elementi della lista dei desideri",
+    "descriptionContent": "Usa i cicli per aggiungere gli articoli della tua lista dei desideri al carrello e calcolare il prezzo totale",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": "tutorial-1948-icon-banner.svg",
+    "chapters": [
+      {
+        "id": 12568,
+        "title": "Programma della lista dei desideri",
+        "type": "practiceLevel3",
+        "lessons": [
+          {
+            "title": "Create Total Variable",
+            "id": 113705,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Usiamo le nostre conoscenze sui cicli for per aggiungere gli articoli della wishlist al carrello e calcolare il prezzo totale.\n\nAbbiamo già aggiunto un array `wishlist` che memorizza la wishlist di un utente, un array `prices` che memorizza i prezzi di quegli articoli, un array `quantity` che memorizza la quantità di ogni articolo della wishlist e un array `availableStock` che memorizza la disponibilità in magazzino di quegli articoli.  \n\nGli indici di ogni array corrispondono a un prodotto.  \n\nOra aggiungiamo un modo per tenere traccia del prezzo totale dei nostri articoli.\n\n1. Crea una variabile chiamata `total` e assegnale `0`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "const wishlist = [\"Red T-Shirt\", \"Blue Jeans\", \"Yellow Sweater\"];\r\nconst prices = [9.99, 14.99, 12.99];\r\nconst quantity = [1, 2, 1];\r\nlet availableStock = [100, 121, 53];",
+                  "solvedContent": "const wishlist = [\"Red T-Shirt\", \"Blue Jeans\", \"Yellow Sweater\"];\r\nconst prices = [9.99, 14.99, 12.99];\r\nconst quantity = [1, 2, 1];\r\nlet availableStock = [100, 121, 53];\r\nlet total = 0;"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "First for Loop",
+            "id": 113706,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Iniziamo a creare il nostro primo ciclo for per scorrere l'array `wishlist`.\n\n1. Scrivi un ciclo for con una variabile contatore `i` impostata su `0`.\n2. Componi la condizione in modo che esegua il suo blocco di codice finché `i` è minore della lunghezza di `wishlist`.\n3. Tra le parentesi, incrementa la variabile contatore di `1`.\n4. All'interno del corpo del ciclo for, visualizza la variabile contatore per verificare che il ciclo funzioni.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "const wishlist = [\"Red T-Shirt\", \"Blue Jeans\", \"Yellow Sweater\"];\r\nconst prices = [9.99, 14.99, 12.99];\r\nconst quantity = [1, 2, 1];\r\nlet availableStock = [100, 121, 53];\r\nlet total = 0;",
+                  "solvedContent": "const wishlist = [\"Red T-Shirt\", \"Blue Jeans\", \"Yellow Sweater\"];\r\nconst prices = [9.99, 14.99, 12.99];\r\nconst quantity = [1, 2, 1];\r\nlet availableStock = [100, 121, 53];\r\nlet total = 0;\r\nfor (let i = 0; i < wishlist.length; i++) {\r\n  console.log(i);\r\n}"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "1. The condition would be `i < wishlist.length`, hence we loop through each item of our wishlist no matter the size.\n2. It is important to increment the counter variable by 1, else the loop will run endlessly. \n3. You can log the counter variable to the console using `console.log(i)`."
+                }
+              ]
+            }
+          },
+          {
+            "title": "Adding to Shopping Cart",
+            "id": 113707,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Ora visualizziamo l'aggiunta degli articoli della nostra lista dei desideri al carrello. Vogliamo visualizzare qualcosa di simile a\n```\n1 Red T-shirt added to your shopping cart.\n```\n\n1. All'interno del ciclo for, sostituisci il contenuto di `console.log` costruendo una stringa che visualizzi qualcosa di simile a `<quantity> <wishlist item> added to your shopping cart.`  Guarda il suggerimento se vuoi vedere come si fa.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "const wishlist = [\"Red T-Shirt\", \"Blue Jeans\", \"Yellow Sweater\"];\r\nconst prices = [9.99, 14.99, 12.99];\r\nconst quantity = [1, 2, 1];\r\nlet availableStock = [100, 121, 53];\r\nlet total = 0;\r\nfor (let i = 0; i < wishlist.length; i++) {\r\n  console.log(i);\r\n}",
+                  "solvedContent": "const wishlist = [\"Red T-Shirt\", \"Blue Jeans\", \"Yellow Sweater\"];\r\nconst prices = [9.99, 14.99, 12.99];\r\nconst quantity = [1, 2, 1];\r\nlet availableStock = [100, 121, 53];\r\nlet total = 0;\r\nfor (let i = 0; i < wishlist.length; i++) {\r\n  console.log(quantity[i] + \" \" + wishlist[i] +\r\n  \" added to your shopping cart.\");\r\n}"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "Because the length of `quantity` and `wishlist` arrays are the same, we can loop through both and access all of the indices without any issues.\n```JS\nconsole.log(quantity[i] + \" \" + wishlist[i] + \" added to your shopping cart.\"\n```"
+                }
+              ]
+            }
+          },
+          {
+            "title": "Calculate the Total",
+            "id": 113708,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Calcoliamo il totale dei nostri articoli usando il ciclo for. Useremo l'assegnazione con addizione, così non dovremo continuare a creare ogni volta una nuova variabile `total`.\n\n1. All'interno del corpo del ciclo for e sotto `console.log()`, moltiplica l'elemento corrente dell'array `prices` per l'elemento corrente dell'array `quantity`. Usa l'assegnazione con addizione per aggiungere il risultato alla variabile `total`. Se vuoi, guarda il suggerimento per ricevere aiuto.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "const wishlist = [\"Red T-Shirt\", \"Blue Jeans\", \"Yellow Sweater\"];\r\nconst prices = [9.99, 14.99, 12.99];\r\nconst quantity = [1, 2, 1];\r\nlet availableStock = [100, 121, 53];\r\nlet total = 0;\r\nfor (let i = 0; i < wishlist.length; i++) {\r\n  console.log(quantity[i] + \" \" + wishlist[i] +\r\n  \" added to your shopping cart.\");\r\n}",
+                  "solvedContent": "const wishlist = [\"Red T-Shirt\", \"Blue Jeans\", \"Yellow Sweater\"];\r\nconst prices = [9.99, 14.99, 12.99];\r\nconst quantity = [1, 2, 1];\r\nlet availableStock = [100, 121, 53];\r\nlet total = 0;\r\nfor (let i = 0; i < wishlist.length; i++) {\r\n  console.log(quantity[i] + \" \" + wishlist[i] +\r\n  \" added to your shopping cart.\");\r\n  total += prices[i] * quantity[i];\r\n}"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "The addition assignment operator is `+=`"
+                }
+              ]
+            }
+          },
+          {
+            "title": "Display Total Price",
+            "id": 113719,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Visualizziamo il prezzo totale dopo aver sommato tutti i prezzi.\n\n1. Dopo il ciclo for, usa `display` per visualizzare il totale. Dovrebbe essere visualizzato come `Total Price: $<total>`. Guarda il suggerimento se vuoi vedere come si fa.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "const wishlist = [\"Red T-Shirt\", \"Blue Jeans\", \"Yellow Sweater\"];\r\nconst prices = [9.99, 14.99, 12.99];\r\nconst quantity = [1, 2, 1];\r\nlet availableStock = [100, 121, 53];\r\nlet total = 0;\r\nfor (let i = 0; i < wishlist.length; i++) {\r\n  console.log(quantity[i] + \" \" + wishlist[i] +\r\n  \" added to your shopping cart.\");\r\n  total += prices[i] * quantity[i];\r\n}",
+                  "solvedContent": "const wishlist = [\"Red T-Shirt\", \"Blue Jeans\", \"Yellow Sweater\"];\r\nconst prices = [9.99, 14.99, 12.99];\r\nconst quantity = [1, 2, 1];\r\nlet availableStock = [100, 121, 53];\r\nlet total = 0;\r\nfor (let i = 0; i < wishlist.length; i++) {\r\n  console.log(quantity[i] + \" \" + wishlist[i] +\r\n  \" added to your shopping cart.\");\r\n  total += prices[i] * quantity[i];\r\n}\r\nconsole.log(\"Total Price: $\" + total);"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "```JS\nconsole.log(\"Total Price: $\" + total);\n```"
+                }
+              ]
+            }
+          },
+          {
+            "title": "Second for Loop",
+            "id": 113720,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Ora iniziamo a scrivere il nostro secondo ciclo for per sottrarre la quantità degli articoli della nostra lista dei desideri dalla scorta disponibile.\n\n1. Scrivi un ciclo for con una variabile contatore `i` impostata su `0`.\n2. Costruisci la condizione in modo che esegua il suo blocco di codice finché `i` è minore della lunghezza dell'array `availableStock`.\n3. Tra le parentesi, incrementa la variabile contatore di `1`.\n4. All'interno del corpo del ciclo for, visualizza la variabile contatore per verificare che il ciclo funzioni correttamente.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "const wishlist = [\"Red T-Shirt\", \"Blue Jeans\", \"Yellow Sweater\"];\r\nconst prices = [9.99, 14.99, 12.99];\r\nconst quantity = [1, 2, 1];\r\nlet availableStock = [100, 121, 53];\r\nlet total = 0;\r\nfor (let i = 0; i < wishlist.length; i++) {\r\n  console.log(quantity[i] + \" \" + wishlist[i] +\r\n  \" added to your shopping cart.\");\r\n  total += prices[i] * quantity[i];\r\n}\r\nconsole.log(\"Total Price: $\" + total);",
+                  "solvedContent": "const wishlist = [\"Red T-Shirt\", \"Blue Jeans\", \"Yellow Sweater\"];\r\nconst prices = [9.99, 14.99, 12.99];\r\nconst quantity = [1, 2, 1];\r\nlet availableStock = [100, 121, 53];\r\nlet total = 0;\r\nfor (let i = 0; i < wishlist.length; i++) {\r\n  console.log(quantity[i] + \" \" + wishlist[i] +\r\n  \" added to your shopping cart.\");\r\n  total += prices[i] * quantity[i];\r\n}\r\nconsole.log(\"Total Price: $\" + total);\r\nfor (let i = 0; i < availableStock.length; i++) {\r\n  console.log(i);\r\n}"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "1. The condition would be `i < availableStock.length`, hence we loop through each item of our `availableStock` array no matter the size.\n2. It's important to increment the counter variable by 1, else the loop will run endlessly. \n3. You can log the counter variable to the console using `console.log(i)`."
+                }
+              ]
+            }
+          },
+          {
+            "title": "Update Available Stock",
+            "id": 113721,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Sottraiamo la quantità degli articoli nella nostra lista dei desideri dall'array `availableStock`.\n\n1. All'interno del corpo del secondo ciclo `for` e sopra il `console.log`, usa l'autoassegnazione per sottrarre l'elemento corrente dell'array `quantity` dall'elemento corrente dell'array `availableStock`. Se vuoi, guarda il suggerimento per vedere come si fa.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "const wishlist = [\"Red T-Shirt\", \"Blue Jeans\", \"Yellow Sweater\"];\r\nconst prices = [9.99, 14.99, 12.99];\r\nconst quantity = [1, 2, 1];\r\nlet availableStock = [100, 121, 53];\r\nlet total = 0;\r\nfor (let i = 0; i < wishlist.length; i++) {\r\n  console.log(quantity[i] + \" \" + wishlist[i] +\r\n  \" added to your shopping cart.\");\r\n  total += prices[i] * quantity[i];\r\n}\r\nconsole.log(\"Total Price: $\" + total);\r\nfor (let i = 0; i < availableStock.length; i++) {\r\n  console.log(i);\r\n}",
+                  "solvedContent": "const wishlist = [\"Red T-Shirt\", \"Blue Jeans\", \"Yellow Sweater\"];\r\nconst prices = [9.99, 14.99, 12.99];\r\nconst quantity = [1, 2, 1];\r\nlet availableStock = [100, 121, 53];\r\nlet total = 0;\r\nfor (let i = 0; i < wishlist.length; i++) {\r\n  console.log(quantity[i] + \" \" + wishlist[i] +\r\n  \" added to your shopping cart.\");\r\n  total += prices[i] * quantity[i];\r\n}\r\nconsole.log(\"Total Price: $\" + total);\r\nfor (let i = 0; i < availableStock.length; i++) {\r\n  availableStock[i] -= quantity[i];\r\n  console.log(i);\r\n}"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "Because the length of `quantity` and `availableStock` arrays are the same, we can loop through both and access all of the indices without any issues.\n```JS\navailableStock[i] -= quantity[i];\n```"
+                }
+              ]
+            }
+          },
+          {
+            "title": "Display Available Stock",
+            "id": 113722,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Ora visualizziamo nel nostro ciclo la disponibilità aggiornata di ciascun articolo.\n\n1. All'interno del secondo ciclo `for`, sostituisci il contenuto di `console.log` costruendo una stringa che visualizzi qualcosa come `There are <number> <item> left.` Dai un'occhiata al suggerimento se vuoi vedere come si fa.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.js",
+                  "codeLanguage": "javascript",
+                  "content": "const wishlist = [\"Red T-Shirt\", \"Blue Jeans\", \"Yellow Sweater\"];\r\nconst prices = [9.99, 14.99, 12.99];\r\nconst quantity = [1, 2, 1];\r\nlet availableStock = [100, 121, 53];\r\nlet total = 0;\r\nfor (let i = 0; i < wishlist.length; i++) {\r\n  console.log(quantity[i] + \" \" + wishlist[i] +\r\n  \" added to your shopping cart.\");\r\n  total += prices[i] * quantity[i];\r\n}\r\nconsole.log(\"Total Price: $\" + total);\r\nfor (let i = 0; i < availableStock.length; i++) {\r\n  availableStock[i] -= quantity[i];\r\n  console.log(i);\r\n}",
+                  "solvedContent": "const wishlist = [\"Red T-Shirt\", \"Blue Jeans\", \"Yellow Sweater\"];\r\nconst prices = [9.99, 14.99, 12.99];\r\nconst quantity = [1, 2, 1];\r\nlet availableStock = [100, 121, 53];\r\nlet total = 0;\r\nfor (let i = 0; i < wishlist.length; i++) {\r\n  console.log(quantity[i] + \" \" + wishlist[i] +\r\n  \" added to your shopping cart.\");\r\n  total += prices[i] * quantity[i];\r\n}\r\nconsole.log(\"Total Price: $\" + total);\r\nfor (let i = 0; i < availableStock.length; i++) {\r\n  availableStock[i] -= quantity[i];\r\n  console.log(\"There are \" + availableStock[i] + \" \" + wishlist[i] + \" left.\");\r\n}"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "Because the length of `wishlist` and `availableStock` arrays are the same, we can loop through both and access all of the indices without any issues.\n```JS\nconsole.log(\"There are \" + availableStock[i] + \" \" + wishlist[i] + \" left.\");\n```"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

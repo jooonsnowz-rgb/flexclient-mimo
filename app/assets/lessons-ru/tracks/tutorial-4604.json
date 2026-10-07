@@ -1,0 +1,178 @@
+{
+  "tutorial": {
+    "id": 4604,
+    "version": 1,
+    "type": "course",
+    "isNew": false,
+    "codeLanguage": "python",
+    "title": "Управление версиями пакетов",
+    "descriptionContent": "Контролируй версии зависимостей и обновляй пакеты.",
+    "shortDescriptionContent": "Изучающие Python, которые умеют устанавливать пакеты из requirements.txt.",
+    "showInTrack": true,
+    "iconBanner": null,
+    "chapters": [
+      {
+        "id": 17792,
+        "title": "Почему важны версии",
+        "type": "practiceLevel1",
+        "lessons": [
+          {
+            "title": "Same Project, Different Result",
+            "id": 151810,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Все, кто запускает проект с таблицей, используют <code>requirements.txt</code>, чтобы установить один и тот же набор зависимостей.</p><p>Однако пакет может измениться. Если ты (или кто-то ещё) вернёшься позже, установленный пакет мог измениться, что может вызвать проблемы.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Packages Change",
+            "id": 151811,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Пакеты со временем изменяются по мере работы разработчиков над ними. Новые версии могут содержать исправления и новые возможности.</p><p>Они также могут объявить устаревшее поведение или внести критические изменения.</p><code version=\"2\" codelang=\"text\" name=\"release_history.txt\" visible-if=\"always\"><content><text value=\"0.8.10: fixes\" /><text type=\"break\" /><text value=\"0.9.0: features and deprecations\" /></content></code></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Versions Affect Behavior",
+            "id": 151812,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Когда в нашем окружении используется версия <code>0.8.10</code> и мы протестировали именно эту версию, стоит указать ее в <code>requirements.txt</code>.</p><p>Укажи версию, добавив <code>==</code> и номер версии непосредственно рядом с названием пакета.</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"tabulate==0.8.10\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"8\" endIndex=\"10\" /><option startIndex=\"10\" endIndex=\"16\" /><option correct=\"false\"><content><text value=\"=\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Обязательно выбери <code>==</code>, а затем <code>0.8.10</code>.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Versions Affect Behavior - Copy",
+            "id": 151813,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Точная фиксация версии использует <code>==</code>, чтобы указать одну версию пакета.</p><p>Добавь недостающие символы, чтобы зафиксировать версию 0.8.10 для пакета <code>tabulate</code>.<br /></p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"tabulate==0.8.10\" /></content><interactions><interaction type=\"validatedInput\" isDefault=\"true\" startIndex=\"8\" endIndex=\"10\" /></interactions></code><p visible-if=\"wrong\">Обязательно выбери <code>==</code>.</p></body></html>"
+          },
+          {
+            "title": "Recreate the Environment",
+            "id": 151814,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Нам не обязательно указывать номер версии, но если мы это сделаем, <code>pip</code> будет следить за тем, чтобы при каждом запуске <code>pip install</code> устанавливалась правильная версия.</p><p>Это полезно, когда мы хотим запустить проект с нуля и избежать проблем с совместимостью.</p><code version=\"2\" codelang=\"bash\" name=\"script.sh\" visible-if=\"always\"><content><text value=\"pip install -r requirements.txt\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"0\" endIndex=\"3\" /><option startIndex=\"4\" endIndex=\"11\" /></options></interaction></interactions></code><p visible-if=\"wrong\">Обязательно выбери <code>pip</code>, а затем <code>install</code>.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Когда в <code>requirements.txt</code> закреплена версия, установка из этого файла запрашивает у pip именно этот релиз.</p><p>Это полезно, когда мы хотим запустить проект с нуля и избежать проблем с совместимостью.</p><p>Воссоздай среду из <code>requirements.txt</code>.</p><code version=\"2\" codelang=\"bash\" name=\"script.sh\" visible-if=\"always\"><content><text value=\"pip install -r requirements.txt\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"0\" endIndex=\"3\" /><option startIndex=\"4\" endIndex=\"11\" /><option startIndex=\"12\" endIndex=\"14\" /><option startIndex=\"15\" endIndex=\"31\" /><option correct=\"false\"><content><text value=\"tabulate\" /></content></option><option correct=\"false\"><content><text value=\"import\" /></content></option><option correct=\"false\"><content><text value=\"requirements.py\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Обязательно выбери <code>pip</code>, затем <code>install</code>, <code>-r</code>, и наконец <code>requirements.txt</code>.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Pin Another Package",
+            "id": 151817,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Зафиксируй <code>requests</code> на версии <code>2.32.3</code>, чтобы все участники команды устанавливали один и тот же релиз.</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"requests==2.23.3\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"0\" endIndex=\"8\" /><option startIndex=\"8\" endIndex=\"10\" /><option startIndex=\"10\" endIndex=\"16\" /></options></interaction></interactions></code><p visible-if=\"wrong\">Обязательно выбери <code>requests</code>, затем <code>==</code>, и наконец <code>2.23.3</code>.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Зафиксируй <code>requests</code> на версии <code>2.32.3</code>, чтобы все участники команды устанавливали один и тот же релиз.</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"requests==\" /><text value=\"2.32\" class=\"number\" /><text value=\".\" /><text value=\"3\" class=\"number\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"0\" endIndex=\"8\" /><option startIndex=\"8\" endIndex=\"10\" /><option startIndex=\"10\" endIndex=\"16\" /><option correct=\"false\"><content><text value=\"&gt;=\" /></content></option><option correct=\"false\"><content><text value=\"&lt;=\" /></content></option><option correct=\"false\"><content><text value=\"&lt;\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Обязательно выбери <code>requests</code>, затем <code>==</code>, и наконец <code>2.32.3</code>.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Recall Package Changes",
+            "id": 151815,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Какое изменение в пакете может привести к тому, что поведение старого проекта перестанет работать?</p><selection multiple=\"multiple\"><item value=\"1\" correct=\"true\">Несовместимое изменение в новом выпуске<br /></item><item value=\"2\" correct=\"false\">Повторная установка точно той же версии</item></selection><p visible-if=\"wrong\">Несовместимое изменение в новом выпуске<br />.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Проект вызывает функцию пакета с двумя аргументами. Новый релиз принимает только один. Что нужно проверить перед обновлением?</p><selection multiple=\"multiple\"><item value=\"1\" correct=\"true\">Нужно ли проекту изменить вызов для работы с новым релизом.</item><item value=\"2\" correct=\"false\">Только осталось ли имя пакета прежним; его вызовы всё равно должны работать.</item><item value=\"3\" correct=\"false\">Ничего, потому что новая версия всегда сохраняет существующие вызовы.</item></selection><p visible-if=\"wrong\">Нужно ли проекту изменить вызов для работы с новым релизом.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Identify the Version",
+            "id": 151816,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Какую именно версию tabulate установит pip из этого файла зависимостей?</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"tabulate==0.9.0\" /></content></code><selection multiple=\"multiple\"><item value=\"1\" correct=\"true\">0.9.0</item><item value=\"2\" correct=\"false\">0.8.10</item></selection><p visible-if=\"wrong\">Обязательно выбери 0.9.0.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Ты меняешь файл на <code>tabulate==0.8.10</code>. Также доступна версия <code>0.9.0</code>. Какую версию запросит установка из изменённого файла?</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"tabulate==0.9.0\" /></content></code><selection multiple=\"multiple\"><item value=\"1\" correct=\"true\"><code>0.8.10</code></item><item value=\"2\" correct=\"false\"><code>0.9.0</code>, потому что она новее.</item><item value=\"3\" correct=\"false\">Любую версию, потому что обе относятся к tabulate.</item></selection><p visible-if=\"wrong\">Обязательно выбери <code>0.8.10</code>.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Pin Another Package 2",
+            "id": 151818,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Используя <code>==</code>, зафиксируй <code>numpy</code> на версии <code>2.5.2</code>, чтобы ты, участники команды и AI-агенты устанавливали один и тот же релиз.</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"numpy==2.5.2\" /></content><interactions><interaction type=\"validatedInput\" isDefault=\"true\" startIndex=\"5\" endIndex=\"7\" /></interactions></code><p visible-if=\"wrong\">Обязательно выбери <code>==</code>.</p></body></html>"
+          }
+        ]
+      },
+      {
+        "id": 17793,
+        "title": "Диапазоны и преднамеренные обновления",
+        "type": "practiceLevel1",
+        "lessons": [
+          {
+            "title": "Allow Compatible Updates",
+            "id": 151819,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>При работе с <code>pip</code> точная фиксация сохраняет одну версию, но не позволяет автоматически устанавливать более новые исправления.</p><p>Диапазон версий может разрешать выбранные обновления, устанавливая ограничения. Давай рассмотрим более продвинутые способы указания допустимых версий.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Set a Lower Bound",
+            "id": 151821,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>С помощью <code>&gt;=</code> мы задаём нижнюю границу. Она допускает версии не ниже указанной.</p><p>Дополни оператор нижней границы в <code>requirements.txt</code>, чтобы разрешить версии 0.8 и новее.</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"tabulate&gt;=0.8\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"8\" endIndex=\"10\" /><option correct=\"false\"><content><text value=\"==\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Обязательно выбери <code>&gt;=</code>.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Set an Upper Bound",
+            "id": 151822,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>С помощью <code>&lt;</code> мы задаём верхнюю границу. Она исключает указанные версии и все более новые версии.</p><p>Дополни оператор верхней границы, чтобы исключить версии 1 и новее.</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"tabulate&lt;1.0\" /></content><interactions><interaction type=\"validatedInput\" isDefault=\"true\" startIndex=\"8\" endIndex=\"9\" /></interactions></code><p visible-if=\"wrong\">Обязательно выбери <code>&lt;</code>.</p></body></html>"
+          },
+          {
+            "title": "Read the Whole Range",
+            "id": 151823,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>С помощью запятой можно объединить правило с верхней и нижней границей, чтобы разрешить только версии в определённом диапазоне.</p><p>Дополни код, чтобы разрешить версии от 0.8 включительно до 1 исключительно.</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"tabulate&gt;=0.8,&lt;1\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"13\" endIndex=\"14\" /><option correct=\"false\"><content><text value=\"&amp;\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Обязательно выбери <code>,</code>.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Запятая объединяет два правила версий. Правило <code>&lt;</code> исключает свою границу и все более новые версии.</p><p>Для <code>tabulate</code> разреши версию <code>0.8</code> и новее, но исключи версию <code>1</code> и выше.</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"tabulate&gt;=0.8,&lt;1\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"13\" endIndex=\"14\" /><option startIndex=\"8\" endIndex=\"10\" /><option startIndex=\"0\" endIndex=\"8\" /><option correct=\"false\"><content><text value=\"&gt;\" /></content></option><option correct=\"false\"><content><text value=\"==\" /></content></option><option correct=\"false\"><content><text value=\"&amp;\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Обязательно выбери <code>tabulate</code>, затем <code>&gt;=</code>, и наконец <code>,</code>.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Compare a Pin and a Range",
+            "id": 151824,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>В <code>requirements.txt</code> мы можем указать точную версию или диапазон версий для каждого пакета.</p><p>Убедись, что <code>numpy</code> всегда использует версию 2.5.2, и укажи диапазон версий для <code>tabulate</code>.</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"numpy==2.5.2\" /><text type=\"break\" /><text value=\"tabulate&gt;=0.8,&lt;1\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"21\" endIndex=\"26\" /><option startIndex=\"26\" endIndex=\"29\" /><option startIndex=\"5\" endIndex=\"12\" /></options></interaction></interactions></code><p visible-if=\"wrong\">Обязательно выбери <code>==2.5.2</code>, затем <code>&gt;=0.8</code>, и наконец <code>,&lt;1</code>.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>В <code>requirements.txt</code> мы можем указать точную версию или диапазон версий для каждого пакета.</p><p>Закрепи <code>numpy</code> на версии <code>2.5.2</code>. Разреши <code>tabulate</code> от <code>0.8</code> включительно до версии ниже <code>1</code>.</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"numpy==2.5.2\" /><text type=\"break\" /><text value=\"tabulate&gt;=0.8,&lt;1\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"5\" endIndex=\"7\" /><option startIndex=\"21\" endIndex=\"23\" /><option startIndex=\"27\" endIndex=\"28\" /><option correct=\"false\"><content><text value=\"&gt;\" /></content></option><option correct=\"false\"><content><text value=\"&lt;=\" /></content></option><option correct=\"false\"><content><text value=\"=\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Обязательно выбери <code>==</code>, затем <code>&gt;=</code>, и наконец <code>&lt;</code>.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Choose for the Goal",
+            "id": 151825,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Дополни код, чтобы использовать оператор точной фиксации версии.</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"tabulate==0.8\" /></content><interactions><interaction type=\"validatedInput\" isDefault=\"true\" startIndex=\"8\" endIndex=\"10\" /></interactions></code><p visible-if=\"wrong\">Обязательно выбери <code>==</code>.</p></body></html>"
+          },
+          {
+            "title": "Change One Dependency",
+            "id": 151826,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Разреши только версии ниже 0.8 для указанного пакета.</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"tabulate&lt;0.8\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"8\" endIndex=\"9\" /><option correct=\"false\"><content><text value=\"&lt;=\" /></content></option><option correct=\"false\"><content><text value=\"&gt;\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Обязательно выбери <code>&lt;</code>.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Interpret a Range",
+            "id": 151827,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Какое утверждение соответствует этому ограниченному диапазону версий?</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"requests&gt;=1.2,&lt;2\" /></content></code><selection multiple=\"multiple\"><item value=\"1\" correct=\"true\">Установи версию 1.2 или новее, но ниже 2</item><item value=\"2\" correct=\"false\">Установи только версию 1.2</item></selection><p visible-if=\"wrong\">Установи версию 1.2 или новее, но ниже 2.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Ты сохраняешь показанный диапазон. Новая среда может выбрать версию <code>1.1</code>, <code>1.2</code> или <code>2</code>. Какая из них соответствует обоим правилам?</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"requests&gt;=1.2,&lt;2\" /></content></code><selection multiple=\"multiple\"><item value=\"1\" correct=\"true\"><code>1.2</code></item><item value=\"2\" correct=\"false\"><code>1.1</code></item><item value=\"3\" correct=\"false\"><code>2</code></item></selection><p visible-if=\"wrong\">Обязательно выбери <code>1.2</code>.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Write a Bounded Range",
+            "id": 151828,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Задай диапазон так, чтобы <code>requests</code> мог использовать версию 2.30 или новее, но ниже 3.<br /></p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"requests&gt;=2.30,&lt;3\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"8\" endIndex=\"17\" /><option correct=\"false\"><content><text value=\"&gt;2,&lt;=3\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Обязательно выбери <code>&gt;=2.30,&lt;3</code>.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Задай диапазон так, чтобы <code>requests</code> мог использовать версию 2.30 или новее, но ниже 3.<br/></p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"requests&gt;=2.30,&lt;3\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"8\" endIndex=\"10\" /><option startIndex=\"14\" endIndex=\"15\" /><option startIndex=\"15\" endIndex=\"16\" /><option correct=\"false\"><content><text value=\"&gt;\" /></content></option><option correct=\"false\"><content><text value=\"&lt;=\" /></content></option><option correct=\"false\"><content><text value=\"==\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Обязательно выбери <code>&gt;=</code>, затем <code>,</code>, и наконец <code>&lt;</code>.</p></body></html>",
+            "hardModeSelected": true
+          }
+        ]
+      }
+    ]
+  }
+}

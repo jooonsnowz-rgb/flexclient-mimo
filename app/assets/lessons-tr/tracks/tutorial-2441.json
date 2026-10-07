@@ -1,0 +1,208 @@
+{
+  "tutorial": {
+    "id": 2441,
+    "version": 4,
+    "type": "guidedProjectOptional",
+    "isNew": false,
+    "codeLanguage": "python",
+    "title": "Sunumlar Rotası",
+    "descriptionContent": "Her hafta ilginç bir şey paylaşacak öğrencileri rastgele seçen bir program tasarla",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": "tutorial-2441-icon-banner.svg",
+    "chapters": [
+      {
+        "id": 14023,
+        "title": "Sunumlar Rotası",
+        "type": "practiceLevel1",
+        "lessons": [
+          {
+            "title": "Import",
+            "id": 124375,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Topluluk Önünde Konuşma Akademisi, öğrencilerin topluluk önünde konuşma pratiği yapması için ilgilendikleri bir konu hakkında bilgi paylaşacakları bir nöbet çizelgesi hazırlıyor.\n\nProgramı oluşturmaya başlayalım! \n\nHer hafta bir öğrenci sunum yapmak üzere rastgele seçilecek. Rastgele seçimi gerçekleştirmek için `random` modülünü kullanabiliriz. Bu modülde, bir listeden rastgele bir değer seçen `choice` fonksiyonu bulunur. Akademi ayrıca daha fazla sunum yapacak öğrencinin kim olduğunu duyurmak istiyor. Çizelgede en sık görünen öğrenciyi kolayca bulmak için `statistics` modülünün `multimode` fonksiyonunu kullanabiliriz.\n\n1. `random` modülünü içe aktar.\n2. `statistics` modülünü içe aktar.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "",
+                  "solvedContent": "import random\r\nimport statistics"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "Remember you can import modules using the `import` keyword. The syntax is `import <module>`"
+                }
+              ]
+            }
+          },
+          {
+            "title": "Variables",
+            "id": 124376,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Öğrenci işleri bize öğrenci listesini az önce gönderdi. Artık rastgele seçimi gerçekleştirecek kodu yazmaya başlayabiliriz. Önce rotayı depolamak için bir değişken ve öğrenci listesini depolamak için başka bir değişken oluşturalım.\n\n1. Bir `rota` değişkeni oluştur ve içine boş bir liste kaydet.\n2. Şunları depolayan bir `students` değişkeni oluştur:\n```\n[\"Norm\", \"Gina\", \"Michael\", \"Jacob\", \"Rosa\", \"Raymond\", \"Terence\", \"Amy\", \"Charles\", \"Kevin\"]\n```",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "import random\r\nimport statistics",
+                  "solvedContent": "import random\r\nimport statistics\r\n\r\nrota = []\r\nstudents = [\"Norm\", \"Gina\", \"Michael\", \"Jacob\", \"Rosa\", \"Raymond\", \"Terence\", \"Amy\", \"Charles\", \"Kevin\"]"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Selecting Student for Rota",
+            "id": 124377,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Artık `students` ve `rota` değişkenlerine sahip olduğumuza göre öğrenciyi seçmek için bir döngü çalıştırabiliriz. Topluluk önünde konuşma programı 20 haftalık bir program olduğundan, 20 kez çalışan bir döngüye ihtiyacımız var.\n\n1. `i` yineleme değişkenini kullanarak 20 kez çalışan bir for döngüsü kodla.\n2. For döngüsünün içinde bir `selected` değişkeni oluştur. `random` modülünün `choice` fonksiyonunu parametresi olarak `students`'ı kullanarak çağır ve sonucunu `selected` değişkeninin değeri olarak ayarla.\n3. `selected`'ı `rota` değişkenine ekle.\n4. Aşağıdaki f-string'i yazdır:\n```\nf'For week {i+1}, {selected} has been selected to share a reflection.'\n```",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "import random\r\nimport statistics\r\n\r\nrota = []\r\nstudents = [\"Norm\", \"Gina\", \"Michael\", \"Jacob\", \"Rosa\", \"Raymond\", \"Terence\", \"Amy\", \"Charles\", \"Kevin\"]",
+                  "solvedContent": "import random\r\nimport statistics\r\n\r\nrota = []\r\nstudents = [\"Norm\", \"Gina\", \"Michael\", \"Jacob\", \"Rosa\", \"Raymond\", \"Terence\", \"Amy\", \"Charles\", \"Kevin\"]\r\n\r\nfor i in range(20):\r\n  selected = random.choice(students)\r\n  rota.append(selected)\r\n  print(f'For week {i+1}, {selected} has been selected to share a reflection.')"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "Remember that you can create a for-loop that runs a number of times using `range()`. The syntax is:\n\n`for <iteration_variable> in range(<number of times to loop>):`"
+                }
+              ]
+            }
+          },
+          {
+            "title": "Shares the most",
+            "id": 124378,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Çizelge hazır! En fazla sunumu kimin yapacağını öğrenelim.\n\n1. For döngüsünden sonra `most_frequent_presenter` değişkenini oluştur. `statistics` modülünün `multimode` fonksiyonunu `rota` parametresiyle çağır ve dönen değeri `most_frequent_presenter` değişkeninin değeri olarak ata.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "import random\r\nimport statistics\r\n\r\nrota = []\r\nstudents = [\"Norm\", \"Gina\", \"Michael\", \"Jacob\", \"Rosa\", \"Raymond\", \"Terence\", \"Amy\", \"Charles\", \"Kevin\"]\r\n\r\nfor i in range(20):\r\n  selected = random.choice(students)\r\n  rota.append(selected)\r\n  print(f'For week {i+1}, {selected} has been selected to share a reflection.')",
+                  "solvedContent": "import random\r\nimport statistics\r\n\r\nrota = []\r\nstudents = [\"Norm\", \"Gina\", \"Michael\", \"Jacob\", \"Rosa\", \"Raymond\", \"Terence\", \"Amy\", \"Charles\", \"Kevin\"]\r\n\r\nfor i in range(20):\r\n  selected = random.choice(students)\r\n  rota.append(selected)\r\n  print(f'For week {i+1}, {selected} has been selected to share a reflection.')\r\n\r\nmost_frequent_presenter = statistics.multimode(rota)"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "The `multimode` function selects the value that appears most frequently in a list. We use `multimode` instead of `mode` because it is possible that there is a tie and more than 1 value appear most frequently in the list."
+                }
+              ]
+            }
+          },
+          {
+            "title": "If more than 1 sharing the most",
+            "id": 124379,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Artık sunumları en sık kimin yapacağını belirlediğimize göre bunu duyuralım.\n\n1. `most_frequent_presenter` uzunluğunun 1'den büyük olup olmadığını kontrol eden bir if bloğu kodla.\n2. Yukarıdaki koşul sağlanıyorsa aşağıdaki f-string'i yazdır:\n```\nf\"The people we'll be hearing the most from are {most_frequent_presenter}.\"\n```",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "import random\r\nimport statistics\r\n\r\nrota = []\r\nstudents = [\"Norm\", \"Gina\", \"Michael\", \"Jacob\", \"Rosa\", \"Raymond\", \"Terence\", \"Amy\", \"Charles\", \"Kevin\"]\r\n\r\nfor i in range(20):\r\n  selected = random.choice(students)\r\n  rota.append(selected)\r\n  print(f'For week {i+1}, {selected} has been selected to share a reflection.')\r\n\r\nmost_frequent_presenter = statistics.multimode(rota)",
+                  "solvedContent": "import random\r\nimport statistics\r\n\r\nrota = []\r\nstudents = [\"Norm\", \"Gina\", \"Michael\", \"Jacob\", \"Rosa\", \"Raymond\", \"Terence\", \"Amy\", \"Charles\", \"Kevin\"]\r\n\r\nfor i in range(20):\r\n  selected = random.choice(students)\r\n  rota.append(selected)\r\n  print(f'For week {i+1}, {selected} has been selected to share a reflection.')\r\n\r\nmost_frequent_presenter = statistics.multimode(rota)\r\n\r\nif len(most_frequent_presenter) > 1:\r\n  print(f\"The people we'll be hearing the most from are {most_frequent_presenter}.\")"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "Remember that you can get the length of a list using `len()`. The syntax is `len(<list>)`"
+                }
+              ]
+            }
+          },
+          {
+            "title": "else",
+            "id": 124380,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Birden fazla kişinin en sık sunum yaptığı durum için yazdırma ifadesini hazırladık. Şimdi yalnızca 1 kişinin en sık sunum yaptığı durum için yazdırma ifadesini hazırlayalım. Çoğul biçimde konuşmaktan tekil biçime geçtiğimizde mesajın dil bilgisi etkilenecek. Mesajın dil bilgisi açısından doğru olduğundan emin olmak için yazdırma ifadesini biraz değiştirelim.\n\n1. `if` bloğundan sonra bir `else` bloğu kodla.\n2. `else` bloğunda aşağıdaki f-string'i yazdır:\n```\nf\"The person we'll be hearing the most from is {most_frequent_presenter[0]}.\"\n```",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "import random\r\nimport statistics\r\n\r\nrota = []\r\nstudents = [\"Norm\", \"Gina\", \"Michael\", \"Jacob\", \"Rosa\", \"Raymond\", \"Terence\", \"Amy\", \"Charles\", \"Kevin\"]\r\n\r\nfor i in range(20):\r\n  selected = random.choice(students)\r\n  rota.append(selected)\r\n  print(f'For week {i+1}, {selected} has been selected to share a reflection.')\r\n\r\nmost_frequent_presenter = statistics.multimode(rota)\r\n\r\nif len(most_frequent_presenter) > 1:\r\n  print(f\"The people we'll be hearing the most from are {most_frequent_presenter}.\")",
+                  "solvedContent": "import random\r\nimport statistics\r\n\r\nrota = []\r\nstudents = [\"Norm\", \"Gina\", \"Michael\", \"Jacob\", \"Rosa\", \"Raymond\", \"Terence\", \"Amy\", \"Charles\", \"Kevin\"]\r\n\r\nfor i in range(20):\r\n  selected = random.choice(students)\r\n  rota.append(selected)\r\n  print(f'For week {i+1}, {selected} has been selected to share a reflection.')\r\n\r\nmost_frequent_presenter = statistics.multimode(rota)\r\n\r\nif len(most_frequent_presenter) > 1:\r\n  print(f\"The people we'll be hearing the most from are {most_frequent_presenter}.\")\r\nelse:\r\n  print(f\"The person we'll be hearing the most from is {most_frequent_presenter[0]}.\")"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "We use `{most_frequent_presenter[0]}` in the f-string because in the else-block, it would mean that `most_frequent_presenter` only contains 1 value. So instead of printing the list, we print just the value."
+                }
+              ]
+            }
+          },
+          {
+            "title": "Import from",
+            "id": 124381,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Program teknik olarak tamamlandı ve iyi çalışıyor, ancak kodumuzu biraz daha iyileştirelim.\n\nHem `random` hem de `statistics` modüllerinden yalnızca 1 fonksiyon kullandığımızı fark ettik. Bu nedenle tüm modülü içe aktarmak yerine yalnızca bu fonksiyonu içe aktarabiliriz. Böylece programımız daha az bellek kullanır.\n\n1. `random` modülünü içe aktarmak yerine, `random` modülünden `choice` fonksiyonunu içe aktaracak şekilde kodu değiştir.\n2. `statistics` modülünü içe aktarmak yerine, `statistics` modülünden `multimode` fonksiyonunu içe aktaracak şekilde kodu değiştir.\n3. `choice()` çağrısından `random.` ifadesini kaldır.\n4. `multimode()` çağrısından `statistics.` ifadesini kaldır.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "import random\r\nimport statistics\r\n\r\nrota = []\r\nstudents = [\"Norm\", \"Gina\", \"Michael\", \"Jacob\", \"Rosa\", \"Raymond\", \"Terence\", \"Amy\", \"Charles\", \"Kevin\"]\r\n\r\nfor i in range(20):\r\n  selected = random.choice(students)\r\n  rota.append(selected)\r\n  print(f'For week {i+1}, {selected} has been selected to share a reflection.')\r\n\r\nmost_frequent_presenter = statistics.multimode(rota)\r\n\r\nif len(most_frequent_presenter) > 1:\r\n  print(f\"The people we'll be hearing the most from are {most_frequent_presenter}.\")\r\nelse:\r\n  print(f\"The person we'll be hearing the most from is {most_frequent_presenter[0]}.\")",
+                  "solvedContent": "from random import choice\r\nfrom statistics import multimode\r\n\r\nrota = []\r\nstudents = [\"Norm\", \"Gina\", \"Michael\", \"Jacob\", \"Rosa\", \"Raymond\", \"Terence\", \"Amy\", \"Charles\", \"Kevin\"]\r\n\r\nfor i in range(20):\r\n  selected = choice(students)\r\n  rota.append(selected)\r\n  print(f'For week {i+1}, {selected} has been selected to share a reflection.')\r\n\r\nmost_frequent_presenter = multimode(rota)\r\n\r\nif len(most_frequent_presenter) > 1:\r\n  print(f\"The people we'll be hearing the most from are {most_frequent_presenter}.\")\r\nelse:\r\n  print(f\"The person we'll be hearing the most from is {most_frequent_presenter[0]}.\")"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Completed",
+            "id": 124382,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Çok daha iyi! Bu Presentations Rota programını tamamladık.\n\nBu derste herhangi bir test çalıştırmıyoruz, bu yüzden kodu keşfetmekten ve kurcalamaktan çekinme. Belki en az kimin paylaştığını kontrol eden bir kod yazmayı deneyebilir veya içe aktarılan modüllerdeki diğer fonksiyonları kullanmayı deneyebilirsin.\n\nİyi eğlenceler!",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "from random import choice\r\nfrom statistics import multimode\r\n\r\nrota = []\r\nstudents = [\"Norm\", \"Gina\", \"Michael\", \"Jacob\", \"Rosa\", \"Raymond\", \"Terence\", \"Amy\", \"Charles\", \"Kevin\"]\r\n\r\nfor i in range(20):\r\n  selected = choice(students)\r\n  rota.append(selected)\r\n  print(f'For week {i+1}, {selected} has been selected to share a reflection.')\r\n\r\nmost_frequent_presenter = multimode(rota)\r\n\r\nif len(most_frequent_presenter) > 1:\r\n  print(f\"The people we'll be hearing the most from are {most_frequent_presenter}.\")\r\nelse:\r\n  print(f\"The person we'll be hearing the most from is {most_frequent_presenter[0]}.\")",
+                  "solvedContent": null
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

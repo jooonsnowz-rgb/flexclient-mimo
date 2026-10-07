@@ -1,0 +1,178 @@
+{
+  "tutorial": {
+    "id": 4604,
+    "version": 1,
+    "type": "course",
+    "isNew": false,
+    "codeLanguage": "python",
+    "title": "Mengelola Versi Package",
+    "descriptionContent": "Mengontrol versi dependency dan memperbarui package.",
+    "shortDescriptionContent": "Pelajar Python yang bisa menginstal paket dari requirements.txt.",
+    "showInTrack": true,
+    "iconBanner": null,
+    "chapters": [
+      {
+        "id": 17792,
+        "title": "Mengapa Versi Penting",
+        "type": "practiceLevel1",
+        "lessons": [
+          {
+            "title": "Same Project, Different Result",
+            "id": 151810,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Semua orang yang menjalankan project tabel menggunakan <code>requirements.txt</code> untuk menginstal set dependensi yang sama.</p><p>Namun, paketnya bisa berubah. Jika kamu (atau orang lain) kembali lagi nanti, paket yang terpasang mungkin sudah berubah, sehingga dapat menimbulkan masalah.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Packages Change",
+            "id": 151811,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Package berubah seiring waktu saat developer mengerjakannya. Rilis baru dapat mencakup perbaikan dan fitur.</p><p>Mereka juga dapat menghentikan dukungan untuk perilaku lama atau memperkenalkan perubahan yang dapat menyebabkan kerusakan.</p><code version=\"2\" codelang=\"text\" name=\"release_history.txt\" visible-if=\"always\"><content><text value=\"0.8.10: fixes\" /><text type=\"break\" /><text value=\"0.9.0: features and deprecations\" /></content></code></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Versions Affect Behavior",
+            "id": 151812,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Saat environment kita menggunakan versi <code>0.8.10</code>, dan kita telah menguji versi spesifik ini. Sebaiknya tentukan versi tersebut di <code>requirements.txt</code>.</p><p>Tentukan versinya dengan menambahkan <code>==</code> dan nomor versi tepat setelah nama package.</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"tabulate==0.8.10\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"8\" endIndex=\"10\" /><option startIndex=\"10\" endIndex=\"16\" /><option correct=\"false\"><content><text value=\"=\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Pastikan kamu memilih <code>==</code>, diikuti oleh <code>0.8.10</code>.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Versions Affect Behavior - Copy",
+            "id": 151813,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Pin yang tepat menggunakan <code>==</code> untuk mewajibkan satu versi paket.</p><p>Tambahkan karakter yang hilang untuk menetapkan versi 0.8.10 pada package <code>tabulate</code>.<br /></p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"tabulate==0.8.10\" /></content><interactions><interaction type=\"validatedInput\" isDefault=\"true\" startIndex=\"8\" endIndex=\"10\" /></interactions></code><p visible-if=\"wrong\">Pastikan kamu mengetik <code>==</code>.</p></body></html>"
+          },
+          {
+            "title": "Recreate the Environment",
+            "id": 151814,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Kita tidak harus menentukan nomor versi, tetapi jika kita menentukannya, <code>pip</code> akan memastikan bahwa setiap kali kita menjalankan <code>pip install</code>, versi yang benar akan diinstal.</p><p>Ini berguna kapan pun kita ingin menjalankan project dari awal dan menghindari masalah kompatibilitas.</p><code version=\"2\" codelang=\"bash\" name=\"script.sh\" visible-if=\"always\"><content><text value=\"pip install -r requirements.txt\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"0\" endIndex=\"3\" /><option startIndex=\"4\" endIndex=\"11\" /></options></interaction></interactions></code><p visible-if=\"wrong\">Pastikan kamu memilih <code>pip</code>, diikuti oleh <code>install</code>.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Saat <code>requirements.txt</code> menyematkan versi, instalasi dari file itu meminta pip memakai rilis yang persis sama.</p><p>Ini berguna kapan pun kita ingin menjalankan project dari awal dan menghindari masalah kompatibilitas.</p><p>Buat ulang environment dari <code>requirements.txt</code>.</p><code version=\"2\" codelang=\"bash\" name=\"script.sh\" visible-if=\"always\"><content><text value=\"pip install -r requirements.txt\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"0\" endIndex=\"3\" /><option startIndex=\"4\" endIndex=\"11\" /><option startIndex=\"12\" endIndex=\"14\" /><option startIndex=\"15\" endIndex=\"31\" /><option correct=\"false\"><content><text value=\"tabulate\" /></content></option><option correct=\"false\"><content><text value=\"import\" /></content></option><option correct=\"false\"><content><text value=\"requirements.py\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Pastikan kamu memilih <code>pip</code>, diikuti oleh <code>install</code>, <code>-r</code>, dan terakhir <code>requirements.txt</code>.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Pin Another Package",
+            "id": 151817,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Sematkan <code>requests</code> ke versi tepat <code>2.32.3</code> agar rekan satu tim menginstal rilis yang sama.</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"requests==2.23.3\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"0\" endIndex=\"8\" /><option startIndex=\"8\" endIndex=\"10\" /><option startIndex=\"10\" endIndex=\"16\" /></options></interaction></interactions></code><p visible-if=\"wrong\">Pastikan kamu memilih <code>requests</code>, diikuti oleh <code>==</code>, dan terakhir <code>2.23.3</code>.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Sematkan <code>requests</code> ke versi tepat <code>2.32.3</code> agar rekan satu tim menginstal rilis yang sama.</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"requests==\" /><text value=\"2.32\" class=\"number\" /><text value=\".\" /><text value=\"3\" class=\"number\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"0\" endIndex=\"8\" /><option startIndex=\"8\" endIndex=\"10\" /><option startIndex=\"10\" endIndex=\"16\" /><option correct=\"false\"><content><text value=\"&gt;=\" /></content></option><option correct=\"false\"><content><text value=\"&lt;=\" /></content></option><option correct=\"false\"><content><text value=\"&lt;\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Pastikan kamu memilih <code>requests</code>, diikuti oleh <code>==</code>, dan terakhir <code>2.32.3</code>.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Recall Package Changes",
+            "id": 151815,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Perubahan package mana yang dapat menyebabkan perilaku proyek lama berhenti bekerja?</p><selection multiple=\"multiple\"><item value=\"1\" correct=\"true\">Perubahan yang merusak kompatibilitas pada rilis baru<br /></item><item value=\"2\" correct=\"false\">Menginstal ulang rilis yang sama persis</item></selection><p visible-if=\"wrong\">Perubahan yang merusak kompatibilitas pada rilis baru<br />.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Proyekmu memanggil fungsi package dengan dua input. Rilis baru hanya menerima satu. Apa yang harus diperiksa sebelum memperbarui?</p><selection multiple=\"multiple\"><item value=\"1\" correct=\"true\">Apakah proyek perlu mengubah pemanggilannya agar berfungsi dengan rilis baru.</item><item value=\"2\" correct=\"false\">Hanya apakah nama package tetap sama; pemanggilannya pasti masih berfungsi.</item><item value=\"3\" correct=\"false\">Tidak ada, karena versi lebih baru selalu mempertahankan pemanggilan yang ada.</item></selection><p visible-if=\"wrong\">Apakah proyek perlu mengubah pemanggilannya agar berfungsi dengan rilis baru.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Identify the Version",
+            "id": 151816,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Versi tabulate yang persis mana yang akan diinstal pip dari file requirements ini?</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"tabulate==0.9.0\" /></content></code><selection multiple=\"multiple\"><item value=\"1\" correct=\"true\">0.9.0</item><item value=\"2\" correct=\"false\">0.8.10</item></selection><p visible-if=\"wrong\">Pastikan kamu memilih 0.9.0.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Kamu mengubah file menjadi <code>tabulate==0.8.10</code>. Versi <code>0.9.0</code> juga tersedia. Versi mana yang diminta saat menginstal dari file yang diubah?</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"tabulate==0.9.0\" /></content></code><selection multiple=\"multiple\"><item value=\"1\" correct=\"true\"><code>0.8.10</code></item><item value=\"2\" correct=\"false\"><code>0.9.0</code>, karena lebih baru.</item><item value=\"3\" correct=\"false\">Versi mana saja, karena keduanya termasuk tabulate.</item></selection><p visible-if=\"wrong\">Pastikan kamu memilih <code>0.8.10</code>.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Pin Another Package 2",
+            "id": 151818,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Menggunakan <code>==</code>, pin <code>numpy</code> ke versi tepat <code>2.5.2</code> agar rekan satu tim, agen AI, dan dirimu di masa mendatang menginstal rilis yang sama.</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"numpy==2.5.2\" /></content><interactions><interaction type=\"validatedInput\" isDefault=\"true\" startIndex=\"5\" endIndex=\"7\" /></interactions></code><p visible-if=\"wrong\">Pastikan kamu mengetik <code>==</code>.</p></body></html>"
+          }
+        ]
+      },
+      {
+        "id": 17793,
+        "title": "Rentang dan Pembaruan yang Disengaja",
+        "type": "practiceLevel1",
+        "lessons": [
+          {
+            "title": "Allow Compatible Updates",
+            "id": 151819,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Saat menggunakan <code>pip</code>, penetapan versi yang tepat mempertahankan satu rilis, tetapi tidak memungkinkan perbaikan yang lebih baru terinstal secara otomatis.</p><p>Rentang versi dapat mengizinkan pembaruan tertentu sekaligus menetapkan batasan. Mari pelajari lebih lanjut cara-cara lanjutan untuk menetapkan versi yang diterima.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Set a Lower Bound",
+            "id": 151821,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Dengan <code>&gt;=</code>, kita menetapkan batas bawah. Ini memungkinkan versi yang lebih tinggi dari versi yang ditentukan.</p><p>Lengkapi operator batas bawah di <code>requirements.txt</code> agar mengizinkan versi 0.8 atau yang lebih baru.</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"tabulate&gt;=0.8\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"8\" endIndex=\"10\" /><option correct=\"false\"><content><text value=\"==\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Pastikan kamu memilih <code>&gt;=</code>.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Set an Upper Bound",
+            "id": 151822,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Dengan <code>&lt;</code>, kita menetapkan batas atas. Batas ini mengecualikan versi yang ditentukan dan versi apa pun yang lebih baru.</p><p>Lengkapi operator batas atas untuk mengecualikan versi 1 atau yang lebih baru.</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"tabulate&lt;1.0\" /></content><interactions><interaction type=\"validatedInput\" isDefault=\"true\" startIndex=\"8\" endIndex=\"9\" /></interactions></code><p visible-if=\"wrong\">Pastikan kamu mengetik <code>&lt;</code>.</p></body></html>"
+          },
+          {
+            "title": "Read the Whole Range",
+            "id": 151823,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Dengan koma, kita bisa menggabungkan aturan batas atas dan batas bawah untuk hanya mengizinkan versi dalam rentang tertentu.</p><p>Lengkapi kode agar mengizinkan versi mulai dari 0.8 hingga, tetapi tidak termasuk, 1.</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"tabulate&gt;=0.8,&lt;1\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"13\" endIndex=\"14\" /><option correct=\"false\"><content><text value=\"&amp;\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Pastikan kamu memilih <code>,</code>.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Koma menggabungkan dua aturan versi. Aturan <code>&lt;</code> mengecualikan batasnya dan semua versi yang lebih baru.</p><p>Untuk <code>tabulate</code>, izinkan versi <code>0.8</code> dan yang lebih baru, tetapi kecualikan versi <code>1</code> ke atas.</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"tabulate&gt;=0.8,&lt;1\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"13\" endIndex=\"14\" /><option startIndex=\"8\" endIndex=\"10\" /><option startIndex=\"0\" endIndex=\"8\" /><option correct=\"false\"><content><text value=\"&gt;\" /></content></option><option correct=\"false\"><content><text value=\"==\" /></content></option><option correct=\"false\"><content><text value=\"&amp;\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Pastikan kamu memilih <code>tabulate</code>, diikuti oleh <code>&gt;=</code>, dan terakhir <code>,</code>.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Compare a Pin and a Range",
+            "id": 151824,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Di <code>requirements.txt</code>, kita dapat menentukan versi yang tepat atau rentang versi untuk setiap paket.</p><p>Pastikan <code>numpy</code> selalu menggunakan versi 2.5.2, dan tentukan rentang untuk <code>tabulate</code>.</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"numpy==2.5.2\" /><text type=\"break\" /><text value=\"tabulate&gt;=0.8,&lt;1\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"21\" endIndex=\"26\" /><option startIndex=\"26\" endIndex=\"29\" /><option startIndex=\"5\" endIndex=\"12\" /></options></interaction></interactions></code><p visible-if=\"wrong\">Pastikan kamu memilih <code>==2.5.2</code>, diikuti oleh <code>&gt;=0.8</code>, dan terakhir <code>,&lt;1</code>.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Di <code>requirements.txt</code>, kita dapat menentukan versi yang tepat atau rentang versi untuk setiap paket.</p><p>Sematkan <code>numpy</code> ke <code>2.5.2</code>. Izinkan <code>tabulate</code> mulai <code>0.8</code> secara inklusif hingga di bawah <code>1</code>.</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"numpy==2.5.2\" /><text type=\"break\" /><text value=\"tabulate&gt;=0.8,&lt;1\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"5\" endIndex=\"7\" /><option startIndex=\"21\" endIndex=\"23\" /><option startIndex=\"27\" endIndex=\"28\" /><option correct=\"false\"><content><text value=\"&gt;\" /></content></option><option correct=\"false\"><content><text value=\"&lt;=\" /></content></option><option correct=\"false\"><content><text value=\"=\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Pastikan kamu memilih <code>==</code>, diikuti oleh <code>&gt;=</code>, dan terakhir <code>&lt;</code>.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Choose for the Goal",
+            "id": 151825,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Lengkapi kode untuk menggunakan operator exact-pin.</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"tabulate==0.8\" /></content><interactions><interaction type=\"validatedInput\" isDefault=\"true\" startIndex=\"8\" endIndex=\"10\" /></interactions></code><p visible-if=\"wrong\">Pastikan kamu mengetik <code>==</code>.</p></body></html>"
+          },
+          {
+            "title": "Change One Dependency",
+            "id": 151826,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Izinkan hanya versi di bawah 0.8 untuk package yang diberikan.</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"tabulate&lt;0.8\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"8\" endIndex=\"9\" /><option correct=\"false\"><content><text value=\"&lt;=\" /></content></option><option correct=\"false\"><content><text value=\"&gt;\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Pastikan kamu memilih <code>&lt;</code>.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Interpret a Range",
+            "id": 151827,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Pernyataan mana yang cocok dengan rentang versi terbatas ini?</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"requests&gt;=1.2,&lt;2\" /></content></code><selection multiple=\"multiple\"><item value=\"1\" correct=\"true\">Instal versi 1.2 atau yang lebih baru, tetapi kurang dari 2</item><item value=\"2\" correct=\"false\">Instal hanya versi 1.2</item></selection><p visible-if=\"wrong\">Instal versi 1.2 atau yang lebih baru, tetapi kurang dari 2.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Kamu mempertahankan rentang tersebut. Environment baru dapat memilih <code>1.1</code>, <code>1.2</code>, atau <code>2</code>. Mana yang memenuhi kedua aturan?</p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"requests&gt;=1.2,&lt;2\" /></content></code><selection multiple=\"multiple\"><item value=\"1\" correct=\"true\"><code>1.2</code></item><item value=\"2\" correct=\"false\"><code>1.1</code></item><item value=\"3\" correct=\"false\"><code>2</code></item></selection><p visible-if=\"wrong\">Pastikan kamu memilih <code>1.2</code>.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Write a Bounded Range",
+            "id": 151828,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Atur rentangnya agar <code>requests</code> dapat menggunakan versi 2.30 atau yang lebih baru, tetapi tetap di bawah 3.<br /></p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"requests&gt;=2.30,&lt;3\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"8\" endIndex=\"17\" /><option correct=\"false\"><content><text value=\"&gt;2,&lt;=3\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Pastikan kamu memilih <code>&gt;=2.30,&lt;3</code>.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Atur rentangnya agar <code>requests</code> dapat menggunakan versi 2.30 atau yang lebih baru, tetapi tetap di bawah 3.<br/></p><code version=\"2\" codelang=\"text\" name=\"requirements.txt\" visible-if=\"always\"><content><text value=\"requests&gt;=2.30,&lt;3\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"8\" endIndex=\"10\" /><option startIndex=\"14\" endIndex=\"15\" /><option startIndex=\"15\" endIndex=\"16\" /><option correct=\"false\"><content><text value=\"&gt;\" /></content></option><option correct=\"false\"><content><text value=\"&lt;=\" /></content></option><option correct=\"false\"><content><text value=\"==\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Pastikan kamu memilih <code>&gt;=</code>, diikuti oleh <code>,</code>, dan terakhir <code>&lt;</code>.</p></body></html>",
+            "hardModeSelected": true
+          }
+        ]
+      }
+    ]
+  }
+}

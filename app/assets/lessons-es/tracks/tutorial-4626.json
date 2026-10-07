@@ -1,0 +1,174 @@
+{
+  "tutorial": {
+    "id": 4626,
+    "version": 1,
+    "type": "course",
+    "isNew": false,
+    "codeLanguage": "python",
+    "title": "Parámetros de consulta",
+    "descriptionContent": "Personaliza las solicitudes GET públicas con parámetros de consulta.",
+    "shortDescriptionContent": "Estudiantes de Python que pueden enviar solicitudes GET básicas",
+    "showInTrack": true,
+    "iconBanner": null,
+    "chapters": [
+      {
+        "id": 17841,
+        "title": "Cómo entender los parámetros de consulta",
+        "type": "practiceLevel1",
+        "lessons": [
+          {
+            "title": "Customize a collection",
+            "id": 152139,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Las API públicas suelen devolver colecciones grandes, mientras que una aplicación puede necesitar solo los elementos que coinciden con una única opción.</p><p>Los parámetros de consulta permiten que una solicitud describa esa elección. Aprenderás a añadirlos a las URL y a las solicitudes de Python.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"import\" class=\"keyword\" /><text value=\" requests\" /><text type=\"break\" /><text type=\"break\" /><text value=\"url = \" /><text value=\"&quot;https://mimo.org/courses&quot;\" class=\"string\" /><text type=\"break\" /><text value=\"response = requests.get(url)\" /><text type=\"break\" /><text type=\"break\" /><text value=\"data = response.json()\" /><text type=\"break\" /><text value=\"print(data)\" /></content><output><content><text value=\"[\" /><text type=\"break\" /><text value=\"  {&quot;id&quot;: 1, &quot;course&quot;: &quot;Python&quot;},\" /><text type=\"break\" /><text value=\"  {&quot;id&quot;: 2, &quot;course&quot;: &quot;JavaScript&quot;},\" /><text type=\"break\" /><text value=\"  {&quot;id&quot;: 3, &quot;course&quot;: &quot;HTML&quot;},\" /><text type=\"break\" /><text value=\"  ...\" /><text type=\"break\" /><text value=\"]\" /></content></output></code></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Start a query string",
+            "id": 152140,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Un signo de interrogación inicia una cadena de consulta después del endpoint. A continuación viene el nombre del parámetro.</p><p>Esta API usa <code>id</code> para identificar cursos. Añade el signo de interrogación y el nombre del parámetro.</p><code version=\"2\" codelang=\"python\" name=\"post_url.py\" visible-if=\"always\"><content><text value=\"url = \" /><text value=\"&quot;https://mimo.org/courses?id&quot;\" class=\"string\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"31\" endIndex=\"32\" /><option correct=\"false\"><content><text value=\"/\" /></content></option><option startIndex=\"32\" endIndex=\"34\" /></options></interaction></interactions></code><p visible-if=\"wrong\">Asegúrese de elegir <code>?</code> seguido de <code>id</code>.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Add a parameter value",
+            "id": 152141,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Un signo igual conecta el nombre del parámetro con su valor.</p><p>Añade el valor <code>1</code> para solicitar el curso con el id <code>1</code>.</p><code version=\"2\" codelang=\"python\" name=\"post_url.py\" visible-if=\"always\"><content><text value=\"import\" class=\"keyword\" /><text value=\" requests\" /><text type=\"break\" /><text type=\"break\" /><text value=\"url = \" /><text value=\"&quot;https://mimo.org/courses?id=1&quot;\" class=\"string\" /><text type=\"break\" /><text value=\"response = requests.get(url)\" /><text type=\"break\" /><text type=\"break\" /><text value=\"data = response.json()\" /><text type=\"break\" /><text value=\"print(data)\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"51\" endIndex=\"52\" /><option startIndex=\"52\" endIndex=\"53\" /><option correct=\"false\"><content><text value=\"?1\" /></content></option></options></interaction></interactions><output><content><text value=\"{&quot;id&quot;: 1, &quot;course&quot;: &quot;Python&quot;}\" /></content></output></code><p visible-if=\"wrong\">Asegúrese de elegir <code>=</code> seguido de <code>1</code>.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Un signo igual conecta el nombre del parámetro con su valor.</p><p>Crea la cadena de consulta para solicitar el curso cuyo <code>id</code> es <code>1</code>.</p><code version=\"2\" codelang=\"python\" name=\"post_url.py\" visible-if=\"always\"><content><text value=\"import\" class=\"keyword\" /><text value=\" requests\" /><text type=\"break\" /><text type=\"break\" /><text value=\"url = \" /><text value=\"&quot;https://mimo.org/courses?id=1&quot;\" class=\"string\" /><text type=\"break\" /><text value=\"response = requests.get(url)\" /><text type=\"break\" /><text type=\"break\" /><text value=\"data = response.json()\" /><text type=\"break\" /><text value=\"print(data)\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"48\" endIndex=\"49\" /><option startIndex=\"49\" endIndex=\"51\" /><option startIndex=\"51\" endIndex=\"52\" /><option startIndex=\"52\" endIndex=\"53\" /><option correct=\"false\"><content><text value=\"/\" /></content></option><option correct=\"false\"><content><text value=\"?1\" /></content></option><option correct=\"false\"><content><text value=\"name\" /></content></option></options></interaction></interactions><output><content><text value=\"{&quot;id&quot;: 1, &quot;course&quot;: &quot;Python&quot;}\" /></content></output></code><p visible-if=\"wrong\">Asegúrese de elegir <code>?</code> seguido de <code>id</code>, <code>=</code> y finalmente <code>1</code>.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Use different value types",
+            "id": 152142,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Los valores de los parámetros pueden identificar elementos con números, como <code>1</code>, o coincidir con texto, como el nombre de un curso.</p><p>Completa el valor de cadena que solicita el curso <code>Python</code>.</p><code version=\"2\" codelang=\"python\" name=\"parameter_values.py\" visible-if=\"always\"><content><text value=\"number_url = \" /><text value=\"&quot;https://mimo.org/courses?id=1&quot;\" class=\"string\" /><text type=\"break\" /><text value=\"string_url = \" /><text value=\"&quot;https://mimo.org/courses?name=Python&quot;\" class=\"string\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"89\" endIndex=\"95\" /><option correct=\"false\"><content><text value=\"1\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Asegúrese de elegir <code>Python</code>.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Los valores de los parámetros pueden identificar elementos con números, como <code>1</code>, o coincidir con texto, como el nombre de un curso.</p><p>Esta API usa <code>id</code> para los identificadores numéricos y <code>name</code> para los nombres de los cursos.</p><p>Solicita el ID <code>1</code> en <code>number_url</code> y el curso <code>Python</code> en <code>string_url</code>.</p><code version=\"2\" codelang=\"python\" name=\"parameter_values.py\" visible-if=\"always\"><content><text value=\"number_url = \" /><text value=\"&quot;https://mimo.org/courses?id=1&quot;\" class=\"string\" /><text type=\"break\" /><text value=\"string_url = \" /><text value=\"&quot;https://mimo.org/courses?name=Python&quot;\" class=\"string\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"39\" endIndex=\"41\" /><option startIndex=\"84\" endIndex=\"88\" /><option startIndex=\"89\" endIndex=\"95\" /><option correct=\"false\"><content><text value=\"1\" /></content></option><option correct=\"false\"><content><text value=\"course\" /></content></option><option correct=\"false\"><content><text value=\"data\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Asegúrese de elegir <code>id</code> seguido de <code>name</code> y finalmente <code>Python</code>.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Choose another post",
+            "id": 152143,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Pide a la API el curso con el ID <code>3</code> escribiendo el nombre del parámetro de consulta <code>id</code>, después un signo igual <code>=</code> y, por último, el número <code>3</code>.</p><code version=\"2\" codelang=\"python\" name=\"comment_feed.py\" visible-if=\"always\"><content><text value=\"import\" class=\"keyword\" /><text value=\" requests\" /><text type=\"break\" /><text type=\"break\" /><text value=\"url = \" /><text value=\"&quot;https://mimo.org/courses?id=3&quot;\" class=\"string\" /><text type=\"break\" /><text value=\"response = requests.get(url)\" /><text type=\"break\" /><text type=\"break\" /><text value=\"data = response.json()\" /><text type=\"break\" /><text value=\"print(data)\" /></content><interactions><interaction type=\"validatedInput\" isDefault=\"true\" startIndex=\"49\" endIndex=\"53\" /></interactions><output><content><text value=\"{&quot;id&quot;: 3, &quot;course&quot;: &quot;HTML&quot;}\" /></content></output></code><p visible-if=\"wrong\">Asegúrese de elegir <code>id=3</code>.</p></body></html>"
+          },
+          {
+            "title": "Read a customized URL",
+            "id": 152144,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>¿Qué URL solicita datos de la API para un usuario con ID <code>4</code>?</p><selection multiple=\"multiple\"><item value=\"1\" correct=\"true\"><code>https://mimo.org/users?userId=4</code></item><item value=\"2\" correct=\"false\"><code>https://mimo.org/courses?userId=4</code></item></selection><p visible-if=\"wrong\">Asegúrese de elegir <code>https://mimo.org/users?userId=4</code>.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Esta API filtra los usuarios con el parámetro <code>userId</code>.</p><p>¿Qué URL solicita datos de la API para un usuario con ID <code>4</code>?</p><selection multiple=\"multiple\"><item value=\"1\" correct=\"true\"><code>https://mimo.org/users?userId=4</code></item><item value=\"2\" correct=\"false\"><code>https://mimo.org/courses?userId=4</code></item><item value=\"3\" correct=\"false\"><code>https://mimo.org/users?id=4</code></item></selection><p visible-if=\"wrong\"><code>https://mimo.org/users?userId=4</code>.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Filter another resource",
+            "id": 152145,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Completa el código para pedir datos al usuario con el ID <code>3</code>.</p><code version=\"2\" codelang=\"python\" name=\"todo_request.py\" visible-if=\"always\"><content><text value=\"import\" class=\"keyword\" /><text value=\" requests\" /><text type=\"break\" /><text type=\"break\" /><text value=\"url = \" /><text value=\"&quot;https://mimo.org/users?userId=3&quot;\" class=\"string\" /><text type=\"break\" /><text value=\"response = requests.get(url)\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option correct=\"false\"><content><text value=\"?postId=3\" /></content></option><option startIndex=\"46\" endIndex=\"55\" /></options></interaction></interactions></code><p visible-if=\"wrong\">Asegúrese de elegir <code>?userId=3</code>.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Obtén el usuario con ID <code>3</code> mediante el parámetro de consulta <code>userId</code> de la API.</p><code version=\"2\" codelang=\"python\" name=\"todo_request.py\" visible-if=\"always\"><content><text value=\"import\" class=\"keyword\" /><text value=\" requests\" /><text type=\"break\" /><text type=\"break\" /><text value=\"url = \" /><text value=\"&quot;https://mimo.org/users?userId=3&quot;\" class=\"string\" /><text type=\"break\" /><text value=\"response = requests.get(url)\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"46\" endIndex=\"47\" /><option startIndex=\"47\" endIndex=\"53\" /><option startIndex=\"53\" endIndex=\"54\" /><option startIndex=\"54\" endIndex=\"55\" /><option startIndex=\"77\" endIndex=\"80\" /><option correct=\"false\"><content><text value=\"postId\" /></content></option><option correct=\"false\"><content><text value=\"4\" /></content></option><option correct=\"false\"><content><text value=\"post\" /></content></option><option correct=\"false\"><content><text value=\"/\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Asegúrese de elegir <code>?</code> seguido de <code>userId</code>, <code>=</code>, <code>3</code> y finalmente <code>get</code>.</p></body></html>",
+            "hardModeSelected": true
+          }
+        ]
+      },
+      {
+        "id": 17858,
+        "title": "Múltiples parámetros de consulta",
+        "type": "practiceLevel1",
+        "lessons": [
+          {
+            "title": "A More Focused Request",
+            "id": 152218,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Ya sabemos que podemos usar un parámetro de consulta como filtro. Veamos cómo podemos combinar varios filtros para obtener un resultado aún mejor.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"import\" class=\"keyword\" /><text value=\" requests\" /><text type=\"break\" /><text type=\"break\" /><text value=\"url = \" /><text value=\"&quot;https://mimo.org/courses?language=python&amp;level=beginner&quot;\" class=\"string\" /><text type=\"break\" /><text value=\"response = requests.get(url)\" /><text type=\"break\" /><text type=\"break\" /><text value=\"data = response.json()\" /><text type=\"break\" /><text value=\"print(data)\" /></content><output><content><text value=\"{&quot;id&quot;: 71, &quot;course&quot;: &quot;Intro to Python&quot;}\" /></content></output></code></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Add the First Parameter",
+            "id": 152219,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Antes de empezar a combinar varias cadenas de consulta, vamos a construir primero una URL con una.</p><p>Construye una cadena de consulta para filtrar cursos por idioma.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"url = \" /><text value=\"&quot;https://mimo.org/courses?language=python&quot;\" class=\"string\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"31\" endIndex=\"32\" /><option startIndex=\"32\" endIndex=\"40\" /><option startIndex=\"40\" endIndex=\"41\" /><option startIndex=\"41\" endIndex=\"47\" /></options></interaction></interactions></code><p visible-if=\"wrong\">Asegúrese de elegir <code>?</code> seguido de <code>language</code> y luego <code>=</code>, <code>python</code>.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Make Room for Another",
+            "id": 152220,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Un ampersand <code>&amp;</code> separa un parámetro de consulta del siguiente.</p><p>Añade <code>&amp;</code> después del parámetro de idioma para dejar espacio para otro.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"url = \" /><text value=\"&quot;https://mimo.org/courses?language=python&amp;&quot;\" class=\"string\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"47\" endIndex=\"48\" /><option correct=\"false\"><content><text value=\"?\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Asegúrese de elegir <code>&amp;</code>.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Add the Second Parameter",
+            "id": 152221,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>El segundo parámetro sigue al signo ampersand sin otro signo de interrogación.</p><p>Añade <code>level=beginner</code> para solicitar cursos para principiantes.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"url = \" /><text value=\"&quot;https://mimo.org/courses?language=python&amp;level=beginner&quot;\" class=\"string\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"48\" endIndex=\"53\" /><option startIndex=\"54\" endIndex=\"62\" /><option startIndex=\"53\" endIndex=\"54\" /></options></interaction></interactions></code><p visible-if=\"wrong\">Asegúrese de elegir <code>level</code> seguido de <code>=</code> y finalmente <code>beginner</code>.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>El segundo parámetro sigue al signo ampersand sin otro signo de interrogación.</p><p>Conserva el filtro de idioma y añade el filtro <code>level</code> con el valor <code>beginner</code>.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"url = \" /><text value=\"&quot;https://mimo.org/courses?language=python&amp;level=beginner&quot;\" class=\"string\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"47\" endIndex=\"48\" /><option startIndex=\"48\" endIndex=\"53\" /><option startIndex=\"53\" endIndex=\"54\" /><option startIndex=\"54\" endIndex=\"62\" /><option correct=\"false\"><content><text value=\"?\" /></content></option><option correct=\"false\"><content><text value=\"language\" /></content></option><option correct=\"false\"><content><text value=\"python\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Asegúrese de elegir <code>&amp;</code> seguido de <code>level</code>, <code>=</code> y finalmente <code>beginner</code>.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Add the Second Parameter - Copy",
+            "id": 152240,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Si usamos <code>&amp;</code> para combinar varios parámetros de consulta, todos se usarán en la consulta, siempre que la API los admita.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"url = \" /><text value=\"&quot;https://mimo.org/courses?language=python&amp;level=beginner&quot;\" class=\"string\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"47\" endIndex=\"48\" /><option correct=\"false\"><content><text value=\"?\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Asegúrese de elegir <code>&amp;</code>.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Si usamos <code>&amp;</code> para combinar varios parámetros de consulta, todos se usarán en la consulta, siempre que la API los admita.</p><p>Solicita cursos de Python para principiantes. Mantén <code>language</code> primero y <code>level</code> después.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"url = \" /><text value=\"&quot;https://mimo.org/courses?language=python&amp;level=beginner&quot;\" class=\"string\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"31\" endIndex=\"32\" /><option startIndex=\"41\" endIndex=\"47\" /><option startIndex=\"47\" endIndex=\"48\" /><option startIndex=\"54\" endIndex=\"62\" /><option correct=\"false\"><content><text value=\"/\" /></content></option><option correct=\"false\"><content><text value=\"advanced\" /></content></option><option correct=\"false\"><content><text value=\"javascript\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Asegúrese de elegir <code>?</code> seguido de <code>python</code>, <code>&amp;</code> y finalmente <code>beginner</code>.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Send the Combined Request",
+            "id": 152222,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>La URL completa ahora contiene ambos filtros del curso.</p><p>Pasa <code>url</code> a <code>requests.get()</code> para enviar la solicitud combinada.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"import\" class=\"keyword\" /><text value=\" requests\" /><text type=\"break\" /><text type=\"break\" /><text value=\"url = \" /><text value=\"&quot;https://mimo.org/courses?language=python&amp;level=beginner&quot;\" class=\"string\" /><text type=\"break\" /><text value=\"response = requests.get(url)\" /><text type=\"break\" /><text type=\"break\" /><text value=\"data = response.json()\" /><text type=\"break\" /><text value=\"print(data)\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"92\" endIndex=\"100\" /><option startIndex=\"100\" endIndex=\"101\" /><option startIndex=\"101\" endIndex=\"104\" /><option startIndex=\"105\" endIndex=\"108\" /></options></interaction></interactions><output><content><text value=\"{&quot;id&quot;: 71, &quot;course&quot;: &quot;Intro to Python&quot;}\" /></content></output></code><p visible-if=\"wrong\">Asegúrese de elegir <code>requests</code> seguido de <code>.</code> y luego <code>get</code>, <code>url</code>.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>La URL completa ahora contiene ambos filtros del curso.</p><p>Obtén los cursos que coincidan con ambos filtros y convierte la respuesta a JSON.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"import\" class=\"keyword\" /><text value=\" requests\" /><text type=\"break\" /><text type=\"break\" /><text value=\"url = \" /><text value=\"&quot;https://mimo.org/courses?language=python&amp;level=beginner&quot;\" class=\"string\" /><text type=\"break\" /><text value=\"response = requests.get(url)\" /><text type=\"break\" /><text type=\"break\" /><text value=\"data = response.json()\" /><text type=\"break\" /><text value=\"print(data)\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"92\" endIndex=\"100\" /><option startIndex=\"101\" endIndex=\"104\" /><option startIndex=\"105\" endIndex=\"108\" /><option startIndex=\"118\" endIndex=\"126\" /><option startIndex=\"127\" endIndex=\"131\" /><option correct=\"false\"><content><text value=\"post\" /></content></option><option correct=\"false\"><content><text value=\"status_code\" /></content></option><option correct=\"false\"><content><text value=\"data\" /></content></option></options></interaction></interactions><output><content><text value=\"{&quot;id&quot;: 71, &quot;course&quot;: &quot;Intro to Python&quot;}\" /></content></output></code><p visible-if=\"wrong\">Asegúrese de elegir <code>requests</code> seguido de <code>get</code>, <code>url</code>, <code>response</code> y finalmente <code>json</code>.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Recall the Separator",
+            "id": 152224,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>¿Qué signo separa los parámetros de consulta después del primero?</p><selection multiple=\"multiple\"><item value=\"1\" correct=\"true\"><code>&amp;</code></item><item value=\"2\" correct=\"false\"><code>?</code></item></selection><p visible-if=\"wrong\">Asegúrese de elegir <code>&amp;</code>.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>¿Qué signo separa los parámetros de consulta después del primero?</p><selection multiple=\"multiple\"><item value=\"1\" correct=\"true\"><code>&amp;</code></item><item value=\"2\" correct=\"false\"><code>?</code></item><item value=\"3\" correct=\"false\"><code>,</code></item></selection><p visible-if=\"wrong\">Asegúrese de elegir <code>&amp;</code>.</p></body></html>"
+          },
+          {
+            "title": "Filter Learner Profiles",
+            "id": 152225,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Una búsqueda de perfiles ya filtra por <code>role=learner</code>.</p><p>Añade <code>&amp;active=true</code> para devolver solo a los estudiantes activos.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"url = \" /><text value=\"&quot;https://mimo.org/users?role=learner&amp;active=true&quot;\" class=\"string\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"43\" endIndex=\"49\" /><option startIndex=\"49\" endIndex=\"50\" /><option startIndex=\"50\" endIndex=\"54\" /><option startIndex=\"42\" endIndex=\"43\" /><option correct=\"false\"><content><text value=\"?\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Asegúrese de elegir <code>&amp;</code> seguido de <code>active</code> y luego <code>=</code>, <code>true</code>.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Una búsqueda de perfiles ya filtra por <code>role=learner</code>.</p><p>El filtro <code>active</code> usa <code>true</code> para perfiles activos. Conserva el rol de estudiante y añade ese filtro.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"url = \" /><text value=\"&quot;https://mimo.org/users?role=learner&amp;active=true&quot;\" class=\"string\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"35\" endIndex=\"42\" /><option startIndex=\"42\" endIndex=\"43\" /><option startIndex=\"43\" endIndex=\"49\" /><option startIndex=\"49\" endIndex=\"50\" /><option startIndex=\"50\" endIndex=\"54\" /><option correct=\"false\"><content><text value=\"?\" /></content></option><option correct=\"false\"><content><text value=\"false\" /></content></option><option correct=\"false\"><content><text value=\"teacher\" /></content></option><option correct=\"false\"><content><text value=\"role\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Asegúrese de elegir <code>learner</code> seguido de <code>&amp;</code>, <code>active</code>, <code>=</code> y finalmente <code>true</code>.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Complete the Course URL",
+            "id": 152226,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>¿Qué URL filtra los cursos de Python de nivel principiante?</p><selection multiple=\"multiple\"><item value=\"1\" correct=\"true\"><code>https://mimo.org/courses?language=python&amp;level=beginner</code></item><item value=\"2\" correct=\"false\"><code>https://mimo.org/courses?language=python?level=beginner</code></item></selection><p visible-if=\"wrong\">Asegúrese de elegir <code>https://mimo.org/courses?language=python&amp;level=beginner</code>.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>¿Qué URL filtra los cursos de Python de nivel principiante?</p><selection multiple=\"multiple\"><item value=\"1\" correct=\"true\"><code>https://mimo.org/courses?language=python&amp;level=beginner</code></item><item value=\"2\" correct=\"false\"><code>https://mimo.org/courses?language=python?level=beginner</code></item><item value=\"3\" correct=\"false\"><code>https://mimo.org/courses?language=python&amp;beginner=level</code></item></selection><p visible-if=\"wrong\"><code>https://mimo.org/courses?language=python&amp;level=beginner</code>.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Request Learner Data",
+            "id": 152227,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Termina la URL del perfil que contiene los parámetros <code>role</code> y <code>active</code>.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"import\" class=\"keyword\" /><text value=\" requests\" /><text type=\"break\" /><text value=\"url = \" /><text value=\"&quot;https://mimo.org/users?role=learner&amp;active=true&quot;\" class=\"string\" /><text type=\"break\" /><text value=\"response = requests.get(url)\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"45\" endIndex=\"46\" /><option startIndex=\"58\" endIndex=\"59\" /><option correct=\"false\"><content><text value=\"?\" /></content></option><option correct=\"false\"><content><text value=\"&amp;\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Asegúrese de elegir <code>?</code> seguido de <code>&amp;</code>.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Termina la URL del perfil que contiene los parámetros <code>role</code> y <code>active</code>.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"import\" class=\"keyword\" /><text value=\" requests\" /><text type=\"break\" /><text value=\"url = \" /><text value=\"&quot;https://mimo.org/users?role=learner&amp;active=true&quot;\" class=\"string\" /><text type=\"break\" /><text value=\"response = requests.get(url)\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"45\" endIndex=\"46\" /><option startIndex=\"58\" endIndex=\"59\" /><option correct=\"false\"><content><text value=\"post\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Asegúrese de elegir <code>?</code> seguido de <code>&amp;</code>.</p></body></html>"
+          }
+        ]
+      }
+    ]
+  }
+}

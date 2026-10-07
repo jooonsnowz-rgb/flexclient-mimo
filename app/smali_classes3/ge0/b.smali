@@ -1,0 +1,20 @@
+.class public final Lge0/b;
+.super Ljava/lang/SecurityManager;
+.source "r8-map-id-1f727e275a08ce64a20d04e23955c803c09eee16123e99f4b75a65a9479c9615"
+
+
+# virtual methods
+.method public final getClassContext()[Ljava/lang/Class;
+    .locals 0
+
+    .line 1
+    invoke-super {p0}, Ljava/lang/SecurityManager;->getClassContext()[Ljava/lang/Class;
+
+    .line 2
+    .line 3
+    .line 4
+    move-result-object p0
+
+    .line 5
+    return-object p0
+.end method

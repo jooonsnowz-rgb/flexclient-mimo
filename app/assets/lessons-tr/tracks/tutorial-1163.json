@@ -1,0 +1,160 @@
+{
+  "tutorial": {
+    "id": 1163,
+    "version": 9,
+    "type": "course",
+    "isNew": false,
+    "codeLanguage": "python",
+    "title": "Fonksiyonlarla Kodu Yeniden Kullanma",
+    "descriptionContent": "Parametre ve dönüş değeri içeren fonksiyonlar oluşturarak kodu yeniden kullanmayı öğren.",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": null,
+    "chapters": [
+      {
+        "id": 9066,
+        "title": "Fonksiyonlar",
+        "type": "practiceLevel1",
+        "lessons": [
+          {
+            "title": "Intro",
+            "id": 79917,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Aşağıdaki gibi programların düzenli olarak aynı görevi tekrar tekrar gerçekleştirmesi gerekir.</p><webview version=\"2\" visible-if=\"always\" content=\"&lt;!doctype html&gt;&#xA;&lt;html&gt;&#xA; &lt;head&gt;&#xA;  &lt;style&gt;&#xA;   body {&#xA;    text-align: center;&#xA;    height: 275px;&#xA;    font-size: 16px;&#xA;    margin: 0 auto;&#xA;    background-color: #F0F8FF;&#xA;   }&#xA;   &#xA;   button {&#xA;    background-color: darkBlue;&#xA;    border: none;&#xA;    border-radius: 8px;&#xA;    color: white;&#xA;    text-align: center;&#xA;    text-decoration: none;&#xA;    display: inline-block;&#xA;    font-size: 14px;&#xA;    padding: 6px 12px;&#xA;    margin: 0 12px 0 0;&#xA;   }&#xA;   &#xA;   h2 {&#xA;    text-align: center;&#xA;   }&#xA;   &#xA;   #playerList {&#xA;    text-align: left;&#xA;   }&#xA;  &lt;/style&gt;&#xA; &lt;/head&gt;&#xA; &lt;body&gt;&#xA;  &lt;img height=180 src=&quot;https://mimo.app/i/volume-icon.png&quot;&gt;&lt;br&gt;&#xA;  &lt;button onclick=&quot;increase()&quot;&gt;Increase volume&lt;/button&gt;&#xA;  &lt;p id=&quot;container&quot;&gt;&#xA;   &lt;/div&gt;&#xA;   &lt;script&gt;&#xA;    let volume = 0;&#xA;    &#xA;    function increase() {&#xA;     document.getElementById(&quot;container&quot;).innerHTML =&#xA;      &quot;Volume increased!&quot;;&#xA;     const s = document.getElementById('container').style;&#xA;     s.display = &quot;block&quot;;&#xA;     s.opacity = 1;&#xA;     (function fade() {&#xA;      if ((s.opacity -= .1) &lt; 0) s.display = &quot;none&quot;;&#xA;      else setTimeout(fade, 150);&#xA;     })();&#xA;    }&#xA;   &lt;/script&gt;&#xA; &lt;/body&gt;&#xA;&lt;/html&gt;\" /></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Intro 2",
+            "id": 79895,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Aynı kodu yeniden yazmak yerine, ilişkili kodları gruplandırmak ve görevi tek bir yerde gerçekleştirmek için <strong>fonksiyonları</strong> kullanabiliriz.</p><webview version=\"2\" visible-if=\"always\" content=\"&lt;!doctype html&gt;&#xA;&lt;html&gt;&#xA; &lt;head&gt;&#xA;  &lt;style&gt;&#xA;   body {&#xA;    text-align: center;&#xA;    height: 275px;&#xA;    font-size: 16px;&#xA;    margin: 0 auto;&#xA;    background-color: #F0F8FF;&#xA;   }&#xA;   &#xA;   button {&#xA;    background-color: darkBlue;&#xA;    border: none;&#xA;    border-radius: 8px;&#xA;    color: white;&#xA;    text-align: center;&#xA;    text-decoration: none;&#xA;    display: inline-block;&#xA;    font-size: 14px;&#xA;    padding: 6px 12px;&#xA;    margin: 0 12px 0 0;&#xA;   }&#xA;   &#xA;   h2 {&#xA;    text-align: center;&#xA;   }&#xA;   &#xA;   #playerList {&#xA;    text-align: left;&#xA;   }&#xA;  &lt;/style&gt;&#xA; &lt;/head&gt;&#xA; &lt;body&gt;&#xA;  &lt;img height=180 src=&quot;https://mimo.app/i/volume-icon.png&quot;&gt;&lt;br&gt;&#xA;  &lt;button onclick=&quot;decrease()&quot;&gt;Decrease volume&lt;/button&gt;&#xA;  &lt;p id=&quot;container&quot;&gt;&#xA;   &lt;/div&gt;&#xA;   &lt;script&gt;&#xA;    let volume = 0;&#xA;    &#xA;    function decrease() {&#xA;     document.getElementById(&quot;container&quot;).innerHTML =&#xA;      &quot;Volume decreased!&quot;;&#xA;     const s = document.getElementById('container').style;&#xA;     s.display = &quot;block&quot;;&#xA;     s.opacity = 1;&#xA;     (function fade() {&#xA;      if ((s.opacity -= .1) &lt; 0) s.display = &quot;none&quot;;&#xA;      else setTimeout(fade, 150);&#xA;     })();&#xA;    }&#xA;   &lt;/script&gt;&#xA; &lt;/body&gt;&#xA;&lt;/html&gt;\" /></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Functions",
+            "id": 79921,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>İlgili kodları gruplandırmaya başlamak için <code>def</code> anahtar kelimesiyle bir fonksiyon tanımlamaya başlarız. </p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"def\" class=\"keyword\" /><text value=\" \" /></content><interactions><interaction type=\"validatedInput\" isDefault=\"true\" startIndex=\"0\" endIndex=\"3\" /></interactions></code><p visible-if=\"wrong\"><code>def</code> ifadesini yazdığından emin ol.</p></body></html>"
+          },
+          {
+            "title": "Functions",
+            "id": 79920,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Ardından <code>greet_user</code> gibi snake_case biçiminde fonksiyonun adı ve sonra <code>(</code> ile <code>)</code> parantezleri gelir.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"def\" class=\"keyword\" /><text value=\" \" /><text value=\"greet_user\" class=\"title\" /><text value=\"()\" class=\"params\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"4\" endIndex=\"14\" /><option startIndex=\"14\" endIndex=\"15\" /><option startIndex=\"15\" endIndex=\"16\" /></options></interaction></interactions></code><p visible-if=\"wrong\">Önce <code>greet_user</code>, ardından <code>(</code> ve son olarak <code>)</code> öğelerini seçtiğinden emin ol.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p><code>def</code> ifadesinden sonra snake case bir ad, ardından <code>(</code> ve <code>)</code> parantezlerini ekle.</p><p>Bu fonksiyonu sırayla ayrı <code>greet</code> ve <code>user</code> sözcüklerini kullanarak adlandır.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"def\" class=\"keyword\" /><text value=\" \" /><text value=\"greet_user\" class=\"title\" /><text value=\"()\" class=\"params\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"4\" endIndex=\"14\" /><option startIndex=\"14\" endIndex=\"15\" /><option startIndex=\"15\" endIndex=\"16\" /><option correct=\"false\"><content><text value=\"greetuser\" /></content></option><option correct=\"false\"><content><text value=\"[\" /></content></option><option correct=\"false\"><content><text value=\"]\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Önce <code>greet_user</code>, ardından <code>(</code> ve son olarak <code>)</code> öğelerini seçtiğinden emin ol.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Functions",
+            "id": 79919,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Daha önce olduğu gibi, iki nokta üst üste <code>:</code>, fonksiyona ait kod bloğunun başlangıcını belirtir.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"def\" class=\"keyword\" /><text value=\" \" /><text value=\"greet_user\" class=\"title\" /><text value=\"()\" class=\"params\" /><text value=\":\" /></content><interactions><interaction type=\"validatedInput\" isDefault=\"true\" startIndex=\"16\" endIndex=\"17\" /></interactions></code><p visible-if=\"wrong\"><code>:</code> ifadesini yazdığından emin ol.</p></body></html>"
+          },
+          {
+            "title": "Functions",
+            "id": 79922,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Kodu fonksiyonun içinde gruplamak için iki boşluk girintileriz. Bu fonksiyon, birbiriyle ilişkili iki <code>print()</code> ifadesini gruplar.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"def\" class=\"keyword\" /><text value=\" \" /><text value=\"greet_user\" class=\"title\" /><text value=\"()\" class=\"params\" /><text value=\":\" /><text type=\"break\" /><text value=\"  print(\" /><text value=\"&quot;Good morning Anna&quot;\" class=\"string\" /><text value=\")\" /><text type=\"break\" /><text value=\"  print(\" /><text value=\"&quot;Welcome back&quot;\" class=\"string\" /><text value=\")\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"20\" endIndex=\"25\" /><option startIndex=\"49\" endIndex=\"54\" /></options></interaction></interactions></code><p visible-if=\"wrong\">Önce <code>print</code>, ardından <code>print</code> öğelerini seçtiğinden emin ol.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Kodu bir fonksiyonda gruplamak için iki boşluk girintile.</p><p>İki <code>print()</code> ifadesini grupla. Önce <code>Good morning Anna</code>, ardından <code>Welcome back</code> göster.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"def\" class=\"keyword\" /><text value=\" \" /><text value=\"greet_user\" class=\"title\" /><text value=\"()\" class=\"params\" /><text value=\":\" /><text type=\"break\" /><text value=\"  print(\" /><text value=\"&quot;Good morning Anna&quot;\" class=\"string\" /><text value=\")\" /><text type=\"break\" /><text value=\"  print(\" /><text value=\"&quot;Welcome back&quot;\" class=\"string\" /><text value=\")\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"20\" endIndex=\"46\" /><option startIndex=\"49\" endIndex=\"70\" /><option correct=\"false\"><content><text value=\"&quot;Good morning Anna&quot;\" /></content></option><option correct=\"false\"><content><text value=\"&quot;Welcome back&quot;\" /></content></option></options></interaction></interactions></code><p visible-if=\"wrong\">Önce <code>print(\"Good morning Anna\")</code>, ardından <code>print(\"Welcome back\")</code> öğelerini seçtiğinden emin ol.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Functions",
+            "id": 79928,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Kodu çalıştırmak için fonksiyonu <strong>çağırmamız</strong> gerekir. Bunu, adını parantezlerle birlikte kodlayarak yaparız; örneğin <code>greet_user()</code>.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"def\" class=\"keyword\" /><text value=\" \" /><text value=\"greet_user\" class=\"title\" /><text value=\"()\" class=\"params\" /><text value=\":\" /><text type=\"break\" /><text value=\"  print(\" /><text value=\"&quot;Good morning Anna&quot;\" class=\"string\" /><text value=\")\" /><text type=\"break\" /><text value=\"  print(\" /><text value=\"&quot;Welcome back&quot;\" class=\"string\" /><text value=\")\" /><text type=\"break\" /><text value=\"greet_user()\" /></content><interactions><interaction type=\"validatedInput\" isDefault=\"true\" startIndex=\"71\" endIndex=\"83\" /></interactions><output><content><text value=\"Good morning Anna\" /><text type=\"break\" /><text value=\"Welcome back\" /></content></output></code><p visible-if=\"wrong\"><code>greet_user()</code> ifadesini yazdığından emin ol.</p></body></html>"
+          },
+          {
+            "title": "Question: Function",
+            "id": 79923,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>İlişkili kodları gruplandırmaya nasıl başlarız?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\"><code>def</code> anahtar kelimesini ekleyerek</item><item value=\"2\" correct=\"false\"><code>function</code> anahtar kelimesini ekleyerek</item></selection><p visible-if=\"wrong\"><code>def</code> anahtar kelimesini ekleyerek.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>İlişkili kodları gruplamaya <code>def</code> anahtar sözcüğünü ekleyerek başlarız.</p><p>Hangi satır <code>show_menu</code> adlı bir fonksiyon başlatır?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\"><code>def show_menu():</code></item><item value=\"2\" correct=\"false\"><code>function show_menu():</code></item><item value=\"3\" correct=\"false\"><code>def = show_menu()</code></item></selection><p visible-if=\"wrong\"><code>def show_menu():</code> öğesini seçtiğinden emin ol.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Question: Function name",
+            "id": 79924,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Bir fonksiyonu nasıl adlandırırız?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\">snake case kullanarak</item><item value=\"2\" correct=\"false\">Fonksiyonun adına boşluklar ekleyerek</item></selection><p visible-if=\"wrong\">snake case kullanarak.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Bir fonksiyonu adlandırırken snake case kullanırız.</p><p>Toplamı görüntüleyen bir fonksiyon için hangi ad bu biçime uyar?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\"><code>display_total</code></item><item value=\"2\" correct=\"false\"><code>display total</code></item><item value=\"3\" correct=\"false\"><code>DisplayTotal</code></item></selection><p visible-if=\"wrong\"><code>display_total</code> öğesini seçtiğinden emin ol.</p></body></html>"
+          },
+          {
+            "title": "Question: Colon",
+            "id": 79925,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>İki nokta <code>:</code> ne işe yarar?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\">Bir fonksiyonun kod bloğunun başlangıcını belirtirler</item><item value=\"2\" correct=\"false\">Fonksiyonun hangi kodu atlaması gerektiğini belirtir</item></selection><p visible-if=\"wrong\">Bir fonksiyonun kod bloğunun başlangıcını belirtirler.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>İki nokta <code>:</code>, bir fonksiyonun kod bloğunun başlangıcını belirtir.</p><p>Hangi başlık <code>greet</code> adlı bir fonksiyonu doğru şekilde başlatır?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\"><code>def greet():</code></item><item value=\"2\" correct=\"false\"><code>def greet()</code></item><item value=\"3\" correct=\"false\"><code>def greet(:)</code></item></selection><p visible-if=\"wrong\"><code>def greet():</code> öğesini seçtiğinden emin ol.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Question: Code block",
+            "id": 79926,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Birlikte gruplamak istediğimiz kod nereye gider?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\">Fonksiyon tanımından sonra, iki boşluk girintili</item><item value=\"2\" correct=\"false\"><code>(</code> ve <code>)</code> parantezlerinin arasında</item></selection><p visible-if=\"wrong\">Fonksiyon tanımından sonra, iki boşluk girintili.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Bir fonksiyonda gruplanan kod, tanımdan sonra gelir ve iki boşluk girintilenir.</p><p><code>print(\"Hi\")</code>, <code>greet</code> fonksiyonunun parçası olmak için nereye yazılmalı?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\"><code>def greet():</code> satırından sonraki satıra, iki boşluk girintili olarak</item><item value=\"2\" correct=\"false\"><code>def greet():</code> satırından sonraki satıra, <code>def</code> ile aynı hizada</item><item value=\"3\" correct=\"false\"><code>greet()</code> ifadesindeki parantezlerin arasına</item></selection><p visible-if=\"wrong\"><code>def greet():</code> satırından sonraki satıra, iki boşluk girintili olarak.</p></body></html>"
+          },
+          {
+            "title": "Question: Calling the function",
+            "id": 79927,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Bir fonksiyonun içindeki kodu nasıl çalıştırırız?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\">Onu çağırarak</item><item value=\"2\" correct=\"false\">Ondan bir değişken oluşturarak</item></selection><p visible-if=\"wrong\">Onu çağırarak.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Bir fonksiyonu çalıştırmak için adını ve ardından <code>()</code> parantezlerini yazarak çağır.</p><p><code>greet</code> tanımlandıktan sonra hangi satır fonksiyonun kodunu çalıştırır?</p><selection iscode=\"false\" multiple=\"multiple\"><item value=\"1\" correct=\"true\"><code>greet()</code></item><item value=\"2\" correct=\"false\"><code>greet</code></item><item value=\"3\" correct=\"false\"><code>greet = True</code></item></selection><p visible-if=\"wrong\"><code>greet()</code> öğesini seçtiğinden emin ol.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Example: Function",
+            "id": 79908,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Fonksiyonu tamamlamak için <code>def</code> anahtar kelimesini kodla.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"def\" class=\"keyword\" /><text value=\" \" /><text value=\"weather_update\" class=\"title\" /><text value=\"()\" class=\"params\" /><text value=\":\" /><text type=\"break\" /><text value=\"  print(\" /><text value=\"&quot;Weather update&quot;\" class=\"string\" /><text value=\")\" /><text type=\"break\" /><text value=\"  print(\" /><text value=\"&quot;Sunny skies ahead&quot;\" class=\"string\" /><text value=\")\" /><text type=\"break\" /><text value=\"weather_update()\" /></content><interactions><interaction type=\"validatedInput\" isDefault=\"true\" startIndex=\"0\" endIndex=\"3\" /></interactions><output><content><text value=\"Weather update\" /><text type=\"break\" /><text value=\"Sunny skies ahead\" /></content></output></code><p visible-if=\"wrong\"><code>def</code> ifadesini yazdığından emin ol.</p></body></html>"
+          },
+          {
+            "title": "Example: Function name",
+            "id": 79918,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Bu fonksiyona snake case biçiminde bir ad ver.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"def\" class=\"keyword\" /><text value=\" \" /><text value=\"night_routine\" class=\"title\" /><text value=\"()\" class=\"params\" /><text value=\":\" /><text type=\"break\" /><text value=\"  print(\" /><text value=\"&quot;Lights off&quot;\" class=\"string\" /><text value=\")\" /><text type=\"break\" /><text value=\"  print(\" /><text value=\"&quot;Alarm set&quot;\" class=\"string\" /><text value=\")\" /><text type=\"break\" /><text value=\"night_routine()\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"4\" endIndex=\"17\" /><option correct=\"false\"><content><text value=\"nightroutine\" /></content></option></options></interaction></interactions><output><content><text value=\"Lights off\" /><text type=\"break\" /><text value=\"Alarm set\" /></content></output></code><p visible-if=\"wrong\"><code>night_routine</code> öğesini seçtiğinden emin ol.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Hem tanımda hem çağrıda sırayla ayrı <code>night</code> ve <code>routine</code> sözcüklerini snake case biçiminde kullan.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"def\" class=\"keyword\" /><text value=\" \" /><text value=\"night_routine\" class=\"title\" /><text value=\"()\" class=\"params\" /><text value=\":\" /><text type=\"break\" /><text value=\"  print(\" /><text value=\"&quot;Lights off&quot;\" class=\"string\" /><text value=\")\" /><text type=\"break\" /><text value=\"  print(\" /><text value=\"&quot;Alarm set&quot;\" class=\"string\" /><text value=\")\" /><text type=\"break\" /><text value=\"night_routine()\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"4\" endIndex=\"17\" /><option startIndex=\"64\" endIndex=\"77\" /><option correct=\"false\"><content><text value=\"nightroutine\" /></content></option></options></interaction></interactions><output><content><text value=\"Lights off\" /><text type=\"break\" /><text value=\"Alarm set\" /></content></output></code><p visible-if=\"wrong\">Önce <code>night_routine</code>, ardından <code>night_routine</code> öğelerini seçtiğinden emin ol.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Example: Colon",
+            "id": 79907,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Kod bloğunun başlangıcını belirtmek için iki nokta ekle.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"def\" class=\"keyword\" /><text value=\" \" /><text value=\"morning_routine\" class=\"title\" /><text value=\"()\" class=\"params\" /><text value=\":\" /><text type=\"break\" /><text value=\"  print(\" /><text value=\"&quot;Lights on&quot;\" class=\"string\" /><text value=\")\" /><text type=\"break\" /><text value=\"  print(\" /><text value=\"&quot;Alarm off&quot;\" class=\"string\" /><text value=\")\" /><text type=\"break\" /><text value=\"morning_routine()\" /></content><interactions><interaction type=\"validatedInput\" isDefault=\"true\" startIndex=\"21\" endIndex=\"22\" /></interactions><output><content><text value=\"Lights on\" /><text type=\"break\" /><text value=\"Alarm off\" /></content></output></code><p visible-if=\"wrong\"><code>:</code> ifadesini yazdığından emin ol.</p></body></html>"
+          },
+          {
+            "title": "Example: Code block",
+            "id": 79899,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p>Fonksiyonun kod bloğuna başka bir <code>print()</code> ifadesi ekle.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"def\" class=\"keyword\" /><text value=\" \" /><text value=\"launch\" class=\"title\" /><text value=\"()\" class=\"params\" /><text value=\":\" /><text type=\"break\" /><text value=\"  print(\" /><text value=\"&quot;3&quot;\" class=\"string\" /><text value=\")\" /><text type=\"break\" /><text value=\"  print(\" /><text value=\"&quot;2&quot;\" class=\"string\" /><text value=\")\" /><text type=\"break\" /><text value=\"  print(\" /><text value=\"&quot;1&quot;\" class=\"string\" /><text value=\")\" /><text type=\"break\" /><text value=\"  print(\" /><text value=\"&quot;Launch!&quot;\" class=\"string\" /><text value=\")\" /><text type=\"break\" /><text value=\"launch()\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"55\" endIndex=\"60\" /><option startIndex=\"60\" endIndex=\"71\" /></options></interaction></interactions><output><content><text value=\"3\" /><text type=\"break\" /><text value=\"2\" /><text type=\"break\" /><text value=\"1\" /><text type=\"break\" /><text value=\"Launch!\" /></content></output></code><p visible-if=\"wrong\">Önce <code>print</code>, ardından <code>(\"Launch!\")</code> öğelerini seçtiğinden emin ol.</p></body></html>",
+            "hardModeContent": "<!DOCTYPE html ><html><body><p>Fonksiyonun içinde <code>Launch!</code> yazdır, ardından geri sayımı çalıştırmak için fonksiyonu çağır.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"def\" class=\"keyword\" /><text value=\" \" /><text value=\"launch\" class=\"title\" /><text value=\"()\" class=\"params\" /><text value=\":\" /><text type=\"break\" /><text value=\"  print(\" /><text value=\"&quot;3&quot;\" class=\"string\" /><text value=\")\" /><text type=\"break\" /><text value=\"  print(\" /><text value=\"&quot;2&quot;\" class=\"string\" /><text value=\")\" /><text type=\"break\" /><text value=\"  print(\" /><text value=\"&quot;1&quot;\" class=\"string\" /><text value=\")\" /><text type=\"break\" /><text value=\"  print(\" /><text value=\"&quot;Launch!&quot;\" class=\"string\" /><text value=\")\" /><text type=\"break\" /><text value=\"launch()\" /></content><interactions><interaction type=\"fillTheGap\" isDefault=\"true\"><options><option startIndex=\"55\" endIndex=\"60\" /><option startIndex=\"72\" endIndex=\"78\" /><option correct=\"false\"><content><text value=\"&quot;Launch!&quot;\" /></content></option><option correct=\"false\"><content><text value=\"&quot;launch&quot;\" /></content></option></options></interaction></interactions><output><content><text value=\"3\" /><text type=\"break\" /><text value=\"2\" /><text type=\"break\" /><text value=\"1\" /><text type=\"break\" /><text value=\"Launch!\" /></content></output></code><p visible-if=\"wrong\">Önce <code>print</code>, ardından <code>launch</code> öğelerini seçtiğinden emin ol.</p></body></html>",
+            "hardModeSelected": true
+          },
+          {
+            "title": "Example: Calling the function",
+            "id": 79894,
+            "contentType": "interactive",
+            "images": [],
+            "interactiveContent": "<!DOCTYPE html ><html><body><p><code>greet()</code> kodunu yazarak fonksiyonu çağır.</p><code version=\"2\" codelang=\"python\" name=\"script.py\" visible-if=\"always\"><content><text value=\"def\" class=\"keyword\" /><text value=\" \" /><text value=\"greet\" class=\"title\" /><text value=\"()\" class=\"params\" /><text value=\":\" /><text type=\"break\" /><text value=\"  print(\" /><text value=\"&quot;Good evening&quot;\" class=\"string\" /><text value=\")\" /><text type=\"break\" /><text value=\"greet()\" /></content><interactions><interaction type=\"validatedInput\" isDefault=\"true\" startIndex=\"37\" endIndex=\"44\" /></interactions><output><content><text value=\"Good evening\" /></content></output></code><p visible-if=\"wrong\"><code>greet()</code> ifadesini yazdığından emin ol.</p></body></html>"
+          }
+        ]
+      }
+    ]
+  }
+}

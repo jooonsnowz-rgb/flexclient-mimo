@@ -1,0 +1,123 @@
+{
+  "tutorial": {
+    "id": 2660,
+    "version": 6,
+    "type": "guidedProject",
+    "isNew": false,
+    "codeLanguage": "python",
+    "title": "Taş, Kağıt, Makas - 2. Bölüm",
+    "descriptionContent": "Burada projeyi üç maçlık bir seriye genişletecek ve böylece onu gerçek bir oyuna dönüştüreceğiz.",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": "tutorial-2660-icon-banner.svg",
+    "chapters": [
+      {
+        "id": 14634,
+        "title": "Taş, Kağıt, Makas - 2. Bölüm",
+        "type": "practiceLevel3",
+        "lessons": [
+          {
+            "title": "Lesson #1",
+            "id": 129433,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "**Taş, Kağıt, Makas** projesine tekrar hoş geldin. Oyunu daha ilgi çekici hale getirmek için üç oyun üzerinden en iyi sonucu belirleyelim. İlk olarak iki oyun kazanan taraf galip gelir.\n\n1. Programın başlangıcında `player_wins` ve `computer_wins` adında iki yeni değişken oluştur ve her ikisinin değerini de `0` olarak ayarla. Bu değişkenler, oyuncunun ve bilgisayarın kazandığı oyunların sayısını sırasıyla takip edecek.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "import random\n\nprint(\"Let's play rock, paper, or scissors\")\n\nplayer_choice = input(\"\\nChoose rock, paper, or scissors: \").lower()\nchoices = [\"rock\", \"paper\", \"scissors\"]\ncomputer_choice = random.choice(choices)\nprint(f\"Computer chose: {computer_choice}\")\n\nif (player_choice == \"rock\" and computer_choice == \"scissors\") or (player_choice == \"scissors\" and computer_choice == \"paper\") or (player_choice == \"paper\" and computer_choice == \"rock\"):\n  winner = \"Player\"\nelif player_choice == computer_choice:\n  winner = \"Tie\"\nelse:\n  winner = \"Computer\"\n\nif winner == \"Player\":\n  print(\"You won\")\nelif winner == \"Computer\":\n  print(\"Computer won\")\nelse:\n  print(\"It's a tie\")",
+                  "solvedContent": "import random\n\nprint(\"Let's play rock, paper, or scissors\")\n\nplayer_wins = 0\ncomputer_wins = 0\n\nplayer_choice = input(\"\\nChoose rock, paper, or scissors: \").lower()\nchoices = [\"rock\", \"paper\", \"scissors\"]\ncomputer_choice = random.choice(choices)\nprint(f\"Computer chose: {computer_choice}\")\n\nif (player_choice == \"rock\" and computer_choice == \"scissors\") or (player_choice == \"scissors\" and computer_choice == \"paper\") or (player_choice == \"paper\" and computer_choice == \"rock\"):\n  winner = \"Player\"\nelif player_choice == computer_choice:\n  winner = \"Tie\"\nelse:\n  winner = \"Computer\"\n\nif winner == \"Player\":\n  print(\"You won\")\nelif winner == \"Computer\":\n  print(\"Computer won\")\nelse:\n  print(\"It's a tie\")"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #2",
+            "id": 129434,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Birisi iki oyun kazanana kadar birden fazla oyun çalıştırmamız gerekiyor, bu yüzden mevcut kodumuzu bir `while` döngüsünün içine koymalıyız.\n\nDöngünün her yinelemesinde oyuncuya seçimini sormaya ve bilgisayarın seçimini oluşturmaya devam edeceğiz.\n\n1. İçe aktarma ifadesi ile `player_wins` ve `computer_wins` değişkenleri dışındaki mevcut kodunun tamamını yeni bir `while` döngüsüne taşı. Döngünün koşulu, `player_wins` değerinin hâlâ iki değerinden küçük olması ve `computer_wins` değerinin de `2` değerinden küçük olması olmalı.\n\n`player_wins` ve `computer_wins` değişkenleri hiç güncellenmediği için sonsuz bir döngü oluşturacağız. Programın beklendiği gibi çalıştığından ve iki galibiyetten sonra tekrar durduğundan emin olacağız.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "import random\n\nprint(\"Let's play rock, paper, or scissors\")\n\nplayer_wins = 0\ncomputer_wins = 0\n\nplayer_choice = input(\"\\nChoose rock, paper, or scissors: \").lower()\nchoices = [\"rock\", \"paper\", \"scissors\"]\ncomputer_choice = random.choice(choices)\nprint(f\"Computer chose: {computer_choice}\")\n\nif (player_choice == \"rock\" and computer_choice == \"scissors\") or (player_choice == \"scissors\" and computer_choice == \"paper\") or (player_choice == \"paper\" and computer_choice == \"rock\"):\n  winner = \"Player\"\nelif player_choice == computer_choice:\n  winner = \"Tie\"\nelse:\n  winner = \"Computer\"\n\nif winner == \"Player\":\n  print(\"You won\")\nelif winner == \"Computer\":\n  print(\"Computer won\")\nelse:\n  print(\"It's a tie\")",
+                  "solvedContent": "import random\n\nprint(\"Let's play rock, paper, or scissors\")\n\nplayer_wins = 0\ncomputer_wins = 0\n\nwhile player_wins < 2 and computer_wins < 2:\n  player_choice = input(\"\\nChoose rock, paper, or scissors: \").lower()\n  choices = [\"rock\", \"paper\", \"scissors\"]\n  computer_choice = random.choice(choices)\n  print(f\"Computer chose: {computer_choice}\")\n\n  if (player_choice == \"rock\" and computer_choice == \"scissors\") or (player_choice == \"scissors\" and computer_choice == \"paper\") or (player_choice == \"paper\" and computer_choice == \"rock\"):\n    winner = \"Player\"\n  elif player_choice == computer_choice:\n    winner = \"Tie\"\n  else:\n    winner = \"Computer\"\n\n  if winner == \"Player\":\n    print(\"You won\")\n  elif winner == \"Computer\":\n    print(\"Computer won\")\n  else:\n    print(\"It's a tie\")"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #3",
+            "id": 129435,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Bir oyun bittiğinde, skor kimin kazandığına göre güncellenmelidir.\n\n1. `if winner == \"Player\"` if deyimlerine `player_wins` değişkenini artıran kodu ekle.\n2. `elif winner == \"Computer\"` bloğunda `computer_wins` değişkenini güncelle.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "import random\n\nprint(\"Let's play rock, paper, or scissors\")\n\nplayer_wins = 0\ncomputer_wins = 0\n\nwhile player_wins < 2 and computer_wins < 2:\n  player_choice = input(\"\\nChoose rock, paper, or scissors: \").lower()\n  choices = [\"rock\", \"paper\", \"scissors\"]\n  computer_choice = random.choice(choices)\n  print(f\"Computer chose: {computer_choice}\")\n\n  if (player_choice == \"rock\" and computer_choice == \"scissors\") or (player_choice == \"scissors\" and computer_choice == \"paper\") or (player_choice == \"paper\" and computer_choice == \"rock\"):\n    winner = \"Player\"\n  elif player_choice == computer_choice:\n    winner = \"Tie\"\n  else:\n    winner = \"Computer\"\n\n  if winner == \"Player\":\n    print(\"You won\")\n  elif winner == \"Computer\":\n    print(\"Computer won\")\n  else:\n    print(\"It's a tie\")",
+                  "solvedContent": "import random\n\nprint(\"Let's play rock, paper, or scissors\")\n\nplayer_wins = 0\ncomputer_wins = 0\n\nwhile player_wins < 2 and computer_wins < 2:\n  player_choice = input(\"\\nChoose rock, paper, or scissors: \").lower()\n  choices = [\"rock\", \"paper\", \"scissors\"]\n  computer_choice = random.choice(choices)\n  print(f\"Computer chose: {computer_choice}\")\n\n  if (player_choice == \"rock\" and computer_choice == \"scissors\") or (player_choice == \"scissors\" and computer_choice == \"paper\") or (player_choice == \"paper\" and computer_choice == \"rock\"):\n    winner = \"Player\"\n  elif player_choice == computer_choice:\n    winner = \"Tie\"\n  else:\n    winner = \"Computer\"\n\n  if winner == \"Player\":\n    player_wins += 1\n    print(\"You won\")\n  elif winner == \"Computer\":\n    computer_wins += 1\n    print(\"Computer won\")\n  else:\n    print(\"It's a tie\")"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #4",
+            "id": 129436,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Oyun sonuçları, skor her turun sonunda görüntülenirse daha anlamlı olur. Öyle değil mi?\n\n1. Her turdan sonra geçerli skoru konsola yazdırmak için `while` döngüsünün içinde, ancak en sonunda bir `print` ifadesi ekle. İfade şunu yazdırmalı: `Current Score - Player: {player_wins}, Computer: {computer_wins}`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "import random\n\nprint(\"Let's play rock, paper, or scissors\")\n\nplayer_wins = 0\ncomputer_wins = 0\n\nwhile player_wins < 2 and computer_wins < 2:\n  player_choice = input(\"\\nChoose rock, paper, or scissors: \").lower()\n  choices = [\"rock\", \"paper\", \"scissors\"]\n  computer_choice = random.choice(choices)\n  print(f\"Computer chose: {computer_choice}\")\n\n  if (player_choice == \"rock\" and computer_choice == \"scissors\") or (player_choice == \"scissors\" and computer_choice == \"paper\") or (player_choice == \"paper\" and computer_choice == \"rock\"):\n    winner = \"Player\"\n  elif player_choice == computer_choice:\n    winner = \"Tie\"\n  else:\n    winner = \"Computer\"\n\n  if winner == \"Player\":\n    player_wins += 1\n    print(\"You won\")\n  elif winner == \"Computer\":\n    computer_wins += 1\n    print(\"Computer won\")\n  else:\n    print(\"It's a tie\")",
+                  "solvedContent": "import random\n\nprint(\"Let's play rock, paper, or scissors\")\n\nplayer_wins = 0\ncomputer_wins = 0\n\nwhile player_wins < 2 and computer_wins < 2:\n  player_choice = input(\"\\nChoose rock, paper, or scissors: \").lower()\n  choices = [\"rock\", \"paper\", \"scissors\"]\n  computer_choice = random.choice(choices)\n  print(f\"Computer chose: {computer_choice}\")\n\n  if (player_choice == \"rock\" and computer_choice == \"scissors\") or (player_choice == \"scissors\" and computer_choice == \"paper\") or (player_choice == \"paper\" and computer_choice == \"rock\"):\n    winner = \"Player\"\n  elif player_choice == computer_choice:\n    winner = \"Tie\"\n  else:\n    winner = \"Computer\"\n\n  if winner == \"Player\":\n    player_wins += 1\n    print(\"You won\")\n  elif winner == \"Computer\":\n    computer_wins += 1\n    print(\"Computer won\")\n  else:\n    print(\"It's a tie\")\n\n  print(f\"Current Score - Player: {player_wins}, Computer: {computer_wins}\")"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #5",
+            "id": 129437,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Son olarak, döngüden çıkıldığında genel kazananı duyuralım.\n\nProgramının sonuna, daha fazla oyunu kimin kazandığına bağlı olarak bir mesaj görüntüleyen bir ifade ekle.\n\n1. `player_wins > computer_wins` ise `Congratulations! You won.` yazdır.\n2. Değilse `Computer won!` yazdır.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "import random\n\nplayer_wins = 0\ncomputer_wins = 0\n\nprint(\"Let's play rock, paper, or scissors\")\n\nwhile player_wins < 2 and computer_wins < 2:\n  player_choice = input(\"\\nChoose rock, paper, or scissors: \").lower()\n  choices = [\"rock\", \"paper\", \"scissors\"]\n  computer_choice = random.choice(choices)\n  print(f\"Computer chose: {computer_choice}\")\n\n  if (player_choice == \"rock\" and computer_choice == \"scissors\") or (player_choice == \"scissors\" and computer_choice == \"paper\") or (player_choice == \"paper\" and computer_choice == \"rock\"):\n    winner = \"Player\"\n  elif player_choice == computer_choice:\n    winner = \"Tie\"\n  else:\n    winner = \"Computer\"\n\n  if winner == \"Player\":\n    player_wins += 1\n    print(\"You won\")\n  elif winner == \"Computer\":\n    computer_wins += 1\n    print(\"Computer won\")\n  else:\n    print(\"It's a tie\")\n\n  print(f\"Current Score - Player: {player_wins}, Computer: {computer_wins}\")",
+                  "solvedContent": "import random\n\nplayer_wins = 0\ncomputer_wins = 0\n\nprint(\"Let's play rock, paper, or scissors\")\n\nwhile player_wins < 2 and computer_wins < 2:\n  player_choice = input(\"\\nChoose rock, paper, or scissors: \").lower()\n  choices = [\"rock\", \"paper\", \"scissors\"]\n  computer_choice = random.choice(choices)\n  print(f\"Computer chose: {computer_choice}\")\n\n  if (player_choice == \"rock\" and computer_choice == \"scissors\") or (player_choice == \"scissors\" and computer_choice == \"paper\") or (player_choice == \"paper\" and computer_choice == \"rock\"):\n    winner = \"Player\"\n  elif player_choice == computer_choice:\n    winner = \"Tie\"\n  else:\n    winner = \"Computer\"\n\n  if winner == \"Player\":\n    player_wins += 1\n    print(\"You won\")\n  elif winner == \"Computer\":\n    computer_wins += 1\n    print(\"Computer won\")\n  else:\n    print(\"It's a tie\")\n\n  print(f\"Current Score - Player: {player_wins}, Computer: {computer_wins}\")\n\nif player_wins > computer_wins:\n  print(\"Congratulations! You won the best of three.\")\nelse:\n  print(\"Computer won the best of three. Better luck next time!\")"
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

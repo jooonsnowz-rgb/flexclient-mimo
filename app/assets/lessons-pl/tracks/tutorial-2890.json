@@ -1,0 +1,147 @@
+{
+  "tutorial": {
+    "id": 2890,
+    "version": 4,
+    "type": "guidedProject",
+    "isNew": false,
+    "codeLanguage": "node",
+    "title": "Menedżer zadań - część 2",
+    "descriptionContent": "W drugiej części projektu umożliwimy użytkownikom oznaczanie zadań jako ukończonych, dzięki czemu menedżer zadań stanie się użytecznym narzędziem.",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": "tutorial-2890-icon-banner.svg",
+    "chapters": [
+      {
+        "id": 14981,
+        "title": "Menedżer zadań - część 2",
+        "type": "practiceLevel3",
+        "lessons": [
+          {
+            "title": "Lesson #1",
+            "id": 132085,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Witaj ponownie w projekcie **Task Manager**. W drugiej części projektu umożliwisz użytkownikom dodawanie nowych zadań i zmienianie statusu zadań.\n\n1. Poniżej endpointu `GET /tasks/:id` w pliku `app.js` utwórz nowy endpoint dla żądania POST pod adresem `/tasks`.\n2. W funkcji callback wyodrębnij `title` i `description` z `req.body` za pomocą destrukturyzacji obiektu.\n3. Jeśli nie ma tytułu, wyślij odpowiedź 400 z komunikatem błędu w formacie JSON o treści `\"Title is required\"`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const db = require(\"./database\");\nconst express = require(\"express\");\nconst app = express();\nconst port = 3000;\n\napp.use(express.json());\n\napp.listen(port, () => {\n  console.log(`App is running on port ${port}`);\n});\n\napp.get(\"/tasks\", (req, res) => {\n  const tasks = db.prepare(\"SELECT * FROM tasks\").all();\n  res.status(200).json({\n    tasks: tasks,\n  });\n});\n",
+                  "solvedContent": "const db = require(\"./database\");\nconst express = require(\"express\");\nconst app = express();\nconst port = 3000;\n\napp.use(express.json());\n\napp.listen(port, () => {\n  console.log(`App is running on port ${port}`);\n});\n\napp.get(\"/tasks\", (req, res) => {\n  const tasks = db.prepare(\"SELECT * FROM tasks\").all();\n  res.status(200).json({\n    tasks: tasks,\n  });\n});\n\napp.post(\"/tasks\", (req, res) => {\n  const { title, description } = req.body;\n  if (!title) {\n    return res.status(400).json({ error: \"Title is required\" });\n  }\n});\n"
+                },
+                {
+                  "name": "database.js",
+                  "codeLanguage": "javascript",
+                  "content": "const Database = require(\"better-sqlite3\");\nconst db = new Database(\"/tmp/tasks.db\");\n\ndb.exec(`\n    CREATE TABLE IF NOT EXISTS tasks (\n      id INTEGER PRIMARY KEY AUTOINCREMENT,\n      title TEXT NOT NULL,\n      description TEXT,\n      status TEXT NOT NULL DEFAULT 'pending' CHECK(status IN ('pending', 'completed'))\n    )\n`);\n\ndb.exec(`\n    INSERT INTO tasks (title, description, status)\n    VALUES \n    ('Buy groceries', 'Milk, Bread, Eggs', 'pending'),\n    ('Clean the house', 'Vacuum and dust the living room', 'completed'),\n    ('Finish the report', 'Complete the annual financial report', 'pending')\n`);\n\nmodule.exports = db;\n",
+                  "solvedContent": null
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "POST",
+                "path": "/tasks",
+                "body": "{}"
+              }
+            }
+          },
+          {
+            "title": "Lesson #2",
+            "id": 132086,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Zaimplementujmy teraz kod dodający nowe zadanie do bazy danych.\n\n1. Używając przekazanych `title` i `description`, dodaj nowe zadanie do tabeli tasks.\n2. Zwróć identyfikator nowo utworzonego zadania w formacie JSON jako `taskId` i ustaw status na 201.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const db = require(\"./database\");\nconst express = require(\"express\");\nconst app = express();\nconst port = 3000;\n\napp.use(express.json());\n\napp.listen(port, () => {\n  console.log(`App is running on port ${port}`);\n});\n\napp.get(\"/tasks\", (req, res) => {\n  const tasks = db.prepare(\"SELECT * FROM tasks\").all();\n  res.status(200).json({\n    tasks: tasks,\n  });\n});\n\napp.post(\"/tasks\", (req, res) => {\n  const { title, description } = req.body;\n  if (!title) {\n    return res.status(400).json({ error: \"Title is required\" });\n  }\n});\n",
+                  "solvedContent": "const db = require(\"./database\");\nconst express = require(\"express\");\nconst app = express();\nconst port = 3000;\n\napp.use(express.json());\n\napp.listen(port, () => {\n  console.log(`App is running on port ${port}`);\n});\n\napp.get(\"/tasks\", (req, res) => {\n  const tasks = db.prepare(\"SELECT * FROM tasks\").all();\n  res.status(200).json({\n    tasks: tasks,\n  });\n});\n\napp.post(\"/tasks\", (req, res) => {\n  const { title, description } = req.body;\n  if (!title) {\n    return res.status(400).json({ error: \"Title is required\" });\n  }\n\n  const insert = db.prepare(\n    \"INSERT INTO tasks (title, description) VALUES (?, ?)\",\n  );\n  const result = insert.run(title, description);\n\n  res.status(201).json({\n    taskId: result.lastInsertRowid,\n    message: \"Task created successfully\",\n  });\n});\n"
+                },
+                {
+                  "name": "database.js",
+                  "codeLanguage": "javascript",
+                  "content": "const Database = require(\"better-sqlite3\");\nconst db = new Database(\"/tmp/tasks.db\");\n\ndb.exec(`\n    CREATE TABLE IF NOT EXISTS tasks (\n      id INTEGER PRIMARY KEY AUTOINCREMENT,\n      title TEXT NOT NULL,\n      description TEXT,\n      status TEXT NOT NULL DEFAULT 'pending' CHECK(status IN ('pending', 'completed'))\n    )\n`);\n\ndb.exec(`\n    INSERT INTO tasks (title, description, status)\n    VALUES \n    ('Buy groceries', 'Milk, Bread, Eggs', 'pending'),\n    ('Clean the house', 'Vacuum and dust the living room', 'completed'),\n    ('Finish the report', 'Complete the annual financial report', 'pending')\n`);\n\nmodule.exports = db;\n",
+                  "solvedContent": null
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "POST",
+                "path": "/tasks",
+                "body": "{\n  \"title\": \"Read a book\",\n  \"description\": \"I really want to read 'Catch-22' or a similar book.\"\n}"
+              }
+            }
+          },
+          {
+            "title": "Lesson #3",
+            "id": 132087,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Aby zaktualizować status istniejącego zadania, utwórzmy punkt końcowy obsługujący żądanie PUT.\n\n1. Zdefiniuj nowy punkt końcowy dla żądania `PUT` pod adresem URI `/tasks/:id`.\n2. W funkcji zwrotnej wyodrębnij `id` z `req.params` oraz `status` z `req.body`.\n3. Jeśli status nie ma wartości `\"completed\"` ani `\"pending\"`, odpowiedz kodem statusu 400 i komunikatem o błędzie w formacie JSON o treści `\"Invalid status\"`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const db = require(\"./database\");\nconst express = require(\"express\");\nconst app = express();\nconst port = 3000;\n\napp.use(express.json());\n\napp.listen(port, () => {\n  console.log(`App is running on port ${port}`);\n});\n\napp.get(\"/tasks\", (req, res) => {\n  const tasks = db.prepare(\"SELECT * FROM tasks\").all();\n  res.status(200).json({\n    tasks: tasks,\n  });\n});\n\napp.post(\"/tasks\", (req, res) => {\n  const { title, description } = req.body;\n  if (!title) {\n    return res.status(400).json({ error: \"Title is required\" });\n  }\n\n  const insert = db.prepare(\n    \"INSERT INTO tasks (title, description) VALUES (?, ?)\",\n  );\n  const result = insert.run(title, description);\n\n  res.status(201).json({\n    taskId: result.lastInsertRowid,\n    message: \"Task created successfully\",\n  });\n});\n",
+                  "solvedContent": "const db = require(\"./database\");\nconst express = require(\"express\");\nconst app = express();\nconst port = 3000;\n\napp.use(express.json());\n\napp.listen(port, () => {\n  console.log(`App is running on port ${port}`);\n});\n\napp.get(\"/tasks\", (req, res) => {\n  const tasks = db.prepare(\"SELECT * FROM tasks\").all();\n  res.status(200).json({\n    tasks: tasks,\n  });\n});\n\napp.post(\"/tasks\", (req, res) => {\n  const { title, description } = req.body;\n  if (!title) {\n    return res.status(400).json({ error: \"Title is required\" });\n  }\n\n  const insert = db.prepare(\n    \"INSERT INTO tasks (title, description) VALUES (?, ?)\",\n  );\n  const result = insert.run(title, description);\n\n  res.status(201).json({\n    taskId: result.lastInsertRowid,\n    message: \"Task created successfully\",\n  });\n});\n\napp.put(\"/tasks/:id\", (req, res) => {\n  const { id } = req.params;\n  const { status } = req.body;\n  if (status !== \"completed\" && status !== \"pending\") {\n    return res.status(400).json({ error: \"Invalid status\" });\n  }\n});\n"
+                },
+                {
+                  "name": "database.js",
+                  "codeLanguage": "javascript",
+                  "content": "const Database = require(\"better-sqlite3\");\nconst db = new Database(\"/tmp/tasks.db\");\n\ndb.exec(`\n    CREATE TABLE IF NOT EXISTS tasks (\n      id INTEGER PRIMARY KEY AUTOINCREMENT,\n      title TEXT NOT NULL,\n      description TEXT,\n      status TEXT NOT NULL DEFAULT 'pending' CHECK(status IN ('pending', 'completed'))\n    )\n`);\n\ndb.exec(`\n    INSERT INTO tasks (title, description, status)\n    VALUES \n    ('Buy groceries', 'Milk, Bread, Eggs', 'pending'),\n    ('Clean the house', 'Vacuum and dust the living room', 'completed'),\n    ('Finish the report', 'Complete the annual financial report', 'pending')\n`);\n\nmodule.exports = db;\n",
+                  "solvedContent": null
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "PUT",
+                "path": "/tasks/1",
+                "body": "{\n  \"status\": \"Invalid status\"\n}"
+              }
+            }
+          },
+          {
+            "title": "Lesson #4",
+            "id": 132088,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Dokończmy trasę, aktualizując bazę danych o nowy status zadania.\n\n1. Zaktualizuj status zadania o podanym identyfikatorze, ustawiając go na `\"completed\"` albo `\"pending\"`.\n2. Jeśli nie znaleziono zadania o podanym identyfikatorze, zwróć kod statusu `404` wraz z komunikatem o błędzie.\n3. Jeśli zadanie zostało pomyślnie zaktualizowane, zwróć kod statusu `200`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "app.js",
+                  "codeLanguage": "javascript",
+                  "content": "const db = require(\"./database\");\nconst express = require(\"express\");\nconst app = express();\nconst port = 3000;\n\napp.use(express.json());\n\napp.listen(port, () => {\n  console.log(`App is running on port ${port}`);\n});\n\napp.get(\"/tasks\", (req, res) => {\n  const tasks = db.prepare(\"SELECT * FROM tasks\").all();\n  res.status(200).json({\n    tasks: tasks,\n  });\n});\n\napp.post(\"/tasks\", (req, res) => {\n  const { title, description } = req.body;\n  if (!title) {\n    return res.status(400).json({ error: \"Title is required\" });\n  }\n\n  const insert = db.prepare(\n    \"INSERT INTO tasks (title, description) VALUES (?, ?)\",\n  );\n  const result = insert.run(title, description);\n\n  res.status(201).json({\n    taskId: result.lastInsertRowid,\n    message: \"Task created successfully\",\n  });\n});\n\napp.put(\"/tasks/:id\", (req, res) => {\n  const { id } = req.params;\n  const { status } = req.body;\n  if (status !== \"completed\" && status !== \"pending\") {\n    return res.status(400).json({ error: \"Invalid status\" });\n  }\n});\n",
+                  "solvedContent": "const db = require(\"./database\");\nconst express = require(\"express\");\nconst app = express();\nconst port = 3000;\n\napp.use(express.json());\n\napp.listen(port, () => {\n  console.log(`App is running on port ${port}`);\n});\n\napp.get(\"/tasks\", (req, res) => {\n  const tasks = db.prepare(\"SELECT * FROM tasks\").all();\n  res.status(200).json({\n    tasks: tasks,\n  });\n});\n\napp.post(\"/tasks\", (req, res) => {\n  const { title, description } = req.body;\n  if (!title) {\n    return res.status(400).json({ error: \"Title is required\" });\n  }\n\n  const insert = db.prepare(\n    \"INSERT INTO tasks (title, description) VALUES (?, ?)\",\n  );\n  const result = insert.run(title, description);\n\n  res.status(201).json({\n    taskId: result.lastInsertRowid,\n    message: \"Task created successfully\",\n  });\n});\n\napp.put(\"/tasks/:id\", (req, res) => {\n  const { id } = req.params;\n  const { status } = req.body;\n  if (status !== \"completed\" && status !== \"pending\") {\n    return res.status(400).json({ error: \"Invalid status\" });\n  }\n\n  const update = db.prepare(\"UPDATE tasks SET status = ? WHERE id = ?\");\n  const result = update.run(status, id);\n\n  if (result.changes === 0) {\n    return res.status(404).json({ error: \"Task not found\" });\n  }\n\n  res.status(200).json({\n    message: `Task with id ${id} updated successfully.`,\n    updatedStatus: status,\n  });\n});\n"
+                },
+                {
+                  "name": "database.js",
+                  "codeLanguage": "javascript",
+                  "content": "const Database = require(\"better-sqlite3\");\nconst db = new Database(\"/tmp/tasks.db\");\n\ndb.exec(`\n    CREATE TABLE IF NOT EXISTS tasks (\n      id INTEGER PRIMARY KEY AUTOINCREMENT,\n      title TEXT NOT NULL,\n      description TEXT,\n      status TEXT NOT NULL DEFAULT 'pending' CHECK(status IN ('pending', 'completed'))\n    )\n`);\n\ndb.exec(`\n    INSERT INTO tasks (title, description, status)\n    VALUES \n    ('Buy groceries', 'Milk, Bread, Eggs', 'pending'),\n    ('Clean the house', 'Vacuum and dust the living room', 'completed'),\n    ('Finish the report', 'Complete the annual financial report', 'pending')\n`);\n\nmodule.exports = db;\n",
+                  "solvedContent": null
+                }
+              ],
+              "hints": [],
+              "httpOptions": {
+                "method": "PUT",
+                "path": "/tasks/1",
+                "body": "{\n  \"status\": \"completed\"\n}"
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

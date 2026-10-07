@@ -1,0 +1,173 @@
+{
+  "tutorial": {
+    "id": 2371,
+    "version": 6,
+    "type": "guidedProjectOptional",
+    "isNew": false,
+    "codeLanguage": "python",
+    "title": "Seguridad de las contraseñas",
+    "descriptionContent": "Ayuda a una empresa a comprobar la seguridad de su cuenta creando un programa que calcule las permutaciones de una contraseña y el tiempo que tardaría un hacker en acceder.",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": "tutorial-2371-icon-banner.svg",
+    "chapters": [
+      {
+        "id": 13879,
+        "title": "Seguridad de las contraseñas",
+        "type": "practiceLevel1",
+        "lessons": [
+          {
+            "title": "Variables needed for permutations",
+            "id": 123511,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Un cliente nos ha pedido que revisemos el sistema de ciberseguridad de su empresa. Vamos a crear un programa que compruebe la seguridad de la contraseña del cliente.\n\nLa seguridad de la contraseña dependerá del número de caracteres, pero para nuestro ejemplo usaremos una contraseña de 6 caracteres.\n\n1. Crea la variable `password_length` y establece `6` como su valor.\n2. Crea la variable `counter` y establece `1` como su valor. Usaremos esta variable para contar el número de veces que entramos en el bucle.\n3. Crea la variable `permutations` y establece `1` como su valor. Usaremos esta variable para contar el número de combinaciones posibles de los caracteres.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "",
+                  "solvedContent": "password_length = 6\r\ncounter = 1\r\npermutations = 1"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Counting permutations",
+            "id": 123512,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Suponiendo que un hacker conoce los caracteres de la contraseña de nuestro cliente, lo único que tiene que hacer es probar las distintas permutaciones. Podemos encontrar el número máximo de permutaciones que podría necesitar multiplicando todos los números que conducen al número de caracteres, empezando por `1`. Por ejemplo, una contraseña de 4 caracteres tendrá 1 x 2 x 3 x 4 = 24 combinaciones posibles.\n\nVamos a crear un bucle para averiguar el número de permutaciones de la contraseña de nuestro cliente.\n\n1. Codifica un bucle `while` que itere mientras `counter` sea menor o igual que `password_length`.\n2. En el bucle, establece `permutations` multiplicado por `counter` como el valor de `permutations`.\n3. Después de establecer el valor de `permutations`, aumenta el valor de `counter` en `1`.\n4. Fuera del bucle, imprime el siguiente f-string.\n```\nf\"The possible combination of a {password_length}-character password is: {permutations}\"\n```",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "password_length = 6\r\ncounter = 1\r\npermutations = 1",
+                  "solvedContent": "password_length = 6\r\ncounter = 1\r\npermutations = 1\r\nwhile counter <= password_length:\r\n    permutations *= counter\r\n    counter += 1\r\nprint(f\"The possible combination of a {password_length}-character password is: {permutations}\")"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "Remember the syntax of self-assigning operators is `<variable> <operator> <value>`. For example, if we want to increase the value of the `test` variable by `5`, we do:\n```\ntest += 5\n```"
+                }
+              ]
+            }
+          },
+          {
+            "title": "Variables needed to count account locks",
+            "id": 123513,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Ahora conocemos el número de permutaciones posibles. Este también es el número máximo de intentos que necesitará un hacker para obtener acceso a la cuenta.\n\n¡Pero no será tan fácil! El cliente compartió que la cuenta tiene un mecanismo de bloqueo para evitar ataques informáticos. La cuenta se bloqueará durante un tiempo después de cada 5 intentos incorrectos.\n\nDado que el número de permutaciones posibles también es el número máximo de intentos necesarios para acceder a la cuenta, podemos usar `permutations` para comprobar durante cuánto tiempo podría estar bloqueada la cuenta. Podemos dividir las permutaciones entre el número de intentos que se necesitan para bloquear la cuenta, que sabemos que es `5`.\n\n1. Crea la variable `attempts` y establece su valor en `5`. Sabemos que este es el número de intentos permitidos antes de que se bloquee la cuenta.\n2. Crea la variable `max_lock` y establece su valor en `permutations` dividido entre `attempts`. Esto nos indica el número máximo de veces que se bloqueará la cuenta.\n3. Al dividir un valor numérico, obtendremos un Float. Usa `int()` en `max_lock` para convertir el float en un entero y establecerlo como el nuevo valor de `max_lock`.\n4. Imprime el siguiente f-string:\n```\nf\"The maximum number of times the account might be locked is {max_lock} times.\"\n```",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "password_length = 6\r\ncounter = 1\r\npermutations = 1\r\nwhile counter <= password_length:\r\n    permutations *= counter\r\n    counter += 1\r\nprint(f\"The possible combination of a {password_length}-character password is: {permutations}\")",
+                  "solvedContent": "password_length = 6\r\ncounter = 1\r\npermutations = 1\r\nwhile counter <= password_length:\r\n    permutations *= counter\r\n    counter += 1\r\nprint(f\"The possible combination of a {password_length}-character password is: {permutations}\")\r\nattempts = 5\r\nmax_lock = permutations/attempts\r\nmax_lock = int(max_lock)\r\nprint(f\"The maximum number of times the account might be locked is {max_lock} times.\")"
+                }
+              ],
+              "hints": [
+                {
+                  "title": "Hint",
+                  "content": "Remember that we can convert Floats or even Strings to Integers using `int()`. The syntax is `int(<value to be converted>)`."
+                }
+              ]
+            }
+          },
+          {
+            "title": "Variables needed to count account locks",
+            "id": 123851,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "El tiempo de bloqueo también depende de cuántas veces se bloqueó la cuenta anteriormente. Vamos a crear algunas variables más que almacenen esta información.\n\n1. Crea la variable `locks` y establece `0` como su valor. Esta variable cuenta el número de veces que se bloquea la cuenta.\n2. Crea la variable `total_lock_time` y establece `0` como su valor. Usaremos esta variable para contar la duración total del bloqueo de la cuenta.\n3. Crea la variable `lock_time_multiplier` y establece `5` como su valor. Usamos esta variable para calcular la duración del bloqueo cada vez que se bloquea la cuenta.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "password_length = 6\r\ncounter = 1\r\npermutations = 1\r\nwhile counter <= password_length:\r\n    permutations *= counter\r\n    counter += 1\r\nprint(f\"The possible combination of a {password_length}-character password is: {permutations}\")\r\nattempts = 5\r\nmax_lock = permutations/attempts\r\nmax_lock = int(max_lock)\r\nprint(f\"The maximum number of times the account might be locked is {max_lock} times.\")",
+                  "solvedContent": "password_length = 6\r\ncounter = 1\r\npermutations = 1\r\nwhile counter <= password_length:\r\n    permutations *= counter\r\n    counter += 1\r\nprint(f\"The possible combination of a {password_length}-character password is: {permutations}\")\r\nattempts = 5\r\nmax_lock = permutations/attempts\r\nmax_lock = int(max_lock)\r\nprint(f\"The maximum number of times the account might be locked is {max_lock} times.\")\r\nlocks = 0\r\ntotal_lock_time = 0\r\nlock_time_multiplier = 5"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Looping through permutations",
+            "id": 123514,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "¡Es hora de probar el programa! Vamos a simular que un hacker intenta adivinar la contraseña demasiadas veces y que la cuenta se bloquea.\n\nUsaremos un bucle `for` para eso. Cada vez que el hacker se equivoque, la cuenta se bloqueará durante algunos minutos. Podemos calcular los minutos multiplicando el número de veces que la cuenta se bloqueó anteriormente por `lock_time_multiplier`.\n\n1. Programa un bucle `for` que itere por el rango de `max_lock`.\n2. En el bucle `for`, aumenta en `1` el valor de `locks`.\n3. Multiplica `locks` por `lock_time_multiplier` y usa el operador de asignación compuesta para sumar y actualizar el resultado en la variable `total_lock_time`.\n4. Imprime la siguiente f-string dentro del bucle:\n```\nf\"Your account is locked for {lock_time_multiplier*locks} minutes\"\n```",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "password_length = 6\r\ncounter = 1\r\npermutations = 1\r\nwhile counter <= password_length:\r\n    permutations *= counter\r\n    counter += 1\r\nprint(f\"The possible combination of a {password_length}-character password is: {permutations}\")\r\nattempts = 5\r\nmax_lock = permutations/attempts\r\nmax_lock = int(max_lock)\r\nprint(f\"The maximum number of times the account might be locked is {max_lock} times.\")\r\nlocks = 0\r\ntotal_lock_time = 0\r\nlock_time_multiplier = 5",
+                  "solvedContent": "password_length = 6\r\ncounter = 1\r\npermutations = 1\r\nwhile counter <= password_length:\r\n    permutations *= counter\r\n    counter += 1\r\nprint(f\"The possible combination of a {password_length}-character password is: {permutations}\")\r\nattempts = 5\r\nmax_lock = permutations/attempts\r\nmax_lock = int(max_lock)\r\nprint(f\"The maximum number of times the account might be locked is {max_lock} times.\")\r\nlocks = 0\r\ntotal_lock_time = 0\r\nlock_time_multiplier = 5\r\nfor i in range(max_lock):\r\n    locks += 1\r\n    total_lock_time += lock_time_multiplier * locks\r\n    print(f\"Your account is locked for {lock_time_multiplier*locks} minutes\")"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "How long was account locked for in total",
+            "id": 123518,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Simulamos el bloqueo de la cuenta y el programa parece estar funcionando. Por último, vamos a notificar al cliente durante cuánto tiempo estuvo bloqueada la cuenta.\n\n1. Imprime la siguiente cadena f fuera del bucle `for`:\n```\nf\"Assuming the hacker only got the password right with the last possible combination, your account would have been locked for {total_lock_time} minutes in total.\"\n```",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "password_length = 6\r\ncounter = 1\r\npermutations = 1\r\nwhile counter <= password_length:\r\n    permutations *= counter\r\n    counter += 1\r\nprint(f\"The possible combination of a {password_length}-character password is: {permutations}\")\r\nattempts = 5\r\nmax_lock = permutations/attempts\r\nmax_lock = int(max_lock)\r\nprint(f\"The maximum number of times the account might be locked is {max_lock} times.\")\r\nlocks = 0\r\ntotal_lock_time = 0\r\nlock_time_multiplier = 5\r\nfor i in range(max_lock):\r\n    locks += 1\r\n    total_lock_time += lock_time_multiplier * locks\r\n    print(f\"Your account is locked for {lock_time_multiplier*locks} minutes\")",
+                  "solvedContent": "password_length = 6\r\ncounter = 1\r\npermutations = 1\r\nwhile counter <= password_length:\r\n    permutations *= counter\r\n    counter += 1\r\nprint(f\"The possible combination of a {password_length}-character password is: {permutations}\")\r\nattempts = 5\r\nmax_lock = permutations/attempts\r\nmax_lock = int(max_lock)\r\nprint(f\"The maximum number of times the account might be locked is {max_lock} times.\")\r\nlocks = 0\r\ntotal_lock_time = 0\r\nlock_time_multiplier = 5\r\nfor i in range(max_lock):\r\n    locks += 1\r\n    total_lock_time += lock_time_multiplier * locks\r\n    print(f\"Your account is locked for {lock_time_multiplier*locks} minutes\")\r\nprint(f\"Assuming the hacker only got the password right with the last possible combination, your account would have been locked for {total_lock_time} minutes in total.\")"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Well Done!",
+            "id": 123516,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "¡Buen trabajo! Gracias a ti, el cliente ahora tiene un programa para comprobar la solidez de su ciberseguridad.\n\nYa no hay más pruebas, así que siéntete libre de experimentar y hacer algunos cambios.\n\nPuedes cambiar el bucle `while` por un bucle `for` y viceversa, incluir una longitud diferente para la contraseña o intentar experimentar con otros tipos de datos.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "password_length = 6\r\ncounter = 1\r\npermutations = 1\r\nwhile counter <= password_length:\r\n    permutations *= counter\r\n    counter += 1\r\nprint(f\"The possible combination of a {password_length}-character password is: {permutations}\")\r\nattempts = 5\r\nmax_lock = permutations/attempts\r\nmax_lock = int(max_lock)\r\nprint(f\"The maximum number of times the account might be locked is {max_lock} times.\")\r\nlocks = 0\r\ntotal_lock_time = 0\r\nlock_time_multiplier = 5\r\nfor i in range(max_lock):\r\n    locks += 1\r\n    total_lock_time += lock_time_multiplier * locks\r\n    print(f\"Your account is locked for {lock_time_multiplier*locks} minutes\")\r\nprint(f\"Assuming the hacker only got the password right with the last possible combination, your account would have been locked for {total_lock_time} minutes in total.\")",
+                  "solvedContent": null
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

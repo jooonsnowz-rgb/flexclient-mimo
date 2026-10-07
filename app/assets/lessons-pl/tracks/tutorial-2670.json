@@ -1,0 +1,103 @@
+{
+  "tutorial": {
+    "id": 2670,
+    "version": 6,
+    "type": "guidedProject",
+    "isNew": false,
+    "codeLanguage": "python",
+    "title": "Analizator transakcji — część 2",
+    "descriptionContent": "Zanurz się głębiej w swoje finanse, przeprowadzając szczegółową analizę swoich operacji bankowych i odkrywając nowe spostrzeżenia",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": "tutorial-2670-icon-banner.svg",
+    "chapters": [
+      {
+        "id": 14645,
+        "title": "Analizator transakcji — część 2",
+        "type": "practiceLevel3",
+        "lessons": [
+          {
+            "title": "Lesson #1",
+            "id": 129530,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Witaj w drugiej części projektu **Transaction Analyzer**. Tutaj dokładniej przeanalizujesz transakcje i pozwolisz użytkownikowi zdecydować, co zrobić.\n\n1. Utwórz nową funkcję o nazwie `analyze_transactions`.\n   - Funkcja powinna przyjmować jeden parametr: `transactions`.\n   - Wewnątrz nowo utworzonej funkcji posortuj listę transakcji za pomocą funkcji `sort`.\n   - Po posortowaniu zapisz pierwszą transakcję jako `largest_withdrawal`, a ostatnią transakcję jako `largest_deposit`, ponieważ transakcje są teraz posortowane. Dzięki temu otrzymasz właściwe transakcje.\n   - Wyświetl największą wypłatę i największą wpłatę.\n2. Wywołaj funkcję `analyze_transactions`, przekazując `data` jako argument.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "data = [\n  (749.17, \"Investment Return\"),\n  (-11.54, \"Utilities\"),\n  (-247.58, \"Online Shopping\"),\n  (981.17, \"Investment Return\"),\n  (-410.65, \"Rent\"),\n  (310.60, \"Rent\"),\n  (563.70, \"Gift\"),\n  (220.79, \"Salary\"),\n  (-49.85, \"Car Maintenance\"),\n  (308.49, \"Salary\"),\n  (-205.55, \"Car Maintenance\"),\n  (870.64, \"Salary\"),\n  (-881.51, \"Utilities\"),\n  (518.14, \"Salary\"),\n  (-264.66, \"Groceries\")\n]\n\ndef print_transactions(transactions):\n  for transaction in transactions:\n    amount, statement = transaction\n    print(f\"${amount} - {statement}\")\n\nprint_transactions(data)\n\ndef print_summary(transactions):\n  deposits = [transaction[0] for transaction in transactions if transaction[0] >= 0]\n  total_deposited = sum(deposits)\n  print(total_deposited)\n  withdrawals = [transaction[0] for transaction in transactions if transaction[0] < 0]\n  total_withdrawn = sum(withdrawals)\n  print(total_withdrawn)\n  balance = total_deposited + total_withdrawn\n  print(f\"Balance: {balance}\")\n\nprint_summary(data)",
+                  "solvedContent": "data = [\n  (749.17, \"Investment Return\"),\n  (-11.54, \"Utilities\"),\n  (-247.58, \"Online Shopping\"),\n  (981.17, \"Investment Return\"),\n  (-410.65, \"Rent\"),\n  (310.60, \"Rent\"),\n  (563.70, \"Gift\"),\n  (220.79, \"Salary\"),\n  (-49.85, \"Car Maintenance\"),\n  (308.49, \"Salary\"),\n  (-205.55, \"Car Maintenance\"),\n  (870.64, \"Salary\"),\n  (-881.51, \"Utilities\"),\n  (518.14, \"Salary\"),\n  (-264.66, \"Groceries\")\n]\n\ndef print_transactions(transactions):\n  for transaction in transactions:\n    amount, statement = transaction\n    print(f\"${amount} - {statement}\")\n\nprint_transactions(data)\n\ndef print_summary(transactions):\n  deposits = [transaction[0] for transaction in transactions if transaction[0] >= 0]\n  total_deposited = sum(deposits)\n  print(total_deposited)\n  withdrawals = [transaction[0] for transaction in transactions if transaction[0] < 0]\n  total_withdrawn = sum(withdrawals)\n  print(total_withdrawn)\n  balance = total_deposited + total_withdrawn\n  print(f\"Balance: {balance}\")\n\nprint_summary(data)\n\ndef analyze_transactions(transactions):\n  transactions.sort()\n  largest_withdrawal = transactions[0]\n  largest_deposit = transactions[-1]\n  print(f\"Largest withdrawals: {largest_withdrawal}\")\n  print(f\"Largest deposit: {largest_deposit}\")\n\nanalyze_transactions(data)"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #2",
+            "id": 129531,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Obliczmy kilka bardziej wartościowych wskaźników. Zacznijmy od dokładniejszej analizy wpłat.\n\n1. Wewnątrz funkcji `analyze_transactions` odfiltruj wszystkie dodatnie elementy przekazanej listy `transactions`, aby uzyskać wpłaty, tak jak zrobiliśmy to w funkcji `print_summary`.\n2. Użyj funkcji `sum` na liście wpłat i zapisz wynik w zmiennej o nazwie `total_deposit`.\n3. Aby uzyskać średnią wartość wpłaty, podziel całkowitą kwotę wpłat przez liczbę wpłat.\n4. Upewnij się, że średnia wynosi `0`, jeśli nie istnieją żadne wpłaty.\n5. Wyświetl średnią wpłatę.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "data = [\n  (749.17, \"Investment Return\"),\n  (-11.54, \"Utilities\"),\n  (-247.58, \"Online Shopping\"),\n  (981.17, \"Investment Return\"),\n  (-410.65, \"Rent\"),\n  (310.60, \"Rent\"),\n  (563.70, \"Gift\"),\n  (220.79, \"Salary\"),\n  (-49.85, \"Car Maintenance\"),\n  (308.49, \"Salary\"),\n  (-205.55, \"Car Maintenance\"),\n  (870.64, \"Salary\"),\n  (-881.51, \"Utilities\"),\n  (518.14, \"Salary\"),\n  (-264.66, \"Groceries\")\n]\n\ndef print_transactions(transactions):\n  for transaction in transactions:\n    amount, statement = transaction\n    print(f\"${amount} - {statement}\")\n\nprint_transactions(data)\n\ndef print_summary(transactions):\n  deposits = [transaction[0] for transaction in transactions if transaction[0] >= 0]\n  total_deposited = sum(deposits)\n  print(total_deposited)\n  withdrawals = [transaction[0] for transaction in transactions if transaction[0] < 0]\n  total_withdrawn = sum(withdrawals)\n  print(total_withdrawn)\n  balance = total_deposited + total_withdrawn\n  print(f\"Balance: {balance}\")\n\nprint_summary(data)\n\ndef analyze_transactions(transactions):\n  transactions.sort()\n  largest_withdrawal = transactions[0]\n  largest_deposit = transactions[-1]\n  print(f\"Largest witdrawals: {largest_withdrawal}\")\n  print(f\"Largest deposit: {largest_deposit}\")\n\nanalyze_transactions(data)",
+                  "solvedContent": "data = [\n  (749.17, \"Investment Return\"),\n  (-11.54, \"Utilities\"),\n  (-247.58, \"Online Shopping\"),\n  (981.17, \"Investment Return\"),\n  (-410.65, \"Rent\"),\n  (310.60, \"Rent\"),\n  (563.70, \"Gift\"),\n  (220.79, \"Salary\"),\n  (-49.85, \"Car Maintenance\"),\n  (308.49, \"Salary\"),\n  (-205.55, \"Car Maintenance\"),\n  (870.64, \"Salary\"),\n  (-881.51, \"Utilities\"),\n  (518.14, \"Salary\"),\n  (-264.66, \"Groceries\")\n]\n\ndef print_transactions(transactions):\n  for transaction in transactions:\n    amount, statement = transaction\n    print(f\"${amount} - {statement}\")\n\nprint_transactions(data)\n\ndef print_summary(transactions):\n  deposits = [transaction[0] for transaction in transactions if transaction[0] >= 0]\n  total_deposited = sum(deposits)\n  print(total_deposited)\n  withdrawals = [transaction[0] for transaction in transactions if transaction[0] < 0]\n  total_withdrawn = sum(withdrawals)\n  print(total_withdrawn)\n  balance = total_deposited + total_withdrawn\n  print(f\"Balance: {balance}\")\n\nprint_summary(data)\n\ndef analyze_transactions(transactions):\n  transactions.sort()\n  largest_withdrawal = transactions[0]\n  largest_deposit = transactions[-1]\n  print(f\"Largest witdrawals: {largest_withdrawal}\")\n  print(f\"Largest deposit: {largest_deposit}\")\n\n  deposits = [transaction[0] for transaction in transactions if transaction[0] >= 0]\n  total_deposit = sum(deposits)\n  average_deposit = total_deposit / len(deposits) if deposits else 0\n  print(f\"Average deposit: {average_deposit}\")\n\nanalyze_transactions(data)"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #3",
+            "id": 129532,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Obliczmy także średnią dla wypłat.\n\n1. Wewnątrz funkcji `analyze_transactions` odfiltruj wszystkie ujemne elementy przekazanej listy `withdrawals`, aby uzyskać wypłaty.\n2. Użyj funkcji `sum` na liście wypłat i zapisz wynik w zmiennej o nazwie `total_withdrawals`.\n3. Oblicz średnią kwotę wypłaty. W tym celu podziel łączną kwotę wypłat przez liczbę wypłat. Jeśli nie ma żadnych wypłat, średnia powinna wynosić `0`.\n4. Wyświetl średnią wypłat.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "data = [\n  (749.17, \"Investment Return\"),\n  (-11.54, \"Utilities\"),\n  (-247.58, \"Online Shopping\"),\n  (981.17, \"Investment Return\"),\n  (-410.65, \"Rent\"),\n  (310.60, \"Rent\"),\n  (563.70, \"Gift\"),\n  (220.79, \"Salary\"),\n  (-49.85, \"Car Maintenance\"),\n  (308.49, \"Salary\"),\n  (-205.55, \"Car Maintenance\"),\n  (870.64, \"Salary\"),\n  (-881.51, \"Utilities\"),\n  (518.14, \"Salary\"),\n  (-264.66, \"Groceries\")\n]\n\ndef print_transactions(transactions):\n  for transaction in transactions:\n    amount, statement = transaction\n    print(f\"${amount} - {statement}\")\n\nprint_transactions(data)\n\ndef print_summary(transactions):\n  deposits = [transaction[0] for transaction in transactions if transaction[0] >= 0]\n  total_deposited = sum(deposits)\n  print(total_deposited)\n  withdrawals = [transaction[0] for transaction in transactions if transaction[0] < 0]\n  total_withdrawn = sum(withdrawals)\n  print(total_withdrawn)\n  balance = total_deposited + total_withdrawn\n  print(f\"Balance: {balance}\")\n\nprint_summary(data)\n\ndef analyze_transactions(transactions):\n  transactions.sort()\n  largest_withdrawal = transactions[0]\n  largest_deposit = transactions[-1]\n  print(f\"Largest witdrawals: {largest_withdrawal}\")\n  print(f\"Largest deposit: {largest_deposit}\")\n\n  deposits = [transaction[0] for transaction in transactions if transaction[0] >= 0]\n  total_deposit = sum(deposits)\n  average_deposit = total_deposit / len(deposits) if deposits else 0\n  print(f\"Average deposit: {average_deposit}\")\n\nanalyze_transactions(data)",
+                  "solvedContent": "data = [\n  (749.17, \"Investment Return\"),\n  (-11.54, \"Utilities\"),\n  (-247.58, \"Online Shopping\"),\n  (981.17, \"Investment Return\"),\n  (-410.65, \"Rent\"),\n  (310.60, \"Rent\"),\n  (563.70, \"Gift\"),\n  (220.79, \"Salary\"),\n  (-49.85, \"Car Maintenance\"),\n  (308.49, \"Salary\"),\n  (-205.55, \"Car Maintenance\"),\n  (870.64, \"Salary\"),\n  (-881.51, \"Utilities\"),\n  (518.14, \"Salary\"),\n  (-264.66, \"Groceries\")\n]\n\ndef print_transactions(transactions):\n  for transaction in transactions:\n    amount, statement = transaction\n    print(f\"${amount} - {statement}\")\n\nprint_transactions(data)\n\ndef print_summary(transactions):\n  deposits = [transaction[0] for transaction in transactions if transaction[0] >= 0]\n  total_deposited = sum(deposits)\n  print(total_deposited)\n  withdrawals = [transaction[0] for transaction in transactions if transaction[0] < 0]\n  total_withdrawn = sum(withdrawals)\n  print(total_withdrawn)\n  balance = total_deposited + total_withdrawn\n  print(f\"Balance: {balance}\")\n\nprint_summary(data)\n\ndef analyze_transactions(transactions):\n  transactions.sort()\n  largest_withdrawal = transactions[0]\n  largest_deposit = transactions[-1]\n  print(f\"Largest witdrawals: {largest_withdrawal}\")\n  print(f\"Largest deposit: {largest_deposit}\")\n\n  deposits = [transaction[0] for transaction in transactions if transaction[0] >= 0]\n  total_deposit = sum(deposits)\n  average_deposit = total_deposit / len(deposits) if deposits else 0\n  print(f\"Average deposit: {average_deposit}\")\n\n  withdrawals = [transaction[0] for transaction in transactions if transaction[0] < 0]\n  total_withdrawal = sum(withdrawals)\n  average_withdrawal = total_withdrawal / len(withdrawals) if withdrawals else 0\n  print(f\"Average witdrawal: {average_withdrawal}\")\n\nanalyze_transactions(data)"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #4",
+            "id": 129533,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Na koniec udostępnisz użytkownikowi opcje wydrukowania podsumowania lub uzyskania analizy transakcji.\n\n1. Usuń wszystkie wywołania funkcji, aby uniknąć wywoływania funkcji, której użytkownik nie chce wywołać.\n2. Utwórz pętlę `while True:`. Wewnątrz pętli daj użytkownikowi możliwość wpisania `\"print\"`, `\"analyze\"` lub `\"stop\"`. Użyj instrukcji `print`, aby wyświetlić opcje.\n3. Pobierz dane wejściowe od użytkownika i zapisz je w zmiennej o nazwie `choice`.\n4. Jeśli `choice` zawiera wartość `\"print\"`, wywołaj funkcję `print_summary`.\n5. Jeśli `choice` zawiera wartość `\"analyze\"`, wywołaj funkcję `analyze_transactions`.\n6. Jeśli `choice` zawiera wartość `\"stop\"`, zatrzymaj pętlę `while`, wywołując `break`.\n7. W przeciwnym razie wyświetl `\"Invalid choice\"`.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "data = [\n  (749.17, \"Investment Return\"),\n  (-11.54, \"Utilities\"),\n  (-247.58, \"Online Shopping\"),\n  (981.17, \"Investment Return\"),\n  (-410.65, \"Rent\"),\n  (310.60, \"Rent\"),\n  (563.70, \"Gift\"),\n  (220.79, \"Salary\"),\n  (-49.85, \"Car Maintenance\"),\n  (308.49, \"Salary\"),\n  (-205.55, \"Car Maintenance\"),\n  (870.64, \"Salary\"),\n  (-881.51, \"Utilities\"),\n  (518.14, \"Salary\"),\n  (-264.66, \"Groceries\")\n]\n\ndef print_transactions(transactions):\n  for transaction in transactions:\n    amount, statement = transaction\n    print(f\"${amount} - {statement}\")\n\nprint_transactions(data)\n\ndef print_summary(transactions):\n  deposits = [transaction[0] for transaction in transactions if transaction[0] >= 0]\n  total_deposited = sum(deposits)\n  print(total_deposited)\n  withdrawals = [transaction[0] for transaction in transactions if transaction[0] < 0]\n  total_withdrawn = sum(withdrawals)\n  print(total_withdrawn)\n  balance = total_deposited + total_withdrawn\n  print(f\"Balance: {balance}\")\n\nprint_summary(data)\n\ndef analyze_transactions(transactions):\n  transactions.sort()\n  largest_withdrawal = transactions[0]\n  largest_deposit = transactions[-1]\n  print(f\"Largest witdrawals: {largest_withdrawal}\")\n  print(f\"Largest deposit: {largest_deposit}\")\n\n  deposits = [transaction[0] for transaction in transactions if transaction[0] >= 0]\n  total_deposit = sum(deposits)\n  average_deposit = total_deposit / len(deposits) if deposits else 0\n  print(f\"Average deposit: {average_deposit}\")\n\n  withdrawals = [transaction[0] for transaction in transactions if transaction[0] < 0]\n  total_withdrawal = sum(withdrawals)\n  average_withdrawal = total_withdrawal / len(withdrawals) if withdrawals else 0\n  print(f\"Average witdrawal: {average_withdrawal}\")\n\nanalyze_transactions(data)",
+                  "solvedContent": "data = [\n  (749.17, \"Investment Return\"),\n  (-11.54, \"Utilities\"),\n  (-247.58, \"Online Shopping\"),\n  (981.17, \"Investment Return\"),\n  (-410.65, \"Rent\"),\n  (310.60, \"Rent\"),\n  (563.70, \"Gift\"),\n  (220.79, \"Salary\"),\n  (-49.85, \"Car Maintenance\"),\n  (308.49, \"Salary\"),\n  (-205.55, \"Car Maintenance\"),\n  (870.64, \"Salary\"),\n  (-881.51, \"Utilities\"),\n  (518.14, \"Salary\"),\n  (-264.66, \"Groceries\")\n]\n\ndef print_transactions(transactions):\n  for transaction in transactions:\n    amount, statement = transaction\n    print(f\"${amount} - {statement}\")\n\nprint_transactions(data)\n\ndef print_summary(transactions):\n  deposits = [transaction[0] for transaction in transactions if transaction[0] >= 0]\n  total_deposited = sum(deposits)\n  print(total_deposited)\n  withdrawals = [transaction[0] for transaction in transactions if transaction[0] < 0]\n  total_withdrawn = sum(withdrawals)\n  print(total_withdrawn)\n  balance = total_deposited + total_withdrawn\n  print(f\"Balance: {balance}\")\n\nprint_summary(data)\n\ndef analyze_transactions(transactions):\n  transactions.sort()\n  largest_withdrawal = transactions[0]\n  largest_deposit = transactions[-1]\n  print(f\"Largest witdrawals: {largest_withdrawal}\")\n  print(f\"Largest deposit: {largest_deposit}\")\n\n  deposits = [transaction[0] for transaction in transactions if transaction[0] >= 0]\n  total_deposit = sum(deposits)\n  average_deposit = total_deposit / len(deposits) if deposits else 0\n  print(f\"Average deposit: {average_deposit}\")\n\n  withdrawals = [transaction[0] for transaction in transactions if transaction[0] < 0]\n  total_withdrawal = sum(withdrawals)\n  average_withdrawal = total_withdrawal / len(withdrawals) if withdrawals else 0\n  print(f\"Average witdrawal: {average_withdrawal}\")\n\nanalyze_transactions(data)\n\nprint(\"\\nTransaction Analyzer\")\nwhile True:\n  print(\"\\nChoose an option:\")\n  print(\"1. Print summary (type 'print')\")\n  print(\"2. Analyze transactions (type 'analyze')\")\n  print(\"3. Stop program (type 'stop')\")\n  choice = input(\"Enter your option: \")\n  if choice.lower() == \"print\":\n    print_summary(data)\n  elif choice.lower() == \"analyze\":\n    analyze_transactions(data)\n  elif choice.lower() == \"stop\":\n    break\n  else:\n    print(\"Invalid choice\")"
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

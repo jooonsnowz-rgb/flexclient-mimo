@@ -1,0 +1,163 @@
+{
+  "tutorial": {
+    "id": 2672,
+    "version": 5,
+    "type": "guidedProject",
+    "isNew": false,
+    "codeLanguage": "python",
+    "title": "Kütüphane - 2. Bölüm",
+    "descriptionContent": "Tüm kitaplarını düzenleyen ve barındıran, tam kapsamlı bir kütüphane sistemiyle projenizi genişletin",
+    "shortDescriptionContent": "",
+    "showInTrack": true,
+    "iconBanner": "tutorial-2672-icon-banner.svg",
+    "chapters": [
+      {
+        "id": 14647,
+        "title": "Kütüphane - 2. Bölüm",
+        "type": "practiceLevel3",
+        "lessons": [
+          {
+            "title": "Lesson #1",
+            "id": 129544,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "**Library** projesinin ikinci bölümünde, tüm kitapları tutan bir kütüphane tanıtacağız.\n\n1. `Library` adında yeni bir sınıf oluştur.\n2. Bu sınıfın kurucusunu tanımla ve içinde `self.books` değişkenini boş bir liste olarak başlat.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "class Book:\n\n  def __init__(self, title, author):\n    self.title = title\n    self.author = author\n    self.available = True\n\n  def checkout(self):\n    if self.available:\n      self.available = False\n      return True\n    else:\n      return False\n\n  def return_book(self):\n    self.available = True\n\n  def display_info(self):\n    print(\n        f\"Title: {self.title}\\nAuthor: {self.author}\\nAvailable: {'Yes' if self.available else 'No'}\"\n    )\n\nbook1 = Book(\"Dracula\", \"Bram Stoker\")\nbook2 = Book(\"1984\", \"George Orwell\")\nbook3 = Book(\"Frankenstein\", \"Mary Shelley\")\nbooks = [book1, book2, book3]\n\nfor book in books:\n  book.display_info()",
+                  "solvedContent": "class Book:\n\n  def __init__(self, title, author):\n    self.title = title\n    self.author = author\n    self.available = True\n\n  def checkout(self):\n    if self.available:\n      self.available = False\n      return True\n    else:\n      return False\n\n  def return_book(self):\n    self.available = True\n\n  def display_info(self):\n    print(\n        f\"Title: {self.title}\\nAuthor: {self.author}\\nAvailable: {'Yes' if self.available else 'No'}\"\n    )\n\nbook1 = Book(\"Dracula\", \"Bram Stoker\")\nbook2 = Book(\"1984\", \"George Orwell\")\nbook3 = Book(\"Frankenstein\", \"Mary Shelley\")\nbooks = [book1, book2, book3]\n\nfor book in books:\n  book.display_info()\n\nclass Library:\n\n  def __init__(self):\n    self.books = []"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #2",
+            "id": 129545,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Sırada, kitapları kütüphaneye eklemek için `Library` sınıfının içinde bir metot oluşturalım.\n\n1. `Library` sınıfının içinde, bağımsız değişken olarak bir `book` alan ve bunu `books` listesine ekleyen bir `add_book` metodu tanımla.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "class Book:\n\n  def __init__(self, title, author):\n    self.title = title\n    self.author = author\n    self.available = True\n\n  def checkout(self):\n    if self.available:\n      self.available = False\n      return True\n    else:\n      return False\n\n  def return_book(self):\n    self.available = True\n\n  def display_info(self):\n    print(\n        f\"Title: {self.title}\\nAuthor: {self.author}\\nAvailable: {'Yes' if self.available else 'No'}\"\n    )\n\nbook1 = Book(\"Dracula\", \"Bram Stoker\")\nbook2 = Book(\"1984\", \"George Orwell\")\nbook3 = Book(\"Frankenstein\", \"Mary Shelley\")\nbooks = [book1, book2, book3]\n\nfor book in books:\n  book.display_info()\n\nclass Library:\n\n  def __init__(self):\n    self.books = []",
+                  "solvedContent": "class Book:\n\n  def __init__(self, title, author):\n    self.title = title\n    self.author = author\n    self.available = True\n\n  def checkout(self):\n    if self.available:\n      self.available = False\n      return True\n    else:\n      return False\n\n  def return_book(self):\n    self.available = True\n\n  def display_info(self):\n    print(\n        f\"Title: {self.title}\\nAuthor: {self.author}\\nAvailable: {'Yes' if self.available else 'No'}\"\n    )\n\nbook1 = Book(\"Dracula\", \"Bram Stoker\")\nbook2 = Book(\"1984\", \"George Orwell\")\nbook3 = Book(\"Frankenstein\", \"Mary Shelley\")\nbooks = [book1, book2, book3]\n\nfor book in books:\n  book.display_info()\n\nclass Library:\n\n  def __init__(self):\n    self.books = []\n\n  def add_book(self, book):\n    self.books.append(book)"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #3",
+            "id": 129546,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Kitapları kullanıcılarımıza da göstermemiz gerekiyor.\n\n1. Bir `display_books` metodu oluştur.\n   - Bu metot, `books` listesindeki tüm kitapları yazdırmalı.\n   - `display_books` çağrılırken kitap ayrıntılarını yazdırmak için `Book` sınıfındaki `display_info` metodundan yararlan.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "class Book:\n\n  def __init__(self, title, author):\n    self.title = title\n    self.author = author\n    self.available = True\n\n  def checkout(self):\n    if self.available:\n      self.available = False\n      return True\n    else:\n      return False\n\n  def return_book(self):\n    self.available = True\n\n  def display_info(self):\n    print(\n        f\"Title: {self.title}\\nAuthor: {self.author}\\nAvailable: {'Yes' if self.available else 'No'}\"\n    )\n\nbook1 = Book(\"Dracula\", \"Bram Stoker\")\nbook2 = Book(\"1984\", \"George Orwell\")\nbook3 = Book(\"Frankenstein\", \"Mary Shelley\")\nbooks = [book1, book2, book3]\n\nfor book in books:\n  book.display_info()\n\nclass Library:\n\n  def __init__(self):\n    self.books = []\n\n  def add_book(self, book):\n    self.books.append(book)",
+                  "solvedContent": "class Book:\n\n  def __init__(self, title, author):\n    self.title = title\n    self.author = author\n    self.available = True\n\n  def checkout(self):\n    if self.available:\n      self.available = False\n      return True\n    else:\n      return False\n\n  def return_book(self):\n    self.available = True\n\n  def display_info(self):\n    print(\n        f\"Title: {self.title}\\nAuthor: {self.author}\\nAvailable: {'Yes' if self.available else 'No'}\"\n    )\n\nbook1 = Book(\"Dracula\", \"Bram Stoker\")\nbook2 = Book(\"1984\", \"George Orwell\")\nbook3 = Book(\"Frankenstein\", \"Mary Shelley\")\nbooks = [book1, book2, book3]\n\nfor book in books:\n  book.display_info()\n\nclass Library:\n\n  def __init__(self):\n    self.books = []\n\n  def add_book(self, book):\n    self.books.append(book)\n\n  def display_books(self):\n    for book in self.books:\n      book.display_info()"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #4",
+            "id": 129547,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Son olarak, kullanıcıların bir kitabı başlığına göre bulmasını sağlayan bir metot oluşturalım. `Library` içinde\n\n1. `Library` sınıfı içinde bir `get_book_by_title` metodu tanımla.\n   - Bu metot, bağımsız değişken olarak bir `title` almalı, `books` listesindeki her kitap üzerinde yinelemeli ve `book.title` değeri `title` ile eşleşen ilk `book` nesnesini döndürmelidir.\n   - Eşleşme bulunamazsa `None` döndürmelidir.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "class Book:\n\n  def __init__(self, title, author):\n    self.title = title\n    self.author = author\n    self.available = True\n\n  def checkout(self):\n    if self.available:\n      self.available = False\n      return True\n    else:\n      return False\n\n  def return_book(self):\n    self.available = True\n\n  def display_info(self):\n    print(\n        f\"Title: {self.title}\\nAuthor: {self.author}\\nAvailable: {'Yes' if self.available else 'No'}\"\n    )\n\nbook1 = Book(\"Dracula\", \"Bram Stoker\")\nbook2 = Book(\"1984\", \"George Orwell\")\nbook3 = Book(\"Frankenstein\", \"Mary Shelley\")\nbooks = [book1, book2, book3]\n\nfor book in books:\n  book.display_info()\n\nclass Library:\n\n  def __init__(self):\n    self.books = []\n\n  def add_book(self, book):\n    self.books.append(book)\n\n  def display_books(self):\n    for book in self.books:\n      book.display_info()",
+                  "solvedContent": "class Book:\n\n  def __init__(self, title, author):\n    self.title = title\n    self.author = author\n    self.available = True\n\n  def checkout(self):\n    if self.available:\n      self.available = False\n      return True\n    else:\n      return False\n\n  def return_book(self):\n    self.available = True\n\n  def display_info(self):\n    print(\n        f\"Title: {self.title}\\nAuthor: {self.author}\\nAvailable: {'Yes' if self.available else 'No'}\"\n    )\n\nbook1 = Book(\"Dracula\", \"Bram Stoker\")\nbook2 = Book(\"1984\", \"George Orwell\")\nbook3 = Book(\"Frankenstein\", \"Mary Shelley\")\nbooks = [book1, book2, book3]\n\nfor book in books:\n  book.display_info()\n\nclass Library:\n\n  def __init__(self):\n    self.books = []\n\n  def add_book(self, book):\n    self.books.append(book)\n\n  def display_books(self):\n    for book in self.books:\n      book.display_info()\n\n  def get_book_by_title(self, title):\n    for book in self.books:\n      if book.title.lower() == title.lower():\n        return book\n    return None"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #5",
+            "id": 129548,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Şimdi `Library` sınıfının bir örneğini oluşturalım ve birkaç kitap ekleyelim.\n\n1. Önce `Library` sınıfının bir örneğini oluştur ve bunu `library` adlı bir değişkene ata.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "class Book:\n\n  def __init__(self, title, author):\n    self.title = title\n    self.author = author\n    self.available = True\n\n  def checkout(self):\n    if self.available:\n      self.available = False\n      return True\n    else:\n      return False\n\n  def return_book(self):\n    self.available = True\n\n  def display_info(self):\n    print(\n        f\"Title: {self.title}\\nAuthor: {self.author}\\nAvailable: {'Yes' if self.available else 'No'}\"\n    )\n\nbook1 = Book(\"Dracula\", \"Bram Stoker\")\nbook2 = Book(\"1984\", \"George Orwell\")\nbook3 = Book(\"Frankenstein\", \"Mary Shelley\")\nbooks = [book1, book2, book3]\n\nfor book in books:\n  book.display_info()\n\nclass Library:\n\n  def __init__(self):\n    self.books = []\n\n  def add_book(self, book):\n    self.books.append(book)\n\n  def display_books(self):\n    for book in self.books:\n      book.display_info()\n\n  def get_book_by_title(self, title):\n    for book in self.books:\n      if book.title.lower() == title.lower():\n        return book\n    return None",
+                  "solvedContent": "class Book:\n\n  def __init__(self, title, author):\n    self.title = title\n    self.author = author\n    self.available = True\n\n  def checkout(self):\n    if self.available:\n      self.available = False\n      return True\n    else:\n      return False\n\n  def return_book(self):\n    self.available = True\n\n  def display_info(self):\n    print(\n        f\"Title: {self.title}\\nAuthor: {self.author}\\nAvailable: {'Yes' if self.available else 'No'}\"\n    )\n\nbook1 = Book(\"Dracula\", \"Bram Stoker\")\nbook2 = Book(\"1984\", \"George Orwell\")\nbook3 = Book(\"Frankenstein\", \"Mary Shelley\")\nbooks = [book1, book2, book3]\n\nfor book in books:\n  book.display_info()\n\nclass Library:\n\n  def __init__(self):\n    self.books = []\n\n  def add_book(self, book):\n    self.books.append(book)\n\n  def display_books(self):\n    for book in self.books:\n      book.display_info()\n\n  def get_book_by_title(self, title):\n    for book in self.books:\n      if book.title.lower() == title.lower():\n        return book\n    return None\n\nlibrary = Library()"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #6",
+            "id": 129549,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Artık `Library` sınıfının bir örneğine sahip olduğumuza göre, yeni `add_book` metodumuzu kullanarak kitapları kütüphaneye ekleyelim.\n\n1. `books` listesini ve kitapların bilgilerini görüntüleyen `for` döngüsünü kaldır.\n2. Ardından, daha önce oluşturulan üç kitabın tümünü kütüphaneye eklemek için `library` nesnesi üzerinde `add_book` metodunu üç kez çağır.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "class Book:\n\n  def __init__(self, title, author):\n    self.title = title\n    self.author = author\n    self.available = True\n\n  def checkout(self):\n    if self.available:\n      self.available = False\n      return True\n    else:\n      return False\n\n  def return_book(self):\n    self.available = True\n\n  def display_info(self):\n    print(\n        f\"Title: {self.title}\\nAuthor: {self.author}\\nAvailable: {'Yes' if self.available else 'No'}\"\n    )\n\nbook1 = Book(\"Dracula\", \"Bram Stoker\")\nbook2 = Book(\"1984\", \"George Orwell\")\nbook3 = Book(\"Frankenstein\", \"Mary Shelley\")\nbooks = [book1, book2, book3]\n\nfor book in books:\n  book.display_info()\n\nclass Library:\n\n  def __init__(self):\n    self.books = []\n\n  def add_book(self, book):\n    self.books.append(book)\n\n  def display_books(self):\n    for book in self.books:\n      book.display_info()\n\n  def get_book_by_title(self, title):\n    for book in self.books:\n      if book.title.lower() == title.lower():\n        return book\n    return None\n\nlibrary = Library()",
+                  "solvedContent": "class Book:\n\n  def __init__(self, title, author):\n    self.title = title\n    self.author = author\n    self.available = True\n\n  def checkout(self):\n    if self.available:\n      self.available = False\n      return True\n    else:\n      return False\n\n  def return_book(self):\n    self.available = True\n\n  def display_info(self):\n    print(\n        f\"Title: {self.title}\\nAuthor: {self.author}\\nAvailable: {'Yes' if self.available else 'No'}\"\n    )\n\nbook1 = Book(\"Dracula\", \"Bram Stoker\")\nbook2 = Book(\"1984\", \"George Orwell\")\nbook3 = Book(\"Frankenstein\", \"Mary Shelley\")\n\nclass Library:\n\n  def __init__(self):\n    self.books = []\n\n  def add_book(self, book):\n    self.books.append(book)\n\n  def display_books(self):\n    for book in self.books:\n      book.display_info()\n\n  def get_book_by_title(self, title):\n    for book in self.books:\n      if book.title.lower() == title.lower():\n        return book\n    return None\n\nlibrary = Library()\n\nlibrary.add_book(book1)\nlibrary.add_book(book2)\nlibrary.add_book(book3)"
+                }
+              ],
+              "hints": []
+            }
+          },
+          {
+            "title": "Lesson #6 - Copy",
+            "id": 129550,
+            "contentType": "executableFiles",
+            "images": [],
+            "executableContent": {
+              "instructions": "Yazdırma ifadelerini az önce kaldırdık. Şimdi onları `library` aracılığıyla geri getirelim.\n\n1. Tüm kitapları yeniden görüntülemek için betiğin en sonunda `library` örneği üzerinde `display_books` metodunu çağır.",
+              "preselectedFileIndex": 0,
+              "hasVisualOutput": false,
+              "files": [
+                {
+                  "name": "script.py",
+                  "codeLanguage": "python",
+                  "content": "class Book:\n\n  def __init__(self, title, author):\n    self.title = title\n    self.author = author\n    self.available = True\n\n  def checkout(self):\n    if self.available:\n      self.available = False\n      return True\n    else:\n      return False\n\n  def return_book(self):\n    self.available = True\n\n  def display_info(self):\n    print(\n        f\"Title: {self.title}\\nAuthor: {self.author}\\nAvailable: {'Yes' if self.available else 'No'}\"\n    )\n\nbook1 = Book(\"Dracula\", \"Bram Stoker\")\nbook2 = Book(\"1984\", \"George Orwell\")\nbook3 = Book(\"Frankenstein\", \"Mary Shelley\")\n\nclass Library:\n\n  def __init__(self):\n    self.books = []\n\n  def add_book(self, book):\n    self.books.append(book)\n\n  def display_books(self):\n    for book in self.books:\n      book.display_info()\n\n  def get_book_by_title(self, title):\n    for book in self.books:\n      if book.title.lower() == title.lower():\n        return book\n    return None\n\nlibrary = Library()\n\nlibrary.add_book(book1)\nlibrary.add_book(book2)\nlibrary.add_book(book3)",
+                  "solvedContent": "class Book:\n\n  def __init__(self, title, author):\n    self.title = title\n    self.author = author\n    self.available = True\n\n  def checkout(self):\n    if self.available:\n      self.available = False\n      return True\n    else:\n      return False\n\n  def return_book(self):\n    self.available = True\n\n  def display_info(self):\n    print(\n        f\"Title: {self.title}\\nAuthor: {self.author}\\nAvailable: {'Yes' if self.available else 'No'}\"\n    )\n\nbook1 = Book(\"Dracula\", \"Bram Stoker\")\nbook2 = Book(\"1984\", \"George Orwell\")\nbook3 = Book(\"Frankenstein\", \"Mary Shelley\")\n\nclass Library:\n\n  def __init__(self):\n    self.books = []\n\n  def add_book(self, book):\n    self.books.append(book)\n\n  def display_books(self):\n    for book in self.books:\n      book.display_info()\n\n  def get_book_by_title(self, title):\n    for book in self.books:\n      if book.title.lower() == title.lower():\n        return book\n    return None\n\nlibrary = Library()\n\nlibrary.add_book(book1)\nlibrary.add_book(book2)\nlibrary.add_book(book3)\n\nlibrary.display_books()"
+                }
+              ],
+              "hints": []
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
